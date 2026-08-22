@@ -1,0 +1,10 @@
+node_modules/
+raw/
+state/
+logs-*.txt
+*.bak
+vendor/
+bodies/
+pdf/
+tmp-download/
+curated/

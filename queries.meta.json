@@ -1,0 +1,3357 @@
+[
+ {
+  "q": "광주 군공항",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "군공항 이전",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "종전부지",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "전남광주 반도체",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "광주 반도체",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "반도체 클러스터",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "반도체 특화단지",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "국가첨단전략산업",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "예비이전후보지",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "기부 대 양여",
+  "family": "project",
+  "note": "gwangju"
+ },
+ {
+  "q": "초광역권발전계획",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "특별지방자치단체",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "지방시대위원회",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "초광역협력",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "지역균형발전",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "기회발전특구",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "교육발전특구",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "도심융합특구",
+  "family": "project",
+  "note": "fpts"
+ },
+ {
+  "q": "5극3특 추진전략 설계도 수립",
+  "family": "milestone",
+  "note": "five-poles-t:N01"
+ },
+ {
+  "q": "지방시대위 의결",
+  "family": "milestone",
+  "note": "five-poles-t:N01"
+ },
+ {
+  "q": "지방분권·지역균형성장 사업계획",
+  "family": "institution",
+  "note": "regional-balanced-growth-project"
+ },
+ {
+  "q": "지역현황 분석부터 계획수립",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P01"
+ },
+ {
+  "q": "관계기관 협의",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P01"
+ },
+ {
+  "q": "성과평가까지 신청",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P02"
+ },
+ {
+  "q": "전문가 심의",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P06"
+ },
+ {
+  "q": "성과평가까지 결정",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P07"
+ },
+ {
+  "q": "성과평가까지 사후점검",
+  "family": "procedure",
+  "note": "regional-balanced-growth-project:P11"
+ },
+ {
+  "q": "입법예고와 행정예고",
+  "family": "institution",
+  "note": "legislative-notice"
+ },
+ {
+  "q": "기간 결정",
+  "family": "procedure",
+  "note": "legislative-notice:P02"
+ },
+ {
+  "q": "통합입법예고시스템 등록",
+  "family": "procedure",
+  "note": "legislative-notice:P05"
+ },
+ {
+  "q": "반영 여부 결정",
+  "family": "procedure",
+  "note": "legislative-notice:P08"
+ },
+ {
+  "q": "국회 입법절차",
+  "family": "institution",
+  "note": "assembly-lawmaking"
+ },
+ {
+  "q": "재의요구 시 본회의 재의결",
+  "family": "procedure",
+  "note": "assembly-lawmaking:P12"
+ },
+ {
+  "q": "신속처리안건 지정",
+  "family": "procedure",
+  "note": "assembly-lawmaking:P15"
+ },
+ {
+  "q": "성장엔진 추진가이드라인 수립",
+  "family": "milestone",
+  "note": "five-poles-t:N07"
+ },
+ {
+  "q": "민관합동 성장엔진 투자계획 수립",
+  "family": "milestone",
+  "note": "five-poles-t:N08"
+ },
+ {
+  "q": "5극3특 성장엔진 선정 — 지방시대위 의결",
+  "family": "milestone",
+  "note": "five-poles-t:N09"
+ },
+ {
+  "q": "초광역특별협약·초광역특별계정",
+  "family": "institution",
+  "note": "mega-regional-special-agreement-account"
+ },
+ {
+  "q": "도 지방시대위원회 심의",
+  "family": "procedure",
+  "note": "mega-regional-special-agreement-account:P04"
+ },
+ {
+  "q": "지방시대위원회 심의",
+  "family": "procedure",
+  "note": "mega-regional-special-agreement-account:P06"
+ },
+ {
+  "q": "통합공모 예외 심의",
+  "family": "procedure",
+  "note": "mega-regional-special-agreement-account:P09"
+ },
+ {
+  "q": "사업규모 확정",
+  "family": "milestone",
+  "note": "five-poles-t:N12"
+ },
+ {
+  "q": "예타 특례·신속인허가",
+  "family": "institution",
+  "note": "pfs-exemption-fast-track"
+ },
+ {
+  "q": "인허가 신속처리 신청",
+  "family": "procedure",
+  "note": "pfs-exemption-fast-track:P09"
+ },
+ {
+  "q": "성과평가",
+  "family": "procedure",
+  "note": "pfs-exemption-fast-track:P14"
+ },
+ {
+  "q": "예비타당성조사",
+  "family": "institution",
+  "note": "preliminary-feasibility-study"
+ },
+ {
+  "q": "예타 신청",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P04"
+ },
+ {
+  "q": "조사수행기관 지정",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P06"
+ },
+ {
+  "q": "조사계획 수립",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P06"
+ },
+ {
+  "q": "계층화분석(AHP) 종합평가",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P10"
+ },
+ {
+  "q": "재정사업평가위원회 심의",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P12"
+ },
+ {
+  "q": "예타 결과 통보",
+  "family": "procedure",
+  "note": "preliminary-feasibility-study:P13"
+ },
+ {
+  "q": "규제샌드박스",
+  "family": "institution",
+  "note": "regulatory-sandbox"
+ },
+ {
+  "q": "규제 신속확인 신청",
+  "family": "procedure",
+  "note": "regulatory-sandbox:P01"
+ },
+ {
+  "q": "임시허가 신청",
+  "family": "procedure",
+  "note": "regulatory-sandbox:P03"
+ },
+ {
+  "q": "안전성 조건 협의",
+  "family": "procedure",
+  "note": "regulatory-sandbox:P05"
+ },
+ {
+  "q": "규제특례심의위원회 심의",
+  "family": "procedure",
+  "note": "regulatory-sandbox:P07"
+ },
+ {
+  "q": "중간점검",
+  "family": "procedure",
+  "note": "regulatory-sandbox:P11"
+ },
+ {
+  "q": "기회발전특구 지정·지원",
+  "family": "institution",
+  "note": "opportunity-development-zone-designation"
+ },
+ {
+  "q": "기회발전특구 지정 신청",
+  "family": "procedure",
+  "note": "opportunity-development-zone-designation:P02"
+ },
+ {
+  "q": "관계 중앙행정기관 협의",
+  "family": "procedure",
+  "note": "opportunity-development-zone-designation:P03"
+ },
+ {
+  "q": "기회발전특구 지정",
+  "family": "procedure",
+  "note": "opportunity-development-zone-designation:P05"
+ },
+ {
+  "q": "관보 고시",
+  "family": "procedure",
+  "note": "opportunity-development-zone-designation:P05"
+ },
+ {
+  "q": "기금 운용",
+  "family": "institution",
+  "note": "fund-management"
+ },
+ {
+  "q": "기금운용계획안 작성지침 수립",
+  "family": "procedure",
+  "note": "fund-management:P00"
+ },
+ {
+  "q": "기획예산처 협의",
+  "family": "procedure",
+  "note": "fund-management:P03"
+ },
+ {
+  "q": "국무회의 심의",
+  "family": "procedure",
+  "note": "fund-management:P05"
+ },
+ {
+  "q": "대통령 승인",
+  "family": "procedure",
+  "note": "fund-management:P05"
+ },
+ {
+  "q": "예결위 심의",
+  "family": "procedure",
+  "note": "fund-management:P07"
+ },
+ {
+  "q": "본회의 의결",
+  "family": "procedure",
+  "note": "fund-management:P08"
+ },
+ {
+  "q": "계획 확정",
+  "family": "procedure",
+  "note": "fund-management:P08"
+ },
+ {
+  "q": "자산운용지침 심의",
+  "family": "procedure",
+  "note": "fund-management:P09"
+ },
+ {
+  "q": "기금운용평가",
+  "family": "procedure",
+  "note": "fund-management:P12"
+ },
+ {
+  "q": "기금 존치평가",
+  "family": "procedure",
+  "note": "fund-management:P13"
+ },
+ {
+  "q": "대학재정지원",
+  "family": "institution",
+  "note": "university-funding"
+ },
+ {
+  "q": "고등교육재정지원 기본계획 수립",
+  "family": "procedure",
+  "note": "university-funding:P01"
+ },
+ {
+  "q": "사업 기본계획 수립",
+  "family": "procedure",
+  "note": "university-funding:P02"
+ },
+ {
+  "q": "대면 선정평가",
+  "family": "procedure",
+  "note": "university-funding:P04"
+ },
+ {
+  "q": "단계 성과평가",
+  "family": "procedure",
+  "note": "university-funding:P08"
+ },
+ {
+  "q": "보완계획 수립",
+  "family": "procedure",
+  "note": "university-funding:P10"
+ },
+ {
+  "q": "반도체 등 첨단산업 계약학과 설치·신고·운영관리",
+  "family": "institution",
+  "note": "advanced-industry-contract-department-governance"
+ },
+ {
+  "q": "계약학과 유형 협의",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P01"
+ },
+ {
+  "q": "특례 안건 심의",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P04"
+ },
+ {
+  "q": "설치계약 조건 확정",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P05"
+ },
+ {
+  "q": "운영계획 사전신고",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P07"
+ },
+ {
+  "q": "학생정원 확정",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P10"
+ },
+ {
+  "q": "폐지 신고",
+  "family": "procedure",
+  "note": "advanced-industry-contract-department-governance:P15"
+ },
+ {
+  "q": "국가연구개발사업 공모·과제선정",
+  "family": "institution",
+  "note": "national-rd-call-selection"
+ },
+ {
+  "q": "추진계획 수립",
+  "family": "procedure",
+  "note": "national-rd-call-selection:P01"
+ },
+ {
+  "q": "통합정보시스템 공고",
+  "family": "procedure",
+  "note": "national-rd-call-selection:P04"
+ },
+ {
+  "q": "평가결과 심의",
+  "family": "procedure",
+  "note": "national-rd-call-selection:P10"
+ },
+ {
+  "q": "탈락 결과 통보",
+  "family": "procedure",
+  "note": "national-rd-call-selection:P11"
+ },
+ {
+  "q": "평가결과 이의신청",
+  "family": "procedure",
+  "note": "national-rd-call-selection:P12"
+ },
+ {
+  "q": "산업단지 지정·개발",
+  "family": "institution",
+  "note": "industrial-complex-development"
+ },
+ {
+  "q": "지정 협의",
+  "family": "procedure",
+  "note": "industrial-complex-development:P02"
+ },
+ {
+  "q": "산업단지 지정",
+  "family": "procedure",
+  "note": "industrial-complex-development:P03"
+ },
+ {
+  "q": "개발계획 수립",
+  "family": "procedure",
+  "note": "industrial-complex-development:P05"
+ },
+ {
+  "q": "주민 의견 재수렴 신청",
+  "family": "procedure",
+  "note": "industrial-complex-development:P07"
+ },
+ {
+  "q": "환경영향평가 협의",
+  "family": "procedure",
+  "note": "industrial-complex-development:P08"
+ },
+ {
+  "q": "실시계획 승인",
+  "family": "procedure",
+  "note": "industrial-complex-development:P10"
+ },
+ {
+  "q": "보상 협의",
+  "family": "procedure",
+  "note": "industrial-complex-development:P11"
+ },
+ {
+  "q": "준공인가",
+  "family": "procedure",
+  "note": "industrial-complex-development:P15"
+ },
+ {
+  "q": "지원 신청",
+  "family": "procedure",
+  "note": "industrial-complex-development:P17"
+ },
+ {
+  "q": "지정 공고",
+  "family": "procedure",
+  "note": "industrial-complex-development:P19"
+ },
+ {
+  "q": "국토종합계획 수립·승인·정비",
+  "family": "institution",
+  "note": "national-comprehensive-plan"
+ },
+ {
+  "q": "심의안 관계기관 협의",
+  "family": "procedure",
+  "note": "national-comprehensive-plan:P05"
+ },
+ {
+  "q": "국토정책위원회 심의",
+  "family": "procedure",
+  "note": "national-comprehensive-plan:P06"
+ },
+ {
+  "q": "관보 공고",
+  "family": "procedure",
+  "note": "national-comprehensive-plan:P09"
+ },
+ {
+  "q": "소관별 실천계획 수립",
+  "family": "procedure",
+  "note": "national-comprehensive-plan:P10"
+ },
+ {
+  "q": "성과 평가",
+  "family": "procedure",
+  "note": "national-comprehensive-plan:P11"
+ },
+ {
+  "q": "초광역권발전계획 수립",
+  "family": "milestone",
+  "note": "five-poles-t:N20"
+ },
+ {
+  "q": "초광역권계획·초광역권발전계획",
+  "family": "institution",
+  "note": "mega-region-plan"
+ },
+ {
+  "q": "구성 지자체 협의",
+  "family": "procedure",
+  "note": "mega-region-plan:P02"
+ },
+ {
+  "q": "연차 시행계획 수립",
+  "family": "procedure",
+  "note": "mega-region-plan:P09"
+ },
+ {
+  "q": "시행계획 협의",
+  "family": "procedure",
+  "note": "mega-region-plan:P11"
+ },
+ {
+  "q": "지방시대위원회 연차 평가",
+  "family": "procedure",
+  "note": "mega-region-plan:P14"
+ },
+ {
+  "q": "권역별 60분 대중교통망계획 수립",
+  "family": "milestone",
+  "note": "five-poles-t:N21"
+ },
+ {
+  "q": "대규모 개발사업 광역교통개선대책",
+  "family": "institution",
+  "note": "metropolitan-transport-improvement-measures"
+ },
+ {
+  "q": "교통기관 협의",
+  "family": "procedure",
+  "note": "metropolitan-transport-improvement-measures:P04"
+ },
+ {
+  "q": "대도시권광역교통위원회 심의",
+  "family": "procedure",
+  "note": "metropolitan-transport-improvement-measures:P05"
+ },
+ {
+  "q": "광역교통개선대책 확정",
+  "family": "procedure",
+  "note": "metropolitan-transport-improvement-measures:P06"
+ },
+ {
+  "q": "연차계획 확정",
+  "family": "procedure",
+  "note": "metropolitan-transport-improvement-measures:P07"
+ },
+ {
+  "q": "개선대책 이행상황 점검",
+  "family": "procedure",
+  "note": "metropolitan-transport-improvement-measures:P08"
+ },
+ {
+  "q": "국가 도로·철도 SOC 추진",
+  "family": "institution",
+  "note": "national-road-rail-soc"
+ },
+ {
+  "q": "국가철도망구축계획 수립",
+  "family": "procedure",
+  "note": "national-road-rail-soc:P01"
+ },
+ {
+  "q": "철도건설사업별 기본계획 수립",
+  "family": "procedure",
+  "note": "national-road-rail-soc:P03"
+ },
+ {
+  "q": "승인 신청",
+  "family": "procedure",
+  "note": "national-road-rail-soc:P04"
+ },
+ {
+  "q": "도로구역 결정",
+  "family": "procedure",
+  "note": "national-road-rail-soc:P08"
+ },
+ {
+  "q": "실시계획 변경 승인",
+  "family": "procedure",
+  "note": "national-road-rail-soc:P11"
+ },
+ {
+  "q": "공항 개발·운영 인허가",
+  "family": "institution",
+  "note": "airport-development-operation-permit"
+ },
+ {
+  "q": "공항개발 기본계획 수립",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P01"
+ },
+ {
+  "q": "개발사업 시행자 허가",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P02"
+ },
+ {
+  "q": "실시계획 수립",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P03"
+ },
+ {
+  "q": "인허가의제 관계기관 협의",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P04"
+ },
+ {
+  "q": "공항운영규정 인가",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P08"
+ },
+ {
+  "q": "공항운영 검사",
+  "family": "procedure",
+  "note": "airport-development-operation-permit:P09"
+ },
+ {
+  "q": "공공기관 지방이전·혁신도시 이전",
+  "family": "institution",
+  "note": "public-institution-relocation"
+ },
+ {
+  "q": "지방이전계획 수립",
+  "family": "procedure",
+  "note": "public-institution-relocation:P01"
+ },
+ {
+  "q": "국토교통부장관 승인",
+  "family": "procedure",
+  "note": "public-institution-relocation:P05"
+ },
+ {
+  "q": "공공·책임의료기관 지정",
+  "family": "institution",
+  "note": "public-essential-medical"
+ },
+ {
+  "q": "지정 신청",
+  "family": "procedure",
+  "note": "public-essential-medical:P03"
+ },
+ {
+  "q": "계획 평가",
+  "family": "procedure",
+  "note": "public-essential-medical:P11"
+ },
+ {
+  "q": "공공보건의료기관 지정·운영계획",
+  "family": "institution",
+  "note": "public-health-medical-service-plan"
+ },
+ {
+  "q": "개선까지 신청",
+  "family": "procedure",
+  "note": "public-health-medical-service-plan:P02"
+ },
+ {
+  "q": "개선까지 결정",
+  "family": "procedure",
+  "note": "public-health-medical-service-plan:P07"
+ },
+ {
+  "q": "개선까지 사후점검",
+  "family": "procedure",
+  "note": "public-health-medical-service-plan:P11"
+ },
+ {
+  "q": "지역 돌봄 통합지원",
+  "family": "institution",
+  "note": "community-integrated-care"
+ },
+ {
+  "q": "개인별지원계획 수립",
+  "family": "procedure",
+  "note": "community-integrated-care:P07"
+ },
+ {
+  "q": "통합지원 기본계획 수립",
+  "family": "procedure",
+  "note": "community-integrated-care:P17"
+ },
+ {
+  "q": "추진성과 평가",
+  "family": "procedure",
+  "note": "community-integrated-care:P18"
+ },
+ {
+  "q": "교육특구 지정",
+  "family": "milestone",
+  "note": "five-poles-t:N27"
+ },
+ {
+  "q": "교육국제화특구·외국교육기관",
+  "family": "institution",
+  "note": "foreign-education-institution-special-zone"
+ },
+ {
+  "q": "설립승인 신청",
+  "family": "procedure",
+  "note": "foreign-education-institution-special-zone:P03"
+ },
+ {
+  "q": "설립승인",
+  "family": "procedure",
+  "note": "foreign-education-institution-special-zone:P04"
+ },
+ {
+  "q": "학력인정 지정",
+  "family": "procedure",
+  "note": "foreign-education-institution-special-zone:P07"
+ },
+ {
+  "q": "폐쇄승인",
+  "family": "procedure",
+  "note": "foreign-education-institution-special-zone:P12"
+ },
+ {
+  "q": "지방소멸대응기금",
+  "family": "institution",
+  "note": "local-extinction-response-fund"
+ },
+ {
+  "q": "기초계정 투자계획 수립",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P02"
+ },
+ {
+  "q": "광역계정 투자계획 수립",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P03"
+ },
+ {
+  "q": "금액 결정",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P09"
+ },
+ {
+  "q": "배분 통보",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P10"
+ },
+ {
+  "q": "지방의회 예산 심의",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P12"
+ },
+ {
+  "q": "이행점검",
+  "family": "procedure",
+  "note": "local-extinction-response-fund:P16"
+ },
+ {
+  "q": "국가예산 편성",
+  "family": "institution",
+  "note": "national-budget"
+ },
+ {
+  "q": "예산안편성지침 국무회의 심의",
+  "family": "procedure",
+  "note": "national-budget:P03"
+ },
+ {
+  "q": "지출한도(실링) 통보",
+  "family": "procedure",
+  "note": "national-budget:P04"
+ },
+ {
+  "q": "예산요구서 심의",
+  "family": "procedure",
+  "note": "national-budget:P06"
+ },
+ {
+  "q": "부처 협의",
+  "family": "procedure",
+  "note": "national-budget:P06"
+ },
+ {
+  "q": "재검토 협의",
+  "family": "procedure",
+  "note": "national-budget:P07"
+ },
+ {
+  "q": "예산안 국무회의 심의",
+  "family": "procedure",
+  "note": "national-budget:P09"
+ },
+ {
+  "q": "예산 확정",
+  "family": "procedure",
+  "note": "national-budget:P13"
+ },
+ {
+  "q": "감사원 결산검사",
+  "family": "procedure",
+  "note": "national-budget:P15"
+ },
+ {
+  "q": "국회 결산 심의",
+  "family": "procedure",
+  "note": "national-budget:P16"
+ },
+ {
+  "q": "국고보조금",
+  "family": "institution",
+  "note": "national-subsidy"
+ },
+ {
+  "q": "보조금 예산 계상 신청",
+  "family": "procedure",
+  "note": "national-subsidy:P01"
+ },
+ {
+  "q": "사업 공고",
+  "family": "procedure",
+  "note": "national-subsidy:P03"
+ },
+ {
+  "q": "보조사업 신청",
+  "family": "procedure",
+  "note": "national-subsidy:P04"
+ },
+ {
+  "q": "보조금 교부 신청",
+  "family": "procedure",
+  "note": "national-subsidy:P05"
+ },
+ {
+  "q": "교부 결정",
+  "family": "procedure",
+  "note": "national-subsidy:P06"
+ },
+ {
+  "q": "정산검사",
+  "family": "procedure",
+  "note": "national-subsidy:P11"
+ },
+ {
+  "q": "정산 확정",
+  "family": "procedure",
+  "note": "national-subsidy:P12"
+ },
+ {
+  "q": "사후 점검",
+  "family": "procedure",
+  "note": "national-subsidy:P13"
+ },
+ {
+  "q": "이의신청",
+  "family": "procedure",
+  "note": "national-subsidy:P18"
+ },
+ {
+  "q": "연장평가",
+  "family": "procedure",
+  "note": "national-subsidy:P15"
+ },
+ {
+  "q": "균형성장영향평가",
+  "family": "institution",
+  "note": "balanced-growth-impact-assessment"
+ },
+ {
+  "q": "평가 대상 심의",
+  "family": "procedure",
+  "note": "balanced-growth-impact-assessment:P05"
+ },
+ {
+  "q": "평가결과 확정",
+  "family": "procedure",
+  "note": "balanced-growth-impact-assessment:P08"
+ },
+ {
+  "q": "지방교부세",
+  "family": "institution",
+  "note": "local-share-tax"
+ },
+ {
+  "q": "특별교부세 수요 신청",
+  "family": "procedure",
+  "note": "local-share-tax:P08"
+ },
+ {
+  "q": "감사 반영 점검",
+  "family": "procedure",
+  "note": "local-share-tax:P14"
+ },
+ {
+  "q": "보통교부세 교부세액 이의신청",
+  "family": "procedure",
+  "note": "local-share-tax:P17"
+ },
+ {
+  "q": "구성 지자체 간 협의",
+  "family": "procedure",
+  "note": "special-local-government:P01"
+ },
+ {
+  "q": "경비 분담 협의",
+  "family": "procedure",
+  "note": "special-local-government:P02"
+ },
+ {
+  "q": "각 지방의회 규약 의결",
+  "family": "procedure",
+  "note": "special-local-government:P03"
+ },
+ {
+  "q": "행안부장관 승인 신청",
+  "family": "procedure",
+  "note": "special-local-government:P04"
+ },
+ {
+  "q": "행안부장관 승인",
+  "family": "procedure",
+  "note": "special-local-government:P05"
+ },
+ {
+  "q": "규약 고시",
+  "family": "procedure",
+  "note": "special-local-government:P06"
+ },
+ {
+  "q": "기본계획 수립",
+  "family": "procedure",
+  "note": "special-local-government:P10"
+ },
+ {
+  "q": "의회 의결",
+  "family": "procedure",
+  "note": "special-local-government:P10"
+ },
+ {
+  "q": "특별시·광역시·특별자치시 특례",
+  "family": "institution",
+  "note": "local-government-special-status"
+ },
+ {
+  "q": "호남 반도체 입지 광주 군공항 부지 결정",
+  "family": "milestone",
+  "note": "gwangju-semi:N01"
+ },
+ {
+  "q": "마스터 일정 수립",
+  "family": "milestone",
+  "note": "gwangju-semi:N02"
+ },
+ {
+  "q": "인허가 일괄협의·의제 처리",
+  "family": "institution",
+  "note": "one-stop-permit-consultation"
+ },
+ {
+  "q": "주된 인허가 신청",
+  "family": "procedure",
+  "note": "one-stop-permit-consultation:P01"
+ },
+ {
+  "q": "명시 규정 있는 심의",
+  "family": "procedure",
+  "note": "one-stop-permit-consultation:P04"
+ },
+ {
+  "q": "주된 인허가",
+  "family": "procedure",
+  "note": "one-stop-permit-consultation:P08"
+ },
+ {
+  "q": "지방재정 투자심사·타당성조사",
+  "family": "institution",
+  "note": "local-finance-investment-review-feasibility"
+ },
+ {
+  "q": "심사결과 유형 결정",
+  "family": "procedure",
+  "note": "local-finance-investment-review-feasibility:P11"
+ },
+ {
+  "q": "조건 통보",
+  "family": "procedure",
+  "note": "local-finance-investment-review-feasibility:P12"
+ },
+ {
+  "q": "반도체클러스터 지정 신청",
+  "family": "milestone",
+  "note": "gwangju-semi:N03"
+ },
+ {
+  "q": "국가첨단전략산업 특화단지 지정·지원",
+  "family": "institution",
+  "note": "national-strategic-industry-complex"
+ },
+ {
+  "q": "사업자 사전 협의",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P02"
+ },
+ {
+  "q": "지자체 협의",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P05"
+ },
+ {
+  "q": "위원회 심의",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P08"
+ },
+ {
+  "q": "지정 고시",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P09"
+ },
+ {
+  "q": "입주 지원 신청",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P16"
+ },
+ {
+  "q": "해제 심의",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P19"
+ },
+ {
+  "q": "위원회 해제 심의",
+  "family": "procedure",
+  "note": "national-strategic-industry-complex:P20"
+ },
+ {
+  "q": "반도체클러스터 조성계획 승인·지정·조정",
+  "family": "institution",
+  "note": "semiconductor-cluster-designation-coordination"
+ },
+ {
+  "q": "조성계획 승인",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P02"
+ },
+ {
+  "q": "클러스터 지정 신청",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P02"
+ },
+ {
+  "q": "지방자치단체 협의",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P04"
+ },
+ {
+  "q": "반도체산업경쟁력강화특별위원회 심의",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P05"
+ },
+ {
+  "q": "사업시행자 지정",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P06"
+ },
+ {
+  "q": "지정 내용 고시와 관계기관 통보",
+  "family": "procedure",
+  "note": "semiconductor-cluster-designation-coordination:P07"
+ },
+ {
+  "q": "군 공항 이전부지 선정·지원계획·사업이행",
+  "family": "institution",
+  "note": "military-airport-relocation-site-selection"
+ },
+ {
+  "q": "예비이전후보지 관계기관 협의",
+  "family": "procedure",
+  "note": "military-airport-relocation-site-selection:P02"
+ },
+ {
+  "q": "지원계획 심의",
+  "family": "milestone",
+  "note": "gwangju-semi:N31"
+ },
+ {
+  "q": "지원위원회 심의",
+  "family": "procedure",
+  "note": "military-airport-relocation-site-selection:P05"
+ },
+ {
+  "q": "계획 공고",
+  "family": "procedure",
+  "note": "military-airport-relocation-site-selection:P05"
+ },
+ {
+  "q": "군용비행장 소음대책지역·저감·보상",
+  "family": "institution",
+  "note": "military-airfield-noise-measures-compensation"
+ },
+ {
+  "q": "소음대책지역 지정",
+  "family": "procedure",
+  "note": "military-airfield-noise-measures-compensation:P03"
+ },
+ {
+  "q": "피해 보상 기본계획 수립",
+  "family": "procedure",
+  "note": "military-airfield-noise-measures-compensation:P04"
+ },
+ {
+  "q": "저감사업 확정",
+  "family": "procedure",
+  "note": "military-airfield-noise-measures-compensation:P05"
+ },
+ {
+  "q": "유치신청",
+  "family": "milestone",
+  "note": "gwangju-semi:N32"
+ },
+ {
+  "q": "보상금 신청",
+  "family": "procedure",
+  "note": "military-airfield-noise-measures-compensation:P07"
+ },
+ {
+  "q": "지원사업 확정",
+  "family": "milestone",
+  "note": "gwangju-semi:N33"
+ },
+ {
+  "q": "재원계획 확정",
+  "family": "procedure",
+  "note": "military-airport-relocation-site-selection:P09"
+ },
+ {
+  "q": "지원사업 승인",
+  "family": "procedure",
+  "note": "military-airport-relocation-site-selection:P11"
+ },
+ {
+  "q": "지방보조금 교부·집행·정산",
+  "family": "institution",
+  "note": "local-government-subsidy-management"
+ },
+ {
+  "q": "사업공고",
+  "family": "procedure",
+  "note": "local-government-subsidy-management:P01"
+ },
+ {
+  "q": "환수까지 신청",
+  "family": "procedure",
+  "note": "local-government-subsidy-management:P02"
+ },
+ {
+  "q": "환수까지 결정",
+  "family": "procedure",
+  "note": "local-government-subsidy-management:P07"
+ },
+ {
+  "q": "환수까지 사후점검",
+  "family": "procedure",
+  "note": "local-government-subsidy-management:P11"
+ },
+ {
+  "q": "지방교부세 산정·교부·이의",
+  "family": "institution",
+  "note": "local-share-tax-allocation"
+ },
+ {
+  "q": "수입 산정부터 교부액 결정",
+  "family": "procedure",
+  "note": "local-share-tax-allocation:P01"
+ },
+ {
+  "q": "이의조정까지 신청",
+  "family": "procedure",
+  "note": "local-share-tax-allocation:P02"
+ },
+ {
+  "q": "이의조정까지 결정",
+  "family": "procedure",
+  "note": "local-share-tax-allocation:P07"
+ },
+ {
+  "q": "이의조정까지 사후점검",
+  "family": "procedure",
+  "note": "local-share-tax-allocation:P11"
+ },
+ {
+  "q": "광주 군공항 종전부지 개발계획·실시계획",
+  "family": "institution",
+  "note": "former-airport-site-development-plan"
+ },
+ {
+  "q": "개발사업시행자 지정",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P01"
+ },
+ {
+  "q": "역할 확정",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P01"
+ },
+ {
+  "q": "종전부지 지방자치단체 사전협의",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P03"
+ },
+ {
+  "q": "개발계획 고시",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P04"
+ },
+ {
+  "q": "도시관리계획 입안·결정·고시",
+  "family": "institution",
+  "note": "urban-management-plan-determination"
+ },
+ {
+  "q": "결정고시까지 신청",
+  "family": "procedure",
+  "note": "urban-management-plan-determination:P02"
+ },
+ {
+  "q": "국방·군사시설 사업계획·실시계획·준공",
+  "family": "institution",
+  "note": "defense-facility-project-plan-completion"
+ },
+ {
+  "q": "군사시설 사업시행자 지정",
+  "family": "procedure",
+  "note": "defense-facility-project-plan-completion:P01"
+ },
+ {
+  "q": "사업계획 승인",
+  "family": "procedure",
+  "note": "defense-facility-project-plan-completion:P03"
+ },
+ {
+  "q": "사용계획 확정",
+  "family": "procedure",
+  "note": "defense-facility-project-plan-completion:P04"
+ },
+ {
+  "q": "관계기관 인허가 실체요건 협의",
+  "family": "procedure",
+  "note": "defense-facility-project-plan-completion:P06"
+ },
+ {
+  "q": "준공검사",
+  "family": "procedure",
+  "note": "defense-facility-project-plan-completion:P09"
+ },
+ {
+  "q": "국가계약 입찰·낙찰·계약이행·분쟁",
+  "family": "institution",
+  "note": "national-contract-bid-award-dispute"
+ },
+ {
+  "q": "분쟁조정까지 신청",
+  "family": "procedure",
+  "note": "national-contract-bid-award-dispute:P02"
+ },
+ {
+  "q": "분쟁조정까지 결정",
+  "family": "procedure",
+  "note": "national-contract-bid-award-dispute:P07"
+ },
+ {
+  "q": "분쟁조정까지 사후점검",
+  "family": "procedure",
+  "note": "national-contract-bid-award-dispute:P11"
+ },
+ {
+  "q": "산업단지계획 신속승인·통합조정",
+  "family": "institution",
+  "note": "industrial-complex-fast-track-plan-approval"
+ },
+ {
+  "q": "산업단지계획 승인신청",
+  "family": "milestone",
+  "note": "gwangju-semi:N36"
+ },
+ {
+  "q": "산업단지계획 승인 신청",
+  "family": "procedure",
+  "note": "industrial-complex-fast-track-plan-approval:P03"
+ },
+ {
+  "q": "산업단지계획 공고",
+  "family": "milestone",
+  "note": "gwangju-semi:N08"
+ },
+ {
+  "q": "관계전문가 공고",
+  "family": "procedure",
+  "note": "industrial-complex-fast-track-plan-approval:P04"
+ },
+ {
+  "q": "전략환경영향평가",
+  "family": "milestone",
+  "note": "gwangju-semi:N09"
+ },
+ {
+  "q": "입지대안 협의",
+  "family": "milestone",
+  "note": "gwangju-semi:N09"
+ },
+ {
+  "q": "환경영향평가 협의·협의내용 관리",
+  "family": "institution",
+  "note": "environmental-impact-assessment-consultation"
+ },
+ {
+  "q": "협의내용 이행까지 신청",
+  "family": "procedure",
+  "note": "environmental-impact-assessment-consultation:P02"
+ },
+ {
+  "q": "협의내용 이행까지 결정",
+  "family": "procedure",
+  "note": "environmental-impact-assessment-consultation:P07"
+ },
+ {
+  "q": "협의내용 이행까지 사후점검",
+  "family": "procedure",
+  "note": "environmental-impact-assessment-consultation:P11"
+ },
+ {
+  "q": "재해영향평가등 협의",
+  "family": "milestone",
+  "note": "gwangju-semi:N38"
+ },
+ {
+  "q": "재해영향평가등 협의·이행관리",
+  "family": "institution",
+  "note": "disaster-impact-assessment-consultation"
+ },
+ {
+  "q": "재해영향평가심의위원회 심의",
+  "family": "procedure",
+  "note": "disaster-impact-assessment-consultation:P05"
+ },
+ {
+  "q": "협의결과 통보",
+  "family": "procedure",
+  "note": "disaster-impact-assessment-consultation:P07"
+ },
+ {
+  "q": "재난안전관리계획 수립·점검",
+  "family": "institution",
+  "note": "national-disaster-safety-management-plan"
+ },
+ {
+  "q": "기관협의",
+  "family": "procedure",
+  "note": "national-disaster-safety-management-plan:P01"
+ },
+ {
+  "q": "이행점검까지 신청",
+  "family": "procedure",
+  "note": "national-disaster-safety-management-plan:P02"
+ },
+ {
+  "q": "이행점검까지 결정",
+  "family": "procedure",
+  "note": "national-disaster-safety-management-plan:P07"
+ },
+ {
+  "q": "이행점검까지 사후점검",
+  "family": "procedure",
+  "note": "national-disaster-safety-management-plan:P11"
+ },
+ {
+  "q": "동시협의",
+  "family": "milestone",
+  "note": "gwangju-semi:N37"
+ },
+ {
+  "q": "산단계획 통합심의",
+  "family": "milestone",
+  "note": "gwangju-semi:N37"
+ },
+ {
+  "q": "관계 행정기관 동시협의",
+  "family": "procedure",
+  "note": "industrial-complex-fast-track-plan-approval:P05"
+ },
+ {
+  "q": "산업단지계획심의위원회 통합심의",
+  "family": "procedure",
+  "note": "industrial-complex-fast-track-plan-approval:P10"
+ },
+ {
+  "q": "개발사업·건축물 경관심의·협의",
+  "family": "institution",
+  "note": "development-building-landscape-review"
+ },
+ {
+  "q": "녹지 사전협의",
+  "family": "procedure",
+  "note": "development-building-landscape-review:P02"
+ },
+ {
+  "q": "개발사업 또는 건축물 경관심의 신청",
+  "family": "procedure",
+  "note": "development-building-landscape-review:P04"
+ },
+ {
+  "q": "경관위원회 심의",
+  "family": "procedure",
+  "note": "development-building-landscape-review:P05"
+ },
+ {
+  "q": "조건부 의결",
+  "family": "procedure",
+  "note": "development-building-landscape-review:P05"
+ },
+ {
+  "q": "산업단지계획 승인",
+  "family": "milestone",
+  "note": "gwangju-semi:N10"
+ },
+ {
+  "q": "매장유산 지표·발굴 조사",
+  "family": "institution",
+  "note": "cultural-heritage-survey"
+ },
+ {
+  "q": "발굴허가 신청",
+  "family": "procedure",
+  "note": "cultural-heritage-survey:P07"
+ },
+ {
+  "q": "완료 신고",
+  "family": "procedure",
+  "note": "cultural-heritage-survey:P11"
+ },
+ {
+  "q": "발견신고",
+  "family": "procedure",
+  "note": "cultural-heritage-survey:P13"
+ },
+ {
+  "q": "매장유산 발굴조사 허가·보존조치",
+  "family": "institution",
+  "note": "buried-cultural-heritage-excavation-permit"
+ },
+ {
+  "q": "유존지역 확인부터 조사허가",
+  "family": "procedure",
+  "note": "buried-cultural-heritage-excavation-permit:P01"
+ },
+ {
+  "q": "처리까지 신청",
+  "family": "procedure",
+  "note": "buried-cultural-heritage-excavation-permit:P02"
+ },
+ {
+  "q": "처리까지 결정",
+  "family": "procedure",
+  "note": "buried-cultural-heritage-excavation-permit:P07"
+ },
+ {
+  "q": "처리까지 사후점검",
+  "family": "procedure",
+  "note": "buried-cultural-heritage-excavation-permit:P11"
+ },
+ {
+  "q": "교통영향평가",
+  "family": "milestone",
+  "note": "gwangju-semi:N39"
+ },
+ {
+  "q": "광역교통개선대책 심의",
+  "family": "milestone",
+  "note": "gwangju-semi:N39"
+ },
+ {
+  "q": "교통영향평가 검토·개선사항 이행",
+  "family": "institution",
+  "note": "traffic-impact-assessment-review"
+ },
+ {
+  "q": "교통영향평가심의위원회 심의",
+  "family": "procedure",
+  "note": "traffic-impact-assessment-review:P05"
+ },
+ {
+  "q": "개선필요사항등 확정",
+  "family": "procedure",
+  "note": "traffic-impact-assessment-review:P06"
+ },
+ {
+  "q": "에너지사용계획 협의",
+  "family": "milestone",
+  "note": "gwangju-semi:N40"
+ },
+ {
+  "q": "에너지사용계획 협의·사후관리",
+  "family": "institution",
+  "note": "energy-use-plan-consultation"
+ },
+ {
+  "q": "보완사항 통보",
+  "family": "procedure",
+  "note": "energy-use-plan-consultation:P05"
+ },
+ {
+  "q": "집단에너지 사업허가·공급계획",
+  "family": "institution",
+  "note": "district-energy-business-permit"
+ },
+ {
+  "q": "공급구역 검토부터 허가",
+  "family": "procedure",
+  "note": "district-energy-business-permit:P01"
+ },
+ {
+  "q": "점검까지 신청",
+  "family": "procedure",
+  "note": "district-energy-business-permit:P02"
+ },
+ {
+  "q": "점검까지 결정",
+  "family": "procedure",
+  "note": "district-energy-business-permit:P07"
+ },
+ {
+  "q": "점검까지 사후점검",
+  "family": "procedure",
+  "note": "district-energy-business-permit:P11"
+ },
+ {
+  "q": "개발행위허가",
+  "family": "institution",
+  "note": "development-permit"
+ },
+ {
+  "q": "개발행위허가 신청",
+  "family": "procedure",
+  "note": "development-permit:D02"
+ },
+ {
+  "q": "관계기관 의제 협의",
+  "family": "procedure",
+  "note": "development-permit:D05"
+ },
+ {
+  "q": "지방도시계획위원회 심의",
+  "family": "procedure",
+  "note": "development-permit:D08"
+ },
+ {
+  "q": "준공검사 신청",
+  "family": "procedure",
+  "note": "development-permit:D14"
+ },
+ {
+  "q": "농지전용 허가·협의·복구",
+  "family": "institution",
+  "note": "farmland-use-permission-conversion"
+ },
+ {
+  "q": "전용목적 확인부터 허가",
+  "family": "procedure",
+  "note": "farmland-use-permission-conversion:P01"
+ },
+ {
+  "q": "복구까지 신청",
+  "family": "procedure",
+  "note": "farmland-use-permission-conversion:P02"
+ },
+ {
+  "q": "복구까지 결정",
+  "family": "procedure",
+  "note": "farmland-use-permission-conversion:P07"
+ },
+ {
+  "q": "산지전용 허가",
+  "family": "institution",
+  "note": "forestland-conversion"
+ },
+ {
+  "q": "산지전용허가",
+  "family": "procedure",
+  "note": "forestland-conversion:P03"
+ },
+ {
+  "q": "공유수면 점·사용 허가",
+  "family": "institution",
+  "note": "public-waters-occupation"
+ },
+ {
+  "q": "허가 vs 협의",
+  "family": "procedure",
+  "note": "public-waters-occupation:P03"
+ },
+ {
+  "q": "사용허가 또는 매립 신청",
+  "family": "procedure",
+  "note": "public-waters-occupation:P04"
+ },
+ {
+  "q": "의제 협의",
+  "family": "procedure",
+  "note": "public-waters-occupation:P10"
+ },
+ {
+  "q": "의제 인허가 승인조건 확정",
+  "family": "milestone",
+  "note": "gwangju-semi:N15"
+ },
+ {
+  "q": "개발부담금 산정·부과·납부",
+  "family": "institution",
+  "note": "development-charge-assessment"
+ },
+ {
+  "q": "종료시점 확정",
+  "family": "procedure",
+  "note": "development-charge-assessment:P02"
+ },
+ {
+  "q": "비점오염원 설치신고·저감시설 이행관리",
+  "family": "institution",
+  "note": "nonpoint-pollution-source-installation-management"
+ },
+ {
+  "q": "승인 후 법정기한 내 비점오염원 설치신고",
+  "family": "procedure",
+  "note": "nonpoint-pollution-source-installation-management:P03"
+ },
+ {
+  "q": "생태계보전부담금 산정·부과·납부·반환",
+  "family": "institution",
+  "note": "ecosystem-conservation-charge-assessment"
+ },
+ {
+  "q": "환경영향평가",
+  "family": "procedure",
+  "note": "ecosystem-conservation-charge-assessment:P01"
+ },
+ {
+  "q": "면적 통보",
+  "family": "procedure",
+  "note": "ecosystem-conservation-charge-assessment:P03"
+ },
+ {
+  "q": "분할납부 결정",
+  "family": "procedure",
+  "note": "ecosystem-conservation-charge-assessment:P05"
+ },
+ {
+  "q": "도시계획 결정",
+  "family": "milestone",
+  "note": "gwangju-semi:N35"
+ },
+ {
+  "q": "관계 행정기관 실체요건 협의",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P08"
+ },
+ {
+  "q": "실시계획 고시",
+  "family": "procedure",
+  "note": "former-airport-site-development-plan:P09"
+ },
+ {
+  "q": "결정고시까지 결정",
+  "family": "procedure",
+  "note": "urban-management-plan-determination:P07"
+ },
+ {
+  "q": "건축물 해체허가·착공·감리·완료신고",
+  "family": "institution",
+  "note": "building-demolition-permit-supervision"
+ },
+ {
+  "q": "주변여건별 해체 허가",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P01"
+ },
+ {
+  "q": "해체허가 신청 또는 해체신고",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P04"
+ },
+ {
+  "q": "토양오염 조사·정화명령·검증",
+  "family": "institution",
+  "note": "soil-contamination-investigation-remediation"
+ },
+ {
+  "q": "검증까지 신청",
+  "family": "procedure",
+  "note": "soil-contamination-investigation-remediation:P02"
+ },
+ {
+  "q": "검증까지 결정",
+  "family": "procedure",
+  "note": "soil-contamination-investigation-remediation:P07"
+ },
+ {
+  "q": "검증까지 사후점검",
+  "family": "procedure",
+  "note": "soil-contamination-investigation-remediation:P11"
+ },
+ {
+  "q": "해체공사 착공신고",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P05"
+ },
+ {
+  "q": "감리자 지정",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P05"
+ },
+ {
+  "q": "현장점검",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P06"
+ },
+ {
+  "q": "해체공사 완료검사",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P07"
+ },
+ {
+  "q": "해체공사 완료신고",
+  "family": "procedure",
+  "note": "building-demolition-permit-supervision:P08"
+ },
+ {
+  "q": "석면조사·해체제거 신고·감리·농도관리",
+  "family": "institution",
+  "note": "asbestos-survey-removal-supervision"
+ },
+ {
+  "q": "제거작업 신고",
+  "family": "procedure",
+  "note": "asbestos-survey-removal-supervision:P04"
+ },
+ {
+  "q": "석면해체작업감리인 지정",
+  "family": "procedure",
+  "note": "asbestos-survey-removal-supervision:P05"
+ },
+ {
+  "q": "감리계획 수립",
+  "family": "procedure",
+  "note": "asbestos-survey-removal-supervision:P05"
+ },
+ {
+  "q": "편입 사유지 보상",
+  "family": "milestone",
+  "note": "gwangju-semi:N16"
+ },
+ {
+  "q": "공익사업 토지보상",
+  "family": "institution",
+  "note": "land-compensation"
+ },
+ {
+  "q": "보상계획 공고",
+  "family": "procedure",
+  "note": "land-compensation:P04"
+ },
+ {
+  "q": "분묘 개장허가·무연분묘 처리",
+  "family": "institution",
+  "note": "grave-relocation-opening-permit"
+ },
+ {
+  "q": "개장 예정 통보",
+  "family": "procedure",
+  "note": "grave-relocation-opening-permit:P02"
+ },
+ {
+  "q": "무연분묘 개장허가 신청",
+  "family": "procedure",
+  "note": "grave-relocation-opening-permit:P04"
+ },
+ {
+  "q": "개장허가",
+  "family": "procedure",
+  "note": "grave-relocation-opening-permit:P05"
+ },
+ {
+  "q": "연고자 보상협의",
+  "family": "procedure",
+  "note": "grave-relocation-opening-permit:P08"
+ },
+ {
+  "q": "공유재산 사용허가·대부·변상금",
+  "family": "institution",
+  "note": "public-property-use-permission"
+ },
+ {
+  "q": "재산현황 확인부터 사용허가",
+  "family": "procedure",
+  "note": "public-property-use-permission:P01"
+ },
+ {
+  "q": "무단사용 시정까지 신청",
+  "family": "procedure",
+  "note": "public-property-use-permission:P02"
+ },
+ {
+  "q": "무단사용 시정까지 결정",
+  "family": "procedure",
+  "note": "public-property-use-permission:P07"
+ },
+ {
+  "q": "무단사용 시정까지 사후점검",
+  "family": "procedure",
+  "note": "public-property-use-permission:P11"
+ },
+ {
+  "q": "공유재산·물품 관리",
+  "family": "institution",
+  "note": "local-property-management"
+ },
+ {
+  "q": "처분 결정",
+  "family": "procedure",
+  "note": "local-property-management:P10"
+ },
+ {
+  "q": "국유재산 용도폐지·기부 대 양여·권리이전",
+  "family": "institution",
+  "note": "national-property-disuse-contribution-concession"
+ },
+ {
+  "q": "대체시설 국유재산 목록과 권리관계 확정",
+  "family": "procedure",
+  "note": "national-property-disuse-contribution-concession:P01"
+ },
+ {
+  "q": "용도폐지 결정",
+  "family": "procedure",
+  "note": "national-property-disuse-contribution-concession:P03"
+ },
+ {
+  "q": "대체 국방시설 준공",
+  "family": "procedure",
+  "note": "national-property-disuse-contribution-concession:P04"
+ },
+ {
+  "q": "군사시설 보호구역 변경·해제·고시",
+  "family": "institution",
+  "note": "military-facility-protection-zone-release"
+ },
+ {
+  "q": "보호구역심의위원회 심의",
+  "family": "procedure",
+  "note": "military-facility-protection-zone-release:P04"
+ },
+ {
+  "q": "해제 결정",
+  "family": "procedure",
+  "note": "military-facility-protection-zone-release:P05"
+ },
+ {
+  "q": "해제 고시",
+  "family": "procedure",
+  "note": "military-facility-protection-zone-release:P06"
+ },
+ {
+  "q": "단계별 전력수요 확정",
+  "family": "milestone",
+  "note": "gwangju-semi:N18"
+ },
+ {
+  "q": "계통검토 경로 결정",
+  "family": "milestone",
+  "note": "gwangju-semi:N18"
+ },
+ {
+  "q": "전력수급기본계획",
+  "family": "institution",
+  "note": "power-supply-plan"
+ },
+ {
+  "q": "보편적 공급 점검",
+  "family": "procedure",
+  "note": "power-supply-plan:P11"
+ },
+ {
+  "q": "이행 점검",
+  "family": "procedure",
+  "note": "power-supply-plan:P13"
+ },
+ {
+  "q": "전력정책심의회 심의",
+  "family": "procedure",
+  "note": "power-supply-plan:P17"
+ },
+ {
+  "q": "분산에너지사업 등록·전력거래",
+  "family": "institution",
+  "note": "distributed-energy-special"
+ },
+ {
+  "q": "사업 등록 신청",
+  "family": "procedure",
+  "note": "distributed-energy-special:P02"
+ },
+ {
+  "q": "특화지역 지정신청",
+  "family": "procedure",
+  "note": "distributed-energy-special:P06"
+ },
+ {
+  "q": "특화지역 지정",
+  "family": "procedure",
+  "note": "distributed-energy-special:P07"
+ },
+ {
+  "q": "사용 협의",
+  "family": "procedure",
+  "note": "distributed-energy-special:P09"
+ },
+ {
+  "q": "정식 전력계통영향평가",
+  "family": "milestone",
+  "note": "gwangju-semi:N19"
+ },
+ {
+  "q": "반도체 산업기반시설 지원·예타·인허가 신속처리",
+  "family": "institution",
+  "note": "semiconductor-infrastructure-support-fast-track"
+ },
+ {
+  "q": "기간단축 심의",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P08"
+ },
+ {
+  "q": "실체요건 패키지 확정",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P09"
+ },
+ {
+  "q": "결과 통보",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P10"
+ },
+ {
+  "q": "발전사업 허가·전력계통 접속",
+  "family": "institution",
+  "note": "power-generation-grid-connection"
+ },
+ {
+  "q": "전원개발 사업계획 수립",
+  "family": "procedure",
+  "note": "power-generation-grid-connection:P02"
+ },
+ {
+  "q": "실시계획 승인 신청",
+  "family": "procedure",
+  "note": "power-generation-grid-connection:P07"
+ },
+ {
+  "q": "송·변전설비 건설 인허가",
+  "family": "institution",
+  "note": "power-transmission-permit"
+ },
+ {
+  "q": "송변전 사업 계획 수립",
+  "family": "procedure",
+  "note": "power-transmission-permit:P02"
+ },
+ {
+  "q": "예정구역 지정 신청",
+  "family": "procedure",
+  "note": "power-transmission-permit:P03"
+ },
+ {
+  "q": "공사계획 인가",
+  "family": "procedure",
+  "note": "power-transmission-permit:P14"
+ },
+ {
+  "q": "신고 신청",
+  "family": "procedure",
+  "note": "power-transmission-permit:P14"
+ },
+ {
+  "q": "자가용설비 공사계획 승인",
+  "family": "milestone",
+  "note": "gwangju-semi:N43"
+ },
+ {
+  "q": "계통 접속 신청",
+  "family": "procedure",
+  "note": "power-generation-grid-connection:P12"
+ },
+ {
+  "q": "자가용 전기설비·전기안전관리",
+  "family": "institution",
+  "note": "self-use-electrical-equipment"
+ },
+ {
+  "q": "지상 사용 손실보상 협의",
+  "family": "procedure",
+  "note": "power-transmission-permit:P17"
+ },
+ {
+  "q": "사용전검사",
+  "family": "procedure",
+  "note": "power-transmission-permit:P18"
+ },
+ {
+  "q": "관계기관 처분 시 장관 협의",
+  "family": "procedure",
+  "note": "power-transmission-permit:P22"
+ },
+ {
+  "q": "전기 사용전검사",
+  "family": "milestone",
+  "note": "gwangju-semi:N44"
+ },
+ {
+  "q": "사용전검사 신청",
+  "family": "procedure",
+  "note": "self-use-electrical-equipment:P07"
+ },
+ {
+  "q": "공급계획 확정",
+  "family": "milestone",
+  "note": "gwangju-semi:N23"
+ },
+ {
+  "q": "공업용수·취수 허가",
+  "family": "institution",
+  "note": "industrial-water-intake-permit"
+ },
+ {
+  "q": "공급 가능성 협의",
+  "family": "procedure",
+  "note": "industrial-water-intake-permit:P02"
+ },
+ {
+  "q": "폐수 산업기반시설 수요 확정",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P01"
+ },
+ {
+  "q": "비용지원 신청",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P02"
+ },
+ {
+  "q": "분담 결정",
+  "family": "procedure",
+  "note": "semiconductor-infrastructure-support-fast-track:P05"
+ },
+ {
+  "q": "공업용수도 사업인가·실시계획·준공",
+  "family": "institution",
+  "note": "industrial-waterworks-business-authorization"
+ },
+ {
+  "q": "공급신뢰도 확정",
+  "family": "procedure",
+  "note": "industrial-waterworks-business-authorization:P01"
+ },
+ {
+  "q": "일반수도 공급경로와 사업주체 결정",
+  "family": "procedure",
+  "note": "industrial-waterworks-business-authorization:P02"
+ },
+ {
+  "q": "공공폐수처리시설 기본계획·설계·준공·운영",
+  "family": "institution",
+  "note": "public-wastewater-treatment-facility-plan"
+ },
+ {
+  "q": "기본계획 승인 협의",
+  "family": "procedure",
+  "note": "public-wastewater-treatment-facility-plan:P03"
+ },
+ {
+  "q": "환경부 승인",
+  "family": "procedure",
+  "note": "public-wastewater-treatment-facility-plan:P03"
+ },
+ {
+  "q": "기본계획 고시",
+  "family": "procedure",
+  "note": "public-wastewater-treatment-facility-plan:P04"
+ },
+ {
+  "q": "시행자 확정",
+  "family": "procedure",
+  "note": "public-wastewater-treatment-facility-plan:P04"
+ },
+ {
+  "q": "지하수 개발·이용허가·영향조사·준공",
+  "family": "institution",
+  "note": "groundwater-development-use-permit"
+ },
+ {
+  "q": "시설규모별 허가",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P01"
+ },
+ {
+  "q": "접근도로 승인",
+  "family": "milestone",
+  "note": "gwangju-semi:N24"
+ },
+ {
+  "q": "하천수 사용허가 신청",
+  "family": "procedure",
+  "note": "industrial-water-intake-permit:P03"
+ },
+ {
+  "q": "전용수도 인가",
+  "family": "procedure",
+  "note": "industrial-water-intake-permit:P11"
+ },
+ {
+  "q": "도로점용 허가",
+  "family": "institution",
+  "note": "road-occupation-permit"
+ },
+ {
+  "q": "계획 수립",
+  "family": "procedure",
+  "note": "road-occupation-permit:P01"
+ },
+ {
+  "q": "점용허가 신청",
+  "family": "procedure",
+  "note": "road-occupation-permit:P02"
+ },
+ {
+  "q": "점용료 이의신청",
+  "family": "procedure",
+  "note": "road-occupation-permit:P09"
+ },
+ {
+  "q": "공업용수도 사업인가 신청",
+  "family": "procedure",
+  "note": "industrial-waterworks-business-authorization:P04"
+ },
+ {
+  "q": "공업용수도 사업인가",
+  "family": "procedure",
+  "note": "industrial-waterworks-business-authorization:P06"
+ },
+ {
+  "q": "점용조건 확정",
+  "family": "procedure",
+  "note": "industrial-waterworks-business-authorization:P07"
+ },
+ {
+  "q": "이용 허가신청 또는 신고",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P03"
+ },
+ {
+  "q": "시설기준 검토와 허가",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P04"
+ },
+ {
+  "q": "배수설비 연결·준공검사·하수도 원인자부담금",
+  "family": "institution",
+  "note": "sewer-connection-originator-charge"
+ },
+ {
+  "q": "배수설비 설치신고",
+  "family": "procedure",
+  "note": "sewer-connection-originator-charge:P02"
+ },
+ {
+  "q": "수리와 연결조건 통보",
+  "family": "procedure",
+  "note": "sewer-connection-originator-charge:P03"
+ },
+ {
+  "q": "도로 연결허가·설계·공사·사용",
+  "family": "institution",
+  "note": "road-connection-permit"
+ },
+ {
+  "q": "도로 연결허가 신청",
+  "family": "procedure",
+  "note": "road-connection-permit:P03"
+ },
+ {
+  "q": "도로 연결허가",
+  "family": "procedure",
+  "note": "road-connection-permit:P05"
+ },
+ {
+  "q": "공사조건 통보",
+  "family": "procedure",
+  "note": "road-connection-permit:P05"
+ },
+ {
+  "q": "빗물이용·중수도·처리수 재이용시설 신고",
+  "family": "institution",
+  "note": "water-reuse-facility-installation-operation"
+ },
+ {
+  "q": "변경신고",
+  "family": "procedure",
+  "note": "water-reuse-facility-installation-operation:P03"
+ },
+ {
+  "q": "수리와 설치조건 통보",
+  "family": "procedure",
+  "note": "water-reuse-facility-installation-operation:P04"
+ },
+ {
+  "q": "전용상수도·전용공업용수도 설치인가",
+  "family": "institution",
+  "note": "dedicated-industrial-waterworks-authorization"
+ },
+ {
+  "q": "전용공업용수도 설치인가 신청",
+  "family": "procedure",
+  "note": "dedicated-industrial-waterworks-authorization:P03"
+ },
+ {
+  "q": "관리기준 심사와 설치인가",
+  "family": "procedure",
+  "note": "dedicated-industrial-waterworks-authorization:P04"
+ },
+ {
+  "q": "점용허가",
+  "family": "procedure",
+  "note": "industrial-water-intake-permit:P13"
+ },
+ {
+  "q": "이용시설 준공신고",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P06"
+ },
+ {
+  "q": "정기 수질검사",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P07"
+ },
+ {
+  "q": "이용종료 신고",
+  "family": "procedure",
+  "note": "groundwater-development-use-permit:P08"
+ },
+ {
+  "q": "배수설비 준공검사",
+  "family": "procedure",
+  "note": "sewer-connection-originator-charge:P05"
+ },
+ {
+  "q": "재이용수 수질검사",
+  "family": "procedure",
+  "note": "water-reuse-facility-installation-operation:P07"
+ },
+ {
+  "q": "배수시설 공사와 공정검사",
+  "family": "procedure",
+  "note": "dedicated-industrial-waterworks-authorization:P05"
+ },
+ {
+  "q": "수질검사",
+  "family": "procedure",
+  "note": "dedicated-industrial-waterworks-authorization:P06"
+ },
+ {
+  "q": "중요사항 변경인가",
+  "family": "procedure",
+  "note": "dedicated-industrial-waterworks-authorization:P08"
+ },
+ {
+  "q": "공장설립 승인",
+  "family": "milestone",
+  "note": "gwangju-semi:N26"
+ },
+ {
+  "q": "공장설립 승인·등록·변경관리",
+  "family": "institution",
+  "note": "factory-establishment-approval-management"
+ },
+ {
+  "q": "업종 확인부터 공장설립 승인",
+  "family": "procedure",
+  "note": "factory-establishment-approval-management:P01"
+ },
+ {
+  "q": "사후점검까지 신청",
+  "family": "procedure",
+  "note": "factory-establishment-approval-management:P02"
+ },
+ {
+  "q": "사후점검까지 결정",
+  "family": "procedure",
+  "note": "factory-establishment-approval-management:P07"
+ },
+ {
+  "q": "사후점검까지 사후점검",
+  "family": "procedure",
+  "note": "factory-establishment-approval-management:P11"
+ },
+ {
+  "q": "산업단지 관리기본계획·입주계약",
+  "family": "institution",
+  "note": "industrial-complex-management-occupancy"
+ },
+ {
+  "q": "관리기관 확정",
+  "family": "procedure",
+  "note": "industrial-complex-management-occupancy:P01"
+ },
+ {
+  "q": "관리기본계획 승인",
+  "family": "procedure",
+  "note": "industrial-complex-management-occupancy:P03"
+ },
+ {
+  "q": "입주계약 내용과 공장설립 승인",
+  "family": "procedure",
+  "note": "industrial-complex-management-occupancy:P06"
+ },
+ {
+  "q": "지방세 감면·비과세",
+  "family": "institution",
+  "note": "local-tax-exemption"
+ },
+ {
+  "q": "감면 신청",
+  "family": "procedure",
+  "note": "local-tax-exemption:P02"
+ },
+ {
+  "q": "건축허가",
+  "family": "milestone",
+  "note": "gwangju-semi:N27"
+ },
+ {
+  "q": "착공신고",
+  "family": "milestone",
+  "note": "gwangju-semi:N27"
+ },
+ {
+  "q": "건축허가·착공신고·사용승인",
+  "family": "institution",
+  "note": "building-permit-use-approval"
+ },
+ {
+  "q": "건축계획 검토부터 허가",
+  "family": "procedure",
+  "note": "building-permit-use-approval:P01"
+ },
+ {
+  "q": "사용승인",
+  "family": "procedure",
+  "note": "building-permit-use-approval:P01"
+ },
+ {
+  "q": "유지관리까지 신청",
+  "family": "procedure",
+  "note": "building-permit-use-approval:P02"
+ },
+ {
+  "q": "유지관리까지 결정",
+  "family": "procedure",
+  "note": "building-permit-use-approval:P07"
+ },
+ {
+  "q": "유지관리까지 사후점검",
+  "family": "procedure",
+  "note": "building-permit-use-approval:P11"
+ },
+ {
+  "q": "소방시설공사 착공신고·완공검사",
+  "family": "institution",
+  "note": "fire-facility-construction-completion-inspection"
+ },
+ {
+  "q": "소방시설공사 착공신고",
+  "family": "procedure",
+  "note": "fire-facility-construction-completion-inspection:P03"
+ },
+ {
+  "q": "지하안전평가·착공후지하안전조사",
+  "family": "institution",
+  "note": "underground-safety-impact-assessment"
+ },
+ {
+  "q": "보완과 관계기관 협의",
+  "family": "procedure",
+  "note": "underground-safety-impact-assessment:P04"
+ },
+ {
+  "q": "변경 시 재협의",
+  "family": "procedure",
+  "note": "underground-safety-impact-assessment:P05"
+ },
+ {
+  "q": "건설공사 안전·품질관리계획",
+  "family": "institution",
+  "note": "construction-safety-quality-management-plan"
+ },
+ {
+  "q": "건설폐기물 처리계획 신고·인계·재활용",
+  "family": "institution",
+  "note": "construction-waste-discharge-treatment-plan"
+ },
+ {
+  "q": "착공 전 처리계획 신고",
+  "family": "procedure",
+  "note": "construction-waste-discharge-treatment-plan:P03"
+ },
+ {
+  "q": "비산먼지 발생사업·특정공사 사전신고",
+  "family": "institution",
+  "note": "fugitive-dust-specific-construction-report"
+ },
+ {
+  "q": "비산먼지 발생사업 신고",
+  "family": "procedure",
+  "note": "fugitive-dust-specific-construction-report:P03"
+ },
+ {
+  "q": "특정공사 사전신고",
+  "family": "procedure",
+  "note": "fugitive-dust-specific-construction-report:P04"
+ },
+ {
+  "q": "방지시설 보완 확정",
+  "family": "procedure",
+  "note": "fugitive-dust-specific-construction-report:P05"
+ },
+ {
+  "q": "외관 변경 시 변경협의",
+  "family": "procedure",
+  "note": "development-building-landscape-review:P07"
+ },
+ {
+  "q": "기계설비 착공 전 확인·사용 전 검사",
+  "family": "institution",
+  "note": "mechanical-equipment-precheck-use-inspection"
+ },
+ {
+  "q": "착공 전 설계도 확인 신청",
+  "family": "procedure",
+  "note": "mechanical-equipment-precheck-use-inspection:P03"
+ },
+ {
+  "q": "정보통신공사 설계도 확인·사용전검사",
+  "family": "institution",
+  "note": "ict-construction-design-precheck-use-inspection"
+ },
+ {
+  "q": "감리 대상과 감리원 배치 확정",
+  "family": "procedure",
+  "note": "ict-construction-design-precheck-use-inspection:P02"
+ },
+ {
+  "q": "통합환경관리 허가",
+  "family": "institution",
+  "note": "integrated-environment-permit"
+ },
+ {
+  "q": "대행 여부 결정",
+  "family": "procedure",
+  "note": "integrated-environment-permit:P03"
+ },
+ {
+  "q": "통합허가 신청",
+  "family": "procedure",
+  "note": "integrated-environment-permit:P04"
+ },
+ {
+  "q": "시스템 등록",
+  "family": "procedure",
+  "note": "integrated-environment-permit:P11"
+ },
+ {
+  "q": "가동개시 신고",
+  "family": "procedure",
+  "note": "integrated-environment-permit:P17"
+ },
+ {
+  "q": "화학사고 예방관리계획 심사·이행",
+  "family": "institution",
+  "note": "chemical-accident-prevention-plan"
+ },
+ {
+  "q": "사고 후 개선까지 신청",
+  "family": "procedure",
+  "note": "chemical-accident-prevention-plan:P02"
+ },
+ {
+  "q": "사고 후 개선까지 결정",
+  "family": "procedure",
+  "note": "chemical-accident-prevention-plan:P07"
+ },
+ {
+  "q": "사고 후 개선까지 사후점검",
+  "family": "procedure",
+  "note": "chemical-accident-prevention-plan:P11"
+ },
+ {
+  "q": "유해·위험방지계획서·공정안전보고서 심사",
+  "family": "institution",
+  "note": "process-safety-report-review"
+ },
+ {
+  "q": "대기배출시설 설치허가·신고·관리",
+  "family": "institution",
+  "note": "air-emission-facility-permit"
+ },
+ {
+  "q": "배출량 산정부터 허가",
+  "family": "procedure",
+  "note": "air-emission-facility-permit:P01"
+ },
+ {
+  "q": "개선명령까지 신청",
+  "family": "procedure",
+  "note": "air-emission-facility-permit:P02"
+ },
+ {
+  "q": "개선명령까지 결정",
+  "family": "procedure",
+  "note": "air-emission-facility-permit:P07"
+ },
+ {
+  "q": "수질오염 배출시설 허가·방류관리",
+  "family": "institution",
+  "note": "water-pollution-discharge-permit"
+ },
+ {
+  "q": "배출시설 설치계획부터 허가",
+  "family": "procedure",
+  "note": "water-pollution-discharge-permit:P01"
+ },
+ {
+  "q": "행정처분까지 신청",
+  "family": "procedure",
+  "note": "water-pollution-discharge-permit:P02"
+ },
+ {
+  "q": "행정처분까지 결정",
+  "family": "procedure",
+  "note": "water-pollution-discharge-permit:P07"
+ },
+ {
+  "q": "폐기물 처리업 허가·처리실적 관리",
+  "family": "institution",
+  "note": "waste-disposal-business-permit"
+ },
+ {
+  "q": "사업계획서 검토부터 허가",
+  "family": "procedure",
+  "note": "waste-disposal-business-permit:P01"
+ },
+ {
+  "q": "시설검사",
+  "family": "procedure",
+  "note": "waste-disposal-business-permit:P01"
+ },
+ {
+  "q": "유해화학물질 영업·취급 허가",
+  "family": "institution",
+  "note": "chemical-safety-permit"
+ },
+ {
+  "q": "허가물질 허가 신청",
+  "family": "procedure",
+  "note": "chemical-safety-permit:P05"
+ },
+ {
+  "q": "자체점검",
+  "family": "procedure",
+  "note": "chemical-safety-permit:P09"
+ },
+ {
+  "q": "소음·진동 배출시설 허가",
+  "family": "institution",
+  "note": "noise-vibration-permit"
+ },
+ {
+  "q": "설치 신고",
+  "family": "procedure",
+  "note": "noise-vibration-permit:P02"
+ },
+ {
+  "q": "허가 신청",
+  "family": "procedure",
+  "note": "noise-vibration-permit:P02"
+ },
+ {
+  "q": "사업장폐기물 배출자 신고·처리·전산관리",
+  "family": "institution",
+  "note": "business-waste-generator-management"
+ },
+ {
+  "q": "사업장폐기물 배출자 신고",
+  "family": "procedure",
+  "note": "business-waste-generator-management:P02"
+ },
+ {
+  "q": "화학물질 등록·유해성심사·위해성평가",
+  "family": "institution",
+  "note": "chemical-registration-hazard-risk-assessment"
+ },
+ {
+  "q": "면제확인 경로 결정",
+  "family": "procedure",
+  "note": "chemical-registration-hazard-risk-assessment:P02"
+ },
+ {
+  "q": "신규 화학물질 등록",
+  "family": "procedure",
+  "note": "chemical-registration-hazard-risk-assessment:P03"
+ },
+ {
+  "q": "보완과 등록결정",
+  "family": "procedure",
+  "note": "chemical-registration-hazard-risk-assessment:P06"
+ },
+ {
+  "q": "대기관리권역 총량사업장 허가·할당·측정",
+  "family": "institution",
+  "note": "air-region-total-emissions-permit"
+ },
+ {
+  "q": "변경허가 신청",
+  "family": "procedure",
+  "note": "air-region-total-emissions-permit:P02"
+ },
+ {
+  "q": "배출전망 검토와 허가",
+  "family": "procedure",
+  "note": "air-region-total-emissions-permit:P03"
+ },
+ {
+  "q": "연도별 배출허용총량 할당 신청",
+  "family": "procedure",
+  "note": "air-region-total-emissions-permit:P04"
+ },
+ {
+  "q": "방사선발생장치 사용허가·시설검사·정기검사",
+  "family": "institution",
+  "note": "radiation-generator-use-permit"
+ },
+ {
+  "q": "용도별 허가",
+  "family": "procedure",
+  "note": "radiation-generator-use-permit:P01"
+ },
+ {
+  "q": "방사선발생장치 사용허가 신청 또는 신고",
+  "family": "procedure",
+  "note": "radiation-generator-use-permit:P03"
+ },
+ {
+  "q": "시설기준 심사와 허가",
+  "family": "procedure",
+  "note": "radiation-generator-use-permit:P04"
+ },
+ {
+  "q": "검사대상 열사용기기 설치·계속사용검사",
+  "family": "institution",
+  "note": "heat-use-equipment-installation-inspection"
+ },
+ {
+  "q": "수입기기 제조검사",
+  "family": "procedure",
+  "note": "heat-use-equipment-installation-inspection:P02"
+ },
+ {
+  "q": "재사용검사 신청",
+  "family": "procedure",
+  "note": "heat-use-equipment-installation-inspection:P04"
+ },
+ {
+  "q": "환경책임보험 가입·인허가 연계확인",
+  "family": "institution",
+  "note": "environmental-liability-insurance-coverage"
+ },
+ {
+  "q": "자기부담금 산정과 가입신청",
+  "family": "procedure",
+  "note": "environmental-liability-insurance-coverage:P03"
+ },
+ {
+  "q": "악취배출시설 신고·방지계획·개선명령",
+  "family": "institution",
+  "note": "odor-emission-facility-report-management"
+ },
+ {
+  "q": "지정고시",
+  "family": "procedure",
+  "note": "odor-emission-facility-report-management:P01"
+ },
+ {
+  "q": "운영 신고",
+  "family": "procedure",
+  "note": "odor-emission-facility-report-management:P03"
+ },
+ {
+  "q": "수리와 방지조치 조건 통보",
+  "family": "procedure",
+  "note": "odor-emission-facility-report-management:P04"
+ },
+ {
+  "q": "이행상황 점검",
+  "family": "procedure",
+  "note": "underground-safety-impact-assessment:P07"
+ },
+ {
+  "q": "공정 품질시험과 검사",
+  "family": "procedure",
+  "note": "construction-safety-quality-management-plan:P06"
+ },
+ {
+  "q": "개발사업 완료신고",
+  "family": "procedure",
+  "note": "development-charge-assessment:P04"
+ },
+ {
+  "q": "개발부담금 결정",
+  "family": "procedure",
+  "note": "development-charge-assessment:P07"
+ },
+ {
+  "q": "자연환경보전사업 계획 승인",
+  "family": "procedure",
+  "note": "ecosystem-conservation-charge-assessment:P07"
+ },
+ {
+  "q": "생태계보전부담금 반환 신청",
+  "family": "procedure",
+  "note": "ecosystem-conservation-charge-assessment:P08"
+ },
+ {
+  "q": "토지개발사업 착수·완료신고·지적확정측량",
+  "family": "institution",
+  "note": "land-development-cadastral-confirmation"
+ },
+ {
+  "q": "변경 사실 지적소관청 신고",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P01"
+ },
+ {
+  "q": "측량일정 확정",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P02"
+ },
+ {
+  "q": "측량성과 검사",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P04"
+ },
+ {
+  "q": "토지개발사업 완료 사실 신고",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P05"
+ },
+ {
+  "q": "승강기 설치신고·설치검사·안전관리",
+  "family": "institution",
+  "note": "elevator-installation-safety-inspection"
+ },
+ {
+  "q": "설치완료 신고",
+  "family": "procedure",
+  "note": "elevator-installation-safety-inspection:P04"
+ },
+ {
+  "q": "설치검사 신청",
+  "family": "procedure",
+  "note": "elevator-installation-safety-inspection:P04"
+ },
+ {
+  "q": "도시가스 공급협의·배관시공·사용전검사",
+  "family": "institution",
+  "note": "city-gas-supply-connection"
+ },
+ {
+  "q": "공급 가능 협의 신청",
+  "family": "procedure",
+  "note": "city-gas-supply-connection:P01"
+ },
+ {
+  "q": "배관 노선 협의",
+  "family": "procedure",
+  "note": "city-gas-supply-connection:P03"
+ },
+ {
+  "q": "배관 완성검사",
+  "family": "procedure",
+  "note": "city-gas-supply-connection:P06"
+ },
+ {
+  "q": "정기검사",
+  "family": "procedure",
+  "note": "city-gas-supply-connection:P09"
+ },
+ {
+  "q": "지방계약 입찰·낙찰·계약관리",
+  "family": "institution",
+  "note": "local-contract-bid-award"
+ },
+ {
+  "q": "대금지급까지 신청",
+  "family": "procedure",
+  "note": "local-contract-bid-award:P02"
+ },
+ {
+  "q": "대금지급까지 결정",
+  "family": "procedure",
+  "note": "local-contract-bid-award:P07"
+ },
+ {
+  "q": "대금지급까지 사후점검",
+  "family": "procedure",
+  "note": "local-contract-bid-award:P11"
+ },
+ {
+  "q": "고압가스 설치허가",
+  "family": "milestone",
+  "note": "gwangju-semi:N46"
+ },
+ {
+  "q": "완공검사",
+  "family": "milestone",
+  "note": "gwangju-semi:N46"
+ },
+ {
+  "q": "위험물 제조소등 설치허가·완공검사",
+  "family": "institution",
+  "note": "dangerous-material-facility-permit-inspection"
+ },
+ {
+  "q": "변경허가",
+  "family": "procedure",
+  "note": "dangerous-material-facility-permit-inspection:P03"
+ },
+ {
+  "q": "탱크안전성능검사",
+  "family": "procedure",
+  "note": "dangerous-material-facility-permit-inspection:P04"
+ },
+ {
+  "q": "정기점검",
+  "family": "procedure",
+  "note": "dangerous-material-facility-permit-inspection:P09"
+ },
+ {
+  "q": "고압가스 제조·저장허가·완성검사",
+  "family": "institution",
+  "note": "high-pressure-gas-facility-permit-inspection"
+ },
+ {
+  "q": "저장 허가 신청",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P02"
+ },
+ {
+  "q": "저장 허가",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P03"
+ },
+ {
+  "q": "조건 확정",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P03"
+ },
+ {
+  "q": "중간검사",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P05"
+ },
+ {
+  "q": "완성검사",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P06"
+ },
+ {
+  "q": "특정고압가스 사용신고",
+  "family": "procedure",
+  "note": "high-pressure-gas-facility-permit-inspection:P08"
+ },
+ {
+  "q": "사용 전 시설검사",
+  "family": "procedure",
+  "note": "radiation-generator-use-permit:P05"
+ },
+ {
+  "q": "공장설립 완료신고",
+  "family": "milestone",
+  "note": "gwangju-semi:N47"
+ },
+ {
+  "q": "지적확정",
+  "family": "milestone",
+  "note": "gwangju-semi:N47"
+ },
+ {
+  "q": "공장등록",
+  "family": "milestone",
+  "note": "gwangju-semi:N47"
+ },
+ {
+  "q": "공장완료 신고",
+  "family": "procedure",
+  "note": "industrial-complex-management-occupancy:P07"
+ },
+ {
+  "q": "입주계약 이행점검",
+  "family": "procedure",
+  "note": "industrial-complex-management-occupancy:P08"
+ },
+ {
+  "q": "토지이동 신청",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P06"
+ },
+ {
+  "q": "면적 확정",
+  "family": "procedure",
+  "note": "land-development-cadastral-confirmation:P07"
+ },
+ {
+  "q": "도로명 부여·건물번호·주소 고시",
+  "family": "institution",
+  "note": "road-name-address-assignment"
+ },
+ {
+  "q": "주소정보위원회 심의",
+  "family": "procedure",
+  "note": "road-name-address-assignment:P03"
+ },
+ {
+  "q": "도로명 부여 고시",
+  "family": "procedure",
+  "note": "road-name-address-assignment:P04"
+ },
+ {
+  "q": "주소 결정",
+  "family": "procedure",
+  "note": "road-name-address-assignment:P05"
+ },
+ {
+  "q": "주소정보 기본도 등록",
+  "family": "procedure",
+  "note": "road-name-address-assignment:P06"
+ },
+ {
+  "q": "관계기관 주소정보 통보",
+  "family": "procedure",
+  "note": "road-name-address-assignment:P08"
+ },
+ {
+  "q": "건축물 사용승인",
+  "family": "milestone",
+  "note": "gwangju-semi:N48"
+ },
+ {
+  "q": "승강기 검사",
+  "family": "milestone",
+  "note": "gwangju-semi:N48"
+ },
+ {
+  "q": "공사감리 결과 통보",
+  "family": "procedure",
+  "note": "fire-facility-construction-completion-inspection:P06"
+ },
+ {
+  "q": "소방시설 완공검사 신청",
+  "family": "procedure",
+  "note": "fire-facility-construction-completion-inspection:P07"
+ },
+ {
+  "q": "현장 완공검사",
+  "family": "procedure",
+  "note": "fire-facility-construction-completion-inspection:P08"
+ },
+ {
+  "q": "사용 전 검사 신청",
+  "family": "procedure",
+  "note": "mechanical-equipment-precheck-use-inspection:P05"
+ },
+ {
+  "q": "현장검사",
+  "family": "procedure",
+  "note": "mechanical-equipment-precheck-use-inspection:P06"
+ },
+ {
+  "q": "설치검사",
+  "family": "procedure",
+  "note": "elevator-installation-safety-inspection:P05"
+ },
+ {
+  "q": "옥외광고물 표시 허가",
+  "family": "institution",
+  "note": "outdoor-advertising-permit"
+ },
+ {
+  "q": "표시계획 수립",
+  "family": "procedure",
+  "note": "outdoor-advertising-permit:P01"
+ },
+ {
+  "q": "안전점검",
+  "family": "procedure",
+  "note": "outdoor-advertising-permit:P06"
+ },
+ {
+  "q": "옥외광고심의위원회 심의",
+  "family": "procedure",
+  "note": "outdoor-advertising-permit:P08"
+ },
+ {
+  "q": "통합환경허가·허가조건 변경관리",
+  "family": "institution",
+  "note": "integrated-environmental-permit-change"
+ },
+ {
+  "q": "개선명령까지 사후점검",
+  "family": "procedure",
+  "note": "air-emission-facility-permit:P11"
+ },
+ {
+  "q": "행정처분까지 사후점검",
+  "family": "procedure",
+  "note": "water-pollution-discharge-permit:P11"
+ },
+ {
+  "q": "사고 발생 신고",
+  "family": "procedure",
+  "note": "chemical-safety-permit:P11"
+ },
+ {
+  "q": "소음진동검사",
+  "family": "procedure",
+  "note": "noise-vibration-permit:P17"
+ },
+ {
+  "q": "온실가스 배출권거래제",
+  "family": "institution",
+  "note": "emissions-trading"
+ },
+ {
+  "q": "할당대상업체 지정",
+  "family": "procedure",
+  "note": "emissions-trading:P03"
+ },
+ {
+  "q": "추가할당 신청",
+  "family": "procedure",
+  "note": "emissions-trading:P21"
+ },
+ {
+  "q": "위해성평가",
+  "family": "procedure",
+  "note": "chemical-registration-hazard-risk-assessment:P08"
+ },
+ {
+  "q": "정도검사",
+  "family": "procedure",
+  "note": "air-region-total-emissions-permit:P06"
+ },
+ {
+  "q": "장치처분 신고",
+  "family": "procedure",
+  "note": "radiation-generator-use-permit:P08"
+ },
+ {
+  "q": "관리주체 확정",
+  "family": "procedure",
+  "note": "elevator-installation-safety-inspection:P06"
+ },
+ {
+  "q": "월별 자체점검",
+  "family": "procedure",
+  "note": "elevator-installation-safety-inspection:P07"
+ },
+ {
+  "q": "계속사용검사",
+  "family": "procedure",
+  "note": "heat-use-equipment-installation-inspection:P08"
+ },
+ {
+  "q": "운전성능검사",
+  "family": "procedure",
+  "note": "heat-use-equipment-installation-inspection:P08"
+ },
+ {
+  "q": "해지 통보",
+  "family": "procedure",
+  "note": "environmental-liability-insurance-coverage:P07"
+ },
+ {
+  "q": "무보험 공백 점검",
+  "family": "procedure",
+  "note": "environmental-liability-insurance-coverage:P07"
+ },
+ {
+  "q": "운전성능 검사",
+  "family": "procedure",
+  "note": "heat-use-equipment-installation-inspection:P05"
+ },
+ {
+  "q": "사업장 위험성평가·안전개선",
+  "family": "institution",
+  "note": "occupational-safety-risk-assessment"
+ },
+ {
+  "q": "위험요인 파악부터 위험성평가",
+  "family": "procedure",
+  "note": "occupational-safety-risk-assessment:P01"
+ },
+ {
+  "q": "재평가까지 신청",
+  "family": "procedure",
+  "note": "occupational-safety-risk-assessment:P02"
+ },
+ {
+  "q": "재평가까지 결정",
+  "family": "procedure",
+  "note": "occupational-safety-risk-assessment:P07"
+ },
+ {
+  "q": "재평가까지 사후점검",
+  "family": "procedure",
+  "note": "occupational-safety-risk-assessment:P11"
+ },
+ {
+  "q": "중대재해 처벌·예방",
+  "family": "institution",
+  "note": "serious-accidents"
+ },
+ {
+  "q": "안전보건 관계법령 의무이행 점검",
+  "family": "procedure",
+  "note": "serious-accidents:P04"
+ },
+ {
+  "q": "국가핵심기술 수출·해외인수 승인",
+  "family": "institution",
+  "note": "national-core-technology-export-acquisition-review"
+ },
+ {
+  "q": "국가핵심기술 판정신청",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P02"
+ },
+ {
+  "q": "해외인수 사전검토 신청",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P05"
+ },
+ {
+  "q": "국가핵심기술 수출 승인신청",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P07"
+ },
+ {
+  "q": "국가핵심기술 수출 사전신고",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P08"
+ },
+ {
+  "q": "합병 승인신청",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P09"
+ },
+ {
+  "q": "사전신고",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P10"
+ },
+ {
+  "q": "조건부승인",
+  "family": "procedure",
+  "note": "national-core-technology-export-acquisition-review:P14"
+ },
+ {
+  "q": "외국인투자 신고·등록",
+  "family": "institution",
+  "note": "foreign-investment-report"
+ },
+ {
+  "q": "외국인투자 신고",
+  "family": "procedure",
+  "note": "foreign-investment-report:P03"
+ },
+ {
+  "q": "옴부즈만 애로 신청",
+  "family": "procedure",
+  "note": "foreign-investment-report:P12"
+ },
+ {
+  "q": "외국인투자기업 등록",
+  "family": "procedure",
+  "note": "foreign-investment-report:P17"
+ },
+ {
+  "q": "외국인투자 국가안보 심사",
+  "family": "institution",
+  "note": "foreign-investment-national-security-review"
+ },
+ {
+  "q": "국가안보위해 해당 여부 심의",
+  "family": "procedure",
+  "note": "foreign-investment-national-security-review:P05"
+ },
+ {
+  "q": "전략물자 수출허가·판정·사후관리",
+  "family": "institution",
+  "note": "export-control-strategic-goods-permit"
+ },
+ {
+  "q": "기술 판정부터 수출허가",
+  "family": "procedure",
+  "note": "export-control-strategic-goods-permit:P01"
+ },
+ {
+  "q": "사후보고까지 신청",
+  "family": "procedure",
+  "note": "export-control-strategic-goods-permit:P02"
+ },
+ {
+  "q": "사후보고까지 결정",
+  "family": "procedure",
+  "note": "export-control-strategic-goods-permit:P07"
+ },
+ {
+  "q": "사후보고까지 사후점검",
+  "family": "procedure",
+  "note": "export-control-strategic-goods-permit:P11"
+ },
+ {
+  "q": "정보통신기반시설 보호계획·취약점 개선",
+  "family": "institution",
+  "note": "critical-information-infrastructure-protection"
+ },
+ {
+  "q": "사고보고까지 신청",
+  "family": "procedure",
+  "note": "critical-information-infrastructure-protection:P02"
+ },
+ {
+  "q": "사고보고까지 결정",
+  "family": "procedure",
+  "note": "critical-information-infrastructure-protection:P07"
+ },
+ {
+  "q": "사고보고까지 사후점검",
+  "family": "procedure",
+  "note": "critical-information-infrastructure-protection:P11"
+ },
+ {
+  "q": "연구실 안전점검·정밀안전진단·사고조사",
+  "family": "institution",
+  "note": "research-lab-safety-inspection-accident"
+ },
+ {
+  "q": "책임자 등록",
+  "family": "procedure",
+  "note": "research-lab-safety-inspection-accident:P01"
+ },
+ {
+  "q": "관리자 지정",
+  "family": "procedure",
+  "note": "research-lab-safety-inspection-accident:P02"
+ },
+ {
+  "q": "일상점검",
+  "family": "procedure",
+  "note": "research-lab-safety-inspection-accident:P05"
+ },
+ {
+  "q": "보세공장 특허·반출입 관리",
+  "family": "institution",
+  "note": "bonded-factory-license"
+ },
+ {
+  "q": "원재료 반입신고",
+  "family": "procedure",
+  "note": "bonded-factory-license:P05"
+ },
+ {
+  "q": "사용신고",
+  "family": "procedure",
+  "note": "bonded-factory-license:P05"
+ }
+]
