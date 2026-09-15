@@ -37,12 +37,13 @@
 html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:0;word-break:keep-all}
 h1,h2,h3{font-family:var(--font);margin:0;word-break:keep-all;text-wrap:balance;font-weight:700}
-h1{font-size:40px;line-height:1.3}           /* heading-xlarge */
-h2{font-size:32px;line-height:1.35}          /* heading-large */
+h1{font-size:40px;line-height:1.5;letter-spacing:.1rem}   /* heading-xlarge, 자간 1px */
+h2{font-size:32px;line-height:1.5;letter-spacing:.1rem}   /* heading-large, 자간 1px */
 h3{font-size:19px;line-height:1.5;font-weight:700} /* heading-small */
 p{margin:0 0 14px;max-width:66ch}
-a{color:var(--em);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--k-primary-20)}
-a:hover{text-decoration-color:var(--em)}
+a{color:var(--k-primary-50);text-decoration:underline;text-underline-offset:.3rem;text-decoration-color:var(--k-primary-20)}   /* link-default */
+a:hover{color:var(--k-primary-60);text-decoration-color:currentColor}
+a:active{color:var(--k-primary-70)}
 b,strong{font-weight:700;color:var(--ink)}
 .em{color:var(--em);font-weight:700}
 .mono,.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
@@ -93,8 +94,8 @@ ul.plain li{margin-bottom:6px;color:var(--ink-2)}
 ul.plain li b{color:var(--ink)}
 .tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel)}
 table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}
-th,td{padding:12px 14px;border-bottom:1px solid var(--rule-2);text-align:left;vertical-align:top}
-th{font-size:15px;color:var(--ink);font-weight:700;border-bottom:1px solid var(--rule);background:var(--k-gray-5);white-space:nowrap}
+th,td{padding:12px 16px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;color:var(--ink-2)}
+th{font-size:15px;color:var(--k-gray-95);font-weight:700;border-bottom:1px solid var(--k-secondary-10);background:var(--k-secondary-5);white-space:nowrap}   /* KRDS tbl.data thead */
 th.rn{color:var(--rn)} th.pv{color:var(--pv)} th.og{color:var(--og)}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td b{color:var(--ink)}
