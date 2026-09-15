@@ -59,6 +59,15 @@ b,strong{font-weight:700;color:var(--ink)}
 .wrap{max-width:960px;margin:0 auto;padding:0 24px 56px;width:100%}
 .wrap.wide{max-width:1180px}
 
+/* KRDS 스킵 내비 */
+.skip{position:fixed;top:0;left:0;z-index:10000;width:100%;text-align:center;background:var(--k-gray-90)}
+.skip a:not(:focus){position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.skip a:focus{display:flex;align-items:center;justify-content:center;width:100%;height:32px;color:#fff;font-size:15px;text-decoration:none;box-shadow:inset 0 0 0 2px var(--k-primary-50)}
+
+/* 포커스 표시 (KRDS: primary 링) */
+:focus-visible{outline:3px solid var(--k-primary-50);outline-offset:2px}
+tr:focus-visible{outline-offset:-3px}
+
 /* KRDS 마스트헤드: 공식 누리집 배너 */
 .masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
 .masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
@@ -162,6 +171,10 @@ section.appendix th,section.appendix td{padding:10px 12px}
   .bar .meta{margin-left:0;width:100%;padding:0 0 6px}
   .summary .lede{font-size:17px}
   .q{grid-template-columns:28px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 @media print{
   .bar{position:static}
@@ -299,8 +312,34 @@ body{background:var(--cream);color:var(--ink0)}
 .meta-lab.next{background:var(--k-primary-50)}
 .meta-arrow{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--k-primary-60);font-size:13px;font-weight:700;text-align:center;line-height:1.3}
 .meta-arrow svg{width:28px;height:28px}
+@media (max-width:560px){
+  .hero h1{font-size:34px;letter-spacing:-.01em}
+  .hero .cta{flex-direction:column;align-items:stretch}
+  .hero .cta a{justify-content:center}
+  .hero .sub{gap:6px 12px;font-size:12.5px}
+  .wg .row{grid-template-columns:76px 1fr auto;gap:8px;padding:10px}
+  .wg .row .n{font-size:19px;min-width:52px}
+  .ticker .it{padding:12px 18px}
+  .sec{padding:44px 0 8px}
+  .cta2{padding:26px 20px;border-radius:var(--r-m)}
+  .cta2 h2{font-size:24px}
+  .cta2 a{width:100%;justify-content:center}
+}
 @media (max-width:980px){.meta-grid{grid-template-columns:1fr}.meta-arrow{flex-direction:row;justify-content:center;padding:6px 0}.meta-arrow svg{transform:rotate(90deg)}}
 
+@media (max-width:560px){
+  .hero h1{font-size:34px;letter-spacing:-.01em}
+  .hero .cta{flex-direction:column;align-items:stretch}
+  .hero .cta a{justify-content:center}
+  .hero .sub{gap:6px 12px;font-size:12.5px}
+  .wg .row{grid-template-columns:76px 1fr auto;gap:8px;padding:10px}
+  .wg .row .n{font-size:19px;min-width:52px}
+  .ticker .it{padding:12px 18px}
+  .sec{padding:44px 0 8px}
+  .cta2{padding:26px 20px;border-radius:var(--r-m)}
+  .cta2 h2{font-size:24px}
+  .cta2 a{width:100%;justify-content:center}
+}
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;padding:36px 0 24px}
   .hero h1{font-size:44px}
@@ -312,13 +351,14 @@ body{background:var(--cream);color:var(--ink0)}
 </style>
 </head>
 <body>
+<div class="skip"><a href="#content">본문 바로가기</a></div>
 <div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
   <nav><a class="on" href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-15~16</b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
 </div></div>
 
-<div class="wrap home">
+<main class="wrap home" id="content">
 
   <!-- HERO -->
   <section class="hero">
@@ -348,7 +388,7 @@ body{background:var(--cream);color:var(--ink0)}
   </section>
 
   <!-- TICKER -->
-  <div class="ticker" aria-label="핵심 실측치"><div class="tr" id="tk"></div></div>
+  <div class="ticker" aria-label="핵심 실측치" role="marquee"><div class="tr" id="tk"></div></div>
 
 
   <!-- 비유: 세 창구 → 차트 한 장 -->
@@ -460,7 +500,7 @@ body{background:var(--cream);color:var(--ink0)}
       <div class="l"><span>2026년 등록</span><b class="no">없음</b></div>
     </div>
   </section>
-</div>
+</main>
 
 <script>
 (function(){

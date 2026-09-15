@@ -51,6 +51,15 @@ b,strong{font-weight:700;color:var(--ink)}
 .wrap{max-width:960px;margin:0 auto;padding:0 24px 56px;width:100%}
 .wrap.wide{max-width:1180px}
 
+/* KRDS 스킵 내비 */
+.skip{position:fixed;top:0;left:0;z-index:10000;width:100%;text-align:center;background:var(--k-gray-90)}
+.skip a:not(:focus){position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.skip a:focus{display:flex;align-items:center;justify-content:center;width:100%;height:32px;color:#fff;font-size:15px;text-decoration:none;box-shadow:inset 0 0 0 2px var(--k-primary-50)}
+
+/* 포커스 표시 (KRDS: primary 링) */
+:focus-visible{outline:3px solid var(--k-primary-50);outline-offset:2px}
+tr:focus-visible{outline-offset:-3px}
+
 /* KRDS 마스트헤드: 공식 누리집 배너 */
 .masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
 .masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
@@ -154,6 +163,10 @@ section.appendix th,section.appendix td{padding:10px 12px}
   .bar .meta{margin-left:0;width:100%;padding:0 0 6px}
   .summary .lede{font-size:17px}
   .q{grid-template-columns:28px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 @media print{
   .bar{position:static}
