@@ -9,3 +9,5 @@ pdf/
 tmp-download/
 curated/
 realname/
+explorer/index*.html
+explorer/data*.json
