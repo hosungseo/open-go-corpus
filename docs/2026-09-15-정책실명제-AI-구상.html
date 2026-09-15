@@ -1,0 +1,368 @@
+<title>정책실명제 AI 구상안</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F5F7F9; --ink:#1B2A41; --ink-2:#4B5A6E; --ink-3:#7C8A9C;
+  --rule:#D5DCE4; --rule-2:#E7ECF1; --panel:#FFFFFF;
+  --seal:#B8312F; --seal-soft:#F6E4E3;
+  --teal:#2E6F73; --teal-soft:#E0EFEF;
+  --bar:#5B6B80; --bar-hi:#B8312F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141A22; --ink:#E6EAF0; --ink-2:#B4BDCA; --ink-3:#7F8A99;
+    --rule:#2E3844; --rule-2:#232C36; --panel:#1B222C;
+    --seal:#E0605B; --seal-soft:#3A2323;
+    --teal:#5FB3B5; --teal-soft:#1D3436;
+    --bar:#6F809A; --bar-hi:#E0605B;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141A22; --ink:#E6EAF0; --ink-2:#B4BDCA; --ink-3:#7F8A99;
+  --rule:#2E3844; --rule-2:#232C36; --panel:#1B222C;
+  --seal:#E0605B; --seal-soft:#3A2323;
+  --teal:#5FB3B5; --teal-soft:#1D3436;
+  --bar:#6F809A; --bar-hi:#E0605B;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 28px 80px}
+h1,h2,h3{font-family:"Noto Serif KR","Apple SD Gothic Neo",serif;text-wrap:balance;margin:0}
+h1{font-size:34px;line-height:1.25;font-weight:700;letter-spacing:-0.01em}
+h2{font-size:22px;font-weight:700;margin:0 0 6px}
+h3{font-size:16.5px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 12px;max-width:70ch}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+a{color:var(--teal)}
+
+/* masthead */
+.mast{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding:18px 0 22px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.mast .meta{font-size:13px;color:var(--ink-2);line-height:1.6;text-align:right}
+.mast .meta b{color:var(--ink);font-weight:600}
+.lede{font-size:18px;line-height:1.65;color:var(--ink);max-width:62ch;margin:28px 0 8px}
+.lede strong{color:var(--seal);font-weight:600}
+
+/* stat strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);background:var(--panel);margin:24px 0 8px}
+.strip>div{padding:16px 18px;border-right:1px solid var(--rule-2)}
+.strip>div:last-child{border-right:0}
+.strip .k{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}
+.strip .v{font-family:"IBM Plex Mono",monospace;font-size:28px;line-height:1.15;margin:4px 0 2px;color:var(--ink);font-variant-numeric:tabular-nums}
+.strip .v em{font-style:normal;color:var(--seal)}
+.strip .s{font-size:12.5px;color:var(--ink-2)}
+
+section{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:start;margin-bottom:18px}
+.sec-head .eyebrow{padding-top:6px}
+.sec-head p{color:var(--ink-2);margin:0}
+
+/* diagnosis grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cell{background:var(--panel);border:1px solid var(--rule);padding:18px 20px}
+.cell h3{display:flex;gap:10px;align-items:baseline}
+.cell .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--seal);letter-spacing:.06em}
+.cell p{font-size:14.5px;color:var(--ink-2);margin:6px 0 0;max-width:none}
+.cell p b{color:var(--ink);font-weight:600}
+.cell.wide{grid-column:1/-1}
+
+/* chart */
+figure{margin:0}
+figcaption{font-size:12.5px;color:var(--ink-3);margin-top:8px;line-height:1.5}
+svg text{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--ink-2)}
+svg .lbl{font-family:"IBM Plex Sans KR",sans-serif;fill:var(--ink-2)}
+svg .hi{fill:var(--bar-hi)}
+svg .bar{fill:var(--bar)}
+svg .axis{stroke:var(--rule);stroke-width:1}
+svg .grid{stroke:var(--rule-2);stroke-width:1}
+svg .anno{fill:var(--seal);font-family:"IBM Plex Sans KR",sans-serif;font-weight:600}
+
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel)}
+th,td{padding:9px 12px;border-bottom:1px solid var(--rule-2);vertical-align:top;text-align:left}
+th{font-size:12px;letter-spacing:.04em;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--rule);background:var(--panel)}
+td.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl{overflow-x:auto;border:1px solid var(--rule)}
+tr.total td{font-weight:600;border-top:1px solid var(--rule)}
+
+/* law */
+.law{background:var(--panel);border-left:3px solid var(--ink);padding:14px 18px;font-size:14.5px;color:var(--ink-2);max-width:none}
+.law b{color:var(--ink)}
+.law .cite{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);display:block;margin-bottom:6px}
+
+/* proposals */
+.prop{display:grid;grid-template-columns:56px 1fr;gap:0 18px;border:1px solid var(--rule);background:var(--panel);margin-bottom:14px}
+.prop .id{font-family:"Noto Serif KR",serif;font-size:26px;font-weight:700;color:var(--teal);padding:16px 0 0 16px;line-height:1}
+.prop .body{padding:16px 18px 16px 0}
+.prop h3{font-size:17px}
+.prop .row{display:grid;grid-template-columns:96px 1fr;gap:6px 12px;font-size:14px;margin-top:10px}
+.prop .row .k{color:var(--ink-3);font-size:12.5px;letter-spacing:.03em;padding-top:2px}
+.prop .row .v{color:var(--ink-2)}
+.prop .row .v b{color:var(--ink);font-weight:600}
+.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;padding:2px 8px;border:1px solid var(--rule);border-radius:2px;margin-left:8px;color:var(--ink-2);vertical-align:middle}
+.pill.hot{border-color:var(--seal);color:var(--seal);background:var(--seal-soft)}
+.pill.ok{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.road>div{border-top:2px solid var(--teal);padding:12px 4px 0}
+.road .when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--teal)}
+.road h3{margin:4px 0 6px}
+.road ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.road li{margin-bottom:4px}
+
+.notes{font-size:13.5px;color:var(--ink-2);max-width:none}
+.notes ul{padding-left:18px;margin:0}
+.notes li{margin-bottom:6px}
+.notes code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink)}
+
+@media (max-width:760px){
+  .strip{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr}
+  .sec-head{grid-template-columns:1fr;gap:6px}
+  .mast{grid-template-columns:1fr}
+  .mast .meta{text-align:left}
+  .road{grid-template-columns:1fr}
+  h1{font-size:28px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">정보공개포털 · 정책실명제 진단과 AI 활용 구상</div>
+      <h1>정책실명제, 실명은 이미 문서에 있다</h1>
+    </div>
+    <div class="meta">
+      기준일 <b>2026-09-15</b><br>
+      출처 open.go.kr 정책실명제 전수(중앙 2018~2026) · 원문공개 코퍼스 53.8만 건<br>
+      작성 행정안전부 혁신기획과 (초안, 내부 검토용)
+    </div>
+  </header>
+
+  <p class="lede">포털의 정책실명제 코너는 <strong>참여가 매년 줄고, 읽는 사람이 없으며, 지자체 데이터는 아예 없다.</strong> 반면 같은 포털의 원문공개에는 결재선 실명(기안·검토·협조·전결)이 붙은 결재문서가 하루 4천 건씩 쌓인다. AI가 할 일은 새 입력창을 만드는 것이 아니라, 이미 공개된 문서에서 실명과 경위를 끌어와 정책실명제를 자동으로 채우는 것이다.</p>
+
+  <div class="strip">
+    <div><div class="k">중앙부처 등록 기관 · 사업</div><div class="v">42 → <em>7</em></div><div class="s">2018년 959건 → 2026년 9월 현재 167건</div></div>
+    <div><div class="k">사업당 조회수 중앙값</div><div class="v">10 → <em>0</em></div><div class="s">2026년 등록분 68%가 조회 0회</div></div>
+    <div><div class="k">지자체·교육청 데이터</div><div class="v"><em>0</em>건</div><div class="s">외부 링크 261개만, 그중 17개 오류</div></div>
+    <div><div class="k">관련 원문이 연결된 사업</div><div class="v">35%</div><div class="s">2025~26년 784건 상세 확인</div></div>
+  </div>
+
+  <!-- ─────────────────────────── 1. 진단 ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">1 · 현재 상태</div>
+      <p>포털에서 직접 긁어 확인한 수치다. 중앙행정기관 정책실명제 목록은 2018~2026년 전 연도·전 기관을 받았고(6,847건), 지자체 링크 261개는 하나씩 열어봤다.</p>
+    </div>
+
+    <div class="grid">
+      <div class="cell wide">
+        <h3><span class="tag">A</span>참여가 줄고, 등록은 늦어진다</h3>
+        <figure>
+          <svg viewBox="0 0 1000 250" width="100%" role="img" aria-label="연도별 정책실명제 등록 기관 수와 사업 수">
+            <line class="axis" x1="60" y1="200" x2="960" y2="200"/>
+            <line class="grid" x1="60" y1="120" x2="960" y2="120"/>
+            <line class="grid" x1="60" y1="40" x2="960" y2="40"/>
+            <text x="52" y="204" text-anchor="end">0</text>
+            <text x="52" y="124" text-anchor="end">500</text>
+            <text x="52" y="44" text-anchor="end">1,000</text>
+            <!-- bars: height = projects * 0.16 (1000 -> 160px), baseline 200 -->
+            <g>
+              <rect class="bar" x="90"  y="46.6"  width="52" height="153.4"/><text x="116" y="38" text-anchor="middle">959</text><text class="lbl" x="116" y="220" text-anchor="middle">2018</text><text x="116" y="236" text-anchor="middle">42기관</text>
+              <rect class="bar" x="190" y="59.4"  width="52" height="140.6"/><text x="216" y="51" text-anchor="middle">879</text><text class="lbl" x="216" y="220" text-anchor="middle">2019</text><text x="216" y="236" text-anchor="middle">39</text>
+              <rect class="bar" x="290" y="61.1"  width="52" height="138.9"/><text x="316" y="53" text-anchor="middle">868</text><text class="lbl" x="316" y="220" text-anchor="middle">2020</text><text x="316" y="236" text-anchor="middle">39</text>
+              <rect class="bar" x="390" y="68.8"  width="52" height="131.2"/><text x="416" y="61" text-anchor="middle">820</text><text class="lbl" x="416" y="220" text-anchor="middle">2021</text><text x="416" y="236" text-anchor="middle">36</text>
+              <rect class="bar" x="490" y="80.3"  width="52" height="119.7"/><text x="516" y="72" text-anchor="middle">748</text><text class="lbl" x="516" y="220" text-anchor="middle">2022</text><text x="516" y="236" text-anchor="middle">32</text>
+              <rect class="bar" x="590" y="51.2"  width="52" height="148.8"/><text x="616" y="43" text-anchor="middle">930</text><text class="lbl" x="616" y="220" text-anchor="middle">2023</text><text x="616" y="236" text-anchor="middle">40</text>
+              <rect class="bar" x="690" y="62.6"  width="52" height="137.4"/><text x="716" y="54" text-anchor="middle">859</text><text class="lbl" x="716" y="220" text-anchor="middle">2024</text><text x="716" y="236" text-anchor="middle">38</text>
+              <rect class="bar hi" x="790" y="101.3" width="52" height="98.7"/><text x="816" y="93" text-anchor="middle">617</text><text class="lbl" x="816" y="220" text-anchor="middle">2025</text><text x="816" y="236" text-anchor="middle">30</text>
+              <rect class="bar hi" x="890" y="173.3" width="52" height="26.7"/><text x="916" y="165" text-anchor="middle">167</text><text class="lbl" x="916" y="220" text-anchor="middle">2026.9</text><text x="916" y="236" text-anchor="middle">7</text>
+            </g>
+            <text class="anno" x="760" y="150" text-anchor="end">2025년 10개 부처 이탈 →</text>
+          </svg>
+          <figcaption>막대 = 중점관리 대상사업 수, 아래 숫자 = 등록 기관 수. 2026년은 등록 진행 중이라 확정치가 아니다. 다만 등록 시점 자체가 밀리고 있다: 2018년은 5월에 955건이 한꺼번에 올라왔고, 2025년 등록의 최빈월은 11~12월이다. 2025년에 사라진 부처는 국토교통부·보건복지부·문화체육관광부·중소벤처기업부·과학기술정보통신부·경찰청·법제처·통일부·원자력안전위원회·기후에너지환경부(부처 개편 영향 포함).</figcaption>
+        </figure>
+      </div>
+
+      <div class="cell">
+        <h3><span class="tag">B</span>읽는 사람이 없다</h3>
+        <p>사업당 조회수 중앙값은 2018년 <b>10회</b>에서 2024년 <b>2회</b>, 2025년 <b>1회</b>, 2026년 <b>0회</b>로 떨어졌다. 2025년 등록분의 38%, 2026년 등록분의 68%가 한 번도 열리지 않았다. 9년 누적 최다 조회 사업도 331회(경찰청 유치장 환경개선)에 그친다. 공개는 되고 있지만 도달하지 않는다.</p>
+      </div>
+
+      <div class="cell">
+        <h3><span class="tag">C</span>지자체·교육청은 포털에 없다</h3>
+        <p>포털은 243개 지자체와 18개 교육청을 <b>각 기관 홈페이지 링크로만</b> 안내한다. 261개 링크를 전부 열어보니 3개는 404·응답없음(성남시·서천군·철원군), 14개는 메인 화면·업무추진비·로그인 화면 등 엉뚱한 곳에 떨어졌다(충남·제주시·서귀포시·대구교육청 등). 살아 있는 링크도 서식이 제각각이라 한 화면에서 비교하거나 검색할 방법이 없다.</p>
+      </div>
+
+      <div class="cell">
+        <h3><span class="tag">D</span>데이터가 코드가 아니라 글자다</h3>
+        <p>선정기준은 규정상 6개 호인데 실제 값은 "대규모 예산 / 대규모예산 / 대규모 예산사업 / 예산사업" 식으로 <b>15가지 이상 표기</b>가 섞여 있고 473건은 비어 있다. 사업기간은 "계속 / 계 속 / 단년도 계속"이 따로 집계된다. 담당자란은 "○○○ 과장", "4급 ○○○", "○○○ 과장(줄바꿈)○○○ 사무관"처럼 성명·직급 순서와 인원 수가 기관마다 다르다. 6,847건 중 <b>3,819건(56%)에 HTML 엔티티</b>(<span class="mono">&amp;#40;</span>)가, <b>1,583건(23%)에 깨진 물음표</b>(가운뎃점 유실)가 그대로 노출된다.</p>
+      </div>
+
+      <div class="cell">
+        <h3><span class="tag">E</span>같은 사업이 매년 남남이다</h3>
+        <p>기관+사업명이 같은 사업 <b>1,380개</b>가 두 해 이상 등록됐고 200개는 5년 이상 이어진다(관세청 '해외통관애로 해소', 지식재산처 '특허심사지원' 9년 연속). 그런데 해마다 새 ID로 올라가 <b>연도 간 연결이 없다</b>. 9년 치 담당자 변천이나 누적 추진실적을 이어 볼 수 없다는 뜻이다.</p>
+      </div>
+
+      <div class="cell wide">
+        <h3><span class="tag">F</span>상류(결재문서)는 이미 원문공개에 있다</h3>
+        <p>원문공개 코퍼스 53.8만 건에서 제목에 '정책실명제'가 들어간 결재문서 <b>260건</b>(131개 기관)이 나온다. 심의위원회 개최계획·결과보고 143건, 운영계획 62건, 대상사업 선정 13건. 2026년분만 104건이고 대부분 지자체·교육청이다. 즉 포털이 담지 못한 지자체 대상사업 목록이 <b>결재문서 첨부(HWP)</b> 형태로 같은 포털 안에 공개돼 있다. 사업 상세의 '관련 원문' 칸도 마찬가지다. 연결된 사업은 35%뿐이고 그마저 기관별로 갈린다(기상청은 25건 중 22건 연결, 병무청·농림축산식품부·국세청·국방부 등 10개 기관은 0건). 그러나 연결된 원문에는 <span class="mono">기안 &gt; 검토 &gt; 병렬협조 &gt; 전결</span> 결재선 실명이 통째로 들어 있다. 정책실명제가 요구하는 "관련자의 소속·직급·성명"이 바로 그것이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── 2. 규정 대비 ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">2 · 규정이 요구하는 것</div>
+      <p>행정업무의 운영 및 혁신에 관한 규정(대통령령, 2026-05-19 시행) 제63조~제63조의5. 포털의 데이터 모델과 나란히 놓으면 빈칸이 보인다.</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th style="width:34%">규정</th><th style="width:33%">요구 사항</th><th>포털 현재</th></tr></thead>
+        <tbody>
+          <tr><td><span class="mono">제63조 ①1</span> 정책의 실명 관리</td><td>결정·집행 과정에 참여한 <b>관련자의 소속·직급·성명과 그 의견</b>을 종합 기록</td><td>담당자 1명(자유입력) + 추진실적별 결재선 2~3명. 의견은 없음</td></tr>
+          <tr><td><span class="mono">제63조 ①2</span></td><td>관련 <b>계획서·보고서·회의자료와 토의내용</b>을 종합 기록</td><td>'관련 원문' 칸 존재, 연결률 35%</td></tr>
+          <tr><td><span class="mono">제63조 ③</span></td><td>보도자료에 담당부서·담당자·연락처 표기</td><td>포털과 무관, 대조 불가</td></tr>
+          <tr><td><span class="mono">제63조의3 ①5</span> 중점관리 대상 선정</td><td>행안부장관이 정한 절차로 <b>국민이 신청한 사업</b></td><td>포털에 신청 창구 없음. 선정기준 '국민신청' 114건은 기관이 자체 접수</td></tr>
+          <tr><td><span class="mono">제63조의3 ③</span></td><td>추진실적을 <b>기관 홈페이지 등</b>으로 공개</td><td>중앙은 포털 입력, 지자체는 각자 홈페이지(링크 261개)</td></tr>
+          <tr><td><span class="mono">제63조의4</span> 평가</td><td>행안부장관이 추진실적 등을 평가할 수 있음</td><td>평가에 쓸 정형 데이터가 없음(선정기준·기간 미코드화)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── 3. AI 과제 ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">3 · AI로 할 수 있는 것</div>
+      <p>다섯 과제. 앞의 둘은 이번에 실제 데이터로 가능성을 확인했고, 뒤의 셋은 그 위에 얹는다. 자동화는 후보와 초안까지, 확정은 담당자가 한다.</p>
+    </div>
+
+    <div class="prop">
+      <div class="id">가</div>
+      <div class="body">
+        <h3>사업 ↔ 결재문서 자동 연결 <span class="pill ok">검증됨</span><span class="pill hot">1순위</span></h3>
+        <div class="row">
+          <div class="k">무엇을</div><div class="v">정책실명제 사업마다 원문공개 결재문서를 자동으로 찾아 '관련 원문'을 채우고, 결재선에서 <b>관련자 소속·직급·성명</b>을 추출해 사업의 실명 명부를 만든다.</div>
+          <div class="k">확인한 것</div><div class="v">사업명에서 뽑은 키워드 2개로 포털을 검색하면 22개 사업 중 4개만 맞았다("주민자치회"→행안부 문서 2건, "홈택스"→국세청 2건). 사업명과 문서 제목의 어휘가 달라 <b>단순 검색으로는 안 되고 의미 매칭</b>(임베딩 + 기관·기간 필터 + LLM 판정)이 필요하다. 반대로 연결이 있는 사업은 문서당 결재선이 완전하다.</div>
+          <div class="k">방법</div><div class="v">사업 개요·추진내용 문장을 임베딩 → 같은 기관·같은 연도 결재문서 제목·요약과 대조 → 상위 후보를 LLM이 "이 문서가 이 사업의 결정·집행 문서인가"로 판정 → 담당자 확정. 결재선은 원문 메타에 이미 구조화돼 있어 추가 추출이 필요 없다.</div>
+          <div class="k">난이도</div><div class="v">낮음. 데이터가 모두 같은 포털 안에 있다. 하루 4천 건 신규 문서를 매일 대조하면 <b>추진실적이 자동 갱신</b>된다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="id">나</div>
+      <div class="body">
+        <h3>지자체 대상사업, 링크 대신 문서에서 수확 <span class="pill ok">검증됨</span></h3>
+        <div class="row">
+          <div class="k">무엇을</div><div class="v">지자체·교육청의 '정책실명제 심의위원회 결과보고' 결재문서 첨부(HWP)에서 대상사업 표를 읽어 <b>포털에 지자체 데이터를 처음으로 적재</b>한다. 외부 링크 261개를 관리하는 대신 문서를 읽는다.</div>
+          <div class="k">확인한 것</div><div class="v">코퍼스에 정책실명제 결재문서 260건(2026년 104건), 첨부 보유율 98%. HWP는 rhwp로 표를 셀 단위 구조로 뽑을 수 있음을 이미 산업단지 문서 4,247개 표에서 확인했다. 지자체 심의 결과보고서는 "사업명·부서·담당자·선정사유" 표가 정형에 가깝다.</div>
+          <div class="k">방법</div><div class="v">원문공개 일별 수집에서 제목 '정책실명제' 문서를 걸러 → 첨부 HWP 표 추출 → LLM이 열 이름을 표준 스키마(사업명·부서·담당자·선정기준·기간)로 정렬 → 지자체별 목록 생성. 링크가 죽은 17개 기관부터 시작하면 효과가 바로 보인다.</div>
+          <div class="k">난이도</div><div class="v">중간. 서식이 기관마다 달라 LLM 정렬이 필요하나, 표 하나에 사업 수십 건이라 처리량은 작다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="id">다</div>
+      <div class="body">
+        <h3>9년 치 데이터 정제와 사업 계보 복원</h3>
+        <div class="row">
+          <div class="k">무엇을</div><div class="v">선정기준을 규정 6호 체계로 코드화, 기간 정규화, HTML 엔티티·깨진 물음표 복구, 담당자 문자열을 "성명·직급" 구조로 분리. 그리고 기관+사업명+개요 유사도로 <b>연도 간 동일 사업을 잇는다</b>(1,380개).</div>
+          <div class="k">확인한 것</div><div class="v">전 연도 6,847건을 이미 정형 JSON으로 확보했다. 오류 유형은 위 D항의 네 가지로 좁혀진다.</div>
+          <div class="k">방법</div><div class="v">규칙(엔티티·기간)은 스크립트, 분류(선정기준·사업 동일성)는 LLM. 결과는 정정 제안 목록으로 기관에 돌려주고, 포털 입력 화면에는 <b>선택형 코드</b>를 넣어 재발을 막는다.</div>
+          <div class="k">난이도</div><div class="v">낮음. 하루 작업이다. 다만 계보 복원의 판정 기준(명칭 변경 vs 별개 사업)은 사람이 정해야 한다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="id">라</div>
+      <div class="body">
+        <h3>추진실적·타임라인 자동 초안으로 입력 부담을 없앤다</h3>
+        <div class="row">
+          <div class="k">무엇을</div><div class="v">'가'에서 연결된 결재문서의 생산일시(<span class="mono">PRDCTN_DT</span>, 초 단위)로 사업 연혁을 자동으로 세우고, 문서 본문의 '추진경위·향후계획' 절에서 <b>추진실적 문장 초안</b>을 만든다. 담당자는 고치고 승인만 한다.</div>
+          <div class="k">확인한 것</div><div class="v">본문 417건 분석에서 41%가 문서 하나에 날짜 3개 이상의 절차 연혁을 담고 있었고, 추진경위 절은 "□·○" 헤더로 규칙적으로 뽑힌다. 현재 포털의 추진실적 항목은 중앙값 3건, 문장 길이 중앙값 36자로 사실상 한 줄이다.</div>
+          <div class="k">방법</div><div class="v">문서 → 본문 추출(rhwp) → 날짜·경위 절 추출 → LLM 요약 → 담당자 검토 화면. 참여율 하락의 원인이 입력 부담이라면 여기서 반전된다.</div>
+          <div class="k">난이도</div><div class="v">중간. 본문 생성이 문서당 5~10초(ESB 파이프라인)라 전량은 무리이고 연결된 사업 위주로 선별한다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="id">마</div>
+      <div class="body">
+        <h3>국민 쪽 창구: 질의응답과 국민신청</h3>
+        <div class="row">
+          <div class="k">무엇을</div><div class="v">"○○ 사업은 누가 언제 결정했나"를 자연어로 묻고 사업·문서·결재선으로 답하는 검색, 그리고 규정 제63조의3 ①5호가 예정한 <b>국민신청 창구</b>. 보도자료의 담당자 표기(제63조 ③)를 사업 담당자와 자동 대조하는 점검도 여기에 붙는다.</div>
+          <div class="k">확인한 것</div><div class="v">조회수가 0으로 수렴한 이유는 찾을 수 없어서다. 포털 검색은 제목 단어 AND 검색이라 사업명을 모르면 닿지 않는다. 신청 창구는 사이트맵에 없다.</div>
+          <div class="k">방법</div><div class="v">'가·나·다'로 만든 정형 데이터를 인덱스로 쓰는 질의응답. 근거 문서를 항상 같이 보여주고, 없는 것은 없다고 답한다.</div>
+          <div class="k">난이도</div><div class="v">데이터가 갖춰진 뒤의 일이다. 앞 과제 없이 챗봇만 얹으면 빈 데이터를 유창하게 말하게 된다.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="notes" style="margin-top:6px">운영 관제도 같은 데이터로 바로 만들 수 있다: 미등록 기관 알림(2025년 등록 30개 중 2026년 미등록 23개), 등록 마감 추이, 죽은 링크 점검, 조회 0 사업 비율. 실장 보고용 한 화면이면 충분하다.</p>
+  </section>
+
+  <!-- ─────────────────────────── 4. 로드맵 ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">4 · 진행 순서</div>
+      <p>포털 개편 없이 시작할 수 있다. 수집기·본문 추출기·HWP 표 파서는 이미 있고, 이번 진단도 그 도구로 반나절에 끝냈다.</p>
+    </div>
+    <div class="road">
+      <div>
+        <div class="when">2주 · 스파이크</div>
+        <h3>행안부 자체 사업으로 증명</h3>
+        <ul>
+          <li>2025년 행안부 54건에 '가' 자동 연결 적용, 담당자 검수로 정밀도 측정</li>
+          <li>'다' 정제 결과를 전 부처 정정 제안 목록으로 산출</li>
+          <li>죽은 링크 17개 기관에 '나' 적용해 지자체 첫 데이터 적재</li>
+        </ul>
+      </div>
+      <div>
+        <div class="when">3개월 · 파일럿</div>
+        <h3>부처 3곳 + 시도 2곳</h3>
+        <ul>
+          <li>연결·초안('가·라')을 담당자 화면으로 제공, 입력 시간 전후 비교</li>
+          <li>지자체 심의 결과보고 → 포털 적재 파이프라인 일 단위 운영</li>
+          <li>정밀도·오탐 기준을 운영지침 초안으로 문서화</li>
+        </ul>
+      </div>
+      <div>
+        <div class="when">그 후 · 포털 반영</div>
+        <h3>입력 화면과 국민 창구</h3>
+        <ul>
+          <li>선정기준·기간 선택형 코드, 연도 간 사업 ID 계승</li>
+          <li>'관련 원문' 자동 제안을 포털 기본 기능으로</li>
+          <li>질의응답·국민신청('마') 공개</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── 5. 근거와 한계 ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">5 · 근거와 한계</div>
+      <p>수치는 2026-09-15 포털 상태의 스냅샷이다.</p>
+    </div>
+    <div class="notes">
+      <ul>
+        <li><b>정책실명제 목록</b>: 포털 <code>polRnInsttList.ajax</code>(기관 목록)과 <code>polRnBList.do</code>(기관별 사업, 페이지에 JSON 내장)에서 2018~2026년 중앙행정기관 6,847건 전수. 세션 없이 받아진다. 사업 상세(<code>polRnInsttDetail.do</code>)는 2025~26년 784건을 열어 추진실적·결재선·관련 원문을 확인했다. 관련 원문이 있는 사업은 문서 수 중앙값 13건.</li>
+        <li><b>지자체 링크</b>: 정책실명제 첫 화면의 외부 링크 261개를 HTTP로 열어 상태코드·최종 URL·페이지에 '실명' 문자열 포함 여부를 봤다. '엉뚱한 곳' 판정은 그 문자열 부재 기준이라 실제로는 더 많을 수 있다.</li>
+        <li><b>원문공개 코퍼스</b>: 2026-08-22 수집분(원본 138만 행, 큐레이션 53.8만 건, 본문 417건). '정책실명제' 제목 문서 260건은 큐레이션 코퍼스 기준이라 전체 포털에는 더 많다.</li>
+        <li><b>원문공개율</b>: 포털 통계 기준 중앙행정기관 55곳 등록 90,224건 중 공개 37,985건(42%, 2026-08-31 기준). 대검찰청 1%, 국방부 10%, 경찰청 13%. '가'의 연결 가능 범위는 이 공개율에 갇힌다.</li>
+        <li><b>조회수</b>는 포털이 상세 페이지 진입 시 올리는 값이라 봇·내부 확인이 섞일 수 있다. 낮은 쪽으로 편향되지는 않으므로 "읽히지 않는다"는 판단에는 보수적이다.</li>
+        <li><b>2026년 수치</b>는 등록이 진행 중인 값이다. 다만 2025년 등록 30개 기관 중 23곳이 9월 중순까지 미등록이라는 사실 자체는 확정이다.</li>
+        <li>담당자·결재선 <b>실명 데이터는 개인정보</b>를 포함한다. 수집분은 로컬에만 두었고, 이 문서에는 개인 이름을 싣지 않았다.</li>
+      </ul>
+    </div>
+  </section>
+</div>
