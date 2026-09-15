@@ -93,7 +93,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary{padding:36px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:8px}
 .summary .eyebrow{font-size:15px;color:var(--em);font-weight:700;margin-bottom:10px}
 .summary h1{margin-bottom:14px}
-.summary .lede{font-size:19px;line-height:1.6;max-width:62ch;margin:0 0 20px;color:var(--ink)}
+.summary .lede{font-size:19px;line-height:1.65;max-width:62ch;margin:0 0 18px;color:var(--ink)}
+.summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
 .bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
@@ -365,7 +366,10 @@ body{background:var(--cream);color:var(--ink0)}
     <div>
       <div class="eyebrow"><i></i>정보공개포털 실측 · 2026-09-15~16 스냅샷</div>
       <h1>세 제도는<br><em>단위</em>가 다르다</h1>
-      <p class="lede">사전정보공표는 <b>안내 목록</b>, 원문공개는 <b>결재문서</b>, 정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부다. "누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데, 셋 중 가장 얕고 가장 읽히지 않는다.</p>
+      <p class="lede">사전정보공표는 <b>안내 목록</b>, 원문공개는 <b>결재문서</b>,<br>
+        정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부입니다.</p>
+      <p class="lede">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데,<br>
+        셋 중 가장 얕고 가장 읽히지 않습니다.</p>
       <div class="cta">
         <a class="p" href="explorer/">사업 대조기 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="s" href="compare.html">세 제도 비교</a>
@@ -393,7 +397,7 @@ body{background:var(--cream);color:var(--ink0)}
 
   <!-- 비유: 세 창구 → 차트 한 장 -->
   <section class="sec meta-sec">
-    <div class="head"><div><div class="eyebrow">병원으로 치면</div><h2>지금은 창구가 셋, 바꾸면 차트 한 장</h2><p class="sub">환자 한 명을 알고 싶은데 안내문 창구·처방전 창구·담당의 창구가 따로 있고 서로 환자 이름으로 묶이지 않는다. 정책 번호는 차트 번호다.</p></div></div>
+    <div class="head"><div><div class="eyebrow">병원으로 치면</div><h2>지금은 창구가 셋, 바꾸면 차트 한 장</h2><p class="sub">환자 한 명을 알고 싶은데 안내문 창구·처방전 창구·담당의 창구가 따로 있고, 서로 환자 이름으로 묶이지 않습니다. 정책 번호는 차트 번호입니다.</p></div></div>
     <div class="meta-grid">
       <div class="meta-card"><div class="meta-lab now">지금</div><svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="세 창구: 안내문, 처방전 더미, 담당의 명단">
   <defs><style>.t{font-family:inherit;font-size:13px;fill:#1e2124}.s{font-size:11.5px;fill:#6d7882}.k{font-size:11px;font-weight:700}</style></defs>
@@ -436,7 +440,7 @@ body{background:var(--cream);color:var(--ink0)}
     <text x="34" y="150" class="s" fill="#d63d4a">처방전 링크 0건</text>
     <text x="75" y="188" text-anchor="middle" class="s">명단만 · 처방·비용 없음</text>
   </g>
-  <text x="260" y="250" text-anchor="middle" class="s">환자 한 명을 알려면 세 창구를 돌아야 하고, 돌아도 서로 이어지지 않는다</text>
+  <text x="260" y="250" text-anchor="middle" class="s">환자 한 명을 알려면 세 창구를 돌아야 하고, 돌아도 서로 이어지지 않습니다</text>
 </svg></div>
       <div class="meta-arrow" aria-hidden="true"><span>정책 번호<br>하나로</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="meta-card"><div class="meta-lab next">정책실명제 2.0</div><svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="차트 한 장: 담당의, 처방, 검사, 비용이 한 장에">
@@ -456,7 +460,7 @@ body{background:var(--cream);color:var(--ink0)}
     <rect x="188" y="78" width="176" height="66" rx="6" fill="#eef2f7"/><text x="198" y="96" class="k" fill="#052b57">비용 · 재정</text>
     <text x="198" y="116" class="t" font-size="12">'26 편성 ○○억 · 집행률</text><text x="198" y="132" class="t" font-size="12">총사업비 ○○○억</text>
   </g>
-  <text x="260" y="250" text-anchor="middle" class="s">정책 번호 하나로 붙는다 · 국민은 정책 이름만 찾으면 된다</text>
+  <text x="260" y="250" text-anchor="middle" class="s">정책 번호 하나로 붙습니다 · 국민은 정책 이름만 찾으면 됩니다</text>
 </svg></div>
     </div>
   </section>
@@ -464,7 +468,7 @@ body{background:var(--cream);color:var(--ink0)}
   <!-- OVERVIEW TABLE -->
   <section class="sec">
     <div class="head">
-      <div><div class="eyebrow">세 제도 · 아홉 기준</div><h2>정책실명제만 사업 단위이고, 정책실명제만 법률 밖이다</h2><p class="sub">원문공개는 깊지만 문서 단위, 사전정보공표는 넓지만 안내 목록. 각 기준의 실측 근거는 비교 페이지 2층에서 열린다.</p></div>
+      <div><div class="eyebrow">세 제도 · 아홉 기준</div><h2>정책실명제만 사업 단위이고, 정책실명제만 법률 밖이다</h2><p class="sub">원문공개는 깊지만 문서 단위이고, 사전정보공표는 넓지만 안내 목록입니다. 각 기준의 실측 근거는 비교 페이지 2층에서 열립니다.</p></div>
       <a class="more" href="compare.html">비교 페이지에서 근거 보기 →</a>
     </div>
     <div class="ov"><table>
@@ -475,7 +479,7 @@ body{background:var(--cream);color:var(--ink0)}
 
   <!-- PAGES -->
   <section class="sec">
-    <div class="head"><div><div class="eyebrow">세 페이지</div><h2>비교하고, 대조하고, 잇는다</h2><p class="sub">세 제도가 서로를 대체하지 못하는 이유, 같은 사업을 세 채널에서 나란히 놓는 대조기, 정책 하나로 결정·문서·사람을 잇는 2.0 화면.</p></div></div>
+    <div class="head"><div><div class="eyebrow">세 페이지</div><h2>비교하고, 대조하고, 잇는다</h2><p class="sub">세 제도가 서로를 대체하지 못하는 이유, 같은 사업을 세 채널에서 나란히 놓는 대조기, 정책 하나로 결정·문서·사람을 잇는 2.0 화면입니다.</p></div></div>
     <div class="pages">
       <a class="pc" href="compare.html"><div class="img"><img src="assets/preview-compare.png" alt="세 제도 비교" loading="lazy"></div><div class="body"><span class="no">01 · 비교</span><h3>세 제도 비교</h3><p>아홉 기준 매트릭스와 그 아래 한 층 더. 항목을 고르면 세 제도의 실측치와 근거가 나란히 열린다.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
       <a class="pc" href="explorer/"><div class="img"><img src="assets/preview-explorer.png" alt="사업 대조기" loading="lazy"></div><div class="body"><span class="no">02 · 대조</span><h3>사업 대조기</h3><p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 레코드가 나란히. 기관별 현황과 근거 각주까지.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>

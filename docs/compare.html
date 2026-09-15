@@ -92,7 +92,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary{padding:36px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:8px}
 .summary .eyebrow{font-size:15px;color:var(--em);font-weight:700;margin-bottom:10px}
 .summary h1{margin-bottom:14px}
-.summary .lede{font-size:19px;line-height:1.6;max-width:62ch;margin:0 0 20px;color:var(--ink)}
+.summary .lede{font-size:19px;line-height:1.65;max-width:62ch;margin:0 0 18px;color:var(--ink)}
+.summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
 .bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
@@ -258,14 +259,18 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
   <header class="summary">
     <div class="eyebrow">정보공개 3제도 비교</div>
     <h1>세 제도는 서로 대체하지 못한다. 공개하는 단위가 다르다</h1>
-    <p class="lede">사전정보공표는 "이런 정보가 여기 있다"는 <b>안내 목록</b>이고, 원문공개는 결재가 끝난 <b>문서 원본</b>이며, 정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부다. <span class="em">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데, 셋 중 가장 얕고 가장 읽히지 않는다.</span></p>
+    <p class="lede">사전정보공표는 "이런 정보가 여기 있다"는 <b>안내 목록</b>이고,<br>
+      원문공개는 결재가 끝난 <b>문서 원본</b>이며,<br>
+      정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부입니다.</p>
+    <p class="lede"><span class="em">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데,<br>
+      셋 중 가장 얕고 가장 읽히지 않습니다.</span></p>
     <div class="basis">수치는 포털에서 직접 받은 2026-09-15~16 스냅샷. 출처·표본·한계는 <a href="#basis">근거·방법</a>에.</div>
   </header>
 
   <section class="core" id="matrix">
     <div class="eyebrow">1층 · 아홉 기준</div>
     <h2>정책실명제만 사업 단위이고, 정책실명제만 법률 근거·공공기관·상시 갱신이 없다</h2>
-    <p>아홉 기준으로 세 제도를 놓으면 역할이 갈린다. 원문공개는 깊지만 문서 단위이고, 사전정보공표는 넓지만 안내 목록이다. 행을 누르면 아래에 그 기준의 실측 근거가 열린다.</p>
+    <p>아홉 기준으로 세 제도를 놓으면 역할이 갈립니다. 원문공개는 깊지만 문서 단위이고, 사전정보공표는 넓지만 안내 목록입니다.<br>행을 누르면 아래에 그 기준의 실측 근거가 열립니다.</p>
 
     <div class="tbl mx"><table>
       <thead><tr><th>기준</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th></tr></thead>
@@ -274,7 +279,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
     <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg> 없음</p>
 
     <div class="l2" id="l2">
-      <div class="lbl">2층 · 항목별 실측 <span class="hint">· 왼쪽에서 항목을 고르면 세 제도의 실측치와 근거가 나란히 열린다</span></div>
+      <div class="lbl">2층 · 항목별 실측 <span class="hint">· 왼쪽에서 항목을 고르면 세 제도의 실측치와 근거가 나란히 열립니다</span></div>
       <div class="grid">
         <div class="steps" id="tabs"></div>
         <div class="detail" id="detail" role="region" aria-live="polite" aria-label="선택한 항목의 실측 근거"></div>

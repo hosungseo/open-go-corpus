@@ -85,7 +85,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary{padding:36px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:8px}
 .summary .eyebrow{font-size:15px;color:var(--em);font-weight:700;margin-bottom:10px}
 .summary h1{margin-bottom:14px}
-.summary .lede{font-size:19px;line-height:1.6;max-width:62ch;margin:0 0 20px;color:var(--ink)}
+.summary .lede{font-size:19px;line-height:1.65;max-width:62ch;margin:0 0 18px;color:var(--ink)}
+.summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
 .bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
