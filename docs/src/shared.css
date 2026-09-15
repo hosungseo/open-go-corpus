@@ -85,6 +85,7 @@ td b{color:var(--ink)}
 
 /* 별첨 */
 section.appendix{background:var(--panel-2);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
+section.appendix .tbl.wide{width:min(1180px,calc(100vw - 48px));margin-left:calc(50% - min(590px,50vw - 24px))}
 section.appendix .label{font-size:13px;letter-spacing:.12em;color:var(--ink-3);font-weight:600;margin-bottom:6px}
 section.appendix h2{margin-bottom:10px}
 section.appendix h3{margin:26px 0 8px}
