@@ -284,5 +284,6 @@ if (!WITH_NAMES) {
 fs.writeFileSync(R(`explorer/data${suffix}.json`), json);
 const html = tpl.replace("/*__DATA__*/", () => json.replace(/<\//g, "<\\/"));
 fs.writeFileSync(R(`explorer/index${suffix}.html`), html);
+if (!WITH_NAMES) { fs.mkdirSync(R("docs/explorer"), { recursive: true }); fs.writeFileSync(R("docs/explorer/index.html"), html); }
 console.error(`built explorer/index${suffix}.html ${(html.length / 1e6).toFixed(1)}MB · projects ${projects.length} · details ${detail.length} · probes ${probes.length} · notes ${notes.length} · unmatched name segments ${unmatched.length}`);
 if (unmatched.length) console.error("  unmatched (first 15):", [...new Set(unmatched)].slice(0, 15));

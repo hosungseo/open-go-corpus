@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정보공개 3제도 실측</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<style>
+:root{--paper:#F5F7F9;--ink:#1B2A41;--ink-2:#4B5A6E;--ink-3:#7C8A9C;--rule:#D5DCE4;--panel:#fff;--seal:#B8312F;--teal:#2E6F73;--amber:#8A6D1F}
+@media(prefers-color-scheme:dark){:root{--paper:#141A22;--ink:#E6EAF0;--ink-2:#B4BDCA;--ink-3:#7F8A99;--rule:#2E3844;--panel:#1B222C;--seal:#E0605B;--teal:#5FB3B5;--amber:#D2B15A}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;font-size:15.5px;line-height:1.7}
+.wrap{max-width:880px;margin:0 auto;padding:48px 24px 80px}
+h1{font-family:"Noto Serif KR",serif;font-size:30px;margin:0 0 6px;word-break:keep-all}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.mast{border-top:3px solid var(--ink);padding-top:16px}
+p{max-width:66ch;color:var(--ink-2)}
+.cards{display:grid;gap:14px;margin-top:28px}
+a.card{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:18px 20px;text-decoration:none;color:var(--ink)}
+a.card:hover{border-color:var(--ink)}
+a.card.a{border-top-color:var(--seal)}a.card.b{border-top-color:var(--amber)}a.card.c{border-top-color:var(--teal)}
+a.card h2{font-family:"Noto Serif KR",serif;font-size:19px;margin:0 0 4px}
+a.card p{margin:0;font-size:14px}
+a.card .go{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);white-space:nowrap}
+.foot{margin-top:36px;font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+.foot code{font-family:"IBM Plex Mono",monospace}
+.foot a{color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="eyebrow">정보공개포털 실측 · 2026-09-15 스냅샷</div>
+    <h1>정책실명제 · 사전정보공표 · 원문공개, 실제로 무엇이 공개되는가</h1>
+    <p>정보공개포털(open.go.kr)에서 직접 받은 데이터로 세 제도의 공개 단위·깊이·주기·규모·이용을 재고, 같은 사업을 세 채널에서 나란히 놓아 본 결과입니다. 담당자·결재선 실명은 모두 제거했습니다.</p>
+  </header>
+  <div class="cards">
+    <a class="card a" href="explorer/">
+      <div><h2>정보공개 3제도 대조기</h2><p>정책실명제 중앙 6,847건에서 사업 하나를 고르면 정책실명제 레코드, 사전정보공표 검색 결과, 원문공개 검색 결과와 결재선 구조가 3열로 놓입니다. 스코어보드·기관 현황·각주 포함.</p></div><span class="go">열기 →</span>
+    </a>
+    <a class="card b" href="compare.html">
+      <div><h2>세 제도 비교분석</h2><p>법적 근거·대상기관·공개 항목·주기·규모·이용을 한 표로 비교하고, 회의에서 나온 질문 6개에 답합니다. 폐지·유지·정보공개법 편입 선택지와 조건 정리.</p></div><span class="go">열기 →</span>
+    </a>
+    <a class="card c" href="ai-plan.html">
+      <div><h2>정책실명제 AI 구상안</h2><p>참여 감소·조회 0·지자체 미연계라는 진단 위에, 원문공개 결재문서로 정책실명제를 자동으로 채우는 과제 다섯 개와 로드맵.</p></div><span class="go">열기 →</span>
+    </a>
+  </div>
+  <div class="foot">수집·분석 코드와 설계 문서는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>. 수치의 출처와 한계는 각 페이지의 근거 절에 있습니다. 재생성: <code>node tools/build-explorer.mjs</code></div>
+</div>
+</body>
+</html>
