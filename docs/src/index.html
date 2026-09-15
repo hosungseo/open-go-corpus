@@ -6,13 +6,77 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
 <link rel="stylesheet" href="shared.css">
 <style>
-.cards{display:grid;gap:14px;margin-top:30px}
-a.cardl{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:18px 20px;text-decoration:none;color:var(--ink)}
-a.cardl:hover{border-color:var(--ink)}
-a.cardl.a{border-top-color:var(--rn)}a.cardl.b{border-top-color:var(--pv)}a.cardl.c{border-top-color:var(--og)}
-a.cardl h2{font-size:21px;margin:0 0 6px}
-a.cardl p{margin:0;font-size:15.5px;color:var(--ink-2);max-width:none}
-a.cardl .go{font-family:var(--mono);font-size:13px;color:var(--ink-3);white-space:nowrap;padding-top:4px}
+/* 개요 전용: 두 톤 표제, 계기판형 지표 바, 한 틀에 담은 벤토 카드 (jiro About Multi Layout · Stats Vendo · Features Kelo 문법 차용) */
+.summary{border-bottom:0;padding-bottom:10px}
+.summary h1{font-size:40px;line-height:1.28;letter-spacing:-.012em;max-width:32ch}
+.summary h1 .dim{color:var(--ink-3)}
+.summary .lede{max-width:64ch}
+
+/* 지표 바: 한 테두리 안에 세 칸, 머리선으로만 나눔 */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);background:var(--panel);border:1px solid var(--rule);margin-top:6px}
+.metrics .m{padding:26px 24px 22px;position:relative;transition:background .3s}
+.metrics .m+.m{border-left:1px solid var(--rule-2)}
+.metrics .m:hover{background:var(--sel)}
+.metrics .v{font-family:var(--mono);font-size:60px;line-height:1;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:6px}
+.metrics .v small{font-size:17px;color:var(--ink-3);letter-spacing:0}
+.metrics .k{font-size:15px;color:var(--ink-2);margin-top:12px;line-height:1.5;max-width:26ch}
+.metrics .src{font-size:13px;color:var(--ink-3);margin-top:6px}
+.summary .basis{margin-top:12px}
+
+/* 벤토: 한 테두리 안에 세 칸, 제도색은 칸 머리선에만 */
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--panel);border:1px solid var(--rule);margin-top:34px}
+a.cell{position:relative;display:flex;flex-direction:column;gap:12px;padding:22px 22px 20px;text-decoration:none;color:var(--ink);overflow:hidden;isolation:isolate}
+a.cell+a.cell{border-left:1px solid var(--rule-2)}
+a.cell::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--ink)}
+a.cell.a::before{background:var(--rn)} a.cell.b::before{background:var(--pv)} a.cell.c::before{background:var(--og)}
+a.cell::after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .45s;background:linear-gradient(180deg,var(--tint,transparent),transparent 70%)}
+a.cell.a{--tint:color-mix(in srgb,var(--rn) 7%,transparent)} a.cell.b{--tint:color-mix(in srgb,var(--pv) 9%,transparent)} a.cell.c{--tint:color-mix(in srgb,var(--og) 8%,transparent)}
+a.cell:hover::after{opacity:1}
+a.cell .no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-3)}
+a.cell h2{font-size:21px;margin:0}
+a.cell p{margin:0;font-size:15px;line-height:1.65;color:var(--ink-2);max-width:none;flex:0 0 auto}
+a.cell .viz{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule-2)}
+a.cell .go{font-family:var(--mono);font-size:13px;color:var(--ink-3);display:flex;align-items:center;gap:6px;margin-top:6px}
+a.cell .go svg{width:16px;height:16px;transition:transform .3s}
+a.cell:hover .go{color:var(--ink)} a.cell:hover .go svg{transform:translateX(4px)}
+
+/* 미니 시각 1: 공개 항목의 길이 차이 (148자 · 20자 · 28,659자) */
+.viz-len{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;height:74px}
+.viz-len>div{display:flex;flex-direction:column;justify-content:flex-end;gap:3px;border-bottom:1px solid var(--rule);padding-bottom:6px;height:100%}
+.viz-len i{display:block;height:3px;background:var(--ink-3);border-radius:1px}
+.viz-len i.s{width:60%} .viz-len i.m{width:85%}
+.viz-len .lb{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:4px;text-align:left}
+.viz-len .lb b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.viz-len .doc{height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:3px}
+
+/* 미니 시각 2: 로드맵 (과제 가~마, 2주 · 3개월) */
+.viz-road{height:74px;display:flex;flex-direction:column;justify-content:flex-end}
+.viz-road svg{width:100%;height:56px;display:block;overflow:visible}
+.viz-road text{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.viz-road text.k{fill:var(--ink);font-weight:600}
+
+/* 미니 시각 3: 세 채널 레코드를 나란히 */
+.viz-side{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;height:74px}
+.viz-side>div{border:1px solid var(--rule);border-top-width:3px;padding:7px 8px;display:flex;flex-direction:column;gap:5px;background:var(--panel)}
+.viz-side>div.rn{border-top-color:var(--rn)} .viz-side>div.pv{border-top-color:var(--pv)} .viz-side>div.og{border-top-color:var(--og)}
+.viz-side i{display:block;height:3px;background:var(--rule);border-radius:1px}
+.viz-side i.k{background:var(--ink-3);width:55%}
+.viz-side i.w{width:80%}
+
+/* 등장 (첫 프레임부터 읽히도록 짧게) */
+@keyframes rise{from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+.reveal{animation:rise .7s cubic-bezier(.23,1,.32,1) both;animation-delay:var(--d,0s)}
+@media (prefers-reduced-motion:reduce){.reveal{animation:none}}
+
+@media (max-width:1024px){.summary h1{font-size:34px}.metrics .v{font-size:52px}}
+@media (max-width:860px){
+  .summary h1{font-size:28px;max-width:none}
+  .metrics,.bento{grid-template-columns:1fr}
+  .metrics .m+.m{border-left:0;border-top:1px solid var(--rule-2)}
+  a.cell+a.cell{border-left:0;border-top:1px solid var(--rule-2)}
+  .metrics .v{font-size:48px}
+  a.cell .viz{display:none}
+}
 </style>
 </head>
 <body>
@@ -23,24 +87,86 @@ a.cardl .go{font-family:var(--mono);font-size:13px;color:var(--ink-3);white-spac
 
 <div class="wrap">
   <header class="summary">
-    <div class="eyebrow">정보공개포털 실측 · 정책실명제 · 사전정보공표 · 원문공개</div>
-    <h1>세 제도는 단위가 다르다. "누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데, 가장 얕고 읽히지 않는다</h1>
-    <p class="lede">정보공개포털에서 직접 받은 데이터로 세 제도의 공개 단위·깊이·주기·규모·이용을 재고, 같은 사업을 세 채널에서 나란히 놓아 본 결과입니다. <span class="em">담당자·결재선 실명은 모두 제거했습니다.</span></p>
-    <div class="bignum">
-      <div><div class="v">0<small>회</small></div><div class="k">정책실명제 사업당 조회수 중앙값 (2026년 등록분)</div><div class="src">대조기 별첨 스코어보드</div></div>
-      <div><div class="v">17<small>/ 261</small></div><div class="k">지자체·교육청 정책실명제 링크 중 404·엉뚱한 페이지로 떨어지는 수</div><div class="src">대조기 별첨 스코어보드</div></div>
-      <div><div class="v">35<small>%</small></div><div class="k">포털이 관련 결재문서를 붙여 둔 정책실명제 사업의 비율</div><div class="src">대조기 별첨 스코어보드</div></div>
+    <div class="eyebrow reveal">정보공개포털 실측 · 정책실명제 · 사전정보공표 · 원문공개</div>
+    <h1 class="reveal" style="--d:.05s"><span class="dim">세 제도는 단위가 다르다.</span> "누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데, 가장 얕고 읽히지 않는다</h1>
+    <p class="lede reveal" style="--d:.12s">정보공개포털에서 직접 받은 데이터로 세 제도의 공개 단위·깊이·주기·규모·이용을 재고, 같은 사업을 세 채널에서 나란히 놓아 본 결과입니다. <span class="em">담당자·결재선 실명은 모두 제거했습니다.</span></p>
+    <div class="metrics reveal" style="--d:.2s">
+      <div class="m"><div class="v"><span class="cnt" data-to="0">0</span><small>회</small></div><div class="k">정책실명제 사업당 조회수 중앙값 (2026년 등록분)</div><div class="src">대조기 별첨 스코어보드</div></div>
+      <div class="m"><div class="v"><span class="cnt" data-to="17">17</span><small>/ 261</small></div><div class="k">지자체·교육청 정책실명제 링크 중 404·엉뚱한 페이지로 떨어지는 수</div><div class="src">대조기 별첨 스코어보드</div></div>
+      <div class="m"><div class="v"><span class="cnt" data-to="35">35</span><small>%</small></div><div class="k">포털이 관련 결재문서를 붙여 둔 정책실명제 사업의 비율</div><div class="src">대조기 별첨 스코어보드</div></div>
     </div>
-    <div class="basis">수치는 2026-09-15 스냅샷. 출처·표본·한계는 <a href="explorer/#basis">대조기의 근거·방법</a>에.</div>
+    <div class="basis reveal" style="--d:.28s">수치는 2026-09-15 스냅샷. 출처·표본·한계는 <a href="explorer/#basis">대조기의 근거·방법</a>에.</div>
   </header>
 
-  <div class="cards">
-    <a class="cardl b" href="compare.html"><div><h2>세 제도 비교</h2><p>세 제도는 서로 대체하지 못한다. 아홉 기준 매트릭스, 회의에서 나온 질문 여섯에 대한 답, 같은 사업의 3채널 사례.</p></div><span class="go">열기 →</span></a>
-    <a class="cardl c" href="ai-plan.html"><div><h2>정책실명제 AI 구상안</h2><p>실명은 이미 결재문서에 있다. 원문공개 문서로 정책실명제를 자동으로 채우는 과제 다섯과 2주·3개월 로드맵.</p></div><span class="go">열기 →</span></a>
-    <a class="cardl a" href="explorer/"><div><h2>사업 대조기</h2><p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 레코드가 나란히 놓인다. 6,847건 검색, 기관별 등록 현황, 근거 각주.</p></div><span class="go">열기 →</span></a>
+  <div class="bento">
+    <a class="cell b reveal" style="--d:.34s" href="compare.html">
+      <div class="no">01 · 비교</div>
+      <h2>세 제도 비교</h2>
+      <p>세 제도는 서로 대체하지 못한다. 아홉 기준 매트릭스, 회의에서 나온 질문 여섯에 대한 답, 같은 사업의 3채널 사례.</p>
+      <div class="viz" aria-label="공개 항목 길이 중앙값: 정책실명제 148자, 사전정보공표 20자, 원문공개 평균 28,659자">
+        <div class="viz-len">
+          <div><i class="m"></i><i class="s"></i><div class="lb"><b>148</b>자</div></div>
+          <div><i class="s"></i><div class="lb"><b>20</b>자</div></div>
+          <div class="doc"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="m"></i><div class="lb"><b>28,659</b>자</div></div>
+        </div>
+      </div>
+      <span class="go">열기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="cell c reveal" style="--d:.42s" href="ai-plan.html">
+      <div class="no">02 · 구상</div>
+      <h2>정책실명제 AI 구상안</h2>
+      <p>실명은 이미 결재문서에 있다. 원문공개 문서로 정책실명제를 자동으로 채우는 과제 다섯과 2주·3개월 로드맵.</p>
+      <div class="viz" aria-label="과제 가~마, 2주와 3개월 로드맵">
+        <div class="viz-road">
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none">
+            <line x1="4" y1="30" x2="296" y2="30" stroke="var(--rule)" stroke-width="1.5"/>
+            <line x1="4" y1="30" x2="118" y2="30" stroke="var(--ink-3)" stroke-width="1.5"/>
+            <g fill="var(--ink-3)"><circle cx="20" cy="30" r="3"/><circle cx="60" cy="30" r="3"/><circle cx="100" cy="30" r="3"/></g>
+            <g fill="var(--panel)" stroke="var(--ink-3)" stroke-width="1.5"><circle cx="190" cy="30" r="3"/><circle cx="270" cy="30" r="3"/></g>
+            <rect x="116" y="22" width="2" height="16" fill="var(--ink)"/>
+            <g text-anchor="middle"><text x="20" y="18">가</text><text x="60" y="18">나</text><text x="100" y="18">다</text><text x="190" y="18">라</text><text x="270" y="18">마</text></g>
+            <text x="117" y="52" text-anchor="middle" class="k">2주</text>
+            <text x="292" y="52" text-anchor="end">3개월</text>
+          </svg>
+        </div>
+      </div>
+      <span class="go">열기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+    </a>
+    <a class="cell a reveal" style="--d:.5s" href="explorer/">
+      <div class="no">03 · 대조</div>
+      <h2>사업 대조기</h2>
+      <p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 레코드가 나란히 놓인다. 6,847건 검색, 기관별 등록 현황, 근거 각주.</p>
+      <div class="viz" aria-label="세 채널의 레코드를 나란히 놓은 모습">
+        <div class="viz-side">
+          <div class="rn"><i class="k"></i><i class="w"></i><i></i><i class="w"></i></div>
+          <div class="pv"><i class="k"></i><i class="w"></i><i></i></div>
+          <div class="og"><i class="k"></i><i></i><i class="w"></i><i></i><i class="w"></i></div>
+        </div>
+      </div>
+      <span class="go">열기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+    </a>
   </div>
 
   <div class="foot">수집·분석 코드와 설계 문서는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>. 재생성: <code class="mono">node tools/build-explorer.mjs</code></div>
 </div>
+<script>
+// Count-up on load (once, skipped when the viewer prefers reduced motion)
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ease = function(t){ return 1 - Math.pow(1 - t, 4); };
+  document.querySelectorAll(".cnt").forEach(function(el, i){
+    var to = Number(el.dataset.to); if (!to) return;
+    var t0 = null, dur = 1100, delay = 250 + i * 90;
+    function step(ts){
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0 - delay) / dur);
+      if (p < 0) { requestAnimationFrame(step); return; }
+      el.textContent = String(Math.round(to * ease(p)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+})();
+</script>
 </body>
 </html>
