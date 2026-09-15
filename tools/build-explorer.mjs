@@ -79,7 +79,7 @@ function mask(s) {
 /* ── load ────────────────────────────────────────────────────────────── */
 const central = readJsonl("realname/central.jsonl");
 const detail = readJsonl("realname/detail.jsonl");
-const probes = readJsonl("realname/probe-batch.jsonl");
+const probes = Object.values(Object.fromEntries(readJsonl("realname/probe-batch.jsonl").map((p) => [p.gclfCd, p]))); // last row per project wins
 const stats = {
   bef: [1, 2, 3, 4].map((t) => readJson(`realname/stats/befInf_${t}.json`).modelAndView.model.result.rtnList),
   org: Object.fromEntries(["01", "02", "03", "04"].flatMap((g) => ["2025", "2026"].map((y) => [`${g}_${y}`, readJson(`realname/stats/orgrate_t${g}_${y}.json`).modelAndView.model.result]))),
@@ -105,17 +105,17 @@ function normCrit(s) {
 
 /* ── projects / orgs ─────────────────────────────────────────────────── */
 const YEARS = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
-const detailMap = Object.fromEntries(detail.map((d) => [d.gclfCd, d]));
+const detailMap = Object.fromEntries(detail.map((d) => [`${d.gclfCd}|${d.year}`, d]));
 const probeMap = Object.fromEntries(probes.map((p) => [p.gclfCd, p]));
 const projects = central.map((r) => {
   const name = repair(r.plcNm);
   const p = {
-    g: r.gclfCd, y: r.year, cd: r.nstCd, nm: r.nstNm, name,
+    id: `${r.gclfCd}|${r.year}`, g: r.gclfCd, y: r.year, cd: r.nstCd, nm: r.nstNm, name,
     dept: repair(r.chgrDeptNm), role: mask(r.chgrNm), period: repair(r.prjtPerd),
     crit: normCrit(r.slctnStdr), critRaw: repair(r.slctnStdr), status: r.statusCd,
     inq: n(r.inqCnt), reg: (r.frstRgstPot || "").slice(0, 10), upd: (r.lastUpdtPot || "").slice(0, 10),
     summary: repair(r.prjtSmry), bg: r.year >= 2025 ? repair(r.prtnCtt) : "",
-    hasDetail: !!detailMap[r.gclfCd], hasProbe: !!probeMap[r.gclfCd],
+    hasDetail: !!detailMap[`${r.gclfCd}|${r.year}`], hasProbe: !!probeMap[r.gclfCd],
   };
   if (decode(r.plcNm).trim() !== name) p.raw = decode(r.plcNm).trim();
   if (r.year < 2025 && p.summary.length > 120) p.summary = p.summary.slice(0, 120) + "…";
@@ -127,10 +127,10 @@ for (const p of projects) {
   o.years[p.y] = (o.years[p.y] || 0) + 1;
   if (p.y === 2025) o.inq2025.push(p.inq);
 }
-for (const d of detail) { const o = orgMap[central.find((c) => c.gclfCd === d.gclfCd)?.nstCd]; if (o) { o.sampled++; if (d.wonmunCnt > 0) o.linked++; } }
+for (const d of detail) { const o = orgMap[central.find((c) => c.gclfCd === d.gclfCd && c.year === d.year)?.nstCd]; if (o) { o.sampled++; if (d.wonmunCnt > 0) o.linked++; } }
 const orgs = Object.values(orgMap).map((o) => ({ cd: o.cd, nm: o.nm, years: o.years, inqMed2025: o.inq2025.length ? median(o.inq2025) : null, sampled: o.sampled, linked: o.linked, lastYear: Math.max(...Object.keys(o.years).map(Number)) })).sort((a, b) => a.nm.localeCompare(b.nm, "ko"));
 
-const details = Object.fromEntries(detail.map((d) => [d.gclfCd, {
+const details = Object.fromEntries(detail.map((d) => [`${d.gclfCd}|${d.year}`, {
   prtn: d.prtn.map((p) => ({ p: repair(p.prjtPerd), info: decode(p.prtnInfo || "").trim(), aprv: mask(p.aprvInfo) })),
   wonmunCnt: d.wonmun.length,
   wonmun: [...d.wonmun].sort((a, b) => String(b.prdnDt || "").localeCompare(String(a.prdnDt || ""))).slice(0, 30).map((w) => ({ title: repair(w.infoSj), date: (w.prdnDt || "").slice(0, 8), aprv: mask(w.aprvInfo), id: w.prdnNstRgstNo, cd: w.nstCd })),
@@ -143,14 +143,15 @@ const probeOut = Object.fromEntries(probes.map((p) => [p.gclfCd, {
 
 /* ── computed values (single source for numbers in the page) ─────────── */
 const by = (y) => projects.filter((p) => p.y === y);
-const sumLen = median(projects.map((p) => repair(central.find((c) => c.gclfCd === p.g).prjtSmry).length));
+const sumLen = median(central.map((c) => repair(c.prjtSmry).length));
 const prtnAll = detail.flatMap((d) => d.prtn);
 const upd = (y) => { const rs = central.filter((r) => r.year === y); return Math.round(rs.filter((r) => (r.lastUpdtPot || "").slice(0, 10) !== (r.frstRgstPot || "").slice(0, 10)).length / rs.length * 100); };
 const inq0 = (y) => { const rs = by(y); return Math.round(rs.filter((p) => p.inq === 0).length / rs.length * 100); };
 const nat = (y) => central.filter((r) => r.year === y && /국민/.test(r.slctnStdr || "")).length;
 const ent = central.filter((r) => /&#\d+;|&amp;|&lt;|&quot;/.test((r.plcNm || "") + (r.prjtSmry || "") + (r.prtnCtt || ""))).length;
 const moj = central.filter((r) => /？/.test((r.plcNm || "") + (r.prjtSmry || "") + (r.prtnCtt || ""))).length;
-const keyRepeat = (() => { const m = {}; for (const r of central) { const k = r.nstNm + "|" + (r.plcNm || "").replace(/\s/g, ""); (m[k] ??= new Set()).add(r.year); } const v = Object.values(m); return { multi: v.filter((s) => s.size >= 2).length, five: v.filter((s) => s.size >= 5).length, distinct: v.length }; })();
+const idYears = (() => { const m = {}; for (const r of central) (m[r.gclfCd] ??= new Set()).add(r.year); const v = Object.values(m); return { distinct: v.length, multi: v.filter((s) => s.size >= 2).length, five: v.filter((s) => s.size >= 5).length }; })();
+const keyRepeat = (() => { const m = {}; for (const r of central) { const k = r.nstNm + "|" + (r.plcNm || "").replace(/\s/g, ""); const e = (m[k] ??= { years: new Set(), ids: new Set() }); e.years.add(r.year); e.ids.add(r.gclfCd); } const v = Object.values(m).filter((e) => e.years.size >= 2); return { multi: v.length, five: v.filter((e) => e.years.size >= 5).length, distinct: Object.keys(m).length, sameId: v.filter((e) => e.ids.size === 1).length, newId: v.filter((e) => e.ids.size > 1).length }; })();
 const linked = detail.filter((d) => d.wonmunCnt > 0);
 const bad = localLinks.filter((l) => l.status !== "200" || (l.hit && l.hit !== "Y" && !/실명/.test(l.title)));
 const befTot = stats.bef.map((l) => ({ cnt: l.reduce((a, x) => a + n(x.cnt), 0), inq: l.reduce((a, x) => a + n(x.inqireCnt), 0) }));
@@ -159,7 +160,7 @@ const og = { c25: orgRate("01_2025"), c26: orgRate("01_2026"), l25: orgRate("02_
 const c26list = stats.org["01_2026"].rtnList.filter((x) => x.insttNm).map((x) => ({ nm: x.insttNm, tot: n(x.TOTCNT), op: n(x.OPCNT), rate: Math.round(n(x.OPCNT) / Math.max(1, n(x.TOTCNT)) * 100) })).sort((a, b) => a.rate - b.rate);
 const prevBad = prevLinks.filter((r) => r[2] !== "200").length;
 const probeDone = probes.filter((p) => !p.prev?.err && !p.orginl?.err);
-const probeStats = probeDone.length ? { n: probeDone.length, prev0: probeDone.filter((p) => p.prev.total === 0).length, org0: probeDone.filter((p) => p.orginl.total === 0).length, both0: probeDone.filter((p) => p.prev.total === 0 && p.orginl.total === 0).length, prevMed: median(probeDone.map((p) => p.prev.total)), orgMed: median(probeDone.map((p) => p.orginl.total)) } : null;
+const probeStats = probeDone.length ? { n: probeDone.length, prev0: probeDone.filter((p) => !(p.prev.total > 0)).length, org0: probeDone.filter((p) => !(p.orginl.total > 0)).length, both0: probeDone.filter((p) => !(p.prev.total > 0) && !(p.orginl.total > 0)).length, prevMed: median(probeDone.map((p) => Number(p.prev.total) || 0)), orgMed: median(probeDone.map((p) => Number(p.orginl.total) || 0)) } : null;
 
 const vals = {
   snapshot: SNAPSHOT,
@@ -170,7 +171,7 @@ const vals = {
   rn_detail_n: detail.length, rn_linked: linked.length, rn_linked_rate: Math.round(linked.length / Math.max(1, detail.length) * 100), rn_linked_med: median(linked.map((d) => d.wonmunCnt)),
   rn_upd2024: upd(2024), rn_upd2025: upd(2025), rn_inqmed2018: median(by(2018).map((p) => p.inq)), rn_inqmed2025: median(by(2025).map((p) => p.inq)), rn_inqmed2026: median(by(2026).map((p) => p.inq)), rn_inq0_2025: inq0(2025), rn_inq0_2026: inq0(2026),
   rn_nat2018: nat(2018), rn_nat2025: nat(2025), rn_ent: ent, rn_ent_pct: Math.round(ent / central.length * 100), rn_moj: moj, rn_moj_pct: Math.round(moj / central.length * 100),
-  rn_repeat: keyRepeat.multi, rn_repeat5: keyRepeat.five, rn_links: localLinks.length, rn_links_bad: bad.length, rn_per_org2025: (by(2025).length / new Set(by(2025).map((p) => p.cd)).size).toFixed(1),
+  rn_repeat: keyRepeat.multi, rn_repeat5: keyRepeat.five, rn_repeat_sameid: keyRepeat.sameId, rn_repeat_newid: keyRepeat.newId, rn_ids: idYears.distinct, rn_ids_multi: idYears.multi, rn_ids5: idYears.five, rn_links: localLinks.length, rn_links_bad: bad.length, rn_per_org2025: (by(2025).length / new Set(by(2025).map((p) => p.cd)).size).toFixed(1),
   pv_total: stats.cycle.total_list, pv_c: befTot[0].cnt, pv_l: befTot[1].cnt, pv_e: befTot[2].cnt, pv_p: befTot[3].cnt, pv_inq_c: (befTot[0].inq / befTot[0].cnt).toFixed(1), pv_inq_l: (befTot[1].inq / befTot[1].cnt).toFixed(1), pv_inq_p: (befTot[3].inq / befTot[3].cnt).toFixed(1),
   pv_detail_len: stats.recent.detail_len_median, pv_recent_n: stats.recent.n, pv_recent_inq0: Math.round(stats.recent.inq_zero / stats.recent.n * 100),
   pv_cycle_n: stats.cycle.n, pv_cy_year: stats.cycle.cycle["매년"] || 0, pv_cy_adhoc: stats.cycle.cycle["수시"] || 0, pv_cy_month: stats.cycle.cycle["매월"] || 0, pv_cy_half: stats.cycle.cycle["반기"] || 0, pv_cy_q: stats.cycle.cycle["분기"] || 0, pv_cy_week: stats.cycle.cycle["매주"] || 0,
@@ -192,7 +193,7 @@ const notes = [
   { id: "n_rn_inq", text: `포털 조회수(inqCnt) 사업당 중앙값 2018년 ${vals.rn_inqmed2018}회 → 2025년 ${vals.rn_inqmed2025}회 → 2026년 ${vals.rn_inqmed2026}회. 조회 0 비율 2025년 ${vals.rn_inq0_2025}%, 2026년 ${vals.rn_inq0_2026}%. 상세 페이지 진입 시 올라가는 값이라 내부 확인·봇이 섞일 수 있으나 낮은 쪽으로 편향되지는 않음.`, sample: "전수", date: SNAPSHOT },
   { id: "n_rn_local", text: `정책실명제 첫 화면의 지자체·교육청 외부 링크 ${vals.rn_links}개를 HTTP로 열어 상태코드·최종 URL·페이지 내 '실명' 문자열 유무를 확인. 404·응답없음 또는 메인·업무추진비·로그인 화면으로 떨어진 링크 ${vals.rn_links_bad}개. '엉뚱한 곳' 판정은 문자열 부재 기준이라 실제는 더 많을 수 있음.`, sample: `${vals.rn_links}개`, date: SNAPSHOT },
   { id: "n_rn_request", text: `선정기준(slctnStdr)에 '국민'이 포함된 사업 수: 2018년 ${vals.rn_nat2018}건 → 2025년 ${vals.rn_nat2025}건. 규정 §63의3①5호의 국민 신청 사업. 포털에 신청 창구는 없고 기관이 각자 접수.`, sample: "전수", date: SNAPSHOT },
-  { id: "n_rn_quality", text: `HTML 엔티티(&#40; 등)가 그대로 노출된 사업 ${vals.rn_ent.toLocaleString()}건(${vals.rn_ent_pct}%), 가운뎃점이 '？'로 깨진 사업 ${vals.rn_moj.toLocaleString()}건(${vals.rn_moj_pct}%). 이 페이지에서는 복구해 표시하고 원문을 작은 글씨로 병기. 선정기준은 자유입력(15가지 이상 표기)이라 6호 체계로 정규화해 표시하고 원문 병기. 기관명+사업명이 같은 사업 ${vals.rn_repeat.toLocaleString()}개가 2년 이상, ${vals.rn_repeat5}개가 5년 이상 반복 등록되지만 연도 간 ID 연결은 없음.`, sample: "전수", date: SNAPSHOT },
+  { id: "n_rn_quality", text: `HTML 엔티티(&#40; 등)가 그대로 노출된 사업 ${vals.rn_ent.toLocaleString()}건(${vals.rn_ent_pct}%), 가운뎃점이 '？'로 깨진 사업 ${vals.rn_moj.toLocaleString()}건(${vals.rn_moj_pct}%). 이 페이지에서는 복구해 표시하고 원문을 작은 글씨로 병기. 선정기준은 자유입력(15가지 이상 표기)이라 6호 체계로 정규화해 표시하고 원문 병기. 사업 ID(gclfCd)는 ${vals.rn_total.toLocaleString()}행에 ${vals.rn_ids.toLocaleString()}개이며 ${vals.rn_ids_multi.toLocaleString()}개가 2년 이상, ${vals.rn_ids5}개가 5년 이상 같은 ID로 이어진다. 기관명+사업명이 같은 반복 사업 ${vals.rn_repeat.toLocaleString()}개 중 ID가 유지된 것은 ${vals.rn_repeat_sameid}개, 새 ID로 다시 등록된 것은 ${vals.rn_repeat_newid}개라 연도 간 연결이 일관되지 않고, 포털 화면은 연도별 목록뿐이라 이력을 이어 볼 수 없다.`, sample: "전수", date: SNAPSHOT },
   { id: "n_pv_source", text: `사전정보공표 총 항목 수는 포털 목록 total ${vals.pv_total.toLocaleString()}. 기관유형별 항목·조회 합계는 '숫자로 보는 정보공개 > 사전정보수'(befInf.ajax): 중앙 ${vals.pv_c.toLocaleString()} · 지방자치단체 ${vals.pv_l.toLocaleString()} · 교육청 ${vals.pv_e.toLocaleString()} · 공공기관 ${vals.pv_p.toLocaleString()}(${vals.pv_org450}곳). 합계가 목록 total과 약간 다른 것은 통계 집계 시점 차이.`, sample: "포털 통계", date: SNAPSHOT },
   { id: "n_pv_depth", text: `항목 구조는 상세 페이지 내장 JSON 기준: 제목(bfpbInfoSj)·세부항목(dtlDtls)·주기(cycleNm)·시기(eraDtls)·공개방법(mthCd)·홈페이지(infoLcUrl). 세부항목 글자 수 중앙값 ${vals.pv_detail_len}자(최근 ${vals.pv_recent_n}건 표본, 49일치 신규 등록). 내용 본문은 포털에 없고 링크 너머에 있음.`, sample: `${vals.pv_recent_n}건`, date: SNAPSHOT },
   { id: "n_pv_cycle", text: `주기(cycleNm) 분포, 최근 등록 항목 ${vals.pv_cycle_n}개 표본: 매년 ${vals.pv_cy_year} · 수시 ${vals.pv_cy_adhoc} · 매월 ${vals.pv_cy_month} · 반기 ${vals.pv_cy_half} · 분기 ${vals.pv_cy_q} · 매주 ${vals.pv_cy_week}. 표본이 작아 전체 비율과 다를 수 있음.`, sample: `${vals.pv_cycle_n}개`, date: SNAPSHOT },
@@ -201,7 +202,7 @@ const notes = [
   { id: "n_og_source", text: `원문공개 등록·공개 건수는 '숫자로 보는 정보공개 > 원문공개율'(orgOthbcRate.ajax, gvrnType 01~04). 2025년 연간(12월 31일 기준): 중앙 ${vals.og_c25_tot.toLocaleString()} 등록 / ${vals.og_c25_op.toLocaleString()} 공개(${vals.og_c25_rate}%) · 지자체 ${vals.og_l25_tot.toLocaleString()}(${vals.og_l25_rate}%) · 교육청 ${vals.og_e25_tot.toLocaleString()}(${vals.og_e25_rate}%, 각급 학교 포함 표시값) · 공기업·준정부기관 ${vals.og_p25_n}곳 ${vals.og_p25_tot.toLocaleString()}(${vals.og_p25_rate}%). 2026년 8월 31일 기준 중앙 ${vals.og_c26_tot.toLocaleString()} / ${vals.og_c26_op.toLocaleString()}(${vals.og_c26_rate}%).`, sample: "포털 통계", date: SNAPSHOT },
   { id: "n_og_depth", text: `원문 1건의 분량은 코퍼스 본문 수집 ${vals.og_body_n}건 평균 ${vals.og_body_chars.toLocaleString()}자(본문 PDF + 첨부 HWP). 결재선은 정책실명제 상세의 '관련 원문' aprvInfo 필드에 '기안 > 검토 > 병렬협조 > 전결' 형태로 들어 있음.`, sample: `${vals.og_body_n}건`, date: "2026-08-22" },
   { id: "n_og_scope", text: `"중앙은 국장급 이상 결재문서만 원문공개 대상"이라는 범위는 정보공개과 담당자 설명이며, 코퍼스 결재자 직급 코드 분포(한 코드가 91%)와 부합하나 시행령·지침 문구로 재확인이 필요함. 기관별 공개율은 2026년 8월 기준 최저 ${vals.og_low1}, ${vals.og_low2}, 최고 ${vals.og_high}.`, sample: "구두 확인", date: SNAPSHOT },
-  { id: "n_probe", text: `사업 대조는 2025~2026년 정책실명제 사업 ${vals.probe_n}건에 대해 사업명에서 불용어·접미어를 뗀 첫 명사구 하나를 검색어로 삼아 (가) 사전정보공표 전 기관·2014년 이후, (나) 원문공개 해당 기관·2025년 1월 1일 이후를 포털 검색(AJAX)한 결과. 검색어 규칙은 자동이라 사업에 따라 너무 넓거나(예: '개인정보') 좁을 수 있음. 각 결과 첫 줄에 검색어를 표시. 2018~2024년 사업은 대조 미수집.`, sample: `${vals.probe_n}건`, date: SNAPSHOT },
+  { id: "n_probe", text: `사업 대조는 2025~2026년 정책실명제 사업 ${vals.probe_n}건에 대해 사업명에서 불용어·접미어를 뗀 첫 명사구 하나를 검색어로 삼아 (가) 사전정보공표 전 기관·2014년 이후, (나) 원문공개 해당 기관·2025년 1월 1일 이후를 포털 검색(AJAX)한 결과. 검색어 규칙은 자동이라 사업에 따라 너무 넓거나(예: '개인정보') 좁을 수 있음. 각 결과 첫 줄에 검색어를 표시. 2018~2024년 사업은 대조 미수집. 결과: ${vals.probe_n}건 중 사전정보 0건 ${vals.probe_prev0}건, 원문 0건 ${vals.probe_org0}건, 둘 다 0건 ${vals.probe_both0}건.`, sample: `${vals.probe_n}건`, date: SNAPSHOT },
   { id: "n_names", text: WITH_NAMES ? "이 빌드는 실명을 포함한 로컬 전용본이다. 배포 금지." : "담당자·결재선의 성명은 빌드 단계에서 ○○○로 치환하고 직급·역할만 남겼다. 원본은 로컬에만 있다.", sample: "-", date: SNAPSHOT },
   { id: "n_2026", text: `2026년은 등록이 진행 중인 값(9월 15일 현재 ${vals.rn_inst2026}기관 ${vals.rn_2026}건). 추세 판단은 2025년까지로 하고, 2025년 등록 ${vals.rn_inst2025}기관 중 ${vals.rn_unreg2026}곳이 9월 중순까지 미등록이라는 사실만 확정으로 본다.`, sample: "-", date: SNAPSHOT },
   { id: "n_orgnames", text: "기관명은 포털 코드표의 현행 명칭을 따른다(예: 산업통상부·성평등가족부·국가데이터처). 과거 연도 등록분도 현행 명칭으로 표시되므로 부처 개편 전후가 한 행으로 이어진다.", sample: "-", date: SNAPSHOT },

@@ -22,7 +22,7 @@ export function keyword(name) {
   for (const t of toks) {
     if (/^\d/.test(t)) continue;
     let u = t;
-    if (u.length > 2) u = u.replace(/(으로|의|을|를|과|와|에|로|은|는|이|가)$/, "");
+    if (u.length > 2) u = u.replace(/(으로|의|을|를|과|와|에)$/, "");
     while (u.length > 2) { const v = u.replace(SUFFIX, ""); if (v === u || v.length < 2) break; u = v; }
     if (u.length >= 2 && !STOP.has(u) && /[가-힣A-Za-z]/.test(u)) cands.push(u);
   }
@@ -31,7 +31,7 @@ export function keyword(name) {
 }
 
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop())) {
-  const done = new Set(fs.existsSync(OUT) ? fs.readFileSync(OUT, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l).gclfCd) : []);
+  const done = new Set(fs.existsSync(OUT) ? fs.readFileSync(OUT, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)).filter((r) => r.kwd === keyword(r.plcNm)).map((r) => r.gclfCd) : []);
   const rows = fs.readFileSync("realname/central.jsonl", "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)).filter((r) => YEARS.includes(r.year) && !done.has(r.gclfCd)).slice(0, LIMIT);
   console.error(`pending ${rows.length} (done ${done.size})`);
   let browser, page;

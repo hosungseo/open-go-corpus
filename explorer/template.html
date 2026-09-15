@@ -185,7 +185,7 @@ tr.hl td{background:var(--sel)}
   <section id="s2">
     <div class="sec-head">
       <div class="eyebrow">사업 대조기</div>
-      <p>정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. 검색어는 사업명에서 자동으로 뽑았고 결과 첫 줄에 표시한다.<sup class="note" data-note="n_probe"></sup> 2018~2024년 사업은 대조 미수집이라 정책실명제 열만 채워진다.</p>
+      <p>정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. 검색어는 사업명에서 자동으로 뽑았고 결과 첫 줄에 표시한다.<sup class="note" data-note="n_probe"></sup> 2018~2024년 사업은 대조 미수집이라 정책실명제 열만 채워진다. 결과: <span class="n" data-v="probe_n"></span>건 중 사전정보에 같은 이름이 없는 사업 <span class="n" data-v="probe_prev0"></span>건, 해당 기관 원문에 없는 사업 <span class="n" data-v="probe_org0"></span>건, 둘 다 없는 사업 <span class="n warn" data-v="probe_both0"></span>건.</p>
     </div>
     <div class="ctl">
       <label>기관 <select id="fOrg"></select></label>
@@ -292,7 +292,7 @@ tr.hl td{background:var(--sel)}
     const rows = filtered(); const cap = 200;
     $('#fCnt').textContent = rows.length ? `${rows.length.toLocaleString()}건${rows.length>cap?` 중 조회수 상위 ${cap}건 표시 · 더 좁히세요`:''}` : '0건';
     if (!rows.length) { list.innerHTML = `<div class="empty">조건에 맞는 사업이 없습니다. 2026년은 ${D.vals.rn_inst2026}기관만 등록(진행 중)이고, 2025년 이전은 기관에 따라 등록이 없습니다.</div>`; return; }
-    list.innerHTML = rows.slice(0,cap).map(p => `<div class="it ${current===p.g?'on':''}" data-g="${p.g}"><div><div class="t">${esc(p.name)}</div><div class="s">${esc(p.nm)} · ${p.y}${p.hasProbe?'':(p.y>=2025?' · <span class="badge">대조 진행 중</span>':' · <span class="badge">대조 미수집</span>')}</div></div><div class="inq">조회 ${p.inq}</div></div>`).join('');
+    list.innerHTML = rows.slice(0,cap).map(p => `<div class="it ${current===p.id?'on':''}" data-g="${p.id}"><div><div class="t">${esc(p.name)}</div><div class="s">${esc(p.nm)} · ${p.y}${p.hasProbe?'':(p.y>=2025?' · <span class="badge">대조 진행 중</span>':' · <span class="badge">대조 미수집</span>')}</div></div><div class="inq">조회 ${p.inq}</div></div>`).join('');
     list.querySelectorAll('.it').forEach(el => el.onclick = () => select(el.dataset.g, true));
   }
   function portalLinks(p){
@@ -300,10 +300,11 @@ tr.hl td{background:var(--sel)}
     return { rn, pv: 'https://www.open.go.kr/othicInfo/prevOpenInfo/othinfBefInfList.do', og: 'https://www.open.go.kr/othicInfo/infoList/orginlInfoList.do' };
   }
   function select(g, push){
-    const p = D.projects.find(x => x.g===g); if (!p) { det.innerHTML = `<div class="placeholder">해당 사업이 스냅샷(${D.snapshot})에 없습니다. 목록에서 다시 고르세요.</div>`; return; }
-    current = g; if (push) history.replaceState(null,'',`#p=${g}`);
+    const p = D.projects.find(x => x.id===g); if (!p) { det.innerHTML = `<div class="placeholder">해당 사업이 스냅샷(${D.snapshot})에 없습니다. 목록에서 다시 고르세요.</div>`; return; }
+    current = g; if (push) history.replaceState(null,'',`#p=${encodeURIComponent(g)}`);
     list.querySelectorAll('.it').forEach(el => el.classList.toggle('on', el.dataset.g===g));
-    const d = D.details[g], pr = D.probes[g], L = portalLinks(p);
+    const d = D.details[p.id], pr = D.probes[p.g], L = portalLinks(p);
+    const years = D.projects.filter(x => x.g===p.g && x.id!==p.id).map(x => x.y).sort();
     const kwline = pr ? `<div class="kwline">검색어 <span class="mono">"${esc(pr.kwd)}"</span></div>` : '';
     /* col 1 */
     const prtn = d && d.prtn.length ? `<div class="blk"><h4>추진실적 ${d.prtn.length}건</h4><ul>${d.prtn.map(x => `<li><span class="d">${esc(x.p)}</span>${esc(x.info)||'<span class="muted">(내용 없음)</span>'}<span class="sub">결재 ${esc(x.aprv)||'–'}</span></li>`).join('')}</ul></div>` : (d ? `<div class="blk"><h4>추진실적</h4><span class="muted">0건</span></div>` : `<div class="blk"><h4>추진실적</h4><span class="badge">상세 미수집(2018~2024)</span></div>`);
@@ -313,7 +314,8 @@ tr.hl td{background:var(--sel)}
       <div class="k">담당</div><div class="v">${esc(p.dept)} · ${esc(p.role)||'–'}</div>
       <div class="k">기간</div><div class="v">${esc(p.period)||'–'}</div>
       <div class="k">선정기준</div><div class="v">${esc(p.crit)}${p.critRaw && p.critRaw!==p.crit?` <span class="raw">(원문 "${esc(p.critRaw)}")</span>`:''}</div>
-      <div class="k">조회</div><div class="v">${p.inq}회 · 등록 ${esc(p.reg)}${p.upd && p.upd!==p.reg?` · 수정 ${esc(p.upd)}`:''}</div></div>
+      <div class="k">조회</div><div class="v">${p.inq}회 · 등록 ${esc(p.reg)}${p.upd && p.upd!==p.reg?` · 수정 ${esc(p.upd)}`:''}</div>
+      ${years.length?`<div class="k">같은 ID</div><div class="v">${years.map(y => `<a href="#p=${encodeURIComponent(p.g)}|${y}">${y}</a>`).join(' · ')} <span class="muted">에도 등록</span></div>`:''}</div>
       <div class="blk"><h4>사업 개요 <span class="muted">(${p.summary.length}자)</span></h4>${esc(p.summary)||'<span class="muted">없음</span>'}</div>
       ${p.bg?`<div class="blk"><h4>추진 배경</h4>${esc(p.bg)}</div>`:''}
       ${prtn}
@@ -336,7 +338,7 @@ tr.hl td{background:var(--sel)}
       <div class="blk"><h4>최근 ${pr.orginl.items.length}건</h4><ul>${pr.orginl.items.map(i => `<li><span class="d">${esc(i.date)}</span>${esc(i.title)}<span class="sub">${esc(i.dept)||esc(i.inst)}</span></li>`).join('')}</ul></div>`}
       ${won}
       <div class="blk"><a href="${L.og}" target="_blank" rel="noopener">원문 검색 ↗</a></div></div>`;
-    det.innerHTML = `<div class="cols">${c1}${c2}${c3}</div><div class="share"><button type="button" id="copyLink">이 화면 링크 복사</button><span class="mono">#p=${esc(g)}</span></div>`;
+    det.innerHTML = `<div class="cols">${c1}${c2}${c3}</div><div class="share"><button type="button" id="copyLink">이 화면 링크 복사</button><span class="mono">#p=${esc(p.id)}</span></div>`;
     $('#copyLink').onclick = () => { const u = location.href.split('#')[0] + '#p=' + g; navigator.clipboard?.writeText(u).then(()=>{ $('#copyLink').textContent='복사됨'; setTimeout(()=>$('#copyLink').textContent='이 화면 링크 복사',1500); }); };
     wireNotes(det);
   }
@@ -371,7 +373,7 @@ tr.hl td{background:var(--sel)}
   secs.forEach(id => io.observe(document.getElementById(id)));
   function route(){
     const h = location.hash.slice(1);
-    if (h.startsWith('p=')) { const g = h.slice(2); const p = D.projects.find(x=>x.g===g); if (p) { fOrg.value = p.cd; fYear.value = String(p.y); fQ.value=''; } renderList(); select(g,false); document.getElementById('s2').scrollIntoView(); }
+    if (h.startsWith('p=')) { const g = decodeURIComponent(h.slice(2)); const p = D.projects.find(x=>x.id===g); if (p) { fOrg.value = p.cd; fYear.value = String(p.y); fQ.value=''; } renderList(); select(g,false); document.getElementById('s2').scrollIntoView(); }
     else if (h.startsWith('org=')) { const cd = h.slice(4); const tr = document.getElementById('org-'+cd); if (tr) { document.querySelectorAll('#matrix tr.hl').forEach(t=>t.classList.remove('hl')); tr.classList.add('hl'); tr.scrollIntoView({block:'center'}); } }
   }
   renderList(); renderMatrix(); wireNotes();
