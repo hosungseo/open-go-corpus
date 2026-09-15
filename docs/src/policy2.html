@@ -95,10 +95,15 @@
 .rn2 .related{margin-top:12px;font-size:13px}
 .rn2 .related .rr{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px dashed var(--rule-2);cursor:pointer}.rn2 .related .rr:hover{color:var(--em)}
 .rn2 .lg{font-size:12px;color:var(--ink-3);margin-top:12px;padding-top:10px;border-top:1px solid var(--rule-2)}
-.rn2 .pt3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0 4px}
-.rn2 .pt3>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:14.5px;line-height:1.6}
-.rn2 .pt3 b{display:block;font-family:var(--serif);font-size:16px;margin-bottom:4px}
-@media (max-width:1000px){.rn2 .split{grid-template-columns:1fr}.rn2 .vw{position:static}.rn2 .pt3{grid-template-columns:1fr}}
+.rn2 .pt3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:12px 0 4px}
+.rn2 .pt3>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px 16px;font-size:14.5px;line-height:1.6;display:flex;flex-direction:column}
+.rn2 .pt3 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);font-weight:600}
+.rn2 .pt3 .fig{margin:10px 0 12px;border:1px solid var(--rule-2);background:var(--paper);height:118px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.rn2 .pt3 .fig svg{width:100%;height:100%;font-family:var(--mono)}
+.rn2 .pt3 b{display:block;font-family:var(--serif);font-size:16.5px;margin-bottom:4px}
+.rn2 .pt3 p{margin:0;font-size:14px;color:var(--ink-2);max-width:none}
+section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);font-weight:600;margin-bottom:6px;font-family:var(--mono)}
+@media (max-width:1000px){.rn2 .split{grid-template-columns:1fr}.rn2 .vw{position:static}.rn2 .pt3{grid-template-columns:1fr}.rn2 .pt3 .fig{height:100px}}
 </style>
 </head>
 <body>
@@ -116,16 +121,40 @@
   </header>
 
   <section class="core" id="idea">
+    <div class="eyebrow">장치 · 셋</div>
     <h2>세 제도를 하나의 계보로 잇는 세 가지 장치</h2>
     <div class="rn2"><div class="pt3">
-      <div><b>정책 번호</b>정책마다 고유 ID를 준다. 예산 사업코드나 국정과제 번호를 그대로 쓰면 재정·국정과제 시스템과 자동으로 연결된다. 지금은 같은 사업이 해마다 이름이 바뀌어 사람도 이어붙이기 어렵다.</div>
-      <div><b>결재 시 태깅</b>공무원이 결재할 때 정책 번호 하나를 고른다. 그 문서는 원문공개에서 이 정책의 근거문서로 자동 편입되고, 결재선의 기안·검토·협조·전결이 참여자와 역할로 자동 채워진다.</div>
-      <div><b>없는 것도 보이게</b>근거문서가 원문공개에 없으면 "없음"이 그대로 표시되고 그 자리에서 청구할 수 있다. 지금은 "관련 결재문서가 없습니다" 한 줄로 덮인다. 빈칸이 보여야 기관이 채운다.</div>
+      <div><span class="tag">정책 번호</span><div class="fig"><svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+  <rect x="98" y="38" width="104" height="30" rx="4" fill="#1F4E9C"/><text x="150" y="58" font-size="13" fill="#fff" text-anchor="middle" font-weight="600">MOIS-P-0117</text>
+  <line x1="98" y1="53" x2="52" y2="24" stroke="#7C8A9C" stroke-width="1.5"/><line x1="98" y1="53" x2="52" y2="84" stroke="#7C8A9C" stroke-width="1.5"/><line x1="202" y1="53" x2="248" y2="24" stroke="#7C8A9C" stroke-width="1.5"/><line x1="202" y1="53" x2="248" y2="84" stroke="#7C8A9C" stroke-width="1.5"/>
+  <rect x="6" y="12" width="70" height="24" rx="3" fill="#fff" stroke="#D5DCE4"/><text x="41" y="28" font-size="10.5" fill="#4B5A6E" text-anchor="middle">예산 사업코드</text>
+  <rect x="6" y="72" width="70" height="24" rx="3" fill="#fff" stroke="#D5DCE4"/><text x="41" y="88" font-size="10.5" fill="#4B5A6E" text-anchor="middle">국정과제 56</text>
+  <rect x="224" y="12" width="70" height="24" rx="3" fill="#fff" stroke="#D5DCE4"/><text x="259" y="28" font-size="10.5" fill="#4B5A6E" text-anchor="middle">결재문서 ×184</text>
+  <rect x="224" y="72" width="70" height="24" rx="3" fill="#fff" stroke="#D5DCE4"/><text x="259" y="88" font-size="10.5" fill="#4B5A6E" text-anchor="middle">정기 데이터</text>
+</svg></div><b>정책마다 고유 번호를 준다</b><p>예산 사업코드나 국정과제 번호를 그대로 쓰면 재정·국정과제 시스템과 자동으로 연결된다. 지금은 같은 사업이 해마다 이름이 바뀌어 사람도 이어붙이기 어렵다.</p></div>
+      <div><span class="tag">결재 시 태깅</span><div class="fig"><svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+  <rect x="14" y="58" width="272" height="36" rx="4" fill="#fff" stroke="#D5DCE4"/>
+  <text x="34" y="80" font-size="11.5" fill="#1B2A41">기안</text><text x="70" y="80" font-size="11" fill="#7C8A9C">›</text>
+  <text x="84" y="80" font-size="11.5" fill="#1B2A41">검토</text><text x="120" y="80" font-size="11" fill="#7C8A9C">›</text>
+  <text x="134" y="80" font-size="11.5" fill="#1B2A41">협조</text><text x="170" y="80" font-size="11" fill="#7C8A9C">›</text>
+  <text x="184" y="80" font-size="11.5" fill="#B8312F" font-weight="600">전결</text>
+  <rect x="222" y="65" width="56" height="22" rx="3" fill="#EEF1F4"/><text x="250" y="80" font-size="10" fill="#4B5A6E" text-anchor="middle">결재문서</text>
+  <rect x="98" y="14" width="104" height="26" rx="4" fill="#1F4E9C"/><text x="150" y="31" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">정책 번호 선택</text>
+  <path d="M150 40 L150 56" stroke="#1F4E9C" stroke-width="2"/><path d="M144 50 L150 57 L156 50" fill="none" stroke="#1F4E9C" stroke-width="2"/>
+</svg></div><b>결재할 때 번호 하나를 고른다</b><p>그 문서는 원문공개에서 이 정책의 근거문서로 자동 편입되고, 결재선의 기안·검토·협조·전결이 참여자와 역할로 자동 채워진다. 새로 적을 실명은 없다.</p></div>
+      <div><span class="tag">없는 것도 보이게</span><div class="fig"><svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="16" y="24" font-size="11" fill="#7C8A9C">근거문서</text><text x="284" y="24" font-size="11" fill="#B8312F" text-anchor="end" font-weight="600">원문 1 / 4</text>
+  <rect x="16" y="34" width="60" height="60" rx="3" fill="#E6F1F1" stroke="#2E6F73"/><text x="46" y="68" font-size="10.5" fill="#2E6F73" text-anchor="middle">PDF</text>
+  <rect x="86" y="34" width="60" height="60" rx="3" fill="#FBECEC" stroke="#B8312F" stroke-dasharray="4 3"/><text x="116" y="64" font-size="10" fill="#B8312F" text-anchor="middle">미등록</text><text x="116" y="78" font-size="9" fill="#B8312F" text-anchor="middle">청구 ›</text>
+  <rect x="156" y="34" width="60" height="60" rx="3" fill="#FBECEC" stroke="#B8312F" stroke-dasharray="4 3"/><text x="186" y="64" font-size="10" fill="#B8312F" text-anchor="middle">미등록</text><text x="186" y="78" font-size="9" fill="#B8312F" text-anchor="middle">청구 ›</text>
+  <rect x="226" y="34" width="60" height="60" rx="3" fill="#FBECEC" stroke="#B8312F" stroke-dasharray="4 3"/><text x="256" y="64" font-size="10" fill="#B8312F" text-anchor="middle">비공개</text><text x="256" y="78" font-size="9" fill="#B8312F" text-anchor="middle">청구 ›</text>
+</svg></div><b>빈칸이 보여야 기관이 채운다</b><p>근거문서가 원문공개에 없으면 "없음"이 그대로 표시되고 그 자리에서 청구할 수 있다. 지금은 "관련 결재문서가 없습니다" 한 줄로 덮인다.</p></div>
     </div></div>
   </section>
 
   <section class="core" id="screen">
-    <h2>화면: 주민자치회 법제화 및 활성화</h2>
+    <div class="eyebrow">화면 · 행정안전부 주민자치회</div>
+    <h2>정책 하나를 열면 이렇게 보인다</h2>
     <p>왼쪽은 이 사업의 4년 계보다. 연도 노드의 <b>+</b>를 누르면 그 해의 후속 조치가 가지로 펼쳐지고, 조치나 문서를 누르면 오른쪽에 내용이 뜬다. 원문이 있으면 원문이, 없으면 없는 이유와 청구 버튼이 뜬다.</p>
 
     <div class="rn2">
