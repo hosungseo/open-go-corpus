@@ -186,7 +186,7 @@ body{background:var(--cream);color:var(--ink0)}
   <!-- HERO -->
   <section class="hero">
     <div>
-      <div class="eyebrow"><i></i>정보공개포털 실측 · 2026-09-15~16 스냅샷</div>
+      <div class="eyebrow"><i></i>정보공개포털 실측 · 2026-09-15~16 기준</div>
       <h1>세 제도는<br><em>단위</em>가 다르다</h1>
       <p class="lede">사전정보공표는 <b>안내 목록</b>, 원문공개는 <b>결재문서</b>,<br>
         정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부입니다.</p>
@@ -304,7 +304,7 @@ body{background:var(--cream);color:var(--ink0)}
     <div class="head"><div><div class="eyebrow">세 페이지</div><h2>비교하고, 대조하고, 잇는다</h2><p class="sub">세 제도가 서로를 대체하지 못하는 이유, 같은 사업을 세 채널에서 나란히 놓는 대조기, 정책 하나로 결정·문서·사람을 잇는 2.0 화면입니다.</p></div></div>
     <div class="pages">
       <a class="pc" href="compare.html"><div class="img"><img src="assets/preview-compare.png" alt="세 제도 비교" loading="lazy"></div><div class="body"><span class="no">01 · 비교</span><h3>세 제도 비교</h3><p>아홉 기준 매트릭스와 그 아래 한 층 더. 항목을 고르면 세 제도의 실측치와 근거가 나란히 열린다.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-      <a class="pc" href="explorer/"><div class="img"><img src="assets/preview-explorer.png" alt="사업 대조기" loading="lazy"></div><div class="body"><span class="no">02 · 대조</span><h3>사업 대조기</h3><p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 레코드가 나란히. 기관별 현황과 근거 각주까지.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
+      <a class="pc" href="explorer/"><div class="img"><img src="assets/preview-explorer.png" alt="사업 대조기" loading="lazy"></div><div class="body"><span class="no">02 · 대조</span><h3>사업 대조기</h3><p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 등록 건이 나란히. 기관별 현황과 근거 각주까지.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
       <a class="pc" href="policy2.html"><div class="img"><img src="assets/preview-policy2.png" alt="정책실명제 2.0" loading="lazy"></div><div class="body"><span class="no">03 · 2.0</span><h3>정책실명제 2.0</h3><p>정책 하나를 열면 4년 계보, 후속 조치, 결재문서와 원문이 한 화면에. 행안부 주민자치회 사업을 실측 데이터로 옮긴 시안.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
     </div>
   </section>
@@ -369,9 +369,9 @@ body{background:var(--cream);color:var(--ink0)}
   const OV=[
     ['법률에 근거','law',['N','대통령령'],['Y','정보공개법 §7'],['Y','정보공개법 §8의2'],'정책실명제만 법률 밖'],
     ['공공기관 포함','org',['N','제외'],['Y','450곳'],['Y','88곳'],'정책실명제만 제외'],
-    ['공개 단위가 사업','unit',['Y','1사업 = 1레코드'],['N','정보 항목'],['N','결재문서'],'사업 단위는 하나뿐'],
+    ['공개 단위가 사업','unit',['Y','사업 1건이 등록 1건'],['N','정보 항목'],['N','결재문서'],'사업 단위는 하나뿐'],
     ['관련자 실명·역할','names',['P','담당자+결재선'],['N','부서까지'],['Y','기안→검토→전결'],'원문에 다 있다'],
-    ['예산·집행 정보','fields',['N','필드 없음'],['P','안내만'],['P','문서에 있으면'],'셋 다 정형 필드 없음'],
+    ['예산·집행 정보','fields',['N','기재란 없음'],['P','안내만'],['P','문서에 있으면'],'셋 다 적는 칸이 없다'],
     ['내용 본문이 포털 안에','depth',['P','개요 한 문단'],['N','링크 너머'],['Y','본문+첨부'],'내용은 원문에만'],
     ['상시 갱신','cycle',['N','연 1회'],['N','매년·수시 81%'],['Y','결재 즉시'],'분기 갱신은 없다'],
     ['국민 신청 창구','people',['P','규정엔, 포털엔 없음'],['N','—'],['N','—'],'창구가 없다'],

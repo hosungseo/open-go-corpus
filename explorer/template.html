@@ -150,7 +150,7 @@ tr.hl td{background:var(--sel)}
       </ul></div>
     </div>
 
-    <h3 id="basis">근거·방법 <span class="muted" style="font-weight:400;font-size:14px">각주 <span id="noteCount"></span>개 · <span data-v="snapshot"></span> 스냅샷</span></h3>
+    <h3 id="basis">근거·방법 <span class="muted" style="font-weight:400;font-size:14px">각주 <span id="noteCount"></span>개 · <span data-v="snapshot"></span> 기준</span></h3>
     <div class="notes"><ol id="notes"></ol></div>
     <p class="muted" style="font-size:13px;margin-top:14px">빌드 <span id="buildInfo"></span> · 재생성 <code class="mono">node tools/build-explorer.mjs</code> · 실명 처리<sup class="note" data-note="n_names"></sup></p>
   </section>
@@ -203,7 +203,7 @@ tr.hl td{background:var(--sel)}
     return { rn, pv: 'https://www.open.go.kr/othicInfo/prevOpenInfo/othinfBefInfList.do', og: 'https://www.open.go.kr/othicInfo/infoList/orginlInfoList.do' };
   }
   function select(g, push){
-    const p = D.projects.find(x => x.id===g); if (!p) { det.innerHTML = `<div class="placeholder">해당 사업이 스냅샷(${D.snapshot})에 없습니다. 목록에서 다시 고르세요.</div>`; return; }
+    const p = D.projects.find(x => x.id===g); if (!p) { det.innerHTML = `<div class="placeholder">해당 사업이 이 기준일(${D.snapshot}) 자료에 없습니다. 목록에서 다시 고르세요.</div>`; return; }
     current = g; if (push) history.replaceState(null,'',`#p=${encodeURIComponent(g)}`);
     const exT = $('#exTitle'); if (exT) exT.textContent = (push ? '' : '예시 사업: ') + p.name;
     list.querySelectorAll('.it').forEach(el => el.classList.toggle('on', el.dataset.g===g));
@@ -212,7 +212,7 @@ tr.hl td{background:var(--sel)}
     const kwline = pr ? `<div class="kwline">검색어 <span class="mono">"${esc(pr.kwd)}"</span></div>` : '';
     /* col 1 */
     const prtn = d && d.prtn.length ? `<div class="blk"><h4>추진실적 ${d.prtn.length}건</h4><ul>${d.prtn.map(x => `<li><span class="d">${esc(x.p)}</span>${esc(x.info)||'<span class="muted">(내용 없음)</span>'}<span class="sub">결재 ${esc(x.aprv)||'–'}</span></li>`).join('')}</ul></div>` : (d ? `<div class="blk"><h4>추진실적</h4><span class="muted">0건</span></div>` : `<div class="blk"><h4>추진실적</h4><span class="badge">상세 미수집(2018~2024)</span></div>`);
-    const c1 = `<div class="col rn"><h3>정책실명제 <span class="c">사업 레코드</span></h3>
+    const c1 = `<div class="col rn"><h3>정책실명제 <span class="c">사업 등록 건</span></h3>
       <div style="font-size:15px;font-weight:600;line-height:1.4;margin-bottom:6px">${esc(p.name)}${p.raw?`<div class="raw">포털 원문: ${esc(p.raw)}</div>`:''}</div>
       <div class="kv"><div class="k">기관</div><div class="v">${esc(p.nm)} · ${p.y}${p.y===2026?' <span class="badge">진행 중</span>':''}</div>
       <div class="k">담당</div><div class="v">${esc(p.dept)} · ${esc(p.role)||'–'}</div>
