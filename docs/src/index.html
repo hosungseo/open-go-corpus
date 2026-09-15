@@ -191,7 +191,7 @@ body{background:var(--cream);color:var(--ink0)}
       <p class="lede">사전정보공표는 <b>안내 목록</b>, 원문공개는 <b>결재문서</b>,<br>
         정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부입니다.</p>
       <p class="lede">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데,<br>
-        셋 중 가장 얕고 가장 읽히지 않습니다.</p>
+        셋 중 내용이 가장 적고, 조회도 가장 적습니다.</p>
       <div class="cta">
         <a class="p" href="explorer/">사업 대조기 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="s" href="compare.html">세 제도 비교</a>
@@ -350,10 +350,10 @@ body{background:var(--cream);color:var(--ink0)}
       <div class="row pv"><span class="k"><i></i>사전정보공표</span><span class="v">${s.prev?`${s.prevT}<small>${s.prevI} · 같은 이름의 항목</small>`:`같은 이름의 항목 없음<small>전 기관 · 2014년 이후 검색</small>`}</span><span class="n ${s.prev?'':'zero'}">${s.prev}<small>건</small></span></div>
       <div class="row og"><span class="k"><i></i>원문공개</span><span class="v">${s.org_n?`${s.orgT}<small>${s.org}${s.orgD?' · '+s.orgD:''}</small>`:`검색어 일치 문서 없음<small>${s.org} · 2025년 이후</small>`}</span><span class="n ${s.org_n?'':'zero'}">${s.org_n}<small>건</small></span></div>`;
     const v=$('#wgVerdict');
-    if(!s.prev&&!s.org_n&&!s.won){v.className='verdict bad';v.textContent='세 채널 어디에도 실체가 없다. 사업내역서의 이름과 담당자만 남는다.';}
-    else if(s.won>100){v.className='verdict';v.textContent=`원문 ${s.won}건이 붙어 있어 정책실명제가 관문 노릇을 한다. 사전정보공표 ${s.prev}건은 시군구 안내 페이지다.`;}
-    else if(!s.won){v.className='verdict bad';v.textContent=`원문공개에는 ${s.org_n}건이 있는데 정책실명제는 그것을 가리키지 않는다. 연결이 끊긴 사업.`;}
-    else{v.className='verdict';v.textContent=`세 채널에 모두 있지만 단위가 다르다. 사업(1) · 항목(${s.prev}) · 문서(${s.org_n}+${s.won}).`;}
+    if(!s.prev&&!s.org_n&&!s.won){v.className='verdict bad';v.textContent='세 채널 어디에서도 내용을 찾을 수 없습니다. 사업내역서의 이름과 담당자만 남습니다.';}
+    else if(s.won>100){v.className='verdict';v.textContent=`원문 ${s.won}건이 연결돼 있어 정책실명제에서 문서로 바로 갈 수 있습니다. 사전정보공표 ${s.prev}건은 시군구 안내 페이지입니다.`;}
+    else if(!s.won){v.className='verdict bad';v.textContent=`원문공개에는 ${s.org_n}건이 있지만 정책실명제가 이를 가리키지 않습니다. 연결이 끊긴 사업입니다.`;}
+    else{v.className='verdict';v.textContent=`세 채널에 모두 있지만 담는 단위가 다릅니다. 사업 1건 · 항목 ${s.prev}개 · 문서 ${s.org_n+s.won}건.`;}
     $('#wgMore').href='explorer/#'+encodeURIComponent(s.id);
   }
   sel.onchange=()=>draw(+sel.value); draw(0);
@@ -370,11 +370,11 @@ body{background:var(--cream);color:var(--ink0)}
     ['법률에 근거','law',['N','대통령령'],['Y','정보공개법 §7'],['Y','정보공개법 §8의2'],'정책실명제만 법률 밖'],
     ['공공기관 포함','org',['N','제외'],['Y','450곳'],['Y','88곳'],'정책실명제만 제외'],
     ['공개 단위가 사업','unit',['Y','사업 1건이 등록 1건'],['N','정보 항목'],['N','결재문서'],'사업 단위는 하나뿐'],
-    ['관련자 실명·역할','names',['P','담당자+결재선'],['N','부서까지'],['Y','기안→검토→전결'],'원문에 다 있다'],
-    ['예산·집행 정보','fields',['N','기재란 없음'],['P','안내만'],['P','문서에 있으면'],'셋 다 적는 칸이 없다'],
+    ['관련자 실명·역할','names',['P','담당자+결재선'],['N','부서까지'],['Y','기안→검토→전결'],'원문에 다 있음'],
+    ['예산·집행 정보','fields',['N','기재란 없음'],['P','안내만'],['P','문서에 있으면'],'셋 다 기재란 없음'],
     ['내용 본문이 포털 안에','depth',['P','개요 한 문단'],['N','링크 너머'],['Y','본문+첨부'],'내용은 원문에만'],
-    ['상시 갱신','cycle',['N','연 1회'],['N','매년·수시 81%'],['Y','결재 즉시'],'분기 갱신은 없다'],
-    ['국민 신청 창구','people',['P','규정엔, 포털엔 없음'],['N','—'],['N','—'],'창구가 없다'],
+    ['상시 갱신','cycle',['N','연 1회'],['N','매년·수시 81%'],['Y','결재 즉시'],'분기 갱신 없음'],
+    ['국민 신청 창구','people',['P','규정엔, 포털엔 없음'],['N','—'],['N','—'],'창구 없음'],
     ['지자체 데이터가 포털에','local',['N','링크 261개'],['P','항목만'],['Y','118만 건'],'지자체는 원문에만'],
   ];
   const c=([s,t])=>`<td><span class="c">${D[s]}${t}</span></td>`;

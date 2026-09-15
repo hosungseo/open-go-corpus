@@ -128,7 +128,7 @@ tr.hl td{background:var(--sel)}
     <div class="tbl"><table id="matrix"></table></div>
 
     <h3 id="links-h">지자체·교육청 링크 상태</h3>
-    <p class="cap">포털에 지자체·교육청 정책실명제 사업 데이터는 없다. 첫 화면의 외부 링크 <span class="n" data-v="rn_links"></span>개를 열어본 결과다.<sup class="note" data-note="n_rn_local"></sup></p>
+    <p class="cap">포털에 지자체·교육청 정책실명제 사업 자료 없음. 첫 화면의 외부 링크 <span class="n" data-v="rn_links"></span>개를 열어본 결과다.<sup class="note" data-note="n_rn_local"></sup></p>
     <div class="mlegend" id="linkSummary"></div>
     <div class="tbl"><table id="links"></table></div>
 
@@ -229,7 +229,7 @@ tr.hl td{background:var(--sel)}
     if (!pr) c2 = `<div class="col pv"><h3>사전정보공표</h3><span class="badge">${p.y>=2025?'대조 진행 중 (배치 수집 미완)':'대조 미수집 (2018~2024년분)'}</span><div class="blk">포털 사전정보 검색에서 사업명으로 직접 찾을 수 있다. <a href="${L.pv}" target="_blank" rel="noopener">사전정보 검색 ↗</a></div></div>`;
     else if (pr.prev.err) c2 = `<div class="col pv"><h3>사전정보공표</h3>${kwline}<span class="badge warn">검색 실패 (${esc(pr.prev.err)})</span></div>`;
     else c2 = `<div class="col pv"><h3>사전정보공표 <span class="c">전 기관 · 2014~</span></h3>${kwline}
-      ${pr.prev.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">검색어로 등록된 사전정보 항목이 없다</span></div>`:`<div><b>${pr.prev.total.toLocaleString()}건</b> <span class="muted">항목 = 제목 + 한 줄 + 링크</span></div>
+      ${pr.prev.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">검색어로 등록된 사전정보 항목 없음</span></div>`:`<div><b>${pr.prev.total.toLocaleString()}건</b> <span class="muted">항목 = 제목 + 한 줄 + 링크</span></div>
       <div class="blk"><h4>상위 ${pr.prev.items.length}건</h4><ul>${pr.prev.items.map(i => `<li>${esc(i.title)}<span class="sub">${esc(i.inst)}${i.dept?' · '+esc(i.dept):''}${i.detail?' · '+esc(i.detail):''}${i.url?` · <a href="${esc(i.url)}" target="_blank" rel="noopener">링크 ↗</a>`:''}</span></li>`).join('')}</ul></div>`}
       <div class="blk"><a href="${L.pv}" target="_blank" rel="noopener">사전정보 검색 ↗</a> <span class="muted">(검색어를 넣어 확인)</span></div></div>`;
     /* col 3 */
