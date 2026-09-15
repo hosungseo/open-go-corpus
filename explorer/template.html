@@ -113,12 +113,12 @@ tr.hl td{background:var(--sel)}
     <div class="trio" id="scoreboard"></div>
 
     <h3 id="s3">기관별 등록 현황</h3>
-    <p class="cap">연도별 등록 건수. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
+    <p class="cap">연도별 등록 건수. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> "한가운데"는 그 기관의 사업을 조회수 순으로 줄 세웠을 때 한복판에 오는 사업의 값이다. 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
     <div class="ctl">
       <label>정렬 <select id="oSort">
         <option value="nm">기관명</option>
         <option value="y2025">2025년 건수</option>
-        <option value="inq">2025년 조회 중앙값</option>
+        <option value="inq">2025년 한가운데 조회수</option>
         <option value="link">원문 연결률</option>
         <option value="last">최근 등록 연도</option>
       </select></label>
@@ -256,7 +256,7 @@ tr.hl td{background:var(--sel)}
     const rate = o => o.sampled ? o.linked/o.sampled : -1;
     rows.sort((a,b) => k==='nm' ? a.nm.localeCompare(b.nm,'ko') : k==='y2025' ? (b.years[2025]||0)-(a.years[2025]||0) : k==='inq' ? (b.inqMed2025??-1)-(a.inqMed2025??-1) : k==='link' ? rate(b)-rate(a) : b.lastYear-a.lastYear);
     $('#oCnt').textContent = `${rows.length}기관 · 2025년 등록 ${rows.filter(o=>o.years[2025]).length} · 2026년 등록 ${rows.filter(o=>o.years[2026]).length}`;
-    $('#matrix').innerHTML = `<thead><tr><th>기관</th>${D.years.map(y=>`<th class="n">${y}${y===2026?'<br><span class="muted">진행 중</span>':''}</th>`).join('')}<th class="n">2025 조회<br>중앙값</th><th class="n">원문 연결</th></tr></thead><tbody>${rows.map(o => `<tr id="org-${o.cd}"><td class="org"><a href="#p" data-cd="${o.cd}">${esc(o.nm)}</a></td>${D.years.map(y => o.years[y] ? `<td class="n">${o.years[y]}</td>` : `<td class="none">–</td>`).join('')}<td class="n">${o.inqMed2025 ?? '–'}</td><td class="n">${o.sampled ? `${o.linked}/${o.sampled} <span class="muted">${Math.round(o.linked/o.sampled*100)}%</span>` : '–'}</td></tr>`).join('')}</tbody>`;
+    $('#matrix').innerHTML = `<thead><tr><th>기관</th>${D.years.map(y=>`<th class="n">${y}${y===2026?'<br><span class="muted">진행 중</span>':''}</th>`).join('')}<th class="n">2025 조회<br>한가운데</th><th class="n">원문 연결</th></tr></thead><tbody>${rows.map(o => `<tr id="org-${o.cd}"><td class="org"><a href="#p" data-cd="${o.cd}">${esc(o.nm)}</a></td>${D.years.map(y => o.years[y] ? `<td class="n">${o.years[y]}</td>` : `<td class="none">–</td>`).join('')}<td class="n">${o.inqMed2025 ?? '–'}</td><td class="n">${o.sampled ? `${o.linked}/${o.sampled} <span class="muted">${Math.round(o.linked/o.sampled*100)}%</span>` : '–'}</td></tr>`).join('')}</tbody>`;
     $('#matrix').querySelectorAll('a[data-cd]').forEach(a => a.onclick = (e) => { e.preventDefault(); fOrg.value = a.dataset.cd; fYear.value = ''; fQ.value=''; renderList(); document.getElementById('pick').scrollIntoView(); });
   }
   oSort.onchange = renderMatrix;
