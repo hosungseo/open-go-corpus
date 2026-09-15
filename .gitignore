@@ -12,3 +12,4 @@ realname/
 explorer/index*.html
 explorer/data*.json
 !docs/explorer/index.html
+lawhist/articles.json

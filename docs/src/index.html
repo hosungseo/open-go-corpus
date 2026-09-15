@@ -83,7 +83,7 @@ body{background:var(--cream);color:var(--ink0)}
 .sec .head a.more{text-decoration:none;font-size:14px;font-weight:600;color:var(--ink0);border-bottom:1.5px solid var(--ink0);padding-bottom:2px;margin-bottom:28px;white-space:nowrap}
 
 /* overview table */
-.ov{background:var(--card);border:1px solid var(--line-c);border-radius:var(--r-m);overflow:hidden}
+.ov{background:var(--card);border:1px solid var(--line-c);border-radius:var(--r-m);overflow:hidden;overflow-x:auto}
 .ov table{width:100%;border-collapse:collapse;font-size:15px}
 .ov th{font-size:12.5px;letter-spacing:.06em;color:var(--ink2);font-weight:600;text-align:left;padding:14px 18px;border-bottom:1px solid var(--cream-2);background:#FBF9F5}
 .ov th.rn{color:var(--rn)}.ov th.pv{color:var(--pv)}.ov th.og{color:var(--og)}
@@ -171,13 +171,31 @@ body{background:var(--cream);color:var(--ink0)}
   .sec h2{font-size:28px}
   .ov table{font-size:14px}.ov td,.ov th{padding:10px 12px}
 }
+
+/* 세 제도 설명 카드 */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.three .tc{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:20px 20px 18px;display:flex;flex-direction:column}
+.three .tc .tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.02em;margin-bottom:10px}
+.three .tc .tag i{width:10px;height:10px;border-radius:50%;flex:none}
+.three .tc.rn .tag{color:var(--rn)} .three .tc.rn .tag i{background:var(--rn)}
+.three .tc.pv .tag{color:var(--pv)} .three .tc.pv .tag i{background:var(--pv)}
+.three .tc.og .tag{color:var(--og)} .three .tc.og .tag i{background:var(--og)}
+.three .tc h3{font-size:21px;margin:0 0 8px;line-height:1.3}
+.three .tc .def{font-size:15.5px;line-height:1.7;color:var(--ink-2);margin:0 0 14px}
+.three .tc dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 14px;font-size:14.5px;line-height:1.55}
+.three .tc dt{color:var(--ink-3);white-space:nowrap}
+.three .tc dd{margin:0;color:var(--ink)}
+.three .tc dd small{display:block;color:var(--ink-3);font-size:13px;margin-top:1px}
+.three .tc .fact{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-2);font-size:14.5px;color:var(--ink-2);line-height:1.65}
+.three .tc .fact b{color:var(--ink)}
+@media (max-width:900px){ .three{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <div class="skip"><a href="#content">본문 바로가기</a></div>
 <div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
-  <nav><a class="on" href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
+  <nav><a class="on" href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="history.html"><span class="long">법령 연혁</span><span class="short">연혁</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-15~16</b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
 </div></div>
 
@@ -218,6 +236,52 @@ body{background:var(--cream);color:var(--ink0)}
 
 
   <!-- 비유: 세 창구 → 차트 한 장 -->
+  <section class="sec">
+    <div class="head">
+      <div><div class="eyebrow">세 제도 · 무엇을 공개하나</div><h2>이름은 나란한데, 세는 단위가 다릅니다</h2><p class="sub">셋 다 정보공개포털 한 곳에 모여 있습니다. 그런데 공개하는 단위도, 근거 법령의 위계도, 손대는 주기도 다릅니다. 병원에 비유하면 안내문·처방전·담당의 명단입니다.</p></div>
+      <a class="more" href="history.html">근거 법령의 연혁 보기 →</a>
+    </div>
+    <div class="three">
+      <div class="tc pv">
+        <span class="tag"><i></i>안내문</span>
+        <h3>사전정보공표</h3>
+        <p class="def">"이런 정보를 언제, 어디에 올리겠다"고 기관이 미리 알려 두는 목록입니다. 목록에는 제목과 한 줄이 있고, 내용은 기관 누리집 링크 너머에 있습니다.</p>
+        <dl>
+          <dt>근거</dt><dd>정보공개법 제7조<small>법률 · 2004년 신설</small></dd>
+          <dt>단위</dt><dd>정보 항목</dd>
+          <dt>주기</dt><dd>항목마다 정해 둠<small>매년·수시가 대부분</small></dd>
+          <dt>대상</dt><dd>공공기관 전체</dd>
+        </dl>
+        <p class="fact">포털에 <b>246,604항목</b>이 올라 있습니다. 넓게 덮지만, 무엇이 있는지 알려 줄 뿐 내용을 보여 주지는 않습니다.</p>
+      </div>
+      <div class="tc og">
+        <span class="tag"><i></i>처방전 원본</span>
+        <h3>원문공개</h3>
+        <p class="def">결재가 끝난 문서를 국민이 청구하지 않아도 그대로 올립니다. 본문과 첨부, 기안부터 전결까지의 결재선이 문서에 그대로 남아 있습니다.</p>
+        <dl>
+          <dt>근거</dt><dd>정보공개법 제8조의2<small>법률 · 2014년 시행</small></dd>
+          <dt>단위</dt><dd>결재문서</dd>
+          <dt>주기</dt><dd>결재 즉시</dd>
+          <dt>대상</dt><dd>중앙·지자체·교육청·공공기관<small>국장급·부단체장 등 이상 결재문서</small></dd>
+        </dl>
+        <p class="fact">2025년에 <b>143만 건</b>이 등록됐습니다. 셋 중 가장 깊지만, 문서 한 장씩이라 사업 하나를 알려면 흩어진 문서를 모아야 합니다.</p>
+      </div>
+      <div class="tc rn">
+        <span class="tag"><i></i>담당의 명단</span>
+        <h3>정책실명제</h3>
+        <p class="def">기관이 심의를 거쳐 고른 주요 사업마다, 누가 맡았고 어디까지 왔는지를 한 장에 적습니다. 셋 중 유일하게 <b>사업</b>을 단위로 삼습니다.</p>
+        <dl>
+          <dt>근거</dt><dd>행정업무의 운영 및 혁신에 관한 규정 제63조의2~제63조의5<small>대통령령 · 1998년 시작</small></dd>
+          <dt>단위</dt><dd>사업</dd>
+          <dt>주기</dt><dd>연 1회 등록</dd>
+          <dt>대상</dt><dd>행정기관·지자체·교육청<small>공공기관은 빠져 있음</small></dd>
+        </dl>
+        <p class="fact">2025년 중앙행정기관 <b>617건</b>, 참여 기관은 <b>30곳</b>입니다. "누가 결정했나"에 사업 단위로 답하는 유일한 통로인데, 조회수 중앙값은 <b>1회</b>입니다.</p>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:14px">셋은 서로를 대체하지 못합니다. 안내문은 결과를 담지 않고, 처방전 더미는 사업을 말해 주지 않으며, 담당의 명단에는 무엇을 했는지가 한 문단뿐입니다.</p>
+  </section>
+
   <section class="sec meta-sec">
     <div class="head"><div><div class="eyebrow">병원으로 치면</div><h2>지금은 창구가 셋, 바꾸면 차트 한 장</h2><p class="sub">환자 한 명을 알고 싶은데 안내문 창구·처방전 창구·담당의 창구가 따로 있고, 서로 환자 이름으로 묶이지 않습니다. 정책 번호는 차트 번호입니다.</p></div></div>
     <div class="meta-grid">

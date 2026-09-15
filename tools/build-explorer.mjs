@@ -299,7 +299,8 @@ if (!WITH_NAMES) {
   fs.mkdirSync(R("docs/explorer"), { recursive: true });
   fs.writeFileSync(R("docs/explorer/index.html"), html);
   // static pages: docs/src/*.html → docs/*.html with shared.css inlined; any leftover local stylesheet link fails the build
-  for (const name of ["index", "compare", "policy2"]) {
+  const LAWDATA_PATH = R("lawhist/page-data.json");
+  for (const name of ["index", "compare", "history", "policy2"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
     let page = fs.readFileSync(src, "utf8");
@@ -307,9 +308,14 @@ if (!WITH_NAMES) {
     if (!linkRe.test(page)) { console.error(`ERROR docs/src/${name}.html has no <link rel="stylesheet" href="shared.css">`); process.exit(1); }
     page = page.replace(linkRe, () => `<style>\n${sharedCss}\n</style>`);
     if (/<link\s+rel="stylesheet"\s+href="(?!https?:)/.test(page)) { console.error(`ERROR docs/src/${name}.html still references a local stylesheet after inlining`); process.exit(1); }
+    if (page.includes("/*__LAWDATA__*/")) {
+      if (!fs.existsSync(LAWDATA_PATH)) { console.error("ERROR lawhist/page-data.json missing - run tools/collect-law-history.mjs then tools/build-law-timeline.mjs then tools/build-history-data.mjs"); process.exit(1); }
+      const lawJson = fs.readFileSync(LAWDATA_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__LAWDATA__*/null", () => lawJson).replace("/*__LAWDATA__*/", () => lawJson);
+    }
     fs.writeFileSync(R(`docs/${name}.html`), page);
   }
-  console.error("static pages built: docs/index.html docs/compare.html docs/policy2.html (shared.css inlined)");
+  console.error("static pages built: docs/index.html docs/compare.html docs/history.html docs/policy2.html (shared.css inlined)");
 }
 console.error(`built explorer/index${suffix}.html ${(html.length / 1e6).toFixed(1)}MB · projects ${projects.length} · details ${detail.length} · probes ${probes.length} · notes ${notes.length} · unmatched name segments ${unmatched.length}`);
 if (unmatched.length) console.error("  unmatched (first 15):", [...new Set(unmatched)].slice(0, 15));

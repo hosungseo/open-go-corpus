@@ -30,18 +30,20 @@
 .rn2 .btn.w{background:var(--warn);color:#fff;border-color:var(--warn)}
 /* 타임라인 */
 .rn2 .tl{position:relative;padding:6px 14px 18px 16px}
-.rn2 .tl:before{content:"";position:absolute;left:39px;top:0;bottom:0;width:3px;background:var(--c)}
+.rn2 .tl:before{content:"";position:absolute;left:39px;top:0;bottom:0;width:3px;background-image:radial-gradient(circle at 1.5px 2px,var(--c) 1.5px,transparent 1.7px);background-size:3px 7px;background-repeat:repeat-y;animation:rn2flow 2.6s linear infinite}
+@keyframes rn2flow{from{background-position:0 0}to{background-position:0 7px}}
+@media (prefers-reduced-motion:reduce){.rn2 .tl:before{animation:none}}
 .rn2 .tl:after{content:"";position:absolute;left:39px;bottom:0;height:110px;width:3px;background:repeating-linear-gradient(to bottom,var(--warn) 0 7px,transparent 7px 13px)}
 .rn2 .yr{position:relative;display:flex;align-items:center;gap:8px;margin:14px 0 8px 0;padding-left:44px;font-size:12.5px;color:var(--ink-3)}
-.rn2 .yr .y{position:absolute;left:0;top:-4px;width:34px;height:34px;border-radius:50%;background:var(--panel);border:3px solid var(--c);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--cD);z-index:2;box-shadow:0 0 0 4px var(--panel)}
+.rn2 .yr .y{position:absolute;left:7.5px;top:-4px;width:34px;height:34px;border-radius:50%;background:var(--panel);border:3px solid var(--c);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--cD);z-index:2}
 .rn2 .yr.pre .y{border-style:dotted;border-color:var(--rule);color:var(--ink-3)}.rn2 .yr.none .y{border-color:var(--warn);border-style:dashed;color:var(--warn)}
-.rn2 .chg{position:relative;margin:2px 0 8px 44px;font-size:12px;color:var(--amber);background:var(--amberL);border:1px solid #E4D7B0;padding:4px 10px 4px 12px}
-.rn2 .chg:before{content:"";position:absolute;left:-30px;top:9px;width:10px;height:10px;background:var(--amber);transform:rotate(45deg);border:2px solid var(--panel);box-shadow:0 0 0 1px var(--amber);z-index:2}
-.rn2 .chg:after{content:"";position:absolute;left:-16px;top:13px;width:16px;height:2px;background:var(--amber)}
+.rn2 .chg{position:relative;margin:4px 0 10px 44px;font-size:12px;color:var(--amber);background:var(--amberL);border:0;border-radius:4px;padding:5px 12px}
+.rn2 .chg:before{content:"";position:absolute;left:-26.5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--panel);border:2.5px solid var(--amber);box-sizing:content-box;z-index:3}
+.rn2 .chg:after{content:"";position:absolute;left:-16px;top:12px;width:16px;height:2px;background:var(--amber);z-index:2}
 .rn2 .node{position:relative;margin:0 0 10px 44px;border:1px solid var(--rule);background:var(--panel)}
 .rn2 .node:before{content:"";position:absolute;left:-18px;top:20px;width:18px;height:3px;background:var(--c)}
 .rn2 .node.main{border-color:#B9CBE8;background:var(--cL)}
-.rn2 .node.rename{border-color:#E4D7B0;background:linear-gradient(90deg,var(--amberL),var(--cL) 40%)}
+.rn2 .node.rename{border-color:#B9CBE8;background:var(--cL);box-shadow:inset 3px 0 0 var(--amber)}
 .rn2 .node.ghost{border:1.5px dashed #E3A9A8;background:repeating-linear-gradient(135deg,var(--panel) 0 8px,var(--warnL) 8px 16px)}.rn2 .node.ghost:before{background:var(--warn)}
 .rn2 .node.ghost .nh{cursor:default}
 .rn2 .node.pre{border-style:dashed}.rn2 .node.pre:before{background:var(--rule)}
@@ -120,7 +122,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
 <div class="skip"><a href="#content">본문 바로가기</a></div>
 <div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
-  <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a class="on" href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
+  <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="history.html"><span class="long">법령 연혁</span><span class="short">연혁</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a class="on" href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-15~16</b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
 </div></div>
 
