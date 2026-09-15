@@ -74,6 +74,21 @@ sup.note:hover{text-decoration:underline}
 .q .m{font-family:"Noto Serif KR",serif;font-size:20px;font-weight:700;color:var(--ink-3);line-height:1.1}
 .q p{font-size:14px;color:var(--ink-2);margin:5px 0 0}
 
+
+/* proportion strip (Halo-style stripe charts) */
+.pstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0 4px}
+.pstrip>div{padding:16px 18px 14px;border-left:1px solid var(--rule)}
+.pstrip>div:first-child{border-left:0;padding-left:0}
+.pstrip .big{font-family:"IBM Plex Mono",monospace;font-size:44px;line-height:1;font-weight:400;color:var(--ink);letter-spacing:-.02em}
+.pstrip .big small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0}
+.pstrip .lab{font-size:13px;color:var(--ink-2);margin:6px 0 10px;min-height:2.6em}
+.pstrip .bars{display:flex;flex-direction:column-reverse;gap:4px}
+.pstrip .bars i{display:block;height:7px;background:var(--rule-2)}
+.pstrip .bars i.on{background:var(--ink)}
+.pstrip .bars i.on.rn{background:var(--seal)} .pstrip .bars i.on.og{background:var(--teal)} .pstrip .bars i.on.pv{background:var(--amber)}
+.pstrip .frac{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-top:6px}
+@media (max-width:860px){.pstrip{grid-template-columns:1fr 1fr}.pstrip>div:nth-child(3){border-left:0;padding-left:0}}
+
 /* explorer */
 .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--rule);padding:12px 14px;margin-bottom:12px}
 .ctl label{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
@@ -187,6 +202,8 @@ tr.hl td{background:var(--sel)}
       <div class="eyebrow">사업 대조기</div>
       <p>정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. 검색어는 사업명에서 자동으로 뽑았고 결과 첫 줄에 표시한다.<sup class="note" data-note="n_probe"></sup> 2018~2024년 사업은 대조 미수집이라 정책실명제 열만 채워진다. 결과: <span class="n" data-v="probe_n"></span>건 중 사전정보에 같은 이름이 없는 사업 <span class="n" data-v="probe_prev0"></span>건, 해당 기관 원문에 없는 사업 <span class="n" data-v="probe_org0"></span>건, 둘 다 없는 사업 <span class="n warn" data-v="probe_both0"></span>건.</p>
     </div>
+    <div class="pstrip" id="pstrip"></div>
+    <p class="cap" style="margin:6px 0 0">막대 = 비율(16칸). 2025~2026년 정책실명제 사업 <span class="n" data-v="probe_n"></span>개 ID 기준. 검색어는 사업명에서 자동으로 뽑았다.<sup class="note" data-note="n_probe"></sup></p>
     <div class="ctl">
       <label>기관 <select id="fOrg"></select></label>
       <label>연도 <select id="fYear"></select></label>
@@ -275,6 +292,19 @@ tr.hl td{background:var(--sel)}
 
   /* notes */
   $('#notes').innerHTML = D.notes.map((n,i) => `<li id="${n.id}"><span class="no">[${i+1}]</span><div>${esc(n.text)}<span class="src">표본 ${esc(n.sample)} · 기준 ${esc(n.date)} · <a href="#top" onclick="history.back();return false;">본문으로</a></span></div></li>`).join('');
+
+
+  /* proportion strip */
+  (function(){
+    const V = D.vals; const N = 16;
+    const items = [
+      { pct: Math.round(V.probe_prev0 / V.probe_n * 100), lab: '사전정보공표에 같은 이름의 항목이 없는 사업', frac: `${V.probe_prev0} / ${V.probe_n}`, cls: 'pv' },
+      { pct: Math.round(V.probe_org0 / V.probe_n * 100), lab: '해당 기관 원문공개(2025~)에 검색어 일치 문서가 없는 사업', frac: `${V.probe_org0} / ${V.probe_n}`, cls: 'og' },
+      { pct: Math.round(V.probe_both0 / V.probe_n * 100), lab: '두 채널 어디에도 없는 사업', frac: `${V.probe_both0} / ${V.probe_n}`, cls: 'rn' },
+      { pct: V.rn_linked_rate, lab: '담당자가 포털 관리카드에 관련 원문을 붙여 둔 사업', frac: `${V.rn_linked} / ${V.rn_detail_n}`, cls: 'og' },
+    ];
+    $('#pstrip').innerHTML = items.map(it => { const on = Math.round(it.pct / 100 * N); return `<div><div class="big">${it.pct}<small>%</small></div><div class="lab">${esc(it.lab)}</div><div class="bars">${Array.from({length:N},(_,i)=>`<i class="${i<on?'on '+it.cls:''}"></i>`).join('')}</div><div class="frac">${esc(it.frac)}</div></div>`; }).join('');
+  })();
 
   /* ── explorer ── */
   const orgsByName = [...D.orgs].sort((a,b)=>a.nm.localeCompare(b.nm,'ko'));
