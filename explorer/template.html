@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>정보공개 3제도 대조기</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
 <style>
 /*__SHARED_CSS__*/
 /* ── explorer-specific ── */
@@ -68,6 +68,7 @@ tr.hl td{background:var(--sel)}
 </head>
 <body>
 
+<div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
   <nav><a href="../"><span class="long">개요</span><span class="short">개요</span></a><a href="../compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a class="on" href="./"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="../policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b data-v="snapshot"></b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
@@ -276,5 +277,9 @@ tr.hl td{background:var(--sel)}
   route(); window.addEventListener('hashchange', route);
 })();
 </script>
+<div class="kfoot"><div class="in">
+  <span class="id"><span class="flag" aria-hidden="true"></span>open-go-corpus · 정보공개 3제도 실측</span>
+  <span class="note">출처: 정보공개포털(open.go.kr) 실측 2026-09-15 · 법령: 국가법령정보센터 · 코드 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a> · 담당자·결재선 실명 제거</span>
+</div></div>
 </body>
 </html>

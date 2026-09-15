@@ -3,120 +3,159 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>정책실명제 2.0</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
 <style>
-/* 정보공개 3제도 페이지 공통 스타일 — 원본은 docs/src/shared.css, 빌드가 각 페이지에 인라인한다. */
+/* 정보공개 3제도 페이지 공통 스타일 — 원본은 docs/src/shared.css, 빌드가 각 페이지에 인라인한다.
+   토큰은 대한민국 디자인시스템 KRDS(krds-uiux 1.1.0, resources/css/token/krds_tokens.css) 라이트 모드 값을 그대로 옮겼다. */
 :root{
   color-scheme: light;
-  --paper:#F5F7F9; --panel:#FFFFFF; --panel-2:#EEF1F4;
-  --ink:#1B2A41; --ink-2:#4B5A6E; --ink-3:#7C8A9C;
-  --rule:#D5DCE4; --rule-2:#E7ECF1;
-  --em:#1F4E9C; --em-soft:#E6EDF8;
-  --rn:#B8312F; --pv:#8A6D1F; --og:#2E6F73;
-  --sel:#EAF0F6;
-  --serif:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
-  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* KRDS 원시 색 */
+  --k-primary-5:#ecf2fe; --k-primary-10:#d8e5fd; --k-primary-20:#b1cefb; --k-primary-50:#256ef4; --k-primary-60:#0b50d0; --k-primary-70:#083891; --k-primary-90:#03163a;
+  --k-secondary-5:#eef2f7; --k-secondary-10:#d6e0eb; --k-secondary-50:#346fb2; --k-secondary-70:#063a74; --k-secondary-80:#052b57; --k-secondary-90:#031f3f;
+  --k-gray-0:#ffffff; --k-gray-5:#f4f5f6; --k-gray-10:#e6e8ea; --k-gray-20:#cdd1d5; --k-gray-30:#b1b8be; --k-gray-40:#8a949e; --k-gray-50:#6d7882; --k-gray-60:#58616a; --k-gray-70:#464c53; --k-gray-80:#33363d; --k-gray-90:#1e2124; --k-gray-95:#131416;
+  --k-point-5:#fbeff0; --k-point-10:#f5d6d9; --k-point-50:#d63d4a; --k-point-60:#ab2b36;
+  --k-warning-5:#fff3db; --k-warning-10:#ffe0a3; --k-warning-50:#9e6a00; --k-warning-60:#8a5c00;
+  --k-success-5:#eaf6ec; --k-success-10:#d8eedd; --k-success-50:#228738; --k-success-60:#267337;
+  --k-danger-5:#fdefec; --k-danger-10:#fcdfd9; --k-danger-50:#de3412; --k-danger-60:#bd2c0f;
+  --k-info-5:#e7f4fe; --k-info-50:#0b78cb;
+  /* 시맨틱 (KRDS light) */
+  --paper:var(--k-gray-5);            /* surface-gray-subtler */
+  --panel:var(--k-gray-0);            /* surface-basic */
+  --panel-2:var(--k-gray-10);         /* surface-gray-subtle */
+  --ink:var(--k-gray-90);             /* text-basic */
+  --ink-2:var(--k-gray-70);           /* text-subtle */
+  --ink-3:var(--k-gray-50);           /* text-disabled 보다 진한 보조 */
+  --rule:var(--k-gray-20);            /* border-gray-light */
+  --rule-2:var(--k-gray-10);
+  --em:var(--k-primary-60);           /* text-primary */
+  --em-soft:var(--k-primary-5);       /* surface-primary-subtler */
+  --sel:var(--k-secondary-5);         /* action-secondary-hover */
+  /* 세 제도 색: KRDS point / warning / success */
+  --rn:var(--k-point-50); --pv:var(--k-warning-50); --og:var(--k-success-60);
+  --rn-soft:var(--k-point-5); --pv-soft:var(--k-warning-5); --og-soft:var(--k-success-5);
+  /* 서체: KRDS 지정 Pretendard GOV. 세리프·모노 자리도 같은 서체로(굵기·숫자 정렬만 다르게) */
+  --font:"Pretendard GOV","Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:var(--font); --sans:var(--font);
+  --mono:"Pretendard GOV","Pretendard",ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 반경 (KRDS radius) */
+  --r-s:4px; --r-m:8px; --r-l:10px; --r-max:100rem;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:56px}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:var(--serif);margin:0;word-break:keep-all;text-wrap:balance}
-h1{font-size:34px;line-height:1.3;font-weight:700}
-h2{font-size:24px;line-height:1.4;font-weight:700}
-h3{font-family:var(--sans);font-size:18px;line-height:1.5;font-weight:600}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:0;word-break:keep-all}
+h1,h2,h3{font-family:var(--font);margin:0;word-break:keep-all;text-wrap:balance;font-weight:700}
+h1{font-size:40px;line-height:1.3}           /* heading-xlarge */
+h2{font-size:32px;line-height:1.35}          /* heading-large */
+h3{font-size:19px;line-height:1.5;font-weight:700} /* heading-small */
 p{margin:0 0 14px;max-width:66ch}
-a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ink-3)}
-a:hover{text-decoration-color:var(--ink)}
-b,strong{font-weight:600;color:var(--ink)}
-.em{color:var(--em);font-weight:600}
+a{color:var(--em);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--k-primary-20)}
+a:hover{text-decoration-color:var(--em)}
+b,strong{font-weight:700;color:var(--ink)}
+.em{color:var(--em);font-weight:700}
 .mono,.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .muted{color:var(--ink-3)}
 .wrap{max-width:960px;margin:0 auto;padding:0 24px 80px;width:100%}
 .wrap.wide{max-width:1180px}
 
-/* 상단 고정 바 */
-.bar{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule);font-size:14px;line-height:1.4}
-.bar .in{max-width:1180px;margin:0 auto;padding:0 24px;min-height:40px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.bar nav{display:flex;gap:2px}
-.bar nav a{padding:10px 10px;text-decoration:none;color:var(--ink-2);border-bottom:2px solid transparent;white-space:nowrap}
-.bar nav a.on{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}
+/* KRDS 마스트헤드: 공식 누리집 배너 */
+.masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
+.masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
+.masthead .flag{width:20px;height:14px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%);flex:none;position:relative}
+.masthead .flag:after{content:"";position:absolute;inset:3px;border-radius:1px;background:#fff;opacity:.9}
+.masthead .note{color:var(--ink-2)}
+
+/* 상단 고정 바 = KRDS 헤더 축약 (로고·GNB·유틸) */
+.bar{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--rule);font-size:17px;line-height:1.4}
+.bar .in{max-width:1180px;margin:0 auto;padding:0 24px;min-height:56px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.bar nav{display:flex;gap:4px}
+.bar nav a{padding:16px 12px;text-decoration:none;color:var(--ink);border-bottom:3px solid transparent;white-space:nowrap;font-weight:400}
+.bar nav a:hover{color:var(--em);background:var(--k-primary-5)}
+.bar nav a.on{color:var(--em);border-bottom-color:var(--k-primary-50);font-weight:700}
 .bar nav a .short{display:none}
-.bar .meta{margin-left:auto;display:flex;gap:14px;align-items:center;color:var(--ink-2);flex-wrap:wrap;padding:6px 0}
+.bar .meta{margin-left:auto;display:flex;gap:14px;align-items:center;color:var(--ink-2);flex-wrap:wrap;padding:6px 0;font-size:15px}
 .bar .meta b{color:var(--ink)}
-.legend{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--ink-2)}
+.legend{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--ink-2)}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 .legend i.rn{background:var(--rn)} .legend i.pv{background:var(--pv)} .legend i.og{background:var(--og)}
 
 /* 요약 블록 */
-.summary{padding:28px 0 26px;border-bottom:1px solid var(--rule);margin-bottom:8px}
-.summary .eyebrow{font-size:13px;letter-spacing:.1em;color:var(--ink-3);font-weight:600;margin-bottom:8px}
+.summary{padding:36px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:8px}
+.summary .eyebrow{font-size:15px;color:var(--em);font-weight:700;margin-bottom:10px}
 .summary h1{margin-bottom:14px}
-.summary .lede{font-size:19px;line-height:1.7;max-width:62ch;margin:0 0 20px;color:var(--ink)}
+.summary .lede{font-size:19px;line-height:1.6;max-width:62ch;margin:0 0 20px;color:var(--ink)}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.bignum>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px 12px}
-.bignum .v{font-family:var(--mono);font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.bignum .v small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0}
+.bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
+.bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
+.bignum .v small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
 .bignum .k{font-size:15px;color:var(--ink-2);margin-top:8px;line-height:1.5}
 .bignum .src{font-size:13px;color:var(--ink-3);margin-top:4px}
-.summary .basis{font-size:14px;color:var(--ink-3);margin-top:14px}
+.summary .basis{font-size:15px;color:var(--ink-2);margin-top:14px}
 
 /* 핵심 절 */
-section.core{padding:34px 0 8px}
+section.core{padding:40px 0 8px}
 section.core h2{margin-bottom:12px}
 section.core>p{font-size:17px;color:var(--ink-2)}
 ul.plain{margin:0 0 14px;padding-left:20px}
 ul.plain li{margin-bottom:6px;color:var(--ink-2)}
 ul.plain li b{color:var(--ink)}
-.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel)}
 table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}
-th,td{padding:10px 12px;border-bottom:1px solid var(--rule-2);text-align:left;vertical-align:top}
-th{font-size:13px;letter-spacing:.04em;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--rule);background:var(--panel);white-space:nowrap}
+th,td{padding:12px 14px;border-bottom:1px solid var(--rule-2);text-align:left;vertical-align:top}
+th{font-size:15px;color:var(--ink);font-weight:700;border-bottom:1px solid var(--rule);background:var(--k-gray-5);white-space:nowrap}
 th.rn{color:var(--rn)} th.pv{color:var(--pv)} th.og{color:var(--og)}
-td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td b{color:var(--ink)}
-.cap{font-size:14px;color:var(--ink-3);margin:8px 0 0;max-width:none;line-height:1.6}
+.cap{font-size:15px;color:var(--ink-2);margin:10px 0 0;max-width:none;line-height:1.6}
 
 /* 3열 카드 (제도색은 상단 선에만) */
 .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:16px 18px;font-size:15px;line-height:1.6}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);border-top:3px solid var(--ink);padding:16px 18px;font-size:15px;line-height:1.6}
 .card.rn{border-top-color:var(--rn)} .card.pv{border-top-color:var(--pv)} .card.og{border-top-color:var(--og)}
 .card h3{margin-bottom:8px}
 
 /* Q&A */
 .qa{display:grid;grid-template-columns:1fr;gap:12px}
-.q{background:var(--panel);border:1px solid var(--rule);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
-.q .m{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
+.q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
+.q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
 .q h3{margin-bottom:6px}
 .q p{font-size:16px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
-section.appendix{background:var(--panel-2);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
+section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
 section.appendix .tbl.wide{width:min(1180px,calc(100vw - 48px));margin-left:calc(50% - min(590px,50vw - 24px))}
-section.appendix .label{font-size:13px;letter-spacing:.12em;color:var(--ink-3);font-weight:600;margin-bottom:6px}
+section.appendix .label{font-size:15px;color:var(--em);font-weight:700;margin-bottom:6px}
 section.appendix h2{margin-bottom:10px}
 section.appendix h3{margin:26px 0 8px}
 section.appendix .tbl{background:var(--panel)}
-section.appendix table{font-size:14px}
-section.appendix th,section.appendix td{padding:8px 10px}
-.notes{font-size:14px;color:var(--ink-2)}
+section.appendix table{font-size:15px}
+section.appendix th,section.appendix td{padding:10px 12px}
+.notes{font-size:15px;color:var(--ink-2)}
 .notes ol{padding-left:0;list-style:none;margin:0}
-.notes li{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:8px 0;border-bottom:1px solid var(--rule)}
-.notes li .no{font-family:var(--mono);color:var(--ink-3);font-size:12.5px;padding-top:3px}
+.notes li{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.notes li .no{color:var(--em);font-size:14px;padding-top:3px;font-weight:700}
 .notes li:target{background:var(--sel)}
 .notes ul{padding-left:18px;margin:0}
 .notes ul li{display:list-item;border:0;padding:4px 0}
 
 /* 기호 (●◐○를 SVG로) */
 .dot{display:inline-block;width:16px;height:16px;vertical-align:-3px}
-.foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:12px;margin-top:30px}
+.foot{font-size:14px;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:14px;margin-top:30px}
+
+/* KRDS 푸터 식별자 */
+.kfoot{background:var(--k-gray-90);color:var(--k-gray-20);font-size:14px;line-height:1.6;margin-top:40px}
+.kfoot .in{max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.kfoot a{color:#fff;text-decoration-color:var(--k-gray-50)}
+.kfoot .id{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
+.kfoot .id .flag{width:22px;height:15px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%)}
+.kfoot .note{color:var(--k-gray-30)}
 
 /* 반응형 */
 @media (max-width:860px){
   body{font-size:16px}
-  h1{font-size:28px} h2{font-size:22px}
+  h1{font-size:30px} h2{font-size:26px}
   .bignum,.cols3{grid-template-columns:1fr}
-  .bar .in{gap:8px}
+  .bar .in{gap:8px;min-height:48px}
+  .bar nav a{padding:12px 8px}
   .bar nav a .long{display:none} .bar nav a .short{display:inline}
   .bar .meta{margin-left:0;width:100%;padding:0 0 6px}
   .summary .lede{font-size:17px}
@@ -231,6 +270,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
 </style>
 </head>
 <body>
+<div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
   <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a class="on" href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-16</b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
@@ -435,5 +475,9 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
   show('d8');
 })();
 </script>
+<div class="kfoot"><div class="in">
+  <span class="id"><span class="flag" aria-hidden="true"></span>open-go-corpus · 정보공개 3제도 실측</span>
+  <span class="note">출처: 정보공개포털(open.go.kr) 실측 2026-09-15 · 법령: 국가법령정보센터 · 코드 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a> · 담당자·결재선 실명 제거</span>
+</div></div>
 </body>
 </html>
