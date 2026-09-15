@@ -31,22 +31,24 @@ const RANK_WORDS = new Set(["사무관","주무관","과장","국장","팀장","
 const RANK_RE = "(사무관|주무관|과장|국장|팀장|서기관|실장|연구관|연구사|장관|차관|청장|차장|처장|위원장|정책관|심의관|기획관|단장|센터장)";
 const NAME = "([가-힣](?:\\s*[가-힣]){1,3})";
 const knownNames = new Set();
+const hiNames = new Set();
 function maskSegment(seg) {
   let t = seg.replace(/\(?\s*\d{2,4}-\d{3,4}-\d{4}\s*\)?/g, "").replace(/\(\s*\)/g, "").trim();
   if (!t) return "";
   let m;
   const isName = (w) => !RANK_WORDS.has(w.replace(/\s/g, "")) && !/^(행정|기술|공업|전산|보건|시설|세무|관세|교육|지방|일반|국가|정책|기획|총괄|수석|선임|책임|담당|부서)/.test(w);
-  const seen = (w) => { const k = w.replace(/\s/g, ""); if (k.length >= 2) knownNames.add(k); return "○○○"; };
-  if ((m = t.match(new RegExp(`^(\\d급(?:\\([^)]*\\))?\\s*)${NAME}\\s*(\\(.*)?$`)))) return `${m[1]}${seen(m[2])}${m[3] || ""}`;
-  if ((m = t.match(/^([가-힣]{2,4})\s+(\S.*)$/)) && isName(m[1])) return `${seen(m[1])} ${m[2]}`;
-  if ((m = t.match(/^([가-힣]{2,4})(\(.*)$/)) && isName(m[1])) return `${seen(m[1])}${m[2]}`;
-  if ((m = t.match(new RegExp(`^([가-힣]{2,4})${RANK_RE}(.*)$`))) && isName(m[1])) return `${seen(m[1])} ${m[2]}${m[3]}`;
-  if ((m = t.match(new RegExp(`^([^:：]{1,14}[:：]\\s*)${NAME}(.*)$`)))) return `${m[1]}${seen(m[2])}${m[3]}`;
-  if ((m = t.match(new RegExp(`^(\\([^)]*\\)\\s*)${NAME}(.*)$`)))) return `${m[1]}${seen(m[2])}${m[3]}`;
+  const seen = (w, hi = false) => { const k = w.replace(/\s/g, ""); if (k.length >= 2) { knownNames.add(k); if (hi) hiNames.add(k); } return "○○○"; };
+  const rankStart = (x) => new RegExp(`^${RANK_RE}`).test(x) || RANK_WORDS.has(x.split(/[\s(]/)[0]) || /^\(/.test(x) || /^\d급/.test(x);
+  if ((m = t.match(new RegExp(`^(\\d급(?:\\([^)]*\\))?\\s*)${NAME}\\s*(\\(.*)?$`)))) return `${m[1]}${seen(m[2], true)}${m[3] || ""}`;
+  if ((m = t.match(/^([가-힣]{2,4})\s+(\S.*)$/)) && isName(m[1])) return `${seen(m[1], rankStart(m[2]))} ${m[2]}`;
+  if ((m = t.match(/^([가-힣]{2,4})(\(.*)$/)) && isName(m[1])) return `${seen(m[1], true)}${m[2]}`;
+  if ((m = t.match(new RegExp(`^([가-힣]{2,4})${RANK_RE}(.*)$`))) && isName(m[1])) return `${seen(m[1], true)} ${m[2]}${m[3]}`;
+  if ((m = t.match(new RegExp(`^([^:：]{1,14}[:：]\\s*)${NAME}(.*)$`)))) return `${m[1]}${seen(m[2], /담당|부서장|책임|성명|이름|과장|국장|팀장|사무관/.test(m[1]))}${m[3]}`;
+  if ((m = t.match(new RegExp(`^(\\([^)]*\\)\\s*)${NAME}(.*)$`)))) return `${m[1]}${seen(m[2], new RegExp(RANK_RE).test(m[1]))}${m[3]}`;
   if ((m = t.match(/^(.*?\)\s*)([가-힣]{2,4})\s+(\S.*)$/)) && isName(m[2])) return `${m[1]}${seen(m[2])} ${m[3]}`;
   if ((m = t.match(/^([가-힣](?:\s+[가-힣]){1,3})$/))) return seen(m[1]);
   if (/^[가-힣]{2,4}$/.test(t)) return isName(t) ? seen(t) : t;
-  if ((m = t.match(/^(.{3,}?)\s+([가-힣]{2,4})$/)) && isName(m[2])) return `${m[1]} ${seen(m[2])}`;
+  if ((m = t.match(/^(.{3,}?)\s+([가-힣]{2,4})$/)) && isName(m[2])) return `${m[1]} ${seen(m[2], new RegExp(`${RANK_RE}$`).test(m[1]) || [...RANK_WORDS].some((r) => m[1].endsWith(r)))}`;
   unmatched.push(t);
   return t.replace(/[가-힣]{2,4}/g, (w) => (RANK_WORDS.has(w) ? w : "○○○"));
 }
@@ -244,8 +246,10 @@ const scoreboard = {
 };
 
 /* ── free-text scrub: high-confidence person names (3 chars, surname-start) ── */
-const scrubNames = [...knownNames].filter((w) => w.length === 3 && SURNAME.test(w) && !/[과국실팀부처청단관장사급원소]$/.test(w));
-const scrubRe = scrubNames.length ? new RegExp(scrubNames.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g") : null;
+const freeText = projects.map((p) => [p.cd, p.summary + " " + p.bg]);
+const orgCount = (w) => { const re = new RegExp(`(?<![가-힣])${w}(?![가-힣])`); return new Set(freeText.filter(([cd, t]) => re.test(t)).map(([cd]) => cd)).size; };
+const scrubNames = [...hiNames].filter((w) => w.length === 3 && SURNAME.test(w) && !/[과국실팀부처청단관장사급원소자권전지식형야]$/.test(w) && orgCount(w) <= 1);
+const scrubRe = scrubNames.length ? new RegExp(`(?<![가-힣])(?:${scrubNames.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![가-힣])`, "g") : null;
 let scrubbed = 0;
 const scrub = (t) => (!scrubRe || WITH_NAMES || !t) ? t : t.replace(scrubRe, () => { scrubbed++; return "○○○"; });
 for (const p of projects) { p.summary = scrub(p.summary); p.bg = scrub(p.bg); p.name = scrub(p.name); if (p.raw) p.raw = scrub(p.raw); }
