@@ -3,16 +3,6 @@
 <style>
 /*__SHARED_CSS__*/
 /* ── explorer-specific ── */
-.pstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pstrip>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px 12px}
-.pstrip .big{font-family:var(--mono);font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em}
-.pstrip .big small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0}
-.pstrip .lab{font-size:15px;color:var(--ink-2);margin:8px 0 10px;line-height:1.5;min-height:3em}
-.pstrip .bars{display:flex;flex-direction:column-reverse;gap:3px}
-.pstrip .bars i{display:block;height:6px;background:var(--rule-2)}
-.pstrip .bars i.on{background:var(--ink)}
-.pstrip .bars i.on.rn{background:var(--rn)} .pstrip .bars i.on.og{background:var(--og)} .pstrip .bars i.on.pv{background:var(--pv)}
-.pstrip .frac{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:6px}
 .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--rule);padding:12px 14px;margin-bottom:12px}
 .ctl label{font-size:14px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
 select,input[type=text]{font:inherit;font-size:15px;padding:7px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px}
@@ -69,12 +59,11 @@ tr.hl td{background:var(--sel)}
 .method>div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;font-size:14.5px;color:var(--ink-2)}
 .method h3{font-size:15px;margin-bottom:4px} .method ul{margin:0;padding-left:16px}
 .notes li .src{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px}
-@media (max-width:860px){.pstrip,.cols,.trio,.method{grid-template-columns:1fr} table#matrix th{position:static}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:860px){@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 
 <div class="bar"><div class="in">
-  <nav><a href="../"><span class="long">개요</span><span class="short">개요</span></a><a href="../compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="../ai-plan.html"><span class="long">AI 구상안</span><span class="short">구상</span></a><a class="on" href="./"><span class="long">사업 대조기</span><span class="short">대조</span></a></nav>
+  <nav><a href="../"><span class="long">개요</span><span class="short">개요</span></a><a href="../compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a class="on" href="./"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="../policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b data-v="snapshot"></b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
 </div></div>
 
@@ -82,9 +71,8 @@ tr.hl td{background:var(--sel)}
   <header class="summary">
     <div class="eyebrow">사업 대조기 · 정책실명제 중앙 <span data-v="rn_total"></span>건 전수</div>
     <h1>같은 사업이 세 채널에 어떻게 다르게 보이는지, 실물로 본다</h1>
-    <p class="lede">정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. <span class="em">2025~2026년 사업 <span class="n" data-v="probe_n"></span>개 중 둘 다에서 찾을 수 없는 사업이 <span class="n" data-v="probe_both0"></span>개다.</span> 회의에서 나온 질문 여섯의 답은 <a href="../compare.html#qa">세 제도 비교</a>에.</p>
-    <div class="pstrip" id="pstrip"></div>
-    <div class="basis">막대 = 비율(16칸). 검색어는 사업명에서 자동으로 뽑았다.<sup class="note" data-note="n_probe"></sup> 출처·표본·한계는 <a href="#basis">근거·방법</a>에.</div>
+    <p class="lede">정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. <span class="em">2025~2026년 사업 <span class="n" data-v="probe_n"></span>개 중 둘 다에서 찾을 수 없는 사업이 <span class="n" data-v="probe_both0"></span>개다.</span></p>
+    <div class="basis">검색어는 사업명에서 자동으로 뽑았다.<sup class="note" data-note="n_probe"></sup> 출처·표본·한계는 <a href="#basis">근거·방법</a>에.</div>
   </header>
 
   <section class="core" id="s2">
@@ -178,17 +166,6 @@ tr.hl td{background:var(--sel)}
   /* notes */
   $('#notes').innerHTML = D.notes.map((n,i) => `<li id="${n.id}"><span class="no">[${i+1}]</span><div>${esc(n.text)}<span class="src">표본 ${esc(n.sample)} · 기준 ${esc(n.date)} · <a href="#top" onclick="history.back();return false;">본문으로</a></span></div></li>`).join('');
 
-
-  /* proportion strip */
-  (function(){
-    const V = D.vals; const N = 16;
-    const items = [
-      { pct: Math.round(V.probe_prev0 / V.probe_n * 100), lab: '사전정보공표에 같은 이름의 항목이 없는 사업', frac: `${V.probe_prev0} / ${V.probe_n}`, cls: 'pv' },
-      { pct: Math.round(V.probe_org0 / V.probe_n * 100), lab: '해당 기관 원문공개(2025~)에 검색어 일치 문서가 없는 사업', frac: `${V.probe_org0} / ${V.probe_n}`, cls: 'og' },
-      { pct: Math.round(V.probe_both0 / V.probe_n * 100), lab: '두 채널 어디에도 없는 사업', frac: `${V.probe_both0} / ${V.probe_n}`, cls: 'rn' },
-    ];
-    $('#pstrip').innerHTML = items.map(it => { const on = Math.round(it.pct / 100 * N); return `<div><div class="big">${it.pct}<small>%</small></div><div class="lab">${esc(it.lab)}</div><div class="bars">${Array.from({length:N},(_,i)=>`<i class="${i<on?'on '+it.cls:''}"></i>`).join('')}</div><div class="frac">${esc(it.frac)}</div></div>`; }).join('');
-  })();
 
   /* ── explorer ── */
   const orgsByName = [...D.orgs].sort((a,b)=>a.nm.localeCompare(b.nm,'ko'));

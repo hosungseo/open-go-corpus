@@ -6,23 +6,63 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
 <link rel="stylesheet" href="shared.css">
 <style>
-.mx td.c{text-align:center;padding:9px 6px}
-.mx td.c small{display:block;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.3}
-.mx td:first-child{width:32%}
-.case th:first-child,.case td:first-child{width:24%}
-.dt table{font-size:14px;min-width:900px}
-.dt td{vertical-align:top}
-.dt tr.grp td{background:var(--paper);font-family:var(--serif);font-weight:700;font-size:15px;color:var(--ink);padding:12px 10px 8px;border-bottom:1px solid var(--rule)}
-.dt .hv{display:block;font-family:var(--mono);font-size:17px;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums;margin-bottom:3px}
-.dt .hn{display:block;font-size:13px;line-height:1.5;color:var(--ink-2)}
-.dt .hn b{color:var(--ink)}
-.dt td.j{font-size:13.5px;line-height:1.45;color:var(--ink);font-weight:600;background:var(--paper)}
-.dt td:first-child{font-weight:600;color:var(--ink)}
+/* 1층: 아홉 기준 매트릭스 */
+.mx table{font-size:15.5px}
+.mx th{font-size:14px;padding:12px 14px}
+.mx td{padding:0;border-bottom:1px solid var(--rule-2)}
+.mx tr.r{cursor:pointer}
+.mx tr.r:hover td{background:var(--sel)}
+.mx tr.r.on td{background:var(--em-soft)}
+.mx td.k{width:26%;padding:14px 14px;font-weight:600;color:var(--ink);white-space:nowrap}
+.mx td.k .more{display:block;font-size:12.5px;color:var(--em);font-weight:600;margin-top:2px}
+.mx td.c{padding:12px 14px;vertical-align:middle}
+.mx .cell{display:flex;align-items:center;gap:10px}
+.mx .cell .dot{width:18px;height:18px;flex:none}
+.mx .cell .lb{display:block;font-size:14.5px;line-height:1.35;color:var(--ink)}
+.mx .cell .lb.no{color:var(--ink-3)}
+.mx .cell .lb.pt{color:#6B5416}
+.mx .cell .lb.yes{color:#215659}
+.mx tbody tr.r td.c{border-left:1px solid var(--rule-2)}
+.mx thead th.rn,.mx thead th.pv,.mx thead th.og{border-bottom:2px solid currentColor}
+
+/* 2층: 항목 탭 + 상세 카드 */
+.l2{margin-top:22px}
+.l2 .lbl{font-size:13px;letter-spacing:.1em;color:var(--ink-3);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.l2 .lbl .hint{letter-spacing:0;font-weight:400;color:var(--ink-3)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 6px;padding:10px 0 12px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.tabs .g{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);align-self:center;margin:0 4px 0 8px;letter-spacing:.04em}
+.tabs .g:first-child{margin-left:0}
+.tabs button{appearance:none;border:1px solid var(--rule);background:var(--panel);color:var(--ink-2);font:inherit;font-size:14px;line-height:1.2;padding:7px 12px;border-radius:999px;cursor:pointer}
+.tabs button:hover{border-color:var(--ink-3);color:var(--ink)}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
+.detail{background:var(--panel);border:1px solid var(--rule);margin-top:14px}
+.detail .dh{padding:14px 18px 10px;border-bottom:1px solid var(--rule-2);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.detail .dh h3{font-family:var(--serif);font-size:20px;margin:0}
+.detail .dh .grp{font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.detail .dh .j{margin-left:auto;font-size:14px;color:var(--em);font-weight:600}
+.detail .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.detail .col{padding:16px 18px 18px;border-right:1px solid var(--rule-2)}
+.detail .col:last-child{border-right:0}
+.detail .col .who{font-size:13px;letter-spacing:.04em;font-weight:600;margin-bottom:8px}
+.detail .col.rn .who{color:var(--rn)} .detail .col.pv .who{color:var(--pv)} .detail .col.og .who{color:var(--og)}
+.detail .hv{display:block;font-family:var(--mono);font-size:24px;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-bottom:8px}
+.detail .hn{display:block;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.detail .hn b{color:var(--ink)}
+.detail .nav{display:flex;justify-content:space-between;padding:8px 18px;border-top:1px solid var(--rule-2);font-size:13.5px}
+.detail .nav button{appearance:none;background:none;border:0;font:inherit;color:var(--ink-2);cursor:pointer;padding:4px 0}
+.detail .nav button:hover{color:var(--ink);text-decoration:underline}
+@media (max-width:860px){
+  .mx td.k{white-space:normal;width:34%}
+  .mx .cell .lb{font-size:13.5px}
+  .detail .cols{grid-template-columns:1fr}
+  .detail .col{border-right:0;border-bottom:1px solid var(--rule-2)}
+  .detail .dh .j{margin-left:0;width:100%}
+}
 </style>
 </head>
 <body>
 <div class="bar"><div class="in">
-  <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a class="on" href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="ai-plan.html"><span class="long">AI 구상안</span><span class="short">구상</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a></nav>
+  <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a class="on" href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-15</b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
 </div></div>
 
@@ -31,170 +71,33 @@
     <div class="eyebrow">정보공개 3제도 비교</div>
     <h1>세 제도는 서로 대체하지 못한다. 공개하는 단위가 다르다</h1>
     <p class="lede">사전정보공표는 "이런 정보가 여기 있다"는 <b>안내 목록</b>이고, 원문공개는 결재가 끝난 <b>문서 원본</b>이며, 정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부다. <span class="em">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데, 셋 중 가장 얕고 가장 읽히지 않는다.</span></p>
-    <div class="bignum">
-      <div><div class="v">148<small>자</small></div><div class="k">정책실명제 사업 개요의 길이 (중앙값)</div><div class="src">별첨 상세 비교표 '공개 항목' 행</div></div>
-      <div><div class="v">20<small>자</small></div><div class="k">사전정보공표 항목의 세부 설명 길이 (중앙값). 내용은 링크 너머</div><div class="src">별첨 상세 비교표 '공개 항목' 행</div></div>
-      <div><div class="v">28,659<small>자</small></div><div class="k">원문공개 문서 한 건의 평균 분량 (본문+첨부)</div><div class="src">별첨 상세 비교표 '공개 항목' 행</div></div>
-    </div>
     <div class="basis">수치는 포털에서 직접 받은 2026-09-15 스냅샷. 출처·표본·한계는 <a href="#basis">근거·방법</a>에.</div>
   </header>
 
   <section class="core" id="matrix">
     <h2>정책실명제만 사업 단위이고, 정책실명제만 법률 근거·공공기관·상시 갱신이 없다</h2>
-    <p>아홉 기준으로 세 제도를 놓으면 역할이 갈린다. 원문공개는 깊지만 문서 단위이고, 사전정보공표는 넓지만 안내 목록이다.</p>
+    <p>아홉 기준으로 세 제도를 놓으면 역할이 갈린다. 원문공개는 깊지만 문서 단위이고, 사전정보공표는 넓지만 안내 목록이다. 행을 누르면 아래에 그 기준의 실측 근거가 열린다.</p>
+
     <div class="tbl mx"><table>
       <thead><tr><th>기준</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th></tr></thead>
-      <tbody>
-        <tr><td>법률에 근거</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>대통령령</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>정보공개법 §7</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>정보공개법 §8의2</small></td></tr>
-        <tr><td>공공기관 포함</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>450곳 등록</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>공기업·준정부 88곳</small></td></tr>
-        <tr><td>공개 단위가 사업</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>정보 항목</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>결재문서</small></td></tr>
-        <tr><td>관련자 실명·역할</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>담당자 1명+결재선 2~3명</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>기안→검토→협조→전결</small></td></tr>
-        <tr><td>예산·집행 정보</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>필드 없음</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>항목으로 안내만</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>문서에 있으면</small></td></tr>
-        <tr><td>내용 본문이 포털 안에</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>개요 148자</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>링크 너머</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>평균 2.9만 자</small></td></tr>
-        <tr><td>상시 갱신</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>연 1회</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>매년·수시 81%</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>결재 즉시</small></td></tr>
-        <tr><td>국민 신청 창구</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>규정엔 있음, 포털엔 없음</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg></td></tr>
-        <tr><td>지자체 데이터가 포털에</td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg><small>링크 261개</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg><small>항목만</small></td><td class="c"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg><small>2025년 118만 건</small></td></tr>
-      </tbody>
+      <tbody id="mxBody"></tbody>
     </table></div>
-    <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg> 없음. 근거는 별첨 상세 비교표.</p>
-  </section>
+    <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg> 없음</p>
 
-  <section class="core" id="qa">
-    <h2>물으신 여섯 가지에 대한 답</h2>
-    <p>회의에서 나온 순서대로.</p>
-    <div class="qa">
-      <div class="q"><div class="m">Q1</div><div><h3>정책실명제는 제목까지인가, 예산 집행까지인가</h3><p>제목이 아니라 사업 개요·추진배경·담당자·추진실적까지다. 그러나 개요는 중앙값 148자, 추진실적은 연 3건에 33자짜리 한 줄이고, <b>예산·집행 현황 필드는 데이터 모델에 없다.</b> 입안자에서 최종 결재자까지의 경로는 관련 원문이 연결된 35% 사업의 결재문서에서만 보인다.</p></div></div>
-      <div class="q"><div class="m">Q2</div><div><h3>사전정보공표는 어디까지 공개되나</h3><p>법은 범위·주기·시기·방법을 기관이 미리 정하라고만 하고, 포털 항목은 <b>제목 + 세부항목 한 줄 + 주기 + 링크</b>다. 내용은 각 기관 홈페이지에 있고 포털은 목록이다. '풍수해보험' 199건의 실체는 시군구의 보험 안내 페이지다. 넓지만 얕아서 정책실명제와 같은 수준이라 볼 수 없다.</p></div></div>
-      <div class="q"><div class="m">Q3</div><div><h3>연 몇 번 갱신되나</h3><p>정책실명제는 연 1회 등록 후 수정된 사업이 31%이고 수정 간격 중앙값이 5일이라 현행화가 아니라 정정이다. 사전정보공표는 표본 100건 중 매년 41·수시 40으로 대부분이 연 1회 또는 비정기다. 원문공개만 결재 즉시다. <b>분기 갱신은 지금 어디에도 없다.</b></p></div></div>
-      <div class="q"><div class="m">Q4</div><div><h3>공공기관까지 넓히면 무엇이 달라지나</h3><p>정보공개법은 이미 공공기관 전체가 대상이고, 사전정보공표에는 공공기관 450곳이 6만 4천 항목을, 원문공개에는 공기업·준정부기관 88곳이 2025년 9만 8천 건을 올렸다. <b>정책실명제만 대통령령이라 공공기관이 빠져 있다.</b> 공공기관 경영공시(ALIO)와의 항목 대조는 아직 하지 않았다.</p></div></div>
-      <div class="q"><div class="m">Q5</div><div><h3>국민이 신청하는 제도는 작동하나</h3><p>규정은 국민 신청 사업을 명시하지만 포털에 창구는 없고 기관이 각자 접수한다. 선정기준에 '국민신청'으로 적힌 사업은 2018년 36건에서 2025년 <b>5건</b>으로 줄었다. 지자체는 집계 자체가 불가능하다.</p></div></div>
-      <div class="q"><div class="m">Q6</div><div><h3>그래서 실태는</h3><p>중앙 42기관 959건(2018)에서 30기관 617건(2025)으로 줄었고, 2026년은 9월 중순 7기관 167건이다. 2025년 등록 기관 30곳 중 23곳이 아직 미등록이다. 사업당 조회수 중앙값은 0이다. 지자체·교육청은 포털에 한 건도 없다. <b>제도는 살아 있으나 읽히지도, 갱신되지도, 지자체로 이어지지도 않는다.</b></p></div></div>
+    <div class="l2" id="l2">
+      <div class="lbl">상세 비교 <span class="hint">· 항목을 고르면 세 제도의 실측치와 근거가 나란히 열린다</span></div>
+      <div class="tabs" id="tabs"></div>
+      <div class="detail" id="detail"></div>
     </div>
-  </section>
-
-  <section class="core" id="cases">
-    <h2>같은 사업을 세 채널에서 찾으면 이름·안내·서류가 따로 나온다</h2>
-    <p>정책실명제 2025년 사업 셋을 골라 사전정보공표와 원문공개에서 같은 이름으로 찾았다. 여섯 사례 전체는 별첨에.</p>
-    <div class="tbl case"><table>
-      <thead><tr><th>정책실명제 사업</th><th class="rn">정책실명제에서 보이는 것</th><th class="pv">사전정보공표 검색 결과</th><th class="og">원문공개 검색 결과</th></tr></thead>
-      <tbody>
-        <tr><td><b>국민비서 서비스 구축</b><br><span class="muted">행안부, 2020~계속</span></td><td>개요 2문장 · 담당자 1명 · 추진실적 · 관련원문 0건 · 조회 219회(2025년 최다)</td><td><b>1건</b>. 행안부 국민맞춤서비스과 '국민비서' → 홈페이지 링크</td><td><b>0건</b>. 문서는 한국지능정보사회진흥원에 1건(유지관리 계약 결과보고)</td></tr>
-        <tr><td><b>풍수해보험사업 운영</b><br><span class="muted">행안부, 2006~계속</span></td><td>개요 · 담당자 · 조회 5회</td><td><b>199건</b>. 함안군·고창군·영천시 등 지자체의 '풍수해보험 안내'가 대부분</td><td><b>4건</b>. '26년 홍보 추진계획, 재해취약지역 가입 촉진 계획 수립 지침 등</td></tr>
-        <tr><td><b>주민자치회 법제화 및 활성화</b><br><span class="muted">행안부, 계속</span></td><td>개요 · 담당자 · 조회 3회</td><td><b>118건</b>. 담양군 '주민자치회 공지사항·프로그램' 등 지자체 안내</td><td><b>2건</b>. 2026년 주민자치회 활성화 추진계획, 참고조례 개정안 보고</td></tr>
-      </tbody>
-    </table></div>
-    <p class="cap">사전정보공표에서 많이 잡히는 건 지자체 주민 안내 페이지이지 중앙 정책의 결정 기록이 아니다. 원문공개는 결정 문서가 있어도 국장급 이상 결재분만, 기관 공개율(행안부 42%)만큼만 보인다. 이를 잇는 곳이 없다. 사업 하나를 직접 세 채널에서 보려면 <a href="explorer/">사업 대조기</a>.</p>
   </section>
 
   <section class="appendix" id="appendix">
     <div class="label">별첨</div>
-    <h2>상세 비교표</h2>
-    <p class="cap">각 칸의 큰 값이 실측치, 아래 줄이 근거와 조건이다. 기준일 2026-09-15. 표본이 있는 값은 (n=)으로 표시.</p>
-    <div class="tbl dt wide"><table>
-      <colgroup><col style="width:13%"><col style="width:25%"><col style="width:25%"><col style="width:25%"><col style="width:12%"></colgroup>
-      <thead><tr><th>기준</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th><th>무엇이 갈리나</th></tr></thead>
-      <tbody>
-        <tr class="grp"><td colspan="5">근거와 대상</td></tr>
-        <tr><td>법적 근거</td>
-          <td><span class="hv">대통령령</span><span class="hn">행정업무의 운영 및 혁신에 관한 규정 §63~§63의5. 법률 근거 없음</span></td>
-          <td><span class="hv">법률</span><span class="hn">정보공개법 §7 + 시행령 §4. 범위·주기·시기·방법을 기관이 미리 정해 공표</span></td>
-          <td><span class="hv">법률</span><span class="hn">정보공개법 §8의2 + 시행령 §5의2. 공개대상 분류 전자문서를 청구 없이 공개</span></td>
-          <td class="j">정책실명제만 법률 밖</td></tr>
-        <tr><td>대상기관</td>
-          <td><span class="hv">행정기관·지자체·교육청</span><span class="hn">공공기관 미포함. 지자체 세부는 조례 위임(§63의5②)</span></td>
-          <td><span class="hv">공공기관 전체</span><span class="hn">국가기관·지자체·공공기관운영법 기관·각급학교. 포털 등록 공공기관 450곳</span></td>
-          <td><span class="hv">중앙~공기업·준정부</span><span class="hn">소속기관·위원회·지자체·각급학교 포함(시행령 §5의2). 포털 통계 88곳</span></td>
-          <td class="j">정책실명제만 공공기관 제외</td></tr>
-        <tr><td>공개 단위</td>
-          <td><span class="hv">사업</span><span class="hn">1사업 = 1레코드. 중앙 4,702개 ID</span></td>
-          <td><span class="hv">정보 항목</span><span class="hn">예: "풍수해보험 안내", "부서별 업무추진비"</span></td>
-          <td><span class="hv">결재문서</span><span class="hn">1문서 = 1레코드, 본문·첨부 포함</span></td>
-          <td class="j">사업 단위는 정책실명제뿐</td></tr>
-
-        <tr class="grp"><td colspan="5">무엇을 공개하나</td></tr>
-        <tr><td>공개 항목</td>
-          <td><span class="hv">9개 필드</span><span class="hn">사업명·담당부서·담당자·기간·개요·추진배경·선정기준·추진실적·관련원문. <b>예산·집행 없음</b></span></td>
-          <td><span class="hv">6개 필드</span><span class="hn">제목·세부항목·주기·시기·공개방법·홈페이지 링크. 내용 본문은 포털 밖</span></td>
-          <td><span class="hv">38개 필드 + 파일</span><span class="hn">제목·문서번호·생산일시(초)·담당과·단위과제·본문 PDF·첨부 HWP·결재선</span></td>
-          <td class="j">예산·집행은 셋 다 정형 필드 없음</td></tr>
-        <tr><td>내용의 분량</td>
-          <td><span class="hv">148자</span><span class="hn">사업개요 중앙값(전수). 2025년: 중앙값 120자, 하위 10% 53자, 상위 10% 326자</span></td>
-          <td><span class="hv">20자</span><span class="hn">세부항목 한 줄 중앙값, 상위 10%도 45자 (n=721, 최근 49일 등록분)</span></td>
-          <td><span class="hv">28,659자</span><span class="hn">문서당 평균, 본문+첨부 (n=417). 첨부가 본문의 2.5배</span></td>
-          <td class="j">깊이 차이 190배</td></tr>
-        <tr><td>관련자 실명</td>
-          <td><span class="hv">담당자 1명 + 결재선</span><span class="hn">담당자란은 자유입력(성명·직급 순서 제각각). 추진실적별 결재선 2~3명 기재율 99.5% (n=784). 의견 없음</span></td>
-          <td><span class="hv">없음</span><span class="hn">부서명까지만</span></td>
-          <td><span class="hv">결재선 전체</span><span class="hn">기안 → 검토 → 병렬협조 → 전결, 직급·역할 포함. 문서마다 구조화</span></td>
-          <td class="j">규정 §63①이 요구하는 것은 원문에 있다</td></tr>
-        <tr><td>추진 경과</td>
-          <td><span class="hv">연 3건 · 33자</span><span class="hn">사업당 추진실적 중앙값 3건, 문장 길이 중앙값 33자. 0건 20 · 1~2건 273 · 3~5건 262 · 6건+ 229 (n=784)</span></td>
-          <td><span class="hv">없음</span><span class="hn">항목 자체에 경과 없음. 링크 너머 문서에 있을 수 있음</span></td>
-          <td><span class="hv">문서 본문에 연혁</span><span class="hn">본문 417건 중 41%가 날짜 3개 이상의 절차 연혁을 담음(추진경위·향후계획 절)</span></td>
-          <td class="j">경과의 실체는 원문</td></tr>
-        <tr><td>관련 문서 연결</td>
-          <td><span class="hv">35%</span><span class="hn">관련원문이 붙은 사업 272/784. 0건 512 · 1~5건 101 · 6~20건 59 · 21건+ 112. 기관 편차 극심(기상청 22/25, 10개 기관 0)</span></td>
-          <td><span class="hv">링크 1개</span><span class="hn">기관 홈페이지 URL. 표본 120개 중 10개 오류·타임아웃</span></td>
-          <td><span class="hv">—</span><span class="hn">문서 자체가 원본. 첨부는 문서당 평균 2.0개</span></td>
-          <td class="j">정책실명제→원문 연결이 셋을 잇는 열쇠</td></tr>
-
-        <tr class="grp"><td colspan="5">얼마나, 언제</td></tr>
-        <tr><td>규모</td>
-          <td><span class="hv">617건 / 30기관</span><span class="hn">2025년 중앙. 2018년 959건·42기관 → 2026년 9월 167건·7기관(진행 중). 기관당 평균 20.6건</span></td>
-          <td><span class="hv">246,604항목</span><span class="hn">중앙 2.7만 · 광역 14.9만 · 교육청 2.1만 · 공공기관 6.4만</span></td>
-          <td><span class="hv">143만 건 등록</span><span class="hn">2025년 중앙 15만·지자체 118만·공공기관 9.8만. 교육청·학교 6,022만은 별도</span></td>
-          <td class="j">규모 2,300배 차이</td></tr>
-        <tr><td>갱신 주기</td>
-          <td><span class="hv">연 1회</span><span class="hn">등록 후 수정된 사업 31%(2025), 수정 간격 중앙값 5일, 30일 넘긴 수정은 53건 = 정정이지 현행화 아님. 등록 최빈월 5월(2018) → 11~12월(2025)</span></td>
-          <td><span class="hv">매년·수시 81%</span><span class="hn">매년 41 · 수시 40 · 매월 8 · 반기 6 · 분기 3 · 매주 1 (n=100)</span></td>
-          <td><span class="hv">결재 즉시</span><span class="hn">평일 하루 4,000건 신규(중앙·지자체). 본문은 요청 시 실시간 생성(5~10초)</span></td>
-          <td class="j">분기 갱신은 어디에도 없다</td></tr>
-        <tr><td>공개율</td>
-          <td><span class="hv">선정된 것만</span><span class="hn">기관이 심의위원회로 고른 사업만 등록. 선정기준: 국정과제 291 · 기타 144 · 대규모 예산 111 · 연구용역 39 · 법령 개폐 27 · 국민신청 5 (2025)</span></td>
-          <td><span class="hv">기관 재량</span><span class="hn">§7②는 노력 의무. 어디까지 올릴지 지침 없음</span></td>
-          <td><span class="hv">중앙 49%</span><span class="hn">2025년 등록 대비 공개. 지자체 59% · 공공기관 75% · 교육청 84%. 중앙 기관별 1%(대검) ~ 80%(기상청)</span></td>
-          <td class="j">원문은 기관 공개율에 갇힌다</td></tr>
-
-        <tr class="grp"><td colspan="5">이용과 품질</td></tr>
-        <tr><td>이용</td>
-          <td><span class="hv">조회 중앙값 1회</span><span class="hn">2025년. 상위 10%도 5회, 최다 219회. 조회 0 비율 38%(2025) → 68%(2026). 2018년 중앙값은 10회</span></td>
-          <td><span class="hv">항목당 12.9회</span><span class="hn">중앙 누적. 지자체 3.3 · 공공기관 3.2. 최근 49일 신규 721항목 중 84% 조회 0</span></td>
-          <td><span class="hv">누적 청구 1,807만</span><span class="hn">포털 통계. 다운로드 상위 법무부·보훈부·문체부·고용부·행안부</span></td>
-          <td class="j">정책실명제는 도달하지 않는다</td></tr>
-        <tr><td>지자체 취급</td>
-          <td><span class="hv">데이터 없음</span><span class="hn">243 지자체+18 교육청을 홈페이지 링크로만. 261개 중 404·응답없음 3, 오도 14</span></td>
-          <td><span class="hv">항목만 포털에</span><span class="hn">내용은 링크. 지자체 항목 14.9만</span></td>
-          <td><span class="hv">포털에 직접 적재</span><span class="hn">2025년 지자체 118만 건 등록, 공개율 59%</span></td>
-          <td class="j">지자체는 원문에만 있다</td></tr>
-        <tr><td>국민 참여</td>
-          <td><span class="hv">36 → 5건</span><span class="hn">선정기준 '국민신청' 표기, 2018 → 2025. 규정 §63의3①5는 있으나 포털 창구 없음</span></td>
-          <td><span class="hv">없음</span><span class="hn">§7②는 기관의 노력 의무</span></td>
-          <td><span class="hv">청구로 연결</span><span class="hn">§10 정보공개 청구. 누적 1,807만 건</span></td>
-          <td class="j">신청 창구가 없다</td></tr>
-        <tr><td>데이터 품질</td>
-          <td><span class="hv">자유입력</span><span class="hn">선정기준 15가지 이상 표기(공란 473). 깨진 특수문자 56%, 깨진 물음표 23%. 반복 사업 1,380개 중 759개가 새 ID로 재등록</span></td>
-          <td><span class="hv">정돈, 내용 부재</span><span class="hn">3단 분류체계는 정돈. 제목·한 줄뿐이라 품질보다 내용 부재가 문제</span></td>
-          <td><span class="hv">38필드 정형</span><span class="hn">본문 파일 유형: PDF 517 · HWP 498 · HWPX 136 (n=417 문서의 파일 1,170개). PDF만 받으면 HWP 절반을 놓침</span></td>
-          <td class="j">정책실명제는 코드가 아니라 글자</td></tr>
-      </tbody>
-    </table></div>
-    <p class="cap">읽는 법: 정책실명제 열의 수치는 중앙행정기관 2018~2026년 전수(6,847행)와 2025~2026년 상세 784건. 사전정보공표는 포털 통계와 표본(주기 100, 링크 120, 최근 등록 721). 원문공개는 포털 원문공개율 통계(2025년 연간)와 코퍼스 본문 417건. 출처·한계는 아래 근거·방법.</p>
-
-    <h3>같은 사업 3채널, 나머지 사례</h3>
-    <div class="tbl case"><table>
-      <thead><tr><th>정책실명제 사업</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th></tr></thead>
-      <tbody>
-        <tr><td><b>소득이동통계 확대</b><br><span class="muted">국가데이터처</span></td><td>개요 · 담당자 · 관련원문 있음</td><td>0건</td><td>1건. 2025년도 소득이동통계 작성 계획(안) 보고</td></tr>
-        <tr><td><b>홈택스 고도화 구축(2단계)</b><br><span class="muted">국세청</span></td><td>개요 · 담당자 · 관련원문 0건</td><td>1건. 군포시 세정과 '국세청 홈택스서비스' 안내</td><td>2건. 홈택스 고도화 2단계 주요 추진 내용, 자문단 위촉</td></tr>
-        <tr><td><b>해외통관애로 해소</b><br><span class="muted">관세청, 2018~2026 9년 연속</span></td><td>개요 · 담당자 · 관련원문 있음</td><td>0건</td><td>0건</td></tr>
-      </tbody>
-    </table></div>
-
-    <h3 id="basis">근거·방법</h3>
+    <h3 id="basis" style="margin-top:0">근거·방법</h3>
     <div class="notes"><ol>
       <li><span class="no">[1]</span><div><b>정책실명제</b>: 포털 정책실명제 코너에서 중앙행정기관 2018~2026년 6,847건 전수, 2025~2026년 784건은 상세 페이지까지 확인. 지자체 링크 261개는 직접 열어 상태·최종 도착지·'실명' 문자열 유무를 봤다. 기관당 권고 건수(중앙·지자체 30건 안팎)는 담당과 구두 설명이라 지침 원문으로 확인 필요.</div></li>
-      <li><span class="no">[2]</span><div><b>사전정보공표</b>: 총 항목 수는 포털 목록 246,604, 기관유형별 수치는 '숫자로 보는 정보공개' 통계. 주기 분포는 최근 등록 항목 100개 표본, 링크 오류율은 120개 표본이라 전체 비율과 다를 수 있다. 검색 건수(풍수해보험 199 등)는 포털 화면 검색 결과이며 기관 유형 필터는 적용하지 않았다.</div></li>
-      <li><span class="no">[3]</span><div><b>원문공개</b>: 등록·공개 건수는 포털 원문공개율 통계(2025년 12월 31일 기준 연간, 2026년은 8월 31일 기준). 교육청 6,022만 건은 각급 학교 문서를 포함한 포털 표시값이다. 문서 평균 분량 28,659자는 코퍼스 본문 수집 417건 기준. "국장급 이상 결재문서"라는 범위는 담당과 설명과 코퍼스의 결재자 직급 분포로 뒷받침되나 시행령·지침 문구로 재확인 필요.</div></li>
+      <li><span class="no">[2]</span><div><b>사전정보공표</b>: 총 항목 수는 포털 목록 246,604, 기관유형별 수치는 '숫자로 보는 정보공개' 통계. 주기 분포는 최근 등록 항목 100개 표본, 링크 오류율은 120개 표본이라 전체 비율과 다를 수 있다.</div></li>
+      <li><span class="no">[3]</span><div><b>원문공개</b>: 등록·공개 건수는 포털 원문공개율 통계(2025년 12월 31일 기준 연간, 2026년은 8월 31일 기준). 교육청 6,022만 건은 각급 학교 문서를 포함한 포털 표시값이다. 문서 평균 분량 28,659자는 코퍼스 본문 수집 417건 기준. "국장급·부단체장 등 이상"이라는 원문공개 범위는 법령·행정규칙에는 없고, 포털 원문정보 상세의 안내 문구("결재문서의 원문공개 대상(국장급, 부단체장 등 이상)이 아닙니다")로 확인했다(2026-09-16).</div></li>
       <li><span class="no">[4]</span><div><b>법령</b>: 행정업무의 운영 및 혁신에 관한 규정(2026-05-19 시행), 공공기관의 정보공개에 관한 법률(2023-11-17 시행)·시행령(2026-01-02 시행)을 law.go.kr에서 조회. 공공기관 경영공시(ALIO)와의 항목 대조는 하지 않았다.</div></li>
       <li><span class="no">[5]</span><div><b>조회수</b>는 포털이 상세 페이지 진입 시 올리는 값이라 내부 확인·봇이 섞일 수 있다. 낮은 쪽으로 편향되지는 않는다.</div></li>
       <li><span class="no">[6]</span><div>담당자·결재선 <b>실명은 개인정보</b>라 수집분은 로컬에만 두었고 이 문서에는 싣지 않았다.</div></li>
@@ -202,5 +105,116 @@
     <div class="foot">수집·분석 코드는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>. 기준일 2026-09-15.</div>
   </section>
 </div>
+
+<script>
+(function(){
+  const Y='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg>';
+  const P='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg>';
+  const N='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg>';
+  const cls={Y:'yes',P:'pt',N:'no'};
+
+  /* 1층 — 아홉 기준. d: 2층 항목 id */
+  const L1=[
+    {k:'법률에 근거', d:'law', rn:['N','대통령령'], pv:['Y','정보공개법 §7'], og:['Y','정보공개법 §8의2']},
+    {k:'공공기관 포함', d:'org', rn:['N','대통령령이라 제외'], pv:['Y','450곳 등록'], og:['Y','공기업·준정부 88곳']},
+    {k:'공개 단위가 사업', d:'unit', rn:['Y','1사업 = 1레코드'], pv:['N','정보 항목'], og:['N','결재문서']},
+    {k:'관련자 실명·역할', d:'names', rn:['P','담당자 1명 + 결재선 2~3명'], pv:['N','부서명까지'], og:['Y','기안 → 검토 → 협조 → 전결']},
+    {k:'예산·집행 정보', d:'fields', rn:['N','필드 없음'], pv:['P','항목으로 안내만'], og:['P','문서에 있으면']},
+    {k:'내용 본문이 포털 안에', d:'depth', rn:['P','개요 한 문단'], pv:['N','링크 너머'], og:['Y','본문 + 첨부 원본']},
+    {k:'상시 갱신', d:'cycle', rn:['N','연 1회'], pv:['N','매년·수시 81%'], og:['Y','결재 즉시']},
+    {k:'국민 신청 창구', d:'people', rn:['P','규정엔 있음, 포털엔 없음'], pv:['N','—'], og:['N','—']},
+    {k:'지자체 데이터가 포털에', d:'local', rn:['N','링크 261개뿐'], pv:['P','항목만'], og:['Y','2025년 118만 건']},
+  ];
+
+  /* 2층 — 상세 항목. [id, 그룹, 이름, 판정, rn[hv,hn], pv[hv,hn], og[hv,hn]] */
+  const L2=[
+    ['law','근거와 대상','법적 근거','정책실명제만 법률 밖',
+      ['대통령령','행정업무의 운영 및 혁신에 관한 규정 §63~§63의5. 법률 근거 없음'],
+      ['법률','정보공개법 §7 + 시행령 §4. 범위·주기·시기·방법을 기관이 미리 정해 공표'],
+      ['법률','정보공개법 §8의2 + 시행령 §5의2. 공개대상 분류 전자문서를 청구 없이 공개']],
+    ['org','근거와 대상','대상기관','정책실명제만 공공기관 제외',
+      ['행정기관·지자체·교육청','공공기관 미포함. 지자체 세부는 조례 위임(§63의5②)'],
+      ['공공기관 전체','국가기관·지자체·공공기관운영법 기관·각급학교. 포털 등록 공공기관 450곳'],
+      ['중앙~공기업·준정부','소속기관·위원회·지자체·각급학교 포함(시행령 §5의2). 포털 통계 88곳']],
+    ['unit','근거와 대상','공개 단위','사업 단위는 정책실명제뿐',
+      ['사업','1사업 = 1레코드. 중앙 4,702개 ID'],
+      ['정보 항목','예: "풍수해보험 안내", "부서별 업무추진비"'],
+      ['결재문서','1문서 = 1레코드, 본문·첨부 포함']],
+    ['fields','무엇을 공개하나','공개 항목','예산·집행은 셋 다 정형 필드 없음',
+      ['9개 필드','사업명·담당부서·담당자·기간·개요·추진배경·선정기준·추진실적·관련원문. <b>예산·집행 없음</b>'],
+      ['6개 필드','제목·세부항목·주기·시기·공개방법·홈페이지 링크. 내용 본문은 포털 밖'],
+      ['38개 필드 + 파일','제목·문서번호·생산일시(초)·담당과·단위과제·본문 PDF·첨부 HWP·결재선']],
+    ['depth','무엇을 공개하나','내용의 분량','깊이 차이 190배',
+      ['148자','사업개요 중앙값(전수). 2025년: 중앙값 120자, 하위 10% 53자, 상위 10% 326자'],
+      ['20자','세부항목 한 줄 중앙값, 상위 10%도 45자 (n=721, 최근 49일 등록분)'],
+      ['28,659자','문서당 평균, 본문+첨부 (n=417). 첨부가 본문의 2.5배']],
+    ['names','무엇을 공개하나','관련자 실명','규정 §63①이 요구하는 것은 원문에 있다',
+      ['담당자 1명 + 결재선','담당자란은 자유입력(성명·직급 순서 제각각). 추진실적별 결재선 2~3명 기재율 99.5% (n=784). 의견 없음'],
+      ['없음','부서명까지만'],
+      ['결재선 전체','기안 → 검토 → 병렬협조 → 전결, 직급·역할 포함. 문서마다 구조화']],
+    ['progress','무엇을 공개하나','추진 경과','경과의 실체는 원문',
+      ['연 3건 · 33자','사업당 추진실적 중앙값 3건, 문장 길이 중앙값 33자. 0건 20 · 1~2건 273 · 3~5건 262 · 6건+ 229 (n=784)'],
+      ['없음','항목 자체에 경과 없음. 링크 너머 문서에 있을 수 있음'],
+      ['문서 본문에 연혁','본문 417건 중 41%가 날짜 3개 이상의 절차 연혁을 담음(추진경위·향후계획 절)']],
+    ['link','무엇을 공개하나','관련 문서 연결','정책실명제→원문 연결이 셋을 잇는 열쇠',
+      ['35%','관련원문이 붙은 사업 272/784. 0건 512 · 1~5건 101 · 6~20건 59 · 21건+ 112. 기관 편차 극심(기상청 22/25, 10개 기관 0)'],
+      ['링크 1개','기관 홈페이지 URL. 표본 120개 중 10개 오류·타임아웃'],
+      ['—','문서 자체가 원본. 첨부는 문서당 평균 2.0개']],
+    ['scale','얼마나, 언제','규모','규모 2,300배 차이',
+      ['617건 / 30기관','2025년 중앙. 2018년 959건·42기관 → 2026년 9월 167건·7기관(진행 중). 기관당 평균 20.6건'],
+      ['246,604항목','중앙 2.7만 · 광역 14.9만 · 교육청 2.1만 · 공공기관 6.4만'],
+      ['143만 건 등록','2025년 중앙 15만·지자체 118만·공공기관 9.8만. 교육청·학교 6,022만은 별도']],
+    ['cycle','얼마나, 언제','갱신 주기','분기 갱신은 어디에도 없다',
+      ['연 1회','등록 후 수정된 사업 31%(2025), 수정 간격 중앙값 5일, 30일 넘긴 수정은 53건 = 정정이지 현행화 아님. 등록 최빈월 5월(2018) → 11~12월(2025)'],
+      ['매년·수시 81%','매년 41 · 수시 40 · 매월 8 · 반기 6 · 분기 3 · 매주 1 (n=100)'],
+      ['결재 즉시','평일 하루 4,000건 신규(중앙·지자체). 본문은 요청 시 실시간 생성(5~10초)']],
+    ['rate','얼마나, 언제','공개율','원문은 기관 공개율에 갇힌다',
+      ['선정된 것만','기관이 심의위원회로 고른 사업만 등록. 선정기준: 국정과제 291 · 기타 144 · 대규모 예산 111 · 연구용역 39 · 법령 개폐 27 · 국민신청 5 (2025)'],
+      ['기관 재량','§7②는 노력 의무. 어디까지 올릴지 지침 없음'],
+      ['중앙 49%','2025년 등록 대비 공개. 지자체 59% · 공공기관 75% · 교육청 84%. 중앙 기관별 1%(대검) ~ 80%(기상청)']],
+    ['use','이용과 품질','이용','정책실명제는 도달하지 않는다',
+      ['조회 중앙값 1회','2025년. 상위 10%도 5회, 최다 219회. 조회 0 비율 38%(2025) → 68%(2026). 2018년 중앙값은 10회'],
+      ['항목당 12.9회','중앙 누적. 지자체 3.3 · 공공기관 3.2. 최근 49일 신규 721항목 중 84% 조회 0'],
+      ['누적 청구 1,807만','포털 통계. 다운로드 상위 법무부·보훈부·문체부·고용부·행안부']],
+    ['local','이용과 품질','지자체 취급','지자체는 원문에만 있다',
+      ['데이터 없음','243 지자체+18 교육청을 홈페이지 링크로만. 261개 중 404·응답없음 3, 오도 14'],
+      ['항목만 포털에','내용은 링크. 지자체 항목 14.9만'],
+      ['포털에 직접 적재','2025년 지자체 118만 건 등록, 공개율 59%']],
+    ['people','이용과 품질','국민 참여','신청 창구가 없다',
+      ['36 → 5건','선정기준 \'국민신청\' 표기, 2018 → 2025. 규정 §63의3①5는 있으나 포털 창구 없음'],
+      ['없음','§7②는 기관의 노력 의무'],
+      ['청구로 연결','§10 정보공개 청구. 누적 1,807만 건']],
+    ['quality','이용과 품질','데이터 품질','정책실명제는 코드가 아니라 글자',
+      ['자유입력','선정기준 15가지 이상 표기(공란 473). 깨진 특수문자 56%, 깨진 물음표 23%. 반복 사업 1,380개 중 759개가 새 ID로 재등록'],
+      ['정돈, 내용 부재','3단 분류체계는 정돈. 제목·한 줄뿐이라 품질보다 내용 부재가 문제'],
+      ['38필드 정형','본문 파일 유형: PDF 517 · HWP 498 · HWPX 136 (n=417 문서의 파일 1,170개). PDF만 받으면 HWP 절반을 놓침']],
+  ];
+
+  const $=s=>document.querySelector(s);
+  const cell=([s,t])=>`<td class="c"><span class="cell">${s==='Y'?Y:s==='P'?P:N}<span class="lb ${cls[s]}">${t}</span></span></td>`;
+  $('#mxBody').innerHTML=L1.map(r=>`<tr class="r" data-d="${r.d}"><td class="k">${r.k}<span class="more">실측 근거 ›</span></td>${cell(r.rn)}${cell(r.pv)}${cell(r.og)}</tr>`).join('');
+
+  let lastG=null, tabsHtml='';
+  L2.forEach(it=>{ if(it[1]!==lastG){ tabsHtml+=`<span class="g">${it[1]}</span>`; lastG=it[1]; } tabsHtml+=`<button type="button" data-d="${it[0]}">${it[2]}</button>`; });
+  $('#tabs').innerHTML=tabsHtml;
+
+  function col(who,cl,[hv,hn]){ return `<div class="col ${cl}"><div class="who">${who}</div><span class="hv">${hv}</span><span class="hn">${hn}</span></div>`; }
+  function show(id, scroll){
+    const i=L2.findIndex(x=>x[0]===id); if(i<0) return; const it=L2[i];
+    const prev=L2[(i-1+L2.length)%L2.length], next=L2[(i+1)%L2.length];
+    $('#detail').innerHTML=`<div class="dh"><span class="grp">${it[1]}</span><h3>${it[2]}</h3><span class="j">${it[3]}</span></div>
+      <div class="cols">${col('정책실명제','rn',it[4])}${col('사전정보공표','pv',it[5])}${col('원문공개','og',it[6])}</div>
+      <div class="nav"><button type="button" data-d="${prev[0]}">‹ ${prev[2]}</button><button type="button" data-d="${next[0]}">${next[2]} ›</button></div>`;
+    document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.d===id));
+    document.querySelectorAll('#mxBody tr').forEach(r=>r.classList.toggle('on',r.dataset.d===id));
+    document.querySelectorAll('#detail .nav button').forEach(b=>b.onclick=()=>show(b.dataset.d,false));
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    if(scroll){ const y=$('#l2').getBoundingClientRect().top+window.scrollY-56; window.scrollTo({top:y,behavior:'smooth'}); }
+  }
+  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>show(b.dataset.d,false));
+  document.querySelectorAll('#mxBody tr').forEach(r=>r.onclick=()=>show(r.dataset.d,true));
+  const h=location.hash.replace('#',''); show(L2.some(x=>x[0]===h)?h:'law',false);
+})();
+</script>
 </body>
 </html>

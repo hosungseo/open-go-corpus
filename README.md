@@ -111,4 +111,4 @@ vendor/rhwp/rhwp export-tables <파일> --json              # 표를 셀 단위 
 
 ## 공개 페이지 (GitHub Pages)
 
-`docs/`가 Pages 루트다. 정적 페이지 소스는 `docs/src/*.html` + 공통 스타일 `docs/src/shared.css`이고, `node tools/build-explorer.mjs`가 CSS를 인라인해 `docs/*.html`과 대조기 `docs/explorer/index.html`을 생성한다. **`docs/*.html`을 직접 고치지 말고 `docs/src/`를 고친 뒤 빌드한다.** 빌드는 각주·값 참조, 남은 로컬 스타일시트 링크, 기본 예시 사업(기관+사업명 상수) 해석을 검사하고 실명 누출을 경고한다.
+`docs/`가 Pages 루트다. 페이지는 넷: 개요(`index`) → 세 제도 비교(`compare`, 1층 아홉 기준 매트릭스 + 2층 항목별 실측 근거) → 사업 대조기(`explorer/`) → 정책실명제 2.0(`policy2`, 행안부 주민자치회 사업의 4년 계보 + 원문 뷰어 시안; 구 `ai-plan.html`은 리다이렉트). 정적 페이지 소스는 `docs/src/*.html` + 공통 스타일 `docs/src/shared.css`이고, `node tools/build-explorer.mjs`가 CSS를 인라인해 `docs/*.html`과 대조기 `docs/explorer/index.html`을 생성한다. 정책실명제 2.0의 원문 페이지 이미지는 `docs/assets/jumin/p1~7.png`(결재란 성명 가림). **`docs/*.html`을 직접 고치지 말고 `docs/src/`를 고친 뒤 빌드한다.** 빌드는 각주·값 참조, 남은 로컬 스타일시트 링크, 기본 예시 사업(기관+사업명 상수) 해석을 검사하고 실명 누출을 경고한다.
