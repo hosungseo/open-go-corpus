@@ -1,209 +1,100 @@
 <title>정보공개 3제도 대조기</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&family=IBM+Plex+Sans+KR:wght@400;600&family=IBM+Plex+Mono&display=swap">
 <style>
-:root{
-  --paper:#F5F7F9; --ink:#1B2A41; --ink-2:#4B5A6E; --ink-3:#7C8A9C;
-  --rule:#D5DCE4; --rule-2:#E7ECF1; --panel:#FFFFFF; --panel-2:#F0F3F6;
-  --seal:#B8312F; --seal-soft:#F6E4E3;
-  --teal:#2E6F73; --teal-soft:#E0EFEF;
-  --amber:#8A6D1F; --amber-soft:#F5EFDC;
-  --sel:#EAF0F6;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#141A22; --ink:#E6EAF0; --ink-2:#B4BDCA; --ink-3:#7F8A99;
-    --rule:#2E3844; --rule-2:#232C36; --panel:#1B222C; --panel-2:#222B36;
-    --seal:#E0605B; --seal-soft:#3A2323;
-    --teal:#5FB3B5; --teal-soft:#1D3436;
-    --amber:#D2B15A; --amber-soft:#332C18;
-    --sel:#25303C;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#141A22; --ink:#E6EAF0; --ink-2:#B4BDCA; --ink-3:#7F8A99;
-  --rule:#2E3844; --rule-2:#232C36; --panel:#1B222C; --panel-2:#222B36;
-  --seal:#E0605B; --seal-soft:#3A2323;
-  --teal:#5FB3B5; --teal-soft:#1D3436;
-  --amber:#D2B15A; --amber-soft:#332C18;
-  --sel:#25303C;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
-h1,h2,h3{font-family:"Noto Serif KR","Apple SD Gothic Neo",serif;text-wrap:balance;margin:0;word-break:keep-all}
-h1{font-size:28px;line-height:1.3;font-weight:700}
-h2{font-size:21px;font-weight:700}
-h3{font-size:16px;font-weight:600}
-p{margin:0 0 10px}
-a{color:var(--teal)}
-.mono,.n{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
-.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
-.muted{color:var(--ink-3)}
-.warn{color:var(--seal);font-weight:600}
-b{color:var(--ink);font-weight:600}
-
-/* header + nav */
-.mast{border-top:3px solid var(--ink);padding:16px 0 12px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:end}
-.mast .meta{font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.6}
-nav.top{position:sticky;top:0;z-index:5;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;gap:4px;padding:6px 0;margin-bottom:24px}
-nav.top a{padding:6px 12px;font-size:13.5px;color:var(--ink-2);text-decoration:none;border-bottom:2px solid transparent}
-nav.top a.on{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}
-.lede{font-size:16.5px;color:var(--ink);max-width:70ch;margin:8px 0 18px}
-.lede strong{color:var(--seal);font-weight:600}
-
-section{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule)}
-.sec-head{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;margin-bottom:14px}
-.sec-head p{color:var(--ink-2);margin:0;max-width:80ch}
-
-/* scoreboard */
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.trio>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;border-top:3px solid var(--ink)}
-.trio>div.rn{border-top-color:var(--seal)} .trio>div.pv{border-top-color:var(--amber)} .trio>div.og{border-top-color:var(--teal)}
-.trio h3{font-size:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 8px;align-items:baseline}
-.trio h3 small{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:400;color:var(--ink-3)}
-.trio .what{font-size:13.5px;color:var(--ink-2);margin:4px 0 10px;min-height:2.8em}
-.kv{display:grid;grid-template-columns:76px 1fr;gap:3px 10px;font-size:13.5px}
-.kv .k{color:var(--ink-3)} .kv .v{color:var(--ink)}
-sup.note{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--teal);margin-left:2px;cursor:pointer;text-decoration:none}
-sup.note:hover{text-decoration:underline}
-
-/* answers */
-.qa{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.q{background:var(--panel);border:1px solid var(--rule);padding:14px 18px;display:grid;grid-template-columns:30px 1fr;gap:12px}
-.q .m{font-family:"Noto Serif KR",serif;font-size:20px;font-weight:700;color:var(--ink-3);line-height:1.1}
-.q p{font-size:14px;color:var(--ink-2);margin:5px 0 0}
-
-
-/* proportion strip (Halo-style stripe charts) */
-.pstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0 4px}
-.pstrip>div{padding:16px 18px 14px;border-left:1px solid var(--rule)}
-.pstrip>div:first-child{border-left:0;padding-left:0}
-.pstrip .big{font-family:"IBM Plex Mono",monospace;font-size:44px;line-height:1;font-weight:400;color:var(--ink);letter-spacing:-.02em}
+/*__SHARED_CSS__*/
+/* ── explorer-specific ── */
+.pstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pstrip>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px 12px}
+.pstrip .big{font-family:var(--mono);font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em}
 .pstrip .big small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0}
-.pstrip .lab{font-size:13px;color:var(--ink-2);margin:6px 0 10px;min-height:2.6em}
-.pstrip .bars{display:flex;flex-direction:column-reverse;gap:4px}
-.pstrip .bars i{display:block;height:7px;background:var(--rule-2)}
+.pstrip .lab{font-size:15px;color:var(--ink-2);margin:8px 0 10px;line-height:1.5;min-height:3em}
+.pstrip .bars{display:flex;flex-direction:column-reverse;gap:3px}
+.pstrip .bars i{display:block;height:6px;background:var(--rule-2)}
 .pstrip .bars i.on{background:var(--ink)}
-.pstrip .bars i.on.rn{background:var(--seal)} .pstrip .bars i.on.og{background:var(--teal)} .pstrip .bars i.on.pv{background:var(--amber)}
-.pstrip .frac{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-top:6px}
-@media (max-width:860px){.pstrip{grid-template-columns:1fr 1fr}.pstrip>div:nth-child(3){border-left:0;padding-left:0}}
-
-/* explorer */
+.pstrip .bars i.on.rn{background:var(--rn)} .pstrip .bars i.on.og{background:var(--og)} .pstrip .bars i.on.pv{background:var(--pv)}
+.pstrip .frac{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:6px}
 .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--rule);padding:12px 14px;margin-bottom:12px}
-.ctl label{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
-select,input[type=text]{font:inherit;font-size:14px;padding:6px 9px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px}
+.ctl label{font-size:14px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+select,input[type=text]{font:inherit;font-size:15px;padding:7px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px}
 input[type=text]{min-width:220px}
-select:focus,input:focus,button:focus{outline:2px solid var(--teal);outline-offset:1px}
-.ctl .cnt{margin-left:auto;font-size:13px;color:var(--ink-2)}
-.xp{display:grid;grid-template-columns:minmax(260px,30%) 1fr;gap:12px;align-items:start}
-.list{background:var(--panel);border:1px solid var(--rule);max-height:760px;overflow:auto}
-.list .it{padding:9px 12px;border-bottom:1px solid var(--rule-2);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:baseline}
-.list .it:hover{background:var(--panel-2)} .list .it.on{background:var(--sel);box-shadow:inset 3px 0 0 var(--seal)}
-.list .it .t{font-size:13.5px;line-height:1.4} .list .it .s{font-size:11.5px;color:var(--ink-3)}
-.list .it .inq{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);white-space:nowrap}
-.list .empty{padding:18px 14px;font-size:13.5px;color:var(--ink-2)}
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.col{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:12px 14px;min-height:200px;font-size:13.5px}
-.col.rn{border-top-color:var(--seal)} .col.pv{border-top-color:var(--amber)} .col.og{border-top-color:var(--teal)}
-.col h3{font-size:15px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.col h3 .c{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:400;color:var(--ink-3)}
-.col .kv{grid-template-columns:64px 1fr;font-size:13px;margin-bottom:8px}
+select:focus,input:focus,button:focus{outline:2px solid var(--em);outline-offset:1px}
+.ctl .cnt{margin-left:auto;font-size:14px;color:var(--ink-2)}
+.list{background:var(--panel);border:1px solid var(--rule);max-height:520px;overflow:auto}
+.list .it{padding:10px 14px;border-bottom:1px solid var(--rule-2);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:baseline}
+.list .it:hover{background:var(--panel-2)} .list .it.on{background:var(--sel);box-shadow:inset 3px 0 0 var(--em)}
+.list .it .t{font-size:15px;line-height:1.4} .list .it .s{font-size:12.5px;color:var(--ink-3)}
+.list .it .inq{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.list .empty{padding:18px 14px;font-size:15px;color:var(--ink-2)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.col{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:14px 16px;min-height:200px;font-size:15px;line-height:1.6}
+.col.rn{border-top-color:var(--rn)} .col.pv{border-top-color:var(--pv)} .col.og{border-top-color:var(--og)}
+.col h3{font-size:17px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.col h3 .c{font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--ink-3)}
+.col .kv{display:grid;grid-template-columns:64px 1fr;gap:3px 10px;font-size:14.5px;margin-bottom:8px}
+.col .kv .k{color:var(--ink-3)} .col .kv .v{color:var(--ink)}
 .col .blk{border-top:1px solid var(--rule-2);padding-top:8px;margin-top:8px}
-.col .blk h4{margin:0 0 4px;font-size:12px;letter-spacing:.04em;color:var(--ink-3);font-weight:600}
+.col .blk h4{margin:0 0 4px;font-size:13px;letter-spacing:.04em;color:var(--ink-3);font-weight:600}
 .col ul{margin:0;padding-left:0;list-style:none}
-.col li{padding:5px 0;border-bottom:1px dashed var(--rule-2);font-size:13px;line-height:1.45}
+.col li{padding:5px 0;border-bottom:1px dashed var(--rule-2);font-size:14.5px;line-height:1.5}
 .col li:last-child{border-bottom:0}
-.col li .d{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-right:6px}
-.col li .sub{display:block;font-size:12px;color:var(--ink-3)}
-.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);vertical-align:middle;background:var(--panel-2)}
-.badge.warn{border-color:var(--seal);color:var(--seal);background:var(--seal-soft)}
-.badge.ok{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
-.kwline{font-size:12.5px;color:var(--ink-2);margin-bottom:6px}
-.kwline .mono{color:var(--ink)}
-.raw{font-size:11.5px;color:var(--ink-3)}
-.share{margin-top:10px;display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-3)}
-button{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:2px;cursor:pointer}
+.col li .d{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-right:6px}
+.col li .sub{display:block;font-size:13px;color:var(--ink-3)}
+.badge{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);vertical-align:middle;background:var(--panel-2)}
+.badge.warn{border-color:var(--ink-3);color:var(--ink-2)}
+.kwline{font-size:13.5px;color:var(--ink-2);margin-bottom:6px} .kwline .mono{color:var(--ink)}
+.raw{font-size:12.5px;color:var(--ink-3)}
+.share{margin-top:10px;display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-3)}
+button{font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:2px;cursor:pointer}
 button.ghost{background:transparent;color:var(--ink)}
-.placeholder{padding:28px 18px;color:var(--ink-2);font-size:14px;background:var(--panel);border:1px dashed var(--rule)}
-
-/* matrix */
-.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
-table{border-collapse:collapse;width:100%;font-size:13px}
-th,td{padding:6px 9px;border-bottom:1px solid var(--rule-2);text-align:left;vertical-align:top}
-th{font-size:11.5px;letter-spacing:.04em;color:var(--ink-3);font-weight:600;background:var(--panel);position:sticky;top:41px}
-td.n,th.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.placeholder{padding:28px 18px;color:var(--ink-2);font-size:15px;background:var(--panel);border:1px dashed var(--rule)}
+sup.note{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:2px;cursor:pointer}
+sup.note:hover{color:var(--ink)}
+.warn{font-weight:600}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.trio>div{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;border-top:3px solid var(--ink);font-size:14.5px}
+.trio>div.rn{border-top-color:var(--rn)} .trio>div.pv{border-top-color:var(--pv)} .trio>div.og{border-top-color:var(--og)}
+.trio h3{font-size:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 8px;align-items:baseline;margin-bottom:4px}
+.trio h3 small{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--ink-3)}
+.trio .what{color:var(--ink-2);margin:4px 0 10px;min-height:2.8em}
+.trio .kv{display:grid;grid-template-columns:76px 1fr;gap:3px 10px} .trio .kv .k{color:var(--ink-3)} .trio .kv .v{color:var(--ink)}
+table#matrix th{position:sticky;top:0}
 td.none{color:var(--ink-3);background:var(--panel-2);text-align:center}
 td.org a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink-3)}
 tr.hl td{background:var(--sel)}
-.legend{font-size:12.5px;color:var(--ink-2);margin:8px 0 12px;display:flex;gap:16px;flex-wrap:wrap}
-.legend span i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:4px;border:1px solid var(--rule)}
-.st{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 6px;border-radius:2px}
-.st.ok{background:var(--teal-soft);color:var(--teal)} .st.bad{background:var(--seal-soft);color:var(--seal)} .st.mis{background:var(--amber-soft);color:var(--amber)}
-
-/* notes */
-.notes ol{padding-left:0;list-style:none;margin:0;counter-reset:n}
-.notes li{display:grid;grid-template-columns:44px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--rule-2);font-size:13.5px;color:var(--ink-2)}
-.notes li .no{font-family:"IBM Plex Mono",monospace;color:var(--teal);font-size:12px;padding-top:2px}
-.notes li .src{display:block;font-size:12px;color:var(--ink-3);margin-top:2px}
-.notes li:target{background:var(--sel)}
+.mlegend{font-size:13.5px;color:var(--ink-2);margin:8px 0 12px;display:flex;gap:16px;flex-wrap:wrap}
+.mlegend span i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:4px;border:1px solid var(--rule)}
+.st{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 6px;border-radius:2px;border:1px solid var(--rule)}
+.st.ok{color:var(--og)} .st.bad{color:var(--rn)} .st.mis{color:var(--pv)}
 .method{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.method>div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;font-size:13.5px;color:var(--ink-2)}
-.method h3{font-size:14px;margin-bottom:4px}
-.method ul{margin:0;padding-left:16px}
-
-@media (max-width:860px){
-  .trio,.qa,.cols,.method{grid-template-columns:1fr}
-  .xp{grid-template-columns:1fr}
-  .sec-head{grid-template-columns:1fr;gap:4px}
-  .mast{grid-template-columns:1fr} .mast .meta{text-align:left}
-  th{position:static}
-}
+.method>div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;font-size:14.5px;color:var(--ink-2)}
+.method h3{font-size:15px;margin-bottom:4px} .method ul{margin:0;padding-left:16px}
+.notes li .src{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px}
+@media (max-width:860px){.pstrip,.cols,.trio,.method{grid-template-columns:1fr} table#matrix th{position:static}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 
-<div class="wrap">
-  <header class="mast">
-    <div>
-      <div class="eyebrow">정보공개포털 실측 · 정책실명제 · 사전정보공표 · 원문공개</div>
-      <h1>정보공개 3제도 대조기</h1>
-    </div>
-    <div class="meta">기준일 <b data-v="snapshot"></b> · 각주 <b id="noteCount"></b>개<br>정책실명제 중앙 <span data-v="rn_total"></span>건 전수 · 상세 <span data-v="rn_detail_n"></span>건 · 대조 <span data-v="probe_n"></span>건<br><span class="muted">실명은 제거됨 · 내부 검토용</span></div>
+<div class="bar"><div class="in">
+  <nav><a href="../"><span class="long">개요</span><span class="short">개요</span></a><a href="../compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="../ai-plan.html"><span class="long">AI 구상안</span><span class="short">구상</span></a><a class="on" href="./"><span class="long">사업 대조기</span><span class="short">대조</span></a></nav>
+  <div class="meta"><span>기준일 <b data-v="snapshot"></b></span><span class="legend"><span><i class="rn"></i>정책실명제</span><span><i class="pv"></i>사전정보공표</span><span><i class="og"></i>원문공개</span></span></div>
+</div></div>
+
+<div class="wrap wide">
+  <header class="summary">
+    <div class="eyebrow">사업 대조기 · 정책실명제 중앙 <span data-v="rn_total"></span>건 전수</div>
+    <h1>같은 사업이 세 채널에 어떻게 다르게 보이는지, 실물로 본다</h1>
+    <p class="lede">정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. <span class="em">2025~2026년 사업 <span class="n" data-v="probe_n"></span>개 중 둘 다에서 찾을 수 없는 사업이 <span class="n" data-v="probe_both0"></span>개다.</span> 회의에서 나온 질문 여섯의 답은 <a href="../compare.html#qa">세 제도 비교</a>에.</p>
+    <div class="pstrip" id="pstrip"></div>
+    <div class="basis">막대 = 비율(16칸). 검색어는 사업명에서 자동으로 뽑았다.<sup class="note" data-note="n_probe"></sup> 출처·표본·한계는 <a href="#basis">근거·방법</a>에.</div>
   </header>
-  <nav class="top" id="nav">
-    <a href="#s1" data-s="s1" class="on">스코어보드</a>
-    <a href="#s2" data-s="s2">사업 대조기</a>
-    <a href="#s3" data-s="s3">기관 현황</a>
-    <a href="#s4" data-s="s4">근거·방법</a>
-  </nav>
 
-  <!-- ─── 1 ─── -->
-  <section id="s1" style="margin-top:0;border-top:0;padding-top:0">
-    <p class="lede">세 제도는 서로 대체하는 관계가 아니라 <strong>단위가 다르다.</strong> 사전정보공표는 "이런 정보가 여기 있다"는 <strong>안내 목록</strong>, 원문공개는 결재가 끝난 <strong>문서 원본</strong>, 정책실명제는 <strong>사업 하나를 단위로 누가 맡아 어디까지 왔는지</strong>를 적는 명부다. 아래 숫자는 전부 포털에서 직접 받은 값이고, 각주 번호를 누르면 산출 방법으로 간다.</p>
-    <div class="trio" id="scoreboard"></div>
-
-    <div class="sec-head" style="margin-top:28px">
-      <div class="eyebrow">물으신 것</div>
-      <p>회의에서 나온 질문 순서대로. 숫자는 위 스코어보드와 같은 스냅샷이다.</p>
-    </div>
-    <div class="qa">
-      <div class="q"><div class="m">Q1</div><div><h3>정책실명제는 제목까지인가, 예산 집행까지인가</h3><p>제목이 아니라 <b>사업 개요·추진배경·담당자·추진실적</b>까지다. 그러나 개요는 중앙값 <span class="n" data-v="rn_sumlen"></span>자, 추진실적은 연 <span class="n" data-v="rn_prtn_med"></span>건에 <span class="n" data-v="rn_prtn_len"></span>자짜리 한 줄이고, <span class="warn">예산·집행 현황 필드는 데이터 모델에 없다.</span><sup class="note" data-note="n_rn_depth"></sup> 입안자에서 최종 결재자까지의 경로는 관련 원문이 연결된 <span class="n" data-v="rn_linked_rate"></span>% 사업의 결재문서에서만 보인다.<sup class="note" data-note="n_rn_source"></sup></p></div></div>
-      <div class="q"><div class="m">Q2</div><div><h3>사전정보공표는 어디까지 공개되나</h3><p>법은 범위·주기·시기·방법을 기관이 미리 정하라고만 하고, 포털 항목은 <b>제목 + 세부항목 한 줄(중앙값 <span class="n" data-v="pv_detail_len"></span>자) + 주기 + 링크</b>다.<sup class="note" data-note="n_pv_depth"></sup> 내용은 각 기관 홈페이지에 있고 포털은 목록이다. 넓지만 얕아서 정책실명제와 같은 수준이라 볼 수 없다. 사업 대조기에서 같은 사업을 찾아보면 히트의 실체가 보인다.</p></div></div>
-      <div class="q"><div class="m">Q3</div><div><h3>연 몇 번 갱신되나</h3><p>정책실명제는 연 1회 등록 후 수정된 사업이 <span class="n" data-v="rn_upd2025"></span>%(2025)이고 수정 간격 중앙값이 5일이라 현행화가 아니라 정정이다.<sup class="note" data-note="n_rn_update"></sup> 사전정보는 표본 <span class="n" data-v="pv_cycle_n"></span>건 중 매년 <span class="n" data-v="pv_cy_year"></span>·수시 <span class="n" data-v="pv_cy_adhoc"></span>으로 대부분이 연 1회 또는 비정기다.<sup class="note" data-note="n_pv_cycle"></sup> 원문공개만 결재 즉시다. <b>분기 갱신은 지금 어디에도 없다.</b></p></div></div>
-      <div class="q"><div class="m">Q4</div><div><h3>공공기관까지 넓히면</h3><p>정보공개법은 이미 공공기관 전체가 대상이고, 사전정보에는 공공기관 <span class="n" data-v="pv_org450"></span>곳이 <span class="n" data-v="pv_p"></span>항목을, 원문공개에는 공기업·준정부기관 <span class="n" data-v="og_p25_n"></span>곳이 2025년 <span class="n" data-v="og_p25_tot"></span>건을 올렸다.<sup class="note" data-note="n_og_source"></sup> 정책실명제만 대통령령이라 공공기관이 빠져 있다.<sup class="note" data-note="n_law"></sup> 경영공시(ALIO)와의 항목 대조는 아직 하지 않았다.</p></div></div>
-      <div class="q"><div class="m">Q5</div><div><h3>국민이 신청하는 제도는 작동하나</h3><p>규정 §63의3①5호가 국민 신청 사업을 명시하지만 포털에 창구는 없고 기관이 각자 접수한다. 선정기준에 '국민신청'으로 적힌 사업은 2018년 <span class="n" data-v="rn_nat2018"></span>건에서 2025년 <span class="n warn" data-v="rn_nat2025"></span>건으로 줄었다.<sup class="note" data-note="n_rn_request"></sup></p></div></div>
-      <div class="q"><div class="m">Q6</div><div><h3>그래서 실태는</h3><p>중앙 <span class="n" data-v="rn_inst2018"></span>기관 <span class="n" data-v="rn_2018"></span>건(2018)에서 <span class="n" data-v="rn_inst2025"></span>기관 <span class="n" data-v="rn_2025"></span>건(2025)으로 줄었고, 2026년은 9월 중순 <span class="n" data-v="rn_inst2026"></span>기관 <span class="n" data-v="rn_2026"></span>건이며 2025년 등록 기관 중 <span class="n" data-v="rn_unreg2026"></span>곳이 미등록이다.<sup class="note" data-note="n_2026"></sup> 사업당 조회수 중앙값은 <span class="n" data-v="rn_inqmed2026"></span>이다.<sup class="note" data-note="n_rn_inq"></sup> 지자체·교육청은 포털에 한 건도 없다.<sup class="note" data-note="n_rn_local"></sup></p></div></div>
-    </div>
+  <section class="core" id="s2">
+    <h2 id="exTitle">예시 사업</h2>
+    <p>실명은 제거하고 직급·역할만 남겼다. 2018~2024년 사업은 대조를 수집하지 않아 정책실명제 열만 채워진다.</p>
+    <div id="detail"><div class="placeholder">사업을 불러오는 중…</div></div>
   </section>
 
-  <!-- ─── 2 ─── -->
-  <section id="s2">
-    <div class="sec-head">
-      <div class="eyebrow">사업 대조기</div>
-      <p>정책실명제 사업 하나를 고르면 같은 이름으로 사전정보공표와 원문공개를 찾은 결과가 나란히 놓인다. 검색어는 사업명에서 자동으로 뽑았고 결과 첫 줄에 표시한다.<sup class="note" data-note="n_probe"></sup> 2018~2024년 사업은 대조 미수집이라 정책실명제 열만 채워진다. 결과: <span class="n" data-v="probe_n"></span>건 중 사전정보에 같은 이름이 없는 사업 <span class="n" data-v="probe_prev0"></span>건, 해당 기관 원문에 없는 사업 <span class="n" data-v="probe_org0"></span>건, 둘 다 없는 사업 <span class="n warn" data-v="probe_both0"></span>건.</p>
-    </div>
-    <div class="pstrip" id="pstrip"></div>
-    <p class="cap" style="margin:6px 0 0">막대 = 비율(16칸). 2025~2026년 정책실명제 사업 <span class="n" data-v="probe_n"></span>개 ID 기준. 검색어는 사업명에서 자동으로 뽑았다.<sup class="note" data-note="n_probe"></sup></p>
+  <section class="core" id="pick">
+    <h2>다른 사업 고르기</h2>
     <div class="ctl">
       <label>기관 <select id="fOrg"></select></label>
       <label>연도 <select id="fYear"></select></label>
@@ -211,18 +102,17 @@ tr.hl td{background:var(--sel)}
       <button class="ghost" id="fReset" type="button">초기화</button>
       <span class="cnt" id="fCnt"></span>
     </div>
-    <div class="xp">
-      <div class="list" id="list"></div>
-      <div id="detail"><div class="placeholder">왼쪽 목록에서 사업을 고르세요. 기본 목록은 2025년 등록 사업을 조회수 순으로 보여줍니다.</div></div>
-    </div>
+    <div class="list" id="list"></div>
   </section>
 
-  <!-- ─── 3 ─── -->
-  <section id="s3">
-    <div class="sec-head">
-      <div class="eyebrow">기관 현황</div>
-      <p>연도별 등록 건수 매트릭스. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
-    </div>
+  <section class="appendix" id="appendix">
+    <div class="label">별첨</div>
+    <h2 id="scoreboard-h">세 제도 실측 스코어보드</h2>
+    <p class="cap">각 지표의 각주 번호를 누르면 산출 방법으로 간다.</p>
+    <div class="trio" id="scoreboard"></div>
+
+    <h3 id="s3">기관별 등록 현황</h3>
+    <p class="cap">연도별 등록 건수. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
     <div class="ctl">
       <label>정렬 <select id="oSort">
         <option value="nm">기관명</option>
@@ -233,29 +123,21 @@ tr.hl td{background:var(--sel)}
       </select></label>
       <span class="cnt" id="oCnt"></span>
     </div>
-    <div class="legend"><span><i style="background:var(--panel-2)"></i>미등록</span><span>2026 = 등록 진행 중<sup class="note" data-note="n_2026"></sup></span><span>연결 = 관련원문 있는 사업 / 상세 확인 사업</span></div>
+    <div class="mlegend"><span><i style="background:var(--panel-2)"></i>미등록</span><span>2026 = 등록 진행 중<sup class="note" data-note="n_2026"></sup></span><span>연결 = 관련원문 있는 사업 / 상세 확인 사업</span></div>
     <div class="tbl"><table id="matrix"></table></div>
 
-    <div class="sec-head" style="margin-top:28px">
-      <div class="eyebrow">지자체·교육청 링크 상태</div>
-      <p>포털에 지자체·교육청 정책실명제 사업 데이터는 없다. 첫 화면의 외부 링크 <span class="n" data-v="rn_links"></span>개를 열어본 결과다.<sup class="note" data-note="n_rn_local"></sup></p>
-    </div>
-    <div class="legend" id="linkSummary"></div>
+    <h3 id="links-h">지자체·교육청 링크 상태</h3>
+    <p class="cap">포털에 지자체·교육청 정책실명제 사업 데이터는 없다. 첫 화면의 외부 링크 <span class="n" data-v="rn_links"></span>개를 열어본 결과다.<sup class="note" data-note="n_rn_local"></sup></p>
+    <div class="mlegend" id="linkSummary"></div>
     <div class="tbl"><table id="links"></table></div>
-  </section>
 
-  <!-- ─── 4 ─── -->
-  <section id="s4">
-    <div class="sec-head">
-      <div class="eyebrow">근거·방법</div>
-      <p>수치는 <span data-v="snapshot"></span> 포털 스냅샷이다. 본문의 각주 번호를 누르면 여기로 온다.</p>
-    </div>
+    <h3 id="s4">수집 방법과 한계</h3>
     <div class="method">
       <div><h3>수집 방법</h3><ul>
-        <li><b>정책실명제</b> 기관 목록 AJAX → 기관별 사업 페이지 내장 JSON(전수) → 상세 페이지(2025~2026)</li>
+        <li><b>정책실명제</b> 기관 목록 → 기관별 사업 목록(전수) → 상세 페이지(2025~2026)</li>
         <li><b>사전정보공표</b> '숫자로 보는 정보공개' 통계 + 상세 페이지 표본 + 최근 등록 목록</li>
         <li><b>원문공개</b> 원문공개율 통계(기관유형×연도) + 코퍼스(53.8만 건, 본문 417건)</li>
-        <li><b>대조</b> 사업명 검색어 1개로 사전정보·원문 검색 AJAX(브라우저 세션)</li>
+        <li><b>대조</b> 사업명 검색어 1개로 사전정보·원문을 포털에서 검색</li>
       </ul></div>
       <div><h3>한계</h3><ul>
         <li>2026년은 등록 진행 중 값. 추세는 2025년까지로 읽을 것</li>
@@ -266,8 +148,11 @@ tr.hl td{background:var(--sel)}
         <li>공공기관 경영공시(ALIO) 항목 대조 미실시</li>
       </ul></div>
     </div>
+
+    <h3 id="basis">근거·방법 <span class="muted" style="font-weight:400;font-size:14px">각주 <span id="noteCount"></span>개 · <span data-v="snapshot"></span> 스냅샷</span></h3>
     <div class="notes"><ol id="notes"></ol></div>
-    <p class="muted" style="font-size:12.5px;margin-top:14px">빌드 <span id="buildInfo"></span> · 재생성 <code class="mono">node tools/build-explorer.mjs</code> · 실명 처리<sup class="note" data-note="n_names"></sup></p>
+    <p class="muted" style="font-size:13px;margin-top:14px">빌드 <span id="buildInfo"></span> · 재생성 <code class="mono">node tools/build-explorer.mjs</code> · 실명 처리<sup class="note" data-note="n_names"></sup></p>
+    <div class="foot">수집·분석 코드는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>.</div>
   </section>
 </div>
 
@@ -301,7 +186,6 @@ tr.hl td{background:var(--sel)}
       { pct: Math.round(V.probe_prev0 / V.probe_n * 100), lab: '사전정보공표에 같은 이름의 항목이 없는 사업', frac: `${V.probe_prev0} / ${V.probe_n}`, cls: 'pv' },
       { pct: Math.round(V.probe_org0 / V.probe_n * 100), lab: '해당 기관 원문공개(2025~)에 검색어 일치 문서가 없는 사업', frac: `${V.probe_org0} / ${V.probe_n}`, cls: 'og' },
       { pct: Math.round(V.probe_both0 / V.probe_n * 100), lab: '두 채널 어디에도 없는 사업', frac: `${V.probe_both0} / ${V.probe_n}`, cls: 'rn' },
-      { pct: V.rn_linked_rate, lab: '담당자가 포털 관리카드에 관련 원문을 붙여 둔 사업', frac: `${V.rn_linked} / ${V.rn_detail_n}`, cls: 'og' },
     ];
     $('#pstrip').innerHTML = items.map(it => { const on = Math.round(it.pct / 100 * N); return `<div><div class="big">${it.pct}<small>%</small></div><div class="lab">${esc(it.lab)}</div><div class="bars">${Array.from({length:N},(_,i)=>`<i class="${i<on?'on '+it.cls:''}"></i>`).join('')}</div><div class="frac">${esc(it.frac)}</div></div>`; }).join('');
   })();
@@ -323,7 +207,7 @@ tr.hl td{background:var(--sel)}
     $('#fCnt').textContent = rows.length ? `${rows.length.toLocaleString()}건${rows.length>cap?` 중 조회수 상위 ${cap}건 표시 · 더 좁히세요`:''}` : '0건';
     if (!rows.length) { list.innerHTML = `<div class="empty">조건에 맞는 사업이 없습니다. 2026년은 ${D.vals.rn_inst2026}기관만 등록(진행 중)이고, 2025년 이전은 기관에 따라 등록이 없습니다.</div>`; return; }
     list.innerHTML = rows.slice(0,cap).map(p => `<div class="it ${current===p.id?'on':''}" data-g="${p.id}"><div><div class="t">${esc(p.name)}</div><div class="s">${esc(p.nm)} · ${p.y}${p.hasProbe?'':(p.y>=2025?' · <span class="badge">대조 진행 중</span>':' · <span class="badge">대조 미수집</span>')}</div></div><div class="inq">조회 ${p.inq}</div></div>`).join('');
-    list.querySelectorAll('.it').forEach(el => el.onclick = () => select(el.dataset.g, true));
+    list.querySelectorAll('.it').forEach(el => el.onclick = () => { select(el.dataset.g, true); document.getElementById('s2').scrollIntoView(); });
   }
   function portalLinks(p){
     const rn = `https://www.open.go.kr/othicInfo/plcyChgrRealNm/polRnInsttDetail.do?gclfCd=${encodeURIComponent(p.g)}&nstCd=${p.cd}&searchNstCd=${p.cd}&rgstYmd=${p.y}`;
@@ -332,6 +216,7 @@ tr.hl td{background:var(--sel)}
   function select(g, push){
     const p = D.projects.find(x => x.id===g); if (!p) { det.innerHTML = `<div class="placeholder">해당 사업이 스냅샷(${D.snapshot})에 없습니다. 목록에서 다시 고르세요.</div>`; return; }
     current = g; if (push) history.replaceState(null,'',`#p=${encodeURIComponent(g)}`);
+    const exT = $('#exTitle'); if (exT) exT.textContent = (push ? '' : '예시 사업: ') + p.name;
     list.querySelectorAll('.it').forEach(el => el.classList.toggle('on', el.dataset.g===g));
     const d = D.details[p.id], pr = D.probes[p.g], L = portalLinks(p);
     const years = D.projects.filter(x => x.g===p.g && x.id!==p.id).map(x => x.y).sort();
@@ -383,7 +268,7 @@ tr.hl td{background:var(--sel)}
     rows.sort((a,b) => k==='nm' ? a.nm.localeCompare(b.nm,'ko') : k==='y2025' ? (b.years[2025]||0)-(a.years[2025]||0) : k==='inq' ? (b.inqMed2025??-1)-(a.inqMed2025??-1) : k==='link' ? rate(b)-rate(a) : b.lastYear-a.lastYear);
     $('#oCnt').textContent = `${rows.length}기관 · 2025년 등록 ${rows.filter(o=>o.years[2025]).length} · 2026년 등록 ${rows.filter(o=>o.years[2026]).length}`;
     $('#matrix').innerHTML = `<thead><tr><th>기관</th>${D.years.map(y=>`<th class="n">${y}${y===2026?'<br><span class="muted">진행 중</span>':''}</th>`).join('')}<th class="n">2025 조회<br>중앙값</th><th class="n">원문 연결</th></tr></thead><tbody>${rows.map(o => `<tr id="org-${o.cd}"><td class="org"><a href="#p" data-cd="${o.cd}">${esc(o.nm)}</a></td>${D.years.map(y => o.years[y] ? `<td class="n">${o.years[y]}</td>` : `<td class="none">–</td>`).join('')}<td class="n">${o.inqMed2025 ?? '–'}</td><td class="n">${o.sampled ? `${o.linked}/${o.sampled} <span class="muted">${Math.round(o.linked/o.sampled*100)}%</span>` : '–'}</td></tr>`).join('')}</tbody>`;
-    $('#matrix').querySelectorAll('a[data-cd]').forEach(a => a.onclick = (e) => { e.preventDefault(); fOrg.value = a.dataset.cd; fYear.value = ''; fQ.value=''; renderList(); location.hash = 's2'; });
+    $('#matrix').querySelectorAll('a[data-cd]').forEach(a => a.onclick = (e) => { e.preventDefault(); fOrg.value = a.dataset.cd; fYear.value = ''; fQ.value=''; renderList(); document.getElementById('pick').scrollIntoView(); });
   }
   oSort.onchange = renderMatrix;
 
@@ -397,13 +282,11 @@ tr.hl td{background:var(--sel)}
     $('#links').innerHTML = `<thead><tr><th>기관</th><th>상태</th><th>도착 페이지 제목</th><th>링크</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(r.name)}</td><td><span class="st ${r.c[0]}">${esc(r.c[1])}</span></td><td>${esc(r.title)||'<span class="muted">–</span>'}</td><td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url.replace(/^https?:\/\//,'').slice(0,48))}${r.url.length>56?'…':''} ↗</a></td></tr>`).join('')}</tbody>`;
   })();
 
-  /* ── nav highlight + hash routing ── */
-  const secs = ['s1','s2','s3','s4'];
-  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.s===e.target.id)); }); }, { rootMargin: '-40% 0px -55% 0px' });
-  secs.forEach(id => io.observe(document.getElementById(id)));
+  /* ── hash routing ── */
   function route(){
     const h = location.hash.slice(1);
     if (h.startsWith('p=')) { const g = decodeURIComponent(h.slice(2)); const p = D.projects.find(x=>x.id===g); if (p) { fOrg.value = p.cd; fYear.value = String(p.y); fQ.value=''; } renderList(); select(g,false); document.getElementById('s2').scrollIntoView(); }
+    else if (!current) { const g = D.defaultProject || (filtered()[0] || {}).id; if (g) select(g,false); }
     else if (h.startsWith('org=')) { const cd = h.slice(4); const tr = document.getElementById('org-'+cd); if (tr) { document.querySelectorAll('#matrix tr.hl').forEach(t=>t.classList.remove('hl')); tr.classList.add('hl'); tr.scrollIntoView({block:'center'}); } }
   }
   renderList(); renderMatrix(); wireNotes();

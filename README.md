@@ -108,3 +108,7 @@ vendor/rhwp/rhwp export-tables <파일> --json              # 표를 셀 단위 
 
 - 일별 전수는 교육청 예산·지출 등 **행정 일상 문서가 지배적**이다. 인허가 절차 분석은 `query` 모드 결과를 쓸 것.
 - 개인정보가 포함될 수 있는 원문 데이터다. 공개 재배포 전 검토 필요 — 이 저장소는 로컬 분석용.
+
+## 공개 페이지 (GitHub Pages)
+
+`docs/`가 Pages 루트다. 정적 페이지 소스는 `docs/src/*.html` + 공통 스타일 `docs/src/shared.css`이고, `node tools/build-explorer.mjs`가 CSS를 인라인해 `docs/*.html`과 대조기 `docs/explorer/index.html`을 생성한다. **`docs/*.html`을 직접 고치지 말고 `docs/src/`를 고친 뒤 빌드한다.** 빌드는 각주·값 참조, 남은 로컬 스타일시트 링크, 기본 예시 사업(기관+사업명 상수) 해석을 검사하고 실명 누출을 경고한다.

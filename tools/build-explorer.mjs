@@ -257,9 +257,16 @@ for (const d of Object.values(details)) { for (const x of d.prtn) x.info = scrub
 for (const pr of Object.values(probeOut)) { for (const k of ["prev", "orginl"]) for (const i of (pr[k].items || [])) { i.title = scrub(i.title); if (i.detail) i.detail = scrub(i.detail); } }
 console.error(`free-text scrub: ${scrubNames.length} names, ${scrubbed} replacements`);
 
+/* ── default example project (4A): institution + name, resolved to id; latest year wins ── */
+const DEFAULT_PROJECT = { nm: "행정안전부", name: "풍수해보험사업 운영" };
+const dpCands = projects.filter((p) => p.nm === DEFAULT_PROJECT.nm && p.name.replace(/\s/g, "") === DEFAULT_PROJECT.name.replace(/\s/g, "")).sort((a, b) => b.y - a.y);
+const defaultProject = dpCands[0]?.id ?? null;
+if (!defaultProject) console.error(`WARN default project not found: ${DEFAULT_PROJECT.nm} / ${DEFAULT_PROJECT.name} — page falls back to first list item`);
+else console.error(`default project: ${dpCands[0].nm} · ${dpCands[0].name} · ${dpCands[0].y}`);
+
 /* ── assemble & validate ────────────────────────────────────────────── */
 const data = {
-  snapshot: SNAPSHOT, withNames: WITH_NAMES,
+  snapshot: SNAPSHOT, withNames: WITH_NAMES, defaultProject,
   build: { at: new Date().toISOString().slice(0, 19).replace("T", " "), command: "node tools/build-explorer.mjs", projects: projects.length, details: detail.length, probes: probes.length },
   vals, notes, scoreboard, years: YEARS, orgs, projects, details, probes: probeOut,
   localLinks: localLinks.map((l) => ({ name: l.name, url: l.url, status: l.status, final: l.final, hit: l.hit, title: l.title })),
@@ -282,8 +289,27 @@ if (!WITH_NAMES) {
   console.error(`leak check: known names ${knownNames.size}, appearing in output ${leaks.length}${leaks.length ? " e.g. " + leaks.slice(0, 8).join(", ") : ""}`);
 }
 fs.writeFileSync(R(`explorer/data${suffix}.json`), json);
-const html = tpl.replace("/*__DATA__*/", () => json.replace(/<\//g, "<\\/"));
+const CSS_PATH = R("docs/src/shared.css");
+if (!fs.existsSync(CSS_PATH)) { console.error("ERROR shared CSS missing: docs/src/shared.css"); process.exit(1); }
+const sharedCss = fs.readFileSync(CSS_PATH, "utf8");
+if (!tpl.includes("/*__SHARED_CSS__*/")) { console.error("ERROR explorer template lacks /*__SHARED_CSS__*/ marker"); process.exit(1); }
+const html = tpl.replace("/*__SHARED_CSS__*/", () => sharedCss).replace("/*__DATA__*/", () => json.replace(/<\//g, "<\\/"));
 fs.writeFileSync(R(`explorer/index${suffix}.html`), html);
-if (!WITH_NAMES) { fs.mkdirSync(R("docs/explorer"), { recursive: true }); fs.writeFileSync(R("docs/explorer/index.html"), html); }
+if (!WITH_NAMES) {
+  fs.mkdirSync(R("docs/explorer"), { recursive: true });
+  fs.writeFileSync(R("docs/explorer/index.html"), html);
+  // static pages: docs/src/*.html → docs/*.html with shared.css inlined; any leftover local stylesheet link fails the build
+  for (const name of ["index", "compare", "ai-plan"]) {
+    const src = R(`docs/src/${name}.html`);
+    if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
+    let page = fs.readFileSync(src, "utf8");
+    const linkRe = /<link\s+rel="stylesheet"\s+href="shared\.css"\s*\/?>/;
+    if (!linkRe.test(page)) { console.error(`ERROR docs/src/${name}.html has no <link rel="stylesheet" href="shared.css">`); process.exit(1); }
+    page = page.replace(linkRe, () => `<style>\n${sharedCss}\n</style>`);
+    if (/<link\s+rel="stylesheet"\s+href="(?!https?:)/.test(page)) { console.error(`ERROR docs/src/${name}.html still references a local stylesheet after inlining`); process.exit(1); }
+    fs.writeFileSync(R(`docs/${name}.html`), page);
+  }
+  console.error("static pages built: docs/index.html docs/compare.html docs/ai-plan.html (shared.css inlined)");
+}
 console.error(`built explorer/index${suffix}.html ${(html.length / 1e6).toFixed(1)}MB · projects ${projects.length} · details ${detail.length} · probes ${probes.length} · notes ${notes.length} · unmatched name segments ${unmatched.length}`);
 if (unmatched.length) console.error("  unmatched (first 15):", [...new Set(unmatched)].slice(0, 15));
