@@ -30,7 +30,10 @@ select:focus,input:focus,button:focus{outline:2px solid var(--em);outline-offset
 .list .it .t{font-size:15px;line-height:1.4} .list .it .s{font-size:12.5px;color:var(--ink-3)}
 .list .it .inq{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap}
 .list .empty{padding:18px 14px;font-size:15px;color:var(--ink-2)}
-.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+/* 없다는 것이 이 화면의 결론이다. 빈 상자가 아니라 이유를 채운다 */
+.col .empty{background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin-top:10px;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.col .empty b{color:var(--ink);display:block;margin-bottom:4px}
 .col{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:14px 16px;min-height:200px;font-size:15px;line-height:1.6}
 .col.rn{border-top-color:var(--rn)} .col.pv{border-top-color:var(--pv)} .col.og{border-top-color:var(--og)}
 .col h3{font-size:17px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
@@ -240,7 +243,8 @@ tr.hl td{background:var(--sel)}
     if (!pr) c2 = `<div class="col pv"><h3>사전정보공표</h3><span class="badge">${p.y>=2025?'대조 진행 중 (배치 수집 미완)':'대조 미수집 (2018~2024년분)'}</span><div class="blk">포털 사전정보 검색에서 사업명으로 직접 찾을 수 있다. <a href="${L.pv}" target="_blank" rel="noopener">사전정보 검색 ↗</a></div></div>`;
     else if (pr.prev.err) c2 = `<div class="col pv"><h3>사전정보공표</h3>${kwline}<span class="badge warn">검색 실패 (${esc(pr.prev.err)})</span></div>`;
     else c2 = `<div class="col pv"><h3>사전정보공표 <span class="c">전 기관 · 2014~</span></h3>${kwline}
-      ${pr.prev.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">검색어로 등록된 사전정보 항목 없음</span></div>`:`<div><b>${pr.prev.total.toLocaleString()}건</b> <span class="muted">항목 = 제목 + 한 줄 + 링크</span></div>
+      ${pr.prev.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">검색어로 등록된 사전정보 항목 없음</span></div>
+      <div class="empty"><b>왜 비어 있나</b>사전정보공표는 기관이 미리 정해 공표한 <b style="display:inline">정보 항목</b> 목록이라, 사업 이름으로는 잡히지 않는 경우가 많다. 이 사업을 다루는 항목이 다른 이름으로 등록돼 있을 수도 있다.</div>`:`<div><b>${pr.prev.total.toLocaleString()}건</b> <span class="muted">항목 = 제목 + 한 줄 + 링크</span></div>
       <div class="blk"><h4>상위 ${pr.prev.items.length}건</h4><ul>${pr.prev.items.map(i => `<li>${esc(i.title)}<span class="sub">${esc(i.inst)}${i.dept?' · '+esc(i.dept):''}${i.detail?' · '+esc(i.detail):''}${i.url?` · <a href="${esc(i.url)}" target="_blank" rel="noopener">링크 ↗</a>`:''}</span></li>`).join('')}</ul></div>`}
       <div class="blk"><a href="${L.pv}" target="_blank" rel="noopener">사전정보 검색 ↗</a> <span class="muted">(검색어를 넣어 확인)</span></div></div>`;
     /* col 3 */
@@ -249,7 +253,8 @@ tr.hl td{background:var(--sel)}
     if (!pr) c3 = `<div class="col og"><h3>원문공개</h3><span class="badge">${p.y>=2025?'대조 진행 중 (배치 수집 미완)':'대조 미수집 (2018~2024년분)'}</span>${won}<div class="blk"><a href="${L.og}" target="_blank" rel="noopener">원문 검색 ↗</a></div></div>`;
     else if (pr.orginl.err) c3 = `<div class="col og"><h3>원문공개</h3>${kwline}<span class="badge warn">검색 실패 (${esc(pr.orginl.err)})</span>${won}</div>`;
     else c3 = `<div class="col og"><h3>원문공개 <span class="c">${esc(p.nm)} · 2025~</span></h3>${kwline}
-      ${pr.orginl.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">이 기관이 2025년 이후 공개한 결재문서 중 검색어 일치 없음</span></div>`:`<div><b>${pr.orginl.total.toLocaleString()}건</b> <span class="muted">문서 = 본문·첨부·결재선</span></div>
+      ${pr.orginl.total===0?`<div><span class="badge warn">포털에 없음</span> <span class="muted">이 기관이 2025년 이후 공개한 결재문서 중 검색어 일치 없음</span></div>
+      <div class="empty"><b>왜 비어 있나</b>결재문서는 국장급·부단체장 등 이상 결재분만 원문공개 대상이다. 과장 전결로 끝난 문서는 목록에 뜨더라도 원문을 열 수 없다. 사업명과 문서 제목이 달라 검색에 안 걸렸을 수도 있다.</div>`:`<div><b>${pr.orginl.total.toLocaleString()}건</b> <span class="muted">문서 = 본문·첨부·결재선</span></div>
       <div class="blk"><h4>최근 ${pr.orginl.items.length}건</h4><ul>${pr.orginl.items.map(i => `<li><span class="d">${esc(i.date)}</span>${esc(i.title)}<span class="sub">${esc(i.dept)||esc(i.inst)}</span></li>`).join('')}</ul></div>`}
       ${won}
       <div class="blk"><a href="${L.og}" target="_blank" rel="noopener">원문 검색 ↗</a></div></div>`;

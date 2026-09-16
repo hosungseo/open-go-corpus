@@ -44,6 +44,12 @@
 .rn2 .btn.p{background:var(--ink);color:var(--k-gray-0);border-color:var(--ink)}
 .rn2 .btn.w{background:var(--warn);color:var(--k-gray-0);border-color:var(--warn)}
 /* 뒷단이 없는 시안 동작. 눌러도 아무 일이 없으니 눌리는 것처럼 보이지 않게 한다 */
+/* 화면이 너무 실물 같아 현행 시스템으로 오인하는 일이 있었다. 시안임을 화면 안에서 밝힌다 */
+.rn2 .demoband{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin:0 0 10px;padding:9px 14px;
+  border-radius:var(--r-s);background:var(--amberL);color:var(--amber);font-size:13px;line-height:1.6}
+.rn2 .demoband .tagx{font-weight:700;border:1px solid var(--amberB);border-radius:2px;padding:0 6px;font-size:11.5px}
+.rn2 .demoband b{color:var(--ink)}
+.rn2 .demoband .real{color:var(--ink-2)}
 .rn2 .btn.demo{border-style:dashed;color:var(--ink-3);background:var(--paper);cursor:default}
 .rn2 .btn.demo:hover{border-color:var(--rule);color:var(--ink-3)}
 .rn2 .btn.demo:after{content:"시안";font-size:10px;margin-left:5px;color:var(--ink-3);border:1px solid var(--rule);border-radius:2px;padding:0 3px;vertical-align:1px}
@@ -309,6 +315,12 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
         </div>
       </div>
 
+      <div class="demoband">
+        <span class="tagx">시안</span>
+        <span><b>아래 화면은 제안입니다.</b> <span class="real">수치·문서명·결재선 역할은 포털에서 받은 실측치</span>이고,
+          정책번호(MOIS-P-0117)와 점선 표시된 버튼 동작은 가상입니다.</span>
+      </div>
+
       <div class="split">
         <!-- LEFT -->
         <div class="panel">
@@ -427,6 +439,8 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
   function pgNav(d){curPg=Math.max(0,Math.min(PAGES.length-1,curPg+d));const im=document.getElementById('rn2Img');if(!im)return;im.src=PAGES[curPg];document.getElementById('rn2Pgno').textContent=(curPg+1)+' / '+PAGES.length;}
   function show(id){
     const d=DOCS[id]; if(!d) return;
+    // 고른 문서를 주소에 남긴다. 그래야 '링크 복사'가 이 문서를 가리킨다
+    if(history.replaceState) history.replaceState(null,'','#d='+id);
     document.getElementById('rn2Vt').textContent=d.pdf?'원문':'문서 정보';
     const meta=d.meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
     const rel=d.related?`<div class="related"><div style="font-size:12px;color:var(--ink-3);margin-bottom:2px">연관 항목</div>${d.related.map(([t,i])=>`<div class="rr" data-doc="${i}"><span>${t}</span><span>›</span></div>`).join('')}</div>`:'';
@@ -467,7 +481,15 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
   });
   window.rn2Tg=function(h){const o=h.parentElement.classList.toggle('open');h.setAttribute('aria-expanded',o);};
   window.rn2All=function(o){document.querySelectorAll('.rn2 .node:not(.ghost)').forEach(n=>n.classList.toggle('open',o));};
-  show('d8');
+  // 주소에 문서가 지정돼 들어오면 그것부터 연다
+  (function(){
+    var m = location.hash.match(/^#d=([A-Za-z0-9]+)$/);
+    show(m && DOCS[m[1]] ? m[1] : 'd8');
+  })();
+  addEventListener('hashchange',function(){
+    var m = location.hash.match(/^#d=([A-Za-z0-9]+)$/);
+    if(m && DOCS[m[1]]) show(m[1]);
+  });
 })();
 </script>
 <div class="kfoot"><div class="in">
