@@ -127,12 +127,12 @@ tr.hl td{background:var(--sel)}
     <div class="trio" id="scoreboard"></div>
 
     <h3 id="s3">기관별 등록 현황</h3>
-    <p class="cap">연도별 등록 건수. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> "한가운데"는 그 기관의 사업을 조회수 순으로 줄 세웠을 때 한복판에 오는 사업의 값이다. 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
+    <p class="cap">연도별 등록 건수. 회색은 그해 등록이 없는 기관. 기관명은 현행 명칭이다.<sup class="note" data-note="n_orgnames"></sup> "한가운데"는 그 기관의 사업을 <b>포털 조회수</b> 순으로 줄 세웠을 때 한복판에 오는 사업의 값이다. 기관 누리집 열람은 들어 있지 않다. 원문 연결은 2025~2026년 상세를 확인한 사업 중 포털이 관련 원문을 붙여 둔 비율이다.<sup class="note" data-note="n_rn_source"></sup></p>
     <div class="ctl">
       <label>정렬 <select id="oSort">
         <option value="nm">기관명</option>
         <option value="y2025">2025년 건수</option>
-        <option value="inq">2025년 한가운데 조회수</option>
+        <option value="inq">2025년 한가운데 포털 조회수</option>
         <option value="link">원문 연결률</option>
         <option value="last">최근 등록 연도</option>
       </select></label>
@@ -156,7 +156,7 @@ tr.hl td{background:var(--sel)}
       </ul></div>
       <div><h3>한계</h3><ul>
         <li>2026년은 등록 진행 중 값. 추세는 2025년까지로 읽을 것</li>
-        <li>조회수는 내부 확인·봇이 섞일 수 있음</li>
+        <li>조회수는 <b>정보공개포털에서 열린 횟수</b>다. 내부 확인·봇이 섞여 부풀 수 있고, 규정 제63조의3제3항이 정한 공개 장소인 기관 누리집의 열람은 빠져 있어 줄어들 수도 있다. 제도가 실제로 읽히는 정도로 읽지 말 것</li>
         <li>주기·링크 오류율은 표본(100·120·261) 기준</li>
         <li>교육청 원문 건수는 각급 학교 포함 포털 표시값</li>
         <li>"국장급 이상" 범위와 기관당 권고 건수는 구두 확인, 조문·지침 재확인 필요</li>

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>국민이 신청한 정책실명제 · 분석 노트</title>
+<title>분석 노트 · 정보공개 3제도 실측</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
 <link rel="stylesheet" href="shared.css">
 <style>
@@ -14,6 +14,28 @@
 .answer p{font-size:19px;line-height:1.6;color:var(--ink);margin:0;max-width:64ch}
 .answer p b{color:var(--em)}
 
+/* 게시판 색인 */
+.cats{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden;margin:0 0 6px}
+.cats table{width:100%;border-collapse:collapse;font-size:15.5px}
+.cats th{text-align:left;font-size:13px;font-weight:700;color:var(--ink-2);background:var(--paper);
+  padding:9px 14px;border-bottom:1px solid var(--rule)}
+.cats td{padding:12px 14px;border-bottom:1px solid var(--rule-2);vertical-align:top;line-height:1.6}
+.cats tr:last-child td{border-bottom:0}
+.cats .cn{font-weight:700;color:var(--ink);white-space:nowrap}
+.cats .ins{color:var(--ink-2)}
+.cats .ins b{color:var(--ink)}
+.cats .st2{white-space:nowrap;font-size:13.5px}
+.cats .st2 a{font-weight:600}
+.cats .st2 .soon{color:var(--ink-3)}
+.cats tr.on td{background:var(--em-soft)}
+/* 노트 한 편 */
+.note1{border:1px solid var(--rule);border-top:4px solid var(--em);border-radius:var(--r-m);
+  background:var(--panel);padding:26px 28px 6px;margin:0 0 10px}
+.note1 > .eyebrow{font-size:13px;letter-spacing:.06em;color:var(--em);font-weight:700;margin-bottom:6px}
+.note1 h2{font-size:27px;line-height:1.3;margin:0 0 12px}
+.note1 section.core{padding:24px 0 4px}
+.note1 section.core:first-of-type{padding-top:14px}
+@media (max-width:760px){ .note1{padding:18px 14px 4px} .cats td{padding:10px 10px} }
 /* 그림 */
 .fig{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:18px 20px 14px;margin:0 0 10px}
 .fig h3{font-size:16px;margin:0 0 3px}
@@ -47,8 +69,42 @@
 
 <main class="wrap" id="content">
   <header class="summary">
-    <div class="eyebrow">분석 노트 ① · 제도 개선</div>
-    <h1>국민이 신청한 정책실명제는 왜 줄었나</h1>
+    <div class="eyebrow">분석 노트</div>
+    <h1>세 제도를 축을 바꿔 가며 들여다본 기록</h1>
+    <p class="lede">물음 하나를 여러 축에서 보고, 무엇이 드러나는지 적습니다.
+      각 편에는 <b>보고서에 그대로 옮길 문단</b>과 <b>그렇게 읽으면 안 되는 이유</b>를 함께 둡니다.</p>
+    <div class="basis">수치는 산출 코드로 다시 뽑을 수 있습니다. 손으로 적은 값은 두지 않습니다.</div>
+  </header>
+
+  <section class="core">
+    <div class="eyebrow">주제</div>
+    <h2>다섯 갈래로 나눠 봅니다</h2>
+    <p>갈래마다 하나의 물음이 있고, 답이 나오면 노트를 올립니다. 아직 비어 있는 칸이 다음에 쓸 글입니다.</p>
+    <div class="cats"><table>
+      <thead><tr><th style="width:15%">갈래</th><th>지금까지 드러난 것</th><th style="width:19%">노트</th></tr></thead>
+      <tbody>
+        <tr class="on"><td class="cn">신청제</td>
+          <td class="ins"><b>신청 제도는 생겼으나 활성화되지 않았습니다.</b> 국민이 신청할 수 있다는 조문은 2018년에 들어왔지만, 신청할 창구가 만들어지지 않았습니다.</td>
+          <td class="st2"><a href="#note1">① 국민이 신청한 정책실명제</a></td></tr>
+        <tr><td class="cn">공개 장소</td>
+          <td class="ins">규정은 추진실적을 <b>해당 기관 누리집</b>에 공개하라고 정하는데, 우리가 재고 있는 것은 정보공개포털입니다. 어디서 공개되고 어디서 읽히는지가 갈려 있습니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr><td class="cn">연계</td>
+          <td class="ins">같은 사업이 세 채널에서 이어지지 않습니다. 대조한 724건 중 209건은 사전정보공표와 원문공개 양쪽 모두 등록이 없습니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr><td class="cn">책임 기재</td>
+          <td class="ins">1998년 제도 취지는 <b>결재선 밖</b> 참여자를 적는 것이었는데, 지금 등록자료는 결재선 두세 명을 그대로 옮겨 적습니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr><td class="cn">법령 계보</td>
+          <td class="ins">조문은 여러 번 고쳤지만 운영이 따라오지 않았습니다. 2018년 국민신청 조문이 그 사례입니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <article class="note1" id="note1">
+    <div class="eyebrow">신청제 · 노트 ①</div>
+    <h2>국민이 신청한 정책실명제는 왜 줄었나</h2>
     <div class="axes">
       <span class="ax"><b>축</b> 시간 × 법령</span>
       <span class="ax"><b>축</b> 선정기준 × 이용</span>
@@ -58,8 +114,7 @@
       <p>국민이 신청할 수 있다는 <b>조문은 2018년에 생겼습니다.</b> 그런데 국민신청으로 선정된 사업은
         그해 34건을 정점으로 줄어 <b>2026년 0건</b>입니다. 조문을 만들었으나 <b>신청할 창구를 만들지 않았기 때문</b>입니다.</p>
     </div>
-    <div class="basis">수치는 정보공개포털 정책실명제 전수 6,847건에서 산출했습니다. 산출 코드는 <span class="mono">tools/analyze-citizen.mjs</span>, 한계는 <a href="#limit">방법과 한계</a>에.</div>
-  </header>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">수치는 정보공개포털 정책실명제 전수 6,847건에서 산출했습니다. 산출 코드는 <span class="mono">tools/analyze-citizen.mjs</span>, 한계는 <a href="#limit">방법과 한계</a>에.</div>
 
   <section class="core">
     <div class="eyebrow">축 1 · 시간 × 법령</div>
@@ -76,20 +131,27 @@
 
   <section class="core">
     <div class="eyebrow">축 2 · 선정기준 × 이용</div>
-    <h2>더 읽힌다는 인상은 연차를 걷어내면 거의 사라집니다</h2>
-    <p>국민신청 사업의 조회수 가운데값은 5회로, 그 외 사업 3회보다 높아 보입니다. 그런데 포털 조회수는 <b>누적값</b>이라
-      오래된 사업일수록 유리합니다. 국민신청은 2018~2019년에 몰려 있습니다. 같은 해끼리 견주면 차이가 줄어듭니다.</p>
+    <h2>효과를 재려 했으나, 지금 자료로는 잴 수 없습니다</h2>
+    <p>국민신청 사업의 조회수 가운데값은 5회로, 그 외 사업 3회보다 높아 보입니다.
+      효과가 있다고 쓰고 싶어지는 수치입니다. 그런데 두 가지가 막습니다.</p>
     <div class="fig">
-      <h3>같은 해 안에서 견준 조회수 가운데값</h3>
+      <h3>같은 해 안에서 견준 포털 조회수 가운데값</h3>
       <p class="sub">왼쪽이 국민신청, 오른쪽이 그 외입니다. 연도별로 나란히 놓았습니다.</p>
       <div id="fig2"></div>
       <div class="lg"><span><i style="background:var(--em)"></i>국민신청</span><span><i style="background:var(--rule)"></i>그 외</span></div>
     </div>
-    <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:0 0 8px">
-      <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--ink-2)">보정 전 <b>5회 대 3회</b>로 1.7배처럼 보이지만,
-        표본이 5건 이상인 해만 골라 같은 해끼리 견주면 <b>1.12배</b>입니다.
-        <b>국민이 고른 사업이 더 읽힌다고 단언할 근거는 아직 약합니다.</b></p>
+    <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:0 0 10px">
+      <p style="margin:0 0 6px;font-size:15.5px;line-height:1.7;color:var(--ink-2)"><b>첫째, 누적값입니다.</b>
+        포털 조회수는 쌓이는 값이라 등록이 오래된 사업이 유리합니다. 국민신청은 2018~2019년에 몰려 있습니다.
+        표본이 5건 이상인 해만 골라 같은 해끼리 견주면 1.7배가 <b>1.12배</b>로 줄어듭니다.</p>
+      <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--ink-2)"><b>둘째, 재는 곳이 다릅니다.</b>
+        규정 제63조의3제3항은 추진실적을 <b>해당 기관의 인터넷 홈페이지 등</b>을 통해 공개하라고 정합니다.
+        정보공개포털은 조문에 없습니다. 포털은 모아 보여 주는 화면이고, 법이 정한 공개 장소는 기관 누리집입니다.
+        그러므로 포털 조회수는 실제 열람의 일부만 담습니다.</p>
     </div>
+    <p><b>결론은 "효과가 없다"가 아니라 "잴 수 없다"입니다.</b>
+      국민이 고른 사업이 더 잘 관리되는지 판단하려면 창구를 열어 표본을 쌓고,
+      기관 누리집 쪽 접속 자료를 함께 봐야 합니다. 포털 수치만으로는 어느 쪽으로도 말할 수 없습니다.</p>
   </section>
 
   <section class="core">
@@ -128,13 +190,17 @@
         <p>국민이 신청한 사업을 중점관리 대상으로 선정할 수 있는 근거는 「행정업무의 운영 및 혁신에 관한 규정」
           제63조의3제1항제6호로, 2018년 11월 27일 신설되었다. 그러나 정보공개포털에 국민이 신청할 수 있는 창구가
           개설되어 있지 않아, 현행 '국민신청' 표기는 기관의 자기 분류에 해당한다.</p>
-        <p>국민신청 사업의 조회수는 가운데값 5회로 그 외 사업 3회보다 높으나, 포털 조회수가 누적값인 점을 고려하여
-          동일 연도 내에서 비교하면 1.12배 수준으로 차이가 크지 않다. 제도 효과를 판단하기에는 표본이 부족하다.</p>
+        <p>국민신청 사업의 정보공개포털 조회수는 가운데값 5회로 그 외 사업 3회보다 높으나, 누적값인 점을 고려하여
+          동일 연도 내에서 비교하면 1.12배 수준이다. 또한 같은 규정 제63조의3제3항은 추진실적을 해당 기관의
+          인터넷 홈페이지 등을 통해 공개하도록 정하고 있어, 포털 조회수는 실제 열람의 일부만 반영한다.
+          제도 효과의 판단은 신청 창구 개설 후 기관 누리집 접속 자료를 포함하여 이루어져야 한다.</p>
       </div>
       <div class="src" id="exSrc"></div>
     </div>
     <p class="cap">복사하면 위 문단과 출처가 함께 붙습니다. 수치는 아래 산출 코드로 다시 뽑을 수 있습니다.</p>
   </section>
+
+  </article>
 
   <section class="appendix">
     <div class="label">별첨</div>
@@ -142,7 +208,7 @@
     <div class="notes"><ol>
       <li><span class="no">[1]</span><div><b>자료</b>: 정보공개포털 정책실명제 코너의 중앙행정기관 2018~2026년 등록 전수 6,847건. 산출 코드는 <span class="mono">tools/analyze-citizen.mjs</span>이며 원자료는 <span class="mono">realname/central.jsonl</span>이다. 기준일 2026-09-15.</div></li>
       <li><span class="no">[2]</span><div><b>국민신청 판정</b>: 선정기준(slctnStdr)에 '국민'과 '신청' 또는 '제안'이 함께 들어간 건을 셌다. 자유입력이라 다르게 적은 건은 빠질 수 있다. 실제로 "국민신청" 115건 외에 "국민 신청", "국정과제, 국민신청" 같은 표기가 섞여 있다.</div></li>
-      <li><span class="no">[3]</span><div><b>조회수 보정</b>: 포털 조회수는 누적값이라 등록이 오래된 사업이 유리하다. 보정 전 비교(5회 대 3회)는 이 편향을 그대로 안고 있다. 국민신청 표본이 5건 이상인 해만 골라 같은 해 안에서 가운데값 비율을 낸 뒤 평균한 값이 1.12배다.</div></li>
+      <li><span class="no">[3]</span><div><b>조회수는 효과 지표가 아니다</b>: 두 가지가 겹친다. 하나는 누적 편향이다. 포털 조회수는 쌓이는 값이라 등록이 오래된 사업이 유리한데, 국민신청은 2018~2019년에 몰려 있다. 표본이 5건 이상인 해만 골라 같은 해 안에서 가운데값 비율을 낸 뒤 평균하면 1.12배다. 다른 하나는 측정 장소다. 규정 제63조의3제3항은 추진실적을 "해당 기관의 인터넷 홈페이지 등"에 공개하라고 정하며 정보공개포털은 조문에 없다. 포털은 모아 보여 주는 화면이므로 기관 누리집에서 일어난 열람은 이 값에 들어 있지 않다. 두 가지 때문에 이 수치로는 효과를 판단할 수 없다.</div></li>
       <li><span class="no">[4]</span><div><b>견주지 못한 것</b>: 추진실적 건수와 원문 연결률은 상세를 확인한 784건(2025~2026년분)으로만 알 수 있는데, 그중 국민신청은 2건뿐이다. 표본이 없어 비교하지 않았다.</div></li>
       <li><span class="no">[5]</span><div><b>인과가 아니다</b>: 조문 신설과 건수 감소가 같은 시기에 일어났다는 것뿐, 조문이 감소를 일으켰다는 뜻이 아니다. 창구 부재가 원인이라는 판단은 조문 문구와 포털 화면 확인에 근거한 것이지 이 수치에서 나온 것이 아니다.</div></li>
       <li><span class="no">[6]</span><div><b>2026년</b>은 등록이 진행 중인 값이다. 추세 판단은 2025년까지를 기준으로 해야 한다.</div></li>
