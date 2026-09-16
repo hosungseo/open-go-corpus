@@ -13,3 +13,6 @@ explorer/index*.html
 explorer/data*.json
 !docs/explorer/index.html
 lawhist/articles.json
+
+# 설명자료는 공개하지 않는다 (저장소는 public, docs/는 Pages로 게시됨)
+brief/
