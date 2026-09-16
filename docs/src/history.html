@@ -168,12 +168,12 @@
 
     <h3 id="basis">근거·방법</h3>
     <div class="notes"><ol>
-      <li><span class="no">[1]</span><div><b>수집</b>: 국가법령정보센터 공개 API에서 법령ID로 시행본을 모두 받았습니다. 공공기관의 정보공개에 관한 법률(001357) 18개, 같은 법 시행령(002255) 23개, 사무관리규정 계열(003728) 50개, 합계 91개입니다. 법령ID로 받아야 제명이 바뀐 옛 판까지 한 줄로 이어집니다.</div></li>
-      <li><span class="no">[2]</span><div><b>조문 식별</b>: 조문 번호는 전부개정에서 움직이기 때문에 번호가 아니라 조문 제목과 본문으로 찾았습니다. 정책실명제는 "정책실명제"와 "정책의 실명"을, 사전정보공표는 "공표"와 "사전적 공개"를, 원문공개는 "원문"을 제목에서 찾았습니다.</div></li>
-      <li><span class="no">[3]</span><div><b>바뀐 시점 판정</b>: 앞 시행본과 조문 구성(조 번호·제목)이나 본문 글자가 다르면 바뀐 것으로 봤습니다. 본문은 항·호·목을 모두 이어 붙여 비교했습니다. 호를 빠뜨리면 실제로는 바뀌지 않았는데 바뀐 것으로 잡힙니다.</div></li>
-      <li><span class="no">[4]</span><div><b>개정이유</b>: 타법개정은 다른 법을 고치면서 딸려 바뀐 것이라 이유서가 그 법 이야기입니다. 그래서 제정·일부개정·전부개정에만 이유를 붙였습니다.</div></li>
-      <li><span class="no">[5]</span><div><b>싣지 않은 것</b>: 부칙의 단계별 시행일은 원문공개만 확인했고 나머지는 보지 않았습니다. 지방자치단체 조례와 각 기관 훈령·예규는 이번 대조에 넣지 않았습니다. 정책실명제 운영 지침(행정안전부 예규)도 확인하지 못했습니다.</div></li>
-      <li><span class="no">[6]</span><div><b>기준일</b> 2026-09-16. 수집·분석 코드는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>의 <span class="mono">tools/collect-law-history.mjs</span>와 <span class="mono">tools/build-law-timeline.mjs</span>입니다.</div></li>
+      <li><span class="no">[1]</span><div><b>수집</b>: 국가법령정보센터 공개 API에서 법령ID로 시행본을 모두 받았다. 공공기관의 정보공개에 관한 법률(001357) 18개, 같은 법 시행령(002255) 23개, 사무관리규정 계열(003728) 50개, 합계 91개이다. 법령ID로 받아야 제명이 바뀐 옛 판까지 한 줄로 이어진다.</div></li>
+      <li><span class="no">[2]</span><div><b>조문 식별</b>: 조문 번호는 전부개정에서 움직이기 때문에 번호가 아니라 조문 제목과 본문으로 찾았다. 정책실명제는 "정책실명제"와 "정책의 실명"을, 사전정보공표는 "공표"와 "사전적 공개"를, 원문공개는 "원문"을 제목에서 찾았다.</div></li>
+      <li><span class="no">[3]</span><div><b>바뀐 시점 판정</b>: 앞 시행본과 조문 구성(조 번호·제목)이나 본문 글자가 다르면 바뀐 것으로 봤다. 본문은 항·호·목을 모두 이어 붙여 비교했다. 호를 빠뜨리면 실제로는 바뀌지 않았는데 바뀐 것으로 잡힌다.</div></li>
+      <li><span class="no">[4]</span><div><b>개정이유</b>: 타법개정은 다른 법을 고치면서 딸려 바뀐 것이라 이유서가 그 법 이야기다. 그래서 제정·일부개정·전부개정에만 이유를 붙였다.</div></li>
+      <li><span class="no">[5]</span><div><b>싣지 않은 것</b>: 부칙의 단계별 시행일은 원문공개만 확인했고 나머지는 보지 않았다. 지방자치단체 조례와 각 기관 훈령·예규는 이번 대조에 넣지 않았다. 정책실명제 운영 지침(행정안전부 예규)도 확인하지 못했다.</div></li>
+      <li><span class="no">[6]</span><div><b>기준일</b> 2026-09-16. 수집·분석 코드는 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a>의 <span class="mono">tools/collect-law-history.mjs</span>와 <span class="mono">tools/build-law-timeline.mjs</span>이다.</div></li>
     </ol></div>
   </section>
 </main>
@@ -266,12 +266,33 @@
       + body + '</div></article>';
   }).join("");
 
+  // 주소에 항목이 지정돼 들어오면 그 자리로 데려간다
+  (function(){
+    var id = location.hash.replace("#", "");
+    var el = id && document.getElementById(id);
+    if (el && el.classList.contains("ev")) {
+      el.scrollIntoView({ block: "center" });
+      el.classList.add("flash");
+      setTimeout(function(){ el.classList.remove("flash"); }, 1800);
+      var m = id.match(/^ev-([a-z]+)-(\d{4}-\d{2}-\d{2})$/);
+      if (m) {
+        var L = D.lanes.find(function(x){ return x.key === m[1]; });
+        var i = L ? L.steps.findIndex(function(s){ return s.ef === m[2]; }) : -1;
+        if (i >= 0) [].forEach.call(tl.querySelectorAll(".nd"), function(b){
+          b.classList.toggle("on", b.dataset.k === m[1] && b.dataset.i === String(i));
+        });
+      }
+    }
+  })();
+
   /* 연표의 점을 누르면 아래 그 항목으로 간다 */
   function goTo(k, i){
     var L = D.lanes.find(function(x){ return x.key === k; });
     var el = document.getElementById("ev-" + k + "-" + L.steps[i].ef);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "center" });
+    // 특정 개정 항목을 주소로 가리킬 수 있게 한다 (링크로 보낼 수 있어야 한다)
+    if (history.replaceState) history.replaceState(null, "", "#" + el.id);
     [].forEach.call(tl.querySelectorAll(".nd"), function(b){
       b.classList.toggle("on", b.dataset.k === k && b.dataset.i === String(i));
     });

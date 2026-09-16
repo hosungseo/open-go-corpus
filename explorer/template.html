@@ -6,6 +6,17 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
 <style>
 /*__SHARED_CSS__*/
+/* 대조 결과 한 줄 판정 */
+.verdict2{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:16px;line-height:1.6;
+  background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:var(--r-s);
+  padding:10px 14px;margin:0 0 12px}
+.verdict2.bad{border-left-color:var(--rn)}
+.verdict2 b{color:var(--ink)}
+.verdict2 .vm{font-weight:700}
+.verdict2 .vm.yes{color:var(--og-t)}
+.verdict2 .vm.no{color:var(--rn-t)}
+.verdict2 .vm.none{color:var(--ink-3);font-weight:400}
+.verdict2 .vw2{font-size:14px;color:var(--ink-2)}
 /* ── explorer-specific ── */
 .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--rule);padding:12px 14px;margin-bottom:12px}
 .ctl label{font-size:14px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
@@ -242,7 +253,17 @@ tr.hl td{background:var(--sel)}
       <div class="blk"><h4>최근 ${pr.orginl.items.length}건</h4><ul>${pr.orginl.items.map(i => `<li><span class="d">${esc(i.date)}</span>${esc(i.title)}<span class="sub">${esc(i.dept)||esc(i.inst)}</span></li>`).join('')}</ul></div>`}
       ${won}
       <div class="blk"><a href="${L.og}" target="_blank" rel="noopener">원문 검색 ↗</a></div></div>`;
-    det.innerHTML = `<div class="cols">${c1}${c2}${c3}</div><div class="share"><button type="button" id="copyLink">이 화면 링크 복사</button><span class="mono">#p=${esc(p.id)}</span></div>`;
+    // 세 칸을 다 읽지 않아도 결론이 먼저 보이게 한 줄로 요약한다
+    const mark = (n, on) => on===null ? `<span class="vm none">대조 안 함</span>`
+      : (n>0 ? `<span class="vm yes">있음 ${n.toLocaleString()}건</span>` : `<span class="vm no">없음 0건</span>`);
+    // 사업에 따라 prev/orig 한쪽만 있을 수 있다. 없으면 '대조 안 함'으로 둔다
+    const pvN = (!pr || !pr.prev || pr.prev.err) ? null : pr.prev.total;
+    const ogN = (!pr || !pr.orginl || pr.orginl.err) ? null : pr.orginl.total;
+    const both0 = pvN===0 && ogN===0;
+    const verdictLine = `<div class="verdict2${both0?' bad':''}">
+      <b>이 사업은</b> 사전정보공표 ${mark(pvN, pvN)} · 원문공개 ${mark(ogN, ogN)}
+      ${both0?'<span class="vw2">두 채널 모두 없어 정책실명제에만 있습니다</span>':''}</div>`;
+    det.innerHTML = verdictLine + `<div class="cols">${c1}${c2}${c3}</div><div class="share"><button type="button" id="copyLink">이 화면 링크 복사</button><span class="mono">#p=${esc(p.id)}</span></div>`;
     $('#copyLink').onclick = () => { const u = location.href.split('#')[0] + '#p=' + g; navigator.clipboard?.writeText(u).then(()=>{ $('#copyLink').textContent='복사됨'; setTimeout(()=>$('#copyLink').textContent='이 화면 링크 복사',1500); }); };
     wireNotes(det);
   }

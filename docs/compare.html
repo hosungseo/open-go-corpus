@@ -278,6 +278,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
       <thead><tr><th>기준</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th></tr></thead>
       <tbody id="mxBody"></tbody>
     </table></div>
+    <p class="cap">아홉 기준은 아래 열다섯 항목 가운데 핵심만 고른 것입니다. 나머지 항목은 2층 왼쪽 목록에서 볼 수 있습니다.</p>
     <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#267337"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8a5c00" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8a5c00"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#58616a" stroke-width="1.5"/></svg> 없음</p>
 
     <div class="l2" id="l2">
@@ -337,7 +338,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
       ['사업','사업 1건이 등록 1건'],
       ['정보 항목','예: "풍수해보험 안내", "부서별 업무추진비"'],
       ['결재문서','문서 1건이 공개 1건. 본문·첨부 포함']],
-    ['fields','무엇을 공개하나','공개 항목','셋 다 예산·집행 기재란 없음',
+    ['fields','무엇을 공개하나','공개 항목 · 예산·집행','셋 다 예산·집행 기재란 없음',
       ['기재 항목 9개','사업명·담당부서·담당자·기간·개요·추진배경·선정기준·추진실적·관련원문. <b>예산·집행 없음</b>'],
       ['기재 항목 6개','제목·세부항목·주기·시기·공개방법·기관 누리집 주소. 내용 본문은 포털 밖'],
       ['기재 항목 38개 + 파일','제목·문서번호·생산일시(초)·담당과·단위과제·본문 PDF·첨부 HWP·결재선']],
@@ -406,14 +407,19 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
     document.querySelectorAll('#mxBody tr').forEach(r=>{const on=r.dataset.d===id;r.classList.toggle('on',on);r.setAttribute('aria-expanded',on);});
     document.querySelectorAll('#detail .nav button').forEach(b=>b.onclick=()=>show(b.dataset.d,false));
     if(history.replaceState) history.replaceState(null,'','#'+id);
-    if(scroll){ const y=$('#l2').getBoundingClientRect().top+window.scrollY-56; window.scrollTo({top:y,behavior:'smooth'}); }
+    if(scroll){ const y=$('#l2').getBoundingClientRect().top+window.scrollY-56;
+      window.scrollTo({top:y,behavior:scroll==='now'?'auto':'smooth'}); }
   }
   document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>show(b.dataset.d,false));
   document.querySelectorAll('#mxBody tr').forEach(r=>{
     r.onclick=()=>show(r.dataset.d,true);
     r.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(r.dataset.d,true); } };
   });
-  const h=location.hash.replace('#',''); show(L2.some(x=>x[0]===h)?h:'law',false);
+  const pick=()=>{ const h=location.hash.replace('#',''); return L2.some(x=>x[0]===h)?h:null; };
+  const first=pick();
+  show(first||'law', first?'now':false);
+  // 뒤로·앞으로 가기나 다른 화면에서 온 주소 변경도 따라간다
+  addEventListener('hashchange',()=>{ const h=pick(); if(h) show(h,true); });
 })();
 </script>
 <div class="kfoot"><div class="in">

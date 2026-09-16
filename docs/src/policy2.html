@@ -43,6 +43,10 @@
 .rn2 .btn:hover{border-color:var(--ink-3);color:var(--ink)}
 .rn2 .btn.p{background:var(--ink);color:var(--k-gray-0);border-color:var(--ink)}
 .rn2 .btn.w{background:var(--warn);color:var(--k-gray-0);border-color:var(--warn)}
+/* 뒷단이 없는 시안 동작. 눌러도 아무 일이 없으니 눌리는 것처럼 보이지 않게 한다 */
+.rn2 .btn.demo{border-style:dashed;color:var(--ink-3);background:var(--paper);cursor:default}
+.rn2 .btn.demo:hover{border-color:var(--rule);color:var(--ink-3)}
+.rn2 .btn.demo:after{content:"시안";font-size:10px;margin-left:5px;color:var(--ink-3);border:1px solid var(--rule);border-radius:2px;padding:0 3px;vertical-align:1px}
 /* 타임라인 */
 .rn2 .tl{position:relative;padding:6px 14px 18px 16px}
 .rn2 .tl:before{content:"";position:absolute;left:39px;top:0;bottom:0;width:3px;background-image:radial-gradient(circle at 1.5px 2px,var(--c) 1.5px,transparent 1.7px);background-size:3px 7px;background-repeat:repeat-y;animation:rn2flow 2.6s linear infinite}
@@ -299,8 +303,8 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
         <div class="stats">
           <div class="st"><div class="n">4년</div><div class="l">추적 '22~'25</div></div>
           <div class="st"><div class="n">9</div><div class="l">후속 조치</div></div>
-          <div class="st big"><div class="n">186</div><div class="l">연계 문서</div></div>
-          <div class="st big w"><div class="n">0<span style="font-size:12px;font-weight:400"> / 표본 14</span></div><div class="l">열람 가능한 원문 · 타기관 1</div></div>
+          <div class="st big"><div class="n">186</div><div class="l">연계 문서 · '24 2 + '25 184</div></div>
+          <div class="st big w"><div class="n">0<span style="font-size:12px;font-weight:400"> / 표본 14</span></div><div class="l">본 정책 원문 열람 · 표본 14 · 타기관 1</div></div>
           <div class="st w"><div class="n">2026</div><div class="l">미등록</div></div>
         </div>
       </div>
@@ -372,7 +376,7 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
         </div>
 
         <!-- RIGHT -->
-        <div class="panel vw"><div class="ph"><h4 id="rn2Vt">원문</h4><button class="btn" type="button">링크 복사</button><button class="btn" type="button">담기</button><button class="btn p" type="button">JSON</button></div><div class="vb" id="rn2Vb" role="region" aria-live="polite" aria-label="선택한 문서"></div></div>
+        <div class="panel vw"><div class="ph"><h4 id="rn2Vt">원문</h4><button class="btn" type="button" id="rn2Copy">링크 복사</button><button class="btn demo" type="button" disabled aria-disabled="true" title="시안 — 동작하지 않습니다">담기</button><button class="btn demo" type="button" disabled aria-disabled="true" title="시안 — 동작하지 않습니다">JSON</button></div><div class="vb" id="rn2Vb" role="region" aria-live="polite" aria-label="선택한 문서"></div></div>
       </div>
 
       <p class="lg">화면의 수치·문서명·결재선 역할은 open.go.kr 실측(2026-09-15~16). 원문은 포털에서 실제로 내려받은 부산광역시 문서(PDF 270KB, 7쪽)를 페이지 이미지로 옮겼고 결재란 성명은 가렸다. 정책ID(MOIS-P-0117)와 "청구·담기·알림" 동작은 시안.</p>
@@ -430,7 +434,7 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
       ${d.line?`<div style="font-size:12px;color:var(--ink-3);margin-bottom:3px">결재선 · 역할</div><div class="line">${d.line}</div>`:''}
       <div class="state ${d.state.t}"><span class="ic">${d.state.ic}</span><div><b>${d.state.b}</b>${d.state.m}</div></div>
       ${d.pdf?pdfBlock():''}
-      <div class="acts">${d.acts.map((a,i)=>`<button class="btn ${i===0?(d.state.t==='ok'?'p':'w'):''}" type="button">${a}</button>`).join('')}</div>
+      <div class="acts">${d.acts.map((a)=>`<button class="btn demo" type="button" disabled aria-disabled="true" title="시안 — 동작하지 않습니다">${a}</button>`).join('')}</div>
       ${d.why?`<div class="why">${d.why}</div>`:''}${rel}`;
     document.querySelectorAll('.rn2 [data-doc]').forEach(e=>{const on=e.dataset.doc===id;e.classList.toggle('sel',on);if(e.hasAttribute('role'))e.setAttribute('aria-current',on?'true':'false');});
     document.querySelectorAll('#rn2Vb [data-doc]').forEach(e=>{
@@ -438,6 +442,17 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
       e.onclick=()=>show(e.dataset.doc);
       e.onkeydown=ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); show(e.dataset.doc); } };
     });
+    const cp=document.getElementById('rn2Copy');
+    if(cp) cp.onclick=()=>{
+      const t='링크 복사', u=location.href;
+      const done=()=>{ cp.textContent='복사됨'; setTimeout(()=>cp.textContent=t,1400); };
+      // clipboard API가 막힌 환경(비보안 출처 등)에서는 예전 방식으로 떨어진다
+      const fallback=()=>{ const a=document.createElement('textarea'); a.value=u;
+        a.style.cssText='position:fixed;left:-9999px'; document.body.appendChild(a); a.select();
+        try{ document.execCommand('copy'); done(); }catch(e){ cp.textContent='주소창에서 복사하세요'; setTimeout(()=>cp.textContent=t,1800); }
+        a.remove(); };
+      if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(u).then(done).catch(fallback);
+      else fallback(); };
     const pv=document.getElementById('rn2Prev'), nx=document.getElementById('rn2Next'); if(pv){pv.onclick=()=>pgNav(-1);nx.onclick=()=>pgNav(1);}
   }
   document.querySelectorAll('.rn2 .tl [data-doc]').forEach(e=>{
