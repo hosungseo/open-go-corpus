@@ -17,6 +17,35 @@ const why = (r) => {
   return t;
 };
 
+// 앞 시행본과 낱말 단위로 대조해 바뀐 자리만 뽑는다.
+// 정책실명제 §63~63의5는 1,300자가 다섯 번 거의 그대로 되풀이된다.
+// 전문을 다시 싣는 대신 "안전행정부장관 → 행정자치부장관"처럼 달라진 곳만 남긴다.
+function wordDiff(a, b) {
+  const A = a.split(/\s+/).filter(Boolean);
+  const B = b.split(/\s+/).filter(Boolean);
+  const n = A.length, m = B.length;
+  if (!n || !m || n * m > 4_000_000) return null;
+  const dp = Array.from({ length: n + 1 }, () => new Int32Array(m + 1));
+  for (let i = n - 1; i >= 0; i--)
+    for (let j = m - 1; j >= 0; j--)
+      dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const out = [];
+  let i = 0, j = 0, del = [], ins = [];
+  const flush = () => {
+    if (del.length || ins.length) out.push({ from: del.join(" "), to: ins.join(" ") });
+    del = []; ins = [];
+  };
+  while (i < n && j < m) {
+    if (A[i] === B[j]) { flush(); i++; j++; }
+    else if (dp[i + 1][j] >= dp[i][j + 1]) del.push(A[i++]);
+    else ins.push(B[j++]);
+  }
+  while (i < n) del.push(A[i++]);
+  while (j < m) ins.push(B[j++]);
+  flush();
+  return out;
+}
+
 const LANE = { realname: "rn", preinfo: "pv", original: "og" };
 const lanes = T.tracks
   .filter((t) => LANE[t.key])
@@ -24,18 +53,26 @@ const lanes = T.tracks
     key: t.key,
     lane: LANE[t.key],
     label: t.label,
-    steps: t.steps.map((s) => ({
-      ef: ymd(s.efYd),
-      year: +s.efYd.slice(0, 4),
-      pb: ymd(s.promulgated),
-      no: s.no,
-      kind: s.kind,
-      law: s.lawName,
-      change: s.change,
-      cites: s.cites.map((c) => `${c.cite}(${c.title})`),
-      why: why(s.reason),
-      texts: s.texts.map((x) => ({ c: `${x.cite}(${x.title})`, t: x.text })),
-    })),
+    steps: t.steps.map((s, i, arr) => {
+      const joined = s.texts.map((x) => x.text).join(" ");
+      const prev = i ? arr[i - 1].texts.map((x) => x.text).join(" ") : "";
+      const delta = i ? wordDiff(prev, joined) : null;
+      return {
+        ef: ymd(s.efYd),
+        year: +s.efYd.slice(0, 4),
+        pb: ymd(s.promulgated),
+        no: s.no,
+        kind: s.kind,
+        law: s.lawName,
+        change: s.change,
+        cites: s.cites.map((c) => `${c.cite}(${c.title})`),
+        why: why(s.reason),
+        // 조문 전문은 신설·조문 이동일 때만. 나머지는 바뀐 자리만 싣는다.
+        texts: s.change === "본문 개정" ? [] : s.texts.map((x) => ({ c: `${x.cite}(${x.title})`, t: x.text })),
+        delta: delta && delta.length && delta.length <= 12 ? delta : null,
+        deltaBig: !!(delta && delta.length > 12),
+      };
+    }),
   }));
 
 // 시행령 계보는 별첨 표로만 쓴다.

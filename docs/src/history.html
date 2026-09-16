@@ -42,6 +42,39 @@
 .tlcard .why{font-size:15.5px;line-height:1.7;color:var(--ink-2);margin:0 0 12px;max-width:78ch}
 .tlcard .art{font-size:14.5px;line-height:1.75;color:var(--ink-2);background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:0 0 10px;white-space:pre-wrap}
 .tlcard .art b{color:var(--ink)}
+/* 연표 아래 전체 목록 — 누르지 않아도 12건이 다 보인다 */
+.evs{margin-top:20px;border-top:1px solid var(--rule)}
+.ev{display:grid;grid-template-columns:108px 1fr;border-bottom:1px solid var(--rule-2);padding:18px 0}
+.ev:last-child{border-bottom:0}
+.ev .d{position:relative;padding-right:18px}
+.ev .d time{display:block;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ev .d .sub{font-size:12px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+.ev .d:after{content:"";position:absolute;right:-1px;top:6px;bottom:-18px;width:2px;background:var(--rule-2)}
+.ev:last-child .d:after{bottom:0}
+.ev .d i{position:absolute;right:-6px;top:6px;width:11px;height:11px;border-radius:50%;border:2px solid var(--panel);box-sizing:content-box;z-index:2}
+.ev.rn .d i{background:var(--rn)} .ev.pv .d i{background:var(--pv)} .ev.og .d i{background:var(--og)}
+.ev .b{padding-left:22px;min-width:0}
+.ev .h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-bottom:8px}
+.ev .who{font-size:14px;font-weight:700}
+.ev.rn .who{color:var(--rn-t)} .ev.pv .who{color:var(--pv-t)} .ev.og .who{color:var(--og-t)}
+.ev .tg{font-size:12px;padding:2px 8px;border-radius:var(--r-s);background:var(--panel-2);color:var(--ink-2)}
+.ev .tg.new{background:var(--em-soft);color:var(--em)}
+.ev .law{font-size:13px;color:var(--ink-3)}
+.ev .cite{font-size:14px;font-weight:600;margin:0 0 8px;color:var(--ink)}
+.ev .cite span{display:inline-block}
+.ev .cite .sep{color:var(--ink-3);font-weight:400}
+.ev .why{font-size:15px;line-height:1.75;color:var(--ink-2);margin:0 0 10px;max-width:74ch}
+.ev .why b{color:var(--ink)}
+.ev .art{font-size:14px;line-height:1.75;color:var(--ink-2);background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:0 0 8px;white-space:pre-wrap}
+.ev .art b{color:var(--ink);display:block;margin-bottom:4px}
+.ev .chg{margin:0;padding:0;font-size:14px;line-height:1.7}
+.ev .chg li{list-style:none;margin:0 0 5px;display:flex;flex-wrap:wrap;gap:7px;align-items:baseline}
+.ev .chg .f{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--ink-3)}
+.ev .chg .t{color:var(--ink);font-weight:600}
+.ev .chg .ar{color:var(--ink-3)}
+.ev .chg .none{color:var(--ink-3)}
+.ev.flash .b{background:var(--em-soft);border-radius:var(--r-s)}
+@media (max-width:700px){.ev{grid-template-columns:1fr}.ev .d:after,.ev .d i{display:none}.ev .d{padding-right:0;margin-bottom:8px}.ev .b{padding-left:0}}
 /* 갈라진 지점 표 */
 .sp table{table-layout:fixed;width:100%}
 .sp th:first-child,.sp td.k{width:22%}
@@ -82,10 +115,10 @@
   <section class="core" id="timeline">
     <div class="eyebrow">연표 · 세 줄</div>
     <h2>조문이 생기고 옮겨 다닌 자리</h2>
-    <p>가로축은 1991년부터 올해까지입니다. 점은 그 제도의 조문이 새로 생기거나 내용이 바뀐 시행일입니다.<br>점을 누르면 그때 무엇이 바뀌었는지, 정부가 밝힌 개정이유가 무엇인지 아래에 열립니다.</p>
+    <p>가로축은 1991년부터 올해까지입니다. 점은 그 제도의 조문이 새로 생기거나 내용이 바뀐 시행일입니다.<br>아래에 열두 건을 시행일 순으로 모두 펼쳐 두었습니다. 세 제도가 번갈아 손질된 순서가 그대로 드러납니다.</p>
     <div class="tl"><div class="inner" id="tl"></div></div>
-    <div class="tlcard" id="tlcard" role="region" aria-live="polite" aria-label="선택한 개정의 내용"></div>
-    <p class="cap">큰 점은 조문이 새로 생기거나 자리를 옮긴 때, 작은 점은 본문 문구만 바뀐 때입니다. 소관 부처 이름이 바뀌어 딸려 고쳐진 타법개정도 작은 점입니다.</p>
+    <p class="cap">큰 점은 조문이 새로 생기거나 자리를 옮긴 때, 작은 점은 본문 문구만 바뀐 때입니다. 소관 부처 이름이 바뀌어 딸려 고쳐진 타법개정도 작은 점입니다. 점을 누르면 아래 해당 항목으로 갑니다.</p>
+    <div class="evs" id="evs"></div>
   </section>
 
   <section class="core" id="why">
@@ -202,34 +235,67 @@
   layoutLanes();
   var rid; addEventListener("resize", function(){ clearTimeout(rid); rid = setTimeout(layoutLanes, 150); });
 
-  var card = document.getElementById("tlcard");
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
-  function show(k, i){
-    var L = D.lanes.find(function(x){ return x.key === k; });
-    var s = L.steps[i];
-    var arts = s.texts.map(function(t){
-      return '<p class="art"><b>'+esc(t.c)+'</b>\n'+esc(t.t)+'</p>';
-    }).join("");
-    card.innerHTML = '<div class="hd"><span class="d">'+s.ef+' 시행</span>'
-      + '<span class="tg">'+s.kind+'</span><span class="tg">'+s.change+'</span>'
-      + '<span class="law">'+esc(s.law)+' · '+s.pb+' 공포 제'+s.no+'호</span></div>'
-      + '<p class="cite">'+esc(s.cites.join(" · "))+'</p>'
-      + (s.why ? '<p class="why"><b>정부가 밝힌 개정이유</b> — '+esc(s.why)+'</p>'
+
+  /* 연표 아래 전체 목록 — 세 제도를 시행일 순으로 합쳐 한 줄로 세운다 */
+  var all = [];
+  D.lanes.forEach(function(L){
+    L.steps.forEach(function(s, i){ all.push({ lane: L.lane, key: L.key, i: i, s: s }); });
+  });
+  all.sort(function(a, b){ return a.s.ef < b.s.ef ? -1 : a.s.ef > b.s.ef ? 1 : 0; });
+
+  document.getElementById("evs").innerHTML = all.map(function(e){
+    var s = e.s, isNew = s.change !== "본문 개정";
+    var body = "";
+    if (s.texts && s.texts.length) {
+      body = s.texts.map(function(t){
+        // 본문이 "제63조(정책의 실명 관리) ①…"처럼 제목을 되풀이한다. 위 라벨과 겹치니 앞머리를 뗀다.
+        var txt = t.t.replace(/^제\d+조(?:의\d+)?\s*\([^)]*\)\s*/, "");
+        return '<p class="art"><b>' + esc(t.c) + '</b>' + esc(txt) + '</p>';
+      }).join("");
+    } else if (s.delta && s.delta.length) {
+      body = '<ul class="chg">' + s.delta.map(function(d){
+        return "<li>" + (d.from ? '<span class="f">' + esc(d.from) + "</span>" : '<span class="none">(없던 자리)</span>')
+          + '<span class="ar">→</span>'
+          + (d.to ? '<span class="t">' + esc(d.to) + "</span>" : '<span class="none">(지워짐)</span>') + "</li>";
+      }).join("") + "</ul>";
+    } else if (s.deltaBig) {
+      body = '<p class="why">문구 정비가 조문 전반에 걸쳐 있어 바뀐 자리를 따로 추리지 않았습니다.</p>';
+    }
+    return '<article class="ev ' + e.lane + '" id="ev-' + e.key + "-" + s.ef + '">'
+      + '<div class="d"><i aria-hidden="true"></i><time datetime="' + s.ef + '">' + s.ef + '</time>'
+      + '<span class="sub">' + s.pb + ' 공포<br>제' + s.no + '호</span></div>'
+      + '<div class="b"><div class="h"><span class="who">' + LANENAME[e.lane] + '</span>'
+      + '<span class="tg">' + s.kind + '</span>'
+      + '<span class="tg' + (isNew ? " new" : "") + '">' + s.change + '</span>'
+      + '<span class="law">' + esc(s.law) + '</span></div>'
+      + '<p class="cite">' + s.cites.map(function(c){ return '<span>' + esc(c) + '</span>'; }).join('<span class="sep"> · </span>') + '</p>'
+      + (s.why ? '<p class="why"><b>정부가 밝힌 개정이유</b> — ' + esc(s.why) + '</p>'
                : '<p class="why">다른 법을 고치면서 딸려 바뀐 타법개정이라 이 제도에 관한 개정이유는 없습니다.</p>')
-      + arts;
+      + body + '</div></article>';
+  }).join("");
+
+  /* 연표의 점을 누르면 아래 그 항목으로 간다 */
+  function goTo(k, i){
+    var L = D.lanes.find(function(x){ return x.key === k; });
+    var el = document.getElementById("ev-" + k + "-" + L.steps[i].ef);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
     [].forEach.call(tl.querySelectorAll(".nd"), function(b){
       b.classList.toggle("on", b.dataset.k === k && b.dataset.i === String(i));
     });
+    [].forEach.call(document.querySelectorAll(".ev"), function(x){ x.classList.remove("flash"); });
+    el.classList.add("flash");
+    setTimeout(function(){ el.classList.remove("flash"); }, 1600);
   }
   tl.addEventListener("click", function(e){
-    var b = e.target.closest(".nd"); if (b) show(b.dataset.k, +b.dataset.i);
+    var b = e.target.closest(".nd"); if (b) goTo(b.dataset.k, +b.dataset.i);
   });
   tl.addEventListener("keydown", function(e){
     if (e.key !== "Enter" && e.key !== " ") return;
     var b = e.target.closest(".nd"); if (!b) return;
-    e.preventDefault(); show(b.dataset.k, +b.dataset.i);
+    e.preventDefault(); goTo(b.dataset.k, +b.dataset.i);
   });
-  show("realname", 0);
 
   /* 이유 카드 셋 — 각 제도의 신설 시점 */
   document.getElementById("whycards").innerHTML = D.lanes.map(function(L){
