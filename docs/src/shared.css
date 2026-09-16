@@ -17,7 +17,7 @@
   --panel-2:var(--k-gray-10);         /* surface-gray-subtle */
   --ink:var(--k-gray-90);             /* text-basic */
   --ink-2:var(--k-gray-70);           /* text-subtle */
-  --ink-3:var(--k-gray-50);           /* text-disabled 보다 진한 보조 */
+  --ink-3:var(--k-gray-60);           /* 보조 글자. gray-50은 흰 바탕에서 4.13:1이라 본문 크기에 못 쓴다 */
   --rule:var(--k-gray-20);            /* border-gray-light */
   --rule-2:var(--k-gray-10);
   --em:var(--k-primary-60);           /* text-primary */
