@@ -20,8 +20,8 @@
 .mx .cell .dot{width:18px;height:18px;flex:none}
 .mx .cell .lb{display:block;font-size:14.5px;line-height:1.35;color:var(--ink)}
 .mx .cell .lb.no{color:var(--ink-3)}
-.mx .cell .lb.pt{color:#6B5416}
-.mx .cell .lb.yes{color:#215659}
+.mx .cell .lb.pt{color:var(--k-warning-60)}
+.mx .cell .lb.yes{color:var(--k-success-60)}
 .mx tbody tr.r td.c{border-left:1px solid var(--rule-2)}
 .mx thead th.rn,.mx thead th.pv,.mx thead th.og{border-bottom:2px solid currentColor}
 
@@ -47,7 +47,7 @@
 .detail .col{padding:16px 18px 18px;border-right:1px solid var(--rule-2)}
 .detail .col:last-child{border-right:0}
 .detail .col .who{font-size:13px;letter-spacing:.04em;font-weight:600;margin-bottom:8px}
-.detail .col.rn .who{color:var(--rn)} .detail .col.pv .who{color:var(--pv)} .detail .col.og .who{color:var(--og)}
+.detail .col.rn .who{color:var(--rn-t)} .detail .col.pv .who{color:var(--pv-t)} .detail .col.og .who{color:var(--og-t)}
 .detail .hv{display:block;font-family:var(--mono);font-size:24px;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-bottom:8px}
 .detail .hn{display:block;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
 .detail .hn b{color:var(--ink)}
@@ -98,7 +98,7 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
       <thead><tr><th>기준</th><th class="rn">정책실명제</th><th class="pv">사전정보공표</th><th class="og">원문공개</th></tr></thead>
       <tbody id="mxBody"></tbody>
     </table></div>
-    <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg> 없음</p>
+    <p class="cap"><svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#267337"/></svg> 있음 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8a5c00" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8a5c00"/></svg> 부분 · <svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#58616a" stroke-width="1.5"/></svg> 없음</p>
 
     <div class="l2" id="l2">
       <div class="lbl">2층 · 항목별 실측 <span class="hint">· 왼쪽에서 항목을 고르면 세 제도의 실측치와 근거가 나란히 열립니다</span></div>
@@ -125,9 +125,9 @@ section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);fo
 
 <script>
 (function(){
-  const Y='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#2E6F73"/></svg>';
-  const P='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8A6D1F" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8A6D1F"/></svg>';
-  const N='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#7C8A9C" stroke-width="1.5"/></svg>';
+  const Y='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#267337"/></svg>';
+  const P='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8a5c00" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8a5c00"/></svg>';
+  const N='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#58616a" stroke-width="1.5"/></svg>';
   const cls={Y:'yes',P:'pt',N:'no'};
 
   /* 1층 — 아홉 기준. d: 2층 항목 id */

@@ -32,6 +32,8 @@
   --sel:var(--k-secondary-5);         /* action-secondary-hover */
   /* 세 제도 색: KRDS point / warning / success */
   --rn:var(--k-point-50); --pv:var(--k-warning-50); --og:var(--k-success-60);
+  /* 위 셋은 점·테두리용 식별색. 글자에 쓰면 흰 바탕에서 4.2 안팎이라 아래 변형을 쓴다 */
+  --rn-t:var(--k-point-60); --pv-t:var(--k-warning-60); --og-t:var(--k-success-60);
   --rn-soft:var(--k-point-5); --pv-soft:var(--k-warning-5); --og-soft:var(--k-success-5);
   /* 서체: KRDS 지정 Pretendard GOV. 세리프·모노 자리도 같은 서체로(굵기·숫자 정렬만 다르게) */
   --font:"Pretendard GOV","Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -48,8 +50,8 @@ h1{font-size:40px;line-height:1.5;letter-spacing:.1rem}   /* heading-xlarge, 자
 h2{font-size:32px;line-height:1.5;letter-spacing:.1rem}   /* heading-large, 자간 1px */
 h3{font-size:19px;line-height:1.5;font-weight:700} /* heading-small */
 p{margin:0 0 14px;max-width:66ch}
-a{color:var(--k-primary-50);text-decoration:underline;text-underline-offset:.3rem;text-decoration-color:var(--k-primary-20)}   /* link-default */
-a:hover{color:var(--k-primary-60);text-decoration-color:currentColor}
+a{color:var(--k-primary-60);text-decoration:underline;text-underline-offset:.3rem;text-decoration-color:var(--k-primary-20)}   /* link. primary-50은 흰 바탕 4.17:1이라 본문 링크에 못 쓴다 */
+a:hover{color:var(--k-primary-70);text-decoration-color:currentColor}
 a:active{color:var(--k-primary-70)}
 b,strong{font-weight:700;color:var(--ink)}
 .em{color:var(--em);font-weight:700}
@@ -113,7 +115,7 @@ ul.plain li b{color:var(--ink)}
 table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}
 th,td{padding:12px 16px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;color:var(--ink-2)}
 th{font-size:15px;color:var(--k-gray-95);font-weight:700;border-bottom:1px solid var(--k-secondary-10);background:var(--k-secondary-5);white-space:nowrap}   /* KRDS tbl.data thead */
-th.rn{color:var(--rn)} th.pv{color:var(--pv)} th.og{color:var(--og)}
+th.rn{color:var(--rn-t)} th.pv{color:var(--pv-t)} th.og{color:var(--og-t)}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td b{color:var(--ink)}
 .cap{font-size:15px;color:var(--ink-2);margin:10px 0 0;max-width:none;line-height:1.6}
@@ -192,7 +194,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .tl .lane{position:relative;height:62px;border-bottom:1px solid var(--rule-2)}
 .tl .lane:last-child{border-bottom:0}
 .tl .lane .nm{position:absolute;left:0;top:8px;font-size:14px;font-weight:700;z-index:2;background:var(--panel);padding-right:8px}
-.tl .lane.rn .nm{color:var(--rn)} .tl .lane.pv .nm{color:var(--pv)} .tl .lane.og .nm{color:var(--og)}
+.tl .lane.rn .nm{color:var(--rn-t)} .tl .lane.pv .nm{color:var(--pv-t)} .tl .lane.og .nm{color:var(--og-t)}
 .tl .lane .rail{position:absolute;left:0;right:0;top:34px;height:3px;background:var(--rule-2)}
 .tl .lane.rn .rail.live{background:var(--rn-soft)} .tl .lane.pv .rail.live{background:var(--pv-soft)} .tl .lane.og .rail.live{background:var(--og-soft)}
 /* 버튼 상자가 아니라 점만 눌리게 한다. 가까이 붙은 점끼리 서로의 클릭을 뺏지 않도록. */
@@ -227,7 +229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .sp td{white-space:nowrap;vertical-align:top}
 .sp td .sub{white-space:normal}
 .sp td.k{font-weight:600}
-.sp td.rn{color:var(--rn)} .sp td.pv{color:var(--pv)} .sp td.og{color:var(--og)}
+.sp td.rn{color:var(--rn-t)} .sp td.pv{color:var(--pv-t)} .sp td.og{color:var(--og-t)}
 .sp td .sub{display:block;font-size:13.5px;color:var(--ink-3);font-weight:400;margin-top:2px}
 .tbl td.mono{white-space:nowrap}
 @media (max-width:760px){ .tl{padding:14px 12px 8px} .sp table{table-layout:auto} }
