@@ -300,7 +300,8 @@ if (!WITH_NAMES) {
   fs.writeFileSync(R("docs/explorer/index.html"), html);
   // static pages: docs/src/*.html → docs/*.html with shared.css inlined; any leftover local stylesheet link fails the build
   const LAWDATA_PATH = R("lawhist/page-data.json");
-  for (const name of ["index", "compare", "history", "policy2"]) {
+  const NOTE_PATH = R("notes/citizen.json");
+  for (const name of ["index", "compare", "history", "policy2", "notes"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
     let page = fs.readFileSync(src, "utf8");
@@ -308,6 +309,11 @@ if (!WITH_NAMES) {
     if (!linkRe.test(page)) { console.error(`ERROR docs/src/${name}.html has no <link rel="stylesheet" href="shared.css">`); process.exit(1); }
     page = page.replace(linkRe, () => `<style>\n${sharedCss}\n</style>`);
     if (/<link\s+rel="stylesheet"\s+href="(?!https?:)/.test(page)) { console.error(`ERROR docs/src/${name}.html still references a local stylesheet after inlining`); process.exit(1); }
+    if (page.includes("/*__NOTEDATA__*/")) {
+      if (!fs.existsSync(NOTE_PATH)) { console.error("ERROR notes/citizen.json missing - run tools/analyze-citizen.mjs"); process.exit(1); }
+      const nd = fs.readFileSync(NOTE_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__NOTEDATA__*/null", () => nd).replace("/*__NOTEDATA__*/", () => nd);
+    }
     if (page.includes("/*__LAWDATA__*/")) {
       if (!fs.existsSync(LAWDATA_PATH)) { console.error("ERROR lawhist/page-data.json missing - run tools/collect-law-history.mjs then tools/build-law-timeline.mjs then tools/build-history-data.mjs"); process.exit(1); }
       const lawJson = fs.readFileSync(LAWDATA_PATH, "utf8").replace(/<\//g, "<\\/");
@@ -315,7 +321,7 @@ if (!WITH_NAMES) {
     }
     fs.writeFileSync(R(`docs/${name}.html`), page);
   }
-  console.error("static pages built: docs/index.html docs/compare.html docs/history.html docs/policy2.html (shared.css inlined)");
+  console.error("static pages built: docs/index.html docs/compare.html docs/history.html docs/policy2.html docs/notes.html (shared.css inlined)");
 }
 console.error(`built explorer/index${suffix}.html ${(html.length / 1e6).toFixed(1)}MB · projects ${projects.length} · details ${detail.length} · probes ${probes.length} · notes ${notes.length} · unmatched name segments ${unmatched.length}`);
 if (unmatched.length) console.error("  unmatched (first 15):", [...new Set(unmatched)].slice(0, 15));

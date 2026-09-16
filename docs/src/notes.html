@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>국민이 신청한 정책실명제 · 분석 노트</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* 분석 노트 — 물음 하나를 여러 축에서 본다 */
+.axes{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.axes .ax{font-size:13px;background:var(--panel-2);color:var(--ink-2);border-radius:var(--r-s);padding:3px 10px}
+.axes .ax b{color:var(--ink)}
+.answer{background:var(--em-soft);border-radius:var(--r-m);padding:16px 20px;margin:0 0 6px}
+.answer p{font-size:19px;line-height:1.6;color:var(--ink);margin:0;max-width:64ch}
+.answer p b{color:var(--em)}
+
+/* 그림 */
+.fig{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:18px 20px 14px;margin:0 0 10px}
+.fig h3{font-size:16px;margin:0 0 3px}
+.fig .sub{font-size:14px;color:var(--ink-2);margin:0 0 14px}
+.fig svg{width:100%;height:auto;display:block;overflow:visible}
+.fig .lg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:10px}
+.fig .lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+
+/* 보고서용 발췌 */
+.excerpt{border:1px solid var(--rule);border-left:4px solid var(--em);border-radius:var(--r-s);background:var(--panel);padding:16px 18px;margin:0 0 10px}
+.excerpt .hd2{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.excerpt .hd2 h3{font-size:15px;margin:0;margin-right:auto}
+.excerpt .body2{font-size:16px;line-height:1.85;color:var(--ink)}
+.excerpt .body2 p{font-size:16px;margin:0 0 9px}
+.excerpt .body2 p:last-child{margin-bottom:0}
+.excerpt .src{font-size:13px;color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px dashed var(--rule-2)}
+.cbtn{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);
+  padding:5px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer}
+.cbtn:hover{border-color:var(--ink-3);color:var(--ink)}
+.cbtn.ok{background:var(--em);border-color:var(--em);color:var(--k-gray-0)}
+@media (max-width:760px){ .fig{padding:14px 12px 10px} }
+</style>
+</head>
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a></div>
+<div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
+<div class="bar"><div class="in">
+  <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="history.html"><span class="long">법령 연혁</span><span class="short">연혁</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a><a class="on" href="notes.html"><span class="long">분석 노트</span><span class="short">분석</span></a></nav>
+  <div class="meta"><span>기준일 <b>2026-09-15~16</b></span></div>
+</div></div>
+
+<main class="wrap" id="content">
+  <header class="summary">
+    <div class="eyebrow">분석 노트 ① · 제도 개선</div>
+    <h1>국민이 신청한 정책실명제는 왜 줄었나</h1>
+    <div class="axes">
+      <span class="ax"><b>축</b> 시간 × 법령</span>
+      <span class="ax"><b>축</b> 선정기준 × 이용</span>
+      <span class="ax"><b>축</b> 기관 × 선정기준</span>
+    </div>
+    <div class="answer">
+      <p>국민이 신청할 수 있다는 <b>조문은 2018년에 생겼습니다.</b> 그런데 국민신청으로 선정된 사업은
+        그해 34건을 정점으로 줄어 <b>2026년 0건</b>입니다. 조문을 만들었으나 <b>신청할 창구를 만들지 않았기 때문</b>입니다.</p>
+    </div>
+    <div class="basis">수치는 정보공개포털 정책실명제 전수 6,847건에서 산출했습니다. 산출 코드는 <span class="mono">tools/analyze-citizen.mjs</span>, 한계는 <a href="#limit">방법과 한계</a>에.</div>
+  </header>
+
+  <section class="core">
+    <div class="eyebrow">축 1 · 시간 × 법령</div>
+    <h2>조문이 생긴 해가 정점이었습니다</h2>
+    <p>2018년 11월 27일 「행정업무의 운영 및 혁신에 관한 규정」에 국민이 신청한 사업을 중점관리 대상으로 고를 수 있는 호가 신설됐습니다.
+      그 전에도 기관들은 선정기준에 '국민신청'을 적고 있었고, 조문이 생긴 뒤 오히려 줄었습니다.</p>
+    <div class="fig">
+      <h3>연도별 국민신청 선정 건수</h3>
+      <p class="sub">세로 막대가 국민신청으로 선정된 사업 수입니다. 점선은 조문이 시행된 시점입니다.</p>
+      <div id="fig1"></div>
+    </div>
+    <p class="cap">2026년은 등록이 진행 중인 값입니다. 다만 9월 현재 7개 기관 167건이 올라온 가운데 국민신청은 한 건도 없습니다.</p>
+  </section>
+
+  <section class="core">
+    <div class="eyebrow">축 2 · 선정기준 × 이용</div>
+    <h2>더 읽힌다는 인상은 연차를 걷어내면 거의 사라집니다</h2>
+    <p>국민신청 사업의 조회수 가운데값은 5회로, 그 외 사업 3회보다 높아 보입니다. 그런데 포털 조회수는 <b>누적값</b>이라
+      오래된 사업일수록 유리합니다. 국민신청은 2018~2019년에 몰려 있습니다. 같은 해끼리 견주면 차이가 줄어듭니다.</p>
+    <div class="fig">
+      <h3>같은 해 안에서 견준 조회수 가운데값</h3>
+      <p class="sub">왼쪽이 국민신청, 오른쪽이 그 외입니다. 연도별로 나란히 놓았습니다.</p>
+      <div id="fig2"></div>
+      <div class="lg"><span><i style="background:var(--em)"></i>국민신청</span><span><i style="background:var(--rule)"></i>그 외</span></div>
+    </div>
+    <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:0 0 8px">
+      <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--ink-2)">보정 전 <b>5회 대 3회</b>로 1.7배처럼 보이지만,
+        표본이 5건 이상인 해만 골라 같은 해끼리 견주면 <b>1.12배</b>입니다.
+        <b>국민이 고른 사업이 더 읽힌다고 단언할 근거는 아직 약합니다.</b></p>
+    </div>
+  </section>
+
+  <section class="core">
+    <div class="eyebrow">축 3 · 기관 × 선정기준</div>
+    <h2>24개 기관만 써 봤고, 적는 방식도 제각각입니다</h2>
+    <p>135건은 전체 6,847건의 2.0%입니다. 그마저 24개 기관에 몰려 있습니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>기관</th><th class="n">건수</th><th>선정기준 원문 표기</th><th class="n">건수</th></tr></thead>
+      <tbody id="orgBody"></tbody>
+    </table></div>
+    <p class="cap">선정기준은 자유입력입니다. "국민신청", "국민 신청", "국정과제, 국민신청"이 섞여 있어 기계로 세면 표기에 따라 빠지는 건이 생깁니다.</p>
+  </section>
+
+  <section class="core">
+    <div class="eyebrow">그래서</div>
+    <h2>제도를 고치려면 조문이 아니라 창구입니다</h2>
+    <p><b>조문은 이미 있습니다.</b> 제63조의3제1항제6호가 "행정안전부장관이 정한 절차에 따라 국민이 신청한 사업"을 중점관리 대상으로 고를 수 있게 합니다.
+      법령을 고칠 일이 아닙니다. 없는 것은 <b>그 절차와 창구</b>입니다.</p>
+    <p>지금 포털의 '국민신청'은 국민이 신청한 기록이 아니라 <b>기관이 스스로 그렇게 적은 분류</b>입니다.
+      국민이 신청할 수 있는 화면이 없으므로, 이 값은 기관의 자기 기재입니다. 2026년 0건은 국민이 관심을 잃은 결과가 아니라
+      애초에 신청할 곳이 없었던 결과로 읽는 편이 사실에 가깝습니다.</p>
+    <p><b>효과는 아직 증명되지 않았습니다.</b> 연차를 걷어내면 조회 차이는 1.12배입니다.
+      2025~2026년 상세를 확인한 784건 중 국민신청은 2건뿐이라 추진실적이나 원문 연결로 견주는 것도 불가능합니다.
+      창구를 열어 표본이 쌓여야 "국민이 고른 사업이 더 잘 관리된다"를 말할 수 있습니다.</p>
+  </section>
+
+  <section class="core">
+    <div class="eyebrow">보고서용</div>
+    <h2>그대로 옮겨 쓸 수 있는 문단</h2>
+    <div class="excerpt">
+      <div class="hd2"><h3>발췌 · 문단</h3><button class="cbtn" type="button" id="copyP">문단 복사</button></div>
+      <div class="body2" id="exBody">
+        <p>정책실명제 중점관리 대상사업 선정기준에 '국민신청'을 적은 사업은 2018년부터 2026년 9월까지 135건으로,
+          중앙행정기관 등록 6,847건의 2.0%에 그친다. 연도별로는 2018년 34건을 정점으로 계속 감소하여 2025년 2건,
+          2026년 9월 현재 0건이다.</p>
+        <p>국민이 신청한 사업을 중점관리 대상으로 선정할 수 있는 근거는 「행정업무의 운영 및 혁신에 관한 규정」
+          제63조의3제1항제6호로, 2018년 11월 27일 신설되었다. 그러나 정보공개포털에 국민이 신청할 수 있는 창구가
+          개설되어 있지 않아, 현행 '국민신청' 표기는 기관의 자기 분류에 해당한다.</p>
+        <p>국민신청 사업의 조회수는 가운데값 5회로 그 외 사업 3회보다 높으나, 포털 조회수가 누적값인 점을 고려하여
+          동일 연도 내에서 비교하면 1.12배 수준으로 차이가 크지 않다. 제도 효과를 판단하기에는 표본이 부족하다.</p>
+      </div>
+      <div class="src" id="exSrc"></div>
+    </div>
+    <p class="cap">복사하면 위 문단과 출처가 함께 붙습니다. 수치는 아래 산출 코드로 다시 뽑을 수 있습니다.</p>
+  </section>
+
+  <section class="appendix">
+    <div class="label">별첨</div>
+    <h2 id="limit">방법과 한계</h2>
+    <div class="notes"><ol>
+      <li><span class="no">[1]</span><div><b>자료</b>: 정보공개포털 정책실명제 코너의 중앙행정기관 2018~2026년 등록 전수 6,847건. 산출 코드는 <span class="mono">tools/analyze-citizen.mjs</span>이며 원자료는 <span class="mono">realname/central.jsonl</span>이다. 기준일 2026-09-15.</div></li>
+      <li><span class="no">[2]</span><div><b>국민신청 판정</b>: 선정기준(slctnStdr)에 '국민'과 '신청' 또는 '제안'이 함께 들어간 건을 셌다. 자유입력이라 다르게 적은 건은 빠질 수 있다. 실제로 "국민신청" 115건 외에 "국민 신청", "국정과제, 국민신청" 같은 표기가 섞여 있다.</div></li>
+      <li><span class="no">[3]</span><div><b>조회수 보정</b>: 포털 조회수는 누적값이라 등록이 오래된 사업이 유리하다. 보정 전 비교(5회 대 3회)는 이 편향을 그대로 안고 있다. 국민신청 표본이 5건 이상인 해만 골라 같은 해 안에서 가운데값 비율을 낸 뒤 평균한 값이 1.12배다.</div></li>
+      <li><span class="no">[4]</span><div><b>견주지 못한 것</b>: 추진실적 건수와 원문 연결률은 상세를 확인한 784건(2025~2026년분)으로만 알 수 있는데, 그중 국민신청은 2건뿐이다. 표본이 없어 비교하지 않았다.</div></li>
+      <li><span class="no">[5]</span><div><b>인과가 아니다</b>: 조문 신설과 건수 감소가 같은 시기에 일어났다는 것뿐, 조문이 감소를 일으켰다는 뜻이 아니다. 창구 부재가 원인이라는 판단은 조문 문구와 포털 화면 확인에 근거한 것이지 이 수치에서 나온 것이 아니다.</div></li>
+      <li><span class="no">[6]</span><div><b>2026년</b>은 등록이 진행 중인 값이다. 추세 판단은 2025년까지를 기준으로 해야 한다.</div></li>
+    </ol></div>
+  </section>
+</main>
+
+<div class="kfoot"><div class="in">
+  <span class="id"><span class="flag" aria-hidden="true"></span>open-go-corpus · 분석 노트</span>
+  <span class="note">출처: 정보공개포털(open.go.kr) 실측 2026-09-15~16 · 법령: 국가법령정보센터 · 코드 <a href="https://github.com/hosungseo/open-go-corpus">github.com/hosungseo/open-go-corpus</a></span>
+</div></div>
+
+<script>
+(function(){
+  var D = /*__NOTEDATA__*/null;
+  if(!D) return;
+  var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
+
+  /* 그림 1 — 연도별 국민신청 건수 */
+  (function(){
+    var rows = D.연도별, W = 720, H = 260, L = 42, B = 42, T = 16;
+    var max = Math.max.apply(null, rows.map(function(r){ return r.nat; })) || 1;
+    var bw = (W - L - 12) / rows.length;
+    var y = function(v){ return T + (H - T - B) * (1 - v / (max * 1.15)); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="연도별 국민신청 선정 건수 막대그림">';
+    [0, 10, 20, 30].forEach(function(v){
+      s += '<line x1="' + L + '" y1="' + y(v) + '" x2="' + W + '" y2="' + y(v) + '" stroke="var(--rule-2)"/>'
+         + '<text x="' + (L - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="12" fill="var(--ink-3)">' + v + '</text>';
+    });
+    rows.forEach(function(r, i){
+      var x = L + i * bw + bw * 0.22, w = bw * 0.56, h = Math.max(0, y(0) - y(r.nat));
+      s += '<rect x="' + x + '" y="' + y(r.nat) + '" width="' + w + '" height="' + h + '" fill="' + (r.nat ? 'var(--em)' : 'var(--rule)') + '" rx="2"/>'
+         + '<text x="' + (x + w / 2) + '" y="' + (y(r.nat) - 6) + '" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">' + r.nat + '</text>'
+         + '<text x="' + (x + w / 2) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="12" fill="var(--ink-3)">' + r.year + '</text>';
+    });
+    // 조문 시행 시점 (2018-11-27). 막대 사이 빈 자리에 세워야 막대와 값 글자를 관통하지 않는다.
+    // 막대 i는 L+i*bw+0.22bw 에서 시작해 0.56bw 폭이므로, 두 막대의 틈 한가운데는 L+(i+1)*bw 다.
+    var mx = L + bw;
+    s += '<line x1="' + mx + '" y1="' + T + '" x2="' + mx + '" y2="' + y(0) + '" stroke="var(--k-danger-60)" stroke-width="1.5" stroke-dasharray="5 4"/>'
+       // 라벨을 선 바로 옆에 두면 가장 높은 2019년 막대와 겹친다. 한 칸 오른쪽으로 민다.
+       + '<text x="' + (mx + bw * 1.15) + '" y="' + (T + 12) + '" font-size="12.5" font-weight="700" fill="var(--k-danger-60)">2018.11.27 조문 신설</text>'
+       + '<text x="' + (mx + bw * 1.15) + '" y="' + (T + 28) + '" font-size="12" fill="var(--ink-2)">제63조의3제1항제6호</text>';
+    s += '<text x="' + L + '" y="' + (H - 6) + '" font-size="12" fill="var(--ink-3)">2026년은 9월 현재 등록 진행 중</text></svg>';
+    document.getElementById('fig1').innerHTML = s;
+  })();
+
+  /* 그림 2 — 같은 해 안에서 견준 조회수 */
+  (function(){
+    var rows = D.연도별.filter(function(r){ return r.nat > 0; });
+    var W = 720, H = 240, L = 42, B = 42, T = 14;
+    var max = Math.max.apply(null, rows.map(function(r){ return Math.max(r.natMedInq || 0, r.othMedInq || 0); })) || 1;
+    var gw = (W - L - 12) / rows.length;
+    var y = function(v){ return T + (H - T - B) * (1 - v / (max * 1.2)); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="연도별 조회수 가운데값 비교 막대그림">';
+    [0, 5, 10, 15].filter(function(v){ return v <= max * 1.2; }).forEach(function(v){
+      s += '<line x1="' + L + '" y1="' + y(v) + '" x2="' + W + '" y2="' + y(v) + '" stroke="var(--rule-2)"/>'
+         + '<text x="' + (L - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="12" fill="var(--ink-3)">' + v + '</text>';
+    });
+    rows.forEach(function(r, i){
+      var x0 = L + i * gw + gw * 0.16, w = gw * 0.30;
+      [[r.natMedInq, 'var(--em)'], [r.othMedInq, 'var(--rule)']].forEach(function(p, k){
+        var v = p[0] || 0, x = x0 + k * (w + 3);
+        s += '<rect x="' + x + '" y="' + y(v) + '" width="' + w + '" height="' + Math.max(0, y(0) - y(v)) + '" fill="' + p[1] + '" rx="2"/>'
+           + '<text x="' + (x + w / 2) + '" y="' + (y(v) - 5) + '" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">' + v + '</text>';
+      });
+      s += '<text x="' + (x0 + w + 1.5) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="12" fill="var(--ink-3)">' + r.year + '</text>'
+         + '<text x="' + (x0 + w + 1.5) + '" y="' + (H - B + 33) + '" text-anchor="middle" font-size="11" fill="var(--ink-3)">n=' + r.nat + '</text>';
+    });
+    s += '</svg>';
+    document.getElementById('fig2').innerHTML = s;
+  })();
+
+  /* 기관·표기 표 */
+  (function(){
+    var o = D.기관상위, t = D.표기흔들림, n = Math.max(o.length, t.length), h = '';
+    for (var i = 0; i < n; i++) {
+      h += '<tr><td>' + (o[i] ? esc(o[i][0]) : '') + '</td><td class="n">' + (o[i] ? o[i][1] : '') + '</td>'
+         + '<td>' + (t[i] ? '"' + esc(t[i][0]) + '"' : '') + '</td><td class="n">' + (t[i] ? t[i][1] : '') + '</td></tr>';
+    }
+    document.getElementById('orgBody').innerHTML = h;
+  })();
+
+  /* 보고서용 발췌 복사 */
+  (function(){
+    var src = '출처: 정보공개포털 정책실명제 중앙행정기관 등록 전수 ' + D.전체.toLocaleString() + '건(기준일 ' + D.생성일 + '). '
+            + '근거 법령은 「행정업무의 운영 및 혁신에 관한 규정」 ' + D.조문.조문 + '(' + D.조문.시행일 + ' 시행).';
+    document.getElementById('exSrc').textContent = src;
+    var btn = document.getElementById('copyP');
+    btn.onclick = function(){
+      var ps = [].map.call(document.querySelectorAll('#exBody p'), function(p){ return p.textContent.replace(/\s+/g, ' ').trim(); });
+      var text = ps.join('\n\n') + '\n\n' + src;
+      var done = function(){ btn.textContent = '복사됨'; btn.classList.add('ok'); setTimeout(function(){ btn.textContent = '문단 복사'; btn.classList.remove('ok'); }, 1500); };
+      var fb = function(){ var a = document.createElement('textarea'); a.value = text;
+        a.style.cssText = 'position:fixed;left:-9999px'; document.body.appendChild(a); a.select();
+        try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = '복사 실패'; setTimeout(function(){ btn.textContent = '문단 복사'; }, 1500); }
+        a.remove(); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done).catch(fb); else fb();
+    };
+  })();
+})();
+</script>
+</body>
+</html>
