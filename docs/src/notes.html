@@ -28,6 +28,11 @@
 .cats .st2 a{font-weight:600}
 .cats .st2 .soon{color:var(--ink-3)}
 .cats tr.on td{background:var(--em-soft)}
+.cats tr.grp td{background:var(--paper);padding:9px 14px 8px}
+.cats tr.grp .gn{font-weight:700;color:var(--ink);font-size:14.5px}
+.cats tr.grp .gd{color:var(--ink-2);font-size:13.5px;margin-left:10px}
+.cats td.sub2{padding-left:30px;position:relative}
+.cats td.sub2:before{content:"└";position:absolute;left:16px;color:var(--ink-3)}
 /* 노트 한 편 */
 .note1{border:1px solid var(--rule);border-top:4px solid var(--em);border-radius:var(--r-m);
   background:var(--panel);padding:26px 28px 6px;margin:0 0 10px}
@@ -77,26 +82,48 @@
   </header>
 
   <section class="core">
-    <div class="eyebrow">주제</div>
-    <h2>다섯 갈래로 나눠 봅니다</h2>
-    <p>갈래마다 하나의 물음이 있고, 답이 나오면 노트를 올립니다. 아직 비어 있는 칸이 다음에 쓸 글입니다.</p>
+    <div class="eyebrow">분류</div>
+    <h2>다섯 갈래 아래 열 가지 물음</h2>
+    <p>분석을 다섯 갈래로 나누고, 갈래마다 다룰 물음을 두었습니다. 답이 나오면 노트를 올립니다.
+      아직 비어 있는 칸이 다음에 쓸 글입니다.</p>
     <div class="cats"><table>
-      <thead><tr><th style="width:15%">갈래</th><th>지금까지 드러난 것</th><th style="width:19%">노트</th></tr></thead>
+      <thead><tr><th style="width:22%">물음</th><th>지금까지 드러난 것</th><th style="width:19%">노트</th></tr></thead>
       <tbody>
-        <tr class="on"><td class="cn">신청제</td>
-          <td class="ins"><b>신청 제도는 생겼으나 활성화되지 않았습니다.</b> 조문은 2018년에 들어왔는데 접수 창구가 부처마다 제각각입니다. 통합 포털에는 접수 기능이 없습니다.</td>
+        <tr class="grp"><td colspan="3"><span class="gn">참여</span><span class="gd">국민이 제도에 닿는 길</span></td></tr>
+        <tr class="on"><td class="sub2">신청제</td>
+          <td class="ins"><b>신청 제도는 생겼으나 활성화되지 않았습니다.</b> 조문은 2018년에 들어왔고 창구도 대부분 있지만, 열네 곳 중 열세 곳이 서식을 내려받아 밖으로 보내라고 합니다.</td>
           <td class="st2"><a href="#note1">① 국민이 신청한 정책실명제</a></td></tr>
-        <tr><td class="cn">공개 장소</td>
-          <td class="ins">규정은 추진실적을 <b>해당 기관 누리집</b>에 공개하라고 정하는데, 우리가 재고 있는 것은 정보공개포털입니다. 어디서 공개되고 어디서 읽히는지가 갈려 있습니다.</td>
+        <tr><td class="sub2">청구와 열람</td>
+          <td class="ins">정보공개 청구는 누적 1,807만 건인데 정책실명제는 조회가 거의 없습니다. 같은 포털 안에서 도달 규모가 왜 갈리는지 봅니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
-        <tr><td class="cn">연계</td>
-          <td class="ins">같은 사업이 세 채널에서 이어지지 않습니다. 대조한 724건 중 209건은 사전정보공표와 원문공개 양쪽 모두 등록이 없습니다.</td>
+
+        <tr class="grp"><td colspan="3"><span class="gn">공개</span><span class="gd">무엇이 어디에 얼마나</span></td></tr>
+        <tr><td class="sub2">공개 장소</td>
+          <td class="ins">규정은 추진실적을 <b>해당 기관 누리집</b>에 공개하라고 정하는데, 우리가 재는 것은 정보공개포털입니다. 둘에 실린 것이 같은지 봅니다.</td>
+          <td class="st2"><span class="soon">다음 차례</span></td></tr>
+        <tr><td class="sub2">공개 깊이와 주기</td>
+          <td class="ins">정책실명제는 연 1회 등록이고 원문공개는 결재 즉시입니다. 같은 사업을 두 속도로 공개하면 무엇이 어긋나는지 봅니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
-        <tr><td class="cn">책임 기재</td>
+
+        <tr class="grp"><td colspan="3"><span class="gn">책임</span><span class="gd">누가 적히나</span></td></tr>
+        <tr><td class="sub2">실명 기재</td>
           <td class="ins">1998년 제도 취지는 <b>결재선 밖</b> 참여자를 적는 것이었는데, 지금 등록자료는 결재선 두세 명을 그대로 옮겨 적습니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
-        <tr><td class="cn">법령 계보</td>
+
+        <tr class="grp"><td colspan="3"><span class="gn">연계</span><span class="gd">제도끼리 이어지나</span></td></tr>
+        <tr><td class="sub2">채널 간 매칭</td>
+          <td class="ins">대조한 724건 중 209건은 사전정보공표와 원문공개 양쪽 모두 등록이 없습니다. 무엇이 이어진 사업과 끊긴 사업을 가르는지 봅니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr><td class="sub2">식별번호</td>
+          <td class="ins">결재문서 84만 건 중 95.1%가 이미 단위과제 번호를 답니다. 다만 그 번호는 기능을 가리켜 사업명과 일치하는 것은 3.3%입니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+
+        <tr class="grp"><td colspan="3"><span class="gn">근거</span><span class="gd">법령과 하위 규정</span></td></tr>
+        <tr><td class="sub2">조문 계보</td>
           <td class="ins">조문은 여러 번 고쳤지만 운영이 따라오지 않았습니다. 2018년 국민신청 조문이 그 사례입니다.</td>
+          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr><td class="sub2">하위 규정</td>
+          <td class="ins">규정이 행정안전부장관에게 위임한 세부 절차가 법령정보센터에 없습니다. 정책실명제 행정규칙은 관세청·교육부 둘뿐입니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
       </tbody>
     </table></div>
