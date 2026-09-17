@@ -353,38 +353,52 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 @media (max-width:1000px){.rn2 .meta-grid{grid-template-columns:1fr;width:auto;margin-left:0}.rn2 .meta-arrow{flex-direction:row;justify-content:center}.rn2 .meta-arrow svg{transform:rotate(90deg)}}
 @media (max-width:1000px){.rn2 .split{grid-template-columns:1fr}.rn2 .vw{position:static}.rn2 .pt3{grid-template-columns:1fr}.rn2 .pt3 .fig{height:100px}}
 
-/* 행안부 국정과제 11개 — 과제 고르기 + 세부과제 시계열 + 예산·집행 모듈 */
+/* 행안부 국정과제 11개 — 과제 카드: 머리 → 시계열 패널 → 예산·집행 모듈 → 세부과제 목록 */
 .tk{margin:14px 0 0}
 .tk .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
-.tk .tabs button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-max);background:var(--panel);padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.4}
-.tk .tabs button b{font-family:var(--mono,ui-monospace,monospace);font-weight:600;margin-right:5px;color:var(--ink-3)}
-.tk .tabs button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0)} .tk .tabs button.on b{color:var(--k-gray-0)}
-.tk .tabs button.none{color:var(--ink-3);border-style:dashed}
-.tk .hd{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
-.tk .hd h3{font-size:19px;margin:4px 0 6px;letter-spacing:-.01em}
+.tk .tabs button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:7px 11px 6px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.35;text-align:left;display:flex;flex-direction:column;gap:4px;min-width:150px}
+.tk .tabs button .tt{display:flex;gap:6px;align-items:baseline}.tk .tabs button b{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink-3)}
+.tk .tabs button .mini{display:flex;gap:2px;align-items:center}.tk .tabs button .mini i{display:block;width:9px;height:9px;border-radius:2px;background:var(--k-gray-10);font-style:normal}.tk .tabs button .mini i.on{background:var(--k-primary-50)}.tk .tabs button .mini small{font-size:12px;color:var(--ink-3);margin-left:4px}
+.tk .tabs button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0)} .tk .tabs button.on b,.tk .tabs button.on .mini small{color:var(--k-gray-0);opacity:.85}.tk .tabs button.on .mini i{background:rgba(255,255,255,.28)}.tk .tabs button.on .mini i.on{background:var(--k-gray-0)}
+.tk .card{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
+.tk .hd{padding:18px 20px 16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--rule)}
+.tk .hd h3{font-size:22px;margin:6px 0 6px;letter-spacing:-.01em}
 .tk .hd .m{font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:4px 14px}.tk .hd .m b{color:var(--ink-2);font-weight:600}
-.tk .stats{display:flex;gap:8px;flex-wrap:wrap}.tk .st{background:var(--paper);border-radius:var(--r-s);padding:8px 13px;min-width:88px}
-.tk .st .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}.tk .st .l{font-size:12px;color:var(--ink-3);margin-top:2px}.tk .st.w .n{color:var(--warn)}
-.tk .rows{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);margin:12px 0 0;overflow:hidden}
-.tk .row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) 190px minmax(0,1fr);gap:0;border-top:1px solid var(--rule-2)}
-.tk .row:first-child{border-top:0;background:var(--panel-2)} .tk .row:first-child > div{font-size:12px;font-weight:700;color:var(--ink-2);padding:8px 12px}
-.tk .row > div{padding:11px 12px;font-size:13px;line-height:1.55;color:var(--ink-2);border-left:1px solid var(--rule-2);min-width:0}.tk .row > div:first-child{border-left:0}
-.tk .row .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink);margin-right:6px}
-.tk .row .t{color:var(--ink)}
-.tk .biz{display:block;color:var(--ink);font-weight:600}.tk .biz small{display:block;font-weight:400;color:var(--ink-3);font-size:12px}
-.tk .none{color:var(--ink-3)}
-.tk .yrs{display:flex;gap:3px;align-items:center}.tk .yrs i{display:block;width:16px;height:16px;border-radius:3px;background:var(--k-gray-10);border:1px solid var(--rule-2);font-style:normal}
-.tk .yrs i.on{background:var(--k-primary-50);border-color:var(--k-primary-50)}.tk .yrs i.miss{background:repeating-linear-gradient(45deg,var(--warnB) 0 2px,var(--panel) 2px 5px);border-color:var(--warnB)}
-.tk .yrs a{display:block;width:16px;height:16px}.tk .yrs .lab{font-size:12px;color:var(--ink-3);margin-left:4px;font-family:var(--mono,ui-monospace,monospace)}
-.tk .bud b{color:var(--ink);display:block}.tk .bud .amt{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--em)}.tk .bud .ex{display:inline-block;margin-left:6px;font-size:12px;color:var(--ink-3)}
-.tk .bud .why{display:block;font-size:12px;color:var(--ink-3)}
-.tk .mod{margin:12px 0 0;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:14px 16px}
-.tk .mod h4{margin:0 0 8px;font-size:15px}.tk .mod h4 small{font-weight:400;color:var(--ink-3);font-size:13px;margin-left:8px}
-.tk .mod table{width:100%;border-collapse:collapse;font-size:13px}.tk .mod th{text-align:left;font-weight:700;color:var(--ink-2);padding:6px 8px;border-bottom:1px solid var(--rule);font-size:12px}.tk .mod td{padding:7px 8px;border-bottom:1px solid var(--rule-2);vertical-align:top;color:var(--ink-2)}
-.tk .mod td.a{text-align:right;white-space:nowrap;font-family:var(--mono,ui-monospace,monospace)}.tk .mod .bar{display:inline-block;width:90px;height:8px;border-radius:4px;background:var(--k-gray-10);vertical-align:middle;margin-right:6px;overflow:hidden}.tk .mod .bar i{display:block;height:100%;background:var(--k-primary-50)}
-.tk .mod .empty{color:var(--ink-3);font-size:13px}
-.tk .lg{font-size:13px;color:var(--ink-3);margin:10px 0 0;line-height:1.6}
-@media (max-width:900px){ .tk .row{grid-template-columns:1fr 1fr} .tk .row > div:nth-child(3),.tk .row > div:nth-child(4){border-top:1px solid var(--rule-2)} .tk .row:first-child{display:none} }
+.tk .stats{display:flex;gap:8px;flex-wrap:wrap}.tk .st{background:var(--paper);border-radius:var(--r-s);padding:9px 13px;min-width:92px}
+.tk .st .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}.tk .st .n small{font-size:12px;font-weight:400;color:var(--ink-3)}.tk .st .l{font-size:12px;color:var(--ink-3);margin-top:2px}.tk .st.w .n{color:var(--warn)}
+.tk .sec{padding:16px 20px;border-bottom:1px solid var(--rule)}.tk .sec:last-child{border-bottom:0}
+.tk .sec h4{margin:0 0 4px;font-size:15px}.tk .sec h4 small{font-weight:400;color:var(--ink-3);font-size:13px;margin-left:8px}
+.tk .sec .sub{font-size:13px;color:var(--ink-3);margin:0 0 12px;line-height:1.55}
+/* 시계열 패널 */
+.tk .tl{display:grid;grid-template-columns:minmax(200px,1.2fr) repeat(9,minmax(0,1fr));gap:4px 0;align-items:center}
+.tk .tl .ax{font-size:12px;color:var(--ink-3);text-align:center;font-family:var(--mono,ui-monospace,monospace);padding:0 0 4px}.tk .tl .ax.now{color:var(--em);font-weight:700}
+.tk .tl .lab{font-size:13px;color:var(--ink);padding:6px 10px 6px 0;line-height:1.35;min-width:0}.tk .tl .lab .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink-3);margin-right:6px}.tk .tl .lab small{display:block;color:var(--ink-3);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tk .tl .lab small.wrap{white-space:normal}
+.tk .tl .c{height:30px;margin:2px 1px;border-radius:4px;background:var(--k-gray-10);position:relative}
+.tk .tl a.c{display:block;background:var(--k-primary-50)}.tk .tl a.c:hover{background:var(--k-primary-60)}.tk .tl a.c:focus-visible{outline:2px solid var(--em);outline-offset:1px}
+.tk .tl a.c span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--k-gray-0);font-family:var(--mono,ui-monospace,monospace)}
+.tk .tl .c.miss{background:repeating-linear-gradient(45deg,var(--warnB) 0 3px,var(--k-gray-10) 3px 7px);border:1px dashed var(--warn);opacity:.8}
+.tk .tl .c.first{border-top-left-radius:8px;border-bottom-left-radius:8px}.tk .tl .c.last{border-top-right-radius:8px;border-bottom-right-radius:8px}
+.tk .tl .empty{grid-column:1 / -1;font-size:13px;color:var(--ink-3);padding:10px 0}
+.tk .tllg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-3);margin:10px 0 0}.tk .tllg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
+/* 예산·집행 모듈 */
+.tk .bm{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.tk .bc{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--paper);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tk .bc .k{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.tk .bc .k .no{font-family:var(--mono,ui-monospace,monospace);font-size:12px;font-weight:600;color:var(--ink-3)}
+.tk .bc .nm{font-size:14px;font-weight:700;color:var(--ink);line-height:1.4}.tk .bc .nm small{display:block;font-weight:400;font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tk .bc .amt{font-size:27px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink);font-family:var(--mono,ui-monospace,monospace)}.tk .bc .amt small{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:4px;font-family:inherit}
+.tk .bc .ex{font-size:12px;color:var(--ink-3)}.tk .bc .bar{height:8px;border-radius:4px;background:var(--k-gray-10);overflow:hidden}.tk .bc .bar i{display:block;height:100%;background:var(--k-primary-50)}.tk .bc .ex b{color:var(--ink);font-family:var(--mono,ui-monospace,monospace)}
+.tk .bc.amb{border-style:dashed}.tk .bc .why{font-size:12px;color:var(--ink-3);line-height:1.5}
+.tk .bnone{border:1px dashed var(--rule);border-radius:var(--r-m);padding:14px 16px;font-size:13px;color:var(--ink-2);line-height:1.6;background:var(--paper)}
+.tk .bnone b{color:var(--ink)}
+/* 세부과제 목록 */
+.tk .sl{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr) minmax(0,1.2fr);gap:0;border:1px solid var(--rule);border-radius:var(--r-m);overflow:hidden}
+.tk .sl > div{padding:9px 12px;font-size:13px;line-height:1.5;color:var(--ink-2);border-top:1px solid var(--rule-2);min-width:0}.tk .sl > div:nth-child(-n+3){border-top:0;background:var(--panel-2);font-size:12px;font-weight:700;color:var(--ink-2);padding:7px 12px}
+.tk .sl .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink);margin-right:6px}.tk .sl .t{color:var(--ink)}
+.tk .sl .dim{color:var(--ink-3)}
+.tk .chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;padding:1px 8px;border-radius:var(--r-max);line-height:1.5;white-space:nowrap}
+.tk .chip.sure{background:var(--cL);color:var(--em)}.tk .chip.amb{background:var(--amberL);color:var(--amber)}.tk .chip.none{background:var(--panel-2);color:var(--ink-3)}
+.tk .lg{font-size:13px;color:var(--ink-3);margin:12px 0 0;line-height:1.6}
+@media (max-width:900px){ .tk .tl{grid-template-columns:minmax(120px,1fr) repeat(9,minmax(0,1fr))} .tk .tl .c{height:24px} .tk .sl{grid-template-columns:1fr} .tk .sl > div:nth-child(-n+3){display:none} .tk .sl > div{border-top:1px solid var(--rule-2)} .tk .tabs button{min-width:0} }
 </style>
 </head>
 <body>
@@ -2423,27 +2437,43 @@ const P2 = {
   put('tkN',P2.과제수);
   window.p2Hash=window.p2Hash||{ get:function(k){ var m=location.hash.match(new RegExp('[#&]'+k+'=([^&]+)')); return m?decodeURIComponent(m[1]):null; }, set:function(k,v){ var parts=location.hash.replace(/^#/,'').split('&').filter(function(p){ return p&&p.split('=')[0]!==k; }); parts.push(k+'='+v); if(history.replaceState) history.replaceState(null,'','#'+parts.join('&')); } };
   var cur=(function(){ var m=p2Hash.get('t'); return m&&P2.과제.some(function(t){return t.n===+m;})?+m:52; })();
+  var chip=function(j){ return '<span class="chip '+(j==='확실'?'sure':j==='애매'?'amb':'none')+'">'+esc(j)+'</span>'; };
   var render=function(){
     var T=P2.과제.find(function(t){return t.n===cur;});
-    var tabs='<div class="tabs" role="tablist">'+P2.과제.map(function(t){ return '<button type="button" role="tab" data-n="'+t.n+'" class="'+(t.n===cur?'on':'')+(t.연결수?'':' none')+'" aria-selected="'+(t.n===cur)+'" title="세부과제 '+t.세부수+' · 연결 '+t.연결수+' · 예산 확실 '+t.예산확실+'"><b>'+t.n+'</b>'+esc(t.nm.length>18?t.nm.slice(0,18)+'…':t.nm)+'</button>'; }).join('')+'</div>';
+    // 탭 — 번호·제목·세부과제 연결 비율(작은 칸)
+    var tabs='<div class="tabs" role="tablist">'+P2.과제.map(function(t){ var cells=t.세부.map(function(s){ return '<i class="'+(s.사업?'on':'')+'"></i>'; }).join(''); return '<button type="button" role="tab" data-n="'+t.n+'" class="'+(t.n===cur?'on':'')+'" aria-selected="'+(t.n===cur)+'"><span class="tt"><b>'+t.n+'</b>'+esc(t.nm.length>16?t.nm.slice(0,16)+'…':t.nm)+'</span><span class="mini">'+cells+'<small>'+t.연결수+'/'+t.세부수+'</small></span></button>'; }).join('')+'</div>';
     var yrsTxt=T.연도범위?(T.연도범위[0]===T.연도범위[1]?String(T.연도범위[0]):T.연도범위[0]+'~'+T.연도범위[1]):'—';
-    var hd='<div class="hd"><div><div><span class="chip c-task">국정과제</span> <span class="chip c-id">국정과제 '+T.n+'</span> <span class="chip c-id">목표 '+T.goal+'</span></div><h3>'+esc(T.nm)+'</h3><div class="m"><span>주관 <b>'+esc(T.org)+'</b></span><span>세부과제 <b>'+T.세부수+'</b></span><span>연결된 정책실명제 사업 <b>'+T.연결수+'</b></span></div></div>'
-      +'<div class="stats"><div class="st'+(T.연결수?'':' w')+'"><div class="n">'+T.연결수+' <small style="font-size:12px;font-weight:400;color:var(--ink-3)">/ '+T.세부수+'</small></div><div class="l">세부과제에 사업 연결</div></div>'
+    var hd='<div class="hd"><div><div><span class="chip sure">국정과제 '+T.n+'</span> <span class="chip none">목표 '+T.goal+'</span></div><h3>'+esc(T.nm)+'</h3><div class="m"><span>주관 <b>'+esc(T.org)+'</b></span><span>세부과제 <b>'+T.세부수+'</b></span><span>연결된 정책실명제 사업 <b>'+T.연결수+'</b></span></div></div>'
+      +'<div class="stats"><div class="st'+(T.연결수?'':' w')+'"><div class="n">'+T.연결수+' <small>/ '+T.세부수+'</small></div><div class="l">세부과제에 사업 연결</div></div>'
       +'<div class="st'+(T.시계열년수>1?'':' w')+'"><div class="n">'+(T.시계열년수?T.시계열년수+'년':'0')+'</div><div class="l">포털에 있는 연도 '+yrsTxt+'</div></div>'
-      +'<div class="st'+(T.예산확실?'':' w')+'"><div class="n">'+T.예산확실+' <small style="font-size:12px;font-weight:400;color:var(--ink-3)">/ '+T.세부수+'</small></div><div class="l">2026 예산 줄 확실</div></div>'
-      +'<div class="st"><div class="n">'+(T.예산억?fmt(T.예산억)+'억':'—')+'</div><div class="l">확실 줄 예산 합계</div></div></div></div>';
-    var rows='<div class="rows"><div class="row"><div>세부과제</div><div>연결된 정책실명제 사업</div><div>포털에 있는 연도</div><div>2026 예산 줄 · 집행률</div></div>'+T.세부.map(function(s){
-      var biz=s.사업?'<span class="biz">'+esc(s.사업.nm)+'<small>'+esc(s.사업.org)+' · '+esc(s.사업.j)+' ('+esc(s.사업.via)+' 대조)</small></span>':'<span class="none">연결된 사업 없음</span>';
-      var byY={}; s.연도.forEach(function(c){ byY[c.y]=c; });
-      var yrs=s.사업?'<div class="yrs">'+YEARS.map(function(y){ var c=byY[y]; if(c){ var tip=y+' · '+esc(c.부서)+' · '+esc(c.담당)+' · 조회 '+c.조회+(c.추진실적!=null?' · 추진실적 '+c.추진실적:'')+(c.원문검색!=null?' · 원문 검색 '+c.원문검색+'건':'')+(c.사전정보!=null?' · 사전정보 '+c.사전정보+'건':''); return '<a href="explorer/#p='+esc(c.id)+'|'+y+'" title="'+tip+'"><i class="on" aria-label="'+tip+'"></i></a>'; } var m=(y===2026)?'miss':''; return '<i class="'+m+'" title="'+y+' 포털에 없음"></i>'; }).join('')+'<span class="lab">'+(s.연도.length?(s.연도[0].y===s.연도[s.연도.length-1].y?String(s.연도[0].y):s.연도[0].y+'–'+s.연도[s.연도.length-1].y):'')+'</span></div>':'<span class="none">—</span>';
-      var b=s.예산; var bud;
-      if(b.j==='확실'||b.j==='애매'){ bud='<div class="bud">'+b.lines.map(function(l){ return '<b>'+esc(l.nm)+'</b><span class="amt">'+fmt(l.억)+'억</span>'+(l.집행률!=null?'<span class="ex">'+P2.집행월+'월 누계 집행 '+l.집행률+'% <small>(단위사업 층)</small></span>':'<span class="ex">집행률 미공개</span>'); }).join('')+(b.j==='애매'?'<span class="why">애매 — '+esc(b.why)+'</span>':'')+'</div>'; }
-      else { bud='<div class="bud"><span class="none">줄 없음'+(b.사유?' — '+esc(b.사유):'')+'</span><span class="why">'+esc((b.why||'').replace(/^[^—]*— /,''))+'</span></div>'; }
-      return '<div class="row"><div><span class="no">'+esc(s.no)+'</span><span class="t">'+esc(s.t)+'</span></div><div>'+biz+'</div><div>'+yrs+'</div><div>'+bud+'</div></div>'; }).join('')+'</div>';
-    var lines=[]; T.세부.forEach(function(s){ if(s.예산.j==='확실'||s.예산.j==='애매') s.예산.lines.forEach(function(l){ lines.push({no:s.no,t:s.t,j:s.예산.j,l:l}); }); });
-    var mod='<div class="mod"><h4>예산·집행 모듈<small>예산은 열린재정 2026 세출 세부사업(확정+수정) · 집행률은 열린재정 월별 지출집행상황 '+(P2.집행월||'—')+'월 누계, 단위사업 층(세부사업 층은 공개되지 않음)</small></h4>'+(lines.length?'<table><thead><tr><th>세부과제</th><th>세부사업 (단위사업)</th><th>판정</th><th style="text-align:right">2026 예산</th><th>단위사업 집행률 · 예산현액 → 누계집행</th></tr></thead><tbody>'+lines.map(function(x){ return '<tr><td><span class="no">'+esc(x.no)+'</span>'+esc(x.t.slice(0,22))+'</td><td>'+esc(x.l.nm)+' <span style="color:var(--ink-3)">('+esc(x.l.단위)+')</span></td><td>'+esc(x.j)+'</td><td class="a">'+fmt(x.l.억)+'억</td><td>'+(x.l.집행률!=null?'<span class="bar"><i style="width:'+Math.min(100,x.l.집행률)+'%"></i></span>'+x.l.집행률+'% <span style="color:var(--ink-3)">'+fmt(x.l.집행단위.예산현액억)+'억 → '+fmt(x.l.집행단위.누계집행억)+'억</span>':'<span class="empty">단위사업 이름이 집행 자료에 없음</span>')+'</td></tr>'; }).join('')+'</tbody></table>':'<div class="empty">이 과제의 세부과제에는 2026년 행정안전부 세출 세부사업 줄이 없습니다. 사유는 위 표의 "2026 예산 줄" 칸에 있습니다(타부처 예산 · 제도·법제 · 이름으로 못 찾음).</div>')+'</div>';
-    var lg='<p class="lg">연도 칸은 그 사업 이름의 정책실명제 카드가 포털에 있는 해(진한 칸, 누르면 대조기로 이동)입니다. 2026 빗금은 아직 등록이 없는 해입니다. 연결·판정은 노트 ⑥(이름·본문 대조 후 사람이 읽어 판정), 예산 줄과 사유는 노트 ⑦. 집행률은 세부사업이 속한 단위사업 전체의 값이라 세부과제 하나의 집행률은 아닙니다. 담당은 이름 대신 직위 수만 적었습니다.'+(cur===52?' 주민자치회(52-4)의 문서·결재선까지 펼친 화면은 <a href="#screen">아래</a>에 있습니다.':'')+'</p>';
-    root.innerHTML=tabs+hd+rows+mod+lg;
+      +'<div class="st'+(T.예산확실?'':' w')+'"><div class="n">'+T.예산확실+' <small>/ '+T.세부수+'</small></div><div class="l">2026 예산 줄 확실</div></div>'
+      +'<div class="st"><div class="n">'+(T.예산억?fmt(T.예산억)+'<small>억</small>':'—')+'</div><div class="l">확실 줄 예산 합계</div></div></div></div>';
+    // 시계열 패널 — 연결된 사업마다 레인
+    var linked=T.세부.filter(function(s){ return s.사업; });
+    var groups=[]; linked.forEach(function(s){ var g=groups.find(function(x){ return x.nm===s.사업.nm; }); if(g){ g.subs.push(s); } else groups.push({nm:s.사업.nm, j:s.사업.j, via:s.사업.via, 연도:s.연도, subs:[s]}); });
+    var axis='<div></div>'+YEARS.map(function(y){ return '<div class="ax'+(y===2026?' now':'')+'">\''+String(y).slice(2)+'</div>'; }).join('');
+    var lanes=groups.map(function(s){ var byY={}; s.연도.forEach(function(c){ byY[c.y]=c; }); var ys=s.연도.map(function(c){return c.y;});
+      var cells=YEARS.map(function(y){ var c=byY[y]; if(c){ var tip=y+'년 카드 · '+esc(c.부서)+' · '+esc(c.담당)+' · 조회 '+c.조회+(c.추진실적!=null?' · 추진실적 '+c.추진실적+'건':'')+(c.원문검색!=null?' · 원문 검색 '+c.원문검색+'건':'')+(c.사전정보!=null?' · 사전정보 '+c.사전정보+'건':'')+' — 대조기로'; var cls='c'+(y===Math.min.apply(null,ys)?' first':'')+(y===Math.max.apply(null,ys)?' last':''); return '<a class="'+cls+'" href="explorer/#p='+esc(c.id)+'|'+y+'" title="'+tip+'" aria-label="'+tip+'"><span>'+(c.조회?c.조회:'')+'</span></a>'; } return '<div class="c'+(y===2026?' miss':'')+'" title="'+y+' 포털에 없음"'+(y===2026?' aria-label="2026 미등록"':'')+'></div>'; }).join('');
+      var nos=s.subs.map(function(x){ return x.no; }).join(' · '); var sub=s.subs.length>1?'<span class="wrap" style="display:block">세부과제 '+s.subs.length+'개 — '+nos+'</span>':esc(s.subs[0].t);
+      return '<div class="lab"><span class="no">'+esc(s.subs.length>1?nos.split(' · ')[0].split('-')[0]:s.subs[0].no)+'</span>'+esc(s.nm)+'<small>'+sub+' · '+esc(s.j)+' ('+esc(s.via)+' 대조)</small></div>'+cells; }).join('');
+    var tl='<div class="sec"><h4>시계열<small>연결된 정책실명제 사업의 카드가 포털에 있는 해 · 칸 안 숫자는 조회수 · 누르면 대조기</small></h4>'
+      +'<div class="tl">'+axis+(groups.length?lanes:'<div class="empty">이 과제의 세부과제 '+T.세부수+'개 중 정책실명제 사업이 이름이나 본문으로 이어지는 것이 없습니다. 주관부처가 사업을 올렸어도 어느 과제인지 적는 칸이 없어 잇지 못한 것일 수 있습니다.</div>')+'</div>'
+      +'<div class="tllg"><span><i style="background:var(--k-primary-50)"></i>카드 있음</span><span><i style="background:var(--k-gray-10)"></i>없음</span><span><i style="background:repeating-linear-gradient(45deg,var(--warnB) 0 3px,var(--panel) 3px 7px)"></i>2026 미등록</span></div></div>';
+    // 예산·집행 모듈 — 세부사업 카드
+    var bcs=[]; T.세부.forEach(function(s){ if(s.예산.j==='확실'||s.예산.j==='애매') s.예산.lines.forEach(function(l){ bcs.push({s:s,l:l}); }); });
+    var none=T.세부.filter(function(s){ return s.예산.j==='없음'; }); var reasons={}; none.forEach(function(s){ var k=s.예산.사유||'사유 없음'; reasons[k]=(reasons[k]||0)+1; });
+    var bm='<div class="sec"><h4>예산·집행 모듈<small>열린재정 2026 세출 세부사업(확정+수정) · 집행률은 월별 지출집행상황 '+(P2.집행월||'—')+'월 누계, 단위사업 층</small></h4>'
+      +(bcs.length?'<div class="bm">'+bcs.map(function(x){ var l=x.l; var ex=l.집행률!=null?'<div class="bar"><i style="width:'+Math.min(100,l.집행률)+'%"></i></div><div class="ex">'+(P2.집행월||'')+'월 누계 <b>'+l.집행률+'%</b> · 단위사업 '+fmt(l.집행단위.예산현액억)+'억 → '+fmt(l.집행단위.누계집행억)+'억</div>':'<div class="ex">집행률 — 단위사업 이름이 집행 자료에 없음</div>';
+          return '<div class="bc'+(x.s.예산.j==='애매'?' amb':'')+'"><div class="k"><span class="no">'+esc(x.s.no)+'</span>'+chip(x.s.예산.j)+'</div><div class="nm">'+esc(l.nm)+'<small>'+esc(l.단위)+'</small></div><div class="amt">'+fmt(l.억)+'<small>억 · 2026</small></div>'+ex+(x.s.예산.j==='애매'?'<div class="why">'+esc(x.s.예산.why)+'</div>':'')+'</div>'; }).join('')+'</div>':'')
+      +(none.length?'<div class="bnone" style="'+(bcs.length?'margin-top:10px':'')+'"><b>줄이 없는 세부과제 '+none.length+'개</b> — '+Object.keys(reasons).map(function(k){ return k+' '+reasons[k]; }).join(' · ')+'. 사유는 아래 목록에 있습니다.'+(T.n===52?' 주민자치회(52-4)는 국비 세부사업이 없고 특별교부금·지방비 경로입니다.':'')+'</div>':'')
+      +'</div>';
+    // 세부과제 목록
+    var sl='<div class="sec"><h4>세부과제 '+T.세부수+'개<small>연결과 예산 사유를 한 줄로</small></h4><div class="sl"><div>세부과제</div><div>연결된 정책실명제 사업</div><div>2026 예산 줄</div>'+T.세부.map(function(s){
+      var biz=s.사업?chip(s.사업.j)+' '+esc(s.사업.nm)+' <span class="dim">('+esc(s.사업.via)+')</span>':'<span class="dim">연결 없음</span>';
+      var b=s.예산; var bud=(b.j==='확실'||b.j==='애매')?chip(b.j)+' '+b.lines.map(function(l){ return esc(l.nm)+' <span class="dim">'+fmt(l.억)+'억</span>'; }).join(', '):chip('없음')+' <span class="dim">'+esc(b.사유)+(b.why?' — '+esc(b.why.replace(/^[^—]*— /,'')):'')+'</span>';
+      return '<div><span class="no">'+esc(s.no)+'</span><span class="t">'+esc(s.t)+'</span></div><div>'+biz+'</div><div>'+bud+'</div>'; }).join('')+'</div></div>';
+    var lg='<p class="lg">연결·판정은 <a href="notes.html#note6">노트 ⑥</a>(이름·본문 대조 후 사람이 읽어 판정), 예산 줄과 사유는 <a href="notes.html#note7">노트 ⑦</a>. 집행률은 세부사업이 속한 단위사업 전체의 값이라 세부과제 하나의 집행률은 아닙니다. 담당은 이름 대신 직위 수만 적었습니다.'+(cur===52?' 주민자치회(52-4)의 문서·결재선까지 펼친 화면은 <a href="#screen">아래</a>에 있습니다.':'')+'</p>';
+    root.innerHTML=tabs+'<div class="card">'+hd+tl+bm+sl+'</div>'+lg;
     root.querySelector('.tabs').addEventListener('click',function(e){ var b=e.target.closest('button[data-n]'); if(!b) return; cur=+b.dataset.n; p2Hash.set('t',cur); render(); });
   };
   render();
