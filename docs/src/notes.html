@@ -61,6 +61,24 @@
   color:var(--em);text-decoration:underline;cursor:pointer}
 .cats,article.note1{scroll-margin-top:120px}
 @media (max-width:760px){ .bar2{top:auto;position:static} .bar2 .in{padding:0 16px} .bar2 nav a{padding:9px 9px;font-size:14px} }
+/* 비전 행렬 — 여섯 질문 × 다섯 자리 */
+.vm{margin:14px 0 4px}
+.vm table{width:100%;border-collapse:collapse;font-size:13px}
+.vm th{font-size:13px;background:var(--panel-2);white-space:nowrap}
+.vm th.vis{color:var(--em);border-left:2px solid var(--em)}
+.vm td{vertical-align:top;line-height:1.5}
+.vm td.vq{font-size:15px;font-weight:700;color:var(--ink);white-space:nowrap}
+.vm td.vq small{display:block;font-size:12px;font-weight:400;color:var(--ink-3);white-space:normal;margin-top:2px}
+.vm .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-3);margin-bottom:4px}
+.vm td.ok{background:var(--k-success-5,#eef7f0)} .vm td.ok .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
+.vm td.part .v{border-color:var(--k-warning-60,#a36b00);color:var(--k-warning-60,#a36b00)}
+.vm td.no{color:var(--ink-3)} .vm td.no .v{border-style:dashed}
+.vm td.vis{background:var(--k-primary-5);border-left:2px solid var(--em);color:var(--ink)}
+.vm td.vis .v{border-color:var(--em);color:var(--em);font-weight:700}
+.vm .ev{display:block;font-size:13px;color:var(--ink-2)}
+.vm td.no .ev{color:var(--ink-3)}
+@media (max-width:900px){ .vm td.vq{white-space:normal} }
+
 /* 국정과제 123칸 — 국정목표별 다섯 줄 */
 .gjgrid{margin:14px 0 4px}
 .gjgrid .lane{display:grid;grid-template-columns:196px 1fr;gap:10px;align-items:start;padding:8px 0;border-top:1px solid var(--rule-2)}
@@ -196,6 +214,9 @@
         <tr class="on"><td class="sub2">정책지표별 위상 비교</td>
           <td class="ins"><b>세 제도가 서로 다른 영역에 분포합니다.</b> 정책실명제는 정책 단위 정합성이 가장 높으나 공개 정보의 구체성이 낮고, 원문공개는 구체성이 가장 높으나 정책 단위와 정합하지 않습니다. 정책지표 여덟 개를 둘씩 짝지어 네 장면으로 대조하였습니다.</td>
           <td class="st2"><a href="#note2">② 정책지표별 위상 비교</a></td></tr>
+        <tr class="on"><td class="sub2">국정과제로 본 비전</td>
+          <td class="ins"><b>국정과제 포털은 서사가 있고 책임자가 없으며, 정책실명제는 책임자가 있고 서사가 없습니다.</b> 국정과제 하나에 국민이 물을 여섯 가지를 두고 지금 어디에 답이 있는지, 이으면 어떻게 되는지 봤습니다.</td>
+          <td class="st2"><a href="#note6">⑥ 국정과제로 본 비전</a></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">참여</span><span class="gd">국민이 제도에 닿는 길</span></td></tr>
         <tr class="on"><td class="sub2">신청제</td>
@@ -709,6 +730,79 @@
     </section>
   </article>
 
+  <article class="note1" id="note6" data-g="위상">
+    <div class="eyebrow">위상 · 노트 ⑥</div>
+    <h2>국정과제로 본 비전 — 이름 있는 곳에 서사가 없고, 서사 있는 곳에 이름이 없다</h2>
+    <div class="answer">
+      <p>국정과제 하나를 두고 국민이 물을 법한 여섯 가지를 골라, <b>지금 어디에 답이 있는지</b> 국정과제 포털과 세 정보공개 제도에서 찾았습니다.
+        <b>국정과제 포털에는 추진실적 서사가 과제당 <span id="vsPortal">—</span>자</b> 있지만 담당자·예산·근거문서·세부과제가 <b>하나도 없습니다.</b>
+        <b>정책실명제에는 담당자와 결재선이 있지만</b> 사업개요가 <span id="vsRn">—</span>자이고, 국정과제로 표시된 사업이 오히려 그 외 사업보다 얇습니다.</p>
+      <p>비전은 둘을 <b>국정과제 번호로 한 자리에 세우는 것</b>입니다. 국정과제 전부에 이름을 붙이고, 이름 아래 목표·실적·문서·계보가 붙게 하는 것.
+        지금 정책실명제보다 훨씬 깊은 정보가 그 자리에 모입니다.</p>
+    </div>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
+      국정과제 포털은 과제 8개(14·20·24·52·56·72·73·76)의 아코디언을 직접 펼쳐 항목과 글자 수를 실측했습니다.
+      정책실명제는 전수 6,847건과 상세 784건에서 뽑았습니다. 산출 코드 <span class="mono">tools/analyze-vision.mjs</span>.</div>
+
+    <section class="core">
+      <h2>여섯 질문, 지금은 어디에 답이 있나</h2>
+      <p>초록은 답하는 곳, 노랑은 일부만 답하는 곳, 회색은 없는 곳입니다. 맨 오른쪽 파란 열이 국정과제 번호로 이었을 때의 모습입니다.</p>
+      <div class="vm tbl" id="vm"></div>
+    </section>
+
+    <section class="core">
+      <h2>두 시스템의 두께가 반대입니다</h2>
+      <p>국정과제 포털은 서사가 두껍고 이름이 없습니다. 정책실명제는 이름이 있고 서사가 얇습니다. 둘 다 근거문서와 예산은 없습니다.</p>
+      <div class="fig">
+        <h3>과제 하나에 적힌 글자 수와 책임자 유무</h3>
+        <p class="sub">국정과제 포털은 8개 과제의 본문 합계 중앙값, 정책실명제는 국정과제 표시 사업 2,820건의 사업개요·추진실적 중앙값입니다.</p>
+        <div id="vsfig1"></div>
+      </div>
+    </section>
+
+    <section class="core">
+      <h2>국정과제라고 적은 사업이 오히려 얇습니다</h2>
+      <p>정책실명제 안에서 선정기준에 국정과제를 적은 2,820건과 그 외 4,027건을 견줬습니다. <b>국정과제 쪽이 모든 항목에서 얇습니다.</b>
+        국정과제라는 표시가 정보를 더 채우게 하지 않습니다.</p>
+      <div class="fig">
+        <h3>국정과제 표시 사업과 그 외 사업</h3>
+        <p class="sub">글자 수는 중앙값, 비율은 해당 사업의 몫입니다.</p>
+        <div id="vsfig2"></div>
+      </div>
+    </section>
+
+    <section class="core">
+      <h2>이름은 있는데 이어지지 않습니다</h2>
+      <p>국정과제로 표시된 사업(기관·사업명 기준) <b id="vsN">—</b>개 가운데 <b id="vsOne">—</b>개(<span id="vsOnePct">—</span>)가 <b>한 해만 등록되고 사라집니다.</b>
+        세 해 이상 이어진 사업은 <b id="vsThree">—</b>개입니다. 국정과제는 5년짜리인데 그 이름표는 대부분 1년짜리입니다.</p>
+      <div class="fig">
+        <h3>국정과제 표시 사업이 등록된 해 수</h3>
+        <p class="sub">같은 기관의 같은 사업명이 몇 해에 걸쳐 등록됐는지입니다. 사업명이 바뀌면 다른 사업으로 셉니다.</p>
+        <div id="vsfig3"></div>
+      </div>
+      <p>국정과제 포털도 사정은 같습니다. 정부가 바뀌면 번호가 새로 매겨지고(100대 → 120대 → 123대), 이전 정부의 과제 화면은 남지 않습니다.
+        <b>두 시스템 모두 5년을 넘겨 이어지지 않습니다.</b></p>
+    </section>
+
+    <section class="core">
+      <h2>비전 — 국정과제 전부에 이름을, 이름 아래 깊이를</h2>
+      <p><b>하나, 국정과제 123개 전부가 정책실명제 대상이 됩니다.</b> 지금은 주관부처가 올해 국정과제 사업을 올린 과제가 <span id="vsCov">—</span>개이고,
+        주관부처가 정책실명제 포털에 없는 과제가 <span id="vsNone">—</span>개입니다. 국정과제라면 예외 없이 책임자가 적혀야 합니다.</p>
+      <p><b>둘, 그 이름 아래에 지금 정책실명제보다 훨씬 깊은 정보가 붙습니다.</b>
+        국정과제 포털이 가진 목표·성과·추진실적 서사, 원문공개가 가진 결재문서, 사전정보공표가 가진 국민 안내가
+        국정과제 번호 하나로 한 화면에 모입니다. 재정 정보는 열린재정에 있으니 같은 번호로 잇기만 하면 됩니다.</p>
+      <p><b>셋, 정부가 바뀌어도 이어집니다.</b> 국정과제 번호 대응표를 두면 2018년 사업이 2026년 과제 아래 그대로 섭니다.
+        지금은 63%가 한 해로 끊깁니다.</p>
+      <p>이 세 가지가 <a href="policy2.html">정책실명제 2.0 시안</a>의 뼈대입니다. 새 시스템을 만드는 것이 아니라
+        <b>있는 네 곳을 국정과제 번호로 꿰는 것</b>입니다.</p>
+    </section>
+
+    <section class="appendix" style="margin-top:20px">
+      <h2 id="limit6">방법과 한계</h2>
+      <div class="notes"><ol id="vsNotes"></ol></div>
+    </section>
+  </article>
+
   <section class="appendix">
     <h2 id="limit">방법과 한계</h2>
     <div class="notes"><ol>
@@ -739,6 +833,7 @@
   var VN = /*__VNDATA__*/null;
   var TF = /*__TFDATA__*/null;
   var GJ = /*__GJDATA__*/null;
+  var VS = /*__VSDATA__*/null;
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
 
@@ -746,6 +841,114 @@
 
 
 
+
+
+  /* 비전 — 국정과제 하나에 국민이 물을 여섯 가지 */
+  (function(){
+    if(!VS) return;
+    var vm=document.getElementById('vm'); if(!vm) return;
+    var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+    var D=VS.깊이, P=VS.포털, K=VS.계보, W=VS.문서연결, G=VS.국정과제;
+    var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
+    put('vsPortal', fmt(P.본문합중앙)); put('vsRn', fmt(D.국정과제표시.사업개요자));
+    put('vsN', fmt(K.사업수)); put('vsOne', fmt(K.한해만)); put('vsOnePct', K.한해만비율+'%'); put('vsThree', fmt(K.세해이상));
+    put('vsCov', G.주관부처경로등록); put('vsNone', G.포털에없음);
+
+    // 여섯 질문 × 다섯 자리. 판정은 필자의 것이고 근거는 실측이다.
+    var ROWS=[
+      {q:'누가 책임지나', sub:'담당 부서·담당자·결재선',
+       c:[['no','없음','부처 약칭만. 담당자·직위·연락처 항목 없음 (0/8)'],['ok','답함','담당자 1명 + 결재선, 기재율 100%'],['part','일부','문서마다 결재선은 있으나 과제 단위가 아님'],['no','없음','부서명까지만'],['vis','붙음','국정과제 번호 아래 담당자와 결재선']]},
+      {q:'무엇을 하기로 했나', sub:'목표·세부과제',
+       c:[['ok','답함','2026년 목표 3~5개(중앙 '+fmt(P.목표자중앙)+'자) + 과제 내용 불릿 4~6개'],['part','일부','사업개요 중앙 '+fmt(D.국정과제표시.사업개요자)+'자. 세부과제 없음'],['no','없음','문서 단위'],['no','없음','안내 항목 이름뿐'],['vis','붙음','과제 목표 → 사업 → 세부 조치가 한 줄기로']]},
+      {q:'어디까지 왔나', sub:'추진실적·갱신 시점',
+       c:[['ok','답함','추진실적 중앙 '+fmt(P.실적자중앙)+'자·'+P.실적건중앙+'건, 반기 갱신'],['part','일부','추진실적 중앙 '+fmt(D.국정과제표시.추진실적자)+'자, 연 1회'],['ok','답함','결재 즉시. 다만 문서 하나씩'],['no','없음','—'],['vis','붙음','실적 한 줄마다 결재문서가 붙음']]},
+      {q:'무슨 근거로 하나', sub:'법령·계획',
+       c:[['no','없음','근거 항목 없음'],['part','일부','사업개요에 근거법령 '+D.국정과제표시.근거법령+'%'],['part','일부','문서 본문 안에'],['no','없음','—'],['vis','붙음','법령·계획 문서로 바로 감']]},
+      {q:'어떤 문서가 있나', sub:'결재문서·첨부',
+       c:[['no','없음','첨부·PDF·링크 0/8'],['no','없음','원문 연결 0건 '+W.국정과제표시.원문0건비율+'%'],['ok','답함','문서 자체'],['part','일부','첨부 리플렛'],['vis','붙음','문서 목록이 과제 아래 날짜순으로']]},
+      {q:'다음 해에도 이어지나', sub:'계보·정부 교체',
+       c:[['part','일부','2025·2026 탭. 정부 바뀌면 번호 새로'],['no','없음','한 해만 등록 '+K.한해만비율+'%'],['no','없음','문서는 이어지지 않음'],['no','없음','—'],['vis','붙음','정부 넘어 대응표로 이어짐']]},
+    ];
+    var HEAD=['국민의 질문','국정과제 포털','정책실명제','원문공개','사전정보공표','국정과제 번호로 이으면'];
+    vm.innerHTML='<table><thead><tr>'+HEAD.map(function(h,i){ return '<th'+(i===5?' class="vis"':'')+'>'+esc(h)+'</th>'; }).join('')+'</tr></thead><tbody>'
+      + ROWS.map(function(r){
+          return '<tr><td class="vq">'+esc(r.q)+'<small>'+esc(r.sub)+'</small></td>'
+            + r.c.map(function(c){ return '<td class="'+c[0]+'"><span class="v">'+esc(c[1])+'</span><span class="ev">'+esc(c[2])+'</span></td>'; }).join('')
+            + '</tr>';
+        }).join('')+'</tbody></table>';
+
+    /* 그림 1 — 두께와 이름 */
+    (function(){
+      var rows=[
+        {nm:'국정과제 포털', v:P.본문합중앙, note:'담당자 0 / 8', bad:true},
+        {nm:'정책실명제 (국정과제 표시 사업)', v:D.국정과제표시.사업개요자+D.국정과제표시.추진실적자, note:'담당자 기재율 100%', bad:false},
+      ];
+      var W2=720, L=250, R2=140, rh=54, T=14, H=T+rows.length*rh+8, pw=W2-L-R2, max=Math.max.apply(null,rows.map(function(r){return r.v;}));
+      var s='<svg viewBox="0 0 '+W2+' '+H+'" role="img" aria-label="국정과제 포털과 정책실명제의 과제당 글자 수와 책임자 유무">';
+      rows.forEach(function(r,i){
+        var y=T+i*rh, w=Math.max(4,pw*r.v/max);
+        s+='<text x="'+(L-12)+'" y="'+(y+22)+'" text-anchor="end" font-size="12.5" fill="var(--ink-2)">'+esc(r.nm)+'</text>'
+         + '<rect x="'+L+'" y="'+(y+6)+'" width="'+w+'" height="24" fill="var(--k-primary-50)"/>'
+         + '<text x="'+(L+w+8)+'" y="'+(y+23)+'" font-size="14" font-weight="700" fill="var(--ink)">'+fmt(r.v)+'자</text>'
+         + '<text x="'+(L)+'" y="'+(y+46)+'" font-size="12.5" font-weight="700" fill="'+(r.bad?'var(--k-danger-60)':'var(--k-success-60)')+'">'+esc(r.note)+'</text>';
+      });
+      s+='</svg>';
+      document.getElementById('vsfig1').innerHTML=s;
+    })();
+
+    /* 그림 2 — 국정과제 표시 vs 그 외 */
+    (function(){
+      var A=D.국정과제표시, B=D.그외;
+      var items=[
+        {nm:'사업개요 글자 수', a:A.사업개요자, b:B.사업개요자, unit:'자'},
+        {nm:'추진실적 글자 수', a:A.추진실적자, b:B.추진실적자, unit:'자'},
+        {nm:'금액을 적은 사업', a:A.금액언급, b:B.금액언급, unit:'%'},
+        {nm:'근거법령을 적은 사업', a:A.근거법령, b:B.근거법령, unit:'%'},
+      ];
+      var W2=720, L=190, R2=90, rh=52, T=26, H=T+items.length*rh+6, pw=W2-L-R2;
+      var s='<svg viewBox="0 0 '+W2+' '+H+'" role="img" aria-label="정책실명제에서 국정과제 표시 사업과 그 외 사업의 정보 깊이 비교">'
+        + '<text x="'+L+'" y="'+(T-10)+'" font-size="12.5" fill="var(--k-primary-60)">■ 국정과제 표시 '+fmt(A.건수)+'건</text>'
+        + '<text x="'+(L+190)+'" y="'+(T-10)+'" font-size="12.5" fill="var(--ink-3)">■ 그 외 '+fmt(B.건수)+'건</text>';
+      items.forEach(function(it,i){
+        var y=T+i*rh, max=Math.max(it.a,it.b)||1, wa=pw*it.a/max, wb=pw*it.b/max;
+        s+='<text x="'+(L-12)+'" y="'+(y+20)+'" text-anchor="end" font-size="12.5" fill="var(--ink-2)">'+esc(it.nm)+'</text>'
+         + '<rect x="'+L+'" y="'+(y+4)+'" width="'+wa+'" height="16" fill="var(--k-primary-50)"/>'
+         + '<text x="'+(L+wa+6)+'" y="'+(y+17)+'" font-size="12.5" font-weight="700" fill="var(--k-primary-60)">'+it.a+it.unit+'</text>'
+         + '<rect x="'+L+'" y="'+(y+24)+'" width="'+wb+'" height="16" fill="var(--k-gray-30,#b8bfc6)"/>'
+         + '<text x="'+(L+wb+6)+'" y="'+(y+37)+'" font-size="12.5" fill="var(--ink-2)">'+it.b+it.unit+'</text>';
+      });
+      s+='</svg>';
+      document.getElementById('vsfig2').innerHTML=s;
+    })();
+
+    /* 그림 3 — 등록된 해 수 분포 */
+    (function(){
+      var dist=K.분포, ks=Object.keys(dist).map(Number).sort(function(a,b){return a-b;});
+      var W2=720, L=44, B=40, T=18, H=260, n=ks.length, gw=(W2-L-16)/n, bw=gw-10, max=Math.max.apply(null,ks.map(function(k){return dist[k];}));
+      var y=function(v){ return T+(H-T-B)*(1-v/(max*1.15)); };
+      var s='<svg viewBox="0 0 '+W2+' '+H+'" role="img" aria-label="국정과제 표시 사업이 몇 해에 걸쳐 등록됐는지의 분포">';
+      ks.forEach(function(k,i){
+        var v=dist[k], x=L+i*gw+5, first=k===1;
+        s+='<rect x="'+x+'" y="'+y(v)+'" width="'+bw+'" height="'+(y(0)-y(v))+'" fill="'+(first?'var(--k-danger-50)':'var(--k-primary-50)')+'"/>'
+         + '<text x="'+(x+bw/2)+'" y="'+(y(v)-5)+'" text-anchor="middle" font-size="12.5" font-weight="'+(first?'700':'400')+'" fill="'+(first?'var(--k-danger-60)':'var(--ink-2)')+'">'+fmt(v)+'</text>'
+         + '<text x="'+(x+bw/2)+'" y="'+(y(0)+18)+'" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">'+k+'해</text>';
+      });
+      s+='<line x1="'+L+'" y1="'+y(0)+'" x2="'+W2+'" y2="'+y(0)+'" stroke="var(--ink-3)"/>'
+       + '<text x="'+(L+5)+'" y="'+(H-6)+'" font-size="12.5" fill="var(--k-danger-60)" font-weight="700">한 해만 등록 '+K.한해만비율+'%</text></svg>';
+      document.getElementById('vsfig3').innerHTML=s;
+    })();
+
+    /* 별첨 */
+    var on=document.getElementById('vsNotes');
+    if(on) on.innerHTML =
+        '<li><b>국정과제 포털 실측</b> — 2026-09-17 정부업무평가포털 과제별 추진실적(menu_id=181)에서 과제 8개(14·20·24·52·56·72·73·76)의 아코디언을 펼쳐 항목 이름과 글자 수(공백 제외)를 셌다. 모든 과제가 같은 네 탭(2026년·2025년·목표·과제 내용) 구조였다. 8개는 표본이며 123개 전체를 센 것은 아니다.</li>'
+      + '<li><b>없다고 판정한 근거</b> — 담당자·예산·근거문서·세부과제·타 시스템 링크는 8개 모두에 항목 자체가 없었다. 8개 아코디언의 링크를 전수 열거한 결과 외부 링크는 과제당 정책제안(sotong.go.kr) 하나뿐이고 첨부·PDF·iframe은 0건이다. 본문에 나오는 금액(41.5억, 2.08조원 등)은 실적 문장 속 개별 수치이지 과제 예산이 아니다.</li>'
+      + '<li><b>정책실명제 깊이</b> — 전수 6,847건을 선정기준에 "국정과제"가 들어간 2,820건과 그 외 4,027건으로 나눠 사업개요·추진실적 글자 수 중앙값, 금액·근거법령 언급 비율을 냈다. 금액은 억·백만·천만·원 표기로, 근거법령은 「…법」·제N조·근거법령 표기로 잡았다.</li>'
+      + '<li><b>문서 연결</b> — 상세를 확인한 784건(2025~2026)에서 국정과제 표시 283건의 원문 연결 건수. 0건인 사업이 '+W.국정과제표시.원문0건비율+'%다.</li>'
+      + '<li><b>계보</b> — 기관명+사업명(괄호·공백 제거)이 같으면 같은 사업으로 봤다. 사업명이 조금만 바뀌어도 다른 사업으로 세므로 "한 해만"은 실제보다 많을 수 있다. 반대로 이름을 유지하며 내용이 바뀐 사업은 이어진 것으로 센다.</li>'
+      + '<li><b>여섯 질문의 판정</b> — 답함·일부·없음은 필자의 판정이고 근거는 각 칸에 적었다. 예산은 정보공개 제도가 아니라 재정 제도의 몫이라 질문에서 뺐다. 「국정과제 번호로 이으면」 열은 정책실명제 2.0 시안을 전제한 모습이지 지금 있는 기능이 아니다.</li>'
+      + '<li><b>국정과제 포털의 갱신</b> — 8개 과제의 추진실적 최근 일자가 대부분 6월이라 반기 갱신으로 보이나, 갱신 주기를 밝힌 안내는 화면에 없었다.</li>';
+  })();
 
   /* 국정과제 123칸 — 국정과제 쪽에서 정책실명제를 찾을 수 있나 */
   (function(){
