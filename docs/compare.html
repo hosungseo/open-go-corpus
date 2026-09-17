@@ -129,11 +129,6 @@ td b{color:var(--ink)}
 .card h3{margin-bottom:8px}
 
 /* Q&A */
-.qa{display:grid;grid-template-columns:1fr;gap:12px}
-.q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
-.q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
-.q h3{margin-bottom:6px}
-.q p{font-size:17px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
 section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
@@ -174,7 +169,6 @@ section.appendix th,section.appendix td{padding:10px 12px}
   .bar nav a .long{display:none} .bar nav a .short{display:inline}
   .bar .meta{margin-left:0;width:100%;padding:0 0 6px}
   .summary .lede{font-size:17px}
-  .q{grid-template-columns:28px 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -194,8 +188,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
 .qa .qrow:first-child > div:first-child:before{display:none}
-.qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
-.qa .q:before{content:"🙋";margin-right:6px}
+.qa .vq{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
+.qa .vq:before{content:"🙋";margin-right:6px}
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
 .qa .a:last-child{border-right:0}
 .qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
@@ -204,7 +198,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .a.hit{color:var(--ink)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
-@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .vq,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
 
 </style>
 <style>
