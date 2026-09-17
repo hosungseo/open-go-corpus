@@ -61,6 +61,48 @@
   color:var(--em);text-decoration:underline;cursor:pointer}
 .cats,article.note1{scroll-margin-top:120px}
 @media (max-width:760px){ .bar2{top:auto;position:static} .bar2 .in{padding:0 16px} .bar2 nav a{padding:9px 9px;font-size:14px} }
+/* 세 얼굴 — 같은 사업이 제도마다 내놓는 물건 */
+.faces{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 4px}
+.face{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.face .fh{padding:12px 16px 10px;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:8px}
+.face .fh b{font-size:17px}
+.face .fh i{font-style:normal;font-size:13px;color:var(--ink-3)}
+.face .fh:before{content:"";width:10px;height:10px;border-radius:2px;flex:none;align-self:center}
+.face.rn .fh:before{background:var(--rn)} .face.pv .fh:before{background:var(--pv)} .face.og .fh:before{background:var(--og)}
+.face .src{font-size:12px;color:var(--ink-3);padding:8px 16px 0;line-height:1.5}
+.face .obj{margin:10px 12px 12px;border:1px solid var(--rule);background:var(--paper);padding:12px 14px;font-size:13px;line-height:1.6;flex:1}
+.face .obj dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 10px}
+.face .obj dt{color:var(--ink-3);white-space:nowrap}
+.face .obj dd{margin:0;color:var(--ink)}
+.face .obj dd.dim{color:var(--ink-3)}
+.face .obj .paper{margin-top:8px;padding:9px 11px;border:1px dashed var(--ink-3);background:var(--panel);font-size:12px;color:var(--ink-2)}
+.face .obj .paper b{display:block;color:var(--ink);margin-bottom:3px;font-size:12px}
+.face .cnt{font-size:12px;color:var(--ink-3);padding:0 16px 8px;text-align:right}
+.face .yes,.face .no{padding:10px 16px;border-top:1px solid var(--rule);font-size:13px;line-height:1.55}
+.face .yes{color:var(--k-success-60)} .face .yes b{color:var(--k-success-60);display:block;margin-bottom:3px}
+.face .no{color:var(--ink-3)} .face .no b{color:var(--ink-3);display:block;margin-bottom:3px}
+.face .yes li,.face .no li{margin:0 0 3px 16px}
+@media (max-width:900px){ .faces{grid-template-columns:1fr} }
+
+/* 질문 셋 — 누가 답하나 */
+.qa{margin:14px 0 4px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
+.qa .qrow{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
+.qa .qrow:first-child{border-top:0;background:var(--panel-2)}
+.qa .qrow:first-child > div{font-size:13px;font-weight:700;color:var(--ink-2);padding:10px 14px}
+.qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
+.qa .qrow:first-child > div:first-child:before{display:none}
+.qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
+.qa .q:before{content:"🙋";margin-right:6px}
+.qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
+.qa .a:last-child{border-right:0}
+.qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
+.qa .a.hit{background:var(--k-success-5,#eef7f0)}
+.qa .a.hit .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
+.qa .a.hit{color:var(--ink)}
+.qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
+.qa .a.hit .say{border-color:var(--k-success-60)}
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
 /* 자리매김 그래프 — 넘겨 보기 */
 .pos .nav2{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .pos .nav2 button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);
@@ -180,9 +222,9 @@
           <td class="st2"><span class="soon">준비 중</span></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">연계</span><span class="gd">제도끼리 이어지나</span></td></tr>
-        <tr><td class="sub2">채널 간 매칭</td>
-          <td class="ins">대조한 724건 중 209건은 사전정보공표와 원문공개 양쪽 모두 등록이 없습니다. 무엇이 이어진 사업과 끊긴 사업을 가르는지 봅니다.</td>
-          <td class="st2"><span class="soon">준비 중</span></td></tr>
+        <tr class="on"><td class="sub2">채널 간 매칭</td>
+          <td class="ins"><b>같은 사업이 세 제도에서 다른 얼굴로 나타납니다.</b> 풍수해보험 하나를 명패·안내판·원본으로 놓고, 국민의 질문 셋에 누가 답하는지 봤습니다. 질문마다 답하는 제도가 다릅니다.</td>
+          <td class="st2"><a href="#note4">④ 같은 사업의 세 얼굴</a></td></tr>
         <tr><td class="sub2">식별번호</td>
           <td class="ins">결재문서 84만 건 중 95.1%가 이미 단위과제 번호를 답니다. 다만 그 번호는 기능을 가리켜 사업명과 일치하는 것은 3.3%입니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
@@ -550,6 +592,63 @@
     </section>
   </article>
 
+  <article class="note1" id="note4" data-g="연계">
+    <div class="eyebrow">연계 · 노트 ④</div>
+    <h2>같은 사업의 세 얼굴 — 명패, 안내판, 원본</h2>
+    <div class="answer">
+      <p>풍수해보험사업 하나를 세 제도에서 꺼내 나란히 놓았습니다.
+        <b>정책실명제는 이름이 적힌 명패</b>이고, <b>사전정보공표는 동네 창구의 안내판</b>이고, <b>원문공개는 결재문서 원본</b>입니다.
+        셋은 같은 사업의 다른 얼굴이라 <b>서로를 대신하지 못합니다.</b></p>
+      <p>국민의 질문 셋을 던져 보면 분명해집니다. "누가 맡았나"는 명패가, "어떻게 가입하나"는 안내판이,
+        "언제 무엇을 결정했나"는 원본이 답합니다. <b>질문마다 답하는 제도가 다릅니다.</b></p>
+    </div>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
+      정책실명제와 원문공개는 사업 대조기의 자료를, 사전정보공표는 시군구 누리집의 실제 페이지를 직접 열어 옮겼습니다.
+      이름은 ○○○으로 가렸습니다.</div>
+
+    <section class="core">
+      <h2>한 사업을 세 제도에서 꺼내면</h2>
+      <p>같은 풍수해보험인데 셋이 내놓는 물건이 다릅니다. 각 물건 아래에 <b>여기서만 보이는 것</b>과 <b>여기서는 안 보이는 것</b>을 적었습니다.</p>
+      <div class="faces" id="faces"></div>
+    </section>
+
+    <section class="core">
+      <h2>질문 셋, 답하는 제도가 하나씩 다릅니다</h2>
+      <p>국민이 물을 법한 질문 셋을 세 제도에 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다.
+        초록 칸이 제대로 답한 곳입니다.</p>
+      <div class="qa" id="qa"></div>
+    </section>
+
+    <section class="core">
+      <h2>안내판에 대해 하나 더</h2>
+      <p>이 노트를 쓰면서 <b>사전정보공표를 잘못 재고 있었음</b>을 알았습니다.
+        노트 ②에서 사전정보공표의 구체성을 <b>20자</b>로 놓았는데, 그건 포털에 적힌 항목 이름의 길이였습니다.
+        사전정보공표의 본질은 <b>기관이 정한 항목을 기관 누리집에서 정기적으로 공개하는 것</b>이고, 포털은 그 색인입니다.</p>
+      <p>그래서 시군구 세 곳의 실제 페이지를 열었습니다. 화면 본문은 <b>영천 216자·함안 17자·고창 0자</b>였습니다.
+        내용은 셋 다 <b>첨부한 행정안전부 리플렛 2쪽, 1,986자</b> 안에 있었습니다.
+        가입 대상, 보험료 지원율, 보험사 전화번호가 거기 다 있습니다. 고창은 그 리플렛마저 이미지라 검색도 낭독도 안 됩니다.</p>
+      <p><b>안내판은 비어 있는 게 아니라 종이를 한 장 붙여 둔 것</b>입니다. 노트 ②의 20자를 1,986자로 고쳤습니다.
+        다만 포털 → 시군구 페이지 → 첨부 PDF, 세 겹을 열어야 닿는 1,986자입니다.</p>
+      <p>또 하나. 풍수해보험의 사전정보공표 199건은 <b>전부 시군구 것</b>이고,
+        주관 부처인 행정안전부 본부의 사전정보공표 목록 132건에는 <b>풍수해보험이 없습니다.</b>
+        안내판은 정책을 만드는 곳이 아니라 국민이 가입하는 곳에 서 있습니다. 그게 이 제도의 자리입니다.</p>
+    </section>
+
+    <section class="core">
+      <h2>그러므로 세 얼굴은 하나로 묶여야 합니다</h2>
+      <p>명패에서 안내판으로, 안내판에서 원본으로 건너갈 다리가 지금은 없습니다.
+        정책실명제 카드에는 시군구 안내 링크가 없고, 시군구 안내에는 중앙 결재문서 링크가 없고, 결재문서에는 사업 카드로 돌아갈 번호가 없습니다.</p>
+      <p><b>정책 번호 하나를 셋에 같이 찍으면</b> 명패를 열어 안내판을 보고 원본까지 내려갈 수 있습니다.
+        노트 ②가 "정책 단위라는 관리 틀은 정책실명제가 쥐고 있다"고 한 것과 같은 결론입니다.
+        <a href="policy2.html">정책실명제 2.0 화면 시안</a>이 그 모습입니다.</p>
+    </section>
+
+    <section class="appendix" style="margin-top:20px">
+      <h2 id="limit4">방법과 한계</h2>
+      <div class="notes"><ol id="tfNotes"></ol></div>
+    </section>
+  </article>
+
   <section class="appendix">
     <h2 id="limit">방법과 한계</h2>
     <div class="notes"><ol>
@@ -578,11 +677,67 @@
   var CH = /*__CHDATA__*/null;
   var AX = /*__AXDATA__*/null;
   var VN = /*__VNDATA__*/null;
+  var TF = /*__TFDATA__*/null;
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
 
 
 
+
+
+  /* 세 얼굴 — 같은 사업이 제도마다 내놓는 물건, 그리고 질문 셋 */
+  (function(){
+    if(!TF) return;
+    var fx=document.getElementById('faces'); if(!fx) return;
+    var NM={rn:'정책실명제',pv:'사전정보공표',og:'원문공개'};
+
+    fx.innerHTML = TF.얼굴.map(function(f){
+      var body = f.본문.map(function(r){
+        var dim = /^\(/.test(r[1]);   // 괄호로 시작하면 실물이 아니라 설명이다
+        return '<dt>'+esc(r[0])+'</dt><dd'+(dim?' class="dim"':'')+'>'+esc(r[1])+'</dd>';
+      }).join('');
+      var cnt = typeof f.글자수==='object'
+        ? '화면 '+f.글자수.화면.toLocaleString('ko-KR')+'자 · 첨부 '+f.글자수.첨부.toLocaleString('ko-KR')+'자'
+        : f.글자수.toLocaleString('ko-KR')+'자';
+      return '<div class="face '+f.제도+'">'
+        + '<div class="fh"><b>'+esc(f.이름)+'</b><i>'+esc(f.별칭)+' · '+esc(f.물건)+'</i></div>'
+        + '<div class="src">'+esc(f.출처)+'</div>'
+        + '<div class="obj"><dl>'+body+'</dl></div>'
+        + '<div class="cnt">'+cnt+'</div>'
+        + '<div class="yes"><b>여기서만 보입니다</b><ul>'+f.여기서만.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div>'
+        + '<div class="no"><b>여기서는 안 보입니다</b><ul>'+f.안보임.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div>'
+        + '</div>';
+    }).join('');
+
+    var qa=document.getElementById('qa');
+    if(qa){
+      var head = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>';
+      qa.innerHTML = head + TF.질문.map(function(q){
+        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+          + ['rn','pv','og'].map(function(k){
+              var a=q.답[k], hit=/^답함/.test(a.판정);
+              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+            }).join('')
+          + '</div>';
+      }).join('');
+    }
+
+    var on=document.getElementById('tfNotes');
+    if(on){
+      var c=TF.조사||{};
+      on.innerHTML =
+        '<li><b>사업 선정</b> — 사업 대조기의 기본 사업인 풍수해보험사업 운영(행정안전부 재난보험과, 2025년 등록)을 그대로 썼다. 세 제도 모두에 자료가 있는 사업이라 골랐다. 다른 사업에서는 세 얼굴의 두께가 다를 수 있다.</li>'
+      + '<li><b>정책실명제 얼굴</b> — 포털 정책실명제 카드의 사업개요·추진실적을 옮겼다. 사업개요 '+TF.얼굴[0].글자수+'자.</li>'
+      + '<li><b>사전정보공표 얼굴</b> — '+esc(c.방법||'')+' 화면 본문 글자 수: '
+      + Object.entries(c.화면글자||{}).map(function(e){return e[0]+' '+e[1]+'자';}).join(', ')+'. 첨부: '
+      + Object.entries(c.첨부글자||{}).map(function(e){return e[0]+' '+e[1]+(typeof e[1]==='number'?'자':'');}).join(', ')+'.</li>'
+      + '<li><b>행정안전부 본부</b> — '+esc(c.행안부본부||'')+'</li>'
+      + '<li><b>원문공개 얼굴</b> — 사업 대조기가 이 사업에 연결한 원문 278건 중 가장 최근 문서(2026-09-04)를 옮겼다. 결재선은 포털 표기 그대로이며 이름은 가렸다. 문서 본문은 포털에서 파일 변환 후에야 열리므로 여기 옮기지 않았다.</li>'
+      + '<li><b>질문 셋의 답</b> — 실제 자료에 있는 말을 골라 국민에게 하는 말투로 다듬었다. 판정(답함·부서까지·흩어짐·간접·연 단위·못 답함)은 필자의 판단이다.</li>'
+      + '<li><b>노트 ② 정정</b> — 사전정보공표의 공개 정보 구체성을 20자에서 1,986자로 고쳤다. 20자는 포털 항목 이름의 길이였고, 1,986자는 영천시 첨부 리플렛의 글자 수다. 세 겹(포털→시군구→첨부)을 열어야 닿는 값이다.</li>'
+      + '<li><b>말투</b> — 세 얼굴에 명패·안내판·원본이라는 별칭을 붙였다. 비유이지 제도의 법적 이름이 아니다.</li>';
+    }
+  })();
 
   /* 공개 장소 — 포털 등록의 결락 */
   (function(){
