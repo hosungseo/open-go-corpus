@@ -308,6 +308,7 @@ if (!WITH_NAMES) {
   const TF_PATH = R("notes/three-faces.json");
   const DG_PATH = R("notes/digest.json");
   const FL_PATH = R("notes/fiscal-link.json");
+  const P2_PATH = R("notes/policy2-mois.json");
   const GJ_PATH = R("notes/gukjeong.json");
   const VS_PATH = R("notes/vision.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
@@ -347,6 +348,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(GJ_PATH)) { console.error("ERROR notes/gukjeong.json missing"); process.exit(1); }
       const gd = fs.readFileSync(GJ_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__GJDATA__*/null", () => gd).replace("/*__GJDATA__*/", () => gd);
+    }
+    if (page.includes("/*__P2DATA__*/")) {
+      if (!fs.existsSync(P2_PATH)) { console.error("ERROR notes/policy2-mois.json missing — run node tools/build-policy2-mois.mjs"); process.exit(1); }
+      const p2 = fs.readFileSync(P2_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__P2DATA__*/null", () => p2).replace("/*__P2DATA__*/", () => p2);
     }
     if (page.includes("/*__FLDATA__*/")) {
       if (!fs.existsSync(FL_PATH)) { console.error("ERROR notes/fiscal-link.json missing — run node tools/analyze-fiscal.mjs"); process.exit(1); }

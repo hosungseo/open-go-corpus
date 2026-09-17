@@ -154,6 +154,39 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 .rn2 .meta-arrow svg{width:28px;height:28px}
 @media (max-width:1000px){.rn2 .meta-grid{grid-template-columns:1fr;width:auto;margin-left:0}.rn2 .meta-arrow{flex-direction:row;justify-content:center}.rn2 .meta-arrow svg{transform:rotate(90deg)}}
 @media (max-width:1000px){.rn2 .split{grid-template-columns:1fr}.rn2 .vw{position:static}.rn2 .pt3{grid-template-columns:1fr}.rn2 .pt3 .fig{height:100px}}
+
+/* 행안부 국정과제 11개 — 과제 고르기 + 세부과제 시계열 + 예산·집행 모듈 */
+.tk{margin:14px 0 0}
+.tk .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.tk .tabs button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-max);background:var(--panel);padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.4}
+.tk .tabs button b{font-family:var(--mono,ui-monospace,monospace);font-weight:600;margin-right:5px;color:var(--ink-3)}
+.tk .tabs button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0)} .tk .tabs button.on b{color:var(--k-gray-0)}
+.tk .tabs button.none{color:var(--ink-3);border-style:dashed}
+.tk .hd{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.tk .hd h3{font-size:19px;margin:4px 0 6px;letter-spacing:-.01em}
+.tk .hd .m{font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:4px 14px}.tk .hd .m b{color:var(--ink-2);font-weight:600}
+.tk .stats{display:flex;gap:8px;flex-wrap:wrap}.tk .st{background:var(--paper);border-radius:var(--r-s);padding:8px 13px;min-width:88px}
+.tk .st .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}.tk .st .l{font-size:12px;color:var(--ink-3);margin-top:2px}.tk .st.w .n{color:var(--warn)}
+.tk .rows{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);margin:12px 0 0;overflow:hidden}
+.tk .row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr) 190px minmax(0,1fr);gap:0;border-top:1px solid var(--rule-2)}
+.tk .row:first-child{border-top:0;background:var(--panel-2)} .tk .row:first-child > div{font-size:12px;font-weight:700;color:var(--ink-2);padding:8px 12px}
+.tk .row > div{padding:11px 12px;font-size:13px;line-height:1.55;color:var(--ink-2);border-left:1px solid var(--rule-2);min-width:0}.tk .row > div:first-child{border-left:0}
+.tk .row .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink);margin-right:6px}
+.tk .row .t{color:var(--ink)}
+.tk .biz{display:block;color:var(--ink);font-weight:600}.tk .biz small{display:block;font-weight:400;color:var(--ink-3);font-size:12px}
+.tk .none{color:var(--ink-3)}
+.tk .yrs{display:flex;gap:3px;align-items:center}.tk .yrs i{display:block;width:16px;height:16px;border-radius:3px;background:var(--k-gray-10);border:1px solid var(--rule-2);font-style:normal}
+.tk .yrs i.on{background:var(--k-primary-50);border-color:var(--k-primary-50)}.tk .yrs i.miss{background:repeating-linear-gradient(45deg,var(--warnB) 0 2px,var(--panel) 2px 5px);border-color:var(--warnB)}
+.tk .yrs a{display:block;width:16px;height:16px}.tk .yrs .lab{font-size:12px;color:var(--ink-3);margin-left:4px;font-family:var(--mono,ui-monospace,monospace)}
+.tk .bud b{color:var(--ink);display:block}.tk .bud .amt{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--em)}.tk .bud .ex{display:inline-block;margin-left:6px;font-size:12px;color:var(--ink-3)}
+.tk .bud .why{display:block;font-size:12px;color:var(--ink-3)}
+.tk .mod{margin:12px 0 0;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:14px 16px}
+.tk .mod h4{margin:0 0 8px;font-size:15px}.tk .mod h4 small{font-weight:400;color:var(--ink-3);font-size:13px;margin-left:8px}
+.tk .mod table{width:100%;border-collapse:collapse;font-size:13px}.tk .mod th{text-align:left;font-weight:700;color:var(--ink-2);padding:6px 8px;border-bottom:1px solid var(--rule);font-size:12px}.tk .mod td{padding:7px 8px;border-bottom:1px solid var(--rule-2);vertical-align:top;color:var(--ink-2)}
+.tk .mod td.a{text-align:right;white-space:nowrap;font-family:var(--mono,ui-monospace,monospace)}.tk .mod .bar{display:inline-block;width:90px;height:8px;border-radius:4px;background:var(--k-gray-10);vertical-align:middle;margin-right:6px;overflow:hidden}.tk .mod .bar i{display:block;height:100%;background:var(--k-primary-50)}
+.tk .mod .empty{color:var(--ink-3);font-size:13px}
+.tk .lg{font-size:13px;color:var(--ink-3);margin:10px 0 0;line-height:1.6}
+@media (max-width:900px){ .tk .row{grid-template-columns:1fr 1fr} .tk .row > div:nth-child(3),.tk .row > div:nth-child(4){border-top:1px solid var(--rule-2)} .tk .row:first-child{display:none} }
 </style>
 </head>
 <body>
@@ -293,6 +326,14 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
     </div></div>
   </section>
 
+  <section class="core" id="tasks">
+    <div class="eyebrow">화면 · 행정안전부 국정과제 전부</div>
+    <h2>과제를 고르면, 세부과제마다 시계열과 돈이 붙는다</h2>
+    <p>행정안전부가 주관하는 국정과제 <span id="tkN">—</span>개입니다. 과제를 고르면 세부과제 하나하나에 <b>연결된 정책실명제 사업</b>, 그 사업이 포털에 있는 <b>연도(2018~2026)</b>, 열린재정에서 찾은 <b>2026년 예산 줄</b>이 나란히 붙습니다.
+      연결은 <a href="notes.html#note6">노트 ⑥</a>(이름·본문 대조, 사람이 읽어 판정), 예산은 <a href="notes.html#note7">노트 ⑦</a>의 실측입니다. 없는 칸은 없다고 보입니다 — 그 빈칸이 2.0이 채워야 할 자리입니다.</p>
+    <div class="tk" id="tk"></div>
+  </section>
+
   <section class="core" id="screen">
     <div class="eyebrow">화면 · 행정안전부 주민자치회</div>
     <h2>정책 하나를 열면 이렇게 보인다</h2>
@@ -408,6 +449,44 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 </main>
 
 <script>
+/* 행안부 국정과제 전부 — notes/policy2-mois.json (node tools/build-policy2-mois.mjs) */
+const P2 = /*__P2DATA__*/null;
+(function(){
+  var root=document.getElementById('tk'); if(!root||!P2) return;
+  var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
+  var YEARS=[2018,2019,2020,2021,2022,2023,2024,2025,2026];
+  var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+  put('tkN',P2.과제수);
+  window.p2Hash=window.p2Hash||{ get:function(k){ var m=location.hash.match(new RegExp('[#&]'+k+'=([^&]+)')); return m?decodeURIComponent(m[1]):null; }, set:function(k,v){ var parts=location.hash.replace(/^#/,'').split('&').filter(function(p){ return p&&p.split('=')[0]!==k; }); parts.push(k+'='+v); if(history.replaceState) history.replaceState(null,'','#'+parts.join('&')); } };
+  var cur=(function(){ var m=p2Hash.get('t'); return m&&P2.과제.some(function(t){return t.n===+m;})?+m:52; })();
+  var render=function(){
+    var T=P2.과제.find(function(t){return t.n===cur;});
+    var tabs='<div class="tabs" role="tablist">'+P2.과제.map(function(t){ return '<button type="button" role="tab" data-n="'+t.n+'" class="'+(t.n===cur?'on':'')+(t.연결수?'':' none')+'" aria-selected="'+(t.n===cur)+'" title="세부과제 '+t.세부수+' · 연결 '+t.연결수+' · 예산 확실 '+t.예산확실+'"><b>'+t.n+'</b>'+esc(t.nm.length>18?t.nm.slice(0,18)+'…':t.nm)+'</button>'; }).join('')+'</div>';
+    var yrsTxt=T.연도범위?(T.연도범위[0]===T.연도범위[1]?String(T.연도범위[0]):T.연도범위[0]+'~'+T.연도범위[1]):'—';
+    var hd='<div class="hd"><div><div><span class="chip c-task">국정과제</span> <span class="chip c-id">국정과제 '+T.n+'</span> <span class="chip c-id">목표 '+T.goal+'</span></div><h3>'+esc(T.nm)+'</h3><div class="m"><span>주관 <b>'+esc(T.org)+'</b></span><span>세부과제 <b>'+T.세부수+'</b></span><span>연결된 정책실명제 사업 <b>'+T.연결수+'</b></span></div></div>'
+      +'<div class="stats"><div class="st'+(T.연결수?'':' w')+'"><div class="n">'+T.연결수+' <small style="font-size:12px;font-weight:400;color:var(--ink-3)">/ '+T.세부수+'</small></div><div class="l">세부과제에 사업 연결</div></div>'
+      +'<div class="st'+(T.시계열년수>1?'':' w')+'"><div class="n">'+(T.시계열년수?T.시계열년수+'년':'0')+'</div><div class="l">포털에 있는 연도 '+yrsTxt+'</div></div>'
+      +'<div class="st'+(T.예산확실?'':' w')+'"><div class="n">'+T.예산확실+' <small style="font-size:12px;font-weight:400;color:var(--ink-3)">/ '+T.세부수+'</small></div><div class="l">2026 예산 줄 확실</div></div>'
+      +'<div class="st"><div class="n">'+(T.예산억?fmt(T.예산억)+'억':'—')+'</div><div class="l">확실 줄 예산 합계</div></div></div></div>';
+    var rows='<div class="rows"><div class="row"><div>세부과제</div><div>연결된 정책실명제 사업</div><div>포털에 있는 연도</div><div>2026 예산 줄 · 집행률</div></div>'+T.세부.map(function(s){
+      var biz=s.사업?'<span class="biz">'+esc(s.사업.nm)+'<small>'+esc(s.사업.org)+' · '+esc(s.사업.j)+' ('+esc(s.사업.via)+' 대조)</small></span>':'<span class="none">연결된 사업 없음</span>';
+      var byY={}; s.연도.forEach(function(c){ byY[c.y]=c; });
+      var yrs=s.사업?'<div class="yrs">'+YEARS.map(function(y){ var c=byY[y]; if(c){ var tip=y+' · '+esc(c.부서)+' · '+esc(c.담당)+' · 조회 '+c.조회+(c.추진실적!=null?' · 추진실적 '+c.추진실적:'')+(c.원문검색!=null?' · 원문 검색 '+c.원문검색+'건':'')+(c.사전정보!=null?' · 사전정보 '+c.사전정보+'건':''); return '<a href="explorer/#p='+esc(c.id)+'|'+y+'" title="'+tip+'"><i class="on" aria-label="'+tip+'"></i></a>'; } var m=(y===2026)?'miss':''; return '<i class="'+m+'" title="'+y+' 포털에 없음"></i>'; }).join('')+'<span class="lab">'+(s.연도.length?(s.연도[0].y===s.연도[s.연도.length-1].y?String(s.연도[0].y):s.연도[0].y+'–'+s.연도[s.연도.length-1].y):'')+'</span></div>':'<span class="none">—</span>';
+      var b=s.예산; var bud;
+      if(b.j==='확실'||b.j==='애매'){ bud='<div class="bud">'+b.lines.map(function(l){ return '<b>'+esc(l.nm)+'</b><span class="amt">'+fmt(l.억)+'억</span>'+(l.집행률!=null?'<span class="ex">'+P2.집행월+'월 누계 집행 '+l.집행률+'% <small>(단위사업 층)</small></span>':'<span class="ex">집행률 미공개</span>'); }).join('')+(b.j==='애매'?'<span class="why">애매 — '+esc(b.why)+'</span>':'')+'</div>'; }
+      else { bud='<div class="bud"><span class="none">줄 없음'+(b.사유?' — '+esc(b.사유):'')+'</span><span class="why">'+esc((b.why||'').replace(/^[^—]*— /,''))+'</span></div>'; }
+      return '<div class="row"><div><span class="no">'+esc(s.no)+'</span><span class="t">'+esc(s.t)+'</span></div><div>'+biz+'</div><div>'+yrs+'</div><div>'+bud+'</div></div>'; }).join('')+'</div>';
+    var lines=[]; T.세부.forEach(function(s){ if(s.예산.j==='확실'||s.예산.j==='애매') s.예산.lines.forEach(function(l){ lines.push({no:s.no,t:s.t,j:s.예산.j,l:l}); }); });
+    var mod='<div class="mod"><h4>예산·집행 모듈<small>예산은 열린재정 2026 세출 세부사업(확정+수정) · 집행률은 열린재정 월별 지출집행상황 '+(P2.집행월||'—')+'월 누계, 단위사업 층(세부사업 층은 공개되지 않음)</small></h4>'+(lines.length?'<table><thead><tr><th>세부과제</th><th>세부사업 (단위사업)</th><th>판정</th><th style="text-align:right">2026 예산</th><th>단위사업 집행률 · 예산현액 → 누계집행</th></tr></thead><tbody>'+lines.map(function(x){ return '<tr><td><span class="no">'+esc(x.no)+'</span>'+esc(x.t.slice(0,22))+'</td><td>'+esc(x.l.nm)+' <span style="color:var(--ink-3)">('+esc(x.l.단위)+')</span></td><td>'+esc(x.j)+'</td><td class="a">'+fmt(x.l.억)+'억</td><td>'+(x.l.집행률!=null?'<span class="bar"><i style="width:'+Math.min(100,x.l.집행률)+'%"></i></span>'+x.l.집행률+'% <span style="color:var(--ink-3)">'+fmt(x.l.집행단위.예산현액억)+'억 → '+fmt(x.l.집행단위.누계집행억)+'억</span>':'<span class="empty">단위사업 이름이 집행 자료에 없음</span>')+'</td></tr>'; }).join('')+'</tbody></table>':'<div class="empty">이 과제의 세부과제에는 2026년 행정안전부 세출 세부사업 줄이 없습니다. 사유는 위 표의 "2026 예산 줄" 칸에 있습니다(타부처 예산 · 제도·법제 · 이름으로 못 찾음).</div>')+'</div>';
+    var lg='<p class="lg">연도 칸은 그 사업 이름의 정책실명제 카드가 포털에 있는 해(진한 칸, 누르면 대조기로 이동)입니다. 2026 빗금은 아직 등록이 없는 해입니다. 연결·판정은 노트 ⑥(이름·본문 대조 후 사람이 읽어 판정), 예산 줄과 사유는 노트 ⑦. 집행률은 세부사업이 속한 단위사업 전체의 값이라 세부과제 하나의 집행률은 아닙니다. 담당은 이름 대신 직위 수만 적었습니다.'+(cur===52?' 주민자치회(52-4)의 문서·결재선까지 펼친 화면은 <a href="#screen">아래</a>에 있습니다.':'')+'</p>';
+    root.innerHTML=tabs+hd+rows+mod+lg;
+    root.querySelector('.tabs').addEventListener('click',function(e){ var b=e.target.closest('button[data-n]'); if(!b) return; cur=+b.dataset.n; p2Hash.set('t',cur); render(); });
+  };
+  render();
+})();
+</script>
+<script>
 (function(){
   const PAGES=[1,2,3,4,5,6,7].map(i=>'assets/jumin/p'+i+'.png'); let curPg=0;
   const S=(r,t)=>`<span class="s"><span class="role ${r}">${t}</span></span>`;
@@ -439,7 +518,7 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
   function show(id){
     const d=DOCS[id]; if(!d) return;
     // 고른 문서를 주소에 남긴다. 그래야 '링크 복사'가 이 문서를 가리킨다
-    if(history.replaceState) history.replaceState(null,'','#d='+id);
+    if(window.p2Hash) p2Hash.set('d',id); else if(history.replaceState) history.replaceState(null,'','#d='+id);
     document.getElementById('rn2Vt').textContent=d.pdf?'원문':'문서 정보';
     const meta=d.meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
     const rel=d.related?`<div class="related"><div style="font-size:12px;color:var(--ink-3);margin-bottom:2px">연관 항목</div>${d.related.map(([t,i])=>`<div class="rr" data-doc="${i}"><span>${t}</span><span>›</span></div>`).join('')}</div>`:'';
@@ -482,11 +561,11 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
   window.rn2All=function(o){document.querySelectorAll('.rn2 .node:not(.ghost)').forEach(n=>n.classList.toggle('open',o));};
   // 주소에 문서가 지정돼 들어오면 그것부터 연다
   (function(){
-    var m = location.hash.match(/^#d=([A-Za-z0-9]+)$/);
+    var m = location.hash.match(/[#&]d=([A-Za-z0-9]+)/);
     show(m && DOCS[m[1]] ? m[1] : 'd8');
   })();
   addEventListener('hashchange',function(){
-    var m = location.hash.match(/^#d=([A-Za-z0-9]+)$/);
+    var m = location.hash.match(/[#&]d=([A-Za-z0-9]+)/);
     if(m && DOCS[m[1]]) show(m[1]);
   });
 })();
