@@ -49,7 +49,9 @@ for (const r of recent) {
 // 사람 검수를 얹는다. 자동 대조는 실마리이고 판정은 검수다.
 const REV_PATH = R("notes/gukjeong-sub-review.json");
 const REVJ = fs.existsSync(REV_PATH) ? JSON.parse(fs.readFileSync(REV_PATH, "utf8")) : { 판정: {}, "2차": {} };
-const REV = REVJ.판정 || {}, REV2 = REVJ["2차"] || {};
+const REV = REVJ.판정 || {}, REV2 = Object.assign({}, REVJ["2차"] || {});
+// 3차(교차 검수 반영)의 근거사업·이유도 같은 자리에서 읽는다. 뒤 단계가 앞 단계를 덮는다.
+for (const [no, e] of Object.entries((REVJ.교차검수 && REVJ.교차검수["3차"]) || {})) REV2[no] = Object.assign({}, REV2[no] || {}, { 이유: e.이유, 근거사업: e.근거사업 || (REV2[no] && REV2[no].근거사업) || "" });
 for (const d of detail) {
   d.검수 = d.사업수 ? (REV[d.no] || "미검수") : "";
   d.검수이유 = (REV2[d.no] && REV2[d.no].이유) || "";
