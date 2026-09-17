@@ -71,10 +71,38 @@ if (fs.existsSync(HP)) {
       return { ...o, 포털누적: rows.filter((r) => r.nstNm === o.nm).length, 연도대조: 연도 };
     }),
   };
+  // 통계로 짚은 칸이 실제로 맞았는지 따로 센다. 틀린 칸을 세지 않으면 방법을 믿을 수 없다.
+  const 짚은칸 = new Set();
+  for (const d of 결락) for (const g of d.gaps) 짚은칸.add(d.nm + "|" + g);
+  const 채점 = { 확증: [], 오탐: [] };
+  for (const o of 대조.기관) {
+    for (const y of o.연도대조) {
+      if (!짚은칸.has(o.nm + "|" + y.연도)) continue;
+      (y.누리집 > 0 ? 채점.확증 : 채점.오탐).push({ nm: o.nm, 연도: y.연도, 누리집: y.누리집 });
+    }
+  }
+  const 검증수 = 채점.확증.length + 채점.오탐.length;
+  // 어림을 실측으로 바꾼다. 다만 묶음 게시물을 쓰는 기관은 건수가 과제 수가 아니므로 따로 센다.
+  const 묶음 = new Set(대조.기관.filter((o) => /묶음|연도 1건|연 1~2건/.test(o.형태 || "")).map((o) => o.nm));
+  const 실측 = { 사업단위: 0, 사업단위칸: 0, 묶음칸: [] };
+  for (const c of 채점.확증) {
+    if (묶음.has(c.nm)) 실측.묶음칸.push(c);
+    else { 실측.사업단위 += c.누리집; 실측.사업단위칸++; }
+  }
   대조.요약 = {
     조사기관: 대조.기관.length,
     결락확인: 대조.기관.flatMap((o) => o.연도대조).filter((x) => x.판정 === "포털 결락").length,
     일치: 대조.기관.flatMap((o) => o.연도대조).filter((x) => x.판정 === "일치").length,
+    검사채점: {
+      짚은칸: 결락.reduce((s, d) => s + d.gaps.length, 0),
+      확인한칸: 검증수,
+      확증: 채점.확증.length,
+      오탐: 채점.오탐.length,
+      적중률: 검증수 ? +(채점.확증.length / 검증수 * 100).toFixed(0) : null,
+      오탐목록: 채점.오탐,
+      확증목록: 채점.확증,
+    },
+    실측누락: 실측,
   };
 }
 
@@ -99,5 +127,13 @@ const out = {
 fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
 console.log(`결락 기관 ${결락.length}/${org.size} · 칸 ${out.결락.칸수} · 추정 누락 ${추정누락}건 (+${out.결락.비율}%)`);
 console.log(`${CUR}년 등록 완료 ${올해등록.length}/${org.size}개 기관`);
-if (대조) console.log(`누리집 대조: ${대조.요약.조사기관}개 기관 · 포털 결락 확인 ${대조.요약.결락확인}칸 · 일치 ${대조.요약.일치}칸`);
+if (대조) {
+  const c = 대조.요약.검사채점;
+  console.log(`누리집 대조: ${대조.요약.조사기관}개 기관 · 포털 결락 확인 ${대조.요약.결락확인}칸 · 일치 ${대조.요약.일치}칸`);
+  console.log(`검사 채점: 짚은 칸 ${c.짚은칸} 중 ${c.확인한칸}칸 확인 → 확증 ${c.확증} · 오탐 ${c.오탐} (적중률 ${c.적중률}%)`);
+  if (c.오탐.length) console.log(`  오탐: ` + c.오탐.map((x) => `${x.nm} ${x.연도}년`).join(", "));
+  const m = 대조.요약.실측누락;
+  console.log(`실측 누락: 사업 단위로 올리는 기관 ${m.사업단위칸}칸에서 ${m.사업단위}건 (어림은 ${Math.round(추정누락)}건이었다)`);
+  console.log(`  묶음 게시물이라 과제 수를 알 수 없는 칸 ${m.묶음칸.length}개: ` + m.묶음칸.map((x) => `${x.nm} ${x.연도}년(게시물 ${x.누리집}건)`).join(", "));
+}
 console.log(`결락이 몰린 해: ` + Object.entries(결락연도).sort((a,b)=>b[1]-a[1]).map(([y,n])=>`${y}년 ${n}개 기관`).join(" · "));
