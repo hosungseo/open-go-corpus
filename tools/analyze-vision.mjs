@@ -31,6 +31,16 @@ const recent = rows.filter((r) => r.year >= 2025 && /국정과제/.test(r.slctnS
 const orgHas = {}; recent.forEach((r) => { orgHas[r.nstNm] = (orgHas[r.nstNm] || 0) + 1; });
 const viaOrg = G.filter((t) => t.org.split("·").some((o) => orgHas[full(o)])).map((t) => t.n);
 
+// 세부과제(주요내용 불릿) ↔ 정책실명제 사업 대조 결과
+const SUBM = JSON.parse(fs.readFileSync(R("notes/gukjeong-sub-match.json"), "utf8"));
+const SUBL = JSON.parse(fs.readFileSync(R("lawhist/gukjeong-123-sub.json"), "utf8"));
+const goalOf = (n) => { const t = G.find((x) => x.n === n); return t ? t.goal : null; };
+const byGoal = {};
+for (const d of SUBM.세부) { const n = +d.no.split("-")[0], g = goalOf(n); if (!g) continue; (byGoal[g] = byGoal[g] || { 세부: 0, 관련: 0 }).세부++; if (d.사업수) byGoal[g].관련++; }
+const 세부 = { 총수: SUBM.세부과제수, 관련사업있음: SUBM.관련사업있는세부과제, 과제수: SUBM.과제수, 기준: SUBM.기준, 목표별: byGoal,
+  손기입: cites.map((c) => ({ no: c.n + (c.세부번호 ? "" : ""), 등록기관: c.등록기관, 사업: c.사업 })),
+  확실한예: SUBM.세부.filter((d) => d.사업수 && d.예.length).filter((d) => ["54-1","94-1","112-1","82-3","48-2","71-4","82-1","14-5","68-4","98-4"].includes(d.no)).map((d) => ({ no: d.no, 제목: d.제목.slice(0, 26), 사업: d.예[0] })) };
+
 const out = {
   작성일: new Date().toISOString().slice(0, 10), 기준: `${CUR}-09-17 · 이재명정부 123대 국정과제`,
   원천: "정부업무평가포털 과제 8개 실측(notes/vision-portal.json) · 정보공개포털 정책실명제 2026년 등록 " + cur.length + "건 · notes/gukjeong.json",
@@ -41,10 +51,12 @@ const out = {
   현정부: { 등록건수: cur.length, 번호기재건수: cites.length, 가리킨과제수: named.length, 가리킨과제: named, 기재목록: cites,
             세부번호를스스로붙임: cites.filter((c) => c.세부번호).length,
             주관부처경로: { 기준: "2025~2026년 등록 · 선정기준 국정과제", 사업건수: recent.length, 기관수: Object.keys(orgHas).length, 과제수: viaOrg.length, 과제: viaOrg } },
+  세부,
   국정과제: { 전체: 123, 주관부처경로등록: GJ.상태별["2026 등록"] || 0, 포털에없음: GJ.상태별["포털에 없음"] || 0, 올해등록기관: GJ.올해등록기관, 포털기관수: GJ.포털기관수 },
 };
 fs.writeFileSync(R("notes/vision.json"), JSON.stringify(out, null, 2) + "\n");
 console.log(`현 정부 — 2026 등록 ${cur.length}건 중 번호 기재 ${cites.length}건 → 가리킨 국정과제 ${named.length}개/123: ${named.join(", ")} (세부번호 스스로 붙임 ${out.현정부.세부번호를스스로붙임}건)`);
 console.log(`주관부처 경로(2025~26) — 사업 ${recent.length}건 · 기관 ${Object.keys(orgHas).length}곳 · 걸린 과제 ${viaOrg.length}개/123`);
+console.log(`세부과제 — ${세부.총수}개 중 관련 사업 있음 ${세부.관련사업있음}개(${(세부.관련사업있음/세부.총수*100).toFixed(0)}%) · 과제 ${세부.과제수}개`);
 console.log(`포털 — 표본 ${out.포털.표본}개: 담당자·예산·근거문서·세부과제·타 시스템 링크 0/8`);
 console.log(`국정과제 — 주관부처 경로 등록 ${out.국정과제.주관부처경로등록} · 포털에 없음 ${out.국정과제.포털에없음}`);
