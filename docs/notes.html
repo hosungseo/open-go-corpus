@@ -299,11 +299,24 @@ section.appendix th,section.appendix td{padding:10px 12px}
 @media (max-width:700px){ .gjgrid .lane{grid-template-columns:1fr} .gjgrid .c{width:30px;height:24px;font-size:12px} }
 
 /* 세부과제 554칸 — 123칸 격자의 작은 판 */
-.subgrid .c{width:15px;height:15px;font-size:0;border-radius:2px}
+.subgrid .c{width:15px;height:15px;font-size:0;border-radius:2px;background:var(--k-gray-10);border-color:transparent;transition:opacity .12s}
 .subgrid .c.on{background:var(--k-primary-50);border-color:var(--k-primary-50)}
+.subgrid.hover .c:not(.hi){opacity:.28}
+.subgrid .c.hi{outline:2px solid var(--k-primary-70);outline-offset:1px}
+.subgrid .c.hi:not(.on){background:var(--k-gray-30,#b8bfc6)}
 .subgrid .cells{gap:3px;align-items:center}
 .subgrid .gap{width:6px;height:15px;flex:none}
 .subgrid .ln b{font-size:14px}
+.subgrid .ln .pct{display:block;margin-top:5px;height:6px;width:150px;background:var(--k-gray-10);border-radius:3px;overflow:hidden}
+.subgrid .ln .pct i{display:block;height:100%;background:var(--k-primary-50)}
+.subgrid .ln .pn{color:var(--k-primary-60);font-weight:700}
+.subgrid .sgnav{display:flex;gap:6px;margin:0 0 12px;align-items:center;flex-wrap:wrap}
+.subgrid .sgnav span{font-size:13px;color:var(--ink-3);margin-right:4px}
+.subgrid .sgnav button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer}
+.subgrid .sgnav button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0);font-weight:700}
+.subgrid .cap{min-height:24px;margin:10px 0 0;font-size:14px;color:var(--ink-2);line-height:1.5}
+.subgrid .cap b{color:var(--ink)}
+.subgrid .cap .m{color:var(--k-primary-60);font-weight:700}
 .subgrid .big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 12px}
 .subgrid .big .v{font-size:40px;font-weight:700;color:var(--k-primary-60);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .subgrid .big .v small{font-size:19px;color:var(--ink-3);font-weight:400;margin-left:4px}
@@ -991,7 +1004,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         <b><span id="vsSubHit">—</span>개(<span id="vsSubPct">—</span>)</b>에 관련 사업이 있었고, <span id="vsSubTask">—</span>개 과제에 걸칩니다.</p>
       <div class="gjgrid subgrid" id="vsSubGrid"></div>
       <p class="sub" style="font-size:13px;color:var(--ink-3);margin:8px 0 0">칸 하나가 세부과제 하나입니다. 과제 번호순으로 놓았고 과제가 바뀌는 자리마다 틈을 두었습니다.
-        같은 주관부처의 2025~2026년 정책실명제 사업명에 세부과제 앞머리가 나오면 칠했습니다. 칸에 마우스를 올리면 세부과제와 맞은 사업이 보입니다. 느슨한 어림이며 검수 결과는 별첨에 있습니다.</p>
+        같은 주관부처의 2025~2026년 정책실명제 사업명에 세부과제 앞머리가 나오면 칠했습니다. 칸에 마우스를 올리면 같은 과제의 칸이 함께 켜지고 아래에 과제 이름이 뜹니다. 「많이 맞은 순」으로 정렬하면 맞은 칸이 몇 개 과제에 몰려 있는지 보입니다. 느슨한 어림이며 검수 결과는 별첨에 있습니다.</p>
       <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:12px 0 0">
         <p style="margin:0 0 6px;font-size:15px;line-height:1.7;color:var(--ink-2)"><b>이름이 정확히 맞는 것들</b></p>
         <ul id="vsSubEx" style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink-2)"></ul>
@@ -8485,20 +8498,53 @@ section.appendix th,section.appendix td{padding:10px 12px}
         var NMS2={1:'국민이 하나되는 정치',2:'세계를 이끄는 혁신경제',3:'모두가 잘사는 균형성장',4:'기본이 튼튼한 사회',5:'국익 중심의 외교안보'};
         var byTask={}; S2.목록.forEach(function(d){ var n=+d.no.split('-')[0]; (byTask[n]=byTask[n]||[]).push(d); });
         var lanes={}; GJ.과제.forEach(function(t){ (lanes[t.goal]=lanes[t.goal]||[]).push(t); });
-        var html='<div class="big"><span class="v">'+S2.관련사업있음+' <small>/ '+S2.총수+'</small></span><span class="d"><b>'+Math.round(S2.관련사업있음/S2.총수*100)+'%</b>의 세부과제에 같은 주관부처의 정책실명제 사업이 이름으로 맞아 들어갑니다.<br>나머지는 사업이 없거나, 있어도 이름이 달라 자동으로는 못 찾은 것입니다.</span></div>';
-        Object.keys(lanes).sort().forEach(function(g){
-          var tot=0, hit=0, cells='';
-          lanes[g].forEach(function(t,ti){
-            var subs=byTask[t.n]||[];
-            subs.forEach(function(d){ tot++; if(d.n) hit++;
-              var tip=d.no+' '+d.t+(d.n?' ← '+d.e:' — 맞는 사업 없음')+'  ['+t.n+'. '+t.nm+']';
-              cells+='<span class="c'+(d.n?' on':'')+'" title="'+esc(tip)+'"></span>'; });
-            if(ti<lanes[g].length-1 && subs.length) cells+='<span class="gap" aria-hidden="true"></span>';
+        var head='<div class="big"><span class="v">'+S2.관련사업있음+' <small>/ '+S2.총수+'</small></span><span class="d"><b>'+Math.round(S2.관련사업있음/S2.총수*100)+'%</b>의 세부과제에 같은 주관부처의 정책실명제 사업이 이름으로 맞아 들어갑니다.<br>나머지는 사업이 없거나, 있어도 이름이 달라 자동으로는 못 찾은 것입니다.</span></div>'
+          + '<div class="sgnav"><span>과제 순서</span><button type="button" data-o="num" class="on">번호순</button><button type="button" data-o="hit">많이 맞은 순</button></div>';
+        var taskStat=function(t){ var subs=byTask[t.n]||[]; var h=subs.filter(function(d){return d.n;}).length; return {tot:subs.length, hit:h}; };
+        var render=function(order){
+          var html='';
+          Object.keys(lanes).sort().forEach(function(g){
+            var list=lanes[g].slice();
+            if(order==='hit') list.sort(function(a,b){ var A=taskStat(a),B=taskStat(b); var ra=A.tot?A.hit/A.tot:0, rb=B.tot?B.hit/B.tot:0; return (rb-ra)||(B.hit-A.hit)||(a.n-b.n); });
+            var tot=0, hit=0, cells='';
+            list.forEach(function(t,ti){
+              var subs=byTask[t.n]||[];
+              subs.forEach(function(d){ tot++; if(d.n) hit++;
+                var tip=d.no+' '+d.t+(d.n?' ← '+d.e:' — 맞는 사업 없음')+'  ['+t.n+'. '+t.nm+']';
+                cells+='<span class="c'+(d.n?' on':'')+'" data-n="'+t.n+'" title="'+esc(tip)+'"></span>'; });
+              if(ti<list.length-1 && subs.length) cells+='<span class="gap" aria-hidden="true"></span>';
+            });
+            var pct=tot?Math.round(hit/tot*100):0;
+            html+='<div class="lane"><div class="ln"><b>목표 '+g+' · '+esc(NMS2[g]||'')+'</b>'+tot+'개 중 '+hit+' · <span class="pn">'+pct+'%</span><span class="pct"><i style="width:'+pct+'%"></i></span></div><div class="cells">'+cells+'</div></div>';
           });
-          html+='<div class="lane"><div class="ln"><b>목표 '+g+' · '+esc(NMS2[g]||'')+'</b>'+tot+'개 · 사업 있음 '+hit+'</div><div class="cells">'+cells+'</div></div>';
+          html+='<div class="lg"><span><i style="background:var(--k-primary-50);border-color:var(--k-primary-50)"></i>같은 주관부처의 정책실명제 사업이 이름으로 맞음 '+S2.관련사업있음+'</span><span><i style="background:var(--k-gray-10)"></i>맞는 사업 없음 '+(S2.총수-S2.관련사업있음)+'</span></div>'
+            + '<div class="cap" id="sgCap">칸에 마우스를 올리면 같은 과제의 칸이 함께 켜집니다.</div>';
+          return html;
+        };
+        // 주소에 ?sg=hit 이 있으면 정렬 상태로 연다 (캡처·공유용)
+        var init=(function(){ try{ return new URLSearchParams(location.search).get('sg')==='hit'?'hit':'num'; }catch(e){ return 'num'; } })();
+        var body=document.createElement('div'); body.innerHTML=render(init);
+        sg.innerHTML=head; sg.appendChild(body);
+        if(init==='hit'){ [].forEach.call(sg.querySelectorAll('.sgnav button'),function(x){ x.className = x.dataset.o==='hit'?'on':''; }); }
+        sg.querySelector('.sgnav').addEventListener('click',function(e){
+          var b=e.target.closest('button[data-o]'); if(!b) return;
+          [].forEach.call(sg.querySelectorAll('.sgnav button'),function(x){ x.className = x===b?'on':''; });
+          body.innerHTML=render(b.dataset.o);
         });
-        html+='<div class="lg"><span><i style="background:var(--k-primary-50);border-color:var(--k-primary-50)"></i>같은 주관부처의 정책실명제 사업이 이름으로 맞음 '+S2.관련사업있음+'</span><span><i style="background:var(--panel-2)"></i>맞는 사업 없음 '+(S2.총수-S2.관련사업있음)+'</span></div>';
-        sg.innerHTML=html;
+        // 같은 과제 칸을 함께 켜고 아래에 과제 이름을 띄운다
+        var byN={}; GJ.과제.forEach(function(t){ byN[t.n]=t; });
+        sg.addEventListener('mouseover',function(e){
+          var c=e.target.closest('.c[data-n]'); if(!c) return;
+          var n=+c.dataset.n, st=taskStat(byN[n]);
+          sg.classList.add('hover');
+          [].forEach.call(sg.querySelectorAll('.c'),function(x){ x.classList.toggle('hi', +x.dataset.n===n); });
+          var cap=document.getElementById('sgCap'); if(cap) cap.innerHTML='<b>'+n+'. '+esc(byN[n].nm)+'</b> ('+esc(byN[n].org)+') — 세부과제 '+st.tot+'개 중 <span class="m">'+st.hit+'개</span>에 정책실명제 사업이 맞음';
+        });
+        sg.addEventListener('mouseleave',function(){
+          sg.classList.remove('hover');
+          [].forEach.call(sg.querySelectorAll('.c.hi'),function(x){ x.classList.remove('hi'); });
+          var cap=document.getElementById('sgCap'); if(cap) cap.textContent='칸에 마우스를 올리면 같은 과제의 칸이 함께 켜집니다.';
+        });
       }
       var f4=document.getElementById('vsfig4');
       if(f4){
