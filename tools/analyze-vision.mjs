@@ -16,7 +16,7 @@ const cur = rows.filter((r) => r.year === CUR);
 const cites = [];
 for (const r of cur) {
   const txt = (r.slctnStdr || "") + " " + (r.prjtSmry || "") + " " + (r.prtnCtt || "");
-  for (const m of txt.matchAll(/국정과제\s*(\d{1,3})(-\d+)?/g)) {
+  for (const m of txt.matchAll(/국정과제\s*[(（]?\s*(\d{1,3})(-\d{1,2})?/g)) {
     const n = +m[1]; if (n < 1 || n > 123) continue;
     const t = G.find((x) => x.n === n);
     cites.push({ n, 과제명: t ? t.nm : null, 주관: t ? t.org : null, 등록기관: r.nstNm, 사업: r.plcNm, 세부번호: !!m[2] });
@@ -42,7 +42,15 @@ const 세부 = { 총수: SUBM.세부과제수, 관련사업있음: SUBM.관련�
   검수: SUBM.검수집계,
   확실: SUBM.세부.filter((d) => d.검수 === "확실").length, 애매: SUBM.세부.filter((d) => d.검수 === "애매").length, 오탐: SUBM.세부.filter((d) => d.검수 === "오탐").length,
   확실과제수: new Set(SUBM.세부.filter((d) => d.검수 === "확실").map((d) => +d.no.split("-")[0])).size,
-  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, r: d.검수 || "", w: d.검수이유 || "", e: d.예.length ? d.예[0].slice(0, 40) : "" })),
+  본문후보: SUBM.이름없이본문만, 본문확실: SUBM.세부.filter((d) => d.본문검수 === "확실").length, 본문애매: SUBM.세부.filter((d) => d.본문검수 === "애매").length, 본문오탐: SUBM.세부.filter((d) => d.본문검수 === "오탐").length,
+  확실합계: SUBM.세부.filter((d) => d.검수 === "확실" || d.본문검수 === "확실").length,
+  애매합계: SUBM.세부.filter((d) => d.검수 === "애매" || d.본문검수 === "애매").length,
+  확실과제수합계: new Set(SUBM.세부.filter((d) => d.검수 === "확실" || d.본문검수 === "확실").map((d) => +d.no.split("-")[0])).size,
+  인용카드: { 총: SUBM.국정과제명인용카드.length, 이름: SUBM.국정과제명인용카드.filter((c) => c.과제.length || c.인용문.length).length, 번호: SUBM.국정과제명인용카드.filter((c) => c.번호.length).length, 카드수: 784,
+             과제: [...new Set(SUBM.국정과제명인용카드.flatMap((c) => [...c.과제.map(String), ...c.번호.map((b) => b.split("-")[0])]))].map(Number).sort((a, b) => a - b),
+             예: SUBM.국정과제명인용카드.filter((c) => c.번호.length).slice(0, 8).map((c) => ({ 기관: c.org, 사업: c.nm.slice(0, 30), 번호: c.번호 })) },
+  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, r: d.검수 || "", w: d.검수이유 || "", e: d.예.length ? d.예[0].slice(0, 40) : "",
+    bn: d.본문후보수 || 0, b: d.본문검수 || "", bw: d.본문검수이유 || "", be: d.본문후보 && d.본문후보.length ? (d.본문후보[0].org + "·" + d.본문후보[0].nm.trim()).slice(0, 40) : "" })),
   확실한예: SUBM.세부.filter((d) => d.사업수 && d.예.length).filter((d) => ["54-1","94-1","112-1","82-3","48-2","71-4","82-1","14-5","68-4","98-4"].includes(d.no)).map((d) => ({ no: d.no, 제목: d.제목.slice(0, 26), 사업: d.예[0] })) };
 
 const out = {
@@ -61,6 +69,6 @@ const out = {
 fs.writeFileSync(R("notes/vision.json"), JSON.stringify(out, null, 2) + "\n");
 console.log(`현 정부 — 2026 등록 ${cur.length}건 중 번호 기재 ${cites.length}건 → 가리킨 국정과제 ${named.length}개/123: ${named.join(", ")} (세부번호 스스로 붙임 ${out.현정부.세부번호를스스로붙임}건)`);
 console.log(`주관부처 경로(2025~26) — 사업 ${recent.length}건 · 기관 ${Object.keys(orgHas).length}곳 · 걸린 과제 ${viaOrg.length}개/123`);
-console.log(`세부과제 — ${세부.총수}개 중 자동 대조 ${세부.관련사업있음}개 → 검수 확실 ${세부.확실} · 애매 ${세부.애매} · 오탐 ${세부.오탐} (확실 ${(세부.확실/세부.총수*100).toFixed(0)}%, 과제 ${세부.확실과제수}개)`);
+console.log(`세부과제 — ${세부.총수}개 중 이름 대조 ${세부.관련사업있음}개 → 확실 ${세부.확실} · 애매 ${세부.애매} · 오탐 ${세부.오탐} | 본문 대조 ${세부.본문후보}개 → 확실 ${세부.본문확실} · 애매 ${세부.본문애매} · 오탐 ${세부.본문오탐} | 합계 확실 ${세부.확실합계}(${(세부.확실합계/세부.총수*100).toFixed(0)}%) · 애매 ${세부.애매합계} · 과제 ${세부.확실과제수합계}개 | 인용 카드 ${세부.인용카드.총}(이름 ${세부.인용카드.이름}·번호 ${세부.인용카드.번호})`);
 console.log(`포털 — 표본 ${out.포털.표본}개: 담당자·예산·근거문서·세부과제·타 시스템 링크 0/8`);
 console.log(`국정과제 — 주관부처 경로 등록 ${out.국정과제.주관부처경로등록} · 포털에 없음 ${out.국정과제.포털에없음}`);
