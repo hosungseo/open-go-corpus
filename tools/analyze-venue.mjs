@@ -82,6 +82,24 @@ if (fs.existsSync(HP)) {
     }
   }
   const 검증수 = 채점.확증.length + 채점.오탐.length;
+  // 기관별로 포털 수치가 실제의 몇 할인지 낸다. 전체로 보면 작아 보이는 차이가 기관에서는 크다.
+  const 보정 = [];
+  {
+    const 묶음N = new Set(대조.기관.filter((o) => /묶음|연도 1건|연 1~2건/.test(o.형태 || "")).map((o) => o.nm));
+    const byOrg = new Map();
+    for (const c of 채점.확증) {
+      if (묶음N.has(c.nm)) continue;                     // 과제 수를 알 수 없는 기관은 뺀다
+      byOrg.set(c.nm, (byOrg.get(c.nm) || 0) + c.누리집);
+    }
+    for (const [nm, 누락] of byOrg) {
+      const 포털 = rows.filter((r) => r.nstNm === nm && r.year <= 2025).length;
+      보정.push({ nm, 포털, 누락, 최소실제: 포털 + 누락, 포털비율: Math.round(포털 / (포털 + 누락) * 100) });
+    }
+    보정.sort((a, b) => a.포털비율 - b.포털비율);
+  }
+  // 연도마다 확증된 결락이 몇 칸인지
+  const 연도별확증 = {};
+  for (const c of 채점.확증) 연도별확증[c.연도] = (연도별확증[c.연도] || 0) + 1;
   // 어림을 실측으로 바꾼다. 다만 묶음 게시물을 쓰는 기관은 건수가 과제 수가 아니므로 따로 센다.
   const 묶음 = new Set(대조.기관.filter((o) => /묶음|연도 1건|연 1~2건/.test(o.형태 || "")).map((o) => o.nm));
   const 실측 = { 사업단위: 0, 사업단위칸: 0, 묶음칸: [] };
@@ -103,6 +121,8 @@ if (fs.existsSync(HP)) {
       확증목록: 채점.확증,
     },
     실측누락: 실측,
+    보정,
+    연도별확증,
   };
 }
 
@@ -134,6 +154,8 @@ if (대조) {
   if (c.오탐.length) console.log(`  오탐: ` + c.오탐.map((x) => `${x.nm} ${x.연도}년`).join(", "));
   const m = 대조.요약.실측누락;
   console.log(`실측 누락: 사업 단위로 올리는 기관 ${m.사업단위칸}칸에서 ${m.사업단위}건 (어림은 ${Math.round(추정누락)}건이었다)`);
+  console.log(`기관별 보정 (포털이 실제의 몇 %인가):`);
+  대조.요약.보정.forEach((b) => console.log(`  ${b.nm.padEnd(12)} 포털 ${String(b.포털).padStart(3)} + 누락 ${String(b.누락).padStart(3)} = 최소 ${String(b.최소실제).padStart(3)}  →  포털은 ${b.포털비율}%`));
   console.log(`  묶음 게시물이라 과제 수를 알 수 없는 칸 ${m.묶음칸.length}개: ` + m.묶음칸.map((x) => `${x.nm} ${x.연도}년(게시물 ${x.누리집}건)`).join(", "));
 }
 console.log(`결락이 몰린 해: ` + Object.entries(결락연도).sort((a,b)=>b[1]-a[1]).map(([y,n])=>`${y}년 ${n}개 기관`).join(" · "));

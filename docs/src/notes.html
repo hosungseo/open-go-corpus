@@ -468,7 +468,7 @@
         그 해에만 일을 쉬었다고 보기는 어려운 칸입니다.</p>
       <div class="fig">
         <h3>기관 × 연도 등록 격자</h3>
-        <p class="sub">칸이 짙을수록 포털 등록이 많습니다. 빗금 친 칸은 누리집에는 있는데 포털에 없는 해이고, 점선 칸은 누리집에도 없어 검사가 틀린 해입니다.</p>
+        <p class="sub">칸이 짙을수록 포털 등록이 많습니다. 빗금 친 칸은 누리집에는 있는데 포털에 없는 해이고, 점선 칸은 누리집에도 없어 검사가 틀린 해입니다. 맨 아래 줄은 그해에 결락이 확인된 기관 수입니다.</p>
         <div id="vfig2"></div>
         <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
         <div class="lg"><span><i style="background:var(--k-primary-50);opacity:.4"></i>포털 등록 있음</span><span><i style="background:repeating-linear-gradient(45deg,var(--k-danger-50) 0 2px,transparent 2px 5px);border:1px solid var(--k-danger-50)"></i>포털에 없고 누리집에 있음 (결락 확증)</span><span><i style="background:var(--panel-2);border:1px dashed var(--ink-3)"></i>양쪽 다 없음 (검사가 틀림)</span></div>
@@ -476,14 +476,15 @@
       <p>이 검사가 짚은 칸은 <b id="vGapCell">—</b>개이고 <b id="vGapOrg">—</b>개 기관에 걸쳐 있습니다.
         <b>짚은 칸을 하나도 빠짐없이 누리집에서 확인했습니다.</b>
         <b id="vHit">—</b>개가 맞았고 <b id="vMiss">—</b>개가 틀렸습니다. 적중률 <b id="vHitPct">—</b>입니다.
-        <b>결락은 2022년에 가장 몰렸습니다.</b> 그해에만 아홉 개 기관이 통째로 비어 있습니다.</p>
+        <b>결락은 2022년에 가장 몰렸습니다.</b> 검사는 그해에 아홉 개 기관을 짚었고, 그중 <b>일곱 곳이 확증</b>되었습니다.</p>
       <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:12px 0 0">
         <p style="margin:0;font-size:15px;line-height:1.75;color:var(--ink-2)">
           <b style="color:var(--k-danger-60)">검사가 틀린 다섯 칸</b> — <span id="vMissList">—</span>은
           <b>누리집에도 없었습니다.</b> 포털이 빠뜨린 것이 아니라 그 해에 실제로 공개된 것이 없습니다.
           통일부는 게시물 번호 1~216에 결번이 없는데 2020년 다음이 곧바로 2023년이고,
           해양경찰청도 154건 어디에도 2020이라는 글자가 없습니다.
-          <b>검사는 결락을 짚는 실마리일 뿐 판정이 아닙니다.</b> 그래서 하나씩 열어 봤습니다.</p>
+          <b>검사는 결락을 짚는 실마리일 뿐 판정이 아닙니다.</b> 그래서 하나씩 열어 봤습니다.
+          그림 맨 아래 줄은 짚은 수가 아니라 <b>확증된 수</b>입니다.</p>
       </div>
     </section>
 
@@ -502,17 +503,31 @@
     </section>
 
     <section class="core">
+      <div class="eyebrow">그래서 얼마나</div>
+      <h2>경찰청의 포털 수치는 실제의 40%입니다</h2>
+      <p>전체로 보면 <b id="vMeasured2">—</b>건은 6,680건 가운데 작은 몫입니다.
+        <b>그러나 기관으로 내려가면 이야기가 달라집니다.</b>
+        누락이 한 기관에 몰려 있기 때문입니다.</p>
+      <div class="fig">
+        <h3>포털 등록과 누리집에서만 확인된 몫</h3>
+        <p class="sub">파란 칸이 포털에 오른 것, 빗금 친 칸이 누리집에만 있는 것입니다. 오른쪽 숫자는 포털이 전체에서 차지하는 몫입니다.</p>
+        <div id="vfig3"></div>
+        <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
+      </div>
+      <p><b>경찰청은 포털만 보면 65건이지만 누리집에는 최소 161건이 있습니다.</b>
+        포털 수치는 실제의 40%입니다. 국세청도 53%에 그칩니다.
+        나머지 다섯 기관은 78~87%로 덜 심하지만, <b>어느 기관이 40%이고 어느 기관이 87%인지는 열어 보기 전에 알 수 없습니다.</b></p>
+      <p>그러므로 포털 수치로 <b>기관끼리 견주는 것은 성립하지 않습니다.</b>
+        적게 등록한 기관이 일을 덜 한 것인지 포털에 덜 올린 것인지 구분할 방법이 포털 안에는 없습니다.</p>
+    </section>
+
+    <section class="core">
       <div class="eyebrow">올해</div>
       <h2>2026년은 아직 대부분 오르지 않았습니다</h2>
       <p>오늘 기준으로 포털에 2026년을 등록한 기관은 <b id="vY26">—</b>곳입니다.
         나머지는 0건입니다. 그러나 국세청은 <b>2026-09-11에 26건을 누리집에 올렸고</b>,
-        교육부도 <b>2026-07-14에 60개 과제를 공고</b>했습니다. 포털에는 둘 다 없습니다.</p>
-      <div class="fig">
-        <h3>2026년 포털 등록 현황</h3>
-        <p class="sub">가로 한 칸이 기관 하나입니다.</p>
-        <div id="vfig3"></div>
-        <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
-      </div>
+        교육부도 <b>2026-07-14에 60개 과제를 공고</b>했습니다. 포털에는 둘 다 없습니다.
+        <b>연중 어느 시점에 보느냐에 따라 포털 수치가 크게 달라집니다.</b></p>
     </section>
 
     <section class="core">
@@ -634,7 +649,7 @@
       var orgs = VN.결락.목록.map(function(d){ return d.nm; });   // 결락이 있는 기관만 싣는다
       var YRS = VN.연도;
       var cw=52, ch=26, L=124, T=30;
-      var W=L+YRS.length*cw+16, H=T+orgs.length*ch+16;
+      var W=L+YRS.length*cw+16, H=T+orgs.length*ch+16+72;
       var max=0;
       VN.결락.목록.forEach(function(d){ d.연도별.forEach(function(v){ if(v>max) max=v; }); });
       var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="등록 결락이 있는 기관의 연도별 등록 건수 격자. 빗금 친 칸이 결락이다">';
@@ -659,21 +674,46 @@
           }
         });
       });
+      // 아래에 연도별 확증 결락 칸 수를 얹는다. 2022년에 몰린 것이 세로줄만으로는 덜 보인다.
+      var yc = VN.대조.요약.연도별확증 || {};
+      var ymax = Math.max.apply(null, YRS.map(function(y){ return yc[y]||0; })) || 1;
+      var base = T + VN.결락.목록.length*ch + 12, bh = 38;
+      s+='<text x="'+(L-10)+'" y="'+(base+bh-2)+'" text-anchor="end" font-size="12.5" fill="var(--ink-2)">그해 결락 기관</text>';
+      YRS.forEach(function(y,j){
+        var v = yc[y]||0, h = v ? Math.max(5, bh*v/ymax) : 0, x = L+j*cw, top = v>=ymax;
+        if(v){
+          s+='<rect x="'+(x+7)+'" y="'+(base+bh-h)+'" width="'+(cw-16)+'" height="'+h+'" fill="var(--k-danger-50)" fill-opacity="'+(top?'1':'.5')+'"/>'
+           + '<text x="'+(x+(cw-2)/2)+'" y="'+(base+bh+16)+'" text-anchor="middle" font-size="12.5" font-weight="'+(top?'700':'400')+'" fill="'+(top?'var(--k-danger-60)':'var(--ink-2)')+'">'+v+'</text>';
+        } else {
+          s+='<text x="'+(x+(cw-2)/2)+'" y="'+(base+bh+16)+'" text-anchor="middle" font-size="12.5" fill="var(--ink-3)">·</text>';
+        }
+      });
       s+='</svg>';
       document.getElementById('vfig2').innerHTML=s;
     })();
 
-    /* 그림 3 — 2026년 포털 등록 현황 */
+    /* 그림 3 — 기관별로 포털 수치가 실제의 몇 할인가 */
     (function(){
-      var done=VN.올해.등록기관, all=VN.올해.전체기관;
-      var cols=15, cw=44, ch=26, W=cols*cw+8, rowsN=Math.ceil(all/cols), H=rowsN*ch+46;
-      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="2026년 정보공개포털에 등록을 마친 기관은 45곳 중 7곳">';
-      for(var i=0;i<all;i++){
-        var x=(i%cols)*cw+4, y=Math.floor(i/cols)*ch+4, on=i<done;
-        s+='<rect x="'+x+'" y="'+y+'" width="'+(cw-5)+'" height="'+(ch-5)+'" rx="3" fill="'+(on?'var(--rn)':'var(--panel-2)')+'" stroke="'+(on?'var(--rn)':'var(--rule)')+'"/>';
-      }
-      var by=rowsN*ch+26;
-      s+='<text x="4" y="'+by+'" font-size="14" fill="var(--ink-2)"><tspan font-weight="700" fill="var(--rn-t)">'+done+'곳 등록</tspan> · 나머지 '+(all-done)+'곳은 0건</text></svg>';
+      var B = VN.대조.요약.보정 || [];
+      if(!B.length) return;
+      var W=720, L=116, R=116, rh=34, T=28, H=T+B.length*rh+18;
+      var max = Math.max.apply(null, B.map(function(b){ return b.최소실제; }));
+      var pw = W-L-R;
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="기관별로 정보공개포털 등록 건수와 기관 누리집에서만 확인된 누락분을 이어 붙인 막대그림">'
+        + '<defs><pattern id="hatch2" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">'
+        + '<line x1="0" y1="0" x2="0" y2="6" stroke="var(--k-danger-50)" stroke-width="2.5"/></pattern></defs>'
+        + '<text x="'+L+'" y="'+(T-10)+'" font-size="12.5" fill="var(--ink-3)">포털에 오른 것 + 누리집에만 있는 것</text>'
+        + '<text x="'+(W-4)+'" y="'+(T-10)+'" text-anchor="end" font-size="12.5" fill="var(--ink-3)">포털이 차지하는 몫</text>';
+      B.forEach(function(b,i){
+        var y=T+i*rh, w1=pw*b.포털/max, w2=pw*b.누락/max, low=b.포털비율<=60;
+        s+='<text x="'+(L-10)+'" y="'+(y+19)+'" text-anchor="end" font-size="12.5" fill="var(--ink-2)">'+esc(b.nm)+'</text>'
+         + '<rect x="'+L+'" y="'+(y+5)+'" width="'+w1+'" height="20" fill="var(--rn)"/>'
+         + '<rect x="'+(L+w1)+'" y="'+(y+5)+'" width="'+w2+'" height="20" fill="url(#hatch2)" stroke="var(--k-danger-50)"/>';
+        if(w1>36) s+='<text x="'+(L+w1-7)+'" y="'+(y+19)+'" text-anchor="end" font-size="12.5" fill="var(--k-gray-0)">'+b.포털+'</text>';
+        s+='<text x="'+(L+w1+w2+7)+'" y="'+(y+19)+'" font-size="12.5" font-weight="700" fill="var(--k-danger-60)">+'+b.누락+'</text>'
+         + '<text x="'+(W-4)+'" y="'+(y+19)+'" text-anchor="end" font-size="'+(low?'15':'13')+'" font-weight="700" fill="'+(low?'var(--k-danger-60)':'var(--ink-2)')+'">'+b.포털비율+'%</text>';
+      });
+      s+='</svg>';
       document.getElementById('vfig3').innerHTML=s;
     })();
 
@@ -703,6 +743,7 @@
     var C = VN.대조.요약.검사채점;
     put('vHit', C.확증); put('vMiss', C.오탐); put('vHitPct', C.적중률+'%');
     put('vMeasured', VN.대조.요약.실측누락.사업단위.toLocaleString('ko-KR'));
+    put('vMeasured2', VN.대조.요약.실측누락.사업단위.toLocaleString('ko-KR'));
     var ml=document.getElementById('vMissList');
     if(ml) ml.innerHTML = C.오탐목록.map(function(x){ return '<b>'+esc(x.nm)+' '+x.연도+'년</b>'; }).join(', ');
     put('vY26', VN.올해.등록기관+' / '+VN.올해.전체기관);
