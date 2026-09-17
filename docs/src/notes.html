@@ -41,6 +41,26 @@
 .note1 section.core{padding:24px 0 4px}
 .note1 section.core:first-of-type{padding-top:14px}
 @media (max-width:760px){ .note1{padding:18px 14px 4px} .cats td{padding:10px 10px} }
+/* 중분류 줄 — 대분류 아래에 붙는다 */
+.bar2{position:sticky;top:56px;z-index:9;background:var(--panel-2);border-bottom:1px solid var(--rule)}
+.bar2 .in{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar2 .lbl{font-size:13px;color:var(--ink-3);white-space:nowrap}
+.bar2 nav{display:flex;gap:2px;flex-wrap:wrap}
+.bar2 nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 12px;text-decoration:none;
+  color:var(--ink-2);font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+.bar2 nav a:hover{color:var(--em);background:var(--k-primary-5)}
+.bar2 nav a.on{color:var(--em);border-bottom-color:var(--k-primary-50);font-weight:700}
+.bar2 nav a i{font-style:normal;font-size:11.5px;line-height:1;padding:2px 5px;border-radius:8px;
+  background:var(--em);color:var(--k-gray-0);font-weight:700}
+.bar2 nav a.empty{color:var(--ink-3)}
+.bar2 nav a.empty i{background:transparent;border:1px solid var(--rule);color:var(--ink-3);padding:1px 4px}
+.filtnote{margin:0 0 18px;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid var(--em);
+  border-radius:var(--r-s);background:var(--panel);font-size:15px;color:var(--ink-2)}
+.filtnote b{color:var(--ink)}
+.filtnote button{appearance:none;border:0;background:none;padding:0;margin-left:8px;font:inherit;
+  color:var(--em);text-decoration:underline;cursor:pointer}
+.cats,article.note1{scroll-margin-top:120px}
+@media (max-width:760px){ .bar2{top:auto;position:static} .bar2 .in{padding:0 16px} .bar2 nav a{padding:9px 9px;font-size:14px} }
 /* 자리매김 그래프 — 넘겨 보기 */
 .pos .nav2{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .pos .nav2 button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);
@@ -103,6 +123,10 @@
   <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="history.html"><span class="long">법령 연혁</span><span class="short">연혁</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a><a class="on" href="notes.html"><span class="long">분석 노트</span><span class="short">분석</span></a></nav>
   <div class="meta"><span>기준일 <b>2026-09-15~17</b></span></div>
 </div></div>
+<div class="bar2" id="bar2"><div class="in">
+  <span class="lbl">갈래</span>
+  <nav id="subnav" aria-label="분석 갈래"></nav>
+</div></div>
 
 <main class="wrap" id="content">
   <header class="summary">
@@ -118,6 +142,7 @@
     <h2>여섯 갈래 아래 열 가지 물음</h2>
     <p>분석을 여섯 갈래로 나누고, 갈래마다 다룰 물음을 두었습니다. 답이 나오면 노트를 올립니다.
       아직 비어 있는 칸이 다음에 쓸 글입니다.</p>
+    <div class="filtnote" id="filtNote" hidden></div>
     <div class="cats"><table>
       <thead><tr><th style="width:22%">물음</th><th>지금까지 드러난 것</th><th style="width:19%">노트</th></tr></thead>
       <tbody>
@@ -166,7 +191,7 @@
     </table></div>
   </section>
 
-  <article class="note1" id="note1">
+  <article class="note1" id="note1" data-g="참여">
     <div class="eyebrow">신청제 · 노트 ①</div>
     <h2>국민이 신청한 정책실명제는 왜 줄었나</h2>
     <div class="axes">
@@ -325,7 +350,7 @@
 
   </article>
 
-  <article class="note1" id="note2">
+  <article class="note1" id="note2" data-g="위상">
     <div class="eyebrow">위상 · 노트 ②</div>
     <h2>정책지표별 위상 비교 — 지표 선택에 따라 우열이 역전된다</h2>
     <div class="axes">
@@ -408,6 +433,89 @@
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
 
+
+
+  /* 중분류 줄 — 갈래를 고르면 그 갈래만 남긴다 */
+  (function(){
+    var nav=document.getElementById('subnav'); if(!nav) return;
+    var bar2=document.getElementById('bar2'), note=document.getElementById('filtNote');
+    var rows=[].slice.call(document.querySelectorAll('.cats tbody tr'));
+    var arts=[].slice.call(document.querySelectorAll('article.note1'));
+
+    // 갈래를 행마다 새겨 둔다. 표 위에서 아래로 훑으면 소속이 정해진다.
+    var order=[], cg=null;
+    rows.forEach(function(tr){
+      if(tr.classList.contains('grp')){
+        var gn=tr.querySelector('.gn');
+        cg = gn ? gn.textContent.trim() : null;
+        if(cg && order.indexOf(cg)<0) order.push(cg);
+      }
+      tr.setAttribute('data-g', cg||'');
+    });
+    var cnt={};
+    order.forEach(function(g){ cnt[g]=arts.filter(function(a){ return a.getAttribute('data-g')===g; }).length; });
+
+    nav.innerHTML = '<a href="#전체" data-g="전체">전체 <i>'+arts.length+'</i></a>'
+      + order.map(function(g){
+          return '<a href="#갈래-'+g+'" data-g="'+g+'" class="'+(cnt[g]?'':'empty')+'">'
+               + g + ' <i>' + cnt[g] + '</i></a>';
+        }).join('');
+
+    function apply(g, scroll){
+      var all = g==='전체';
+      rows.forEach(function(tr){ tr.hidden = !all && tr.getAttribute('data-g')!==g; });
+      arts.forEach(function(a){ a.hidden = !all && a.getAttribute('data-g')!==g; });
+      [].forEach.call(nav.children,function(a){
+        var on = a.getAttribute('data-g')===g;
+        a.classList.toggle('on', on);
+        a.setAttribute('aria-current', on?'true':'false');
+      });
+      if(all){ note.hidden=true; }
+      else {
+        note.hidden=false;
+        note.innerHTML = cnt[g]
+          ? '<b>'+g+'</b> 갈래만 보고 있습니다. 발행된 노트 '+cnt[g]+'편.<button type="button" id="filtAll">전체 보기</button>'
+          : '<b>'+g+'</b> 갈래는 아직 노트가 없습니다. 아래 물음이 다음에 쓸 글입니다.<button type="button" id="filtAll">전체 보기</button>';
+        var b=document.getElementById('filtAll');
+        if(b) b.addEventListener('click',function(){ select('전체', true); });
+      }
+      if(scroll){
+        var t=document.querySelector('.cats');
+        if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+    function select(g, scroll){
+      apply(g, scroll);
+      var h = g==='전체' ? '#전체' : '#갈래-'+g;
+      if(history.replaceState) history.replaceState(null,'',h); else location.hash=h;
+    }
+
+    nav.addEventListener('click',function(e){
+      var a=e.target.closest('a[data-g]'); if(!a) return;
+      e.preventDefault(); select(a.getAttribute('data-g'), true);
+    });
+
+    // 대분류 바 높이만큼 아래에 붙인다
+    function setTop(){
+      var b=document.querySelector('.bar');
+      if(b && getComputedStyle(bar2).position==='sticky') bar2.style.top = Math.round(b.getBoundingClientRect().height)+'px';
+      else bar2.style.top='';
+    }
+    setTop();
+    window.addEventListener('resize', setTop);
+
+    // 들어온 주소에 따라 첫 화면을 정한다
+    var h = decodeURIComponent(location.hash||'');
+    var m = h.match(/^#갈래-(.+)$/);
+    if(m && order.indexOf(m[1])>=0) apply(m[1], false);
+    else if(/^#note\d+$/.test(h)){
+      var a=document.querySelector('article'+h);
+      var g=a && a.getAttribute('data-g');
+      apply(g && order.indexOf(g)>=0 ? g : '전체', false);
+      if(a) setTimeout(function(){ a.scrollIntoView(); },0);
+    }
+    else apply('전체', false);
+  })();
 
   /* 자리매김 산점도 — 축을 바꿔 가며 세 제도의 위치를 본다 */
   (function(){
