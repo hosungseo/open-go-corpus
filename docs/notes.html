@@ -296,6 +296,16 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .subgrid .c{width:15px;height:15px;font-size:0;border-radius:2px;background:var(--k-gray-10);border-color:transparent;transition:opacity .12s}
 .subgrid .c.on{background:var(--k-primary-50);border-color:var(--k-primary-50)}
 .subgrid .c.am{background:var(--k-primary-20);border-color:var(--k-primary-20)}
+.revall{margin:14px 0 0;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel)}
+.revall summary{cursor:pointer;padding:10px 14px;font-size:14px;font-weight:700;color:var(--ink-2)}
+.revall .tw{overflow-x:auto;border-top:1px solid var(--rule)}
+.revtbl{width:100%;border-collapse:collapse;font-size:13px;line-height:1.5}
+.revtbl th{position:sticky;top:0;background:var(--panel-2);text-align:left;font-weight:700;color:var(--ink-2);padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.revtbl td{padding:7px 10px;border-bottom:1px solid var(--rule-2);vertical-align:top;color:var(--ink-2)}
+.revtbl td.no{white-space:nowrap;font-weight:700;color:var(--ink)}
+.revtbl td.j{white-space:nowrap;font-weight:700}
+.revtbl tr.sure td.j{color:var(--k-primary-60)} .revtbl tr.amb td.j{color:var(--ink-3)} .revtbl tr.bad td.j{color:var(--k-danger-60)}
+.revtbl tr.bad td{color:var(--ink-3)}
 .subgrid.hover .c:not(.hi){opacity:.28}
 .subgrid .c.hi{outline:2px solid var(--k-primary-70);outline-offset:1px}
 .subgrid .c.hi:not(.on):not(.am){background:var(--k-gray-30,#b8bfc6)}
@@ -997,7 +1007,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       <h2>세부과제로 내려가면 더 많이 닿습니다</h2>
       <p>국정과제 123개 아래에는 「주요내용」 불릿이 <b><span id="vsSubN">—</span>개</b> 있습니다. 부처가 "54-2"라 부르는 세부과제입니다.
         세부과제의 앞머리(예: 고향사랑기부제 활성화)가 같은 주관부처의 2025~2026년 정책실명제 <b>사업명</b>에 나오면 관련 사업이 있는 것으로 봤습니다.
-        자동 대조로 <span id="vsSubHit">—</span>개가 걸렸고, <b>그 하나하나를 사람이 읽어</b> 같은 일을 가리키는지 판정했습니다.
+        자동 대조로 <span id="vsSubHit">—</span>개가 걸렸고, <b>그 하나하나를 사람이 읽어</b> 같은 일을 가리키는지 판정했습니다. 이름만으로 갈리지 않는 것은 정책실명제 카드의 사업개요·추진배경 본문으로 다시 읽었습니다.
         <b>확실 <span id="vsSure">—</span>개(<span id="vsSurePct">—</span>)</b>, 같은 영역이나 다른 일일 수 있는 애매 <span id="vsAmb">—</span>개, 흔한 낱말만 겹친 오탐 <span id="vsBad">—</span>개입니다.
         확실한 것만 세면 <span id="vsSubTask">—</span>개 과제에 걸칩니다.</p>
       <div class="gjgrid subgrid" id="vsSubGrid"></div>
@@ -1006,6 +1016,9 @@ section.appendix th,section.appendix td{padding:10px 12px}
       <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:12px 0 0">
         <p style="margin:0 0 6px;font-size:15px;line-height:1.7;color:var(--ink-2)"><b>확실로 판정한 것 가운데 이름이 그대로 겹치는 예</b></p>
         <ul id="vsSubEx" style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink-2)"></ul>
+      <details class="revall" id="vsRevAll"><summary>판정 <span id="vsRevN">—</span>건 전부 보기 — 세부과제 · 걸린 사업 · 판정 · 이유</summary>
+        <div class="tw"><table class="revtbl"><thead><tr><th>세부과제</th><th>걸린 사업 (같은 주관부처, 2025~26)</th><th>판정</th><th>2차 이유</th></tr></thead><tbody id="vsRevBody"></tbody></table></div>
+      </details>
       </div>
       <p>그러니 정책실명제는 국정과제를 <b>세부과제 단위로 이미 따라가고 있습니다.</b> 이름이 겹치고, 부처가 번호까지 손으로 적습니다.
         빠진 것은 그 연결을 <b>카드의 칸으로 만드는 일</b> 하나입니다.</p>
@@ -5081,21 +5094,22 @@ section.appendix th,section.appendix td{padding:10px 12px}
       }
     ],
     "검수": {
-      "확실": 68,
-      "애매": 21,
-      "오탐": 12,
+      "확실": 74,
+      "애매": 8,
+      "오탐": 19,
       "미검수": 0
     },
-    "확실": 68,
-    "애매": 21,
-    "오탐": 12,
-    "확실과제수": 36,
+    "확실": 74,
+    "애매": 8,
+    "오탐": 19,
+    "확실과제수": 37,
     "목록": [
       {
         "no": "1-1",
         "t": "국민투표법 개정 헌법불합치 결정을 받은 재외국민 투표 관련 규",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5103,6 +5117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국회 개헌특위 구성 요청 개헌 관련 주요 의제 논의 및 개헌안",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5110,6 +5125,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민투표 실시 개헌 논의 진행 경과에 따라 2026년 지방선거",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5117,6 +5133,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민주적 통제 강화 부당명령과 계엄에 대한 통제강화 및 장병의 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5124,6 +5141,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국방 문민화 국방부 문민통제 강화 및 군 인사시스템 개선",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국방부·국방 문민화"
       },
       {
@@ -5131,6 +5149,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "군 정보기관 개편 군 정보기관에 대한 국민적 불신을 해소하고 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5138,6 +5157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "군 사법개혁 군 수사·검찰기능의 국방부 통합, 군 수사기관에 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5145,6 +5165,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "육 ·해·공군 합동성 강화 군 교육기관의 단계적 통합 추진 및",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5152,6 +5173,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "수사·기소의 완전한 분리 검찰청을 폐지하고 공소청·중수청 신설",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5159,6 +5181,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "법무부 불가역적 탈검찰화 법무부 내 보직 검사 및 국내 ·외 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5166,6 +5189,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공수처 역량 강화 공수처가 권력기관 견제 역할을 제대로 할 수",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5173,6 +5197,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가경찰위원회 실질화 치안 정책 전반에 대한 민주적 통제 강화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5180,6 +5205,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경찰국 폐지 「행정안전부와 그 소속기관 직제」 개정으로 즉시 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5187,6 +5213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "수사 책임성 ·전문성 강화 사건 지휘 ·관리 강화 및 수사 연",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5194,6 +5221,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "자치경찰제 전면 시행 국가 치안 역량의 총량을 유지하되 지역 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5201,6 +5229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "감사위원회의 권한 강화 모든 감사계획 및 주요 공익감사청구 사",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5208,6 +5237,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "인권 친화적 감사 감사 과정에 변호사 참여권 보장과 디지털 저",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5215,6 +5245,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "감사체계 재정립 ‘정책 결정 및 정책 목적의 당부’를 직무감찰",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5222,6 +5253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "적극행정을 유도하는 감사 사전컨설팅 신청 주체 확대 및 법제화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5229,6 +5261,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민 중심의 사법제도 개혁 국민참여재판 대상 확대, 수사·공소",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5236,6 +5269,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "인력 증원·처우 개선 대법관·판사 정원을 단계적으로 증원하고,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5243,6 +5277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "범죄피해자 지원 확대 피해자 국선변호사 지원 확대, 진술조력인",
         "n": 1,
         "r": "애매",
+        "w": "전자감독 피해자 보호시스템은 같은 피해자 보호 영역이나 세부과제(국선변호사·진술조력인)와 수단이 다름",
         "e": "법무부·전자감독 피해자 보호시스템 운영 강화"
       },
       {
@@ -5250,6 +5285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "변호사 조력권 강화 국제기준의 변호사 비밀유지권 법제화로 누구",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5257,6 +5293,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사법 AI 도입 인공지능 기반 사법지원·법률구조 시스템을 구축",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "법무부·법률구조 서비스 플랫폼 구축"
       },
       {
@@ -5264,6 +5301,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "방송 공공성 ·자율성 회복 공영방송 지배구조 개선* 및 공적기",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "방송미디어통신위원회·공영방송 관련 법제 정비"
       },
       {
@@ -5271,6 +5309,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "온라인 미디어 신뢰성 확보 확증편향 등 서비스 부작용 해소를 ",
         "n": 3,
         "r": "오탐",
+        "w": "",
         "e": "방송미디어통신위원회·K-콘텐츠·미디어 전략펀드 운영"
       },
       {
@@ -5278,6 +5317,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "미디어 사회적 책임 강화 미디어교육 인프라 확충 및 맞춤형 교",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "방송미디어통신위원회·생애주기별 맞춤형 미디어교육 강화"
       },
       {
@@ -5285,6 +5325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역·중소방송사* ·공동체라디오 방송 지원 지역 밀착형 및 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5292,6 +5333,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가인권위원회 정상화 인권위원의 민주적 정당성과 책임성 및 위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5299,6 +5341,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국제인권기준 국내 이행 강화 국제인권기준 상시모니터링 및 확산",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5306,6 +5349,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "혐오·차별 방지 혐오표현 실태파악, 혐오방지 범정부 협력체계 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5313,6 +5357,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "노인 ·이주민 인권보장 강화 노인 ·이주민 인권보장 강화를 위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5320,6 +5365,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정부·국회 및 여·야·정 협치 상설협의체 설치 및 합의 절차에",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5327,6 +5373,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "대화 ·소통의 국민통합 다름의 인정과 존중을 기반으로, 사회갈",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5334,6 +5381,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "시민참여와 숙의공론 활성화 시민참여와 숙의, 민주시민교육 및 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5341,6 +5389,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회개혁을 위한 소통 협력 정치·사회 개혁정책에 관해 시민사회",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5348,6 +5397,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "여수 ·순천 사건 진상규명 여수 ·순천 10 ·19사건 조사기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5355,6 +5405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "노 근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5362,6 +5413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "간토대지진 조선인희생 사건 진상규명 간토대지진 조선인희생 사건",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5369,6 +5421,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일제 강제동원 피해 지원 일제 강제동원 희생자의 체계적인 유해",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5376,6 +5429,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "합리적 보훈보상체계 재정립 참전유공자 사망 후 남겨진 고령·저",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "국가보훈부·참전유공자 생존 배우자 발굴"
       },
       {
@@ -5383,6 +5437,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보 훈의료 ·복지 사각지대 해소 보훈병원 없는 지역에 준보훈병",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국가보훈부·보훈병원 의료환경 개선"
       },
       {
@@ -5390,6 +5445,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "조국 수호에 대한 정당한 보상 공공부문에 군 경력 반영 의무화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5397,6 +5453,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "독립유공자 및 유족 예우 강화 생존 애국지사 특별예우금 및 간",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국가보훈부·국외 독립유공자 유해봉환 및 묘소실태조사"
       },
       {
@@ -5404,6 +5461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민통합 보훈 추진체계 정비 국가보훈위원회의 대표성 ·투명성 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5411,6 +5469,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보훈문화 체감도 향상 ‘25년 광복 80주년 기념행사의 차질 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5418,13 +5477,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보훈으로 국격 제고 유엔참전국 및 해외 독립운동 관련 국가와의",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "13-1",
         "t": "공직사회 책임성 강화 공무원의 헌법 가치 함양, 적극행정 활성",
         "n": 5,
-        "r": "애매",
+        "r": "오탐",
+        "w": "인사혁신처 사업 5건이 특별승진·유족급여·노사협력·경력평정·퇴직공무원 사회공헌 — 세부과제(헌법 가치·적극행정)와 무관",
         "e": "인사혁신처·공무원임용령 개정"
       },
       {
@@ -5432,6 +5493,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "능력 중심 인사시스템 구축 국민추천제 활성화, 전문분야 장기재",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5439,6 +5501,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공직윤리 확립 주식 관련 이해충돌방지 강화 및 부동산 거래내역",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5446,6 +5509,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일할 맛 나는 근무환경 조성 저연차 실무직·현장공무원 처우개선",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5453,6 +5517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국 민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5460,6 +5525,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "선제적 ·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5467,6 +5533,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주민주도 문제해결 주민참여 리빙랩* 추진, 주민이 발굴한 문제",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5474,6 +5541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "위원회 구성 ·운영 내실화 정부위원회 구성 시 전문성과 함께 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5481,6 +5549,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정보공개·기록물관리 강화 정보공개 기준과 절차의 합리적 개편으",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "행정안전부·사전적·능동적 정보공개로 정부 운영의 투명성"
       },
       {
@@ -5488,6 +5557,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지 속가능추진체계 회복 국가와 지방의 지속가능발전 전략 이행을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5495,6 +5565,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방의 지속가능발전 확산 지역소멸 대응 등에 대응, 지방 지속",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5502,6 +5573,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정책과정에 국민 참여 활성화 지속가능발전에 중대한 영향을 미치",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5509,6 +5581,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 리더십 강화 국가이행보고서 발간 등을 통해 우리나라 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5516,6 +5589,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "부정부패 엄정 대응 부정청탁금지 및 이해충돌방지 강화, 부패행",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5523,6 +5597,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "부패·공익신고자 보호 강화 공익신고대상 확대, 보호 신청 처리",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국민권익위원회·부패·공익신고자 보호 강화"
       },
       {
@@ -5530,6 +5605,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 반부패 경쟁력 제고 준법감시 제도 확산, 민간 부문 부",
         "n": 1,
         "r": "애매",
+        "w": "디지털 기반 반부패 정책 연구는 반부패 일반, 세부과제는 준법감시·민간 부패",
         "e": "국민권익위원회·디지털 기술 기반 반부패 정책 추진 방안"
       },
       {
@@ -5537,6 +5613,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 국민권익플랫폼 구축 민원·제안 신청 편의 증진, 민원 분",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5544,6 +5621,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민고충 적극 해소 집단 민원 선제 대응 및 표류하는 갈등 사",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5551,6 +5629,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재정운용 자율성 ·책임성 확보 예산편성 과정에서 부처의 자율성",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5558,6 +5637,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "예산안 국회심의 강화 정부 증액 동의가 필요한 헌법상 ‘각항’",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5565,6 +5645,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재정집행 투명성 제고 회계·기금간 자금 전·출입 요건 구체화 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5572,6 +5653,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "성과평가 강화·재정이해도 증진 다수 부처에서 운영중인 재정사업",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5579,6 +5661,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방 행정·재정 운용의 효율성 향상 지방자치·교육자치의 행정·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5586,6 +5669,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공기관의 경제·사회적 역할 강화 공공기관별 국가전략 핵심과제",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5593,6 +5677,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경영 자율성과 책임성 동시 강화 핵심과제 소요를 위한 조직·인",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5600,6 +5685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "맞춤형 경영평가로 성과 ·역량 제고 유형별 지표 ·배점 ·평가",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5607,6 +5693,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공기관운영위원회 독립성·대표성 강화 공공기관 정책이 민주적으",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5614,6 +5701,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방공공기관 대응성 강화 지방공공기관도 지역균형 성장과 국가 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5621,6 +5709,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정부출연연구기관 연구역량 강화 경제인문사회 ·과학기술분야 출연",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5628,6 +5717,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민생 규제 합리화 국민의 생명·안전 보호를 위한 규제 강화, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5635,6 +5725,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주력산업 맞춤형 규제개선 내수 활성화 효과가 큰 콘텐츠, 관광",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5642,6 +5733,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "규제개선을 수요자 중심으로 전환 규제애로·건의 플랫폼 일원화,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5649,6 +5741,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 활용 전국민 규제정보서비스 제공 창업 ·영업활동 등 맞춤",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5656,6 +5749,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI컴퓨팅인프라 확충 세계적인 AI 역량 확보를 위해 학계 ·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5663,6 +5757,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "초 지능 네트워크 구축 AI에 최적화된 6세대 이동통신(6G)",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5670,6 +5765,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "데이터 구축·개방 국가 전체 공공·민간 AI 학습용 데이터 통",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5677,6 +5773,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국 가AI위원회 역할 강화 민 ·관의 AI혁신역량을 총결집하고",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5684,6 +5781,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "독자 AI모델 개발 지원 민·관 협력 기반으로 AI 정예팀(최",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5691,6 +5789,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "‘모두의 AI’ 기반 구축 누구나 AI 서비스를 체험·개발할 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5698,6 +5797,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산업AI 전환 촉진 제조기업에 AI팩토리 전환, 중소기업 대상",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5705,6 +5805,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역AI 전환 지원 지역특화산업의 AI전환거점인 광역별 AI혁",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5712,6 +5813,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "혁신AI스타트업 육성 AI혁신펀드 운영 및 성장 사다리 지원(",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5719,6 +5821,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "핵심인재 양성 ·확보 SW 중심대학을 AI 중심대학으로 전환 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5726,6 +5829,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "융합인재 양성 다양한 산업 수요 기반 AX 인재 양성을 위해 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5733,6 +5837,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "차세대 AI원천기술 확보 거대언어모델(LLM) 등 한계를 극복",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5740,6 +5845,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI반도체 산업생태계 확립 다양한 국산 NPU + AI서비스 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5747,6 +5853,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "피지컬 AI 적용 가속화 사람처럼 행동하는 AI 구현을 위한 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5754,6 +5861,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 기본사회 구현 AI 기술로 의료, 교육, 금융 등 사회 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5761,6 +5869,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 AI 이니셔티브 AI 기본사회 공동 실현을 위해 다수 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5768,6 +5877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI윤리 ·안전 ·신뢰 기반 조성 딥페이크 탐지, AI 모델의",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5775,6 +5885,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "디지털 보안 ·안전 확보 AI로 지능화된 사이버위협에 효과적 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5782,6 +5893,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "30대 핵심과제 추진 대국민서비스 혁신, 정부효율성 제고, 분",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5789,6 +5901,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공 AI 기반 구축 각 부처별 공공 AI를 빠르고, 안전하게",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5796,6 +5909,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공 AI 시장 창출 AI 혁신제품 공공조달 및 수요예보 등으",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5803,6 +5917,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공데이터 개방 AI 서비스 개발수요나 기업요구가 많은 공공데",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "행정안전부·공공데이터 품질관리 수준진단·평가"
       },
       {
@@ -5810,6 +5925,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공 AI 신뢰기반 공무원의 AI 윤리 내재화, AI 영향평가",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "행정안전부·국민 및 공무원 제안제도 운영"
       },
       {
@@ -5817,6 +5933,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유출사고 신속 ·엄정 대응 포렌식랩 등 기술 분석 인프라 확충",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5824,6 +5941,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정보주체 권리보장 강화 아동 ·청소년의 디지털 잊힐권리 적용범",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5831,13 +5949,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사 전예방 보호조치 확대 기업 등의 개인정보보호 예산 ·인력 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "25-4",
         "t": "개인정보 법제기준 확립 개인정보보호법을 기준으로 국민·기업의 ",
         "n": 2,
-        "r": "애매",
+        "r": "오탐",
+        "w": "침해방지 실태점검·노출 대응은 집행 사업, 세부과제는 법제기준 정비 — \"개인정보\"는 소관 전체의 낱말",
         "e": "개인정보보호위원회·개인정보 침해방지 및 실태점검"
       },
       {
@@ -5845,6 +5965,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "안전활용 증진 AI 학습용 원본정보 활용특례 도입을 위한 「개",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5852,6 +5973,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "R&D 투자시스템 혁신 훼손된 연구생태계 복원을 위해 정부 총",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5859,6 +5981,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "연구전념 ·성과창출 환경 조성 불필요한 연구행정 부담 대폭 완",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5866,6 +5989,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "출연연 PBS* 단계적 폐지 ‘30년까지 재정구조를 출연금 중",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5873,6 +5997,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전략적 국제협력 강화 연구자·기관 중심의 국제협력 전략 추진을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5880,6 +6005,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역 자율 R&D 강화 부처별로 집행되던 지역 R&D 사업을 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5887,6 +6013,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기초연구생태계 확충 과제 수 대폭 확대(現1.2만개 → ‘30",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5894,6 +6021,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년 과기인 전주기 성장 지원 청년과기인 성장 3종 패키지* ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5901,6 +6029,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지원체계 일원화 국가 과학기술 인재양성 청사진 제시 및 범부처",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5908,6 +6037,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "우수 해외인재 유치 전략기술 분야 위주로 포닥, 신진연구자, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5915,6 +6045,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "처우개선 기업연구인력 과학기술인공제회 가입 확대, 출연(연) ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5922,6 +6053,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민관협업 전략기술 육성 국가임무에 기반한 민관협업 방식의 초대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5929,6 +6061,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "우리 기술로 K-Space 도전 우주과학탐사 로드맵* 마련, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5936,6 +6069,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "딥테크 기반 혁신성장 R&D 성과기반 실험실창업 지원 강화, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5943,6 +6077,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기술사업화로 성과창출 촉진 기업 밀착 스케일업 지원을 위한 기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5950,6 +6085,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "특허정보 연계 R&D 특허 빅데이터 분석을 통한 미래 전략기술",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5957,6 +6093,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "여건조성 미래 먹거리 산업을 키우기 위한 전략 수립 및 기반 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5964,6 +6101,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "A: 산업AI AI팩토리·휴머노이드 등 AI 확산으로 제조업을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5971,6 +6109,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "B: 바이오 생산 인프라·R&D·데이터 등 3종 세트로 바이오",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5978,6 +6117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "C: 컬처 K-콘텐츠·컬처·푸드 등 문화산업이 이끄는 소프트파",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5985,6 +6125,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "D: 방산·항공·드론 소부장 등 핵심기술 개발로 방산강국 도약",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5992,6 +6133,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "E: 기후테크 기후 대응 에너지 산업 육성으로 그린 강국 도약",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -5999,6 +6141,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전략산업 혁신 반도체·이차전지·자동차 등 우리 강점 산업 업그",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6006,6 +6149,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공급망 강화 산업의 허리이자 기반인 소부장 산업·뿌리산업의 경",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6013,6 +6157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기술혁신·생산기반 확대 초격차 기술개발과 국내 생산 확대로 산",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6020,6 +6165,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "구조혁신 지원 사업재편으로 군살을 덜어내고 혁신제품 개발로 미",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6027,6 +6173,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "상생협력 확대 대·중소기업이 함께 크는 동반성장으로 산업 생태",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6034,6 +6181,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "미래 모빌리티 실현 자율주행·UAM·드론·차세대 고속열차 등 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6041,6 +6189,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 시티 조성 거주하며 실증하는 AI 특화 시범도시 조성·확",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6048,6 +6197,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보건의료 R&D 강화 고령화·필수의료 위기 등 난제 해결* 및",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6055,6 +6205,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "의료AI 혁신성장 지원 한국 의료환경에 맞는 의료AI 기술 개",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6062,6 +6213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "혁신적 제약 ·바이오 육성 신약 개발을 유도할 수 있도록 혁신",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6069,6 +6221,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "필수의약품 공급 안정 mRNA 백신 등 차세대 백신 플랫폼 기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6076,6 +6229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "체계적 육성기반 구축 (가칭)「서비스산업발전기본법」*을 조속히",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6083,6 +6237,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고부가가치 서비스업 육성 AI를 활용한 교통·물류·안전 등 핵",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6090,6 +6245,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생활밀착형 서비스 질 제고 표준화·규모화 등 업종별 발전전략을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6097,6 +6253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "서비스 수출 활성화 K-뷰티, 콘텐츠, 헬스케어 등 유망 분야",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6104,6 +6261,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "벤처투자시장 확대 모태펀드 존속기간 연장 및 정부출자 확대, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6111,6 +6269,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유니콘 50개 육성 AI 등 딥테크 스타트업을 성장단계별로 맞",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6118,6 +6277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "창업국가 실현 딥테크 창업패키지 신설 및 딥테크 특화 창업중심",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6125,6 +6285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역창업 활성화 5극3특별 거점 창업도시 조성, 권역별 엔젤투",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6132,6 +6293,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지속 가능한 창업생태계 신산업 분야 창업가 세제특례 확대 검토",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6139,6 +6301,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "강소기업 육성 AI 등 혁신 중소기업 육성을 위한 ‘지역 AI",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6146,6 +6309,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "성장중심 R&D 한국형 STTR* 사업 추진, 중소기업 R&D",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6153,6 +6317,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AX 대전환 기초 ·AI 고도화 등 수요기반 스마트공장 지원 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6160,6 +6325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공조달 시장 확대 중소기업 제품 공공조달시장 130 → 17",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6167,6 +6333,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 시장 진출 중소기업 수출 품목·국가 다변화 촉진 및 K",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6174,6 +6341,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI, 바이오헬스 규제 제로화 국가 핵심 신산업에 대해 일정 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6181,6 +6349,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "규제샌드박스 성과 제고 부처별 분절화된 운영에 따른 기업 불편",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6188,6 +6357,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "메가특구 신설 지자체의 규제특례 설계와 중앙정부의 정책패키지(",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6195,6 +6365,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "컨트롤타워 강화 대통령 중심으로 규제 합리화 추진체계를 단일화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6202,6 +6373,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제안보 대응 무역안보·기술안보·투자안보·공급망 등 경제안보 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6209,6 +6381,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "무역구조 혁신 수출 7천억불에서 1조불 시대로 가기 위한 기반",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6216,6 +6389,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주요국 협력 미국·중국·일본·EU 등 주요 교역국과 통상·산업",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6223,6 +6397,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 사우스 진출 신남방 ·신북방 정책의 계승 ·발전과 글로",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6230,6 +6405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보호무역 피해 지원 수출기업·투자기업·중소기업 등 보호무역 애",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6237,6 +6413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "무역안보 단속 체계 확립 국산 둔갑 우회수출, 전략물자 불법수",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6244,6 +6421,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공비축 강화 핵심물자 비축물량 확대와 비축기지 확충으로 공급",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6251,6 +6429,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "에너지고속도로 신속 구축 서해안 HVDC(고압직류송전)를 조기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6258,6 +6437,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기후테크 육성 에너지저장장치(ESS) 산업 활성화, 수요반응자",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6265,6 +6445,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 에너지시스템 구축 AI를 활용하여 전력시장과 전력망을 효",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6272,6 +6453,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전력망 거버넌스 혁신 전력망 조기 건설을 위해 민간 건설역량을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6279,6 +6461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전력시장 혁신 전력수급에 실시간으로 대응하는 시장 도입, 지역",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6286,6 +6469,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재생e 확대 재생e 목표(‘30. 78GW)를 상향하는 로드맵",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6293,6 +6477,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재생에너지 제도 개선 재생에너지 보급 제도를 계약시장으로 단계",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6300,6 +6485,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산업 경쟁력 강화 차세대 태양전지 조기상용화, 해상풍력 터빈·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6307,6 +6493,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역 상생 햇빛·바람연금 확대, 마을단위 에너지자립 등으로 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6314,6 +6501,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "RE100산단 재생에너지가 풍부한 지역에 ‘지산지소’형 RE1",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6321,6 +6509,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "2030 감축목표 달성 산업·건물·수송·전환 분야 감축목표를 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6328,6 +6517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "2035 이후 로드맵 수립 2030 목표 대비 진전된 2035",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6335,6 +6525,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "이 행기반 강화 기후대응기금 수입원 확충, 예비타당성 효과 분",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6342,6 +6533,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산업 탄소경쟁력 강화 기후 신산업 육성을 위한 「탄소중립산업법",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6349,6 +6541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민참여 확대 기후 공론장 마련(기후시민회의), 탄소중립 국민",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6356,6 +6549,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국제사회 논의 주도 감축·적응·그린ODA 분야 국제논의 주도 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6363,6 +6557,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주력산업 탄소중립 산업부문 2035 NDC 달성을 위한 전략·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6370,6 +6565,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해외 탄소규제 대응 탄소국경세 등에 대응하기 위한 기업지원 및",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6377,6 +6573,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건물의 에너지효율화 제로에너지 건축물·그린리모델링을 확대*하고",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6384,6 +6581,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산 업부문 순환경제 활성화 재제조(자동차 부품), 재사용(폐배",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6391,6 +6589,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "탈플라스틱 추진 국민 참여 숙의과정을 거쳐 ‘탈플라스틱 순환경",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6398,6 +6597,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지속가능한 제품 설계 한국형 에코디자인 도입 추진, 제품의 수",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6405,6 +6605,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "회수체계 고도화 분리배출 체계 개선, 완구류·일회용컵을 생산자",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6412,6 +6613,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "순환이용 활성화 폐배터리, 태양광 폐패널 등 품목별 순환이용 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6419,6 +6621,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "순환경제 경쟁력 강화 CE(순환경제)100 참여 촉진 및 특화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6426,6 +6629,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "순환경제 확산 폐기물 소각열을 산업단지 등에 공급하는 히트링크",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6433,6 +6637,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "과학적 기후변화 감시·예측 고해상도 한반도 기상·기후 감시 위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6440,6 +6645,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기후위험 영향 평가 국가 기후변화 표준 시나리오를 개발하고, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6447,6 +6653,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가 인프라 대전환 예측 범위를 벗어난 기후재난에 대비하여 철",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6454,6 +6661,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "도시 기후 탄력성 제고 도시열섬 완화 숲, 생활정원 확충 등 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6461,6 +6669,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제 적응력 강화 산업계 업종별 기후변화 대응 매뉴얼 보급·시",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6468,6 +6677,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회 적응력 강화 온열·한랭질환 감시 및 건강영향평가, AI ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6475,6 +6685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기후적응 컨트롤타워 정립 기후 감시·예측부터 기후위험 영향까지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6482,6 +6693,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "미세먼지 저감 사업장, 수송, 생활 등 전 분야 미세먼지 배출",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6489,6 +6701,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "녹 조피해 예방 녹조 독소 기준 신설(’25) 및 기준과 연계",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6496,6 +6709,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "안전한 물 공급 낙동강 상·하류 취수원 다변화 사업 추진, 반",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6503,6 +6717,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "화학물질 안전관리 발암성·생식독성물질 등 고독성 화학물질의 제",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6510,6 +6725,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "화학제품 사고 예방·대응 불법유통 화학물질·제품에 대한 온라인",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6517,6 +6733,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "안전한 먹거리 제공 AI 자동예측시스템 도입 등 식중독 사고 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6524,6 +6741,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "4대강 재자연화 시설별 여건에 맞춰 4대강 보 개방 및 취·양",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6531,6 +6749,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "자연 친화적 하천관리 하천 연속성 조사·평가 결과를 바탕으로 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6538,6 +6757,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보호지역 확대 보호지역·자연공존지역 확대로 보호지역 국제목표 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6545,6 +6765,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생물다양성 회복 유입주의 생물 지정 확대 및 외래생물 세관검사",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6552,6 +6773,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생태관광 활성화 국립공원 지역 명소화를 위한 테마시설 확충, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6559,6 +6781,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "환경영향평가제도 개선 공탁제 도입 추진, AI·빅데이터 활용으",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6566,6 +6789,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "100조원+α 규모 국민성장펀드 신설 AI 등 미래전략산업과 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6573,6 +6797,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "벤처 ·중소기업 혁신성장 지원 딥테크(바이오 ·반도체 등) 맞",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "금융위원회·혁신성장을 위한 주식시장 구조개편"
       },
       {
@@ -6580,6 +6805,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "ESG금융 강화 재생에너지, 기후기술 등에 대한 투자 확대 및",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6587,6 +6813,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주주가치 제고 이사 충실의무 확대 등을 위한 개정 「상법」의 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6594,6 +6821,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공정한 시장질서 확립 불공정거래(시세조종, 미공개정보 이용 등",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·투자자 신뢰회복을 위한 공정한 시장질서 확립"
       },
       {
@@ -6601,6 +6829,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주식시장 수요기반 확충 MSCI 선진국지수 편입을 위한 로드맵",
         "n": 1,
         "r": "애매",
+        "w": "주식시장 구조개편(재구조화·IPO)과 MSCI 선진국지수 편입 로드맵은 같은 자본시장 선진화 영역의 다른 조치",
         "e": "금융위원회·혁신성장을 위한 주식시장 구조개편"
       },
       {
@@ -6608,6 +6837,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "디지털자산 규율체계 마련 디지털자산 상장·공시, 사업자 유형별",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·디지털자산 기본법(잠정) 제정"
       },
       {
@@ -6615,6 +6845,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "디지털자산 관련 상품 제도화 금융 ·디지털자산 시장간 연계에 ",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·투자자 편익 제고를 위한 디지털자산 연계상품"
       },
       {
@@ -6622,6 +6853,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "블 록체인산업 지원 강화 블록체인 생태계의 안정적 성장 지원을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6629,6 +6861,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "특별지자체 출범 지원 수도권 일극체제 극복을 위해 5극 초광역",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6636,6 +6869,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "행정체제 개편 추진 공공서비스 광역화를 위한 공공협약제도 도입",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6643,6 +6877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "특별자치도 성장 지원 5극 수준의 3특(제주·전북·강원) 육성",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6650,13 +6885,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "혁신·일자리 거점 조성 전략산업 선정·지원 등 혁신거점 제도기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "49-5",
         "t": "광역교통망 연계 5극3특 광역권 연계를 위한 광역철도·도로 적",
         "n": 1,
-        "r": "애매",
+        "r": "오탐",
+        "w": "행안부 「5극 초광역권별 특별지방자치단체 구성」은 자치단체 구성, 세부과제는 광역철도·도로 — 공동 주관에서 행안부만 걸림",
         "e": "행정안전부·5극 초광역권별 특별지방자치단체 구성"
       },
       {
@@ -6664,6 +6901,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "중소도시 육성 투자선도지구·기업혁신파크·新도시재생 등 경제거점",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6671,6 +6909,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가중추시설 이전 대통령 세종집무실 임기 내 건립(설계공모, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6678,6 +6917,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전국 접근성 개선 서울1시간, 전국(주요도시)2시간 접근 가능",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6685,6 +6925,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "자족기능 확충 AI·모빌리티·바이오 등 미래산업 기업혁신허브 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6692,6 +6933,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "행정수도 제도기반 마련 국회의 「행정수도 건설 특별법」 제정 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6699,6 +6941,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "2차 공공기관 이전 이전 절차에 신속 착수하고, 지역 정주여건",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6706,6 +6949,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "새만금 도약 RE100산단 조성 등 재생 에너지 허브로 육성",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6713,6 +6957,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "남부산업벨트 육성 남부권 산업위기 극복을 위한 신성장거점으로 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6720,6 +6965,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "중앙-지방 협력체계 구축 지역 관련 최고의사결정기구로서 중앙지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6727,6 +6973,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "자 치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6734,6 +6981,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지 방의회법 제정 지방의회 조직 ·운영 등을 규정하는 법률을 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6741,6 +6989,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주민자치권 확대 주민자치회 법적 근거 마련, 주민 선택 읍·면",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "행정안전부·주민자치회 법제화 및 활성화"
       },
       {
@@ -6748,6 +6997,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "권 한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)",
         "n": 2,
         "r": "오탐",
+        "w": "",
         "e": "행정안전부·지방자치단체 자율통합지원금"
       },
       {
@@ -6755,6 +7005,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방 자주재원 확충 5극3특 지원을 위한 교부세율 상향, 중앙",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6762,6 +7013,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지 역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6769,20 +7021,23 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국고보조사업 혁신 국고보조사업 포괄보조 확대 및 보조사업별 특",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "53-4",
         "t": "지방재정 책임성·투명성 강화 재정정보 공개 확대로 투명성 증진",
         "n": 2,
-        "r": "애매",
-        "e": "행정안전부·사전적·능동적 정보공개로 정부 운영의 투명성"
+        "r": "확실",
+        "w": "「지방재정 확충으로 자치재정권 확대…」 사업개요에 \"(지방재정 책임성·투명성 강화) 재정정보 공개 확대로 투명성\"이 세부과제 문장 그대로 들어 있음",
+        "e": "행정안전부·지방재정 확충으로 자치재정권 확대 및 지역경"
       },
       {
         "no": "53-5",
         "t": "이 ·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6790,6 +7045,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방소멸대응기금 확대 지방소멸대응기금의 사업성과 및 집행효율성",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "행정안전부·지방소멸대응기금 도입？운영"
       },
       {
@@ -6797,6 +7053,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "차등 지원체계 정립 수도권과의 거리 및 지역소멸도 등에 따른 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6804,6 +7061,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고향사랑기부제 활성화 법인 기부 도입 및 법인 기부금 활용방안",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6811,6 +7069,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "복수주소제 단계적 도입 실생활권 기반 정책 설계를 위해 ‘생활",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6818,6 +7077,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생활권 중심 집약형 도시 도입 인구감소지역에 주거·교통·생활 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6825,6 +7085,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "서울대 10개 만들기 실현 거점국립대에 대한 전략적 투자와 체",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6832,6 +7093,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "RISE 재구조화 추진 지역산업과 국립대-사립대 간의 동반성장",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6839,6 +7101,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "열린 평생 ·직업교육 지원 누구나 일하면서 학습할 수 있는 평",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6846,6 +7109,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "대학생 취창업·진로 지원 입학부터 취업까지 연결되는 지원 시스",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6853,6 +7117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유연한 학교 체제 마련 지역 실정에 맞는 다양한 형태의 미래형",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6860,6 +7125,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해양수도 완성 해양수산부 부산 이전*을 ’25년 내 완료, 정",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·해양수산부 등 부산 이전으로 해양수도 완성"
       },
       {
@@ -6867,13 +7133,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "북극항로 개척 국적선사에 쇄빙선 건조 지원 및 상업항로화를 추",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "56-3",
         "t": "거점항만 조성 컨테이너 ·LNG ·원유 등 북극 화물별 거점항",
         "n": 1,
-        "r": "애매",
+        "r": "확실",
+        "w": "「주요 항만 LNG인프라 개발계획 수립용역」 추진배경이 북극항로 개설·북극권 주요 화물 LNG 거점항만을 명시",
         "e": "해양수산부·주요 항만 LNG인프라 개발계획 수립용역"
       },
       {
@@ -6881,6 +7149,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해운 경쟁력 제고 친환경 선박 중심으로 국가수송력을 확충*하고",
         "n": 1,
         "r": "애매",
+        "w": "친환경 선박연료 공급망(벙커링)은 항만 쪽, 세부과제는 친환경 선박·국적선사 쪽",
         "e": "해양수산부·친환경 선박연료 공급망 구축 "
       },
       {
@@ -6888,6 +7157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-조선업 도약 ‘완전’ 자율운항선박, 무탄소 선박, 스마트 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·AI 완전자율운항선박 기술개발사업(R&amp"
       },
       {
@@ -6895,6 +7165,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전국 광역철도 확충 메가시티 지원을 위해 지방권 광역(급행)철",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6902,6 +7173,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "철도·고속도로망 구축 전국 거점 연결 ‘4×4 고속철도망’ 구",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6909,6 +7181,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지방 항공관문 확대 신공항 사업 추진, 국제선 LCC 운항 등",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6916,6 +7189,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "대도시권 혼잡 완화 대도시 내 도시철도 및 BRT·광역버스 확",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6923,6 +7197,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "농 ·어촌 등 교통 소외지역 해소 원하는 시간 ·장소 이용 가",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6930,6 +7205,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "가계부채 총량의 안정적 관리 GDP 대비 가계부채 비율이 지속",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6937,6 +7213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "상환능력 범위 내 대출관행 정착 총부채원리금상환비율(DSR) ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6944,6 +7221,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "차주 금융부담 완화 유한책임대출 활성화, 장기·고정금리 주택담",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6951,6 +7229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "부동산대출 쏠림 완화 부동산 관련 대출 취급시 금융회사에 추가",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6958,6 +7237,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금융비용 절감 금리부담 완화를 위해 은행권 가산금리 산정방식 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·소상공인 등 취약계층 금융비용 절감"
       },
       {
@@ -6965,6 +7245,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금융문턱 완화 중금리대출 확대, 서민금융안정기금 신설* 및 정",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·금융 소외계층에 대한 금융문턱 완화"
       },
       {
@@ -6972,6 +7253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "채무부담 경감 소상공인·취약계층의 경제적 재기 지원을 위해 장",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·소상공인·취약계층 채무부담 경감"
       },
       {
@@ -6979,6 +7261,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "통신비 경감 전국민이 기본적인 통신 ·디지털 서비스를 부담없이",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6986,6 +7269,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "대중교통비 절감 전국 대중교통을 무제한으로 탑승 ·환승할 수 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -6993,6 +7277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주거비 부담 경감 월세 세액공제 대상자와 대상주택 범위를 확대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7000,6 +7285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "양육비 부담 완화 자녀수에 따라 신용카드 등 소득공제 한도 확",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7007,6 +7293,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "먹거리물가 안정 기후변화 대응 등 농수산물 생산 ·유통 전반의",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7014,6 +7301,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "물가관리체계 강화 석유류 등 서민체감도가 높은 필수 생활비 품",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7021,6 +7309,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "폐업·재도전 지원 부실 예방을 위해 경영컨설팅부터 채무조정, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7028,6 +7317,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금 융비용 절감 성실상환자 대상으로 분할상환 ·금리감면을 확대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7035,6 +7325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경영부담 완화 영세 소상공인 공과금 등 비용경감, 화재공제 가",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7042,6 +7333,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "상 권활력 제고 K-관광 ·산업 ·문화와 접목한 상권르네상스 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7049,6 +7341,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유망 소상공인 육성 소상공인 AI·디지털 지원, 맞춤형 교육 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7056,6 +7349,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공적주택 공급 확대 서민 주거안정을 위해 공적주택 5년간 11",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7063,6 +7357,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민간주택 공급 지원 민간 주택사업에 대한 신속 인허가 적극 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7070,6 +7365,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정비사업 활성화 도심주택 공급 확대를 위해 재개발·재건축 사업",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7077,6 +7373,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유휴부지 활용 공급 입지가 좋은 노후청사·국공유지 활용 주택공",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7084,6 +7381,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "신 도시 주택 조기공급 3기 신도시 등 조성 중 택지 주택공급",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7091,6 +7389,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주거환경 개선 층간소음 방지를 위한 성능검사 강화, 관리비 투",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7098,6 +7397,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "신혼부부 주거 지원 내 집 마련 지원을 위해 신생아 특별공급 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7105,6 +7405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고 령친화주택 공급 의료 ·복지 서비스 등 제공하는 고령자 복",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7112,6 +7413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "1 인가구 맞춤형 주거지원 1인 생활패턴 특화 임대주택 공급 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7119,6 +7421,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "취약계층 주거수준 향상 노후 임대주택, 쪽방촌 재정비 등 주거",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7126,6 +7429,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전세사기 피해자 보호 피해 지원*, 가해자 처벌 강화를 위한 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7133,6 +7437,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "부동산 거래질서 확립 집값 담합 등 불공정행위 방지를 위해 감",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7140,6 +7445,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공정한 플랫폼 생태계 조성 소비자·입점업체 보호 및 불공정관행",
         "n": 2,
         "r": "오탐",
+        "w": "",
         "e": "공정거래위원회·소비자종합지원시스템 운영"
       },
       {
@@ -7147,6 +7453,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제적 약자 보호 기반 강화 가맹본부·원사업자 등 우월적 지위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7154,6 +7461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "부당 내부거래 감시 강화 ▲ 지주회사 체제 내 중복상장 유인 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7161,13 +7469,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공정한 조달시장 구현 ▲ 직권조사 도입 ▲ 조사 거부·불응 등",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "65-1",
         "t": "생애주기별 소비자 권익 강화 ▲ 결혼서비스 가격표시 의무화(청",
         "n": 2,
-        "r": "애매",
+        "r": "오탐",
+        "w": "소비자종합지원시스템·1372는 상시 기반시설, 세부과제는 결혼서비스 가격표시 등 생애주기별 개별 조치",
         "e": "공정거래위원회·소비자종합지원시스템 운영"
       },
       {
@@ -7175,6 +7485,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민사적 구제·집행 확충 민사적 불공정행위 억제수단 강화 및 피",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7182,6 +7493,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "분쟁조정 및 집행체계 강화 공정거래·소비자 분쟁 조정제도 선진",
         "n": 2,
         "r": "애매",
+        "w": "1372 개요에 분쟁조정 위탁이 있으나 세부과제는 분쟁조정 제도 선진화",
         "e": "공정거래위원회·소비자종합지원시스템 운영"
       },
       {
@@ -7189,6 +7501,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "소비자권익 우선 제도 개선 금융소비자 정책 ·감독에 대한 객관",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·금융소비자 권익 강화를 위한 금융제도 선진화"
       },
       {
@@ -7196,6 +7509,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금융소비자 편익 증진 국민 편의와 의료비 부담 경감을 위해 실",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·금융소비자 권익 강화를 위한 금융제도 선진화"
       },
       {
@@ -7203,6 +7517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금융사고 발생 방지 금융 보안사고에 대한 징벌적 과징금 신설",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회· 금융사고에 대한 임직원·대주주 등의 책임 "
       },
       {
@@ -7210,6 +7525,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "금융범죄 단속 강화 민생침해 금융범죄 근절을 위해 금융당국 ·",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·금융범죄 예방 및 단속 강화"
       },
       {
@@ -7217,6 +7533,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기술보호제도 강화 기술탈취 행위에 대한 처벌을 강화하고, 소송",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7224,6 +7541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "피해구제 제도화 공정위·중기부 공동 피해구제기금 조성, 중소기",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7231,6 +7549,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "상생환경 조성 납품대금 연동제 적용대상을 에너지 비용까지 확대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7238,6 +7557,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "플랫폼 공정거래 환경 구축 온라인플랫폼 상생협력 제도화*를 통",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7245,6 +7565,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일하고 싶은 중소기업 청년의 ‘참 괜찮은 강소기업*’ 유입 촉",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7252,6 +7573,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "식량안보 강화 식량 자급률 목표를 상향하고, 목표달성에 필요한",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·식량안보에 기초한 농업투자 및 식량자급 확대"
       },
       {
@@ -7259,6 +7581,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "식생활 돌봄 대상 확대 농식품 바우처는 차상위계층 임산부 ·영",
         "n": 3,
         "r": "오탐",
+        "w": "",
         "e": "농림축산식품부·농식품 수출경쟁력 강화"
       },
       {
@@ -7266,6 +7589,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "스마트농업 고도화 중소농을 위한 맞춤형 스마트팜 모델 개발, ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·스마트팜 다부처 패키지 혁신 기술 개발(R&"
       },
       {
@@ -7273,6 +7597,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-푸드 수출 확산 K-푸드 거점 재외공관 지정 확대, ODA",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·세계시장으로 뻗어가는 K-푸드"
       },
       {
@@ -7280,6 +7605,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유통구조 혁신 농산물 도매유통의 50% 이상을 온라인 도매로 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7287,6 +7613,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "친환경농업 확산 경축순환(가축분뇨 퇴비화) ·탄소중립직불제 신",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7294,6 +7621,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "소득안전망 강화 다양한 선택직불 도입 등 공익직불을 확대하고 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7301,6 +7629,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재해 국가책임제 도입 자연재해 등으로 인한 손해는 재해보험료 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·기후적응형 농업을 위한 재해 국가책임제 도입"
       },
       {
@@ -7308,6 +7637,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경영비 부담 완화 필수농자재 가격 상승정도에 따른 단계별 지원",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7315,6 +7645,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "농업 세대전환 예비농업인 제도 도입 등으로 청년농업인재를 양성",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7322,6 +7653,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "농촌 재생 지원 농촌공간계획에 따른 농촌특화지구 육성(시군별 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7329,6 +7661,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재생에너지 확산 농촌 RE100 실현을 위한 농업시설 재생에너",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부· 재생에너지 확산을 통한 농어촌 에너지 자립"
       },
       {
@@ -7336,6 +7669,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "혁신 일자리 창출 농산업 혁신벨트를 조성하여 기회발전특구와 연",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·농촌 일자리 창출을 위한 지역특화산업 활성화"
       },
       {
@@ -7343,6 +7677,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "필수서비스 공급 농촌 중심지는 생활 SOC 인프라 확충, 취약",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·필수서비스 공급을 통한 복지 농어촌 구현"
       },
       {
@@ -7350,6 +7685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기본소득 도입 소멸 위험이 높은 농어촌 인구감소지역부터 햇빛·",
         "n": 3,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·소멸위기 극복을 위한 농어촌 기본소득 도입"
       },
       {
@@ -7357,6 +7693,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기후위기 대응 수산 혁신 어획량을 관리하는 총허용어획량(TAC",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7364,6 +7701,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유통 혁신 직거래·온라인(60 → 146개 품목) 거래 확대,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7371,6 +7709,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "어촌 활력 청년 어업인 육성(주거 ·일자리 ·금융 등 지원) ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7378,6 +7717,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "연안경제 활성화 복합해양레저관광도시, 국가해양생태공원 등을 조",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·복합해양레저관광도시 조성사업"
       },
       {
@@ -7385,6 +7725,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해상풍력 등 추진 「해상풍력특별법」 시행에 따른 계획입지 지정",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·해상풍력 발전 지원"
       },
       {
@@ -7392,6 +7733,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가 재난안전책무 강화 대통령실로 재난관리 컨트롤타워 복원, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7399,6 +7741,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재 난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7406,6 +7749,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "교통안전 대책강화 방위각 시설개선, 조류탐지 레이더 도입 등 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7413,6 +7757,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건설안전 대책강화 지반탐사 ·노후 상하수도관 정비 확대 등 싱",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7420,6 +7765,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생활안전 거버넌스 강화 범국민 안전문화운동 확산, 주민참여형 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7427,6 +7773,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재난 대응체계 강화 실시간 상황 공유, 현장 작동성 강화, 주",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7434,6 +7781,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재난 모니터링 강화 AI기반 지능형 관제(CCTV) 고도화, ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "행정안전부·AI 기반 CCTV 관제체계 고도화"
       },
       {
@@ -7441,6 +7789,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "긴급구조 역량강화 재난현장 지휘권 강화, 첨단 소방장비 및 A",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7448,6 +7797,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재난피해 지원확대 재난 피해 지원 항목확대 ·요건완화 ·기준상",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7455,6 +7805,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "홍수·가뭄 예방대책 마련 AI기반 홍수예보 확대, 수해 감시 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7462,6 +7813,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산림재난 총력대응 산불진화자원·특수진화대 확대, 생활권 산불안",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7469,6 +7821,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "범죄예방 통합체계 구축 「범죄예방특별법」 등 제정, 고위험군 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7476,6 +7829,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "범죄피해자 지원 강화 교제폭력 사건 판결확정 전 잠정조치 및 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7483,6 +7837,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민생 ·금융범죄 근절 보이스피싱 ·투자리딩 등 다중피해 사기방",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "법무부·민생침해, 금융범죄 근절"
       },
       {
@@ -7490,6 +7845,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "마약류 중독 대응체계 확립 마약류 중독자 재범 방지, 불법 마",
         "n": 3,
         "r": "확실",
+        "w": "",
         "e": "법무부·마약류 중독 차단, 재활 및 예방 강화 등을"
       },
       {
@@ -7497,6 +7853,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "예방중심 치안활동 강화 이상동기범죄 전조증후 분석 고도화 및 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7504,6 +7861,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "신종범죄 대응역량 강화 치안AI 도입, 딥페이크 등 기술적 위",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "법무부·학대피해 아동 보호 및 아동학대 대응역량 강"
       },
       {
@@ -7511,6 +7869,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일하는 모두의 안전보건체계 구축 대규모 사업장부터 안전보건공시",
         "n": 3,
         "r": "애매",
+        "w": "「새로운 유해·위험으로부터 일하는 사람 보호」는 안전보건기준, 세부과제는 안전보건공시제 — 같은 영역 다른 조치(75-4에는 확실)",
         "e": "고용노동부·새로운 유해·위험으로부터 일하는 사람 보호"
       },
       {
@@ -7518,6 +7877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "실효적 산재예방으로 안전권 강화 위험성평가 개선(처벌조항 신설",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7525,6 +7885,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산재보상 국가책임 실현 법정 재해조사기간 경과 시 선지급, 산",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7532,13 +7893,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "새로운 위험 예방 신산업 안전기준 법제화, 감정노동 보호 대상",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·새로운 유해·위험으로부터 일하는 사람 보호"
       },
       {
         "no": "76-1",
         "t": "해양주권 수호 서해 무단 시설물에 대한 실효적인 대응책을 신속",
         "n": 1,
-        "r": "애매",
+        "r": "오탐",
+        "w": "「불법 양식시설물 즉시철거제」는 국내 양식장(양식산업발전법), 세부과제는 서해 무단 시설물(해양주권)",
         "e": "해양수산부·불법 양식시설물 즉시철거제 도입"
       },
       {
@@ -7546,6 +7909,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해양안전 확립 5톤 미만 소형선박(전체 선박의 약 70%)에 ",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·대국민 해양안전문화 확산"
       },
       {
@@ -7553,6 +7917,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "스마트 해양관리 AI 기반 안전·재난 관리시스템 구축, 전 해",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7560,6 +7925,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "해양보호구역 확대 대형(1천km2 이상) 해양보호구역 매년 1",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "해양수산부·해양보호구역 확대(지정ㆍ관리)"
       },
       {
@@ -7567,6 +7933,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기초생활보장제도 강화 생계급여 부양의무자 기준 개선 및 대상자",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7574,6 +7941,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 기반 복지사각지대 발굴·지원 AI 복지·돌봄 혁신 로드맵",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7581,6 +7949,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "상병수당 확대 시범사업 정책효과 분석·평가, 사회적 논의, 법",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7588,6 +7957,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기본사회 추진체계 마련 헌법상 행복추구권 실현을 위해 국민의 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7595,6 +7965,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "본 제도 시행 「돌봄통합지원법」 시행(’26.3)에 맞춰 지역",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7602,6 +7973,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "서비스 확대 재가서비스의 종류와 제공규모 대폭 확대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7609,6 +7981,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "서비스기관 확충 통합재가기관·재택의료센터 대폭 확대 및 보건소",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7616,6 +7989,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지원주택 확대 퇴원환자 대상 단기간 돌봄·주거서비스가 지원되는",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7623,6 +7997,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지자체 중심 지자체 전담조직·인력 확충 지원 등으로 역량 및 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7630,6 +8005,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "“권리”로서의 장애인복지 「장애인권리보장법」 제정 및 「장애인",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7637,6 +8013,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "발달장애인 돌봄 국가책임제 실시 발달장애인 주간활동서비스 대상",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7644,6 +8021,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "개별맞춤형 지원 확대 장애 특성을 고려한 지원체계 대대적 확충",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7651,6 +8029,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "동물복지 정책기반 강화 (가칭)「동물복지기본법」 제정(’27)",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·동물보호에서 동물복지로 패러다임 전환"
       },
       {
@@ -7658,6 +8037,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "반려동물 진료비 부담 경감 취약계층 등 지원을 위한 공공동물병",
         "n": 3,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·반려동물 양육비 부담 완화"
       },
       {
@@ -7665,6 +8045,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건강한 반려문화 확산 동물학대자에 대한 사육금지제를 도입(’2",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·동물학대 없는 건강한 반려동물 문화 확산"
       },
       {
@@ -7672,6 +8053,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "연관산업 육성 펫푸드 등 수출 ·창업 지원을 위한 (가칭)「반",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "농림축산식품부·반려동물 연관산업을 새로운 성장동력으로 육성"
       },
       {
@@ -7679,6 +8061,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "「사회연대경제기본법」 제정 사회연대경제 통합적 생태계를 구축하",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7686,6 +8069,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민관협력 지원체계 구축 기본·시행계획 수립을 통한 체계적 관리",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7693,6 +8077,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회연대금융 활성화 사회연대경제조직에 대한 자금공급 확대를 위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7700,6 +8085,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회연대조직 성장 지원 협동조합, 사회적기업, 마을·자활기업 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7707,6 +8093,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년미래적금 신설 청년의 자산형성을 지원하여 경제적 자립을 뒷",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·‘청년미래적금’ 신설"
       },
       {
@@ -7714,6 +8101,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "주택연금 제도개선 주택연금 수령액 산정방식 개선* 등을 통해 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·100세 시대를 위한 주택연금 제도개선"
       },
       {
@@ -7721,6 +8109,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전국민 경제 ·금융교육 강화 어린이, 청소년, 청년 ·군인 ·",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "금융위원회·청년 등 전국민 경제·금융교육 강화"
       },
       {
@@ -7728,6 +8117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "우리아이자립펀드 신설 아동이 성인이 되기 전 목돈을 마련할 수",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7735,6 +8125,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건강보험 재정 안정화 건강보험 재정 국고지원을 확대하고, 보험",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7742,6 +8133,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "협력적 의료전달체계 구축 대형병원 수도권 쏠림을 막기 위해 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7749,6 +8141,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "의료보상체계 합리적 개편 수술 ·처치 등 저평가된 건강보험 수",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7756,6 +8149,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민 중심 의료개혁 추진 의료현장의 정상화 및 의료체계 왜곡 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7763,6 +8157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공공의료체계 강화 (중앙)국립중앙의료원-(권역)국립대병원-(지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7770,6 +8165,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역·필수의료 보상 강화 필수의료 집중 지원을 위해 ▲ 건강보",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7777,6 +8173,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역·필수·공공의료 인력 양성 지역의사제 신설, (가칭)공공의",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7784,6 +8181,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "소아·응급의료체계 강화 환자 중증도에 따른 응급의료기관 종별 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7791,6 +8189,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "감염병 대응체계 개선 감염병 예측·감시·역학조사 강화, 방역·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7798,6 +8197,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사는 곳 중심의 일차의료체계 구축 다학제팀 기반의 포괄적 건강",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7805,6 +8205,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역기반 건강증진 강화 고혈압·당뇨 등 만성질환 등록·관리사업",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7812,6 +8213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "비대면진료 확대 사회적 합의에 기반해 비대면진료를 제도화하고,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7819,6 +8221,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지 역사회 정신건강 관리체계 확립 자살예방서비스 * 대폭 확대",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7826,6 +8229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "간병 부담 완화 의료 역량이 높은 요양병원* 중심으로 간병비 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7833,6 +8237,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "비급여 부담 완화 과잉 우려가 큰 비급여는 급여로 전환하여 적",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7840,6 +8245,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "희귀 ·난치 부담 완화 건강보험 산정특례 질환을 확대하여 본인",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7847,6 +8253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "보장성 강화 임플란트 건강보험 적용 확대를 추진하고, 계절독감",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7854,6 +8261,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "양육지원 강화 아동수당(현재: 8세 미만) 지급대상을 매년 1",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7861,6 +8269,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "난임·임산부·영유아 지원 난임·임산부 심리상담센터 및 공공산후",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7868,6 +8277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "아동보호 강화 국가가 책임지고 태어난 아이를 보호할 수 있는 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7875,6 +8285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "취 약 ·위기 아동 ·청년 지원 자립준비청년 지원수당 ·맞춤형",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7882,6 +8293,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청소년 활동·참여 활성화 인문활동·국제교류 등 활동·참여프로그",
         "n": 9,
         "r": "애매",
+        "w": "청소년 방과후 활동 지원·수련시설 점검이 활동 기반이나 세부과제(인문활동·국제교류 프로그램 개발)와 다름",
         "e": "성평등가족부·학교 밖 청소년 지원"
       },
       {
@@ -7889,13 +8301,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건강권 ·마음건강 증진 정서 ·행동 위기(초기상담-치료), 고",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "88-3",
         "t": "아동 ·청소년 온라인 안전 강화 아동 ·청소년 디지털 시민교육",
         "n": 9,
-        "r": "애매",
+        "r": "오탐",
+        "w": "청소년 사업 9건 중 온라인 안전·디지털 시민교육에 해당하는 것 없음 — \"청소년\"만 겹침",
         "e": "성평등가족부·학교 밖 청소년 지원"
       },
       {
@@ -7903,6 +8317,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "아이돌봄 지원 확대 정부지원 소득기준 단계적 완화 및 지원비율",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "성평등가족부·아이돌봄 지원"
       },
       {
@@ -7910,6 +8325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한부모·이주배경 가족 등 지원 강화 한부모가족 아동양육비 지원",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "성평등가족부·한부모·조손가족 지원"
       },
       {
@@ -7917,6 +8333,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년의 일할 기회 확대 청년 맞춤형 취업* ·창업** 지원 강",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7924,6 +8341,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년 주거 안정 강화 청년 선호 지역에 특화공공임대, 기숙사형",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7931,6 +8349,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "자산형성 지원 강화 청년 목돈마련 지원상품 및 청년 맞춤형 재",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7938,6 +8357,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년 교육 등 생활 지원 맞춤형 국가장학금(인문100년, 희망",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7945,6 +8365,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년 당사자성 강화 청년이 직접 정책을 제안하는 참여 시스템 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7952,6 +8373,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년정책 기반 강화 사회적 논의를 통한 청년연령 현실화 추진,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7959,6 +8381,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년·저소득층 지원 확대 국민연금 최초 가입 시 첫 보험료 지",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7966,6 +8389,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "불합리한 제도개선 일하는 경우 국민연금이 감액되는 소득기준 상",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7973,6 +8397,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "다층 노후소득보장체계 구축 국민·기초·퇴직·주택연금 등 다층 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7980,6 +8405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가책임 강화·기금운용 개선 국민연금에 대한 국가재정 역할 강",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7987,6 +8413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "어르신 지원 강화 일자리, 식사ㆍ건강, 재무관리 등 맞춤형 종",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -7994,6 +8421,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고령친화산업 활성화 돌봄인력 부족 대응과 서비스 질 향상을 위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8001,6 +8429,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "인구정책 거버넌스 혁신 저출산·고령사회위원회의 ▲ 정책 범위 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8008,6 +8437,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회적 고립 대응 고독사위기대응시스템 구축ㆍ운영 및 일상회복패",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8015,6 +8445,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "양질의 돌봄일자리 확대 및 종사자 처우개선 ‘사회복지시설 인건",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8022,6 +8453,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정년연장 추진 사회적 논의 통한 법정 정년 단계적 연장 입법 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8029,13 +8461,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "퇴직연금 강화 노후소득 보장을 위한 퇴직연금 의무화 단계적 추",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·퇴직연금 강화로 모든 일하는 사람의 노후 보"
       },
       {
         "no": "92-3",
         "t": "AI 역량강화 구직자 및 재직자 AI 교육 지원, AI·빅데이",
         "n": 1,
-        "r": "애매",
+        "r": "확실",
+        "w": "「고용서비스 고도화와 전 국민 역량강화 지원」 개요에 AI·빅데이터 활용 맞춤형 고용서비스와 재직자 능력개발이 있음",
         "e": "고용노동부·고용서비스 고도화와 전 국민 역량강화 지원"
       },
       {
@@ -8043,27 +8477,31 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정의로운 노동대전환 지원 정의로운 전환 특구 지정, 재취업 등",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
         "no": "92-5",
         "t": "이주노동자 통합 취업지원 외국인력 수급 설계, 인권과 안전을 ",
         "n": 1,
-        "r": "애매",
+        "r": "오탐",
+        "w": "「사회통합적 고용-취업지원」 개요가 전부 청년 — 이주노동자 없음",
         "e": "고용노동부·청년·여성, 사회적기업 등 사회통합적 고용-"
       },
       {
         "no": "93-1",
         "t": "모든 일하는 사람의 권리보장 일터 기본법 제정 및 5인 미만·",
         "n": 3,
-        "r": "애매",
-        "e": "고용노동부·새로운 유해·위험으로부터 일하는 사람 보호"
+        "r": "확실",
+        "w": "세 번째 사업 「일터 권리 보장법 제정 등 모든 일하는 사람의 권리 보장」이 세부과제(일터 기본법 제정)와 같은 일",
+        "e": "고용노동부·일터 권리 보장법 제정 등 모든 일하는 사람"
       },
       {
         "no": "93-2",
         "t": "비정규직 권리보장 확대 노동조합법 2·3조(노란봉투법) 개정,",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·노동조합법 2·3조 개정"
       },
       {
@@ -8071,6 +8509,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "임금체불 근절 하도급 임금 구분지급제 도입, 임금체불 법정형 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·임금체불 근절 및 근로감독 전면 혁신"
       },
       {
@@ -8078,6 +8517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공정한 임금 체계 확립 동일가치노동 동일임금 명문화, 고용형태",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8085,6 +8525,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "건설·물류·수송 노동자 보호 강화 (택배)계약갱신권 실질적 보",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8092,6 +8533,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "노동존중문화 확산 ‘근로자의날’을 ‘노동절’로 명칭 변경, 교",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·근로자의날 명칭 변경 "
       },
       {
@@ -8099,6 +8541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "취약노동자 권리구제 강화 노동법원 설립(법무부), 노동위원회에",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8106,6 +8549,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "산 업별 ·지역별 등 교섭 촉진 초(超)기업별 교섭단위 결정 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8113,6 +8557,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "대화와 참여의 노사관계 구축 경사노위 활동 개선, 산업별·지역",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8120,6 +8565,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "노동시간 단축 일·생활 균형 촉진을 위해 ▲ 실노동시간 단축 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·주4.5일제 등 실노동시간 단축 및 포괄임금"
       },
       {
@@ -8127,6 +8573,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "쉼이 있는 일터 구현 쉴 권리 보장을 위한 연차휴가 개선*, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8134,6 +8581,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일 ·가정 양립 지원 강화 ▲ 배우자 유 ·사산휴가 신설 ▲ ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8141,6 +8589,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "갑질 없는 행복한 일터 조성 ILO 괴롭힘 방지협약 비준 추진",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8148,6 +8597,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고 용서비스 혁신 전국민 역량강화를 위한 채용연계형 직업훈련 ",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·고용서비스 고도화와 전 국민 역량강화 지원"
       },
       {
@@ -8155,6 +8605,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "지역주도 양질의 일자리 창출 (가칭)「지역고용활성화법」 제정*",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·지역 재량권 강화를 통한 양질의 지역 일자리"
       },
       {
@@ -8162,6 +8613,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "고용안전망 확대 구직촉진수당 단계적 인상, 노동취약계층 노동복",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·구직지원금 확대, 전 국민 고용보험 완성 등"
       },
       {
@@ -8169,6 +8621,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사회통합적 고용·취업 지원 강화 사회적 기업 지원 예산 복원 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "고용노동부·청년·여성, 사회적기업 등 사회통합적 고용-"
       },
       {
@@ -8176,6 +8629,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "성평등 거버넌스 강화 여성가족부의 기능을 강화하여 ‘성평등가족",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "성평등가족부·여성가족부 적극행정 추진"
       },
       {
@@ -8183,6 +8637,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "성평등한 일터 조성 고용평등 임금공시제를 도입하고, 공시시스템",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8190,6 +8645,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "여성 경제활동 지원 강화 새일센터 등을 통한 여성의 고용유지 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8197,6 +8653,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "디지털성범죄 강력대응 중앙·지역 디지털성범죄피해자지원센터 인력",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8204,6 +8661,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "여성폭력 피해자 지원 확대 교제폭력·스토킹 등 피해자 맞춤형 ",
         "n": 6,
         "r": "확실",
+        "w": "",
         "e": "성평등가족부·스토킹ㆍ교제폭력 대응"
       },
       {
@@ -8211,6 +8669,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "성 ·재생산 건강권 보장 임신중지 법·제도 개선 및 임신중지 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8218,6 +8677,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "‘위안부’ 피해자 존엄 회복 ‘위안부’ 피해자 명예훼손 금지·",
         "n": 5,
         "r": "확실",
+        "w": "",
         "e": "성평등가족부·일본군‘위안부’피해자 조사·연구·기념사업"
       },
       {
@@ -8225,6 +8685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "초 ·중·고 AI 역량 강화 STEAM 교육 내실화 등을 통해",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8232,6 +8693,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 인재 양성 지원 대학(원) 대상 AI 융복합(AI+X) ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8239,6 +8701,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "생애주기별 AI 교육 지원 성인학습자 대상 온오프라인 AI 재",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8246,6 +8709,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글 로벌 AI 인재 유치 정부초청장학생(GKS), 국제 학생교",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8253,6 +8717,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기초학문 및 인문학 교육 확대 초·중·고 인문학 및 독서 교육",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8260,6 +8725,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "시 민 ·헌법 ·기후환경 ·생태전환교육 강화 교육활동 전반에서",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8267,6 +8733,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "역사교육 강화 민주시민 의식 함양을 위해 역사적 사실에 기반한",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8274,6 +8741,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "문화예술·체육교육 확대 모든 학생의 예술감수성 함양 및 신체활",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8281,6 +8749,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제·금융·노동교육 활성화 초·중·고부터 대학 진학–사회 진출",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8288,6 +8757,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가책임 공교육 강화 기초학력 선도학교 확대, 기초학력 전담교",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8295,6 +8765,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "방과후 ·돌봄체계 구축 방과후 프로그램 이용권 제공으로 교육비",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8302,6 +8773,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "정부책임형 유보통합 추진 0세반부터 교사 대 아동 비율 개선,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8309,6 +8781,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "특수교육 개선 특수학급 신·증설, 특수학교 20개교 설립, 특",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8316,6 +8789,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "마음건강 지원 ‘사회정서교육’ 활성화, 선별검사* 내실화, 전",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8323,6 +8797,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민주적 학교 운영 기반 마련 교사·학생·학부모가 존중·협력하는",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8330,6 +8805,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "교권 보호 및 정치기본권 확대 교원의 직무 특성과 학교 실정을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8337,6 +8813,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "모두가 안전한 학교 조성 학교 안팎 위기요인을 제거하여 모두의",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8344,6 +8821,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국가교육위원회의 사회적 합의 기능 강화 국가교육위원회 확대 및",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8351,6 +8829,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-콘텐츠 성장기반 확충 세계적 콘텐츠 기업 육성을 목표로 ‘",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8358,6 +8837,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-콘텐츠 핵심산업 육성 8대 분야* 중심 장르별 전략적 지원",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8365,6 +8845,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "AI 활용 콘텐츠산업 혁신 AI 시대 콘텐츠산업 생태계 구축을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8372,6 +8853,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한류 연관 산업 글로벌 도약 범부처 ‘한류산업진흥 기본계획’*",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8379,6 +8861,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-콘텐츠 불법유통 근절 저작권 보호를 위해 AI 기반 침해 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8386,6 +8869,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "문화국가 정책인프라 마련 문화정책·산업 전략 수립, 국제 문화",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8393,6 +8877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "일상 속 문화향유·참여 확대 통합문화이용권* 확대, 생애주기 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8400,6 +8885,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "문화로 지역 성장 문화환경 취약지역 지원, 문화선도산단 선정 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8407,6 +8893,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전통·유산 보존 및 가치확산 전통사찰 등 자연재난대응 인프라 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8414,6 +8901,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 K-컬처 확산 K-아트·한국어·전통문화 등 해외 진출 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8421,6 +8909,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "예술인의 자유로운 창작환경 조성 창작공간·인프라* 확대, 창작",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8428,6 +8917,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "촘촘한 예술인 복지 제공 예술인 맞춤형 복지를 위한 복지금고 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8435,6 +8925,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "문화예술 지원체계 개선 지역 문예회관을 지역예술 창·제작 거점",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8442,6 +8933,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "청년 ·장애예술인 기회 확대 청년예술인 자산 형성을 위한 적립",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8449,6 +8941,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전 국민 생활체육 활성화 유아부터 어르신까지 맞춤형 스포츠활동",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8456,6 +8949,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전문체육 투자 확대 우수선수 육성을 위한 성장 단계별 지원 확",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8463,6 +8957,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "스포츠 인프라 통한 지역 발전 K-POP 공연수요에 부합하는 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8470,6 +8965,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "차별없이 누리는 장애인 체육 반다비체육센터 및 유·청소년 통합",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8477,6 +8973,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "K-스포츠 위상 강화 국제대회 참가·유치·개최 지원, e스포츠",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8484,6 +8981,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "방한관광 홍보·편의 개선 K-컬처 연계 방한 관광* 홍보, 치",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8491,6 +8989,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "특화자원 연계 지역관광 육성 지역 ·콘텐츠 중심 광역관광개발,",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8498,6 +8997,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "관광산업 혁신 생태계 구축 AI 활용 관광기업 서비스 혁신, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8505,6 +9005,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "누구나 누리는 관광환경 조성 국민휴가지원 확대·신설*, 장애인",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8512,27 +9013,31 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "미디어 법제 정비 및 성장기반 마련 신·구 미디어를 아우르는 ",
         "n": 2,
         "r": "오탐",
+        "w": "",
         "e": "방송미디어통신위원회·K-콘텐츠·미디어 전략펀드 운영"
       },
       {
         "no": "108-2",
         "t": "디지털·미디어 산업 경쟁력 강화 K-플랫폼의 해외진출을 지원하",
         "n": 6,
-        "r": "애매",
-        "e": "방송미디어통신위원회·디지털성범죄물 유통방지"
+        "r": "확실",
+        "w": "「OTT 산업 경쟁력 강화」 개요가 국내 OTT 사업자 해외진출 지원 — 세부과제의 K-플랫폼 해외진출 지원과 같은 일",
+        "e": "방송미디어통신위원회·OTT 산업 경쟁력 강화"
       },
       {
         "no": "108-3",
         "t": "디지털·미디어 상생성장 지원 소상공인·중소기업과 방송광고·유료",
         "n": 5,
         "r": "확실",
+        "w": "",
         "e": "방송미디어통신위원회·혁신형 중소기업 및 소상공인 방송광고 제작 "
       },
       {
         "no": "108-4",
         "t": "안전한 디지털 환경 조성 온라인상 정보 ·콘텐츠 건전성 제고와",
         "n": 4,
-        "r": "애매",
+        "r": "확실",
+        "w": "「디지털성범죄물 유통방지」 추진배경이 \"정부 국정과제 '안전한 디지털 환경 조성'이 선정·추진됨\"이라고 국정과제명을 직접 씀",
         "e": "방송미디어통신위원회·디지털성범죄물 유통방지"
       },
       {
@@ -8540,6 +9045,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "디지털 이용자 권리 보장 쇼핑 ·배달 ·OTT ·여행 등 실생",
         "n": 4,
         "r": "애매",
+        "w": "「(가칭) AI서비스 이용자보호법」은 디지털 이용자 권리의 일부(AI 서비스), 세부과제는 쇼핑·배달·OTT 플랫폼 이용자",
         "e": "방송미디어통신위원회·디지털성범죄물 유통방지"
       },
       {
@@ -8547,6 +9053,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한국형 3축체계 고도화 북핵·미사일 위협에 대비할 수 있도록 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8554,6 +9061,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국방우주전략 고도화 우주전력 확충 및 우주전략 고도화 등 국방",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8561,6 +9069,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "유무인복합체계 고도화 전쟁양상 및 기술발전 속도를 고려, 재래",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8568,6 +9077,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국방AI 첨단기술 활용 AI 신속개발·활용을 위해 국방 데이터",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8575,6 +9085,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "합동작전능력 향상 시공간을 초월하여 정보공유 및 작전지휘가 가",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8582,6 +9093,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사이버 위협대응체계 공고화 범정부 사이버안보 대응체계를 구축하",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8589,6 +9101,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전방위 억제능력 확보 한미동맹을 미래형 포괄적 전략동맹으로 발",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국방부·굳건한 한미동맹 기반 위에 전시작전통제권 전"
       },
       {
@@ -8596,6 +9109,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "전작권 전환 한국군의 전 ·평시 연합방위 주도능력을 조기에 확",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8603,6 +9117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국방개혁 로드맵 마련 병력감축 상황 및 총체전력 차원에서, ‘",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8610,6 +9125,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "준4군 체제로 해병대 개편 해병대의 독립성과 독자적인 작전권을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8617,6 +9133,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "병과체계·인사제도 개혁 대병과 체제로의 개편, 간부 장기복무 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8624,6 +9141,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "여군 확대 및 복무여건 개선 여성 초급간부 선발을 확대하고, ",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "국방부·군인 복무여건 개선 및 복지 향상"
       },
       {
@@ -8631,6 +9149,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민간자원 활용 군수, 시설관리, 교육, 복지, 인사관리 등 군",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국방부·미래병력 감축을 고려한 비전투임무 민간자원 "
       },
       {
@@ -8638,6 +9157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "예비전력 발전 인구 감소 시대에 대비하여 예비군 훈련비 현실화",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국방부·미래 국방환경 변화를 고려한 2040 예비전"
       },
       {
@@ -8645,6 +9165,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "군인 복무여건 개선 군인들의 처우와 복지를 개선하여 사기 진작",
         "n": 2,
         "r": "확실",
+        "w": "",
         "e": "국방부·군인 복무여건 개선 및 복지 향상"
       },
       {
@@ -8652,6 +9173,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "군 복무 - 가정 양립 복무체계 가족 친화적이고 안전한 복무여",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8659,6 +9181,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "민군상생 규제완화 군 공항 이전의 원활한 추진, 군사시설보호구",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "국방부·군 공항 이전의 원활한 추진"
       },
       {
@@ -8666,6 +9189,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "방산수출 방산수출에 대해 재정·금융·세제 지원, 산업협력 등 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8673,6 +9197,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "중소·벤처기업 육성 기업의 성장단계별(진입·성장·확장·고도화)",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8680,6 +9205,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "획득체계 혁신 방위사업의 공정성을 강화하고, 무기도입·R&D ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8687,6 +9213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "첨단기술 산업기반 구축 AI, 항공엔진, 반도체, 우주, 드론",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8694,6 +9221,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "공급망 안정화 우리 군이 운용 중인 100대 무기체계 소재·부",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8701,6 +9229,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "통일부 조직 정상화 및 역량 강화 남북대화·교류협력 전담부서 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8708,6 +9237,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "남북대화 재개 남북간 우발적 충돌 방지 및 재난, 인도적 사안",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8715,6 +9245,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "군사적 긴장 완화 및 신뢰구축 남북 상호간 적대적·대결적 행위",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8722,6 +9253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "남북 평화공존 기반 구축 국내 대북 ·통일정책 추진기반을 제도",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8729,6 +9261,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "남북교류협력 추진체계 정비 민관 남북교류 거버넌스를 재건 ·강",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8736,6 +9269,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "종교·문화·체육 등 다양한 민간교류 지원 교류단체·지자체 등과",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8743,6 +9277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "기후 공동대응과 인도적 상황 개선을 위한 협력 추진 인도적 협",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8750,6 +9285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "인 도적 문제 해결 남북간 인도적 대화 복원을 통한 이산가족 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8757,6 +9293,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "북한주민 인권의 실질적 증진 북한주민의 자유권 ·사회권을 통합",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8764,6 +9301,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "북 한이탈주민 정착지원 및 사회통합 강화 북한이탈주민의 사회적",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8771,6 +9309,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "사 회적 대화 활성화 대북 ·통일정책에 대한 국민의 직접 참여",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8778,6 +9317,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "평화·통일 담론 확산 및 평화통일 공공외교 추진 민간이 평화·",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8785,6 +9325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "평화·통일·민주시민교육 추진 통일교육을 평화·통일·민주시민교육",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8792,6 +9333,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "북한자료 공개 확대 국민 알권리 보장과 성숙한 민주시민의식을 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8799,6 +9341,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "(가칭)「한반도 평화경제 미래비전」 마련 평화와 경제의 선순환",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8806,6 +9349,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "평화경제특구 조성 「평화경제특구법」에 따라 평화경제특구를 신속",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8813,6 +9357,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "DMZ 국제 생태·평화관광 협력지구 개발 한반도 DMZ가 갖는",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8820,6 +9365,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제협력 사업 재개 및 다자협력 추진 「한반도 평화경제 미래비",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8827,6 +9373,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한미 동맹을 미래형 포괄적 전략 동맹으로 발전 안보, 통상, ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8834,6 +9381,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "견고하고 성숙한 한일관계 구축 ▲ 셔틀외교 재개 등 고위급 교",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8841,6 +9389,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한중관계를 명실상부한 전략적 협력 동반자 관계로 발전 신성장동",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8848,6 +9397,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한러관계의 안정적 관리 및 발전 추진 우리 국민 ·기업 권익 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8855,6 +9405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "외교다변화 국제 환경에 유연하게 대응하기 위한 외교다변화 추진",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8862,6 +9413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "글로벌 도전과제 대응 책임있는 국가로서 국제 평화 ·안보, 사",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "외교부·글로벌 녹색성장 서포터즈"
       },
       {
@@ -8869,6 +9421,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "통합적 ·효과적 ODA ODA 중장기 전략 수립과 통합적 무상",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8876,6 +9429,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민 공공외교 및 K-이니셔티브 실현 국민들의 공공외교 직접 ",
         "n": 1,
         "r": "확실",
+        "w": "",
         "e": "외교부·국민 공공외교 우수사례 공모전"
       },
       {
@@ -8883,6 +9437,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "외교 인프라 혁신 및 외교 인력 전문성 증진 G7+ 외교강국 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8890,6 +9445,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "재외공관의 통합·조정 역할 강화 재외공관 역할 강화를 통한 범",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8897,6 +9453,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "경제 안보 조정·통합 강화 글로벌 통상·경제안보 이슈에 신속하",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "외교부·글로벌 녹색성장 서포터즈"
       },
       {
@@ -8904,6 +9461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "다자경제 협의체 의장국 수임을 통한 글로벌 경제외교 선도 ’2",
         "n": 1,
         "r": "오탐",
+        "w": "",
         "e": "외교부·글로벌 녹색성장 서포터즈"
       },
       {
@@ -8911,6 +9469,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "우리기업의 수출 ·수주 지원을 위한 재외공관의 전진기지화 민관",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8918,6 +9477,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "신흥·첨단기술 분야 중심의 과학기술외교 강화 주요국들과 기술-",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8925,6 +9485,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "한미협의와 한반도 긴장 완화로 북핵 대화 여건 조성 한반도 긴",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8932,6 +9493,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "단계적·실용적 접근을 통한 비핵화 진전 추구 한미협의를 바탕으",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8939,6 +9501,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "비핵화-한반도 평화구조 구축 병행 추구 남북대화 및 북미협상을",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8946,6 +9509,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "촘촘한 재외국민 보호망 구축 선제적 예방 중심의 재외국민보호 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8953,6 +9517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "국민 편익 증진 해외출국자 수 3천만 명 시대에 발맞추어 해외",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8960,6 +9525,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "맞춤형 동포 지원 동포들의 한인 정체성 함양, 역사적으로 희생",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       },
       {
@@ -8967,6 +9533,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "t": "동포 역량 극대화 동포사회의 민간외교 활동 지원, 국내 체류 ",
         "n": 0,
         "r": "",
+        "w": "",
         "e": ""
       }
     ],
@@ -9124,6 +9691,12 @@ section.appendix th,section.appendix td{padding:10px 12px}
       }
       var ex=document.getElementById('vsSubEx');
       if(ex) ex.innerHTML = S2.확실한예.filter(function(d){ var m=(S2.목록||[]).find(function(x){return x.no===d.no;}); return !m || m.r==='확실'; }).map(function(d){ return '<li><b>'+esc(d.no)+'</b> '+esc(d.제목)+' ← '+esc(d.사업)+'</li>'; }).join('');
+      var rb=document.getElementById('vsRevBody'), rn=document.getElementById('vsRevN');
+      if(rb){ var rows=(S2.목록||[]).filter(function(d){return d.n>0;}); if(rn) rn.textContent=rows.length;
+        var order={확실:0,애매:1,오탐:2};
+        rb.innerHTML=rows.slice().sort(function(a,b){ return (order[a.r]-order[b.r]) || (parseInt(a.no)-parseInt(b.no)) || a.no.localeCompare(b.no); }).map(function(d){
+          var cls=d.r==='확실'?'sure':d.r==='애매'?'amb':'bad';
+          return '<tr class="'+cls+'"><td class="no">'+esc(d.no)+'</td><td>'+esc(d.t)+'<br><span style="color:var(--ink-3)">← '+esc(d.e)+(d.n>1?' 외 '+(d.n-1)+'건':'')+'</span></td><td class="j">'+esc(d.r)+'</td><td>'+esc(d.w||'')+'</td></tr>'; }).join(''); }
     }
 
     // 여섯 질문 × 다섯 자리. 판정은 필자의 것, 근거는 항목 유무다. 글자 수는 세지 않는다.
@@ -9180,7 +9753,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         '<li><b>국정과제 포털 실측</b> — 2026-09-17 정부업무평가포털 과제별 추진실적(menu_id=181)에서 과제 8개(14·20·24·52·56·72·73·76)의 아코디언을 펼쳐 항목 유무를 확인했다. 모든 과제가 같은 네 탭(2026년·2025년·목표·과제 내용) 구조였다. 8개는 표본이며 123개 전체를 연 것은 아니다. 다만 항목 구조가 같으므로 "담당자 항목 없음"은 전체에 적용된다.</li>'
       + '<li><b>없다고 판정한 근거</b> — 담당자·예산·근거문서·타 시스템 링크는 8개 모두에 항목 자체가 없었다. 8개 아코디언의 링크를 전수 열거한 결과 외부 링크는 과제당 정책제안(sotong.go.kr) 하나뿐이고 첨부·PDF·iframe은 0건이다.</li>'
       + '<li><b>세부과제에 대하여 — 정정</b> — 처음에는 "세부과제 없음"이라 적었다. 화면에도 PDF에도 "54-2" 같은 번호가 찍혀 있지 않아서다. 그러나 각 과제 「주요내용」의 불릿 4~6개가 세부과제 역할을 하며, 부처는 그 순서로 N-M을 붙여 쓴다. 정책실명제 기록의 56-3(거점항만 조성)·52-1(중앙-지방 협력체계)·71-5(해상풍력)가 PDF 불릿 순서와 맞았다. 사용자가 본 54-2·54-3도 차등 지원체계 정립·고향사랑기부제 활성화로 일치한다. 다만 식약처가 적은 44-4(안전한 먹거리)는 PDF 순서로는 44-6이라, 부처가 보는 문서와 공개 PDF의 순서가 다를 수 있다. 123개 합계 '+S2.총수+'개, 산출 코드 <span class="mono">tools/parse-gukjeong-sub.mjs</span>.</li>'
-      + '<li><b>세부과제 ↔ 정책실명제 어림</b> — 세부과제 앞머리(첫 26자)에서 3자 이상 낱말을 뽑되 부처명·상투어(강화·확대·구축 등 47개)를 뺐다. 같은 주관부처의 2025~2026년 사업명에 그 낱말이 들어가면 관련 사업 있음으로 봤다. 사업개요까지 보면 부처명이 걸려 헛짚어 사업명만 썼다. 걸린 '+S2.관련사업있음+'쌍을 <b>전부 사람이 읽어</b> 확실 '+S2.확실+' · 애매 '+S2.애매+' · 오탐 '+S2.오탐+'으로 판정했다(<span class="mono">notes/gukjeong-sub-review.json</span>). 확실은 세부과제와 사업이 같은 일을 가리키는 것, 애매는 같은 영역이나 다른 일일 수 있는 것, 오탐은 흔한 낱말만 겹친 것이다. 오탐 예: 120-2 글로벌 도전과제 ← 글로벌 녹색성장 서포터즈("글로벌"만 겹침), 74-6 신종범죄 대응역량 ← 아동학대 대응역량. 판정은 필자 한 사람의 것이라 다른 사람이 보면 애매와 확실의 경계가 조금 움직일 수 있다. 산출 코드 <span class="mono">tools/match-sub.mjs</span>.</li>'
+      + '<li><b>세부과제 ↔ 정책실명제 어림</b> — 세부과제 앞머리(첫 26자)에서 3자 이상 낱말을 뽑되 부처명·상투어(강화·확대·구축 등 47개)를 뺐다. 같은 주관부처의 2025~2026년 사업명에 그 낱말이 들어가면 관련 사업 있음으로 봤다. 사업개요까지 보면 부처명이 걸려 헛짚어 사업명만 썼다. 걸린 '+S2.관련사업있음+'쌍을 <b>전부 사람이 읽어</b> 판정했다(<span class="mono">notes/gukjeong-sub-review.json</span>). 1차는 사업명 기준으로 확실 68 · 애매 21 · 오탐 12였고, 2차로 애매 21건을 카드의 사업개요·추진배경 본문으로 다시 읽어 확실 6 · 오탐 7 · 애매 8로 갈랐다. 최종 확실 '+S2.확실+' · 애매 '+S2.애매+' · 오탐 '+S2.오탐+'. 확실은 세부과제와 사업이 같은 일을 가리키는 것, 애매는 같은 영역이나 다른 일일 수 있는 것, 오탐은 흔한 낱말만 겹친 것이다. 오탐 예: 120-2 글로벌 도전과제 ← 글로벌 녹색성장 서포터즈("글로벌"만 겹침), 74-6 신종범죄 대응역량 ← 아동학대 대응역량. 판정은 필자 한 사람의 것이라 다른 사람이 보면 애매와 확실의 경계가 조금 움직일 수 있다. 산출 코드 <span class="mono">tools/match-sub.mjs</span>.</li>'
       + '<li><b>주관부처 경로 어림</b> — 2025~2026년 등록 중 선정기준에 국정과제가 든 사업 '+C.주관부처경로.사업건수+'건을 기관별로 모아, 그 기관이 주관하는 국정과제를 "사업은 있음"으로 봤다. 기관이 여러 과제를 맡으면 어느 과제의 사업인지 가릴 수 없으므로 상한에 가깝다. 2025년 사업은 이전 정부 국정과제 기준으로 선정된 것이라 현 과제와 어긋날 수 있다. 과제명 핵심어를 사업명에 맞춰 보는 방법도 시도했으나 "안전하고" 같은 흔한 말이 걸려 쓰지 않았다.</li>'
       + '<li><b>번호로 닿는 과제 세는 법</b> — 정책실명제 2026년 등록 '+C.등록건수+'건의 선정기준·사업개요·추진실적에서 "국정과제 N" 꼴을 찾아 그 N이 가리키는 과제를 셌다. '+C.번호기재건수+'건이 '+C.가리킨과제수+'개 과제를 가리켰고, 그중 '+C.세부번호를스스로붙임+'건은 "56-3"처럼 포털에 없는 세부번호를 붙였다. 44번은 주관부처(기후부)가 아닌 식약처 사업이 인용한 것이다.</li>'
       + '<li><b>2026년은 진행 중</b> — 9월 기준 45개 기관 중 '+N.올해등록기관+'곳만 올해 등록을 마쳤다(노트 ③). 회색 칸은 "이름 없음"이 아니라 "지금 찾을 수 없음"이다. 연말에 다시 센다.</li>'
@@ -9477,6 +10050,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       + '해양경찰청 2023년도 대부분 2023-08-31 하루에 몰려 있다. 일괄 등록이므로 등록일로 사업 시점을 말할 수 없다.</li>'
       + '<li><b>누리집 대조</b> — '+VN.대조.조사일+' 기관 누리집 게시판을 직접 열어 목록을 셌다. 제출한 것은 없고 읽기만 했다. '
       + '포털 결락 '+VN.대조.요약.결락확인+'칸, 일치 '+일치수+'칸을 확인했다.</li>'
+      + '<li><b>포털에 기관 자체가 없는 곳</b> — 방위사업청은 누리집 정보공개 › 정책실명제 메뉴에 중점관리대상사업목록 511건(2026-09-18 확인, 최신 게시 2025-08-25)을 올리는데 포털의 중앙행정기관 45곳 목록에 없다. 이 노트의 결락 셈은 포털에 있는 기관의 연도 칸만 세므로 방위사업청 몫은 317건에 들어 있지 않다. 포털에 없는 여섯 기관의 확인은 노트 ⑤ 별첨.</li>'
       + '<li><b>국세청의 신뢰도가 높은 이유</b> — 게시글 제목에 사업연도가 적혀 있고(예: (2026-26) 사업명) 등록일 연도와 한 건도 어긋나지 않았다. '
       + '번호 1~323에 결번이 없어 목록 누락도 없다.</li>'
       + '<li><b>경찰청의 한계</b> — 목록과 상세 어디에도 사업연도 칸이 없어 등록일로만 셀 수 있었다. '

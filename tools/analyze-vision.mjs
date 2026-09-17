@@ -42,7 +42,7 @@ const 세부 = { 총수: SUBM.세부과제수, 관련사업있음: SUBM.관련�
   검수: SUBM.검수집계,
   확실: SUBM.세부.filter((d) => d.검수 === "확실").length, 애매: SUBM.세부.filter((d) => d.검수 === "애매").length, 오탐: SUBM.세부.filter((d) => d.검수 === "오탐").length,
   확실과제수: new Set(SUBM.세부.filter((d) => d.검수 === "확실").map((d) => +d.no.split("-")[0])).size,
-  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, r: d.검수 || "", e: d.예.length ? d.예[0].slice(0, 40) : "" })),
+  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, r: d.검수 || "", w: d.검수이유 || "", e: d.예.length ? d.예[0].slice(0, 40) : "" })),
   확실한예: SUBM.세부.filter((d) => d.사업수 && d.예.length).filter((d) => ["54-1","94-1","112-1","82-3","48-2","71-4","82-1","14-5","68-4","98-4"].includes(d.no)).map((d) => ({ no: d.no, 제목: d.제목.slice(0, 26), 사업: d.예[0] })) };
 
 const out = {

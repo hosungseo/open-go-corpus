@@ -17,7 +17,7 @@ const STOP = new Set(["강화","확대","구축","추진","지원","도입","마
 const kw = (title) => { const lead = title.split(/\s{2,}|\s[\-–]\s/)[0].slice(0, 26);
   // 한글·영숫자·하이픈만 남긴다. PDF의 따옴표·가운뎃점은 문자 코드가 제각각이라 하나씩 나열하면 빠진다.
   return [...new Set(lead.replace(/[^가-힣A-Za-z0-9\s-]/g, " ").split(/\s+/).map((w) => w.replace(/(들|을|를|이|가|의|로|으로|에|와|과|및)$/, "")).filter((w) => w.length >= 3 && !STOP.has(w) && !ORGWORDS.has(w) && !/^(국정|과제|정부|국가|사회적|단계별|맞춤형)$/.test(w)))]; };
-const recent = rows.filter((r) => r.year >= 2025).map((r) => ({ org: r.nstNm, nm: dec(r.plcNm), txt: dec(r.plcNm) + " " + dec(r.prjtSmry), gj: /국정과제/.test(r.slctnStdr || ""), year: r.year }));
+const recent = rows.filter((r) => r.year >= 2025).map((r) => ({ org: r.nstNm, nm: dec(r.plcNm), txt: dec(r.plcNm) + " " + dec(r.prjtSmry), smry: dec(r.prjtSmry), gj: /국정과제/.test(r.slctnStdr || ""), year: r.year, id: r.gclfCd }));
 let matched = 0, byTask = {}, examples = [];
 const detail = [];
 for (const t of SUB.과제) {
@@ -28,15 +28,22 @@ for (const t of SUB.과제) {
       .map((r) => ({ ...r, score: ks.filter((k) => r.nm.includes(k)).length + ks.filter((k) => k.length >= 5 && r.nm.includes(k)).length }))
       .sort((x, y) => (y.score - x.score) || (x.nm.length - y.nm.length));   // 예시는 핵심어가 많이·길게 겹치는 사업부터, 같으면 짧은 사업명(더 특정한 쪽)
     const gjHits = hits.filter((r) => r.gj);
-    detail.push({ no: s.no, 제목: s.제목.slice(0, 40), 핵심어: ks, 사업수: hits.length, 국정과제표시사업수: gjHits.length, 예: hits.slice(0, 2).map((r) => r.org + "·" + r.nm.slice(0, 24)) });
+    detail.push({ no: s.no, 제목: s.제목.slice(0, 40), 핵심어: ks, 사업수: hits.length, 국정과제표시사업수: gjHits.length, 예: hits.slice(0, 2).map((r) => r.org + "·" + r.nm.slice(0, 24)), 사업: hits.map((r) => ({ org: r.org, nm: r.nm, y: r.year, id: r.id })) });
     if (hits.length) { matched++; byTask[t.n] = (byTask[t.n] || 0) + 1; if (examples.length < 10 && ks.length) examples.push(`${s.no} ${ks.join("/")} ← ${hits.slice(0, 2).map((r) => r.nm.slice(0, 22)).join(" · ")}`); }
   }
 }
 const withKw = detail.filter((d) => d.핵심어.length).length;
 // 사람 검수를 얹는다. 자동 대조는 실마리이고 판정은 검수다.
 const REV_PATH = R("notes/gukjeong-sub-review.json");
-const REV = fs.existsSync(REV_PATH) ? JSON.parse(fs.readFileSync(REV_PATH, "utf8")).판정 : {};
-for (const d of detail) d.검수 = d.사업수 ? (REV[d.no] || "미검수") : "";
+const REVJ = fs.existsSync(REV_PATH) ? JSON.parse(fs.readFileSync(REV_PATH, "utf8")) : { 판정: {}, "2차": {} };
+const REV = REVJ.판정 || {}, REV2 = REVJ["2차"] || {};
+for (const d of detail) {
+  d.검수 = d.사업수 ? (REV[d.no] || "미검수") : "";
+  d.검수이유 = (REV2[d.no] && REV2[d.no].이유) || "";
+  // 2차 판정에서 근거로 삼은 사업이 첫 예시가 아니면 앞으로 끌어온다. 예시가 판정과 어긋나 보이면 안 된다.
+  const biz = REV2[d.no] && REV2[d.no].근거사업;
+  if (biz) { const i = d.사업.findIndex((h) => h.nm.trim() === biz); if (i > 0) { const [h] = d.사업.splice(i, 1); d.사업.unshift(h); d.예 = d.사업.slice(0, 2).map((r) => r.org + "·" + r.nm.slice(0, 24)); } else if (i < 0) console.warn("근거사업 못 찾음", d.no, biz); }
+}
 const 검수집계 = { 확실: 0, 애매: 0, 오탐: 0, 미검수: 0 };
 for (const d of detail) if (d.사업수) 검수집계[d.검수] = (검수집계[d.검수] || 0) + 1;
 const out = { 작성일: new Date().toISOString().slice(0, 10), 기준: "2025~2026년 정책실명제 등록 · 같은 주관부처 · 세부과제 앞머리 핵심어 포함", 세부과제수: detail.length, 핵심어있는세부과제: withKw, 관련사업있는세부과제: matched, 과제수: Object.keys(byTask).length, 검수집계, 세부: detail };
