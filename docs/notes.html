@@ -188,13 +188,12 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 질문 셋 — 누가 답하나 */
 .qa{margin:14px 0 4px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
-.qa .qrow{display:grid;grid-template-columns:1fr .9fr .9fr .9fr 1fr;border-top:1px solid var(--rule)}
+.qa .qrow{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
 .qa .qrow:first-child{border-top:0;background:var(--panel-2)}
 .qa .qrow:first-child > div{font-size:13px;font-weight:700;color:var(--ink-2);padding:10px 14px}
 .qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
-.qa .qrow:first-child > div:first-child:before,.qa .qrow:first-child > div.lk:before{display:none}
-.qa .qrow:first-child > div.lk{color:var(--em);border-left:1px solid var(--rule)}
+.qa .qrow:first-child > div:first-child:before{display:none}
 .qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
 .qa .q:before{content:"🙋";margin-right:6px}
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
@@ -205,17 +204,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .a.hit{color:var(--ink)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
-/* 잇는 열 — 진단이 아니라 처방이라 색을 달리한다 */
-.qa .a.lk{background:var(--k-primary-5);border-left:1px solid var(--rule);color:var(--ink)}
-.qa .a.lk .v{border-color:var(--em);color:var(--em);font-weight:700}
-.qa .a.lk .say{border-color:var(--em)}
-.qa .a.lk.gap{background:var(--paper)}
-.qa .a.lk.gap .v{border-color:var(--k-danger-60);color:var(--k-danger-60)}
-.qa .a.lk.gap .say{border-color:var(--k-danger-50);border-style:dashed}
-.qa .qrow.none .q{color:var(--k-danger-60)}
-.qa-end{margin:12px 0 0;font-size:15px;line-height:1.7;color:var(--ink-2)}
-.qa-end b{color:var(--ink)}
-@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-left:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} .qa .a.lk:before{color:var(--em)} }
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
 
 </style>
 <style>
@@ -794,8 +783,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         <b>정책실명제는 이름이 적힌 명패</b>이고, <b>사전정보공표는 동네 창구의 안내판</b>이고, <b>원문공개는 결재문서 원본</b>입니다.
         셋은 같은 사업의 다른 얼굴이라 <b>서로를 대신하지 못합니다.</b></p>
       <p>국민의 질문을 던져 보면 분명해집니다. "누가 맡았나"는 명패가, "어떻게 가입하나"는 안내판이,
-        "언제 무엇을 결정했나"는 원본이 답합니다. <b>질문마다 답하는 제도가 다릅니다.</b>
-        그리고 <b>"돈은 얼마나 쓰나"는 셋 중 아무도 답하지 못합니다.</b></p>
+        "언제 무엇을 결정했나"는 원본이 답합니다. <b>질문마다 답하는 제도가 다릅니다.</b></p>
     </div>
     <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
       정책실명제와 원문공개는 사업 대조기의 자료를, 사전정보공표는 시군구 누리집의 실제 페이지를 직접 열어 옮겼습니다.
@@ -808,9 +796,9 @@ section.appendix th,section.appendix td{padding:10px 12px}
     </section>
 
     <section class="core">
-      <h2>질문 넷 — 셋은 답하는 제도가 다르고, 하나는 아무도 못 답합니다</h2>
-      <p>국민이 물을 법한 질문 넷을 세 제도에 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다.
-        초록 칸이 제대로 답한 곳이고, 파란 열은 정책 번호 하나로 셋을 이었을 때 어떻게 되는지입니다.</p>
+      <h2>질문 셋, 답하는 제도가 하나씩 다릅니다</h2>
+      <p>국민이 물을 법한 질문 셋을 세 제도에 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다.
+        초록 칸이 제대로 답한 곳입니다.</p>
       <div class="qa" id="qa"></div>
     </section>
 
@@ -2736,10 +2724,6 @@ section.appendix th,section.appendix td{padding:10px 12px}
           "말": "문서 278건에 결재선이 있습니다. 하나씩 여시면 됩니다.",
           "판정": "흩어짐"
         }
-      },
-      "이으면": {
-        "말": "명패의 담당자 이름 옆에 원본의 결재선이 붙습니다. 누가 맡고 누가 결재했는지 한 화면입니다.",
-        "판정": "풀림"
       }
     },
     {
@@ -2757,10 +2741,6 @@ section.appendix th,section.appendix td{padding:10px 12px}
           "말": "홍보 계획 문서에 일부 있습니다. 파일을 변환해서 보셔야 합니다.",
           "판정": "간접"
         }
-      },
-      "이으면": {
-        "말": "명패에서 우리 동네 안내판으로 한 번에 갑니다. 세 겹을 열지 않아도 됩니다.",
-        "판정": "풀림"
       }
     },
     {
@@ -2778,31 +2758,6 @@ section.appendix th,section.appendix td{padding:10px 12px}
           "말": "2025-12-18 「2026년 홍보 추진계획 보고」, 재난보험과장 전결입니다.",
           "판정": "답함"
         }
-      },
-      "이으면": {
-        "말": "명패 아래 결재문서 278건이 날짜순으로 섭니다. 사업 하나의 결정 이력이 됩니다.",
-        "판정": "풀림"
-      }
-    },
-    {
-      "q": "돈은 얼마나 쓰나요?",
-      "답": {
-        "rn": {
-          "말": "사업개요에 보험료 지원율은 있지만 사업 예산 액수는 없습니다.",
-          "판정": "못 답함"
-        },
-        "pv": {
-          "말": "리플렛에 내가 낼 보험료 예시는 있지만 사업 예산은 없습니다.",
-          "판정": "못 답함"
-        },
-        "og": {
-          "말": "국고보조금 교부 결정 문서가 회차별로 있습니다. 금액은 문서마다 열어 더해야 합니다.",
-          "판정": "흩어짐"
-        }
-      },
-      "이으면": {
-        "말": "이어도 안 나옵니다. 셋 중 아무도 사업 예산을 한 자리에 적지 않습니다. 명패에 예산 칸이 필요합니다.",
-        "판정": "안 풀림"
       }
     }
   ],
@@ -2819,8 +2774,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       "고창군 이미지 5쪽": "어림 2,000~3,000"
     },
     "행안부본부": "사전정보공표 목록 132건 중 풍수해보험 0건. 가장 가까운 것은 재난배상책임보험(다른 제도). 업무안내 메뉴에는 별도로 있음."
-  },
-  "맺음": "세 질문은 정책 번호 하나로 이으면 풀리고, 예산은 이어도 안 풀립니다. 개선 과제가 둘로 갈립니다 — 잇는 일과 적는 일."
+  }
 }
 ;
   if(!D) return;
@@ -2856,19 +2810,15 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
     var qa=document.getElementById('qa');
     if(qa){
-      var head = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div><div class="lk">정책 번호 하나로 이으면</div></div>';
+      var head = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>';
       qa.innerHTML = head + TF.질문.map(function(q){
-        var none = !['rn','pv','og'].some(function(k){ return /^답함/.test(q.답[k].판정); });   // 아무도 못 답한 줄
-        var L = q.이으면 || null, gap = L && /안/.test(L.판정);
-        return '<div class="qrow'+(none?' none':'')+'"><div class="q">'+esc(q.q)+'</div>'
+        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
               return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
-          + (L ? '<div class="a lk'+(gap?' gap':'')+'" data-who="정책 번호 하나로 이으면"><span class="v">'+esc(L.판정)+'</span><span class="say">'+esc(L.말)+'</span></div>' : '')
           + '</div>';
       }).join('');
-      if(TF.맺음){ var e=document.createElement('p'); e.className='qa-end'; e.innerHTML=esc(TF.맺음).replace(/(잇는 일과 적는 일)/,'<b>$1</b>'); qa.insertAdjacentElement('afterend', e); }
     }
 
     var on=document.getElementById('tfNotes');
@@ -2882,8 +2832,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       + Object.entries(c.첨부글자||{}).map(function(e){return e[0]+' '+e[1]+(typeof e[1]==='number'?'자':'');}).join(', ')+'.</li>'
       + '<li><b>행정안전부 본부</b> — '+esc(c.행안부본부||'')+'</li>'
       + '<li><b>원문공개 얼굴</b> — 사업 대조기가 이 사업에 연결한 원문 278건 중 가장 최근 문서(2026-09-04)를 옮겼다. 결재선은 포털 표기 그대로이며 이름은 가렸다. 문서 본문은 포털에서 파일 변환 후에야 열리므로 여기 옮기지 않았다.</li>'
-      + '<li><b>질문 넷의 답</b> — 실제 자료에 있는 말을 골라 국민에게 하는 말투로 다듬었다. 판정(답함·부서까지·흩어짐·간접·연 단위·못 답함)은 필자의 판단이다. '
-      + '넷째 열 「정책 번호 하나로 이으면」은 정책실명제 2.0 시안을 전제한 것으로, 지금 있는 기능이 아니라 이었을 때의 모습이다.</li>'
+      + '<li><b>질문 셋의 답</b> — 실제 자료에 있는 말을 골라 국민에게 하는 말투로 다듬었다. 판정(답함·부서까지·흩어짐·간접·연 단위·못 답함)은 필자의 판단이다.</li>'
       + '<li><b>노트 ② 정정</b> — 사전정보공표의 공개 정보 구체성을 20자에서 1,986자로 고쳤다. 20자는 포털 항목 이름의 길이였고, 1,986자는 영천시 첨부 리플렛의 글자 수다. 세 겹(포털→시군구→첨부)을 열어야 닿는 값이다.</li>'
       + '<li><b>말투</b> — 세 얼굴에 명패·안내판·원본이라는 별칭을 붙였다. 비유이지 제도의 법적 이름이 아니다.</li>';
     }
