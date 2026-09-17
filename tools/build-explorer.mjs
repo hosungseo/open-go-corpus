@@ -307,6 +307,7 @@ if (!WITH_NAMES) {
   const VN_PATH = R("notes/venue.json");
   const TF_PATH = R("notes/three-faces.json");
   const DG_PATH = R("notes/digest.json");
+  const FL_PATH = R("notes/fiscal-link.json");
   const GJ_PATH = R("notes/gukjeong.json");
   const VS_PATH = R("notes/vision.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
@@ -346,6 +347,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(GJ_PATH)) { console.error("ERROR notes/gukjeong.json missing"); process.exit(1); }
       const gd = fs.readFileSync(GJ_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__GJDATA__*/null", () => gd).replace("/*__GJDATA__*/", () => gd);
+    }
+    if (page.includes("/*__FLDATA__*/")) {
+      if (!fs.existsSync(FL_PATH)) { console.error("ERROR notes/fiscal-link.json missing — run node tools/analyze-fiscal.mjs"); process.exit(1); }
+      const fl = fs.readFileSync(FL_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__FLDATA__*/null", () => fl).replace("/*__FLDATA__*/", () => fl);
     }
     if (page.includes("/*__DGDATA__*/")) {
       if (!fs.existsSync(DG_PATH)) { console.error("ERROR notes/digest.json missing — run node tools/build-digest.mjs"); process.exit(1); }

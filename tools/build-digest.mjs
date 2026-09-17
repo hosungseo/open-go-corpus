@@ -1,4 +1,4 @@
-// 개요 페이지용 요약 — 노트 여섯 편의 대표 숫자만 뽑아 작은 JSON 하나로 만든다.
+// 개요 페이지용 요약 — 노트 일곱 편의 대표 숫자만 뽑아 작은 JSON 하나로 만든다.
 // 개요에 vision.json(180KB) 같은 큰 파일을 싣지 않기 위해서다. 숫자는 전부 각 노트의 산출 파일에서 읽는다.
 import fs from "fs";
 import path from "path";
@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const ROOT = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const R = (p) => path.join(ROOT, p);
 const J = (p) => JSON.parse(fs.readFileSync(R(p), "utf8"));
-const CZ = J("notes/citizen.json"), AX = J("notes/compare-axes.json"), VN = J("notes/venue.json"), TF = J("notes/three-faces.json"), GJ = J("notes/gukjeong.json"), VS = J("notes/vision.json");
+const CZ = J("notes/citizen.json"), AX = J("notes/compare-axes.json"), VN = J("notes/venue.json"), TF = J("notes/three-faces.json"), GJ = J("notes/gukjeong.json"), VS = J("notes/vision.json"), FL = J("notes/fiscal-link.json");
 const yr = CZ.연도별.map((y) => ({ 연도: +y.year, n: +(y.nat || 0) })).filter((y) => y.연도);
 const peak = yr.reduce((a, b) => (b.n > a.n ? b : a), yr[0]);
 const last = yr.filter((y) => y.연도 <= 2025).sort((a, b) => b.연도 - a.연도)[0];
@@ -18,6 +18,7 @@ const 노트 = [
   { n: 4, g: "연계", id: "note4", t: "같은 사업의 세 얼굴 — 명패, 안내판, 원본", v: `${TF.질문.length}질문`, u: "답하는 제도가 하나씩 다름", d: "풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 셋을 던졌습니다. 누가 맡았나는 정책실명제, 어떻게 가입하나는 사전정보공표, 언제 무엇을 결정했나는 원문공개가 답합니다." },
   { n: 5, g: "연계", id: "note5", t: "국정과제에서 정책실명제로 — 지금은 건너갈 수 없다", v: `${현.가리킨과제수} / 123`, u: "번호로 닿는 과제", d: `정책실명제 카드에 국정과제 번호 칸이 없습니다. 주관부처를 다리로 삼아도 올해 사업을 올린 부처가 있는 과제는 ${GJ.상태별["2026 등록"]}개뿐이고(${GJ.포털기관수}곳 중 ${GJ.올해등록기관}곳만 등록), 그마저 어느 과제인지는 특정할 수 없습니다. 주관부처가 포털에 아예 없는 과제도 ${GJ.상태별["포털에 없음"]}개입니다.` },
   { n: 6, g: "위상", id: "note6", t: "이름 있는 곳에 서사가 없고, 서사 있는 곳에 이름이 없다", v: `${세부.확실합계} / ${세부.총수}`, u: `세부과제에 정책실명제 사업 있음 · ${Math.round(세부.확실합계 / 세부.총수 * 100)}%`, d: `세부과제 ${세부.총수}개를 정책실명제 사업과 이름·본문으로 대조하고 사람이 읽어 판정했습니다. 확실 ${세부.확실합계}개(${세부.확실과제수합계}개 과제). 카드 ${세부.인용카드.카드수}장 중 국정과제를 본문에 적은 카드는 ${세부.인용카드.총}장입니다.` },
+  { n: 7, g: "연계", id: "note7", t: "국정과제에서 예산 줄로 — 되는 것 셋에 하나", v: `${FL.판정.확실} / ${FL.세부과제수}`, u: `세부과제에 2026 예산 줄 있음 · ${Math.round(FL.판정.확실 / FL.세부과제수 * 100)}%`, d: `행안부 주관 세부과제 ${FL.세부과제수}개를 열린재정 세출 세부사업 ${FL.세부사업수}개에 대 봤습니다. 줄이 없는 ${FL.판정.없음}개는 타부처 예산 ${FL.없음사유["타부처 예산"]}, 제도·법제 ${FL.없음사유["제도·법제"]}, 이름으로 못 찾음 ${FL.없음사유["이름으로 못 찾음"]}. 주민자치회는 국비 줄이 없고 특별교부금 경로입니다.` },
 ];
 const 띠 = [
   ["국정과제 123개 중 번호로 닿는 과제", `${현.가리킨과제수}개`, "d", "정책실명제 카드에 번호 칸 없음"],

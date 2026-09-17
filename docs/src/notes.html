@@ -219,6 +219,17 @@
   .pos .head3 .cnt2{margin-left:0;flex-basis:100%}
   .pos .scrollhint{display:block}
 }
+/* 노트 ⑦ — 예산 줄 대조 */
+.flbar{display:flex;height:26px;border-radius:4px;overflow:hidden;border:1px solid var(--rule);margin:14px 0 8px}
+.flbar span{display:block;height:100%;border-right:1px solid var(--panel)}
+.flbar .s1{background:var(--k-primary-50)} .flbar .s2{background:var(--k-primary-20)} .flbar .s3{background:var(--k-gray-50,#6d7580)} .flbar .s4{background:var(--k-gray-20,#e4e7ea)} .flbar .s5{background:repeating-linear-gradient(45deg,var(--k-gray-40,#9aa2ab) 0 3px,var(--panel) 3px 7px)}
+.fllg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2)}
+.fllg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
+.fltbl td.a{text-align:right;white-space:nowrap;font-family:var(--mono,ui-monospace,monospace)}
+.fltbl{table-layout:fixed}
+@media (max-width:760px){ .fltbl{min-width:760px} }
+.fltbl td.no{white-space:normal}
+.fltbl th:nth-child(1){width:26%} .fltbl th:nth-child(2){width:9%} .fltbl th:nth-child(3){width:27%} .fltbl th:nth-child(4){width:10%} .fltbl th:nth-child(5){width:28%}
 </style>
 </head>
 <body>
@@ -852,6 +863,48 @@
     </section>
   </article>
 
+  <article class="note1" id="note7" data-g="연계">
+    <div class="eyebrow">연계 · 노트 ⑦</div>
+    <h2>국정과제에서 예산 줄로 — 되는 것 셋에 하나, 안 되는 이유 셋</h2>
+    <div class="answer">
+      <p><a href="policy2.html">2.0 시안</a>은 국정과제 번호로 예산까지 잇는다고 했습니다. 되는지 재 봤습니다.
+        행정안전부가 주관하는 국정과제 <span id="flTask">—</span>개의 세부과제 <span id="flN">—</span>개를 열린재정 2026년 세출 세부사업 <span id="flLines">—</span>개에 대 보니,
+        <b><span id="flSure">—</span>개(<span id="flSurePct">—</span>)는 예산 줄이 확실히 있고</b>, <span id="flAmb">—</span>개는 애매하고, <b><span id="flNone">—</span>개는 줄이 없습니다.</b></p>
+      <p>없는 <span id="flNone2">—</span>개는 셋으로 갈립니다. <b>타부처 예산 <span id="flOther">—</span>개</b> — 주관은 행안부인데 돈은 국토부·경찰청·소방청·환경부에 있습니다.
+        <b>제도·법제 <span id="flInst">—</span>개</b> — 법을 고치거나 위원회를 바꾸는 일이라 줄이 없는 게 정상입니다.
+        <b>이름으로 못 찾음 <span id="flMiss">—</span>개</b> — 주민자치회·노근리·이통장 활동비처럼 국비 세부사업 이름에 없고 특별교부금·지방비·단위사업 안에 묻힌 것입니다.</p>
+      <p>그러니 2.0의 재정 연계는 <b>국비 줄이 있는 과제에서만 성립</b>하고, 행안부 기준 셋에 하나입니다. 나머지는 번호가 있어야 부처를 넘어 잇거나, 지방재정365 쪽으로 가야 닿습니다.</p>
+    </div>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
+      열린재정 세출예산 API(ExpenditureBudgetAdd2)에서 행정안전부 2026년 편성목 행 <span id="flRows">—</span>건을 받아 세부사업 <span id="flLines2">—</span>개로 합쳤습니다(확정+수정 예산, 합계 <span id="flTotal">—</span>억, 그중 지방교부세 <span id="flGrant">—</span>억).
+      세부과제 핵심어로 후보를 걸고 이름 낱말 검색으로 보완한 뒤 사람이 읽어 판정했습니다. 산출 코드 <span class="mono">tools/analyze-fiscal.mjs</span>.</div>
+
+    <section class="core">
+      <h2>54칸을 펴면</h2>
+      <p>칸 하나가 세부과제 하나입니다. 진한 파랑이 예산 줄이 확실한 것, 옅은 파랑이 애매한 것, 회색 셋이 줄이 없는 것입니다.</p>
+      <div id="flBar"></div>
+      <details class="revall" id="flAll" open><summary>세부과제 <span id="flN2">—</span>개 전부 — 판정 · 근거 세부사업 · 2026 예산</summary>
+        <div class="tw"><table class="revtbl fltbl"><thead><tr><th>세부과제</th><th>판정</th><th>근거 세부사업 (단위사업)</th><th>2026 예산</th><th>이유</th></tr></thead><tbody id="flBody"></tbody></table></div>
+      </details>
+    </section>
+
+    <section class="core">
+      <h2>안 되는 이유 셋이 곧 설계 조건입니다</h2>
+      <p><b>하나, 예산은 주관부처 예산서에만 있지 않습니다.</b> <span id="flOther2">—</span>개 세부과제는 행안부가 주관하는데 돈은 다른 부처 세출에 있습니다(<span id="flOtherEx">—</span>).
+        주관부처 이름으로는 절대 못 잇고, 국정과제 번호가 세부사업에 찍혀야 부처 경계를 넘습니다.</p>
+      <p><b>둘, 이름이 다릅니다.</b> 국민비서는 「지능형 서비스 확대 및 운영」 줄에 있고, 재난피해 지원은 「재난대책비(보조)」 줄에 있고, 주민참여 리빙랩은 「지역사회 자생적 창조역량 강화」 줄에 있습니다.
+        확실 <span id="flSure2">—</span>개 가운데 자동 대조가 못 걸고 사람이 낱말로 찾은 것이 <span id="flHand">—</span>개입니다. 이름 대조는 실마리일 뿐이고, 잇는 것은 번호입니다.</p>
+      <p><b>셋, 국비 줄이 없는 사업이 있습니다.</b> 2.0 시안의 예시인 주민자치회(52-4)는 행안부 2026 세부사업 <span id="flJm">—</span>개 어디에도 이름이 없습니다.
+        시안 문서 카드에 있는 「특별교부금(시책수요) 지급요청」이 그 돈의 실제 경로입니다. 재정 연계는 열린재정(국비 세출) 한 갈래가 아니라 <b>지방재정365(교부금·지방비) 갈래까지 둘</b>이어야 닿습니다.
+        집행대장을 만들 때 두 API를 이미 써 봤으니 연결 자체는 됩니다. 문제는 키가 없다는 것뿐입니다.</p>
+    </section>
+
+    <section class="appendix" style="margin-top:20px">
+      <h2 id="limit7">방법과 한계</h2>
+      <div class="notes"><ol id="flNotes"></ol></div>
+    </section>
+  </article>
+
   <section class="appendix">
     <h2 id="limit">방법과 한계</h2>
     <div class="notes"><ol>
@@ -883,6 +936,36 @@
   var TF = /*__TFDATA__*/null;
   var GJ = /*__GJDATA__*/null;
   var VS = /*__VSDATA__*/null;
+  var FL = /*__FLDATA__*/null;
+  // 노트 ⑦ — 예산 줄 대조
+  (function(){
+    if(!FL||!document.getElementById('flBar')) return;
+    var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+    var esc=function(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+    var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
+    var P=FL.판정, N=FL.세부과제수, NS=FL.없음사유||{};
+    put('flTask',FL.과제수); put('flN',N); put('flN2',N); put('flLines',FL.세부사업수); put('flLines2',FL.세부사업수); put('flRows',fmt(FL.편성목행));
+    put('flSure',P.확실); put('flSure2',P.확실); put('flSurePct',Math.round(P.확실/N*100)+'%'); put('flAmb',P.애매); put('flNone',P.없음); put('flNone2',P.없음);
+    put('flOther',NS['타부처 예산']||0); put('flOther2',NS['타부처 예산']||0); put('flInst',NS['제도·법제']||0); put('flMiss',NS['이름으로 못 찾음']||0);
+    put('flTotal',fmt(FL.총예산억)); put('flGrant',fmt(FL.교부세억)); put('flHand',FL.확실중자동후보없음); put('flJm',FL.세부사업수);
+    put('flOtherEx',(FL.타부처예||[]).slice(0,5).map(function(x){ return x.no+' '+x.t+' → '+x.부처; }).join(' · '));
+    var cls=function(d){ return d.j==='확실'?'s1':d.j==='애매'?'s2':d.사유==='타부처 예산'?'s3':d.사유==='제도·법제'?'s4':'s5'; };
+    var groups=[['s1','예산 줄 확실',P.확실],['s2','애매',P.애매],['s3','없음 — 타부처 예산',NS['타부처 예산']||0],['s4','없음 — 제도·법제',NS['제도·법제']||0],['s5','없음 — 이름으로 못 찾음',NS['이름으로 못 찾음']||0]];
+    document.getElementById('flBar').innerHTML='<div class="flbar">'+groups.map(function(g){ return '<span class="'+g[0]+'" style="width:'+(g[2]/N*100)+'%" title="'+g[1]+' '+g[2]+'"></span>'; }).join('')+'</div>'
+      +'<div class="fllg">'+groups.map(function(g){ return '<span><i class="'+g[0]+'" style="'+(g[0]==='s1'?'background:var(--k-primary-50)':g[0]==='s2'?'background:var(--k-primary-20)':g[0]==='s3'?'background:var(--k-gray-50,#6d7580)':g[0]==='s4'?'background:var(--k-gray-20,#e4e7ea)':'background:repeating-linear-gradient(45deg,var(--k-gray-40,#9aa2ab) 0 3px,var(--panel) 3px 7px)')+'"></i>'+g[1]+' '+g[2]+'</span>'; }).join('')+'</div>';
+    var order={확실:0,애매:1,없음:2}, so={'타부처 예산':0,'제도·법제':1,'이름으로 못 찾음':2};
+    var rows=FL.목록.slice().sort(function(a,b){ return (order[a.j]-order[b.j]) || ((so[a.사유]||0)-(so[b.사유]||0)) || (a.n-b.n) || a.no.localeCompare(b.no); });
+    document.getElementById('flBody').innerHTML=rows.map(function(d){
+      var tr=d.j==='확실'?'sure':d.j==='애매'?'amb':'bad';
+      var lines=d.lines.length?d.lines.map(function(l){ return esc(l.nm)+' <span style="color:var(--ink-3)">('+esc(l.단위)+')</span>'; }).join('<br>'):'<span style="color:var(--ink-3)">—</span>';
+      return '<tr class="'+tr+'"><td class="no">'+esc(d.no)+'<br><span style="font-weight:400;color:var(--ink-2)">'+esc(d.t)+'</span></td><td class="j">'+esc(d.j)+(d.사유?'<br><span style="font-weight:400;color:var(--ink-3)">'+esc(d.사유)+'</span>':'')+'</td><td>'+lines+'</td><td class="a">'+(d.lines.length?d.lines.map(function(l){ return fmt(l.억)+'억'; }).join('<br>'):'')+'</td><td>'+esc(d.why)+'</td></tr>'; }).join('');
+    var on=document.getElementById('flNotes'); if(on) on.innerHTML=''
+      + '<li><b>자료</b> — 열린재정(openfiscaldata.go.kr) 세출예산 API ExpenditureBudgetAdd2에 FSCL_YY 2026, OFFC_NM 행정안전부로 물어 편성목 행 '+fmt(FL.편성목행)+'건을 받았다(2026-09-18). 프로그램·단위·세부사업이 같은 행을 합쳐 세부사업 '+FL.세부사업수+'개, 금액은 확정+수정 예산(Y_YY_DFN_MEDI_KCUR_AMT, 천원)을 억 단위로 반올림했다. 합계 '+fmt(FL.총예산억)+'억 가운데 지방교부세 넷(보통·부동산·소방안전·재난안전관리특별)이 '+fmt(FL.교부세억)+'억이다. 수집 코드 <span class="mono">tools/fetch-ofd.mjs</span>, 자료 <span class="mono">fiscal/ofd-행정안전부-2026-sub.json</span>.</li>'
+      + '<li><b>API 함정</b> — pIndex·pSize를 숫자로 보내면 1페이지만 반복해서 돌려주고, 문자열로 보내야 넘어간다. pSize 상한은 100, 한 호출 15초라 페이지를 여섯 개씩 동시에 받았다.</li>'
+      + '<li><b>대조와 판정</b> — 세부과제 앞머리 핵심어가 프로그램·단위·세부사업 이름에 나오면 후보로 걸었고('+FL.자동후보있음+'개 세부과제), 안 걸린 것은 세부사업 이름을 낱말(주민자치·고향사랑·정보공개·국민비서·산불 등)로 직접 훑었다. 판정은 필자 한 사람이 했다(<span class="mono">notes/fiscal-link-review.json</span>). 확실은 그 줄이 세부과제의 일을 집행한다는 뜻이지 세부과제 전부를 그 줄이 감당한다는 뜻은 아니다. 확실 '+P.확실+'개의 근거 줄 예산은 '+fmt(FL.확실예산억)+'억이지만 보통교부세가 대부분이고, 교부세를 빼면 '+fmt(FL.확실예산억_교부세제외)+'억이다.</li>'
+      + '<li><b>없음의 세 갈래</b> — 타부처 예산은 세부과제 문장이 가리키는 사업이 다른 부처 소관인 경우(예: 광역철도·도로는 국토부, 긴급구조는 소방청, 홍수예보는 환경부)다. 제도·법제는 법 개정·위원회·계획 수립처럼 세출 줄이 없는 게 정상인 것이다. 이름으로 못 찾음은 국비 세부사업 이름에 없지만 단위사업 안에 묶였거나 특별교부금·지방비로 가는 것으로, 주민자치회가 그 예다. 실제 연결 가능성은 이 갈래에 더 있다.</li>'
+      + '<li><b>한계</b> — 2026년 본예산(확정+수정) 한 해, 행정안전부 한 부처만 봤다. 세부사업보다 아래(내역사업)는 이 API에 없어서 세부과제가 내역사업 하나에 해당하면 놓친다. 공동 주관 과제(4·49·53)는 행안부 예산만 봤다. 판정은 1인이고 교차 검수는 하지 않았다.</li>';
+  })();
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
 
