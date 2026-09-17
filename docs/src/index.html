@@ -432,7 +432,7 @@ body{background:var(--cream);color:var(--ink0)}
   var NM = {rn:'정책실명제', pv:'사전정보공표', og:'원문공개'};
   qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>'
     + TF.질문.map(function(q){
-        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+        return '<div class="qrow"><div class="vq">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
               return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';

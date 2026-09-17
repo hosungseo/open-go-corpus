@@ -129,11 +129,6 @@ td b{color:var(--ink)}
 .card h3{margin-bottom:8px}
 
 /* Q&A */
-.qa{display:grid;grid-template-columns:1fr;gap:12px}
-.q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
-.q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
-.q h3{margin-bottom:6px}
-.q p{font-size:17px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
 section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
@@ -174,7 +169,6 @@ section.appendix th,section.appendix td{padding:10px 12px}
   .bar nav a .long{display:none} .bar nav a .short{display:inline}
   .bar .meta{margin-left:0;width:100%;padding:0 0 6px}
   .summary .lede{font-size:17px}
-  .q{grid-template-columns:28px 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -194,8 +188,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
 .qa .qrow:first-child > div:first-child:before{display:none}
-.qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
-.qa .q:before{content:"🙋";margin-right:6px}
+.qa .vq{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
+.qa .vq:before{content:"🙋";margin-right:6px}
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
 .qa .a:last-child{border-right:0}
 .qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
@@ -204,7 +198,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .a.hit{color:var(--ink)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
-@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .vq,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
 
 </style>
 <style>
@@ -939,8 +933,9 @@ section.appendix th,section.appendix td{padding:10px 12px}
         <tbody id="gjTblBody"></tbody>
       </table></div>
       <p><b>국무조정실·기획예산처·감사원·국가인권위원회·방위사업청·재외동포청</b>은 정책실명제 포털에 기관명 자체가 없습니다.
-        감사원과 인권위는 독립기관이라 규정 적용 대상인지 따로 봐야 하고, 기획예산처는 2026년 1월에 생긴 부처라 등록이 늦을 수 있습니다.
-        국무조정실은 국정과제 여섯 개를 주관하는데 정책실명제에 없습니다.</p>
+        여섯 곳의 누리집을 직접 열어 보니 셋으로 갈립니다. <b>방위사업청은 누리집에서 정책실명제를 운영합니다</b> — 정보공개 메뉴에 중점관리 대상사업 목록 511건이 올라 있고 포털에만 없습니다(노트 ③의 꼴).
+        <b>국무조정실·기획예산처·재외동포청은 규정 적용 대상인데 누리집에도 없습니다.</b> 국무조정실은 국정과제 여섯 개를 주관하는 국무총리 소속 기관이고, 기획예산처는 2026년 1월에 생긴 부처, 재외동포청은 2023년에 생긴 외청입니다.
+        <b>감사원과 인권위는 규정의 적용범위 문언에 들어가는지가 분명하지 않고</b>, 누리집에도 운영 흔적이 없습니다.</p>
     </section>
 
     <section class="core">
@@ -9249,7 +9244,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       + '<li><b>왜 번호로 잇지 못하나</b> — 정책실명제 카드의 선정기준은 "국정과제"라는 분류값이지 번호가 아니다. 6,847건 중 선정기준·사업개요·추진실적 어딘가에 "국정과제 N" 꼴로 번호를 적은 것은 '+GJ.번호기재.건수+'건(2.4%)이고, 이는 담당자가 손으로 적은 것이다.</li>'
       + '<li><b>주관부처 다리의 한계</b> — 부처가 여러 국정과제를 맡을 때(행안부 11개) 그 부처의 국정과제 사업이 어느 과제에 속하는지 가릴 수 없다. 이 노트의 "등록"은 "주관부처가 올해 국정과제 사업을 하나라도 올렸다"는 뜻이지 그 과제와 이어졌다는 뜻이 아니다. 공동 주관("국조실 등")은 한 부처라도 있으면 있는 것으로 봤다.</li>'
       + '<li><b>2026년은 진행 중</b> — 2026-09-17 기준 45개 기관 중 '+GJ.올해등록기관+'곳만 올해 등록을 마쳤다(노트 ③). 회색 103개는 "없다"가 아니라 "아직"이다. 연말에 다시 센다.</li>'
-      + '<li><b>포털에 없는 6곳</b> — 국무조정실·기획예산처·감사원·국가인권위원회·방위사업청·재외동포청은 정책실명제 포털의 중앙행정기관 45곳 목록에 없다. 감사원·인권위는 「행정업무의 운영 및 혁신에 관한 규정」 적용 대상인지 확인하지 않았다. 기획예산처는 2026-01-02 신설이다.</li>'
+      + '<li><b>포털에 없는 6곳</b> — 국무조정실·기획예산처·감사원·국가인권위원회·방위사업청·재외동포청은 정책실명제 포털의 중앙행정기관 45곳 목록에 없다. 「행정업무의 운영 및 혁신에 관한 규정」 제2조(적용범위)는 "중앙행정기관(대통령 직속기관과 국무총리 직속기관을 포함한다)과 그 소속기관, 지방자치단체의 기관과 군의 기관"이다(law.go.kr 현행, 2026-05-19 시행). 감사원은 헌법 제97조 대통령 소속이되 감사원법 제2조로 직무상 독립이라 "대통령 직속기관"에 드는지 문언만으로 단정하기 어렵고, 국가인권위원회는 인권위법 제3조 독립 수행 기관으로 정부조직법상 중앙행정기관이 아니라 문언에 들지 않는다. 법제처 행정규칙 검색에 두 기관의 정책실명제 자체 규정은 없다(정책실명제 훈령은 관세청·교육부 둘뿐). 여섯 곳 누리집은 2026-09-18에 직접 열어 전체 메뉴와 정보공개 하위 메뉴, 통합검색("정책실명제")을 확인했고, 검색이 도는지 대조어로 확인했다. 방위사업청만 정보공개&gt;정책실명제 메뉴가 있고(중점관리대상사업목록 511건, 최신 2025-08-25), 나머지 다섯은 없다. 원문과 기관별 근거는 <span class="mono">notes/scope-law.json</span>.</li>'
       + '<li><b>부처 약칭 대응</b> — PDF 약칭(행안부·복지부 등)을 포털 정식 명칭에 손으로 맞췄다. 산업부→산업통상부, 기후부→기후에너지환경부, 성평등부→성평등가족부 등 2026년 개편 명칭을 썼다.</li>'
       + '<li><b>정부별 번호 체계</b> — 연도로 나눴다. 2018~2022는 100대(문재인정부, "N-M" 세부번호 '+GJ.번호기재.세부번호꼴+'건), 2023~2025는 120대(윤석열정부), 2026은 123대(이재명정부). 2022년과 2025년은 정부가 바뀐 해라 경계가 흐리다.</li>';
   })();
@@ -9282,7 +9277,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
     if(qa){
       var head = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>';
       qa.innerHTML = head + TF.질문.map(function(q){
-        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+        return '<div class="qrow"><div class="vq">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
               return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
