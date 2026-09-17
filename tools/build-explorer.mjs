@@ -301,6 +301,7 @@ if (!WITH_NAMES) {
   // static pages: docs/src/*.html → docs/*.html with shared.css inlined; any leftover local stylesheet link fails the build
   const LAWDATA_PATH = R("lawhist/page-data.json");
   const NOTE_PATH = R("notes/citizen.json");
+  const CH_PATH = R("notes/citizen-channels.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
@@ -313,6 +314,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(NOTE_PATH)) { console.error("ERROR notes/citizen.json missing - run tools/analyze-citizen.mjs"); process.exit(1); }
       const nd = fs.readFileSync(NOTE_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__NOTEDATA__*/null", () => nd).replace("/*__NOTEDATA__*/", () => nd);
+    }
+    if (page.includes("/*__CHDATA__*/")) {
+      if (!fs.existsSync(CH_PATH)) { console.error("ERROR notes/citizen-channels.json missing"); process.exit(1); }
+      const cd = fs.readFileSync(CH_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__CHDATA__*/null", () => cd).replace("/*__CHDATA__*/", () => cd);
     }
     if (page.includes("/*__LAWDATA__*/")) {
       if (!fs.existsSync(LAWDATA_PATH)) { console.error("ERROR lawhist/page-data.json missing - run tools/collect-law-history.mjs then tools/build-law-timeline.mjs then tools/build-history-data.mjs"); process.exit(1); }
