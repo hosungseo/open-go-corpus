@@ -93,8 +93,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
-.bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
-.bignum .v small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
+.bignum .v{font-size:40px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
+.bignum .v small{font-size:17px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
 .bignum .k{font-size:15px;color:var(--ink-2);margin-top:8px;line-height:1.5}
 .bignum .src{font-size:13px;color:var(--ink-3);margin-top:4px}
 .summary .basis{font-size:15px;color:var(--ink-2);margin-top:14px}
@@ -126,7 +126,7 @@ td b{color:var(--ink)}
 .q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
 .q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
 .q h3{margin-bottom:6px}
-.q p{font-size:16px;color:var(--ink-2);margin:0;max-width:none}
+.q p{font-size:17px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
 section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
@@ -159,8 +159,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 반응형 */
 @media (max-width:860px){
-  body{font-size:16px}
-  h1{font-size:30px} h2{font-size:26px}
+  body{font-size:17px}
+  h1{font-size:32px} h2{font-size:27px}
   .bignum,.cols3{grid-template-columns:1fr}
   .bar .in{gap:8px;min-height:48px}
   .bar nav a{padding:12px 8px}

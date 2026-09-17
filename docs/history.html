@@ -100,8 +100,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
-.bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
-.bignum .v small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
+.bignum .v{font-size:40px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
+.bignum .v small{font-size:17px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
 .bignum .k{font-size:15px;color:var(--ink-2);margin-top:8px;line-height:1.5}
 .bignum .src{font-size:13px;color:var(--ink-3);margin-top:4px}
 .summary .basis{font-size:15px;color:var(--ink-2);margin-top:14px}
@@ -133,7 +133,7 @@ td b{color:var(--ink)}
 .q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
 .q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
 .q h3{margin-bottom:6px}
-.q p{font-size:16px;color:var(--ink-2);margin:0;max-width:none}
+.q p{font-size:17px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
 section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
@@ -166,8 +166,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 반응형 */
 @media (max-width:860px){
-  body{font-size:16px}
-  h1{font-size:30px} h2{font-size:26px}
+  body{font-size:17px}
+  h1{font-size:32px} h2{font-size:27px}
   .bignum,.cols3{grid-template-columns:1fr}
   .bar .in{gap:8px;min-height:48px}
   .bar nav a{padding:12px 8px}
@@ -503,21 +503,21 @@ section.appendix th,section.appendix td{padding:10px 12px}
   document.getElementById("current").innerHTML = D.lanes.map(function(L){
     var s = L.steps[L.steps.length-1];
     return '<p class="cite" style="font-size:15px;font-weight:600;margin:14px 0 6px">'+LANENAME[L.lane]+' — '+esc(s.cites.join(" · "))+'</p>'
-      + s.texts.map(function(t){ return '<p class="art" style="font-size:14.5px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:0 0 8px;white-space:pre-wrap">'+esc(t.t)+'</p>'; }).join("");
+      + s.texts.map(function(t){ return '<p class="art" style="font-size:14px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:0 0 8px;white-space:pre-wrap">'+esc(t.t)+'</p>'; }).join("");
   }).join("");
 
   /* 시행령 계보 */
   var og = D.decree.find(function(d){ return d.key === "original_d"; });
   var first = og && og.steps[0];
   document.getElementById("decreelist").innerHTML = first
-    ? '<p style="font-size:16px;line-height:1.75;color:var(--ink-2);max-width:78ch">원문공개는 법률 제8조의2가 <b>2014년 3월 1일</b>에 시행됐는데, 어느 기관이 대상인지 정한 시행령 제5조의2는 <b>'+first.ef+'</b>에 먼저 시행됐습니다. 시행령이 모법보다 3개월 반 앞섰습니다. 그 시행령 개정이유에 단계별 시행일이 적혀 있습니다.</p>'
-      + '<p class="art" style="font-size:14.5px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:10px 0 0;max-width:78ch">'+esc(first.why)+'</p>'
+    ? '<p style="font-size:17px;line-height:1.75;color:var(--ink-2);max-width:78ch">원문공개는 법률 제8조의2가 <b>2014년 3월 1일</b>에 시행됐는데, 어느 기관이 대상인지 정한 시행령 제5조의2는 <b>'+first.ef+'</b>에 먼저 시행됐습니다. 시행령이 모법보다 3개월 반 앞섰습니다. 그 시행령 개정이유에 단계별 시행일이 적혀 있습니다.</p>'
+      + '<p class="art" style="font-size:14px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:10px 0 0;max-width:78ch">'+esc(first.why)+'</p>'
     : "";
 
   /* 시행본 전수 */
   var LAWLABEL = { act:"정보공개법", decree:"정보공개법 시행령", rule:"사무관리규정 계열" };
   document.getElementById("verBody").innerHTML = D.versions.map(function(v){
-    return '<tr><td>'+LAWLABEL[v.k]+'<br><span class="mono" style="font-size:12.5px;color:var(--ink-3)">'+v.rank+'</span></td>'
+    return '<tr><td>'+LAWLABEL[v.k]+'<br><span class="mono" style="font-size:13px;color:var(--ink-3)">'+v.rank+'</span></td>'
       + '<td class="mono">'+v.ef+(v.cur?' <b>현행</b>':'')+'</td><td class="mono">'+v.pb+'</td><td class="mono">제'+v.no+'호</td>'
       + '<td>'+v.kind+'</td><td>'+esc(v.name)+'</td></tr>';
   }).join("");

@@ -100,8 +100,8 @@ tr:focus-visible{outline-offset:-3px}
 .summary .lede+.lede{margin-top:-6px}
 .bignum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bignum>div{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 18px 14px}
-.bignum .v{font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
-.bignum .v small{font-size:16px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
+.bignum .v{font-size:40px;line-height:1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
+.bignum .v small{font-size:17px;color:var(--ink-3);margin-left:4px;letter-spacing:0;font-weight:400}
 .bignum .k{font-size:15px;color:var(--ink-2);margin-top:8px;line-height:1.5}
 .bignum .src{font-size:13px;color:var(--ink-3);margin-top:4px}
 .summary .basis{font-size:15px;color:var(--ink-2);margin-top:14px}
@@ -133,7 +133,7 @@ td b{color:var(--ink)}
 .q{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r-m);padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:14px}
 .q .m{font-size:22px;font-weight:700;color:var(--ink-3);line-height:1.1}
 .q h3{margin-bottom:6px}
-.q p{font-size:16px;color:var(--ink-2);margin:0;max-width:none}
+.q p{font-size:17px;color:var(--ink-2);margin:0;max-width:none}
 
 /* 별첨 */
 section.appendix{background:var(--k-gray-5);margin:44px -24px 0;padding:30px 24px 40px;border-top:1px solid var(--rule)}
@@ -166,8 +166,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 반응형 */
 @media (max-width:860px){
-  body{font-size:16px}
-  h1{font-size:30px} h2{font-size:26px}
+  body{font-size:17px}
+  h1{font-size:32px} h2{font-size:27px}
   .bignum,.cols3{grid-template-columns:1fr}
   .bar .in{gap:8px;min-height:48px}
   .bar nav a{padding:12px 8px}
@@ -189,18 +189,18 @@ section.appendix th,section.appendix td{padding:10px 12px}
 </style>
 <style>
 /* 1층: 아홉 기준 매트릭스 */
-.mx table{font-size:15.5px}
+.mx table{font-size:15px}
 .mx th{font-size:14px;padding:12px 14px}
 .mx td{padding:0;border-bottom:1px solid var(--rule-2)}
 .mx tr.r{cursor:pointer}
 .mx tr.r:hover td{background:var(--sel)}
 .mx tr.r.on td{background:var(--em-soft)}
 .mx td.k{width:26%;padding:14px 14px;font-weight:600;color:var(--ink);white-space:nowrap}
-.mx td.k .more{display:block;font-size:12.5px;color:var(--em);font-weight:600;margin-top:2px}
+.mx td.k .more{display:block;font-size:13px;color:var(--em);font-weight:600;margin-top:2px}
 .mx td.c{padding:12px 14px;vertical-align:middle}
 .mx .cell{display:flex;align-items:center;gap:10px}
 .mx .cell .dot{width:18px;height:18px;flex:none}
-.mx .cell .lb{display:block;font-size:14.5px;line-height:1.35;color:var(--ink)}
+.mx .cell .lb{display:block;font-size:14px;line-height:1.35;color:var(--ink)}
 .mx .cell .lb.no{color:var(--ink-3)}
 .mx .cell .lb.pt{color:var(--k-warning-60)}
 .mx .cell .lb.yes{color:var(--k-success-60)}
@@ -213,10 +213,10 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .l2 .lbl .hint{letter-spacing:0;font-weight:400;color:var(--ink-3)}
 .l2 .grid{display:grid;grid-template-columns:230px 1fr;gap:16px;align-items:start}
 .steps{position:sticky;top:56px;border-top:2px solid var(--ink);padding-top:6px}
-.steps .g{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);padding:12px 0 4px 10px}
+.steps .g{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-3);padding:12px 0 4px 10px}
 .steps .g:first-child{padding-top:4px}
-.steps button{display:flex;align-items:center;gap:8px;width:100%;appearance:none;border:0;background:none;text-align:left;font:inherit;font-size:14.5px;line-height:1.3;color:var(--ink-2);padding:7px 10px;border-left:2px solid transparent;cursor:pointer}
-.steps button .no{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);min-width:20px}
+.steps button{display:flex;align-items:center;gap:8px;width:100%;appearance:none;border:0;background:none;text-align:left;font:inherit;font-size:14px;line-height:1.3;color:var(--ink-2);padding:7px 10px;border-left:2px solid transparent;cursor:pointer}
+.steps button .no{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-width:20px}
 .steps button:hover{color:var(--ink);background:var(--sel)}
 .steps button.on{color:var(--ink);font-weight:600;border-left-color:var(--em);background:var(--em-soft)}
 .steps button.on .no{color:var(--em)}
@@ -230,16 +230,16 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .detail .col:last-child{border-right:0}
 .detail .col .who{font-size:13px;letter-spacing:.04em;font-weight:600;margin-bottom:8px}
 .detail .col.rn .who{color:var(--rn-t)} .detail .col.pv .who{color:var(--pv-t)} .detail .col.og .who{color:var(--og-t)}
-.detail .hv{display:block;font-family:var(--mono);font-size:24px;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-bottom:8px}
-.detail .hn{display:block;font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.detail .hv{display:block;font-family:var(--mono);font-size:22px;line-height:1.25;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin-bottom:8px}
+.detail .hn{display:block;font-size:14px;line-height:1.6;color:var(--ink-2)}
 .detail .hn b{color:var(--ink)}
-.detail .nav{display:flex;justify-content:space-between;padding:8px 18px;border-top:1px solid var(--rule-2);font-size:13.5px}
+.detail .nav{display:flex;justify-content:space-between;padding:8px 18px;border-top:1px solid var(--rule-2);font-size:13px}
 .detail .nav button{appearance:none;background:none;border:0;font:inherit;color:var(--ink-2);cursor:pointer;padding:4px 0}
 .detail .nav button:hover{color:var(--ink);text-decoration:underline}
-section.core .eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);font-weight:600;margin-bottom:6px;font-family:var(--mono)}
+section.core .eyebrow{font-size:13px;letter-spacing:.1em;color:var(--ink-3);font-weight:600;margin-bottom:6px;font-family:var(--mono)}
 @media (max-width:860px){
   .mx td.k{white-space:normal;width:34%}
-  .mx .cell .lb{font-size:13.5px}
+  .mx .cell .lb{font-size:13px}
   .l2 .grid{grid-template-columns:1fr}
   .steps{position:static;display:flex;flex-wrap:wrap;gap:4px;border-top:0;padding:0}
   .steps .g{width:100%;padding:8px 0 2px}

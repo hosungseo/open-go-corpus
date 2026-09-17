@@ -321,21 +321,21 @@
   document.getElementById("current").innerHTML = D.lanes.map(function(L){
     var s = L.steps[L.steps.length-1];
     return '<p class="cite" style="font-size:15px;font-weight:600;margin:14px 0 6px">'+LANENAME[L.lane]+' — '+esc(s.cites.join(" · "))+'</p>'
-      + s.texts.map(function(t){ return '<p class="art" style="font-size:14.5px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:0 0 8px;white-space:pre-wrap">'+esc(t.t)+'</p>'; }).join("");
+      + s.texts.map(function(t){ return '<p class="art" style="font-size:14px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:0 0 8px;white-space:pre-wrap">'+esc(t.t)+'</p>'; }).join("");
   }).join("");
 
   /* 시행령 계보 */
   var og = D.decree.find(function(d){ return d.key === "original_d"; });
   var first = og && og.steps[0];
   document.getElementById("decreelist").innerHTML = first
-    ? '<p style="font-size:16px;line-height:1.75;color:var(--ink-2);max-width:78ch">원문공개는 법률 제8조의2가 <b>2014년 3월 1일</b>에 시행됐는데, 어느 기관이 대상인지 정한 시행령 제5조의2는 <b>'+first.ef+'</b>에 먼저 시행됐습니다. 시행령이 모법보다 3개월 반 앞섰습니다. 그 시행령 개정이유에 단계별 시행일이 적혀 있습니다.</p>'
-      + '<p class="art" style="font-size:14.5px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:10px 0 0;max-width:78ch">'+esc(first.why)+'</p>'
+    ? '<p style="font-size:17px;line-height:1.75;color:var(--ink-2);max-width:78ch">원문공개는 법률 제8조의2가 <b>2014년 3월 1일</b>에 시행됐는데, 어느 기관이 대상인지 정한 시행령 제5조의2는 <b>'+first.ef+'</b>에 먼저 시행됐습니다. 시행령이 모법보다 3개월 반 앞섰습니다. 그 시행령 개정이유에 단계별 시행일이 적혀 있습니다.</p>'
+      + '<p class="art" style="font-size:14px;line-height:1.75;background:var(--panel-2);border-left:3px solid var(--rule);padding:12px 14px;margin:10px 0 0;max-width:78ch">'+esc(first.why)+'</p>'
     : "";
 
   /* 시행본 전수 */
   var LAWLABEL = { act:"정보공개법", decree:"정보공개법 시행령", rule:"사무관리규정 계열" };
   document.getElementById("verBody").innerHTML = D.versions.map(function(v){
-    return '<tr><td>'+LAWLABEL[v.k]+'<br><span class="mono" style="font-size:12.5px;color:var(--ink-3)">'+v.rank+'</span></td>'
+    return '<tr><td>'+LAWLABEL[v.k]+'<br><span class="mono" style="font-size:13px;color:var(--ink-3)">'+v.rank+'</span></td>'
       + '<td class="mono">'+v.ef+(v.cur?' <b>현행</b>':'')+'</td><td class="mono">'+v.pb+'</td><td class="mono">제'+v.no+'호</td>'
       + '<td>'+v.kind+'</td><td>'+esc(v.name)+'</td></tr>';
   }).join("");

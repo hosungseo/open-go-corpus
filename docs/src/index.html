@@ -16,11 +16,11 @@ body{background:var(--cream);color:var(--ink0)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:60px 0 48px}
-.hero .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--ink2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--ink2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .hero .eyebrow i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--k-success-60);box-shadow:0 0 0 4px var(--k-success-5)}
 .hero h1{font-family:var(--font);font-weight:700;font-size:60px;line-height:1.15;letter-spacing:-.02em;margin:0 0 22px;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--k-primary-50)}
-.hero .lede{font-size:18px;line-height:1.75;color:var(--ink1);max-width:54ch;margin:0 0 26px}
+.hero .lede{font-size:19px;line-height:1.75;color:var(--ink1);max-width:54ch;margin:0 0 26px}
 .hero .lede b{color:var(--ink0)}
 .hero .cta{display:flex;gap:10px;flex-wrap:wrap}
 .hero .cta a{text-decoration:none;font-size:19px;font-weight:400;padding:0 20px;height:56px;border-radius:var(--r-m);display:inline-flex;align-items:center;gap:8px;border:1px solid var(--k-primary-50);transition:background .15s}
@@ -36,8 +36,8 @@ body{background:var(--cream);color:var(--ink0)}
 /* widget */
 .wg{background:var(--card);border:1px solid var(--line-c);border-radius:var(--r-l);box-shadow:0 8px 24px -12px rgba(30,33,36,.18);overflow:hidden}
 .wg .wh{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--cream-2);background:linear-gradient(180deg,#fff,var(--k-gray-5))}
-.wg .wh .t{font-family:var(--serif);font-weight:700;font-size:16px}
-.wg .wh .m{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-left:auto}
+.wg .wh .t{font-family:var(--serif);font-weight:700;font-size:17px}
+.wg .wh .m{font-family:var(--mono);font-size:12px;color:var(--ink2);margin-left:auto}
 .wg .wb{padding:16px 18px 18px}
 .wg label{display:block;font-size:12px;color:var(--ink2);margin-bottom:6px;letter-spacing:.04em}
 .wg .sel{position:relative}
@@ -48,18 +48,18 @@ body{background:var(--cream);color:var(--ink0)}
 .wg .meta span{background:var(--cream);border-radius:6px;padding:2px 8px}
 .wg .rows{display:grid;gap:8px}
 .wg .row{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--k-gray-10);border-radius:var(--r-m);background:var(--k-gray-5)}
-.wg .row .k{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px}
+.wg .row .k{font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px}
 .wg .row .k i{width:9px;height:9px;border-radius:2px;display:inline-block}
 .wg .row.rn .k i{background:var(--rn)}.wg .row.pv .k i{background:var(--pv)}.wg .row.og .k i{background:var(--og)}
 .wg .row .v{font-size:13px;color:var(--ink1);line-height:1.45;min-width:0}
-.wg .row .v small{display:block;color:var(--ink2);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wg .row .v small{display:block;color:var(--ink2);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wg .row .n{font-family:var(--mono);font-size:22px;font-weight:500;letter-spacing:-.02em;text-align:right;min-width:64px;font-variant-numeric:tabular-nums}
-.wg .row .n small{font-size:11px;color:var(--ink2);margin-left:2px}
+.wg .row .n small{font-size:12px;color:var(--ink2);margin-left:2px}
 .wg .row .n.zero{color:var(--rn-t)}
 .wg .bars{display:flex;gap:3px;margin-top:6px}
 .wg .bars i{flex:1;height:5px;border-radius:2px;background:var(--cream-2)}
 .wg .bars i.on{background:var(--ink0)}
-.wg .wf{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12.5px;color:var(--ink2)}
+.wg .wf{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:13px;color:var(--ink2)}
 .wg .wf a{color:var(--ink0);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--ink0)}
 .wg .verdict{margin-top:12px;padding:10px 12px;border-radius:var(--r-m);background:var(--k-primary-5);color:var(--k-primary-60);font-size:14px;font-weight:700;line-height:1.5}
 .wg .verdict.bad{background:var(--k-danger-5);color:var(--k-danger-60)}
@@ -67,14 +67,14 @@ body{background:var(--cream);color:var(--ink0)}
 /* ticker */
 .ticker{position:relative;margin:0;border-top:1px solid var(--line-c);border-bottom:1px solid var(--line-c);overflow:hidden;background:var(--cream-2)}
 /* 흐르는 중에 숫자를 놓친다는 지적. 멈추는 방법을 오른쪽에 붙인다 */
-.ticker:after{content:"마우스를 올리면 멈춥니다";position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 14px 0 34px;font-size:11.5px;color:var(--ink2);white-space:nowrap;pointer-events:none;background:linear-gradient(90deg,transparent,var(--cream-2) 30%)}
+.ticker:after{content:"마우스를 올리면 멈춥니다";position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 14px 0 34px;font-size:12px;color:var(--ink2);white-space:nowrap;pointer-events:none;background:linear-gradient(90deg,transparent,var(--cream-2) 30%)}
 @media (max-width:760px){.ticker:after{display:none}}
 .ticker .tr{display:flex;gap:0;width:max-content;animation:tk 48s linear infinite}
 .ticker:hover .tr,.ticker:focus-within .tr{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.ticker .tr{animation:none}.ticker:after{content:"실측치"}}
 .ticker .it{display:flex;align-items:baseline;gap:10px;padding:14px 28px;border-right:1px solid var(--line-c);white-space:nowrap}
-.ticker .it .k{font-size:12.5px;color:var(--ink2)}
-.ticker .it .v{font-family:var(--mono);font-size:20px;font-weight:500;letter-spacing:-.02em;color:var(--ink0)}
+.ticker .it .k{font-size:13px;color:var(--ink2)}
+.ticker .it .v{font-family:var(--mono);font-size:19px;font-weight:500;letter-spacing:-.02em;color:var(--ink0)}
 .ticker .it .v.d{color:var(--k-danger-60)}.ticker .it .v.u{color:var(--k-success-60)}
 @keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -82,14 +82,14 @@ body{background:var(--cream);color:var(--ink0)}
 .sec{padding:64px 0 8px}
 .sec .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink2);margin-bottom:10px}
 .sec h2{font-family:var(--font);font-weight:700;font-size:32px;line-height:1.25;letter-spacing:-.02em;margin:0 0 10px;max-width:22ch;text-wrap:balance}
-.sec .sub{font-size:16.5px;color:var(--ink1);max-width:60ch;margin:0 0 24px}
+.sec .sub{font-size:17px;color:var(--ink1);max-width:60ch;margin:0 0 24px}
 .sec .head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .sec .head a.more{text-decoration:none;font-size:14px;font-weight:600;color:var(--ink0);border-bottom:1.5px solid var(--ink0);padding-bottom:2px;margin-bottom:28px;white-space:nowrap}
 
 /* overview table */
 .ov{background:var(--card);border:1px solid var(--line-c);border-radius:var(--r-m);overflow:hidden;overflow-x:auto}
 .ov table{width:100%;border-collapse:collapse;font-size:15px}
-.ov th{font-size:12.5px;letter-spacing:.06em;color:var(--ink2);font-weight:600;text-align:left;padding:14px 18px;border-bottom:1px solid var(--cream-2);background:var(--k-gray-5)}
+.ov th{font-size:13px;letter-spacing:.06em;color:var(--ink2);font-weight:600;text-align:left;padding:14px 18px;border-bottom:1px solid var(--cream-2);background:var(--k-gray-5)}
 .ov th.rn{color:var(--rn-t)}.ov th.pv{color:var(--pv-t)}.ov th.og{color:var(--og-t)}
 .ov td{padding:13px 18px;border-bottom:1px solid var(--cream-2);vertical-align:middle}
 .ov tr:last-child td{border-bottom:0}
@@ -106,20 +106,20 @@ body{background:var(--cream);color:var(--ink0)}
 .pc .img{aspect-ratio:16/10;background:var(--cream-2);overflow:hidden;border-bottom:1px solid var(--cream-2)}
 .pc .img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .pc .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-.pc .no{font-family:var(--mono);font-size:11.5px;color:var(--ink2);letter-spacing:.06em}
+.pc .no{font-family:var(--mono);font-size:12px;color:var(--ink2);letter-spacing:.06em}
 .pc h3{font-family:var(--serif);font-size:19px;margin:0;font-weight:700}
 .pc p{font-size:14px;color:var(--ink1);margin:0;line-height:1.6;max-width:none}
-.pc .go{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:6px}
+.pc .go{margin-top:auto;padding-top:10px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
 .pc .go svg{width:14px;height:14px}
 
 /* dark cta */
 .cta2{margin-top:64px;background:var(--k-secondary-90);color:#fff;border-radius:var(--r-l);padding:48px 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;position:relative;overflow:hidden}
 .cta2:before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,#256ef455,transparent)}
 .cta2 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--k-gray-30);margin-bottom:12px}
-.cta2 h2{font-family:var(--serif);font-size:34px;line-height:1.3;letter-spacing:-.02em;margin:0 0 12px;color:#fff;font-weight:700}
-.cta2 p{color:var(--k-gray-20);font-size:16px;max-width:52ch;margin:0 0 22px}
+.cta2 h2{font-family:var(--serif);font-size:32px;line-height:1.3;letter-spacing:-.02em;margin:0 0 12px;color:#fff;font-weight:700}
+.cta2 p{color:var(--k-gray-20);font-size:17px;max-width:52ch;margin:0 0 22px}
 .cta2 a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#fff;color:var(--k-primary-60);font-weight:400;padding:0 20px;height:56px;border-radius:var(--r-m);font-size:19px}
-.cta2 .mini{position:relative;background:var(--k-secondary-80);border:1px solid var(--k-secondary-70);border-radius:14px;padding:16px;font-size:12.5px;color:var(--k-gray-20);font-family:var(--mono)}
+.cta2 .mini{position:relative;background:var(--k-secondary-80);border:1px solid var(--k-secondary-70);border-radius:14px;padding:16px;font-size:13px;color:var(--k-gray-20);font-family:var(--mono)}
 .cta2 .mini .l{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--k-gray-80)}
 .cta2 .mini .l:last-child{border-bottom:0}
 .cta2 .mini .l b{color:#fff;font-weight:500}
@@ -140,39 +140,39 @@ body{background:var(--cream);color:var(--ink0)}
 .meta-arrow{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--k-primary-60);font-size:13px;font-weight:700;text-align:center;line-height:1.3}
 .meta-arrow svg{width:28px;height:28px}
 @media (max-width:560px){
-  .hero h1{font-size:34px;letter-spacing:-.01em}
+  .hero h1{font-size:32px;letter-spacing:-.01em}
   .hero .cta{flex-direction:column;align-items:stretch}
   .hero .cta a{justify-content:center}
-  .hero .sub{gap:6px 12px;font-size:12.5px}
+  .hero .sub{gap:6px 12px;font-size:13px}
   .wg .row{grid-template-columns:76px 1fr auto;gap:8px;padding:10px}
   .wg .row .n{font-size:19px;min-width:52px}
   .ticker .it{padding:12px 18px}
   .sec{padding:44px 0 8px}
   .cta2{padding:26px 20px;border-radius:var(--r-m)}
-  .cta2 h2{font-size:24px}
+  .cta2 h2{font-size:22px}
   .cta2 a{width:100%;justify-content:center}
 }
 @media (max-width:980px){.meta-grid{grid-template-columns:1fr;width:auto;margin-left:0}.meta-arrow{flex-direction:row;justify-content:center;padding:6px 0}.meta-arrow svg{transform:rotate(90deg)}}
 
 @media (max-width:560px){
-  .hero h1{font-size:34px;letter-spacing:-.01em}
+  .hero h1{font-size:32px;letter-spacing:-.01em}
   .hero .cta{flex-direction:column;align-items:stretch}
   .hero .cta a{justify-content:center}
-  .hero .sub{gap:6px 12px;font-size:12.5px}
+  .hero .sub{gap:6px 12px;font-size:13px}
   .wg .row{grid-template-columns:76px 1fr auto;gap:8px;padding:10px}
   .wg .row .n{font-size:19px;min-width:52px}
   .ticker .it{padding:12px 18px}
   .sec{padding:44px 0 8px}
   .cta2{padding:26px 20px;border-radius:var(--r-m)}
-  .cta2 h2{font-size:24px}
+  .cta2 h2{font-size:22px}
   .cta2 a{width:100%;justify-content:center}
 }
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;padding:36px 0 24px}
-  .hero h1{font-size:44px}
+  .hero h1{font-size:40px}
   .pages{grid-template-columns:1fr}
   .cta2{grid-template-columns:1fr;padding:32px 26px}
-  .sec h2{font-size:28px}
+  .sec h2{font-size:27px}
   .ov table{font-size:14px}.ov td,.ov th{padding:10px 12px}
 }
 
@@ -184,13 +184,13 @@ body{background:var(--cream);color:var(--ink0)}
 .three .tc.rn .tag{color:var(--rn-t)} .three .tc.rn .tag i{background:var(--rn)}
 .three .tc.pv .tag{color:var(--pv-t)} .three .tc.pv .tag i{background:var(--pv)}
 .three .tc.og .tag{color:var(--og-t)} .three .tc.og .tag i{background:var(--og)}
-.three .tc h3{font-size:21px;margin:0 0 8px;line-height:1.3}
-.three .tc .def{font-size:15.5px;line-height:1.7;color:var(--ink-2);margin:0 0 14px}
-.three .tc dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 14px;font-size:14.5px;line-height:1.55}
+.three .tc h3{font-size:22px;margin:0 0 8px;line-height:1.3}
+.three .tc .def{font-size:15px;line-height:1.7;color:var(--ink-2);margin:0 0 14px}
+.three .tc dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 14px;font-size:14px;line-height:1.55}
 .three .tc dt{color:var(--ink-3);white-space:nowrap}
 .three .tc dd{margin:0;color:var(--ink)}
 .three .tc dd small{display:block;color:var(--ink-3);font-size:13px;margin-top:1px}
-.three .tc .fact{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-2);font-size:14.5px;color:var(--ink-2);line-height:1.65}
+.three .tc .fact{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-2);font-size:14px;color:var(--ink-2);line-height:1.65}
 .three .tc .fact b{color:var(--ink)}
 @media (max-width:900px){ .three{grid-template-columns:1fr} }
 </style>
@@ -296,22 +296,22 @@ body{background:var(--cream);color:var(--ink0)}
     <rect x="6" y="16" width="176" height="250" rx="9" fill="#fff" stroke="#cdd1d5"/>
     <path d="M6 25a9 9 0 0 1 9-9h158a9 9 0 0 1 9 9v39H6z" fill="#fff3db"/>
     <text x="94" y="38" text-anchor="middle" class="t s" font-size="11.5">현장 앞 표지판</text>
-    <text x="94" y="57" text-anchor="middle" class="t k" font-size="14.5" fill="#8a5c00">사전정보공표</text>
+    <text x="94" y="57" text-anchor="middle" class="t k" font-size="14" fill="#8a5c00">사전정보공표</text>
     <rect x="24" y="80" width="140" height="106" rx="4" fill="#fff" stroke="#8a5c00" stroke-dasharray="5 4"/>
-    <text x="94" y="106" text-anchor="middle" class="t" font-size="13.5">공정 현황은</text>
-    <text x="94" y="128" text-anchor="middle" class="t" font-size="13.5">분기마다</text>
-    <text x="94" y="150" text-anchor="middle" class="t" font-size="13.5">게시판에</text>
-    <text x="94" y="172" text-anchor="middle" class="t" font-size="13.5">붙입니다 →</text>
+    <text x="94" y="106" text-anchor="middle" class="t" font-size="14">공정 현황은</text>
+    <text x="94" y="128" text-anchor="middle" class="t" font-size="14">분기마다</text>
+    <text x="94" y="150" text-anchor="middle" class="t" font-size="14">게시판에</text>
+    <text x="94" y="172" text-anchor="middle" class="t" font-size="14">붙입니다 →</text>
     <g stroke="#8a5c00" stroke-width="2.5"><line x1="88" y1="186" x2="88" y2="206"/><line x1="100" y1="186" x2="100" y2="206"/></g>
-    <text x="94" y="228" text-anchor="middle" class="t s" font-size="12">표지판만 있고</text>
-    <text x="94" y="246" text-anchor="middle" class="t s" font-size="12">도면은 없습니다</text>
+    <text x="94" y="228" text-anchor="middle" class="t s" font-size="12.5">표지판만 있고</text>
+    <text x="94" y="246" text-anchor="middle" class="t s" font-size="12.5">도면은 없습니다</text>
   </g>
   <!-- ② 도면·서류 창고: 원문공개 -->
   <g>
     <rect x="192" y="16" width="176" height="250" rx="9" fill="#fff" stroke="#cdd1d5"/>
     <path d="M192 25a9 9 0 0 1 9-9h158a9 9 0 0 1 9 9v39H192z" fill="#eaf6ec"/>
     <text x="280" y="38" text-anchor="middle" class="t s" font-size="11.5">도면·서류 창고</text>
-    <text x="280" y="57" text-anchor="middle" class="t k" font-size="14.5" fill="#267337">원문공개</text>
+    <text x="280" y="57" text-anchor="middle" class="t k" font-size="14" fill="#267337">원문공개</text>
     <g stroke="#267337" fill="#fff">
       <rect x="216" y="146" width="112" height="52" rx="3" transform="rotate(-6 272 172)"/>
       <rect x="232" y="122" width="112" height="52" rx="3" transform="rotate(4 288 148)"/>
@@ -319,24 +319,24 @@ body{background:var(--cream);color:var(--ink0)}
       <rect x="234" y="76" width="112" height="52" rx="3"/>
     </g>
     <g stroke="#d8eedd" stroke-width="2.5"><line x1="248" y1="92" x2="330" y2="92"/><line x1="248" y1="104" x2="316" y2="104"/><line x1="248" y1="116" x2="324" y2="116"/></g>
-    <text x="280" y="228" text-anchor="middle" class="t s" font-size="12">한 해 도면 143만 장</text>
-    <text x="280" y="246" text-anchor="middle" class="t s" font-size="12">어느 공사 건지 표시 없음</text>
+    <text x="280" y="228" text-anchor="middle" class="t s" font-size="12.5">한 해 도면 143만 장</text>
+    <text x="280" y="246" text-anchor="middle" class="t s" font-size="12.5">어느 공사 건지 표시 없음</text>
   </g>
   <!-- ③ 현장 실명판: 정책실명제 -->
   <g>
     <rect x="378" y="16" width="176" height="250" rx="9" fill="#fff" stroke="#cdd1d5"/>
     <path d="M378 25a9 9 0 0 1 9-9h158a9 9 0 0 1 9 9v39H378z" fill="#fbeff0"/>
     <text x="466" y="38" text-anchor="middle" class="t s" font-size="11.5">현장 실명판</text>
-    <text x="466" y="57" text-anchor="middle" class="t k" font-size="14.5" fill="#ab2b36">정책실명제</text>
+    <text x="466" y="57" text-anchor="middle" class="t k" font-size="14" fill="#ab2b36">정책실명제</text>
     <rect x="396" y="80" width="140" height="106" rx="4" fill="#fff" stroke="#ab2b36" stroke-width="1.5"/>
-    <text x="412" y="106" class="t" font-size="13">설계 ○○○ 과장</text>
-    <text x="412" y="130" class="t" font-size="13">시공 ○○○ 사무관</text>
-    <text x="412" y="154" class="t" font-size="13">감리 ○○○ 주무관</text>
+    <text x="412" y="106" class="t" font-size="12.5">설계 ○○○ 과장</text>
+    <text x="412" y="130" class="t" font-size="12.5">시공 ○○○ 사무관</text>
+    <text x="412" y="154" class="t" font-size="12.5">감리 ○○○ 주무관</text>
     <line x1="412" y1="166" x2="520" y2="166" stroke="#f5d6d9"/>
     <text x="412" y="180" class="t" font-size="12.5" fill="#ab2b36">도면 링크 0건</text>
     <g stroke="#ab2b36" stroke-width="2.5"><line x1="460" y1="186" x2="460" y2="206"/><line x1="472" y1="186" x2="472" y2="206"/></g>
-    <text x="466" y="228" text-anchor="middle" class="t s" font-size="12">이름만 있고</text>
-    <text x="466" y="246" text-anchor="middle" class="t s" font-size="12">도면·공사비는 없습니다</text>
+    <text x="466" y="228" text-anchor="middle" class="t s" font-size="12.5">이름만 있고</text>
+    <text x="466" y="246" text-anchor="middle" class="t s" font-size="12.5">도면·공사비는 없습니다</text>
   </g>
   <text x="280" y="294" text-anchor="middle" class="t s" font-size="12.5">공사 하나를 알려면 세 곳을 돌아야 하고, 돌아도 서로 이어지지 않습니다</text>
 </svg></div>
@@ -350,22 +350,22 @@ body{background:var(--cream);color:var(--ink0)}
   <text x="430" y="43" text-anchor="middle" fill="#fff" class="k" font-size="11.5" font-family="inherit">정책 번호 MOF-2026-0001</text>
   <g>
     <rect x="50" y="78" width="222" height="84" rx="7" fill="#fbeff0"/>
-    <text x="64" y="99" class="t k" font-size="12" fill="#ab2b36">실명판 · 정책실명제</text>
+    <text x="64" y="99" class="t k" font-size="12.5" fill="#ab2b36">실명판 · 정책실명제</text>
     <text x="64" y="122" class="t" font-size="12.5">결정 장관·차관 / 검토 과장</text>
     <text x="64" y="143" class="t" font-size="12.5">집행 사무관 · 주무관</text>
 
     <rect x="288" y="78" width="222" height="84" rx="7" fill="#eaf6ec"/>
-    <text x="302" y="99" class="t k" font-size="12" fill="#267337">도면·서류 · 원문공개</text>
+    <text x="302" y="99" class="t k" font-size="12.5" fill="#267337">도면·서류 · 원문공개</text>
     <text x="302" y="122" class="t" font-size="12.5">부지선정 계획(안) → PDF</text>
     <text x="302" y="143" class="t" font-size="12.5">공모 결과 안내 → 미등록·청구</text>
 
     <rect x="50" y="174" width="222" height="84" rx="7" fill="#fff3db"/>
-    <text x="64" y="195" class="t k" font-size="12" fill="#8a5c00">표지판 · 사전정보공표</text>
+    <text x="64" y="195" class="t k" font-size="12.5" fill="#8a5c00">표지판 · 사전정보공표</text>
     <text x="64" y="218" class="t" font-size="12.5">추진현황 분기 · 8.6 갱신</text>
     <text x="64" y="239" class="t" font-size="12.5">예산집행 월 → 바로 열림</text>
 
     <rect x="288" y="174" width="222" height="84" rx="7" fill="#eef2f7"/>
-    <text x="302" y="195" class="t k" font-size="12" fill="#052b57">공사비 · 재정</text>
+    <text x="302" y="195" class="t k" font-size="12.5" fill="#052b57">공사비 · 재정</text>
     <text x="302" y="218" class="t" font-size="12.5">'26 편성 ○○억 · 집행률</text>
     <text x="302" y="239" class="t" font-size="12.5">총사업비 ○○○억</text>
   </g>

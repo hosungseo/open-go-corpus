@@ -5,6 +5,7 @@
 // (then output goes to *.local.* and must never be published).
 //   node tools/build-explorer.mjs [--with-names]
 import fs from "node:fs";
+import { auditText, CSS_SCALE, SVG_SCALE } from "./normalize-type.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -321,6 +322,16 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(CH_PATH)) { console.error("ERROR notes/citizen-channels.json missing"); process.exit(1); }
       const cd = fs.readFileSync(CH_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__CHDATA__*/null", () => cd).replace("/*__CHDATA__*/", () => cd);
+    }
+    {
+      const bad = auditText(page);
+      if (bad.length) {
+        const uniq = [...new Set(bad)].sort();
+        console.error(`ERROR ${name}: 글자 크기 자에 없는 값 ${uniq.length}종 — ${uniq.join(", ")}`);
+        console.error(`  css 자: ${CSS_SCALE.join(" ")} · svg 자: ${SVG_SCALE.join(" ")}`);
+        console.error(`  고치려면: node tools/normalize-type.mjs`);
+        process.exit(1);
+      }
     }
     if (page.includes("/*__VNDATA__*/")) {
       if (!fs.existsSync(VN_PATH)) { console.error("ERROR notes/venue.json missing"); process.exit(1); }
