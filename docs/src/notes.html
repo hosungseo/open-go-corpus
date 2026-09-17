@@ -96,6 +96,18 @@
 .gjgrid .lg i{display:inline-block;width:14px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px;border:1px solid var(--rule)}
 @media (max-width:700px){ .gjgrid .lane{grid-template-columns:1fr} .gjgrid .c{width:30px;height:24px;font-size:12px} }
 
+/* 세부과제 554칸 — 123칸 격자의 작은 판 */
+.subgrid .c{width:15px;height:15px;font-size:0;border-radius:2px}
+.subgrid .c.on{background:var(--k-primary-50);border-color:var(--k-primary-50)}
+.subgrid .cells{gap:3px;align-items:center}
+.subgrid .gap{width:6px;height:15px;flex:none}
+.subgrid .ln b{font-size:14px}
+.subgrid .big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 12px}
+.subgrid .big .v{font-size:40px;font-weight:700;color:var(--k-primary-60);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.subgrid .big .v small{font-size:19px;color:var(--ink-3);font-weight:400;margin-left:4px}
+.subgrid .big .d{font-size:15px;color:var(--ink-2);line-height:1.5}
+@media (max-width:700px){ .subgrid .c{width:12px;height:12px} .subgrid .gap{width:4px;height:12px} .subgrid .big .v{font-size:32px} }
+
 /* 세 얼굴 — 같은 사업이 제도마다 내놓는 물건 */
 .faces{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 4px}
 .face{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
@@ -775,11 +787,9 @@
       <p>국정과제 123개 아래에는 「주요내용」 불릿이 <b><span id="vsSubN">—</span>개</b> 있습니다. 부처가 "54-2"라 부르는 세부과제입니다.
         세부과제의 앞머리(예: 고향사랑기부제 활성화)가 같은 주관부처의 2025~2026년 정책실명제 <b>사업명</b>에 나오면 관련 사업이 있는 것으로 봤습니다.
         <b><span id="vsSubHit">—</span>개(<span id="vsSubPct">—</span>)</b>에 관련 사업이 있었고, <span id="vsSubTask">—</span>개 과제에 걸칩니다.</p>
-      <div class="fig">
-        <h3>국정목표별 세부과제 수와 관련 정책실명제 사업이 있는 세부과제</h3>
-        <p class="sub">같은 주관부처 · 세부과제 앞머리가 사업명에 포함. 느슨한 어림이며 표본 검수 결과는 별첨에 있습니다.</p>
-        <div id="vsfig4"></div>
-      </div>
+      <div class="gjgrid subgrid" id="vsSubGrid"></div>
+      <p class="sub" style="font-size:13px;color:var(--ink-3);margin:8px 0 0">칸 하나가 세부과제 하나입니다. 과제 번호순으로 놓았고 과제가 바뀌는 자리마다 틈을 두었습니다.
+        같은 주관부처의 2025~2026년 정책실명제 사업명에 세부과제 앞머리가 나오면 칠했습니다. 칸에 마우스를 올리면 세부과제와 맞은 사업이 보입니다. 느슨한 어림이며 검수 결과는 별첨에 있습니다.</p>
       <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:12px 0 0">
         <p style="margin:0 0 6px;font-size:15px;line-height:1.7;color:var(--ink-2)"><b>이름이 정확히 맞는 것들</b></p>
         <ul id="vsSubEx" style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink-2)"></ul>
@@ -859,7 +869,27 @@
     var S2=VS.세부;
     if(S2){
       put('vsSubN', S2.총수); put('vsSubHit', S2.관련사업있음); put('vsSubPct', Math.round(S2.관련사업있음/S2.총수*100)+'%'); put('vsSubTask', S2.과제수);
-      // 그림 4 — 국정목표별 세부과제 수와 관련 사업 있는 수
+      // 554칸 — 과제 번호순, 과제 경계마다 틈. 칠한 칸이 관련 사업 있는 세부과제.
+      var sg=document.getElementById('vsSubGrid');
+      if(sg && S2.목록){
+        var NMS2={1:'국민이 하나되는 정치',2:'세계를 이끄는 혁신경제',3:'모두가 잘사는 균형성장',4:'기본이 튼튼한 사회',5:'국익 중심의 외교안보'};
+        var byTask={}; S2.목록.forEach(function(d){ var n=+d.no.split('-')[0]; (byTask[n]=byTask[n]||[]).push(d); });
+        var lanes={}; GJ.과제.forEach(function(t){ (lanes[t.goal]=lanes[t.goal]||[]).push(t); });
+        var html='<div class="big"><span class="v">'+S2.관련사업있음+' <small>/ '+S2.총수+'</small></span><span class="d"><b>'+Math.round(S2.관련사업있음/S2.총수*100)+'%</b>의 세부과제에 같은 주관부처의 정책실명제 사업이 이름으로 맞아 들어갑니다.<br>나머지는 사업이 없거나, 있어도 이름이 달라 자동으로는 못 찾은 것입니다.</span></div>';
+        Object.keys(lanes).sort().forEach(function(g){
+          var tot=0, hit=0, cells='';
+          lanes[g].forEach(function(t,ti){
+            var subs=byTask[t.n]||[];
+            subs.forEach(function(d){ tot++; if(d.n) hit++;
+              var tip=d.no+' '+d.t+(d.n?' ← '+d.e:' — 맞는 사업 없음')+'  ['+t.n+'. '+t.nm+']';
+              cells+='<span class="c'+(d.n?' on':'')+'" title="'+esc(tip)+'"></span>'; });
+            if(ti<lanes[g].length-1 && subs.length) cells+='<span class="gap" aria-hidden="true"></span>';
+          });
+          html+='<div class="lane"><div class="ln"><b>목표 '+g+' · '+esc(NMS2[g]||'')+'</b>'+tot+'개 · 사업 있음 '+hit+'</div><div class="cells">'+cells+'</div></div>';
+        });
+        html+='<div class="lg"><span><i style="background:var(--k-primary-50);border-color:var(--k-primary-50)"></i>같은 주관부처의 정책실명제 사업이 이름으로 맞음 '+S2.관련사업있음+'</span><span><i style="background:var(--panel-2)"></i>맞는 사업 없음 '+(S2.총수-S2.관련사업있음)+'</span></div>';
+        sg.innerHTML=html;
+      }
       var f4=document.getElementById('vsfig4');
       if(f4){
         var NMS={1:'국민이 하나되는 정치',2:'세계를 이끄는 혁신경제',3:'모두가 잘사는 균형성장',4:'기본이 튼튼한 사회',5:'국익 중심의 외교안보'};

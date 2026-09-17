@@ -39,6 +39,7 @@ const byGoal = {};
 for (const d of SUBM.세부) { const n = +d.no.split("-")[0], g = goalOf(n); if (!g) continue; (byGoal[g] = byGoal[g] || { 세부: 0, 관련: 0 }).세부++; if (d.사업수) byGoal[g].관련++; }
 const 세부 = { 총수: SUBM.세부과제수, 관련사업있음: SUBM.관련사업있는세부과제, 과제수: SUBM.과제수, 기준: SUBM.기준, 목표별: byGoal,
   손기입: cites.map((c) => ({ no: c.n + (c.세부번호 ? "" : ""), 등록기관: c.등록기관, 사업: c.사업 })),
+  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, e: d.예.length ? d.예[0].slice(0, 40) : "" })),
   확실한예: SUBM.세부.filter((d) => d.사업수 && d.예.length).filter((d) => ["54-1","94-1","112-1","82-3","48-2","71-4","82-1","14-5","68-4","98-4"].includes(d.no)).map((d) => ({ no: d.no, 제목: d.제목.slice(0, 26), 사업: d.예[0] })) };
 
 const out = {
