@@ -319,6 +319,9 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .subgrid .sgnav span{font-size:13px;color:var(--ink-3);margin-right:4px}
 .subgrid .sgnav button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer}
 .subgrid .sgnav button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0);font-weight:700}
+.subgrid .sgnav input{margin-left:auto;min-width:220px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);padding:6px 10px;font:inherit;font-size:13px;color:var(--ink)}
+.subgrid .sgnav input:focus{outline:2px solid var(--k-primary-50);outline-offset:1px}
+@media (max-width:640px){ .subgrid .sgnav input{margin-left:0;width:100%} }
 .subgrid .cap{min-height:24px;margin:10px 0 0;font-size:14px;color:var(--ink-2);line-height:1.5}
 .subgrid .cap b{color:var(--ink)}
 .subgrid .cap .m{color:var(--k-primary-60);font-weight:700}
@@ -1015,7 +1018,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       <p>카드가 국정과제를 가리키는 다른 길은 본문에 손으로 적는 것뿐입니다. 2025~2026년 카드 <span id="vsCardN">—</span>장 가운데 국정과제를 본문에 이름이나 번호로 적은 카드는 <b><span id="vsCiteN">—</span>장</b>(이름 <span id="vsCiteName">—</span> · 번호 <span id="vsCiteNum">—</span>)입니다. "국정과제 56-3", "국정과제(2-4)"처럼 번호까지 적은 카드가 있다는 것은 번호 칸이 있으면 채워질 정보라는 뜻이고, 그 비율이 2%라는 것은 칸 없이는 채워지지 않는다는 뜻입니다.</p>
       <div class="gjgrid subgrid" id="vsSubGrid"></div>
       <p class="sub" style="font-size:13px;color:var(--ink-3);margin:8px 0 0">칸 하나가 세부과제 하나입니다. 과제 번호순으로 놓았고 과제가 바뀌는 자리마다 틈을 두었습니다.
-        진한 파랑은 사람이 읽어 확실하다고 판정한 것, 옅은 파랑은 애매한 것입니다. 오탐은 회색으로 돌렸습니다. 칸에 마우스를 올리면 같은 과제의 칸이 함께 켜지고 아래에 과제 이름이 뜹니다. 「많이 맞은 순」으로 정렬하면 맞은 칸이 몇 개 과제에 몰려 있는지 보입니다. 느슨한 어림이며 검수 결과는 별첨에 있습니다.</p>
+        진한 파랑은 사람이 읽어 확실하다고 판정한 것, 옅은 파랑은 애매한 것입니다. 오탐은 회색으로 돌렸습니다. 칸에 마우스를 올리면 같은 과제의 칸이 함께 켜지고 아래에 과제 이름이 뜹니다. 오른쪽 상자에 낱말을 넣으면(예: 청년, 북극항로, 반려동물) 그 낱말이 든 세부과제·사업 칸만 남습니다. 「많이 맞은 순」으로 정렬하면 맞은 칸이 몇 개 과제에 몰려 있는지 보입니다. 느슨한 어림이며 검수 결과는 별첨에 있습니다.</p>
       <div class="box" style="background:var(--paper);border-radius:var(--r-s);padding:12px 14px;margin:12px 0 0">
         <p style="margin:0 0 6px;font-size:15px;line-height:1.7;color:var(--ink-2)"><b>확실로 판정한 것 가운데 이름이 그대로 겹치는 예</b></p>
         <ul id="vsSubEx" style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink-2)"></ul>
@@ -11935,7 +11938,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
         var byTask={}; S2.목록.forEach(function(d){ var n=+d.no.split('-')[0]; (byTask[n]=byTask[n]||[]).push(d); });
         var lanes={}; GJ.과제.forEach(function(t){ (lanes[t.goal]=lanes[t.goal]||[]).push(t); });
         var head='<div class="big"><span class="v">'+S2.확실합계+' <small>/ '+S2.총수+'</small></span><span class="d"><b>'+Math.round(S2.확실합계/S2.총수*100)+'%</b>의 세부과제에 같은 일을 가리키는 정책실명제 사업이 있습니다(사람이 읽어 확실로 판정 — 이름으로 '+S2.확실+', 본문으로 '+S2.본문확실+'). 애매한 것 '+S2.애매합계+'개를 더하면 '+Math.round((S2.확실합계+S2.애매합계)/S2.총수*100)+'%.<br>나머지는 사업이 없거나, 있어도 이름·본문 어디에도 핵심어가 안 나와 못 찾은 것입니다.</span></div>'
-          + '<div class="sgnav"><span>과제 순서</span><button type="button" data-o="num" class="on">번호순</button><button type="button" data-o="hit">많이 맞은 순</button></div>';
+          + '<div class="sgnav"><span>과제 순서</span><button type="button" data-o="num" class="on">번호순</button><button type="button" data-o="hit">많이 맞은 순</button><input type="search" id="sgQ" placeholder="세부과제·사업 이름으로 찾기" aria-label="세부과제나 사업 이름으로 칸 찾기" autocomplete="off"></div>';
         var taskStat=function(t){ var subs=byTask[t.n]||[]; var h=subs.filter(isSure).length, a=subs.filter(isAmb).length; return {tot:subs.length, hit:h, amb:a}; };
         var render=function(order){
           var html='';
@@ -11948,7 +11951,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
               subs.forEach(function(d){ tot++; var sure=isSure(d), am=isAmb(d); if(sure) hit++; if(am) amb++;
                 var viaBody=!d.n&&d.b, ex=viaBody?d.be:d.e, src=viaBody?'본문':'이름';
                 var tip=d.no+' '+d.t+(sure?' ← '+ex+' (확실·'+src+')':am?' ← '+ex+' (애매·'+src+')':(d.r==='오탐'||d.b==='오탐')?' — 대조는 걸렸으나 오탐: '+ex:' — 맞는 사업 없음')+'  ['+t.n+'. '+t.nm+']';
-                cells+='<span class="c'+(sure?' on':am?' am':'')+'" data-n="'+t.n+'" title="'+esc(tip)+'"></span>'; });
+                cells+='<span class="c'+(sure?' on':am?' am':'')+'" data-n="'+t.n+'" data-k="'+esc((d.no+' '+d.t+' '+(ex||'')+' '+t.nm).toLowerCase())+'" title="'+esc(tip)+'"></span>'; });
               if(ti<list.length-1 && subs.length) cells+='<span class="gap" aria-hidden="true"></span>';
             });
             var pct=tot?Math.round(hit/tot*100):0;
@@ -11966,21 +11969,35 @@ section.appendix th,section.appendix td{padding:10px 12px}
         sg.querySelector('.sgnav').addEventListener('click',function(e){
           var b=e.target.closest('button[data-o]'); if(!b) return;
           [].forEach.call(sg.querySelectorAll('.sgnav button'),function(x){ x.className = x===b?'on':''; });
-          body.innerHTML=render(b.dataset.o);
+          body.innerHTML=render(b.dataset.o); applyQ();
         });
+        // 낱말로 칸 찾기: 맞는 칸만 남기고 나머지는 흐리게. 정렬을 바꿔도 유지된다.
+        var qEl=document.getElementById('sgQ');
+        var applyQ=function(){
+          var q=(qEl&&qEl.value||'').trim().toLowerCase();
+          var cap=document.getElementById('sgCap');
+          if(!q){ sg.classList.remove('hover'); [].forEach.call(sg.querySelectorAll('.c.hi'),function(x){ x.classList.remove('hi'); }); if(cap) cap.textContent='칸에 마우스를 올리면 같은 과제의 칸이 함께 켜집니다.'; return; }
+          var n=0, s=0, a=0;
+          [].forEach.call(sg.querySelectorAll('.c[data-k]'),function(x){ var m=x.dataset.k.indexOf(q)>=0; x.classList.toggle('hi',m); if(m){ n++; if(x.classList.contains('on')) s++; else if(x.classList.contains('am')) a++; } });
+          sg.classList.add('hover');
+          if(cap) cap.innerHTML=n?'<b>“'+esc(q)+'”</b> — '+n+'칸 (확실 <span class="m">'+s+'</span>'+(a?' · 애매 '+a:'')+(n-s-a?' · 없음 '+(n-s-a):'')+'). 칸에 마우스를 올리면 세부과제와 사업이 보입니다.':'<b>“'+esc(q)+'”</b> — 맞는 칸이 없습니다. 세부과제 앞머리나 사업 이름의 낱말로 찾아보세요.';
+        };
+        if(qEl){ qEl.addEventListener('input',applyQ); qEl.addEventListener('search',applyQ); }
         // 같은 과제 칸을 함께 켜고 아래에 과제 이름을 띄운다
         var byN={}; GJ.과제.forEach(function(t){ byN[t.n]=t; });
         sg.addEventListener('mouseover',function(e){
           var c=e.target.closest('.c[data-n]'); if(!c) return;
           var n=+c.dataset.n, st=taskStat(byN[n]);
           sg.classList.add('hover');
-          [].forEach.call(sg.querySelectorAll('.c'),function(x){ x.classList.toggle('hi', +x.dataset.n===n); });
+          var q=(qEl&&qEl.value||'').trim().toLowerCase();
+          [].forEach.call(sg.querySelectorAll('.c'),function(x){ x.classList.toggle('hi', +x.dataset.n===n || (!!q && x.dataset.k.indexOf(q)>=0)); });
           var cap=document.getElementById('sgCap'); if(cap) cap.innerHTML='<b>'+n+'. '+esc(byN[n].nm)+'</b> ('+esc(byN[n].org)+') — 세부과제 '+st.tot+'개 중 확실 <span class="m">'+st.hit+'개</span>'+(st.amb?' · 애매 '+st.amb+'개':'');
         });
         sg.addEventListener('mouseleave',function(){
           sg.classList.remove('hover');
           [].forEach.call(sg.querySelectorAll('.c.hi'),function(x){ x.classList.remove('hi'); });
           var cap=document.getElementById('sgCap'); if(cap) cap.textContent='칸에 마우스를 올리면 같은 과제의 칸이 함께 켜집니다.';
+          applyQ();
         });
       }
       var f4=document.getElementById('vsfig4');
