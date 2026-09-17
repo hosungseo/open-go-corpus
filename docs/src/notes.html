@@ -172,6 +172,18 @@
     <h2>창구는 거의 다 있습니다. 내는 방법이 문턱입니다</h2>
     <p>국민신청 선정 실적이 있는 24개 기관 가운데 <b>14곳</b>의 누리집을 직접 열어 접수 방법을 확인했습니다.
       이 14곳이 전체 135건 중 <b>122건(90%)</b>을 차지합니다.</p>
+    <div class="fig">
+      <h3>국민이 사업 하나를 신청하려면</h3>
+      <p class="sub">파란 칸은 누리집 화면 안에서 끝나는 단계, 회색 칸은 화면을 나가서 해야 하는 단계입니다.</p>
+      <div id="fig3"></div>
+    </div>
+
+    <div class="fig">
+      <h3>기관별 국민신청 선정 건수와 접수 방법</h3>
+      <p class="sub">막대는 2018~2026년 누적 선정 건수입니다. 파란 막대가 화면에서 바로 낼 수 있는 기관입니다.</p>
+      <div id="fig4"></div>
+    </div>
+
     <div class="tbl"><table>
       <thead><tr><th>기관</th><th class="n">선정</th><th>접수</th><th>형태</th><th>내는 방법</th></tr></thead>
       <tbody id="chBody"></tbody>
@@ -322,6 +334,57 @@
          + '<td>' + (t[i] ? '"' + esc(t[i][0]) + '"' : '') + '</td><td class="n">' + (t[i] ? t[i][1] : '') + '</td></tr>';
     }
     document.getElementById('orgBody').innerHTML = h;
+  })();
+
+  /* 그림 3 — 신청 단계 수 */
+  (function(){
+    if(!CH) return;
+    var W=720, rowH=70, T=26, L=8;
+    var lanes=[
+      { nm:'교육부 (1곳)', sub:'누리집 온라인 서식', steps:[['누리집에서\n정책실명제 찾기',1],['서식에\n바로 입력',1],['등록',1]] },
+      { nm:'나머지 13곳', sub:'서식 내려받기 → 외부 전송', steps:[['누리집에서\n정책실명제 찾기',1],['한글 파일\n내려받기',0],['한글 열어\n작성',0],['파일로\n저장',0],['메일에\n첨부',0],['보내기',0]] }
+    ];
+    var H=T+lanes.length*rowH+18;
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="기관별 국민신청 절차 단계 비교">';
+    lanes.forEach(function(L2,li){
+      var y=T+li*rowH;
+      s+='<text x="'+L+'" y="'+(y+2)+'" font-size="13.5" font-weight="700" fill="var(--ink)">'+L2.nm+'</text>'
+       + '<text x="'+(L+108)+'" y="'+(y+2)+'" font-size="12" fill="var(--ink-3)">'+L2.sub+'</text>';
+      var n=L2.steps.length, gap=7, bx=L, bw=(W-L-((n-1)*gap+34))/n, by=y+10, bh=40;
+      L2.steps.forEach(function(st,i){
+        var x=bx+i*(bw+gap);
+        var inside=st[1]===1;
+        s+='<rect x="'+x+'" y="'+by+'" width="'+bw+'" height="'+bh+'" rx="4" '
+         + 'fill="'+(inside?'var(--em-soft)':'var(--panel-2)')+'" stroke="'+(inside?'var(--k-primary-20)':'var(--rule)')+'"/>';
+        st[0].split('\n').forEach(function(t,k){
+          s+='<text x="'+(x+bw/2)+'" y="'+(by+(st[0].indexOf('\n')<0?24:17)+k*14)+'" text-anchor="middle" font-size="11.5" fill="'+(inside?'var(--em)':'var(--ink-2)')+'">'+t+'</text>';
+        });
+        if(i<n-1) s+='<text x="'+(x+bw+gap/2-1)+'" y="'+(by+bh/2+4)+'" text-anchor="middle" font-size="12" fill="var(--ink-3)">›</text>';
+      });
+      s+='<text x="'+(W-2)+'" y="'+(by+bh/2+4)+'" text-anchor="end" font-size="13" font-weight="700" fill="'+(li===0?'var(--em)':'var(--ink-2)')+'">'+n+'단계</text>';
+    });
+    s+='</svg>';
+    document.getElementById('fig3').innerHTML=s;
+  })();
+
+  /* 그림 4 — 기관별 선정 건수 가로 막대 */
+  (function(){
+    if(!CH) return;
+    var rows=CH.기관.slice().sort(function(a,b){return b.n-a.n;});
+    var W=720, rowH=25, T=8, L=124, R=56;
+    var max=Math.max.apply(null, rows.map(function(r){return r.n;}));
+    var H=T+rows.length*rowH+6;
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="기관별 국민신청 선정 건수 가로 막대그림">';
+    rows.forEach(function(r,i){
+      var y=T+i*rowH, bw=(W-L-R)*r.n/max, A=r.등급==='A';
+      s+='<text x="'+(L-8)+'" y="'+(y+15)+'" text-anchor="end" font-size="12.5" fill="'+(A?'var(--ink)':'var(--ink-2)')+'"'+(A?' font-weight="700"':'')+'>'+r.nm+'</text>'
+       + '<rect x="'+L+'" y="'+(y+4)+'" width="'+Math.max(bw,2)+'" height="15" rx="2" fill="'+(A?'var(--em)':'var(--rule)')+'"/>'
+       + '<text x="'+(L+Math.max(bw,2)+6)+'" y="'+(y+15)+'" font-size="12" fill="var(--ink-2)"'+(A?' font-weight="700"':'')+'>'+r.n+'</text>';
+      // 막대 끝에 붙이면 그림 상자를 넘는다. 가장 긴 막대이므로 안에 넣는다.
+      if(A) s+='<text x="'+(L+Math.max(bw,2)-8)+'" y="'+(y+15.5)+'" text-anchor="end" font-size="11" font-weight="700" fill="var(--k-gray-0)">화면에서 바로 낼 수 있는 유일한 기관</text>';
+    });
+    s+='</svg>';
+    document.getElementById('fig4').innerHTML=s;
   })();
 
   /* 접수 방법 표 */
