@@ -187,6 +187,26 @@ section.appendix th,section.appendix td{padding:10px 12px}
   a{text-decoration:none}
 }
 
+/* 질문 셋 — 누가 답하나 */
+.qa{margin:14px 0 4px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
+.qa .qrow{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
+.qa .qrow:first-child{border-top:0;background:var(--panel-2)}
+.qa .qrow:first-child > div{font-size:13px;font-weight:700;color:var(--ink-2);padding:10px 14px}
+.qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
+.qa .qrow:first-child > div:first-child:before{display:none}
+.qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
+.qa .q:before{content:"🙋";margin-right:6px}
+.qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
+.qa .a:last-child{border-right:0}
+.qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
+.qa .a.hit{background:var(--k-success-5,#eef7f0)}
+.qa .a.hit .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
+.qa .a.hit{color:var(--ink)}
+.qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
+.qa .a.hit .say{border-color:var(--k-success-60)}
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
+
 </style>
 <style>
 /* ── 개요: 크림 배경·큰 세리프·동작하는 위젯 (jiro CryptoCalc 패턴) ── */
@@ -420,6 +440,15 @@ body{background:var(--cream);color:var(--ink0)}
   <div class="ticker" aria-label="핵심 실측치" role="marquee"><div class="tr" id="tk"></div></div>
 
 
+  <!-- 같은 사업에 질문 셋 — 누가 답하나 -->
+  <section class="sec">
+    <div class="head">
+      <div><h2>같은 사업에 질문 셋을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 셋을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>질문마다 답하는 제도가 다릅니다.</b></p></div>
+      <a class="more" href="notes.html#note4">세 얼굴 전부 보기 →</a>
+    </div>
+    <div class="qa" id="qaHome"></div>
+  </section>
+
   <!-- 비유: 세 곳으로 흩어진 현장 → 대장 한 장 -->
   <section class="sec">
     <div class="head">
@@ -597,6 +626,229 @@ body{background:var(--cream);color:var(--ink0)}
 </main>
 
 <script>
+(function(){
+  var TF = {
+  "작성일": "2026-09-17",
+  "사업": "풍수해보험사업 운영",
+  "주관": "행정안전부 재난보험과",
+  "원천": "정보공개포털 사업 대조기(정책실명제·원문공개), 시군구 누리집 사전정보공표 페이지 직접 열람",
+  "얼굴": [
+    {
+      "제도": "rn",
+      "이름": "정책실명제",
+      "별칭": "명패",
+      "물건": "중점관리 대상사업 카드",
+      "출처": "정보공개포털 정책실명제 · 행정안전부 2025년 등록",
+      "본문": [
+        [
+          "사업명",
+          "풍수해보험사업 운영"
+        ],
+        [
+          "담당",
+          "재난보험과 ○○○ 사무관"
+        ],
+        [
+          "결재선",
+          "○○○ 과장 · ○○○ 주무관 외 3명"
+        ],
+        [
+          "기간",
+          "2006년 ~ 계속"
+        ],
+        [
+          "선정기준",
+          "대규모 예산"
+        ],
+        [
+          "사업개요",
+          "「풍수해·지진재해보험법」 제3조. 태풍·홍수·호우·강풍·풍랑·해일·대설·지진. 주택·온실·상가·공장. 보험료 55~100% 지원."
+        ],
+        [
+          "추진실적",
+          "2025.1.14 가입 촉진 계획 · 1.24 홍보 추진계획 · 3.10 실무편람 발간 계획"
+        ]
+      ],
+      "글자수": 234,
+      "여기서만": [
+        "누가 맡았나 — 담당자와 결재선 이름",
+        "사업 하나를 한 장으로 — 시작 연도부터 올해 실적까지"
+      ],
+      "안보임": [
+        "예산 액수",
+        "결재문서 원본",
+        "국민이 가입하는 방법"
+      ]
+    },
+    {
+      "제도": "pv",
+      "이름": "사전정보공표",
+      "별칭": "안내판",
+      "물건": "시군구 누리집의 가입 안내 페이지",
+      "출처": "영천시 누리집 사전정보공표 · 안전재난하천과 · 2025-08-27 등록 · 조회 2회",
+      "본문": [
+        [
+          "항목",
+          "풍수해보험 안내"
+        ],
+        [
+          "공표 내용",
+          "기간, 대상, 내용, 가입기준, 가입액, 가입방법 등"
+        ],
+        [
+          "공표 주기",
+          "연 1회 · 1월 · 파일"
+        ],
+        [
+          "화면 본문",
+          "(설명 문장 없음 — 항목 이름과 첨부 목록만)"
+        ],
+        [
+          "첨부",
+          "2025년 리플렛 PDF 2쪽 · 포스터 PDF"
+        ],
+        [
+          "리플렛 안",
+          "가입 대상(주택·온실·소상공인 상가·공장) · 보험료 정부 지원 55~92% · 보험료·보험금 예시 표 · 보험사 7곳 044-205-5990~5996 · 읍면동 행정복지센터"
+        ]
+      ],
+      "글자수": {
+        "화면": 216,
+        "첨부": 1986
+      },
+      "여기서만": [
+        "내가 어떻게 가입하나 — 대상·보험료·창구·전화번호",
+        "우리 동네 창구로 — 시군구가 올리고 읍면동이 받음"
+      ],
+      "안보임": [
+        "누가 이 사업을 맡았나",
+        "중앙에서 언제 무엇을 결정했나",
+        "화면에는 항목 이름만 — 내용은 첨부 PDF를 열어야"
+      ],
+      "메모": "같은 사업의 사전정보공표 199건이 전부 시군구 것이고 행정안전부 본부 목록에는 없다. 세 곳을 열어 본 결과 화면 본문은 영천 216자·함안 17자·고창 0자(이미지 5쪽)이고, 내용은 셋 다 첨부한 행정안전부 리플렛에 있다. 고창은 리플렛마저 이미지라 검색·낭독이 안 된다."
+    },
+    {
+      "제도": "og",
+      "이름": "원문공개",
+      "별칭": "원본",
+      "물건": "결재문서",
+      "출처": "정보공개포털 원문공개 · 행정안전부 재난보험과 2026-09-04",
+      "본문": [
+        [
+          "제목",
+          "'26년 11월 기준 풍수해·지진재해보험사업 지방비 추가지원 실시 계획 통보"
+        ],
+        [
+          "결재",
+          "○○○ 주무관(기안) → ○○○ 행정사무관 → ○○○ 재난보험과장(전결)"
+        ],
+        [
+          "일자",
+          "2026-09-04"
+        ],
+        [
+          "본문",
+          "(문서 원본 · 파일 변환 후 열람)"
+        ],
+        [
+          "같은 사업 문서",
+          "278건 (2025~2026)"
+        ]
+      ],
+      "글자수": 28659,
+      "여기서만": [
+        "언제 무엇을 결정했나 — 결재 일자와 전결자",
+        "결정 과정 그대로 — 기안부터 전결까지"
+      ],
+      "안보임": [
+        "사업 전체의 조망 — 278건을 모아야 보임",
+        "국민이 가입하는 방법"
+      ]
+    }
+  ],
+  "질문": [
+    {
+      "q": "이 사업, 누가 맡았나요?",
+      "답": {
+        "rn": {
+          "말": "재난보험과 ○○○ 사무관입니다. 결재는 ○○○ 과장이 했습니다.",
+          "판정": "답함"
+        },
+        "pv": {
+          "말": "안전총괄과에서 담당합니다.",
+          "판정": "부서까지"
+        },
+        "og": {
+          "말": "문서 278건에 결재선이 있습니다. 하나씩 여시면 됩니다.",
+          "판정": "흩어짐"
+        }
+      }
+    },
+    {
+      "q": "저는 어떻게 가입하나요?",
+      "답": {
+        "rn": {
+          "말": "사업개요에는 없습니다.",
+          "판정": "못 답함"
+        },
+        "pv": {
+          "말": "주택·온실·소상공인 상가·공장이 대상이고 보험료의 55~92%를 정부가 냅니다. 보험사 7곳(044-205-5990~5996)이나 읍면동 행정복지센터로 오세요.",
+          "판정": "답함 (첨부 안에)"
+        },
+        "og": {
+          "말": "홍보 계획 문서에 일부 있습니다. 파일을 변환해서 보셔야 합니다.",
+          "판정": "간접"
+        }
+      }
+    },
+    {
+      "q": "언제 무엇을 결정했나요?",
+      "답": {
+        "rn": {
+          "말": "2025년 추진실적 3건입니다. 1월 가입 촉진 계획, 1월 홍보 계획, 3월 편람 계획.",
+          "판정": "연 단위"
+        },
+        "pv": {
+          "말": "결정 과정은 다루지 않습니다.",
+          "판정": "못 답함"
+        },
+        "og": {
+          "말": "2025-12-18 「2026년 홍보 추진계획 보고」, 재난보험과장 전결입니다.",
+          "판정": "답함"
+        }
+      }
+    }
+  ],
+  "조사": {
+    "일자": "2026-09-17",
+    "방법": "영천시·함안군·고창군의 사전정보공표 링크를 직접 열어 화면 글자 수를 세고 첨부를 열었다. 행정안전부 사전정보공표 목록 132건을 전수 확인했다. 제출한 것은 없다.",
+    "화면글자": {
+      "영천시": 216,
+      "함안군": 17,
+      "고창군": 0
+    },
+    "첨부글자": {
+      "영천시 리플렛 2쪽": 1986,
+      "고창군 이미지 5쪽": "어림 2,000~3,000"
+    },
+    "행안부본부": "사전정보공표 목록 132건 중 풍수해보험 0건. 가장 가까운 것은 재난배상책임보험(다른 제도). 업무안내 메뉴에는 별도로 있음."
+  }
+}
+;
+  var qa = document.getElementById('qaHome');
+  if (!TF || !qa) return;
+  var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
+  var NM = {rn:'정책실명제', pv:'사전정보공표', og:'원문공개'};
+  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>'
+    + TF.질문.map(function(q){
+        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+          + ['rn','pv','og'].map(function(k){
+              var a=q.답[k], hit=/^답함/.test(a.판정);
+              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+            }).join('')
+          + '</div>';
+      }).join('');
+})();
 (function(){
   /* ── 미니 대조기: 2025년 대표 사업 6건 (explorer/data.json에서 발췌, 실명 제거) ── */
   const S=[

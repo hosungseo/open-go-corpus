@@ -238,6 +238,15 @@ body{background:var(--cream);color:var(--ink0)}
   <div class="ticker" aria-label="핵심 실측치" role="marquee"><div class="tr" id="tk"></div></div>
 
 
+  <!-- 같은 사업에 질문 셋 — 누가 답하나 -->
+  <section class="sec">
+    <div class="head">
+      <div><h2>같은 사업에 질문 셋을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 셋을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>질문마다 답하는 제도가 다릅니다.</b></p></div>
+      <a class="more" href="notes.html#note4">세 얼굴 전부 보기 →</a>
+    </div>
+    <div class="qa" id="qaHome"></div>
+  </section>
+
   <!-- 비유: 세 곳으로 흩어진 현장 → 대장 한 장 -->
   <section class="sec">
     <div class="head">
@@ -415,6 +424,22 @@ body{background:var(--cream);color:var(--ink0)}
 </main>
 
 <script>
+(function(){
+  var TF = /*__TFDATA__*/null;
+  var qa = document.getElementById('qaHome');
+  if (!TF || !qa) return;
+  var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
+  var NM = {rn:'정책실명제', pv:'사전정보공표', og:'원문공개'};
+  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>'
+    + TF.질문.map(function(q){
+        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+          + ['rn','pv','og'].map(function(k){
+              var a=q.답[k], hit=/^답함/.test(a.판정);
+              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+            }).join('')
+          + '</div>';
+      }).join('');
+})();
 (function(){
   /* ── 미니 대조기: 2025년 대표 사업 6건 (explorer/data.json에서 발췌, 실명 제거) ── */
   const S=[
