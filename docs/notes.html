@@ -283,7 +283,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 국정과제 123칸 — 국정목표별 다섯 줄 */
 .gjgrid{margin:14px 0 4px}
-.gjgrid .lane{display:grid;grid-template-columns:196px 1fr;gap:10px;align-items:start;padding:8px 0;border-top:1px solid var(--rule-2)}
+.gjgrid .lane{display:grid;grid-template-columns:232px 1fr;gap:10px;align-items:start;padding:8px 0;border-top:1px solid var(--rule-2)}
 .gjgrid .lane:first-child{border-top:0}
 .gjgrid .ln{font-size:13px;color:var(--ink-2);line-height:1.45;padding-top:3px}
 .gjgrid .ln b{display:block;color:var(--ink);font-size:14px}
@@ -291,6 +291,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .gjgrid .c{width:34px;height:26px;border-radius:2px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;
   font-size:12px;color:var(--ink-2);background:var(--panel-2);font-variant-numeric:tabular-nums;cursor:default}
 .gjgrid .c.on{background:var(--k-success-60);border-color:var(--k-success-60);color:var(--k-gray-0);font-weight:700}
+.gjgrid .c.via{background:var(--k-primary-10);border-color:var(--k-primary-20);color:var(--k-primary-70)}
 .gjgrid .c.none{background:repeating-linear-gradient(45deg,var(--k-danger-50) 0 2px,var(--panel) 2px 6px);border-color:var(--k-danger-50);color:var(--k-danger-60);font-weight:700}
 .gjgrid .c.none span{background:var(--panel);padding:0 4px;border-radius:2px;line-height:1.3}
 .gjgrid .lg{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--ink-2);margin-top:10px}
@@ -417,7 +418,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
           <td class="ins"><b>세 제도가 서로 다른 영역에 분포합니다.</b> 정책실명제는 정책 단위 정합성이 가장 높으나 공개 정보의 구체성이 낮고, 원문공개는 구체성이 가장 높으나 정책 단위와 정합하지 않습니다. 정책지표 여덟 개를 둘씩 짝지어 네 장면으로 대조하였습니다.</td>
           <td class="st2"><a href="#note2">② 정책지표별 위상 비교</a></td></tr>
         <tr class="on"><td class="sub2">국정과제로 본 비전</td>
-          <td class="ins"><b>국정과제 포털은 서사가 있고 책임자가 없으며, 정책실명제는 책임자가 있고 과제 번호가 없습니다.</b> 현 정부 123개 중 정책실명제가 번호로 가리키는 과제는 3개입니다. 국민이 물을 여섯 가지를 두고 지금 어디에 답이 있는지 봤습니다.</td>
+          <td class="ins"><b>국정과제 포털은 서사가 있고 책임자가 없으며, 정책실명제는 책임자가 있고 과제 번호가 없습니다.</b> 현 정부 123개 중 정책실명제 사업이 걸린 과제는 50개쯤인데 번호로 이어진 과제는 3개입니다. 없는 게 아니라 못 잇습니다. 국민이 물을 여섯 가지를 두고 지금 어디에 답이 있는지 봤습니다.</td>
           <td class="st2"><a href="#note6">⑥ 국정과제로 본 비전</a></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">참여</span><span class="gd">국민이 제도에 닿는 길</span></td></tr>
@@ -939,8 +940,10 @@ section.appendix th,section.appendix td{padding:10px 12px}
       <p>현 정부 국정과제 123개를 두고 국민이 물을 법한 여섯 가지를 골라, <b>지금 어디에 답이 있는지</b> 국정과제 포털과 세 정보공개 제도에서 찾았습니다.
         <b>국정과제 포털에는 목표·성과·추진실적 서사가 있지만</b> 담당자·예산·근거문서·세부과제 항목이 <b>하나도 없습니다.</b>
         <b>정책실명제에는 담당자와 결재선이 있지만</b> 어느 국정과제인지 적는 칸이 없습니다.</p>
-      <p>그래서 <b>123개 가운데 정책실명제 기록이 번호로 가리키는 과제는 <span id="vsNamed">—</span>개</b>입니다.
-        그것도 담당자가 사업개요에 손으로 적은 것입니다. 나머지 <span id="vsRest">—</span>개는 이름이 붙은 사업을 찾아갈 길이 없습니다.</p>
+      <p>정책실명제에 국정과제 사업이 없는 것이 아닙니다. 2025~2026년에 국정과제로 표시된 사업이 <b><span id="vsRecent">—</span>건</b>이고,
+        주관부처 기준으로 <b>123개 가운데 <span id="vsVia">—</span>개 과제</b>에 걸려 있습니다.
+        그런데 <b>어느 사업이 어느 과제인지 적는 칸이 없어서</b>, 번호로 확인되는 과제는 <b><span id="vsNamed">—</span>개</b>뿐입니다.
+        그것도 담당자가 사업개요에 손으로 적은 것입니다. <b>없는 게 아니라 있는데 못 잇습니다.</b></p>
       <p>비전은 둘을 <b>국정과제 번호로 한 자리에 세우는 것</b>입니다. 국정과제 전부에 이름을 붙이고, 이름 아래 목표·실적·문서가 붙게 하는 것.</p>
     </div>
     <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
@@ -954,21 +957,24 @@ section.appendix th,section.appendix td{padding:10px 12px}
     </section>
 
     <section class="core">
-      <h2>123개 가운데 이름이 붙은 과제</h2>
+      <h2>123개 가운데 책임자까지 닿는 과제</h2>
       <p>국정과제 포털에는 담당자 항목이 없으니 <b>포털에서 이름을 찾을 수 있는 과제는 0개</b>입니다.
-        정책실명제 쪽에서 거꾸로 찾으면, 2026년 등록 가운데 국정과제 번호를 어딘가 적은 기록이 <span id="vsCites">—</span>건이고
-        그 번호가 가리키는 과제가 <span id="vsNamed2">—</span>개입니다. 초록 칸입니다.</p>
+        정책실명제 쪽에서 거꾸로 찾으면 세 층이 나옵니다.
+        <b>초록</b>은 2026년 기록이 국정과제 번호를 적어 과제까지 닿는 것(<span id="vsCites">—</span>건이 <span id="vsNamed2">—</span>개 과제),
+        <b>옅은 파랑</b>은 주관부처가 2025~2026년에 국정과제 사업을 등록했지만 어느 과제인지 특정할 수 없는 것,
+        <b>회색</b>은 주관부처가 그 기간에 국정과제 사업을 올리지 않았거나 정책실명제 포털에 없는 것입니다.</p>
       <div class="gjgrid" id="vsGrid"></div>
       <p>초록 칸조차 제도가 만든 연결이 아닙니다. 담당자가 사업개요에 "국정과제 56-3"처럼 적어 둔 것이고,
         <b>그 세부번호는 국정과제 포털에 없는 번호</b>입니다. 부처가 스스로 만든 것입니다. 열쇠가 없으니 각자 열쇠를 깎고 있습니다.</p>
-      <p>회색 120개가 전부 "이름 없는 과제"라는 뜻은 아닙니다. 주관부처가 올해 정책실명제를 아직 올리지 않은 곳이 많고(45곳 중 <span id="vsReg">—</span>곳만 등록),
-        올렸어도 번호를 적지 않으면 어느 과제인지 알 수 없습니다. <b>어느 쪽이든 국정과제 쪽에서 책임자로 가는 길은 없습니다.</b></p>
+      <p>옅은 파랑이 많습니다. <b>사업은 있는데 과제로 가는 다리가 없는 것</b>입니다. 회색도 "이름 없는 과제"가 아니라
+        주관부처가 올해 정책실명제를 아직 올리지 않은 경우가 대부분입니다(45곳 중 <span id="vsReg">—</span>곳만 등록).
+        <b>어느 쪽이든 국정과제 쪽에서 책임자로 가는 길은 지금 없습니다.</b></p>
     </section>
 
     <section class="core">
       <h2>비전 — 국정과제 전부에 이름을, 이름 아래 깊이를</h2>
-      <p><b>하나, 국정과제 123개 전부가 정책실명제 대상이 됩니다.</b> 지금은 주관부처가 정책실명제 포털에 없는 과제가 <span id="vsNone">—</span>개이고,
-        번호로 이어진 과제가 <span id="vsNamed3">—</span>개입니다. 국정과제라면 예외 없이 책임자가 적히고, 그 카드에 국정과제 번호가 찍힙니다.</p>
+      <p><b>하나, 국정과제 123개 전부가 정책실명제 대상이 됩니다.</b> 지금은 사업이 걸린 과제가 <span id="vsVia2">—</span>개인데 번호로 이어진 과제는 <span id="vsNamed3">—</span>개이고,
+        주관부처가 정책실명제 포털에 없는 과제가 <span id="vsNone">—</span>개입니다. 국정과제라면 예외 없이 책임자가 적히고, 그 카드에 국정과제 번호가 찍힙니다.</p>
       <p><b>둘, 그 이름 아래에 지금 정책실명제보다 훨씬 깊은 정보가 붙습니다.</b>
         국정과제 포털이 가진 목표·성과·추진실적 서사, 원문공개가 가진 결재문서, 사전정보공표가 가진 국민 안내가
         국정과제 번호 하나로 한 화면에 모입니다. 재정 정보는 열린재정에 있으니 같은 번호로 잇기만 하면 됩니다.</p>
@@ -4925,7 +4931,65 @@ section.appendix th,section.appendix td{padding:10px 12px}
         "세부번호": true
       }
     ],
-    "세부번호를스스로붙임": 3
+    "세부번호를스스로붙임": 3,
+    "주관부처경로": {
+      "기준": "2025~2026년 등록 · 선정기준 국정과제",
+      "사업건수": 283,
+      "기관수": 22,
+      "과제수": 50,
+      "과제": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        24,
+        46,
+        47,
+        48,
+        49,
+        52,
+        53,
+        54,
+        56,
+        58,
+        59,
+        66,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        80,
+        81,
+        82,
+        92,
+        93,
+        94,
+        95,
+        96,
+        108,
+        109,
+        110,
+        111,
+        112,
+        119,
+        120,
+        121,
+        122,
+        123
+      ]
+    }
   },
   "국정과제": {
     "전체": 123,
@@ -4952,7 +5016,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
     var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
     var C=VS.현정부, N=VS.국정과제;
     put('vsNamed', C.가리킨과제수); put('vsNamed2', C.가리킨과제수); put('vsNamed3', C.가리킨과제수);
-    put('vsRest', 123-C.가리킨과제수); put('vsCur', C.등록건수.toLocaleString('ko-KR')); put('vsCites', C.번호기재건수);
+    put('vsCur', C.등록건수.toLocaleString('ko-KR')); put('vsCites', C.번호기재건수);
+    put('vsRecent', C.주관부처경로.사업건수.toLocaleString('ko-KR')); put('vsVia', C.주관부처경로.과제수); put('vsVia2', C.주관부처경로.과제수);
     put('vsReg', N.올해등록기관); put('vsNone', N.포털에없음);
 
     // 여섯 질문 × 다섯 자리. 판정은 필자의 것, 근거는 항목 유무다. 글자 수는 세지 않는다.
@@ -4984,16 +5049,23 @@ section.appendix th,section.appendix td{padding:10px 12px}
       var named={}; C.기재목록.forEach(function(x){ (named[x.n]=named[x.n]||[]).push(x.등록기관+' · '+x.사업); });
       var goals={}; GJ.과제.forEach(function(t){ (goals[t.goal]=goals[t.goal]||{nm:t.goalNm,list:[]}).list.push(t); });
       grid.innerHTML = Object.keys(goals).sort().map(function(g){
-        var G2=goals[g], on=G2.list.filter(function(t){return named[t.n];}).length;
-        return '<div class="lane"><div class="ln"><b>목표 '+g+' · '+esc(G2.nm)+'</b>'+G2.list.length+'개 · 이름 붙음 '+on+'</div>'
+        var via={}; C.주관부처경로.과제.forEach(function(n){ via[n]=1; });
+        var G2=goals[g], on=G2.list.filter(function(t){return named[t.n];}).length, vv=G2.list.filter(function(t){return !named[t.n]&&via[t.n];}).length;
+        return '<div class="lane"><div class="ln"><b>목표 '+g+' · '+esc(G2.nm)+'</b>'+G2.list.length+'개 · 번호로 닿음 '+on+' · 사업만 있음 '+vv+'</div>'
           + '<div class="cells">'+G2.list.map(function(t){
-              var hit=named[t.n];
-              var tip=t.n+'. '+t.nm+' ('+t.org+')'+(hit?' — '+hit.join(' / '):' — 정책실명제에서 이 번호를 적은 기록 없음');
-              return '<span class="c'+(hit?' on':'')+'" title="'+esc(tip)+'"><span>'+String(t.n).padStart(2,'0')+'</span></span>';
+              var hit=named[t.n], v=via[t.n];
+              var tip=t.n+'. '+t.nm+' ('+t.org+')'+(hit?' — 번호로 닿음: '+hit.join(' / '):v?' — 주관부처가 국정과제 사업을 등록했으나 어느 과제인지 특정 불가':' — 주관부처의 2025~26 국정과제 사업 없음 또는 포털에 없음');
+              return '<span class="c'+(hit?' on':v?' via':'')+'" title="'+esc(tip)+'"><span>'+String(t.n).padStart(2,'0')+'</span></span>';
             }).join('')+'</div></div>';
       }).join('')
-      + '<div class="lg"><span><i style="background:var(--k-success-60);border-color:var(--k-success-60)"></i>정책실명제 기록이 번호로 가리킴 '+C.가리킨과제수+'</span>'
-      + '<span><i style="background:var(--panel-2)"></i>가리키는 기록 없음 '+(123-C.가리킨과제수)+'</span></div>';
+      + (function(){
+          // 범례는 산수가 아니라 실제 칸 상태로 센다. 44번처럼 번호로는 닿았지만 주관부처가 아닌 기관이 적은 경우가 있다.
+          var via={}; C.주관부처경로.과제.forEach(function(n){ via[n]=1; });
+          var nOn=0, nVia=0; GJ.과제.forEach(function(t){ if(named[t.n]) nOn++; else if(via[t.n]) nVia++; });
+          return '<div class="lg"><span><i style="background:var(--k-success-60);border-color:var(--k-success-60)"></i>번호로 과제까지 닿음 '+nOn+'</span>'
+            + '<span><i style="background:var(--k-primary-10);border-color:var(--k-primary-20)"></i>주관부처 사업은 있으나 과제 특정 불가 '+nVia+'</span>'
+            + '<span><i style="background:var(--panel-2)"></i>주관부처 사업 없음 또는 포털에 없음 '+(123-nOn-nVia)+'</span></div>';
+        })();
     }
 
     /* 별첨 */
@@ -5001,7 +5073,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
     if(on) on.innerHTML =
         '<li><b>국정과제 포털 실측</b> — 2026-09-17 정부업무평가포털 과제별 추진실적(menu_id=181)에서 과제 8개(14·20·24·52·56·72·73·76)의 아코디언을 펼쳐 항목 유무를 확인했다. 모든 과제가 같은 네 탭(2026년·2025년·목표·과제 내용) 구조였다. 8개는 표본이며 123개 전체를 연 것은 아니다. 다만 항목 구조가 같으므로 "담당자 항목 없음"은 전체에 적용된다.</li>'
       + '<li><b>없다고 판정한 근거</b> — 담당자·예산·근거문서·세부과제·타 시스템 링크는 8개 모두에 항목 자체가 없었다. 8개 아코디언의 링크를 전수 열거한 결과 외부 링크는 과제당 정책제안(sotong.go.kr) 하나뿐이고 첨부·PDF·iframe은 0건이다.</li>'
-      + '<li><b>이름 붙은 과제 세는 법</b> — 정책실명제 2026년 등록 '+C.등록건수+'건의 선정기준·사업개요·추진실적에서 "국정과제 N" 꼴을 찾아 그 N이 가리키는 과제를 셌다. '+C.번호기재건수+'건이 '+C.가리킨과제수+'개 과제를 가리켰고, 그중 '+C.세부번호를스스로붙임+'건은 "56-3"처럼 포털에 없는 세부번호를 붙였다. 44번은 주관부처(기후부)가 아닌 식약처 사업이 인용한 것이다.</li>'
+      + '<li><b>주관부처 경로 어림</b> — 2025~2026년 등록 중 선정기준에 국정과제가 든 사업 '+C.주관부처경로.사업건수+'건을 기관별로 모아, 그 기관이 주관하는 국정과제를 "사업은 있음"으로 봤다. 기관이 여러 과제를 맡으면 어느 과제의 사업인지 가릴 수 없으므로 상한에 가깝다. 2025년 사업은 이전 정부 국정과제 기준으로 선정된 것이라 현 과제와 어긋날 수 있다. 과제명 핵심어를 사업명에 맞춰 보는 방법도 시도했으나 "안전하고" 같은 흔한 말이 걸려 쓰지 않았다.</li>'
+      + '<li><b>번호로 닿는 과제 세는 법</b> — 정책실명제 2026년 등록 '+C.등록건수+'건의 선정기준·사업개요·추진실적에서 "국정과제 N" 꼴을 찾아 그 N이 가리키는 과제를 셌다. '+C.번호기재건수+'건이 '+C.가리킨과제수+'개 과제를 가리켰고, 그중 '+C.세부번호를스스로붙임+'건은 "56-3"처럼 포털에 없는 세부번호를 붙였다. 44번은 주관부처(기후부)가 아닌 식약처 사업이 인용한 것이다.</li>'
       + '<li><b>2026년은 진행 중</b> — 9월 기준 45개 기관 중 '+N.올해등록기관+'곳만 올해 등록을 마쳤다(노트 ③). 회색 칸은 "이름 없음"이 아니라 "지금 찾을 수 없음"이다. 연말에 다시 센다.</li>'
       + '<li><b>여섯 질문의 판정</b> — 답함·일부·없음은 필자의 판정이고 근거는 항목 유무다. 글자 수는 근거로 쓰지 않았다. 예산은 정보공개 제도가 아니라 재정 제도의 몫이라 질문에서 뺐다. 「국정과제 번호로 이으면」 열은 정책실명제 2.0 시안을 전제한 모습이지 지금 있는 기능이 아니다.</li>'
       + '<li><b>이전 정부 기록은 보지 않았다</b> — 정책실명제 2018~2025년 기록에는 100대·120대 국정과제 번호가 섞여 있으나 현 정부 123대와 대응하지 않으므로 이 노트에서는 쓰지 않았다.</li>';
