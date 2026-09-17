@@ -188,12 +188,13 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 질문 셋 — 누가 답하나 */
 .qa{margin:14px 0 4px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
-.qa .qrow{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
+.qa .qrow{display:grid;grid-template-columns:1fr .9fr .9fr .9fr 1fr;border-top:1px solid var(--rule)}
 .qa .qrow:first-child{border-top:0;background:var(--panel-2)}
 .qa .qrow:first-child > div{font-size:13px;font-weight:700;color:var(--ink-2);padding:10px 14px}
 .qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
-.qa .qrow:first-child > div:first-child:before{display:none}
+.qa .qrow:first-child > div:first-child:before,.qa .qrow:first-child > div.lk:before{display:none}
+.qa .qrow:first-child > div.lk{color:var(--em);border-left:1px solid var(--rule)}
 .qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
 .qa .q:before{content:"🙋";margin-right:6px}
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
@@ -204,7 +205,17 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .a.hit{color:var(--ink)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
-@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
+/* 잇는 열 — 진단이 아니라 처방이라 색을 달리한다 */
+.qa .a.lk{background:var(--k-primary-5);border-left:1px solid var(--rule);color:var(--ink)}
+.qa .a.lk .v{border-color:var(--em);color:var(--em);font-weight:700}
+.qa .a.lk .say{border-color:var(--em)}
+.qa .a.lk.gap{background:var(--paper)}
+.qa .a.lk.gap .v{border-color:var(--k-danger-60);color:var(--k-danger-60)}
+.qa .a.lk.gap .say{border-color:var(--k-danger-50);border-style:dashed}
+.qa .qrow.none .q{color:var(--k-danger-60)}
+.qa-end{margin:12px 0 0;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.qa-end b{color:var(--ink)}
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-left:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} .qa .a.lk:before{color:var(--em)} }
 
 </style>
 <style>

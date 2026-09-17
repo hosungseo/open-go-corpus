@@ -241,7 +241,7 @@ body{background:var(--cream);color:var(--ink0)}
   <!-- 같은 사업에 질문 셋 — 누가 답하나 -->
   <section class="sec">
     <div class="head">
-      <div><h2>같은 사업에 질문 셋을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 셋을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>질문마다 답하는 제도가 다릅니다.</b></p></div>
+      <div><h2>같은 사업에 질문 넷을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 넷을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>셋은 답하는 제도가 하나씩 다르고, 하나는 아무도 답하지 못합니다.</b></p></div>
       <a class="more" href="notes.html#note4">세 얼굴 전부 보기 →</a>
     </div>
     <div class="qa" id="qaHome"></div>
@@ -430,15 +430,19 @@ body{background:var(--cream);color:var(--ink0)}
   if (!TF || !qa) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
   var NM = {rn:'정책실명제', pv:'사전정보공표', og:'원문공개'};
-  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>'
+  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div><div class="lk">정책 번호 하나로 이으면</div></div>'
     + TF.질문.map(function(q){
-        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+        var none = !['rn','pv','og'].some(function(k){ return /^답함/.test(q.답[k].판정); });   // 아무도 못 답한 줄
+        var L = q.이으면 || null, gap = L && /안/.test(L.판정);
+        return '<div class="qrow'+(none?' none':'')+'"><div class="q">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
               return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
+          + (L ? '<div class="a lk'+(gap?' gap':'')+'" data-who="정책 번호 하나로 이으면"><span class="v">'+esc(L.판정)+'</span><span class="say">'+esc(L.말)+'</span></div>' : '')
           + '</div>';
       }).join('');
+      if(TF.맺음){ var e=document.createElement('p'); e.className='qa-end'; e.innerHTML=esc(TF.맺음).replace(/(잇는 일과 적는 일)/,'<b>$1</b>'); qa.insertAdjacentElement('afterend', e); }
 })();
 (function(){
   /* ── 미니 대조기: 2025년 대표 사업 6건 (explorer/data.json에서 발췌, 실명 제거) ── */

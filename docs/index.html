@@ -189,12 +189,13 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
 /* 질문 셋 — 누가 답하나 */
 .qa{margin:14px 0 4px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
-.qa .qrow{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
+.qa .qrow{display:grid;grid-template-columns:1fr .9fr .9fr .9fr 1fr;border-top:1px solid var(--rule)}
 .qa .qrow:first-child{border-top:0;background:var(--panel-2)}
 .qa .qrow:first-child > div{font-size:13px;font-weight:700;color:var(--ink-2);padding:10px 14px}
 .qa .qrow:first-child > div:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:-1px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
-.qa .qrow:first-child > div:first-child:before{display:none}
+.qa .qrow:first-child > div:first-child:before,.qa .qrow:first-child > div.lk:before{display:none}
+.qa .qrow:first-child > div.lk{color:var(--em);border-left:1px solid var(--rule)}
 .qa .q{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
 .qa .q:before{content:"🙋";margin-right:6px}
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
@@ -205,7 +206,17 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .a.hit{color:var(--ink)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
-@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
+/* 잇는 열 — 진단이 아니라 처방이라 색을 달리한다 */
+.qa .a.lk{background:var(--k-primary-5);border-left:1px solid var(--rule);color:var(--ink)}
+.qa .a.lk .v{border-color:var(--em);color:var(--em);font-weight:700}
+.qa .a.lk .say{border-color:var(--em)}
+.qa .a.lk.gap{background:var(--paper)}
+.qa .a.lk.gap .v{border-color:var(--k-danger-60);color:var(--k-danger-60)}
+.qa .a.lk.gap .say{border-color:var(--k-danger-50);border-style:dashed}
+.qa .qrow.none .q{color:var(--k-danger-60)}
+.qa-end{margin:12px 0 0;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.qa-end b{color:var(--ink)}
+@media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .q,.qa .a{border-right:0;border-left:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} .qa .a.lk:before{color:var(--em)} }
 
 </style>
 <style>
@@ -443,7 +454,7 @@ body{background:var(--cream);color:var(--ink0)}
   <!-- 같은 사업에 질문 셋 — 누가 답하나 -->
   <section class="sec">
     <div class="head">
-      <div><h2>같은 사업에 질문 셋을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 셋을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>질문마다 답하는 제도가 다릅니다.</b></p></div>
+      <div><h2>같은 사업에 질문 넷을 던지면</h2><p class="sub">풍수해보험 하나를 세 제도에서 꺼내 국민이 물을 법한 질문 넷을 똑같이 던졌습니다. 답은 실제 자료에서 그대로 가져왔습니다. <b>셋은 답하는 제도가 하나씩 다르고, 하나는 아무도 답하지 못합니다.</b></p></div>
       <a class="more" href="notes.html#note4">세 얼굴 전부 보기 →</a>
     </div>
     <div class="qa" id="qaHome"></div>
@@ -782,6 +793,10 @@ body{background:var(--cream);color:var(--ink0)}
           "말": "문서 278건에 결재선이 있습니다. 하나씩 여시면 됩니다.",
           "판정": "흩어짐"
         }
+      },
+      "이으면": {
+        "말": "명패의 담당자 이름 옆에 원본의 결재선이 붙습니다. 누가 맡고 누가 결재했는지 한 화면입니다.",
+        "판정": "풀림"
       }
     },
     {
@@ -799,6 +814,10 @@ body{background:var(--cream);color:var(--ink0)}
           "말": "홍보 계획 문서에 일부 있습니다. 파일을 변환해서 보셔야 합니다.",
           "판정": "간접"
         }
+      },
+      "이으면": {
+        "말": "명패에서 우리 동네 안내판으로 한 번에 갑니다. 세 겹을 열지 않아도 됩니다.",
+        "판정": "풀림"
       }
     },
     {
@@ -816,6 +835,31 @@ body{background:var(--cream);color:var(--ink0)}
           "말": "2025-12-18 「2026년 홍보 추진계획 보고」, 재난보험과장 전결입니다.",
           "판정": "답함"
         }
+      },
+      "이으면": {
+        "말": "명패 아래 결재문서 278건이 날짜순으로 섭니다. 사업 하나의 결정 이력이 됩니다.",
+        "판정": "풀림"
+      }
+    },
+    {
+      "q": "돈은 얼마나 쓰나요?",
+      "답": {
+        "rn": {
+          "말": "사업개요에 보험료 지원율은 있지만 사업 예산 액수는 없습니다.",
+          "판정": "못 답함"
+        },
+        "pv": {
+          "말": "리플렛에 내가 낼 보험료 예시는 있지만 사업 예산은 없습니다.",
+          "판정": "못 답함"
+        },
+        "og": {
+          "말": "국고보조금 교부 결정 문서가 회차별로 있습니다. 금액은 문서마다 열어 더해야 합니다.",
+          "판정": "흩어짐"
+        }
+      },
+      "이으면": {
+        "말": "이어도 안 나옵니다. 셋 중 아무도 사업 예산을 한 자리에 적지 않습니다. 명패에 예산 칸이 필요합니다.",
+        "판정": "안 풀림"
       }
     }
   ],
@@ -832,22 +876,27 @@ body{background:var(--cream);color:var(--ink0)}
       "고창군 이미지 5쪽": "어림 2,000~3,000"
     },
     "행안부본부": "사전정보공표 목록 132건 중 풍수해보험 0건. 가장 가까운 것은 재난배상책임보험(다른 제도). 업무안내 메뉴에는 별도로 있음."
-  }
+  },
+  "맺음": "세 질문은 정책 번호 하나로 이으면 풀리고, 예산은 이어도 안 풀립니다. 개선 과제가 둘로 갈립니다 — 잇는 일과 적는 일."
 }
 ;
   var qa = document.getElementById('qaHome');
   if (!TF || !qa) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
   var NM = {rn:'정책실명제', pv:'사전정보공표', og:'원문공개'};
-  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div></div>'
+  qa.innerHTML = '<div class="qrow"><div>국민의 질문</div><div class="rn">정책실명제</div><div class="pv">사전정보공표</div><div class="og">원문공개</div><div class="lk">정책 번호 하나로 이으면</div></div>'
     + TF.질문.map(function(q){
-        return '<div class="qrow"><div class="q">'+esc(q.q)+'</div>'
+        var none = !['rn','pv','og'].some(function(k){ return /^답함/.test(q.답[k].판정); });   // 아무도 못 답한 줄
+        var L = q.이으면 || null, gap = L && /안/.test(L.판정);
+        return '<div class="qrow'+(none?' none':'')+'"><div class="q">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
               return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
+          + (L ? '<div class="a lk'+(gap?' gap':'')+'" data-who="정책 번호 하나로 이으면"><span class="v">'+esc(L.판정)+'</span><span class="say">'+esc(L.말)+'</span></div>' : '')
           + '</div>';
       }).join('');
+      if(TF.맺음){ var e=document.createElement('p'); e.className='qa-end'; e.innerHTML=esc(TF.맺음).replace(/(잇는 일과 적는 일)/,'<b>$1</b>'); qa.insertAdjacentElement('afterend', e); }
 })();
 (function(){
   /* ── 미니 대조기: 2025년 대표 사업 6건 (explorer/data.json에서 발췌, 실명 제거) ── */
