@@ -202,6 +202,8 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 .tk .chip.sure{background:var(--cL);color:var(--em)}.tk .chip.amb{background:var(--amberL);color:var(--amber)}.tk .chip.none{background:var(--panel-2);color:var(--ink-3)}
 .tk .lg{font-size:13px;color:var(--ink-3);margin:12px 0 0;line-height:1.6}
 @media (max-width:900px){ .tk .tl{grid-template-columns:minmax(120px,1fr) repeat(9,minmax(0,1fr))} .tk .tl .c{height:24px} .tk .sl{grid-template-columns:1fr} .tk .sl > div:nth-child(-n+3){display:none} .tk .sl > div{border-top:1px solid var(--rule-2)} .tk .tabs button{min-width:0} }
+/* 좁은 폭: 라벨은 한 줄 통째, 아홉 칸은 그 아래 한 줄 */
+@media (max-width:640px){ .tk .tl{grid-template-columns:repeat(9,minmax(0,1fr));gap:2px 0} .tk .tl .axl{display:none} .tk .tl .lab{grid-column:1 / -1;padding:10px 0 2px} .tk .tl .lab small{white-space:normal} .tk .tl .c{height:28px;margin:2px 1px 8px} .tk .tl a.c span{font-size:12px} .tk .stats{width:100%} .tk .st{flex:1 1 40%} }
 </style>
 </head>
 <body>
@@ -489,7 +491,7 @@ const P2 = /*__P2DATA__*/null;
     // 시계열 패널 — 연결된 사업마다 레인
     var linked=T.세부.filter(function(s){ return s.사업; });
     var groups=[]; linked.forEach(function(s){ var g=groups.find(function(x){ return x.nm===s.사업.nm; }); if(g){ g.subs.push(s); } else groups.push({nm:s.사업.nm, j:s.사업.j, via:s.사업.via, 연도:s.연도, subs:[s]}); });
-    var axis='<div></div>'+YEARS.map(function(y){ return '<div class="ax'+(y===2026?' now':'')+'">\''+String(y).slice(2)+'</div>'; }).join('');
+    var axis='<div class="axl"></div>'+YEARS.map(function(y){ return '<div class="ax'+(y===2026?' now':'')+'">\''+String(y).slice(2)+'</div>'; }).join('');
     var lanes=groups.map(function(s){ var byY={}; s.연도.forEach(function(c){ byY[c.y]=c; }); var ys=s.연도.map(function(c){return c.y;});
       var cells=YEARS.map(function(y){ var c=byY[y]; if(c){ var tip=y+'년 카드 · '+esc(c.부서)+' · '+esc(c.담당)+' · 조회 '+c.조회+(c.추진실적!=null?' · 추진실적 '+c.추진실적+'건':'')+(c.원문검색!=null?' · 원문 검색 '+c.원문검색+'건':'')+(c.사전정보!=null?' · 사전정보 '+c.사전정보+'건':'')+' — 대조기로'; var cls='c'+(y===Math.min.apply(null,ys)?' first':'')+(y===Math.max.apply(null,ys)?' last':''); return '<a class="'+cls+'" href="explorer/#p='+esc(c.id)+'|'+y+'" title="'+tip+'" aria-label="'+tip+'"><span>'+(c.조회?c.조회:'')+'</span></a>'; } return '<div class="c'+(y===2026?' miss':'')+'" title="'+y+' 포털에 없음"'+(y===2026?' aria-label="2026 미등록"':'')+'></div>'; }).join('');
       var nos=s.subs.map(function(x){ return x.no; }).join(' · '); var grouped=s.subs.length>1; var sub=grouped?'세부과제 '+s.subs.length+'개 — '+nos:esc(s.subs[0].t);
