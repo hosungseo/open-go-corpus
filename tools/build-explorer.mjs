@@ -303,6 +303,7 @@ if (!WITH_NAMES) {
   const NOTE_PATH = R("notes/citizen.json");
   const CH_PATH = R("notes/citizen-channels.json");
   const AX_PATH = R("notes/compare-axes.json");
+  const VN_PATH = R("notes/venue.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
@@ -320,6 +321,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(CH_PATH)) { console.error("ERROR notes/citizen-channels.json missing"); process.exit(1); }
       const cd = fs.readFileSync(CH_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__CHDATA__*/null", () => cd).replace("/*__CHDATA__*/", () => cd);
+    }
+    if (page.includes("/*__VNDATA__*/")) {
+      if (!fs.existsSync(VN_PATH)) { console.error("ERROR notes/venue.json missing"); process.exit(1); }
+      const vd = fs.readFileSync(VN_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__VNDATA__*/null", () => vd).replace("/*__VNDATA__*/", () => vd);
     }
     if (page.includes("/*__AXDATA__*/")) {
       if (!fs.existsSync(AX_PATH)) { console.error("ERROR notes/compare-axes.json missing"); process.exit(1); }

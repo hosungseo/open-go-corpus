@@ -104,7 +104,15 @@
 .cbtn:hover{border-color:var(--ink-3);color:var(--ink)}
 .cbtn.ok{background:var(--em);border-color:var(--em);color:var(--k-gray-0)}
 @media (max-width:760px){ .fig{padding:14px 12px 10px} }
-.pos .scrollhint{display:none;font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
+.pos .scrollhint,.vhint{display:none;font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
+/* 좁은 화면에서 공개 장소 그림이 뭉개지지 않게 옆으로 민다 */
+@media (max-width:700px){
+  #vfig1,#vfig2,#vfig3{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #vfig1 svg{min-width:620px}
+  #vfig2 svg{min-width:520px}
+  #vfig3 svg{min-width:600px}
+  .vhint{display:block}
+}
 /* 좁은 화면에서 산점도가 뭉개지지 않게 옆으로 민다 */
 @media (max-width:700px){
   .pos #posFig{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -160,9 +168,9 @@
           <td class="st2"><span class="soon">준비 중</span></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">공개</span><span class="gd">무엇이 어디에 얼마나</span></td></tr>
-        <tr><td class="sub2">공개 장소</td>
-          <td class="ins">규정은 추진실적을 <b>해당 기관 누리집</b>에 공개하라고 정하는데, 우리가 재는 것은 정보공개포털입니다. 둘에 실린 것이 같은지 봅니다.</td>
-          <td class="st2"><span class="soon">다음 차례</span></td></tr>
+        <tr class="on"><td class="sub2">공개 장소</td>
+          <td class="ins"><b>포털의 0은 미활동이 아니라 미등록입니다.</b> 규정이 정한 공개 장소는 기관 누리집이고 포털은 조문에 없습니다. 국세청은 다섯 해가 포털에 0건인데 누리집에는 113건이 있습니다.</td>
+          <td class="st2"><a href="#note3">③ 공개 장소</a></td></tr>
         <tr><td class="sub2">공개 깊이와 주기</td>
           <td class="ins">정책실명제는 연 1회 등록이고 원문공개는 결재 즉시입니다. 같은 사업을 두 속도로 공개하면 무엇이 어긋나는지 봅니다.</td>
           <td class="st2"><span class="soon">준비 중</span></td></tr>
@@ -281,6 +289,12 @@
       <p style="margin:0;font-size:15.5px;line-height:1.7;color:var(--ink-2)"><b>온라인 서식이 있는 교육부도 2023년이 마지막입니다.</b>
         접수 방법만으로 다 설명되지 않는다는 뜻입니다. 낮은 문턱은 신청을 늘리는 조건이지 유지하는 조건은 아닙니다.
         제도 전체가 2022년 무렵부터 식었고, 창구 개선은 그 위에 얹어야 할 일입니다.</p>
+      <p style="margin:10px 0 0;padding-top:10px;border-top:1px solid var(--rule);font-size:15px;line-height:1.7;color:var(--ink-2)">
+        <b style="color:var(--k-danger-60)">정정</b> — 이 격자는 <b>포털 등록 기준</b>입니다.
+        <a href="#note3">노트 ③</a>에서 확인한 대로 포털에는 기관이 누리집에 올린 것이 빠지는 해가 있습니다.
+        국세청은 다섯 해가 포털에 0건인데 누리집에는 113건이 있었습니다.
+        따라서 <b>여기서 빈 칸은 "그 기관이 쉬었다"가 아니라 "포털에 오르지 않았다"로 읽어야 합니다.</b>
+        다만 아래 국민신청 건수는 선정기준 문구를 세는 것이라 등록된 사업 안에서의 비율이며, 이 정정은 분모에 걸립니다.</p>
     </div>
 
     <div class="tbl"><table>
@@ -315,9 +329,14 @@
     <p><b>둘째, 흩어져 있습니다.</b> 접수 경로가 일곱 가지이고 기관마다 다릅니다.
       국민이 어느 부처의 어느 사업을 신청하려면 그 부처 누리집을 찾아 들어가 그 부처의 방식을 따라야 합니다.
       <b>정보공개포털에는 접수 기능이 아예 없습니다.</b> 포털은 선정 결과를 모아 보여 줄 뿐입니다.</p>
-    <p><b>셋째, 그 위에 제도 전체가 식었습니다.</b> 2018년 25건, 2019년 34건이던 선정이
+    <p><b>셋째, 그 위에 국민신청이 줄었습니다.</b> 2018년 25건, 2019년 34건이던 선정이
       2024년 3건, 2025년 2건, 2026년 0건입니다. 온라인 서식을 둔 교육부조차 2023년이 마지막입니다.
       접수 방법을 고쳐도 제도를 다시 돌리는 일은 따로 남습니다.</p>
+    <p style="border-left:3px solid var(--k-danger-50);padding-left:12px">
+      <b style="color:var(--k-danger-60)">정정</b> — 처음에는 이 대목을 "제도 전체가 식었다"로 적었습니다.
+      <b>그 표현은 지나쳤습니다.</b> 세는 자리가 정보공개포털인데, <a href="#note3">노트 ③</a>에서
+      포털에 오르지 않은 해가 적지 않다는 것이 확인되었습니다. 줄어든 것은 확실하되
+      <b>얼마나 줄었는지는 포털만으로 말할 수 없습니다.</b> 여기서는 국민신청으로 한정해 적습니다.</p>
     <p>그러므로 개선 수단은 법 개정이 아닙니다. <b>정보공개포털에 접수 화면 하나를 두고,
       그 접수분을 각 기관 심의위원회로 넘기는 것</b>이 먼저입니다. 조문은 이미 2018년에 마련돼 있습니다.
       그다음은 기관이 실제로 심의하고 선정하도록 만드는 일입니다.</p>
@@ -402,6 +421,119 @@
     </section>
   </article>
 
+  <article class="note1" id="note3" data-g="공개">
+    <div class="eyebrow">공개 · 노트 ③</div>
+    <h2>공개 장소 — 포털의 0은 미활동이 아니라 미등록이다</h2>
+    <div class="axes">
+      <span class="ax"><b>대상</b> 중앙행정기관 45곳</span>
+      <span class="ax"><b>기간</b> 2018~2026</span>
+      <span class="ax"><b>대조</b> 누리집 5곳 직접 확인</span>
+    </div>
+    <div class="answer">
+      <p>「행정업무의 운영 및 혁신에 관한 규정」 제63조의3제3항은 추진실적을
+        <b>"해당 기관의 인터넷 홈페이지 등"</b>에 공개하라고 정합니다. <b>정보공개포털은 조문에 없습니다.</b>
+        포털 등록은 의무가 아니므로 누락이 생깁니다. 실제로 생겼습니다.</p>
+      <p>국세청은 <b>2019·2020·2021·2022·2026년 다섯 해가 포털에 0건</b>인데
+        누리집에는 그 다섯 해에 <b>113건</b>이 올라와 있습니다.
+        같은 게시판의 나머지 네 해(2018·2023·2024·2025)는 포털과 <b>건수가 정확히 일치</b>합니다.
+        두 자료가 견줄 수 있다는 뜻이고, 그렇다면 0인 해는 <b>기관이 쉰 것이 아니라 포털에 오르지 않은 것</b>입니다.</p>
+    </div>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
+      포털 전수 6,847건을 기관×연도 격자로 펴고, 앞뒤로는 등록이 있는데 가운데만 0인 칸을 셌습니다.
+      그 가운데 다섯 기관은 누리집을 직접 열어 대조했습니다. 제출한 것은 없고 읽기만 했습니다.
+    </div>
+
+    <section class="core">
+      <div class="eyebrow">확증 · 하나</div>
+      <h2>국세청 — 네 해는 맞고 다섯 해는 비었습니다</h2>
+      <p>제목에 사업연도가 적혀 있고 등록일 연도와 <b>한 건도 어긋나지 않아</b> 연도 판정이 확실한 게시판입니다.
+        그래서 포털과 곧바로 견줄 수 있습니다.</p>
+      <div class="fig">
+        <h3>연도별 건수 — 포털과 기관 누리집</h3>
+        <p class="sub">같은 해 같은 사업을 두 곳에서 센 값입니다. 색이 다른 해가 포털에만 없는 해입니다.</p>
+        <div id="vfig1"></div>
+        <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
+        <div class="lg"><span><i style="background:var(--rn)"></i>정보공개포털</span><span><i style="background:var(--og)"></i>기관 누리집</span><span><i style="background:var(--k-danger-50)"></i>포털에만 없음</span></div>
+      </div>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">규모</div>
+      <h2>결락은 국세청만의 일이 아닙니다</h2>
+      <p>기관마다 연도별 등록 건수를 늘어놓고, <b>앞뒤 해에는 등록이 있는데 가운데 해만 0인 칸</b>을 찾았습니다.
+        그 해에만 일을 쉬었다고 보기는 어려운 칸입니다.</p>
+      <div class="fig">
+        <h3>기관 × 연도 등록 격자</h3>
+        <p class="sub">칸이 짙을수록 등록이 많습니다. 빗금 친 칸이 앞뒤로는 등록이 있는데 가운데만 비어 있는 해입니다.</p>
+        <div id="vfig2"></div>
+        <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
+      </div>
+      <p>확인된 결락 칸은 <b id="vGapCell">—</b>개이고 <b id="vGapOrg">—</b>개 기관에 걸쳐 있습니다.
+        각 기관의 평년 등록 수로 메우면 <b id="vGapEst">—</b>건, 전체의 <b id="vGapPct">—</b>에 해당합니다.
+        <b>결락은 2022년에 가장 몰렸습니다.</b> 그해에만 아홉 개 기관이 통째로 비어 있습니다.</p>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">확증 · 둘</div>
+      <h2>다섯 기관을 열어 봤습니다</h2>
+      <p>누리집 게시판을 직접 열어 연도별로 셌습니다. <b>맞는 해가 있어야 틀린 해가 의미를 가집니다.</b>
+        그래서 일치한 칸도 함께 싣습니다.</p>
+      <div class="tbl"><table id="vTbl">
+        <thead><tr><th>기관</th><th>게시판 이름과 경로</th><th>게시 형태</th><th>대조</th></tr></thead>
+        <tbody id="vTblBody"></tbody>
+      </table></div>
+      <p><b>공개 장소가 기관마다 다릅니다.</b> 경찰청의 정책실명제는 정보공개 메뉴가 아니라
+        알림·소식 아래에 있고, 교육부는 사업이 아니라 <b>연도 하나가 게시글 하나</b>이며 과제 목록은 첨부파일 안에 있습니다.
+        국민이 전체를 보려면 기관마다 다른 자리를 찾아 들어가야 합니다.</p>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">올해</div>
+      <h2>2026년은 아직 대부분 오르지 않았습니다</h2>
+      <p>오늘 기준으로 포털에 2026년을 등록한 기관은 <b id="vY26">—</b>곳입니다.
+        나머지는 0건입니다. 그러나 국세청은 <b>2026-09-11에 26건을 누리집에 올렸고</b>,
+        교육부도 <b>2026-07-14에 60개 과제를 공고</b>했습니다. 포털에는 둘 다 없습니다.</p>
+      <div class="fig">
+        <h3>2026년 포털 등록 현황</h3>
+        <p class="sub">가로 한 칸이 기관 하나입니다.</p>
+        <div id="vfig3"></div>
+        <p class="vhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
+      </div>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">고칩니다</div>
+      <h2>노트 ①의 해석을 정정합니다</h2>
+      <div class="answer" style="border-left-color:var(--k-danger-50)">
+        <p>노트 ①에서 저는 기관×연도 히트맵을 두고 <b>"2026년은 0건"</b>이라 적고
+          제도 전체가 식었다는 뜻으로 읽었습니다. <b>이 읽기는 틀렸습니다.</b>
+          포털의 0은 기관이 일을 하지 않았다는 뜻이 아니라 포털에 오르지 않았다는 뜻입니다.</p>
+        <p>노트 ①의 히트맵은 <b>기관별 활동량이 아니라 기관별 포털 등록 성실도</b>로 읽어야 합니다.
+          <a href="#note1">노트 ① 해당 대목</a>에도 같은 정정을 달았습니다.</p>
+      </div>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">그래서</div>
+      <h2>공개 장소가 둘로 갈라져 있습니다</h2>
+      <p>법이 정한 공개 장소는 기관 누리집이고, 국민이 실제로 찾는 곳은 포털입니다.
+        <b>포털 등록에 근거가 없으니 강제할 수단도 없습니다.</b>
+        그 결과 포털만 보면 있는 사업의 일부를 놓치고, 누리집만 보려면 마흔다섯 곳을 각각 돌아야 합니다.</p>
+      <p>이것은 기관의 태만이라기보다 <b>제도 설계에서 나오는 결과</b>입니다.
+        공개 장소를 조문에서 한 곳으로 모으거나, 포털 등록을 공개 의무의 이행 방법으로 규정에 명시하면
+        같은 자료를 두 번 올릴 필요도, 한쪽이 비는 일도 없어집니다.</p>
+      <p><b>덧붙여, 이 노트는 포털 통계를 쓰는 모든 분석에 적용됩니다.</b>
+        이 사이트의 다른 수치도 포털 기준이므로 같은 크기의 결락을 안고 있습니다.
+        연도별 비교나 기관별 순위를 말할 때는 이 점을 먼저 밝혀야 합니다.</p>
+    </section>
+
+    <section class="appendix" style="margin-top:20px">
+      <div class="label">별첨</div>
+      <h2 id="limit3">방법과 한계</h2>
+      <div class="notes"><ol id="vNotes"></ol></div>
+    </section>
+  </article>
+
   <section class="appendix">
     <div class="label">별첨</div>
     <h2 id="limit">방법과 한계</h2>
@@ -411,7 +543,7 @@
       <li><span class="no">[3]</span><div><b>조회수는 효과 지표가 아니다</b>: 두 가지가 겹친다. 하나는 누적 편향이다. 포털 조회수는 쌓이는 값이라 등록이 오래된 사업이 유리한데, 국민신청은 2018~2019년에 몰려 있다. 표본이 5건 이상인 해만 골라 같은 해 안에서 가운데값 비율을 낸 뒤 평균하면 1.12배다. 다른 하나는 측정 장소다. 규정 제63조의3제3항은 추진실적을 "해당 기관의 인터넷 홈페이지 등"에 공개하라고 정하며 정보공개포털은 조문에 없다. 포털은 모아 보여 주는 화면이므로 기관 누리집에서 일어난 열람은 이 값에 들어 있지 않다. 두 가지 때문에 이 수치로는 효과를 판단할 수 없다.</div></li>
       <li><span class="no">[4]</span><div><b>견주지 못한 것</b>: 추진실적 건수와 원문 연결률은 상세를 확인한 784건(2025~2026년분)으로만 알 수 있는데, 그중 국민신청은 2건뿐이다. 표본이 없어 비교하지 않았다.</div></li>
       <li><span class="no">[5]</span><div><b>인과가 아니다</b>: 조문 신설과 건수 감소가 같은 시기에 일어났다는 것뿐, 조문이 감소를 일으켰다는 뜻이 아니다. 창구 부재가 원인이라는 판단은 조문 문구와 포털 화면 확인에 근거한 것이지 이 수치에서 나온 것이 아니다.</div></li>
-      <li><span class="no">[6]</span><div><b>2026년</b>은 등록이 진행 중인 값이다. 추세 판단은 2025년까지를 기준으로 해야 한다.</div></li>
+      <li><span class="no">[6]</span><div><b>2026년</b>은 등록이 진행 중인 값이다. 2026-09-17 기준 45개 기관 중 7곳만 포털에 등록했다. 추세 판단은 2025년까지를 기준으로 해야 하며, 그 2025년 값도 포털 등록 기준이라 결락을 안고 있다(<a href="#note3">노트 ③</a>).</div></li>
       <li><span class="no">[7]</span><div><b>접수 창구 확인 범위</b>: 2026-09-17에 14개 기관 누리집과 정보공개포털을 직접 열어 확인했다(선정 122건, 전체의 90%). 미확인 10곳은 선정이 1~2건인 기관이다. 화면은 조사 시점의 것이며 기관이 이후 바꿀 수 있다. 어떤 서식도 제출하지 않았으므로 접수가 실제로 처리되는지는 확인하지 않았다.</div></li>
       <li><span class="no">[10]</span><div><b>접수 경로 확인</b>: 2026-09-17에 <span class="mono">sotong.go.kr</span>은 「소통혁신24」로 응답했고, <span class="mono">gwanghwamun1st.go.kr</span>은 DNS 조회 자체가 되지 않았다(변형 주소 네 가지 모두 실패). 세 이름이 같은 창구인지는 기관 안내 문구와 도메인으로 판단한 것이며 운영 주체에 확인한 것은 아니다.</div></li>
       <li><span class="no">[9]</span><div><b>상관이 인과는 아니다</b>: 온라인 서식을 둔 교육부가 선정 1위라는 것은 관측이며, 서식이 신청을 늘렸다는 증명이 아니다. 교육부는 자체 훈령(「교육부 정책실명제 운영규정」, 2023)도 둔 유이한 기관이고 심의위원회를 국민제안 제안심사위원회와 통합 운영한다. 조직 여건이 함께 작용했을 수 있다.</div></li>
@@ -430,10 +562,152 @@
   var D = /*__NOTEDATA__*/null;
   var CH = /*__CHDATA__*/null;
   var AX = /*__AXDATA__*/null;
+  var VN = /*__VNDATA__*/null;
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
 
 
+
+
+  /* 공개 장소 — 포털 등록의 결락 */
+  (function(){
+    if(!VN || !VN.대조) return;
+    if(!document.getElementById('vfig1')) return;
+    var YR = VN.연도.concat([2026]);
+
+    /* 그림 1 — 국세청 연도별 포털 대 누리집 */
+    (function(){
+      var o = VN.대조.기관.filter(function(x){ return x.nm==='국세청'; })[0];
+      if(!o) return;
+      var rows = o.연도대조;
+      var W=720, H=300, L=44, B=54, T=22;
+      var max = Math.max.apply(null, rows.map(function(r){ return Math.max(r.포털, r.누리집); })) || 1;
+      var gw = (W-L-14)/rows.length, bw = (gw-10)/2;
+      var y = function(v){ return T + (H-T-B) * (1 - v/(max*1.2)); };
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="국세청 연도별 정책실명제 등록 건수를 정보공개포털과 기관 누리집에서 비교한 막대그림">';
+      [0,10,20,30].forEach(function(v){
+        s+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+W+'" y2="'+y(v)+'" stroke="var(--rule)"/>'
+         + '<text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="12" fill="var(--ink-3)">'+v+'</text>';
+      });
+      rows.forEach(function(r,i){
+        var x0 = L + i*gw + 5, gap = r.판정==='포털 결락';
+        // 포털 막대 — 0이면 바닥에 자리만 표시한다
+        if(r.포털>0){
+          s+='<rect x="'+x0+'" y="'+y(r.포털)+'" width="'+bw+'" height="'+(y(0)-y(r.포털))+'" fill="var(--rn)"/>'
+           + '<text x="'+(x0+bw/2)+'" y="'+(y(r.포털)-5)+'" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">'+r.포털+'</text>';
+        } else {
+          s+='<rect x="'+x0+'" y="'+(y(0)-3)+'" width="'+bw+'" height="3" fill="var(--k-danger-50)"/>'
+           + '<text x="'+(x0+bw/2)+'" y="'+(y(0)-8)+'" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--k-danger-60)">0</text>';
+        }
+        s+='<rect x="'+(x0+bw+4)+'" y="'+y(r.누리집)+'" width="'+bw+'" height="'+(y(0)-y(r.누리집))+'" fill="var(--og)"'
+         + (gap?' stroke="var(--k-danger-50)" stroke-width="2"':'')+'/>'
+         + '<text x="'+(x0+bw+4+bw/2)+'" y="'+(y(r.누리집)-5)+'" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">'+r.누리집+'</text>';
+        s+='<text x="'+(x0+gw/2-5)+'" y="'+(y(0)+18)+'" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">'+r.연도+'</text>';
+        s+='<text x="'+(x0+gw/2-5)+'" y="'+(y(0)+36)+'" text-anchor="middle" font-size="11.5" font-weight="'+(gap?'700':'400')+'" fill="'+(gap?'var(--k-danger-60)':'var(--ink-3)')+'">'+(gap?'결락':'일치')+'</text>';
+      });
+      s+='<line x1="'+L+'" y1="'+y(0)+'" x2="'+W+'" y2="'+y(0)+'" stroke="var(--ink-3)"/></svg>';
+      document.getElementById('vfig1').innerHTML=s;
+    })();
+
+    /* 그림 2 — 기관 × 연도 격자, 결락 칸에 빗금 */
+    (function(){
+      var gapMap = {};
+      VN.결락.목록.forEach(function(d){ d.gaps.forEach(function(g){ gapMap[d.nm+'|'+g]=1; }); });
+      var orgs = VN.결락.목록.map(function(d){ return d.nm; });   // 결락이 있는 기관만 싣는다
+      var YRS = VN.연도;
+      var cw=52, ch=26, L=124, T=30;
+      var W=L+YRS.length*cw+16, H=T+orgs.length*ch+16;
+      var max=0;
+      VN.결락.목록.forEach(function(d){ d.연도별.forEach(function(v){ if(v>max) max=v; }); });
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="등록 결락이 있는 기관의 연도별 등록 건수 격자. 빗금 친 칸이 결락이다">';
+      s+='<defs><pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">'
+       + '<line x1="0" y1="0" x2="0" y2="6" stroke="var(--k-danger-50)" stroke-width="2.5"/></pattern></defs>';
+      YRS.forEach(function(y,j){
+        s+='<text x="'+(L+j*cw+cw/2)+'" y="'+(T-10)+'" text-anchor="middle" font-size="12" fill="var(--ink-3)">'+String(y).slice(2)+'</text>';
+      });
+      VN.결락.목록.forEach(function(d,i){
+        s+='<text x="'+(L-10)+'" y="'+(T+i*ch+17)+'" text-anchor="end" font-size="12.5" fill="var(--ink-2)">'+esc(d.nm)+'</text>';
+        d.연도별.forEach(function(v,j){
+          var x=L+j*cw, yy=T+i*ch, gap=gapMap[d.nm+'|'+YRS[j]];
+          if(gap){
+            s+='<rect x="'+x+'" y="'+yy+'" width="'+(cw-2)+'" height="'+(ch-2)+'" fill="url(#hatch)" stroke="var(--k-danger-50)"/>';
+          } else {
+            var op = v===0 ? 0 : 0.16 + 0.30*Math.min(1, v/max);
+            s+='<rect x="'+x+'" y="'+yy+'" width="'+(cw-2)+'" height="'+(ch-2)+'" fill="var(--k-primary-50)" fill-opacity="'+op.toFixed(2)+'" stroke="var(--rule)"/>';
+            if(v>0) s+='<text x="'+(x+(cw-2)/2)+'" y="'+(yy+17)+'" text-anchor="middle" font-size="11.5" fill="var(--k-primary-90)">'+v+'</text>';
+          }
+        });
+      });
+      s+='</svg>';
+      document.getElementById('vfig2').innerHTML=s;
+    })();
+
+    /* 그림 3 — 2026년 포털 등록 현황 */
+    (function(){
+      var done=VN.올해.등록기관, all=VN.올해.전체기관;
+      var cols=15, cw=44, ch=26, W=cols*cw+8, rowsN=Math.ceil(all/cols), H=rowsN*ch+46;
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="2026년 정보공개포털에 등록을 마친 기관은 45곳 중 7곳">';
+      for(var i=0;i<all;i++){
+        var x=(i%cols)*cw+4, y=Math.floor(i/cols)*ch+4, on=i<done;
+        s+='<rect x="'+x+'" y="'+y+'" width="'+(cw-5)+'" height="'+(ch-5)+'" rx="3" fill="'+(on?'var(--rn)':'var(--panel-2)')+'" stroke="'+(on?'var(--rn)':'var(--rule)')+'"/>';
+      }
+      var by=rowsN*ch+26;
+      s+='<text x="4" y="'+by+'" font-size="13.5" fill="var(--ink-2)"><tspan font-weight="700" fill="var(--rn-t)">'+done+'곳 등록</tspan> · 나머지 '+(all-done)+'곳은 0건</text></svg>';
+      document.getElementById('vfig3').innerHTML=s;
+    })();
+
+    /* 대조 표 */
+    (function(){
+      var tb=document.getElementById('vTblBody'); if(!tb) return;
+      tb.innerHTML = VN.대조.기관.map(function(o){
+        var 결락=o.연도대조.filter(function(y){ return y.판정==='포털 결락'; });
+        var 일치=o.연도대조.filter(function(y){ return y.판정==='일치'; });
+        var 차이=o.연도대조.filter(function(y){ return y.판정==='차이'; });
+        var bits=[];
+        if(결락.length) bits.push('<b style="color:var(--k-danger-60)">포털 결락 '+결락.length+'개 해</b> ('
+          + 결락.map(function(y){ return y.연도+'년 누리집 '+y.누리집+'건'; }).join(', ') + ')');
+        if(일치.length) bits.push('일치 '+일치.length+'개 해 ('+일치.map(function(y){ return y.연도; }).join(', ')+')');
+        if(차이.length) bits.push('차이 '+차이.map(function(y){ return y.연도+'년 포털 '+y.포털+' 대 누리집 '+y.누리집; }).join(', '));
+        return '<tr><td><b>'+esc(o.nm)+'</b><br><span style="font-size:13px;color:var(--ink-3)">누리집 총 '+o.총+'건 · 신뢰 '+esc(o.신뢰||'—')+'</span></td>'
+             + '<td>'+esc(o.게시판)+'<br><span style="font-size:13px;color:var(--ink-3)">'+esc(o.경로)+'</span></td>'
+             + '<td style="font-size:14px">'+esc(o.형태)+'</td>'
+             + '<td style="font-size:14px">'+bits.join('<br>')+'</td></tr>';
+      }).join('');
+    })();
+
+    /* 본문 숫자 */
+    var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+    put('vGapCell', VN.결락.칸수);
+    put('vGapOrg', VN.결락.기관수);
+    put('vGapEst', Math.round(VN.결락.추정누락).toLocaleString('ko-KR')+'건');
+    put('vGapPct', VN.결락.비율+'%');
+    put('vY26', VN.올해.등록기관+' / '+VN.올해.전체기관);
+
+    /* 별첨 */
+    (function(){
+      var on=document.getElementById('vNotes'); if(!on) return;
+      var 일치수 = VN.대조.기관.reduce(function(s,o){ return s+o.연도대조.filter(function(y){return y.판정==='일치';}).length; },0);
+      on.innerHTML =
+        '<li><b>포털 자료</b> — 정보공개포털 정책실명제 중앙행정기관 전수 '+VN.기관수+'개 기관 6,847건(2018~2026), 수집 2026-09-15~16.</li>'
+      + '<li><b>결락 판정</b> — 기관마다 2018~2025년 등록 건수를 늘어놓고, 값이 0이면서 앞선 해와 뒤따르는 해에 모두 등록이 있는 칸만 셌다. '
+      + '2026년은 등록이 진행 중이므로 판정에서 뺐다. 첫 해나 마지막 해의 0은 세지 않았으므로 <b>실제 결락은 이보다 많을 수 있다.</b></li>'
+      + '<li><b>추정 누락</b> — 결락 칸에 그 기관의 등록이 있었던 해들의 중위 건수를 넣어 더했다. 실측이 아니라 어림이다. '
+      + '국세청의 경우 어림은 104건이었고 누리집 실측은 87건이었다.</li>'
+      + '<li><b>누리집 대조</b> — '+VN.대조.조사일+' 기관 누리집 게시판을 직접 열어 목록을 셌다. 제출한 것은 없고 읽기만 했다. '
+      + '포털 결락 '+VN.대조.요약.결락확인+'칸, 일치 '+일치수+'칸을 확인했다.</li>'
+      + '<li><b>국세청의 신뢰도가 높은 이유</b> — 게시글 제목에 사업연도가 적혀 있고(예: (2026-26) 사업명) 등록일 연도와 한 건도 어긋나지 않았다. '
+      + '번호 1~323에 결번이 없어 목록 누락도 없다.</li>'
+      + '<li><b>경찰청의 한계</b> — 목록과 상세 어디에도 사업연도 칸이 없어 등록일로만 셀 수 있었다. '
+      + '등록일은 사업연도와 어긋날 수 있다. 2025-02-06에 19건, 2025-11-28에 20건이 한꺼번에 올라와 있어 어느 해 사업인지 화면만으로는 가릴 수 없다. '
+      + '그래서 경찰청은 2022년 한 해만 대조에 썼다.</li>'
+      + '<li><b>총계를 곧바로 견주지 않은 이유</b> — 누리집 게시판은 2013년부터 쌓여 있고 포털 자료는 2018년부터다. '
+      + '기간이 다르므로 총계 비교는 뜻이 없다. 연도를 맞춘 대조만 실었다.</li>'
+      + '<li><b>근거 조문</b> — 「행정업무의 운영 및 혁신에 관한 규정」(대통령령) 제63조의3제3항. '
+      + '"해당 기관의 인터넷 홈페이지 등에 공개하여야 한다"고 정하며 정보공개포털을 지정하지 않는다.</li>'
+      + '<li><b>확인하지 않은 것</b> — 결락으로 판정한 13개 기관 가운데 다섯 곳만 누리집을 열어 봤다. '
+      + '나머지 여덟 곳은 통계로만 짚은 것이며 누리집에 실제로 있는지는 확인하지 않았다.</li>';
+    })();
+  })();
 
   /* 중분류 줄 — 갈래를 고르면 그 갈래만 남긴다 */
   (function(){
@@ -493,6 +767,16 @@
     nav.addEventListener('click',function(e){
       var a=e.target.closest('a[data-g]'); if(!a) return;
       e.preventDefault(); select(a.getAttribute('data-g'), true);
+    });
+
+    // 본문에서 다른 갈래의 노트로 거는 링크. 갈래를 먼저 바꿔야 보인다.
+    document.addEventListener('click',function(e){
+      var a=e.target.closest('a[href^="#note"]'); if(!a) return;
+      if(a.closest('#subnav')) return;
+      var id=a.getAttribute('href').slice(1);
+      var t=document.getElementById(id); if(!t) return;
+      var g=t.getAttribute('data-g');
+      if(g && order.indexOf(g)>=0 && t.hidden){ e.preventDefault(); select(g,false); t.scrollIntoView(); }
     });
 
     // 대분류 바 높이만큼 아래에 붙인다
