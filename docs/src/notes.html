@@ -41,6 +41,28 @@
 .note1 section.core{padding:24px 0 4px}
 .note1 section.core:first-of-type{padding-top:14px}
 @media (max-width:760px){ .note1{padding:18px 14px 4px} .cats td{padding:10px 10px} }
+/* 자리매김 그래프 — 넘겨 보기 */
+.pos .nav2{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.pos .nav2 button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);
+  padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.4}
+.pos .nav2 button:hover{border-color:var(--ink-3);color:var(--ink)}
+.pos .nav2 button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0);font-weight:700}
+.pos .step2{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.pos .step2 button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);
+  padding:6px 12px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer}
+.pos .step2 button:hover{border-color:var(--ink-3);color:var(--ink)}
+.pos .step2 #posDots{display:flex;gap:6px;margin:0 auto}
+.pos .step2 #posDots i{width:8px;height:8px;border-radius:50%;background:var(--rule);display:block}
+.pos .step2 #posDots i.on{background:var(--em)}
+.pos .head3{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0 0 4px}
+.pos .head3 h3{font-size:18px;margin:0}
+.pos .head3 .cnt2{font-size:12.5px;color:var(--ink-3);margin-left:auto;font-variant-numeric:tabular-nums}
+.pos .oneline{font-size:15.5px;line-height:1.75;color:var(--ink-2);margin:0 0 12px;max-width:74ch}
+.pos .oneline b{color:var(--ink)}
+.pos .axinfo{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--ink-2);margin-top:10px}
+.pos .axinfo .kind{font-size:11px;border:1px solid var(--rule);border-radius:2px;padding:0 5px;margin-right:5px;color:var(--ink-3)}
+.pos .axinfo .kind.m{border-color:var(--og-t);color:var(--og-t)}
+.pos .axinfo .kindnote{flex-basis:100%;color:var(--ink-3);font-size:12.5px}
 /* 그림 */
 .fig{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:18px 20px 14px;margin:0 0 10px}
 .fig h3{font-size:16px;margin:0 0 3px}
@@ -62,6 +84,16 @@
 .cbtn:hover{border-color:var(--ink-3);color:var(--ink)}
 .cbtn.ok{background:var(--em);border-color:var(--em);color:var(--k-gray-0)}
 @media (max-width:760px){ .fig{padding:14px 12px 10px} }
+.pos .scrollhint{display:none;font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
+/* 좁은 화면에서 산점도가 뭉개지지 않게 옆으로 민다 */
+@media (max-width:700px){
+  .pos #posFig{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .pos #posFig svg{min-width:600px}
+  .pos .nav2 button{font-size:12.5px;padding:6px 10px}
+  .pos .head3 h3{font-size:17px}
+  .pos .head3 .cnt2{margin-left:0;flex-basis:100%}
+  .pos .scrollhint{display:block}
+}
 </style>
 </head>
 <body>
@@ -69,7 +101,7 @@
 <div class="masthead"><div class="in"><span class="flag" aria-hidden="true"></span><span>정보공개 3제도 실측</span><span class="note">· 개인 연구 시안입니다. 정부 공식 누리집이 아니며, 디자인은 대한민국 디자인시스템(KRDS) 토큰을 따랐습니다.</span></div></div>
 <div class="bar"><div class="in">
   <nav><a href="./"><span class="long">개요</span><span class="short">개요</span></a><a href="compare.html"><span class="long">세 제도 비교</span><span class="short">비교</span></a><a href="history.html"><span class="long">법령 연혁</span><span class="short">연혁</span></a><a href="explorer/"><span class="long">사업 대조기</span><span class="short">대조</span></a><a href="policy2.html"><span class="long">정책실명제 2.0</span><span class="short">2.0</span></a><a class="on" href="notes.html"><span class="long">분석 노트</span><span class="short">분석</span></a></nav>
-  <div class="meta"><span>기준일 <b>2026-09-15~16</b></span></div>
+  <div class="meta"><span>기준일 <b>2026-09-15~17</b></span></div>
 </div></div>
 
 <main class="wrap" id="content">
@@ -83,12 +115,17 @@
 
   <section class="core">
     <div class="eyebrow">분류</div>
-    <h2>다섯 갈래 아래 열 가지 물음</h2>
-    <p>분석을 다섯 갈래로 나누고, 갈래마다 다룰 물음을 두었습니다. 답이 나오면 노트를 올립니다.
+    <h2>여섯 갈래 아래 열 가지 물음</h2>
+    <p>분석을 여섯 갈래로 나누고, 갈래마다 다룰 물음을 두었습니다. 답이 나오면 노트를 올립니다.
       아직 비어 있는 칸이 다음에 쓸 글입니다.</p>
     <div class="cats"><table>
       <thead><tr><th style="width:22%">물음</th><th>지금까지 드러난 것</th><th style="width:19%">노트</th></tr></thead>
       <tbody>
+        <tr class="grp"><td colspan="3"><span class="gn">자리</span><span class="gd">세 제도가 각각 어느 자리를 맡나</span></td></tr>
+        <tr class="on"><td class="sub2">축으로 본 세 제도</td>
+          <td class="ins"><b>셋은 서로 다른 모서리에 있습니다.</b> 정책실명제만 사업으로 묶이지만 그 안이 얇고, 원문공개는 두껍지만 흩어져 있습니다. 여덟 지표를 둘씩 짝지어 네 장면으로 봤습니다.</td>
+          <td class="st2"><a href="#note2">② 축으로 본 세 제도</a></td></tr>
+
         <tr class="grp"><td colspan="3"><span class="gn">참여</span><span class="gd">국민이 제도에 닿는 길</span></td></tr>
         <tr class="on"><td class="sub2">신청제</td>
           <td class="ins"><b>신청 제도는 생겼으나 활성화되지 않았습니다.</b> 조문은 2018년에 들어왔고 창구도 대부분 있지만, 열네 곳 중 열세 곳이 서식을 내려받아 밖으로 보내라고 합니다.</td>
@@ -288,6 +325,57 @@
 
   </article>
 
+  <article class="note1" id="note2">
+    <div class="eyebrow">자리 · 노트 ②</div>
+    <h2>축으로 본 세 제도 — 어디서는 이게, 어디서는 저게 위다</h2>
+    <div class="axes">
+      <span class="ax"><b>축</b> 여덟 지표를 둘씩</span>
+      <span class="ax"><b>장면</b> 넷</span>
+      <span class="ax"><b>값</b> 실측 4 · 판정 4</span>
+    </div>
+    <div class="answer">
+      <p>세 제도는 같은 자를 대면 순위가 매겨지지만, <b>자를 바꾸면 순위가 바뀝니다.</b>
+        정책실명제는 사업으로 묶고 심의로 고르고 적게 눌러 알게 하는 자리에서 앞서고,
+        원문공개는 두께와 속도와 이름에서 앞섭니다. <b>대체가 아니라 분업입니다.</b></p>
+    </div>
+    <div class="basis" style="font-size:15px;color:var(--ink-2);margin:12px 0 0">
+      여덟 지표 중 넷은 수집 자료에서 나온 실측치이고, 넷은 조문과 화면을 보고 매긴 점수입니다.
+      어느 쪽인지 그래프 아래에 표시했고 근거는 <a href="#limit2">방법과 한계</a>에 적었습니다.</div>
+
+    <section class="core pos">
+      <div class="eyebrow">장면 · 넷</div>
+      <h2>자를 바꿔 가며 봅니다</h2>
+      <p>아래 단추로 장면을 넘기면 같은 세 제도가 자리를 바꿉니다. 가로세로 어느 쪽이 위인지 함께 보십시오.</p>
+      <div class="nav2" id="posNav"></div>
+      <div class="step2"><button type="button" id="posPrev">‹ 앞 장면</button><span id="posDots" aria-hidden="true"></span><button type="button" id="posNext">뒤 장면 ›</button></div>
+      <div class="fig">
+        <div class="head3"><h3 id="posTitle"></h3><span class="cnt2" id="posCnt"></span></div>
+        <p class="oneline" id="posLine"></p>
+        <div id="posFig"></div>
+        <p class="scrollhint">그림을 옆으로 밀면 나머지가 보입니다.</p>
+        <div class="axinfo" id="posAx"></div>
+      </div>
+    </section>
+
+    <section class="core">
+      <div class="eyebrow">그래서</div>
+      <h2>순위가 아니라 분업입니다</h2>
+      <p>네 장면 가운데 <b>원문공개가 두 축을 모두 가져가는 장면이 하나</b> 있습니다. 속도와 이름입니다.
+        결재 즉시 올라오고 기안부터 전결까지 적힙니다. 이 장면을 뺐다면 이 노트는 분석이 아니라 홍보가 됩니다.</p>
+      <p>나머지 세 장면에서 정책실명제가 한 축씩 가져갑니다. <b>사업으로 묶는 것, 심의로 고르는 것, 적게 눌러 알게 하는 것</b>입니다.
+        셋 다 "얼마나 많이"가 아니라 "어떻게 묶여 있나"에 관한 것입니다.</p>
+      <p>그러므로 세 제도를 겹쳐 놓고 하나를 고르는 물음은 성립하지 않습니다.
+        <b>정책실명제가 사업이라는 그릇을 쥐고 있고, 원문공개가 그 안에 담길 내용을 갖고 있습니다.</b>
+        지금은 둘이 이어져 있지 않을 뿐입니다.</p>
+    </section>
+
+    <section class="appendix" style="margin-top:20px">
+      <div class="label">별첨</div>
+      <h2 id="limit2">방법과 한계</h2>
+      <div class="notes"><ol id="axNotes"></ol></div>
+    </section>
+  </article>
+
   <section class="appendix">
     <div class="label">별첨</div>
     <h2 id="limit">방법과 한계</h2>
@@ -315,8 +403,122 @@
 (function(){
   var D = /*__NOTEDATA__*/null;
   var CH = /*__CHDATA__*/null;
+  var AX = /*__AXDATA__*/null;
   if(!D) return;
   var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); };
+
+
+  /* 자리매김 산점도 — 축을 바꿔 가며 세 제도의 위치를 본다 */
+  (function(){
+    if(!AX) return;
+    var nav=document.getElementById('posNav'); if(!nav) return;
+    var NAMES=AX.제도, COL=['var(--rn)','var(--pv)','var(--og)'], TXT=['var(--rn-t)','var(--pv-t)','var(--og-t)'];
+    var cur=0;
+
+    function fmt(v,u){
+      var n = (Math.abs(v)>=1000) ? v.toLocaleString('ko-KR')
+            : (v%1 ? v.toFixed(1) : String(v));
+      if(u==='0~1') return (v*100).toFixed(0)+'%';
+      return n + (u==='자'?'자':u==='일'?'일':u==='명'?'명':u==='회'?'회':u==='종'?'종':'');
+    }
+    // 값을 0~1로 편다. 로그축은 자릿수 차이가 큰 지표에만 쓴다.
+    function norm(vals,log,inv){
+      var f = log ? function(v){ return Math.log10(v+1); } : function(v){ return v; };
+      var a=vals.map(f), lo=Math.min.apply(null,a), hi=Math.max.apply(null,a);
+      var sp = (hi-lo) || 1;
+      return a.map(function(v){ var t=(v-lo)/sp; return inv ? 1-t : t; });
+    }
+
+    function draw(gi){
+      var g=AX.그래프[gi], X=AX.지표[g.x], Y=AX.지표[g.y];
+      var W=720, H=448, L=84, R=26, T=30, B=92;
+      var pw=W-L-R, ph=H-T-B, pad=0.13;
+      var nx=norm(X.값, !!g.xlog, !!g.xinv), ny=norm(Y.값, !!g.ylog, false);
+      var px=function(t){ return L + pw*(pad + t*(1-2*pad)); };
+      var py=function(t){ return T + ph*(1 - (pad + t*(1-2*pad))); };
+
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(X.label)+' 가로축, '+esc(Y.label)+' 세로축에 놓은 세 제도의 위치">';
+      // 격자
+      s+='<rect x="'+L+'" y="'+T+'" width="'+pw+'" height="'+ph+'" fill="var(--panel)" stroke="var(--rule)"/>';
+      [0.25,0.5,0.75].forEach(function(t){
+        s+='<line x1="'+(L+pw*t)+'" y1="'+T+'" x2="'+(L+pw*t)+'" y2="'+(T+ph)+'" stroke="var(--rule)" stroke-dasharray="2 4"/>'
+         + '<line x1="'+L+'" y1="'+(T+ph*t)+'" x2="'+(L+pw)+'" y2="'+(T+ph*t)+'" stroke="var(--rule)" stroke-dasharray="2 4"/>';
+      });
+      // 축 화살표와 방향말
+      s+='<line x1="'+L+'" y1="'+(T+ph)+'" x2="'+(L+pw)+'" y2="'+(T+ph)+'" stroke="var(--ink-3)" stroke-width="1.5"/>'
+       + '<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(T+ph)+'" stroke="var(--ink-3)" stroke-width="1.5"/>'
+       + '<path d="M'+(L+pw)+' '+(T+ph)+'l-8 -4v8z" fill="var(--ink-3)"/>'
+       + '<path d="M'+L+' '+T+'l-4 8h8z" fill="var(--ink-3)"/>';
+      // 축 양끝에 실제 값을 적어 둔다. 눈금이 없으면 어느 쪽이 큰지 헷갈린다.
+      var xlo=Math.min.apply(null,X.값), xhi=Math.max.apply(null,X.값);
+      var ylo=Math.min.apply(null,Y.값), yhi=Math.max.apply(null,Y.값);
+      var xL=g.xinv?xhi:xlo, xR=g.xinv?xlo:xhi;
+      s+='<text x="'+(L+6)+'" y="'+(T+ph+18)+'" font-size="12" fill="var(--ink-3)">'+esc(fmt(xL,X.단위))+'</text>'
+       + '<text x="'+(L+pw-6)+'" y="'+(T+ph+18)+'" text-anchor="end" font-size="12" fill="var(--ink-3)">'+esc(fmt(xR,X.단위))+'</text>';
+      s+='<text x="'+(L+pw)+'" y="'+(T+ph+40)+'" text-anchor="end" font-size="14" font-weight="700" fill="var(--ink-2)">'+esc(X.label)+' →</text>'
+       + '<text x="'+(L+pw)+'" y="'+(T+ph+59)+'" text-anchor="end" font-size="12.5" font-weight="700" fill="'+(g.xinv?'var(--k-point-50)':'var(--ink-3)')+'">'
+       + (g.xinv?'오른쪽으로 갈수록 적게 듭니다':'오른쪽으로 갈수록 큽니다')+(g.xlog?' · 로그 눈금':'')+'</text>';
+      var ym = T + ph/2;
+      s+='<text transform="translate(21 '+ym+') rotate(-90)" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink-2)">'+esc(Y.label)+' →</text>'
+       + '<text transform="translate(39 '+ym+') rotate(-90)" text-anchor="middle" font-size="12" fill="var(--ink-3)">위로 갈수록 큽니다'+(g.ylog?' · 로그 눈금':'')+'</text>'
+       + '<text x="'+(L-8)+'" y="'+(T+12)+'" text-anchor="end" font-size="12" fill="var(--ink-3)">'+esc(fmt(yhi,Y.단위))+'</text>'
+       + '<text x="'+(L-8)+'" y="'+(T+ph-3)+'" text-anchor="end" font-size="12" fill="var(--ink-3)">'+esc(fmt(ylo,Y.단위))+'</text>';
+
+      // 점과 이름표
+      var pts=NAMES.map(function(nm,i){ return {i:i,nm:nm,x:px(nx[i]),y:py(ny[i])}; });
+      pts.forEach(function(p){
+        var i=p.i, right = p.x < L+pw*0.62, dx = right? 18 : -18, anc = right?'start':'end';
+        var lv = fmt(Y.값[i], Y.단위), xv = fmt(X.값[i], X.단위);
+        s+='<line x1="'+L+'" y1="'+p.y+'" x2="'+p.x+'" y2="'+p.y+'" stroke="'+COL[i]+'" stroke-width="1" stroke-dasharray="2 3" opacity=".5"/>'
+         + '<line x1="'+p.x+'" y1="'+(T+ph)+'" x2="'+p.x+'" y2="'+p.y+'" stroke="'+COL[i]+'" stroke-width="1" stroke-dasharray="2 3" opacity=".5"/>'
+         + '<circle cx="'+p.x+'" cy="'+p.y+'" r="11" fill="'+COL[i]+'" stroke="var(--paper)" stroke-width="2.5"/>'
+         + '<text x="'+(p.x+dx)+'" y="'+(p.y-2)+'" text-anchor="'+anc+'" font-size="15" font-weight="700" fill="'+TXT[i]+'">'+esc(p.nm)+'</text>'
+         + '<text x="'+(p.x+dx)+'" y="'+(p.y+16)+'" text-anchor="'+anc+'" font-size="12.5" fill="var(--ink-3)">가로 '+esc(xv)+' · 세로 '+esc(lv)+'</text>';
+      });
+      s+='</svg>';
+      document.getElementById('posFig').innerHTML=s;
+
+      document.getElementById('posTitle').textContent=g.제목;
+      document.getElementById('posCnt').textContent='장면 '+(gi+1)+' / '+AX.그래프.length;
+      document.getElementById('posLine').innerHTML=esc(g.한줄).replace(/(정책실명제|사전정보공표|원문공개)/g,'<b>$1</b>');
+      document.getElementById('posAx').innerHTML=
+          '<span><span class="kind'+(X.종류==='실측'?' m':'')+'">'+X.종류+'</span>가로 '+esc(X.label)+'</span>'
+        + '<span><span class="kind'+(Y.종류==='실측'?' m':'')+'">'+Y.종류+'</span>세로 '+esc(Y.label)+'</span>'
+        + '<span class="kindnote">실측은 수집한 자료에서 나온 수, 판정은 조문과 화면을 보고 매긴 점수입니다.</span>';
+      [].forEach.call(nav.children,function(b,k){ b.className = k===gi?'on':''; b.setAttribute('aria-current', k===gi?'true':'false'); });
+      var dots=document.getElementById('posDots');
+      if(dots) dots.innerHTML = AX.그래프.map(function(_,k){ return '<i class="'+(k===gi?'on':'')+'"></i>'; }).join('');
+      cur=gi;
+    }
+
+    nav.innerHTML = AX.그래프.map(function(g,k){
+      return '<button type="button" data-k="'+k+'" title="'+esc(AX.지표[g.x].label)+' × '+esc(AX.지표[g.y].label)+'">'+(k+1)+'. '+esc(g.짧은이름)+'</button>';
+    }).join('');
+    nav.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-k]'); if(b) draw(+b.dataset.k);
+    });
+    nav.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){ draw((cur+1)%AX.그래프.length); nav.children[cur].focus(); }
+      if(e.key==='ArrowLeft'){ draw((cur+AX.그래프.length-1)%AX.그래프.length); nav.children[cur].focus(); }
+    });
+
+    // 별첨 — 지표마다 무엇을 어떻게 셌는지
+    var on=document.getElementById('axNotes');
+    if(on) on.innerHTML = Object.keys(AX.지표).map(function(k){
+      var m=AX.지표[k];
+      var vv = NAMES.map(function(nm,i){ return esc(nm)+' '+fmt(m.값[i], m.단위); }).join(' · ');
+      return '<li><b>'+esc(m.label)+'</b> ('+m.종류+') — '+vv+'. '+esc(m.근거)+'</li>';
+    }).join('') + '<li><b>판정값에 대하여</b> — 여덟 지표 가운데 넷은 조문과 화면을 보고 매긴 0~1 점수입니다. '
+      + '근거를 함께 적었으나 보는 눈에 따라 달라질 수 있으므로, 점의 정확한 좌표가 아니라 세 점이 서로 떨어진 방향을 보시기 바랍니다.</li>'
+      + '<li><b>사전정보공표의 갱신 주기</b> — 표본 100건에서 매년 41건, 수시 40건, 나머지는 분기·반기 등입니다. 이를 대략 반년(180일)으로 잡았습니다.</li>';
+
+    var N=AX.그래프.length;
+    var pv=document.getElementById('posPrev'), nx2=document.getElementById('posNext');
+    if(pv) pv.addEventListener('click',function(){ draw((cur+N-1)%N); });
+    if(nx2) nx2.addEventListener('click',function(){ draw((cur+1)%N); });
+
+    draw(0);
+  })();
 
   /* 그림 1 — 연도별 국민신청 건수 */
   (function(){

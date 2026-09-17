@@ -302,6 +302,7 @@ if (!WITH_NAMES) {
   const LAWDATA_PATH = R("lawhist/page-data.json");
   const NOTE_PATH = R("notes/citizen.json");
   const CH_PATH = R("notes/citizen-channels.json");
+  const AX_PATH = R("notes/compare-axes.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
@@ -319,6 +320,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(CH_PATH)) { console.error("ERROR notes/citizen-channels.json missing"); process.exit(1); }
       const cd = fs.readFileSync(CH_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__CHDATA__*/null", () => cd).replace("/*__CHDATA__*/", () => cd);
+    }
+    if (page.includes("/*__AXDATA__*/")) {
+      if (!fs.existsSync(AX_PATH)) { console.error("ERROR notes/compare-axes.json missing"); process.exit(1); }
+      const ad = fs.readFileSync(AX_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__AXDATA__*/null", () => ad).replace("/*__AXDATA__*/", () => ad);
     }
     if (page.includes("/*__LAWDATA__*/")) {
       if (!fs.existsSync(LAWDATA_PATH)) { console.error("ERROR lawhist/page-data.json missing - run tools/collect-law-history.mjs then tools/build-law-timeline.mjs then tools/build-history-data.mjs"); process.exit(1); }
