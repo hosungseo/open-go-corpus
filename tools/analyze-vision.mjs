@@ -39,7 +39,10 @@ const byGoal = {};
 for (const d of SUBM.세부) { const n = +d.no.split("-")[0], g = goalOf(n); if (!g) continue; (byGoal[g] = byGoal[g] || { 세부: 0, 관련: 0 }).세부++; if (d.사업수) byGoal[g].관련++; }
 const 세부 = { 총수: SUBM.세부과제수, 관련사업있음: SUBM.관련사업있는세부과제, 과제수: SUBM.과제수, 기준: SUBM.기준, 목표별: byGoal,
   손기입: cites.map((c) => ({ no: c.n + (c.세부번호 ? "" : ""), 등록기관: c.등록기관, 사업: c.사업 })),
-  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, e: d.예.length ? d.예[0].slice(0, 40) : "" })),
+  검수: SUBM.검수집계,
+  확실: SUBM.세부.filter((d) => d.검수 === "확실").length, 애매: SUBM.세부.filter((d) => d.검수 === "애매").length, 오탐: SUBM.세부.filter((d) => d.검수 === "오탐").length,
+  확실과제수: new Set(SUBM.세부.filter((d) => d.검수 === "확실").map((d) => +d.no.split("-")[0])).size,
+  목록: SUBM.세부.map((d) => ({ no: d.no, t: d.제목.replace(/\s{2,}.*$/, "").slice(0, 34), n: d.사업수, r: d.검수 || "", e: d.예.length ? d.예[0].slice(0, 40) : "" })),
   확실한예: SUBM.세부.filter((d) => d.사업수 && d.예.length).filter((d) => ["54-1","94-1","112-1","82-3","48-2","71-4","82-1","14-5","68-4","98-4"].includes(d.no)).map((d) => ({ no: d.no, 제목: d.제목.slice(0, 26), 사업: d.예[0] })) };
 
 const out = {
@@ -58,6 +61,6 @@ const out = {
 fs.writeFileSync(R("notes/vision.json"), JSON.stringify(out, null, 2) + "\n");
 console.log(`현 정부 — 2026 등록 ${cur.length}건 중 번호 기재 ${cites.length}건 → 가리킨 국정과제 ${named.length}개/123: ${named.join(", ")} (세부번호 스스로 붙임 ${out.현정부.세부번호를스스로붙임}건)`);
 console.log(`주관부처 경로(2025~26) — 사업 ${recent.length}건 · 기관 ${Object.keys(orgHas).length}곳 · 걸린 과제 ${viaOrg.length}개/123`);
-console.log(`세부과제 — ${세부.총수}개 중 관련 사업 있음 ${세부.관련사업있음}개(${(세부.관련사업있음/세부.총수*100).toFixed(0)}%) · 과제 ${세부.과제수}개`);
+console.log(`세부과제 — ${세부.총수}개 중 자동 대조 ${세부.관련사업있음}개 → 검수 확실 ${세부.확실} · 애매 ${세부.애매} · 오탐 ${세부.오탐} (확실 ${(세부.확실/세부.총수*100).toFixed(0)}%, 과제 ${세부.확실과제수}개)`);
 console.log(`포털 — 표본 ${out.포털.표본}개: 담당자·예산·근거문서·세부과제·타 시스템 링크 0/8`);
 console.log(`국정과제 — 주관부처 경로 등록 ${out.국정과제.주관부처경로등록} · 포털에 없음 ${out.국정과제.포털에없음}`);

@@ -33,7 +33,13 @@ for (const t of SUB.과제) {
   }
 }
 const withKw = detail.filter((d) => d.핵심어.length).length;
-const out = { 작성일: new Date().toISOString().slice(0, 10), 기준: "2025~2026년 정책실명제 등록 · 같은 주관부처 · 세부과제 앞머리 핵심어 포함", 세부과제수: detail.length, 핵심어있는세부과제: withKw, 관련사업있는세부과제: matched, 과제수: Object.keys(byTask).length, 세부: detail };
+// 사람 검수를 얹는다. 자동 대조는 실마리이고 판정은 검수다.
+const REV_PATH = R("notes/gukjeong-sub-review.json");
+const REV = fs.existsSync(REV_PATH) ? JSON.parse(fs.readFileSync(REV_PATH, "utf8")).판정 : {};
+for (const d of detail) d.검수 = d.사업수 ? (REV[d.no] || "미검수") : "";
+const 검수집계 = { 확실: 0, 애매: 0, 오탐: 0, 미검수: 0 };
+for (const d of detail) if (d.사업수) 검수집계[d.검수] = (검수집계[d.검수] || 0) + 1;
+const out = { 작성일: new Date().toISOString().slice(0, 10), 기준: "2025~2026년 정책실명제 등록 · 같은 주관부처 · 세부과제 앞머리 핵심어 포함", 세부과제수: detail.length, 핵심어있는세부과제: withKw, 관련사업있는세부과제: matched, 과제수: Object.keys(byTask).length, 검수집계, 세부: detail };
 fs.writeFileSync(R("notes/gukjeong-sub-match.json"), JSON.stringify(out, null, 2) + "\n");
 console.log(`세부과제 ${detail.length}개 중 핵심어 있는 것 ${withKw} · 같은 주관부처의 2025~26 사업에 핵심어가 나오는 세부과제 ${matched}개(${(matched / detail.length * 100).toFixed(0)}%) · 걸린 과제 ${Object.keys(byTask).length}개/123`);
-console.log("예:"); examples.forEach((e) => console.log("  " + e));
+console.log("검수:", JSON.stringify(검수집계));
