@@ -72,7 +72,7 @@ tr:focus-visible{outline-offset:-3px}
 /* KRDS 마스트헤드: 공식 누리집 배너 */
 .masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
 .masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
-.masthead .flag{width:20px;height:14px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%);flex:none;position:relative}
+.masthead .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab);flex:none;position:relative}
 .masthead .flag:after{content:"";position:absolute;inset:3px;border-radius:1px;background:#fff;opacity:.9}
 .masthead .note{color:var(--ink-2)}
 
@@ -158,7 +158,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .kfoot .in{max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .kfoot a{color:#fff;text-decoration-color:var(--k-gray-50)}
 .kfoot .id{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
-.kfoot .id .flag{width:22px;height:15px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%)}
+.kfoot .id .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab)}
 .kfoot .note{color:var(--k-gray-30)}
 
 /* 반응형 */
@@ -191,13 +191,14 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
 .qa .qrow:first-child > div:first-child:before{display:none}
 .qa .vq{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
-.qa .vq:before{content:"🙋";margin-right:6px}
+
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
 .qa .a:last-child{border-right:0}
 .qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
 .qa .a.hit{background:var(--k-success-5,#eef7f0)}
 .qa .a.hit .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
 .qa .a.hit{color:var(--ink)}
+.qa .a.part{background:var(--k-warning-5,#fff8e6)}.qa .a.part .v{border-color:var(--k-warning-60,#8a5c00);color:var(--k-warning-60,#8a5c00);font-weight:700}.qa .a.part .say{border-color:var(--k-warning-60,#8a5c00)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
 @media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .vq,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }

@@ -66,9 +66,9 @@ body{background:var(--cream);color:var(--ink0)}
 /* ticker */
 .ticker{position:relative;margin:0;border-top:1px solid var(--line-c);border-bottom:1px solid var(--line-c);overflow:hidden;background:var(--cream-2)}
 /* 흐르는 중에 숫자를 놓친다는 지적. 멈추는 방법을 오른쪽에 붙인다 */
-.ticker:after{content:"마우스를 올리면 멈춥니다";position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 14px 0 34px;font-size:12px;color:var(--ink2);white-space:nowrap;pointer-events:none;background:linear-gradient(90deg,transparent,var(--cream-2) 30%)}
+.ticker:after{content:"";position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 14px 0 34px;font-size:12px;color:var(--ink2);white-space:nowrap;pointer-events:none;background:linear-gradient(90deg,transparent,var(--cream-2) 30%)}
 @media (max-width:760px){.ticker:after{display:none}}
-.ticker .tr{display:flex;gap:0;width:max-content;animation:tk 48s linear infinite}
+.ticker .tr{display:flex;flex-wrap:wrap;gap:0}
 .ticker:hover .tr,.ticker:focus-within .tr{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.ticker .tr{animation:none}.ticker:after{content:"실측치"}}
 .ticker .it{display:flex;align-items:baseline;gap:10px;padding:14px 28px;border-right:1px solid var(--line-c);white-space:nowrap}
@@ -224,7 +224,7 @@ body{background:var(--cream);color:var(--ink0)}
       <h1>세 제도는<br><em>단위</em>가 다르다</h1>
       <p class="lede">사전정보공표는 <b>안내 목록</b>, 원문공개는 <b>결재문서</b>,<br>
         정책실명제는 <b>사업 하나</b>를 단위로 누가 맡아 어디까지 왔는지 적는 명부입니다.</p>
-      <p class="lede">"누가 결정했나"를 사업 단위로 답하는 채널은 정책실명제뿐인데,<br>
+      <p class="lede">"누가 결정했나"를 사업 단위로 답하는 제도는 정책실명제뿐인데,<br>
         셋 중 내용이 가장 적고, 포털에서 열리는 횟수도 가장 적습니다.</p>
       <div class="cta">
         <a class="p" href="explorer/">사업 대조기 열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -235,7 +235,7 @@ body{background:var(--cream);color:var(--ink0)}
 
     <!-- 미니 대조기 -->
     <div class="wg" id="wg">
-      <div class="wh"><span class="t">사업 대조기</span><span class="m">같은 사업 · 세 채널</span></div>
+      <div class="wh"><span class="t">사업 대조기</span><span class="m">같은 사업 · 세 제도</span></div>
       <div class="wb">
         <label for="wgSel">정책실명제 사업을 고르면</label>
         <div class="sel"><select id="wgSel"></select></div>
@@ -263,7 +263,7 @@ body{background:var(--cream);color:var(--ink0)}
   <!-- 분석 노트 — 발견과 대표 숫자 -->
   <section class="sec">
     <div class="head">
-      <div><h2>여섯 번 재어 보니</h2><p class="sub">세 제도를 참여·위상·공개·연계 네 갈래에서 실측한 분석 노트 여섯 편입니다. 숫자마다 별첨과 다시 돌릴 수 있는 산출 스크립트가 붙어 있습니다.</p></div>
+      <div><h2>재어 보니</h2><p class="sub">세 제도를 갈래별로 실측한 분석 노트 가운데 현행 제도를 재는 여섯 편입니다. 숫자마다 별첨과 다시 돌릴 수 있는 산출 절차가 붙어 있습니다.</p></div>
       <a class="more" href="notes.html">분석 노트 전부 보기 →</a>
     </div>
     <div class="fn" id="fnHome"></div>
@@ -418,7 +418,7 @@ body{background:var(--cream);color:var(--ink0)}
 
   <!-- PAGES -->
   <section class="sec">
-    <div class="head"><div><h2>비교하고, 대조하고, 잇고, 재다</h2><p class="sub">세 제도가 서로를 대체하지 못하는 이유, 같은 사업을 세 채널에서 나란히 놓는 대조기, 국정과제 번호로 결정·문서·사람을 잇는 2.0 화면, 그리고 실측 노트입니다.</p></div></div>
+    <div class="head"><div><h2>비교하고, 대조하고, 잇고, 재다</h2><p class="sub">세 제도가 서로를 대체하지 못하는 이유, 같은 사업을 세 제도에서 나란히 놓는 대조기, 국정과제 번호로 결정·문서·사람을 잇는 2.0 화면, 그리고 실측 노트입니다.</p></div></div>
     <div class="pages">
       <a class="pc" href="compare.html"><div class="img"><img src="assets/preview-compare.png" alt="세 제도 비교" loading="lazy"></div><div class="body"><span class="no">01 · 비교</span><h3>세 제도 비교</h3><p>아홉 기준 매트릭스와 그 아래 한 층 더. 항목을 고르면 세 제도의 실측치와 근거가 나란히 열린다.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
       <a class="pc" href="explorer/"><div class="img"><img src="assets/preview-explorer.png" alt="사업 대조기" loading="lazy"></div><div class="body"><span class="no">02 · 대조</span><h3>사업 대조기</h3><p>정책실명제 사업 하나를 고르면 사전정보공표·원문공개의 실제 등록 건이 나란히. 기관별 현황과 근거 각주까지.</p><span class="go">열기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
@@ -471,7 +471,8 @@ const DG = /*__DGDATA__*/null;
         return '<div class="qrow"><div class="vq">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
-              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+              var lv=hit?' hit':/부서까지|간접|연 단위|일부|첨부/.test(a.판정)?' part':'';
+              return '<div class="a'+lv+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
           + '</div>';
       }).join('');
@@ -497,10 +498,10 @@ const DG = /*__DGDATA__*/null;
       <div class="row pv"><span class="k"><i></i>사전정보공표</span><span class="v">${s.prev?`${s.prevT}<small>${s.prevI} · 같은 이름의 항목</small>`:`같은 이름의 항목 없음<small>전 기관 · 2014년 이후 검색</small>`}</span><span class="n ${s.prev?'':'zero'}">${s.prev}<small>건</small></span></div>
       <div class="row og"><span class="k"><i></i>원문공개</span><span class="v">${s.org_n?`${s.orgT}<small>${s.org}${s.orgD?' · '+s.orgD:''}</small>`:`검색어 일치 문서 없음<small>${s.org} · 2025년 이후</small>`}</span><span class="n ${s.org_n?'':'zero'}">${s.org_n}<small>건</small></span></div>`;
     const v=$('#wgVerdict');
-    if(!s.prev&&!s.org_n&&!s.won){v.className='verdict bad';v.textContent='세 채널 어디에서도 내용을 찾을 수 없습니다. 사업내역서의 이름과 담당자만 남습니다.';}
+    if(!s.prev&&!s.org_n&&!s.won){v.className='verdict bad';v.textContent='세 제도 어디에서도 내용을 찾을 수 없습니다. 사업내역서의 이름과 담당자만 남습니다.';}
     else if(s.won>100){v.className='verdict';v.textContent=`원문 ${s.won}건이 연결돼 있어 정책실명제에서 문서로 바로 갈 수 있습니다. 사전정보공표 ${s.prev}건은 시군구 안내 페이지입니다.`;}
     else if(!s.won){v.className='verdict bad';v.textContent=`원문공개에는 ${s.org_n}건이 있지만 정책실명제가 이를 가리키지 않습니다. 연결이 끊긴 사업입니다.`;}
-    else{v.className='verdict';v.textContent=`세 채널에 모두 있지만 담는 단위가 다릅니다. 사업 1건 · 항목 ${s.prev}개 · 문서 ${s.org_n+s.won}건.`;}
+    else{v.className='verdict';v.textContent=`세 제도에 모두 있지만 담는 단위가 다릅니다. 사업 1건 · 항목 ${s.prev}개 · 문서 ${s.org_n+s.won}건.`;}
     $('#wgMore').href='explorer/#'+encodeURIComponent(s.id);
   }
   sel.onchange=()=>draw(+sel.value); draw(0);
@@ -510,7 +511,7 @@ const DG = /*__DGDATA__*/null;
   // 노트에서 나온 숫자를 앞에 세운다. 국민신청 항목은 노트 ①의 산출값으로 바꾼다(정적 값과 두 번 세지 않기 위해).
   const TKD=(DG&&DG.띠?DG.띠:[]).concat(DG&&DG.노트?[['국민이 신청한 정책실명제',DG.노트[0].v,'d',DG.노트[0].u]]:[]).concat(TK.filter(r=>r[0]!=='국민신청 선정'));
   const tkHtml=TKD.map(([k,v,c,s])=>`<div class="it"><span class="k">${k}</span><span class="v ${c}">${v}</span><span class="k">${s}</span></div>`).join('');
-  $('#tk').innerHTML=tkHtml+tkHtml;
+  $('#tk').innerHTML=tkHtml;
 
   /* ── 아홉 기준 요약 ── */
   const Y='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#267337"/></svg>',P='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8a5c00" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="#8a5c00"/></svg>',N='<svg class="dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#58616a" stroke-width="1.5"/></svg>';

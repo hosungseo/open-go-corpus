@@ -291,7 +291,7 @@
           <td class="st2"><span class="soon">준비 중</span></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">연계</span><span class="gd">제도끼리 이어지나</span></td></tr>
-        <tr class="on"><td class="sub2">채널 간 매칭</td>
+        <tr class="on"><td class="sub2">제도 간 대조</td>
           <td class="ins"><b>같은 사업이 세 제도에서 다른 얼굴로 나타납니다.</b> 풍수해보험 하나를 명패·안내판·원본으로 놓고, 국민의 질문 셋에 누가 답하는지 봤습니다. 질문마다 답하는 제도가 다릅니다.</td>
           <td class="st2"><a href="#note4">④ 같은 사업의 세 얼굴</a></td></tr>
         <tr class="on"><td class="sub2">식별번호</td>
@@ -868,7 +868,7 @@
     <h2>국정과제에서 예산 줄로 — 되는 것 셋에 하나, 안 되는 이유 셋</h2>
     <div class="answer">
       <p><a href="policy2.html">2.0 시안</a>은 국정과제 번호로 예산까지 잇는다고 했습니다. 되는지 재 봤습니다.
-        행정안전부가 주관하는 국정과제 <span id="flTask">—</span>개의 세부과제 <span id="flN">—</span>개를 열린재정 2026년 세출 세부사업 <span id="flLines">—</span>개에 대 보니,
+        행정안전부가 주관하는 국정과제 <span id="flTask">—</span>개의 세부과제 <span id="flN">—</span>개를 열린재정 2026년 세출 세부사업 <span id="flLines">—</span>개와 대조해 보니,
         <b><span id="flSure">—</span>개(<span id="flSurePct">—</span>)는 예산 줄이 확실히 있고</b>, <span id="flAmb">—</span>개는 애매하고, <b><span id="flNone">—</span>개는 줄이 없습니다.</b></p>
       <p>없는 <span id="flNone2">—</span>개는 셋으로 갈립니다. <b>타부처 예산 <span id="flOther">—</span>개</b> — 주관은 행안부인데 돈은 국토부·경찰청·소방청·환경부에 있습니다.
         <b>제도·법제 <span id="flInst">—</span>개</b> — 법을 고치거나 위원회를 바꾸는 일이라 줄이 없는 게 정상입니다.
@@ -1238,7 +1238,8 @@
         return '<div class="qrow"><div class="vq">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
-              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+              var lv=hit?' hit':/부서까지|간접|연 단위|일부|첨부/.test(a.판정)?' part':'';
+              return '<div class="a'+lv+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
           + '</div>';
       }).join('');
@@ -1475,7 +1476,8 @@
 
     nav.innerHTML = '<a href="#전체" data-g="전체">전체 <i>'+arts.length+'</i></a>'
       + order.map(function(g){
-          return '<a href="#갈래-'+g+'" data-g="'+g+'" class="'+(cnt[g]?'':'empty')+'">'
+          if(!cnt[g]) return '';
+          return '<a href="#갈래-'+g+'" data-g="'+g+'" class="">'
                + g + ' <i>' + cnt[g] + '</i></a>';
         }).join('');
 

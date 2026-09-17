@@ -72,7 +72,7 @@ tr:focus-visible{outline-offset:-3px}
 /* KRDS 마스트헤드: 공식 누리집 배너 */
 .masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
 .masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
-.masthead .flag{width:20px;height:14px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%);flex:none;position:relative}
+.masthead .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab);flex:none;position:relative}
 .masthead .flag:after{content:"";position:absolute;inset:3px;border-radius:1px;background:#fff;opacity:.9}
 .masthead .note{color:var(--ink-2)}
 
@@ -158,7 +158,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .kfoot .in{max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .kfoot a{color:#fff;text-decoration-color:var(--k-gray-50)}
 .kfoot .id{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
-.kfoot .id .flag{width:22px;height:15px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%)}
+.kfoot .id .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab)}
 .kfoot .note{color:var(--k-gray-30)}
 
 /* 반응형 */
@@ -191,13 +191,14 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
 .qa .qrow:first-child > div:first-child:before{display:none}
 .qa .vq{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
-.qa .vq:before{content:"🙋";margin-right:6px}
+
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
 .qa .a:last-child{border-right:0}
 .qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
 .qa .a.hit{background:var(--k-success-5,#eef7f0)}
 .qa .a.hit .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
 .qa .a.hit{color:var(--ink)}
+.qa .a.part{background:var(--k-warning-5,#fff8e6)}.qa .a.part .v{border-color:var(--k-warning-60,#8a5c00);color:var(--k-warning-60,#8a5c00);font-weight:700}.qa .a.part .say{border-color:var(--k-warning-60,#8a5c00)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
 @media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .vq,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
@@ -489,7 +490,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
           <td class="st2"><span class="soon">준비 중</span></td></tr>
 
         <tr class="grp"><td colspan="3"><span class="gn">연계</span><span class="gd">제도끼리 이어지나</span></td></tr>
-        <tr class="on"><td class="sub2">채널 간 매칭</td>
+        <tr class="on"><td class="sub2">제도 간 대조</td>
           <td class="ins"><b>같은 사업이 세 제도에서 다른 얼굴로 나타납니다.</b> 풍수해보험 하나를 명패·안내판·원본으로 놓고, 국민의 질문 셋에 누가 답하는지 봤습니다. 질문마다 답하는 제도가 다릅니다.</td>
           <td class="st2"><a href="#note4">④ 같은 사업의 세 얼굴</a></td></tr>
         <tr class="on"><td class="sub2">식별번호</td>
@@ -1066,7 +1067,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
     <h2>국정과제에서 예산 줄로 — 되는 것 셋에 하나, 안 되는 이유 셋</h2>
     <div class="answer">
       <p><a href="policy2.html">2.0 시안</a>은 국정과제 번호로 예산까지 잇는다고 했습니다. 되는지 재 봤습니다.
-        행정안전부가 주관하는 국정과제 <span id="flTask">—</span>개의 세부과제 <span id="flN">—</span>개를 열린재정 2026년 세출 세부사업 <span id="flLines">—</span>개에 대 보니,
+        행정안전부가 주관하는 국정과제 <span id="flTask">—</span>개의 세부과제 <span id="flN">—</span>개를 열린재정 2026년 세출 세부사업 <span id="flLines">—</span>개와 대조해 보니,
         <b><span id="flSure">—</span>개(<span id="flSurePct">—</span>)는 예산 줄이 확실히 있고</b>, <span id="flAmb">—</span>개는 애매하고, <b><span id="flNone">—</span>개는 줄이 없습니다.</b></p>
       <p>없는 <span id="flNone2">—</span>개는 셋으로 갈립니다. <b>타부처 예산 <span id="flOther">—</span>개</b> — 주관은 행안부인데 돈은 국토부·경찰청·소방청·환경부에 있습니다.
         <b>제도·법제 <span id="flInst">—</span>개</b> — 법을 고치거나 위원회를 바꾸는 일이라 줄이 없는 게 정상입니다.
@@ -5336,7 +5337,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "2-5",
-        "t": "육 ·해·공군 합동성 강화 군 교육기관의 단계적 통합 추진 및",
+        "t": "육·해·공군 합동성 강화 군 교육기관의 단계적 통합 추진 및 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -5360,7 +5361,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "3-2",
-        "t": "법무부 불가역적 탈검찰화 법무부 내 보직 검사 및 국내 ·외 ",
+        "t": "법무부 불가역적 탈검찰화 법무부 내 보직 검사 및 국내·외 기",
         "n": 0,
         "r": "",
         "w": "",
@@ -5408,7 +5409,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "4-3",
-        "t": "수사 책임성 ·전문성 강화 사건 지휘 ·관리 강화 및 수사 연",
+        "t": "수사 책임성·전문성 강화 사건 지휘·관리 강화 및 수사 연계 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -5540,7 +5541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "7-1",
-        "t": "방송 공공성 ·자율성 회복 공영방송 지배구조 개선* 및 공적기",
+        "t": "방송 공공성·자율성 회복 공영방송 지배구조 개선* 및 공적기능",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -5576,7 +5577,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "7-4",
-        "t": "지역·중소방송사* ·공동체라디오 방송 지원 지역 밀착형 및 지",
+        "t": "지역·중소방송사*·공동체라디오 방송 지원 지역 밀착형 및 지역",
         "n": 0,
         "r": "",
         "w": "",
@@ -5624,7 +5625,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "8-4",
-        "t": "노인 ·이주민 인권보장 강화 노인 ·이주민 인권보장 강화를 위",
+        "t": "노인·이주민 인권보장 강화 노인·이주민 인권보장 강화를 위한 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -5648,7 +5649,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "9-2",
-        "t": "대화 ·소통의 국민통합 다름의 인정과 존중을 기반으로, 사회갈",
+        "t": "대화·소통의 국민통합 다름의 인정과 존중을 기반으로, 사회갈등",
         "n": 0,
         "r": "",
         "w": "",
@@ -5684,7 +5685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "10-1",
-        "t": "여수 ·순천 사건 진상규명 여수 ·순천 10 ·19사건 조사기",
+        "t": "여수·순천 사건 진상규명 여수·순천 10·19사건 조사기한 내",
         "n": 0,
         "r": "",
         "w": "",
@@ -5696,7 +5697,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "10-2",
-        "t": "노 근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원",
+        "t": "노근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원,",
         "n": 0,
         "r": "",
         "w": "",
@@ -5744,7 +5745,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "11-2",
-        "t": "보 훈의료 ·복지 사각지대 해소 보훈병원 없는 지역에 준보훈병",
+        "t": "보훈의료·복지 사각지대 해소 보훈병원 없는 지역에 준보훈병원 ",
         "n": 1,
         "r": "애매",
         "w": "세부과제는 보훈병원 없는 지역에 준보훈병원 신설, 카드는 기존 보훈병원 의료환경 개선 — 같은 보훈의료 영역의 다른 조치 (검수자 지적)",
@@ -5780,7 +5781,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "12-1",
-        "t": "국민통합 보훈 추진체계 정비 국가보훈위원회의 대표성 ·투명성 ",
+        "t": "국민통합 보훈 추진체계 정비 국가보훈위원회의 대표성·투명성 강",
         "n": 0,
         "r": "",
         "w": "",
@@ -5864,7 +5865,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "14-1",
-        "t": "국 민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을",
+        "t": "국민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -5876,7 +5877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "14-2",
-        "t": "선제적 ·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법",
+        "t": "선제적·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -5900,7 +5901,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "14-4",
-        "t": "위원회 구성 ·운영 내실화 정부위원회 구성 시 전문성과 함께 ",
+        "t": "위원회 구성·운영 내실화 정부위원회 구성 시 전문성과 함께 지",
         "n": 0,
         "r": "",
         "w": "",
@@ -5924,7 +5925,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "15-1",
-        "t": "지 속가능추진체계 회복 국가와 지방의 지속가능발전 전략 이행을",
+        "t": "지속가능추진체계 회복 국가와 지방의 지속가능발전 전략 이행을 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -6032,7 +6033,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "17-1",
-        "t": "재정운용 자율성 ·책임성 확보 예산편성 과정에서 부처의 자율성",
+        "t": "재정운용 자율성·책임성 확보 예산편성 과정에서 부처의 자율성 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -6116,7 +6117,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "18-3",
-        "t": "맞춤형 경영평가로 성과 ·역량 제고 유형별 지표 ·배점 ·평가",
+        "t": "맞춤형 경영평가로 성과·역량 제고 유형별 지표·배점·평가주기 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -6152,7 +6153,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "18-6",
-        "t": "정부출연연구기관 연구역량 강화 경제인문사회 ·과학기술분야 출연",
+        "t": "정부출연연구기관 연구역량 강화 경제인문사회·과학기술분야 출연연",
         "n": 0,
         "r": "",
         "w": "",
@@ -6200,7 +6201,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "19-4",
-        "t": "AI 활용 전국민 규제정보서비스 제공 창업 ·영업활동 등 맞춤",
+        "t": "AI 활용 전국민 규제정보서비스 제공 창업·영업활동 등 맞춤형",
         "n": 0,
         "r": "",
         "w": "",
@@ -6212,7 +6213,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "20-1",
-        "t": "AI컴퓨팅인프라 확충 세계적인 AI 역량 확보를 위해 학계 ·",
+        "t": "AI컴퓨팅인프라 확충 세계적인 AI 역량 확보를 위해 학계·연",
         "n": 0,
         "r": "",
         "w": "",
@@ -6224,7 +6225,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "20-2",
-        "t": "초 지능 네트워크 구축 AI에 최적화된 6세대 이동통신(6G)",
+        "t": "초지능 네트워크 구축 AI에 최적화된 6세대 이동통신(6G) ",
         "n": 0,
         "r": "",
         "w": "",
@@ -6248,7 +6249,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "20-4",
-        "t": "국 가AI위원회 역할 강화 민 ·관의 AI혁신역량을 총결집하고",
+        "t": "국 가AI위원회 역할 강화 민·관의 AI혁신역량을 총결집하고 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -6320,7 +6321,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "22-1",
-        "t": "핵심인재 양성 ·확보 SW 중심대학을 AI 중심대학으로 전환 ",
+        "t": "핵심인재 양성·확보 SW 중심대학을 AI 중심대학으로 전환·확",
         "n": 0,
         "r": "",
         "w": "",
@@ -6404,7 +6405,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "23-3",
-        "t": "AI윤리 ·안전 ·신뢰 기반 조성 딥페이크 탐지, AI 모델의",
+        "t": "AI윤리·안전·신뢰 기반 조성 딥페이크 탐지, AI 모델의 유",
         "n": 0,
         "r": "",
         "w": "",
@@ -6416,7 +6417,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "23-4",
-        "t": "디지털 보안 ·안전 확보 AI로 지능화된 사이버위협에 효과적 ",
+        "t": "디지털 보안·안전 확보 AI로 지능화된 사이버위협에 효과적 대",
         "n": 0,
         "r": "",
         "w": "",
@@ -6488,7 +6489,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "25-1",
-        "t": "유출사고 신속 ·엄정 대응 포렌식랩 등 기술 분석 인프라 확충",
+        "t": "유출사고 신속·엄정 대응 포렌식랩 등 기술 분석 인프라 확충,",
         "n": 0,
         "r": "",
         "w": "",
@@ -6500,7 +6501,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "25-2",
-        "t": "정보주체 권리보장 강화 아동 ·청소년의 디지털 잊힐권리 적용범",
+        "t": "정보주체 권리보장 강화 아동·청소년의 디지털 잊힐권리 적용범위",
         "n": 0,
         "r": "",
         "w": "",
@@ -6512,7 +6513,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "25-3",
-        "t": "사 전예방 보호조치 확대 기업 등의 개인정보보호 예산 ·인력 ",
+        "t": "사전예방 보호조치 확대 기업 등의 개인정보보호 예산·인력 투자",
         "n": 0,
         "r": "",
         "w": "",
@@ -6560,7 +6561,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "26-2",
-        "t": "연구전념 ·성과창출 환경 조성 불필요한 연구행정 부담 대폭 완",
+        "t": "연구전념·성과창출 환경 조성 불필요한 연구행정 부담 대폭 완화",
         "n": 0,
         "r": "",
         "w": "",
@@ -6908,7 +6909,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "32-3",
-        "t": "혁신적 제약 ·바이오 육성 신약 개발을 유도할 수 있도록 혁신",
+        "t": "혁신적 제약·바이오 육성 신약 개발을 유도할 수 있도록 혁신형",
         "n": 0,
         "r": "",
         "w": "",
@@ -7064,7 +7065,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "35-3",
-        "t": "AX 대전환 기초 ·AI 고도화 등 수요기반 스마트공장 지원 ",
+        "t": "AX 대전환 기초·AI 고도화 등 수요기반 스마트공장 지원 다",
         "n": 0,
         "r": "",
         "w": "",
@@ -7184,7 +7185,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "37-4",
-        "t": "글로벌 사우스 진출 신남방 ·신북방 정책의 계승 ·발전과 글로",
+        "t": "글로벌 사우스 진출 신남방·신북방 정책의 계승·발전과 글로벌 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -7376,7 +7377,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "40-3",
-        "t": "이 행기반 강화 기후대응기금 수입원 확충, 예비타당성 효과 분",
+        "t": "이행기반 강화 기후대응기금 수입원 확충, 예비타당성 효과 분석",
         "n": 0,
         "r": "",
         "w": "",
@@ -7460,7 +7461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "41-4",
-        "t": "산 업부문 순환경제 활성화 재제조(자동차 부품), 재사용(폐배",
+        "t": "산업부문 순환경제 활성화 재제조(자동차 부품), 재사용(폐배터",
         "n": 0,
         "r": "",
         "w": "",
@@ -7640,7 +7641,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "44-2",
-        "t": "녹 조피해 예방 녹조 독소 기준 신설(’25) 및 기준과 연계",
+        "t": "녹조피해 예방 녹조 독소 기준 신설(’25) 및 기준과 연계한",
         "n": 0,
         "r": "",
         "w": "",
@@ -7784,7 +7785,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "46-2",
-        "t": "벤처 ·중소기업 혁신성장 지원 딥테크(바이오 ·반도체 등) 맞",
+        "t": "벤처·중소기업 혁신성장 지원 딥테크(바이오·반도체 등) 맞춤형",
         "n": 1,
         "r": "오탐",
         "w": "",
@@ -7856,7 +7857,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "48-2",
-        "t": "디지털자산 관련 상품 제도화 금융 ·디지털자산 시장간 연계에 ",
+        "t": "디지털자산 관련 상품 제도화 금융·디지털자산 시장간 연계에 따",
         "n": 2,
         "r": "확실",
         "w": "",
@@ -7868,12 +7869,12 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "48-3",
-        "t": "블 록체인산업 지원 강화 블록체인 생태계의 안정적 성장 지원을",
+        "t": "블록체인산업 지원 강화 블록체인 생태계의 안정적 성장 지원을 ",
         "n": 0,
         "r": "",
         "w": "",
         "e": "",
-        "bn": 1,
+        "bn": 3,
         "b": "오탐",
         "bw": "사회연대금융은 블록체인과 무관 (\"생태계\"만 겹침)",
         "be": "금융위원회·사회연대금융 활성화"
@@ -8048,7 +8049,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "52-2",
-        "t": "자 치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 ",
+        "t": "자치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않",
         "n": 0,
         "r": "",
         "w": "",
@@ -8060,7 +8061,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "52-3",
-        "t": "지 방의회법 제정 지방의회 조직 ·운영 등을 규정하는 법률을 ",
+        "t": "지방의회법 제정 지방의회 조직·운영 등을 규정하는 법률을 제정",
         "n": 0,
         "r": "",
         "w": "",
@@ -8084,7 +8085,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "52-5",
-        "t": "권 한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)",
+        "t": "권한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「",
         "n": 2,
         "r": "오탐",
         "w": "",
@@ -8108,7 +8109,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "53-2",
-        "t": "지 역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화",
+        "t": "지역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하",
         "n": 0,
         "r": "",
         "w": "",
@@ -8144,7 +8145,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "53-5",
-        "t": "이 ·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장",
+        "t": "이·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의",
         "n": 0,
         "r": "",
         "w": "",
@@ -8240,7 +8241,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "55-3",
-        "t": "열린 평생 ·직업교육 지원 누구나 일하면서 학습할 수 있는 평",
+        "t": "열린 평생·직업교육 지원 누구나 일하면서 학습할 수 있는 평생",
         "n": 0,
         "r": "",
         "w": "",
@@ -8300,7 +8301,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "56-3",
-        "t": "거점항만 조성 컨테이너 ·LNG ·원유 등 북극 화물별 거점항",
+        "t": "거점항만 조성 컨테이너·LNG·원유 등 북극 화물별 거점항만을",
         "n": 1,
         "r": "확실",
         "w": "「주요 항만 LNG인프라 개발계획 수립용역」 추진배경이 북극항로 개설·북극권 주요 화물 LNG 거점항만을 명시",
@@ -8324,7 +8325,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "56-5",
-        "t": "K-조선업 도약 ‘완전’ 자율운항선박, 무탄소 선박, 스마트 ",
+        "t": "K-조선업 도약 ‘완전’ 자율운항선박, 무탄소 선박, 스마트·",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -8384,7 +8385,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "57-5",
-        "t": "농 ·어촌 등 교통 소외지역 해소 원하는 시간 ·장소 이용 가",
+        "t": "농·어촌 등 교통 소외지역 해소 원하는 시간·장소 이용 가능한",
         "n": 0,
         "r": "",
         "w": "",
@@ -8480,7 +8481,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "60-1",
-        "t": "통신비 경감 전국민이 기본적인 통신 ·디지털 서비스를 부담없이",
+        "t": "통신비 경감 전국민이 기본적인 통신·디지털 서비스를 부담없이 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -8492,7 +8493,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "60-2",
-        "t": "대중교통비 절감 전국 대중교통을 무제한으로 탑승 ·환승할 수 ",
+        "t": "대중교통비 절감 전국 대중교통을 무제한으로 탑승·환승할 수 있",
         "n": 0,
         "r": "",
         "w": "",
@@ -8528,7 +8529,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "60-5",
-        "t": "먹거리물가 안정 기후변화 대응 등 농수산물 생산 ·유통 전반의",
+        "t": "먹거리물가 안정 기후변화 대응 등 농수산물 생산·유통 전반의 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -8564,7 +8565,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "61-2",
-        "t": "금 융비용 절감 성실상환자 대상으로 분할상환 ·금리감면을 확대",
+        "t": "금융비용 절감 성실상환자 대상으로 분할상환·금리감면을 확대하고",
         "n": 0,
         "r": "",
         "w": "",
@@ -8588,7 +8589,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "61-4",
-        "t": "상 권활력 제고 K-관광 ·산업 ·문화와 접목한 상권르네상스 ",
+        "t": "상권활력 제고 K-관광·산업·문화와 접목한 상권르네상스 2.0",
         "n": 0,
         "r": "",
         "w": "",
@@ -8660,7 +8661,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "62-5",
-        "t": "신 도시 주택 조기공급 3기 신도시 등 조성 중 택지 주택공급",
+        "t": "신도시 주택 조기공급 3기 신도시 등 조성 중 택지 주택공급 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -8696,7 +8697,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "63-2",
-        "t": "고 령친화주택 공급 의료 ·복지 서비스 등 제공하는 고령자 복",
+        "t": "고령친화주택 공급 의료·복지 서비스 등 제공하는 고령자 복지주",
         "n": 0,
         "r": "",
         "w": "",
@@ -8840,7 +8841,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "66-1",
-        "t": "소비자권익 우선 제도 개선 금융소비자 정책 ·감독에 대한 객관",
+        "t": "소비자권익 우선 제도 개선 금융소비자 정책·감독에 대한 객관적",
         "n": 2,
         "r": "확실",
         "w": "",
@@ -8876,7 +8877,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "66-4",
-        "t": "금융범죄 단속 강화 민생침해 금융범죄 근절을 위해 금융당국 ·",
+        "t": "금융범죄 단속 강화 민생침해 금융범죄 근절을 위해 금융당국·과",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -8960,7 +8961,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "68-2",
-        "t": "식생활 돌봄 대상 확대 농식품 바우처는 차상위계층 임산부 ·영",
+        "t": "식생활 돌봄 대상 확대 농식품 바우처는 차상위계층 임산부·영유",
         "n": 3,
         "r": "확실",
         "w": "후보 셋째 카드 개요가 \"취약계층에 신선 농산물을 구매할 수 있는 이용권(바우처)\" — 세부과제의 농식품 바우처 그대로. 1차에 앞의 두 후보만 보고 놓침 (검수자 지적)",
@@ -9008,7 +9009,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "68-6",
-        "t": "친환경농업 확산 경축순환(가축분뇨 퇴비화) ·탄소중립직불제 신",
+        "t": "친환경농업 확산 경축순환(가축분뇨 퇴비화)·탄소중립직불제 신규",
         "n": 0,
         "r": "",
         "w": "",
@@ -9152,7 +9153,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "71-3",
-        "t": "어촌 활력 청년 어업인 육성(주거 ·일자리 ·금융 등 지원) ",
+        "t": "어촌 활력 청년 어업인 육성(주거·일자리·금융 등 지원) 및 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -9200,7 +9201,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "72-2",
-        "t": "재 난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설",
+        "t": "재난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치",
         "n": 0,
         "r": "",
         "w": "",
@@ -9224,7 +9225,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "72-4",
-        "t": "건설안전 대책강화 지반탐사 ·노후 상하수도관 정비 확대 등 싱",
+        "t": "건설안전 대책강화 지반탐사·노후 상하수도관 정비 확대 등 싱크",
         "n": 0,
         "r": "",
         "w": "",
@@ -9284,7 +9285,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "73-4",
-        "t": "재난피해 지원확대 재난 피해 지원 항목확대 ·요건완화 ·기준상",
+        "t": "재난피해 지원확대 재난 피해 지원 항목확대·요건완화·기준상향,",
         "n": 0,
         "r": "",
         "w": "",
@@ -9344,7 +9345,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "74-3",
-        "t": "민생 ·금융범죄 근절 보이스피싱 ·투자리딩 등 다중피해 사기방",
+        "t": "민생·금융범죄 근절 보이스피싱·투자리딩 등 다중피해 사기방지를",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -9668,7 +9669,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "80-4",
-        "t": "연관산업 육성 펫푸드 등 수출 ·창업 지원을 위한 (가칭)「반",
+        "t": "연관산업 육성 펫푸드 등 수출·창업 지원을 위한 (가칭)「반려",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -9752,7 +9753,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "82-3",
-        "t": "전국민 경제 ·금융교육 강화 어린이, 청소년, 청년 ·군인 ·",
+        "t": "전국민 경제·금융교육 강화 어린이, 청소년, 청년·군인·중고령",
         "n": 1,
         "r": "확실",
         "w": "",
@@ -9800,7 +9801,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "83-3",
-        "t": "의료보상체계 합리적 개편 수술 ·처치 등 저평가된 건강보험 수",
+        "t": "의료보상체계 합리적 개편 수술·처치 등 저평가된 건강보험 수가",
         "n": 0,
         "r": "",
         "w": "",
@@ -9920,7 +9921,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "85-4",
-        "t": "지 역사회 정신건강 관리체계 확립 자살예방서비스 * 대폭 확대",
+        "t": "지역사회 정신건강 관리체계 확립 자살예방서비스 * 대폭 확대,",
         "n": 0,
         "r": "",
         "w": "",
@@ -9956,7 +9957,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "86-3",
-        "t": "희귀 ·난치 부담 완화 건강보험 산정특례 질환을 확대하여 본인",
+        "t": "희귀·난치 부담 완화 건강보험 산정특례 질환을 확대하여 본인부",
         "n": 0,
         "r": "",
         "w": "",
@@ -10016,7 +10017,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "87-4",
-        "t": "취 약 ·위기 아동 ·청년 지원 자립준비청년 지원수당 ·맞춤형",
+        "t": "취 약·위기 아동·청년 지원 자립준비청년 지원수당·맞춤형 사례",
         "n": 0,
         "r": "",
         "w": "",
@@ -10040,7 +10041,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "88-2",
-        "t": "건강권 ·마음건강 증진 정서 ·행동 위기(초기상담-치료), 고",
+        "t": "건강권·마음건강 증진 정서·행동 위기(초기상담-치료), 고립·",
         "n": 0,
         "r": "",
         "w": "",
@@ -10052,7 +10053,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "88-3",
-        "t": "아동 ·청소년 온라인 안전 강화 아동 ·청소년 디지털 시민교육",
+        "t": "아동·청소년 온라인 안전 강화 아동·청소년 디지털 시민교육 지",
         "n": 9,
         "r": "오탐",
         "w": "청소년 사업 9건 중 온라인 안전·디지털 시민교육에 해당하는 것 없음 — \"청소년\"만 겹침",
@@ -10088,7 +10089,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "89-1",
-        "t": "청년의 일할 기회 확대 청년 맞춤형 취업* ·창업** 지원 강",
+        "t": "청년의 일할 기회 확대 청년 맞춤형 취업*·창업** 지원 강화",
         "n": 0,
         "r": "",
         "w": "",
@@ -10412,7 +10413,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "94-3",
-        "t": "산 업별 ·지역별 등 교섭 촉진 초(超)기업별 교섭단위 결정 ",
+        "t": "산업별·지역별 등 교섭 촉진 초(超)기업별 교섭단위 결정·촉진",
         "n": 0,
         "r": "",
         "w": "",
@@ -10460,7 +10461,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "95-3",
-        "t": "일 ·가정 양립 지원 강화 ▲ 배우자 유 ·사산휴가 신설 ▲ ",
+        "t": "일·가정 양립 지원 강화 ▲ 배우자 유·사산휴가 신설 ▲ 배우",
         "n": 0,
         "r": "",
         "w": "",
@@ -10484,7 +10485,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "96-1",
-        "t": "고 용서비스 혁신 전국민 역량강화를 위한 채용연계형 직업훈련 ",
+        "t": "고용서비스 혁신 전국민 역량강화를 위한 채용연계형 직업훈련 강",
         "n": 2,
         "r": "확실",
         "w": "",
@@ -10592,7 +10593,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "98-3",
-        "t": "성 ·재생산 건강권 보장 임신중지 법·제도 개선 및 임신중지 ",
+        "t": "성·재생산 건강권 보장 임신중지 법·제도 개선 및 임신중지 약",
         "n": 0,
         "r": "",
         "w": "",
@@ -10616,7 +10617,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "99-1",
-        "t": "초 ·중·고 AI 역량 강화 STEAM 교육 내실화 등을 통해",
+        "t": "초·중·고 AI 역량 강화 STEAM 교육 내실화 등을 통해 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -10652,7 +10653,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "99-4",
-        "t": "글 로벌 AI 인재 유치 정부초청장학생(GKS), 국제 학생교",
+        "t": "글로벌 AI 인재 유치 정부초청장학생(GKS), 국제 학생교류",
         "n": 0,
         "r": "",
         "w": "",
@@ -10676,7 +10677,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "100-1",
-        "t": "시 민 ·헌법 ·기후환경 ·생태전환교육 강화 교육활동 전반에서",
+        "t": "시 민·헌법·기후환경·생태전환교육 강화 교육활동 전반에서 토의",
         "n": 0,
         "r": "",
         "w": "",
@@ -10736,7 +10737,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "101-2",
-        "t": "방과후 ·돌봄체계 구축 방과후 프로그램 이용권 제공으로 교육비",
+        "t": "방과후·돌봄체계 구축 방과후 프로그램 이용권 제공으로 교육비 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -10988,7 +10989,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "105-4",
-        "t": "청년 ·장애예술인 기회 확대 청년예술인 자산 형성을 위한 적립",
+        "t": "청년·장애예술인 기회 확대 청년예술인 자산 형성을 위한 적립계",
         "n": 0,
         "r": "",
         "w": "",
@@ -11000,7 +11001,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "106-1",
-        "t": "전 국민 생활체육 활성화 유아부터 어르신까지 맞춤형 스포츠활동",
+        "t": "전국민 생활체육 활성화 유아부터 어르신까지 맞춤형 스포츠활동*",
         "n": 0,
         "r": "",
         "w": "",
@@ -11072,7 +11073,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "107-2",
-        "t": "특화자원 연계 지역관광 육성 지역 ·콘텐츠 중심 광역관광개발,",
+        "t": "특화자원 연계 지역관광 육성 지역·콘텐츠 중심 광역관광개발, ",
         "n": 0,
         "r": "",
         "w": "",
@@ -11144,7 +11145,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "108-4",
-        "t": "안전한 디지털 환경 조성 온라인상 정보 ·콘텐츠 건전성 제고와",
+        "t": "안전한 디지털 환경 조성 온라인상 정보·콘텐츠 건전성 제고와 ",
         "n": 4,
         "r": "확실",
         "w": "「디지털성범죄물 유통방지」 추진배경이 \"정부 국정과제 '안전한 디지털 환경 조성'이 선정·추진됨\"이라고 국정과제명을 직접 씀",
@@ -11156,7 +11157,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "108-5",
-        "t": "디지털 이용자 권리 보장 쇼핑 ·배달 ·OTT ·여행 등 실생",
+        "t": "디지털 이용자 권리 보장 쇼핑·배달·OTT·여행 등 실생활 밀",
         "n": 4,
         "r": "애매",
         "w": "「(가칭) AI서비스 이용자보호법」은 디지털 이용자 권리의 일부(AI 서비스), 세부과제는 쇼핑·배달·OTT 플랫폼 이용자",
@@ -11252,7 +11253,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "110-2",
-        "t": "전작권 전환 한국군의 전 ·평시 연합방위 주도능력을 조기에 확",
+        "t": "전작권 전환 한국군의 전·평시 연합방위 주도능력을 조기에 확보",
         "n": 0,
         "r": "",
         "w": "",
@@ -11468,7 +11469,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "114-4",
-        "t": "남북 평화공존 기반 구축 국내 대북 ·통일정책 추진기반을 제도",
+        "t": "남북 평화공존 기반 구축 국내 대북·통일정책 추진기반을 제도화",
         "n": 0,
         "r": "",
         "w": "",
@@ -11480,7 +11481,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "115-1",
-        "t": "남북교류협력 추진체계 정비 민관 남북교류 거버넌스를 재건 ·강",
+        "t": "남북교류협력 추진체계 정비 민관 남북교류 거버넌스를 재건·강화",
         "n": 0,
         "r": "",
         "w": "",
@@ -11516,7 +11517,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "116-1",
-        "t": "인 도적 문제 해결 남북간 인도적 대화 복원을 통한 이산가족 ",
+        "t": "인도적 문제 해결 남북간 인도적 대화 복원을 통한 이산가족 전",
         "n": 0,
         "r": "",
         "w": "",
@@ -11528,7 +11529,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "116-2",
-        "t": "북한주민 인권의 실질적 증진 북한주민의 자유권 ·사회권을 통합",
+        "t": "북한주민 인권의 실질적 증진 북한주민의 자유권·사회권을 통합 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -11540,7 +11541,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "116-3",
-        "t": "북 한이탈주민 정착지원 및 사회통합 강화 북한이탈주민의 사회적",
+        "t": "북한이탈주민 정착지원 및 사회통합 강화 북한이탈주민의 사회적응",
         "n": 0,
         "r": "",
         "w": "",
@@ -11552,7 +11553,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "117-1",
-        "t": "사 회적 대화 활성화 대북 ·통일정책에 대한 국민의 직접 참여",
+        "t": "사회적 대화 활성화 대북·통일정책에 대한 국민의 직접 참여를 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -11684,7 +11685,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "119-4",
-        "t": "한러관계의 안정적 관리 및 발전 추진 우리 국민 ·기업 권익 ",
+        "t": "한러관계의 안정적 관리 및 발전 추진 우리 국민·기업 권익 보",
         "n": 0,
         "r": "",
         "w": "",
@@ -11708,7 +11709,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "120-2",
-        "t": "글로벌 도전과제 대응 책임있는 국가로서 국제 평화 ·안보, 사",
+        "t": "글로벌 도전과제 대응 책임있는 국가로서 국제 평화·안보, 사이",
         "n": 1,
         "r": "오탐",
         "w": "",
@@ -11720,7 +11721,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "120-3",
-        "t": "통합적 ·효과적 ODA ODA 중장기 전략 수립과 통합적 무상",
+        "t": "통합적·효과적 ODA ODA 중장기 전략 수립과 통합적 무상원",
         "n": 0,
         "r": "",
         "w": "",
@@ -11792,7 +11793,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "121-3",
-        "t": "우리기업의 수출 ·수주 지원을 위한 재외공관의 전진기지화 민관",
+        "t": "우리기업의 수출·수주 지원을 위한 재외공관의 전진기지화 민관 ",
         "n": 0,
         "r": "",
         "w": "",
@@ -11907,7 +11908,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "48-2",
-        "제목": "디지털자산 관련 상품 제도화 금융 ·디지털자산 ",
+        "제목": "디지털자산 관련 상품 제도화 금융·디지털자산 시",
         "사업": "금융위원회·투자자 편익 제고를 위한 디지털자산 연계상품"
       },
       {
@@ -11932,7 +11933,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
       },
       {
         "no": "82-3",
-        "제목": "전국민 경제 ·금융교육 강화 어린이, 청소년, ",
+        "제목": "전국민 경제·금융교육 강화 어린이, 청소년, 청",
         "사업": "금융위원회·청년 등 전국민 경제·금융교육 강화"
       },
       {
@@ -12011,7 +12012,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
  "타부처예": [
   {
    "no": "4-3",
-   "t": "수사 책임성 ·전문성 강화 사건 ",
+   "t": "수사 책임성·전문성 강화 사건 지",
    "부처": "경찰청 예산"
   },
   {
@@ -12051,7 +12052,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
   },
   {
    "no": "72-4",
-   "t": "건설안전 대책강화 지반탐사 ·노후",
+   "t": "건설안전 대책강화 지반탐사·노후 ",
    "부처": "국토부·환경부 예산"
   },
   {
@@ -12099,7 +12100,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "4-3",
    "n": 4,
    "과제": "경찰의 중립성 확보 및 민주적 통제 강화",
-   "t": "수사 책임성 ·전문성 강화 사건 지휘 ·관리 강화 및 수사 연계 법령 정",
+   "t": "수사 책임성·전문성 강화 사건 지휘·관리 강화 및 수사 연계 법령 정비로",
    "j": "없음",
    "사유": "타부처 예산",
    "why": "타부처 예산 — 경찰청 예산",
@@ -12123,7 +12124,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "10-1",
    "n": 10,
    "과제": "국민통합을 지향하는 과거사 문제 해결",
-   "t": "여수 ·순천 사건 진상규명 여수 ·순천 10 ·19사건 조사기한 내 진상",
+   "t": "여수·순천 사건 진상규명 여수·순천 10·19사건 조사기한 내 진상규명과",
    "j": "확실",
    "사유": "",
    "why": "위원회 지원 줄이 그대로 있음",
@@ -12142,7 +12143,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "10-2",
    "n": 10,
    "과제": "국민통합을 지향하는 과거사 문제 해결",
-   "t": "노 근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
+   "t": "노근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
    "j": "없음",
    "사유": "이름으로 못 찾음",
    "why": "이름으로 못 찾음 — 노근리 이름의 세부사업 없음 — 과거사 단위사업 안에 묶였을 수 있음",
@@ -12191,7 +12192,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "14-1",
    "n": 14,
    "과제": "국민과 함께 소통하고 혁신하는 정부",
-   "t": "국 민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
+   "t": "국민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
    "j": "없음",
    "사유": "이름으로 못 찾음",
    "why": "이름으로 못 찾음 — 국민소통플랫폼(모두의 광장) 이름의 줄 없음 — 전자문서소통은 다른 일",
@@ -12203,7 +12204,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "14-2",
    "n": 14,
    "과제": "국민과 함께 소통하고 혁신하는 정부",
-   "t": "선제적 ·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
+   "t": "선제적·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
    "j": "확실",
    "사유": "",
    "why": "국민비서가 이 줄에 든다 — 세부과제 이름(선제적·통합적 공공서비스)과 사업 이름이 달라 자동으로는 못 잇는 예",
@@ -12241,7 +12242,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "14-4",
    "n": 14,
    "과제": "국민과 함께 소통하고 혁신하는 정부",
-   "t": "위원회 구성 ·운영 내실화 정부위원회 구성 시 전문성과 함께 지역 ·세대",
+   "t": "위원회 구성·운영 내실화 정부위원회 구성 시 전문성과 함께 지역·세대 ·",
    "j": "없음",
    "사유": "제도·법제",
    "why": "제도·법제 — 정부위원회 구성 원칙(제도). 예산 줄이 없는 게 정상",
@@ -12470,7 +12471,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "52-2",
    "n": 52,
    "과제": "주민 삶의 질 향상을 위한 자치분권 역량 제고",
-   "t": "자 치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
+   "t": "자치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
    "j": "없음",
    "사유": "제도·법제",
    "why": "제도·법제 — 자치입법권(법제). 예산 줄이 없는 게 정상",
@@ -12482,7 +12483,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "52-3",
    "n": 52,
    "과제": "주민 삶의 질 향상을 위한 자치분권 역량 제고",
-   "t": "지 방의회법 제정 지방의회 조직 ·운영 등을 규정하는 법률을 제정하고,",
+   "t": "지방의회법 제정 지방의회 조직·운영 등을 규정하는 법률을 제정하고,",
    "j": "애매",
    "사유": "",
    "why": "지방의회 역량 줄은 있으나 법 제정 자체는 예산 아님",
@@ -12513,7 +12514,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "52-5",
    "n": 52,
    "과제": "주민 삶의 질 향상을 위한 자치분권 역량 제고",
-   "t": "권 한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
+   "t": "권한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
    "j": "없음",
    "사유": "제도·법제",
    "why": "제도·법제 — 권한이양 일괄법(법제). 예산 줄이 없는 게 정상",
@@ -12550,7 +12551,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "53-2",
    "n": 53,
    "과제": "지방재정 확충으로 자치재정권 확대 및 지역경제 활성화",
-   "t": "지 역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
+   "t": "지역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
    "j": "확실",
    "사유": "",
    "why": "이름 그대로",
@@ -12600,7 +12601,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "53-5",
    "n": 53,
    "과제": "지방재정 확충으로 자치재정권 확대 및 지역경제 활성화",
-   "t": "이 ·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 ",
+   "t": "이·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 국",
    "j": "없음",
    "사유": "이름으로 못 찾음",
    "why": "이름으로 못 찾음 — 이·통장 재난특별활동비 줄 없음 — 신설 예정이거나 교부세 경로",
@@ -12691,7 +12692,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "72-2",
    "n": 72,
    "과제": "국민안전 보장을 위한 재난안전관리체계 확립",
-   "t": "재 난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
+   "t": "재난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
    "j": "확실",
    "사유": "",
    "why": "재난안전산업 펀드 줄이 그대로",
@@ -12728,7 +12729,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "72-4",
    "n": 72,
    "과제": "국민안전 보장을 위한 재난안전관리체계 확립",
-   "t": "건설안전 대책강화 지반탐사 ·노후 상하수도관 정비 확대 등 싱크홀 방지,",
+   "t": "건설안전 대책강화 지반탐사·노후 상하수도관 정비 확대 등 싱크홀 방지,",
    "j": "없음",
    "사유": "타부처 예산",
    "why": "타부처 예산 — 국토부·환경부 예산(지반탐사·상하수도)",
@@ -12827,7 +12828,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
    "no": "73-4",
    "n": 73,
    "과제": "재난 피해 최소화를 위한 예방·대응 강화",
-   "t": "재난피해 지원확대 재난 피해 지원 항목확대 ·요건완화 ·기준상향, 접경지",
+   "t": "재난피해 지원확대 재난 피해 지원 항목확대·요건완화·기준상향, 접경지역",
    "j": "확실",
    "사유": "",
    "why": "재난 피해 지원의 실체가 재난대책비 — 후보 목록엔 R&D가 먼저 걸렸으나 낱말 검색으로 잡음",
@@ -13238,7 +13239,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
         return '<div class="qrow"><div class="vq">'+esc(q.q)+'</div>'
           + ['rn','pv','og'].map(function(k){
               var a=q.답[k], hit=/^답함/.test(a.판정);
-              return '<div class="a'+(hit?' hit':'')+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
+              var lv=hit?' hit':/부서까지|간접|연 단위|일부|첨부/.test(a.판정)?' part':'';
+              return '<div class="a'+lv+'" data-who="'+NM[k]+'"><span class="v">'+esc(a.판정)+'</span><span class="say">'+esc(a.말)+'</span></div>';
             }).join('')
           + '</div>';
       }).join('');
@@ -13475,7 +13477,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 
     nav.innerHTML = '<a href="#전체" data-g="전체">전체 <i>'+arts.length+'</i></a>'
       + order.map(function(g){
-          return '<a href="#갈래-'+g+'" data-g="'+g+'" class="'+(cnt[g]?'':'empty')+'">'
+          if(!cnt[g]) return '';
+          return '<a href="#갈래-'+g+'" data-g="'+g+'" class="">'
                + g + ' <i>' + cnt[g] + '</i></a>';
         }).join('');
 

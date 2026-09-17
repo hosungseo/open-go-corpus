@@ -72,7 +72,7 @@ tr:focus-visible{outline-offset:-3px}
 /* KRDS 마스트헤드: 공식 누리집 배너 */
 .masthead{background:var(--k-secondary-5);font-size:15px;line-height:1.5;color:var(--ink)}
 .masthead .in{max-width:1180px;margin:0 auto;padding:6px 24px;min-height:32px;display:flex;align-items:center;gap:8px}
-.masthead .flag{width:20px;height:14px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%);flex:none;position:relative}
+.masthead .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab);flex:none;position:relative}
 .masthead .flag:after{content:"";position:absolute;inset:3px;border-radius:1px;background:#fff;opacity:.9}
 .masthead .note{color:var(--ink-2)}
 
@@ -158,7 +158,7 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .kfoot .in{max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .kfoot a{color:#fff;text-decoration-color:var(--k-gray-50)}
 .kfoot .id{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
-.kfoot .id .flag{width:22px;height:15px;border-radius:2px;background:linear-gradient(90deg,var(--k-secondary-50) 0 50%,var(--k-point-50) 50% 100%)}
+.kfoot .id .flag{width:10px;height:10px;border-radius:2px;background:var(--k-gray-40,#9aa2ab)}
 .kfoot .note{color:var(--k-gray-30)}
 
 /* 반응형 */
@@ -191,13 +191,14 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .qa .qrow:first-child > div.rn:before{background:var(--rn)} .qa .qrow:first-child > div.pv:before{background:var(--pv)} .qa .qrow:first-child > div.og:before{background:var(--og)}
 .qa .qrow:first-child > div:first-child:before{display:none}
 .qa .vq{padding:14px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
-.qa .vq:before{content:"🙋";margin-right:6px}
+
 .qa .a{padding:12px 14px;font-size:13px;line-height:1.6;color:var(--ink-2);border-right:1px solid var(--rule-2);position:relative}
 .qa .a:last-child{border-right:0}
 .qa .a .v{display:inline-block;font-size:12px;padding:1px 7px;border-radius:2px;margin-bottom:6px;border:1px solid var(--rule);color:var(--ink-3)}
 .qa .a.hit{background:var(--k-success-5,#eef7f0)}
 .qa .a.hit .v{border-color:var(--k-success-60);color:var(--k-success-60);font-weight:700}
 .qa .a.hit{color:var(--ink)}
+.qa .a.part{background:var(--k-warning-5,#fff8e6)}.qa .a.part .v{border-color:var(--k-warning-60,#8a5c00);color:var(--k-warning-60,#8a5c00);font-weight:700}.qa .a.part .say{border-color:var(--k-warning-60,#8a5c00)}
 .qa .a .say{display:block;padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);}
 .qa .a.hit .say{border-color:var(--k-success-60)}
 @media (max-width:900px){ .qa .qrow{grid-template-columns:1fr} .qa .vq,.qa .a{border-right:0;border-bottom:1px solid var(--rule-2)} .qa .qrow:first-child{display:none} .qa .a:before{content:attr(data-who);display:block;font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:5px} }
@@ -276,7 +277,8 @@ section.appendix th,section.appendix td{padding:10px 12px}
 .rn2 .nh{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;cursor:pointer;user-select:none}
 .rn2 .nh .t{flex:1;min-width:0}.rn2 .nh .t b{font-size:14px}.rn2 .nh .t small{display:block;color:var(--ink-2);font-size:12px;margin-top:3px}
 .rn2 .plus{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--c);color:var(--cD);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex:none;margin-top:1px;background:var(--panel);transition:transform .2s}
-.rn2 .node.open .plus{background:var(--c);color:var(--k-gray-0);transform:rotate(45deg)}
+.rn2 .plus{font-size:0}.rn2 .plus:before{content:"+";font-size:15px}
+.rn2 .node.open .plus{background:var(--c);color:#fff}.rn2 .node.open .plus:before{content:"−"}
 .rn2 .cnts{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
 .rn2 .cnt{display:inline-flex;align-items:center;gap:4px;font-size:12px;border:1px solid var(--rule);border-radius:var(--r-s);padding:2px 7px;color:var(--ink-2);background:var(--panel)}
 .rn2 .cnt b{color:var(--ink);font-weight:700}
@@ -356,49 +358,48 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 /* 행안부 국정과제 11개 — 과제 카드: 머리 → 시계열 패널 → 예산·집행 모듈 → 세부과제 목록 */
 .tk{--c:var(--em);--cL:var(--em-soft);--cD:var(--k-primary-70);--cB:var(--k-primary-20);--ok:var(--k-success-60);--okL:var(--k-success-5);--okB:var(--k-success-10);--amber:var(--k-warning-60);--amberL:var(--k-warning-5);--amberB:var(--k-warning-10);--warn:var(--k-danger-60);--warnL:var(--k-danger-5);--warnB:var(--k-danger-10)}
 .tk{margin:14px 0 0}
-.tk .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
-.tk .tabs button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:7px 11px 6px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.35;text-align:left;display:flex;flex-direction:column;gap:4px;min-width:150px}
+.tk .tabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px;margin:0 0 14px}
+.tk .tabs button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:8px 11px 7px;font:inherit;font-size:13px;color:var(--ink-2);cursor:pointer;line-height:1.35;text-align:left;display:flex;flex-direction:column;gap:5px}
 .tk .tabs button .tt{display:flex;gap:6px;align-items:baseline}.tk .tabs button b{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink-3)}
-.tk .tabs button .mini{display:flex;gap:2px;align-items:center}.tk .tabs button .mini i{display:block;width:9px;height:9px;border-radius:2px;background:var(--k-gray-10);font-style:normal}.tk .tabs button .mini i.on{background:var(--k-primary-50)}.tk .tabs button .mini small{font-size:12px;color:var(--ink-3);margin-left:4px}
-.tk .tabs button.on{background:var(--em);border-color:var(--em);color:var(--k-gray-0)} .tk .tabs button.on b,.tk .tabs button.on .mini small{color:var(--k-gray-0);opacity:.85}.tk .tabs button.on .mini i{background:rgba(255,255,255,.28)}.tk .tabs button.on .mini i.on{background:var(--k-gray-0)}
+.tk .tabs button .mini{display:flex;gap:6px;align-items:center}.tk .tabs button .mini i{display:block;width:48px;height:5px;border-radius:3px;background:var(--k-gray-10);font-style:normal;overflow:hidden}.tk .tabs button .mini i b{display:block;height:100%;background:var(--k-primary-50)}.tk .tabs button .mini small{font-size:12px;color:var(--ink-3)}
+.tk .tabs button.on{background:var(--em);border-color:var(--em);color:#fff} .tk .tabs button.on b,.tk .tabs button.on .mini small{color:#fff;opacity:.9}.tk .tabs button.on .mini i{background:rgba(255,255,255,.3)}.tk .tabs button.on .mini i b{background:#fff}
 .tk .card{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
 .tk .hd{padding:18px 20px 16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--rule)}
 .tk .hd h3{font-size:22px;margin:6px 0 6px;letter-spacing:-.01em}
 .tk .hd .m{font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:4px 14px}.tk .hd .m b{color:var(--ink-2);font-weight:600}
-.tk .stats{display:flex;gap:8px;flex-wrap:wrap}.tk .st{background:var(--paper);border-radius:var(--r-s);padding:9px 13px;min-width:92px}
-.tk .st .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}.tk .st .n small{font-size:12px;font-weight:400;color:var(--ink-3)}.tk .st .l{font-size:12px;color:var(--ink-3);margin-top:2px}.tk .st.w .n{color:var(--warn)}
+.tk .hd .sum{flex:1 1 100%;font-size:14px;line-height:1.65;color:var(--ink-2);margin:6px 0 0;padding-top:10px;border-top:1px solid var(--rule-2)}.tk .hd .sum b{color:var(--ink)}
 .tk .sec{padding:16px 20px;border-bottom:1px solid var(--rule)}.tk .sec:last-child{border-bottom:0}
 .tk .sec h4{margin:0 0 4px;font-size:15px}.tk .sec h4 small{font-weight:400;color:var(--ink-3);font-size:13px;margin-left:8px}
 .tk .sec .sub{font-size:13px;color:var(--ink-3);margin:0 0 12px;line-height:1.55}
 /* 시계열 패널 */
 .tk .tl{display:grid;grid-template-columns:minmax(200px,1.2fr) repeat(9,minmax(0,1fr));gap:4px 0;align-items:center}
-.tk .tl .ax{font-size:12px;color:var(--ink-3);text-align:center;font-family:var(--mono,ui-monospace,monospace);padding:0 0 4px}.tk .tl .ax.now{color:var(--em);font-weight:700}
+.tk .tl .ax{font-size:12px;color:var(--ink-3);text-align:center;font-family:var(--mono,ui-monospace,monospace);padding:0 0 4px}
 .tk .tl .lab{font-size:13px;color:var(--ink);padding:6px 10px 6px 0;line-height:1.35;min-width:0}.tk .tl .lab .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink-3);margin-right:6px}.tk .tl .lab small{display:block;color:var(--ink-3);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tk .tl .lab small.wrap{white-space:normal}
-.tk .tl .c{height:30px;margin:2px 1px;border-radius:4px;background:var(--k-gray-10);position:relative}
-.tk .tl a.c{display:block;background:var(--k-primary-50)}.tk .tl a.c:hover{background:var(--k-primary-60)}.tk .tl a.c:focus-visible{outline:2px solid var(--em);outline-offset:1px}
+.tk .tl .c{height:6px;margin:14px 1px;border-radius:3px;background:var(--k-gray-10);position:relative}
+.tk .tl a.c{display:block;height:30px;margin:2px 1px;border-radius:4px;background:var(--k-primary-50)}.tk .tl a.c:hover{background:var(--k-primary-60)}.tk .tl a.c:focus-visible{outline:2px solid var(--em);outline-offset:1px}
 .tk .tl a.c span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--k-gray-0);font-family:var(--mono,ui-monospace,monospace)}
-.tk .tl .c.miss{background:repeating-linear-gradient(45deg,var(--k-danger-20,#f2b8bf) 0 3px,var(--k-gray-10) 3px 7px);border:1px dashed var(--k-danger-60)}
+.tk .tl .c.miss{height:30px;margin:2px 1px;border-radius:4px;background:repeating-linear-gradient(45deg,var(--k-danger-20,#f2b8bf) 0 3px,var(--k-gray-10) 3px 7px);border:1px dashed var(--k-danger-60)}
 .tk .tl .c.first{border-top-left-radius:8px;border-bottom-left-radius:8px}.tk .tl .c.last{border-top-right-radius:8px;border-bottom-right-radius:8px}
 .tk .tl .empty{grid-column:1 / -1;font-size:13px;color:var(--ink-3);padding:10px 0}
 .tk .tllg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-3);margin:10px 0 0}.tk .tllg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
 /* 예산·집행 모듈 */
-.tk .bm{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.tk .bm{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
 .tk .bc{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--paper);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .tk .bc .k{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.tk .bc .k .no{font-family:var(--mono,ui-monospace,monospace);font-size:12px;font-weight:600;color:var(--ink-3)}
 .tk .bc .nm{font-size:14px;font-weight:700;color:var(--ink);line-height:1.4}.tk .bc .nm small{display:block;font-weight:400;font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tk .bc .amt{font-size:27px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink);font-family:var(--mono,ui-monospace,monospace)}.tk .bc .amt small{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:4px;font-family:inherit}
-.tk .bc .ex{font-size:12px;color:var(--ink-3)}.tk .bc .bar{height:8px;border-radius:4px;background:var(--k-gray-10);overflow:hidden}.tk .bc .bar i{display:block;height:100%;background:var(--k-primary-50)}.tk .bc .ex b{color:var(--ink);font-family:var(--mono,ui-monospace,monospace)}
+.tk .bc .amt{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}.tk .bc .amt small{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:4px}
+.tk .bc .ex{font-size:13px;color:var(--ink-2);line-height:1.5}.tk .bc .ex b{color:var(--ink)}
 .tk .bc.amb{border-style:dashed}.tk .bc .why{font-size:12px;color:var(--ink-3);line-height:1.5}
 .tk .bnone{border:1px dashed var(--rule);border-radius:var(--r-m);padding:14px 16px;font-size:13px;color:var(--ink-2);line-height:1.6;background:var(--paper)}
 .tk .bnone b{color:var(--ink)}
 /* 세부과제 목록 */
 .tk .sl{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr) minmax(0,1.2fr);gap:0;border:1px solid var(--rule);border-radius:var(--r-m);overflow:hidden}
 .tk .sl > div{padding:9px 12px;font-size:13px;line-height:1.5;color:var(--ink-2);border-top:1px solid var(--rule-2);min-width:0}.tk .sl > div:nth-child(-n+3){border-top:0;background:var(--panel-2);font-size:12px;font-weight:700;color:var(--ink-2);padding:7px 12px}
-.tk .sl .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink);margin-right:6px}.tk .sl .t{color:var(--ink)}
+.tk .sl .no{font-family:var(--mono,ui-monospace,monospace);font-weight:600;color:var(--ink);margin-right:6px}.tk .sl .t{color:var(--ink);font-weight:600}.tk .sl .rest{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
 .tk .sl .dim{color:var(--ink-3)}
 .tk .chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;padding:1px 8px;border-radius:var(--r-max);line-height:1.5;white-space:nowrap}
 .tk .chip.sure{background:var(--cL);color:var(--em)}.tk .chip.amb{background:var(--amberL);color:var(--amber)}.tk .chip.none{background:var(--panel-2);color:var(--ink-3)}
-.tk .lg{font-size:13px;color:var(--ink-3);margin:12px 0 0;line-height:1.6}
+.tk .lg{font-size:13px;color:var(--ink-3);margin:12px 0 0;line-height:1.6;max-width:none}
 @media (max-width:900px){ .tk .tl{grid-template-columns:minmax(120px,1fr) repeat(9,minmax(0,1fr))} .tk .tl .c{height:24px} .tk .sl{grid-template-columns:1fr} .tk .sl > div:nth-child(-n+3){display:none} .tk .sl > div{border-top:1px solid var(--rule-2)} .tk .tabs button{min-width:0} }
 /* 좁은 폭: 라벨은 한 줄 통째, 아홉 칸은 그 아래 한 줄 */
 @media (max-width:640px){ .tk .tl{grid-template-columns:repeat(9,minmax(0,1fr));gap:2px 0} .tk .tl .axl{display:none} .tk .tl .lab{grid-column:1 / -1;padding:10px 0 2px} .tk .tl .lab small{white-space:normal} .tk .tl .c{height:28px;margin:2px 1px 8px} .tk .tl a.c span{font-size:12px} .tk .stats{width:100%} .tk .st{flex:1 1 40%} }
@@ -415,12 +416,12 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
 <main class="wrap wide" id="content">
   <header class="summary">
     <div class="eyebrow">정책실명제 2.0 · 화면 시안</div>
-    <h1>정책 하나를 열면 결정·문서·사람·돈이 한 화면에 이어진다</h1>
+    <h1>정책 하나에 결정·문서·사람·예산을 잇는 화면</h1>
     <p class="lede">건설공사로 치면 지금은 안내 표지판·도면 창고·현장 실명판이 따로 있고,<br>
       공사 이름으로 묶이지 않는 상태입니다.</p>
     <p class="lede">정책실명제는 연도별 사업 목록이고, 원문공개는 문서 더미이고, 사전정보공표는 링크 목록입니다.<br>
       셋을 없애는 게 아니라 <b>국정과제 번호</b>로 묶으면, 정책실명제가 나머지 둘을 끌어오는 관문이 됩니다.</p>
-    <p class="lede"><span class="em">실명은 새로 적을 것이 없습니다. 결재문서 표지의 결재란이 곧 참여자·역할입니다.</span></p>
+    <p class="lede" style="border-left:3px solid var(--em);padding-left:12px"><b>실명은 새로 적을 것이 없습니다. 결재문서 표지의 결재란이 곧 참여자·역할입니다.</b></p>
     <p class="lede">아래는 행정안전부 주민자치회 사업을 포털 실측 데이터로 그대로 옮긴 화면입니다.</p>
     <div class="basis">데이터: 정책실명제 2023·2024·2025 사업내역서, '25 관련 정보목록 184건 중 14건 상세, 원문공개 검색 결과와 실제 내려받은 원문 1건. 성명은 ○○ 처리, 원문 결재란은 가림. 국정과제 번호는 정부업무평가포털의 실제 번호.</div>
   </header>
@@ -545,19 +546,19 @@ section.core .eyebrow{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font
     <div class="eyebrow">화면 · 행정안전부 국정과제 전부</div>
     <h2>과제를 고르면, 세부과제마다 시계열과 돈이 붙는다</h2>
     <p>행정안전부가 주관하는 국정과제 <span id="tkN">—</span>개입니다. 과제를 고르면 세부과제 하나하나에 <b>연결된 정책실명제 사업</b>, 그 사업이 포털에 있는 <b>연도(2018~2026)</b>, 열린재정에서 찾은 <b>2026년 예산 줄</b>이 나란히 붙습니다.
-      연결은 <a href="notes.html#note6">노트 ⑥</a>(이름·본문 대조, 사람이 읽어 판정), 예산은 <a href="notes.html#note7">노트 ⑦</a>의 실측입니다. 없는 칸은 없다고 보입니다 — 그 빈칸이 2.0이 채워야 할 자리입니다.</p>
+      연결은 <a href="notes.html#note6">노트 ⑥ 국정과제·정책실명제 대조</a>(이름·본문 대조 후 사람이 읽어 판정), 예산은 <a href="notes.html#note7">노트 ⑦ 국정과제·예산 줄 대조</a>의 실측입니다. 없는 칸은 비워 두었습니다.</p>
     <div class="tk" id="tk"></div>
   </section>
 
   <section class="core" id="screen">
     <div class="eyebrow">화면 · 행정안전부 주민자치회</div>
     <h2>정책 하나를 열면 이렇게 보인다</h2>
-    <p>왼쪽은 이 사업의 4년 계보입니다. 연도 노드의 <b>+</b>를 누르면 그 해의 후속 조치가 가지로 펼쳐지고, 조치나 문서를 누르면 오른쪽에 내용이 뜹니다.<br>원문이 있으면 원문이, 없으면 없는 이유와 청구 버튼이 뜹니다.</p>
+    <p>왼쪽은 이 사업의 4년 계보입니다. 연도 표시의 <b>+</b>를 누르면 그 해의 후속 조치가 가지로 펼쳐지고, 조치나 문서를 누르면 오른쪽에 내용이 뜹니다.<br>원문이 있으면 원문이, 없으면 없는 이유와 청구 버튼이 뜹니다.</p>
 
     <div class="rn2">
       <div class="hd">
         <div>
-          <div style="margin-bottom:4px"><span class="chip c-live">추진중</span> <span class="chip c-task">국정과제</span> <span class="chip c-id">국정과제 52</span> <span class="chip c-amber">'25 개명 · 소관 이관</span></div>
+          <div style="margin-bottom:4px"><span class="chip c-live">추진중</span> <span class="chip c-id">국정과제 52</span> <span class="chip c-amber">'25 개명 · 소관 이관</span></div>
           <h3>주민자치회 법제화 및 활성화</h3>
           <div class="m"><span>행정안전부 <b>주민자치혁신과</b> (구 자치분권제도과)</span><span>사업기간 <b>계속</b></span><span>이전 명칭 <b>주민자치회 개선</b> ('23~'24)</span><span>최종 갱신 <b>2025.12</b></span></div>
         </div>
@@ -712,8 +713,8 @@ const P2 = {
     },
     {
      "no": "4-3",
-     "t": "수사 책임성 ·전문성 강화 사건 지휘 ·관리 강화 및 수사 연계 법령 정비로",
-     "전문": "수사 책임성 ·전문성 강화 사건 지휘 ·관리 강화 및 수사 연계 법령 정비로",
+     "t": "수사 책임성·전문성 강화 사건 지휘·관리 강화 및 수사 연계 법령 정비로",
+     "전문": "수사 책임성·전문성 강화 사건 지휘·관리 강화 및 수사 연계 법령 정비로",
      "사업": null,
      "연도": [],
      "예산": {
@@ -755,8 +756,8 @@ const P2 = {
    "세부": [
     {
      "no": "10-1",
-     "t": "여수 ·순천 사건 진상규명 여수 ·순천 10 ·19사건 조사기한 내 진상규명과",
-     "전문": "여수 ·순천 사건 진상규명 여수 ·순천 10 ·19사건 조사기한 내 진상규명과",
+     "t": "여수·순천 사건 진상규명 여수·순천 10·19사건 조사기한 내 진상규명과",
+     "전문": "여수·순천 사건 진상규명 여수·순천 10·19사건 조사기한 내 진상규명과",
      "사업": null,
      "연도": [],
      "예산": {
@@ -779,8 +780,8 @@ const P2 = {
     },
     {
      "no": "10-2",
-     "t": "노 근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
-     "전문": "노 근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
+     "t": "노근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
+     "전문": "노근리 사건 명예회복 노근리 사건 추념식 개최, 유족회 지원, 노근리",
      "사업": {
       "nm": "국민통합을 지향하는 과거사 문제 해결",
       "org": "행정안전부",
@@ -896,8 +897,8 @@ const P2 = {
    "세부": [
     {
      "no": "14-1",
-     "t": "국 민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
-     "전문": "국 민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
+     "t": "국민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
+     "전문": "국민중심 소통 및 민원처리 ‘모두의 광장’(국민소통플랫폼)을 범정부",
      "사업": null,
      "연도": [],
      "예산": {
@@ -909,8 +910,8 @@ const P2 = {
     },
     {
      "no": "14-2",
-     "t": "선제적 ·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
-     "전문": "선제적 ·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
+     "t": "선제적·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
+     "전문": "선제적·통합적 공공서비스 제공 공공서비스 이용자격, 신청방법 등을 개인",
      "사업": {
       "nm": "국민비서 서비스 구축",
       "org": "행정안전부",
@@ -1019,8 +1020,8 @@ const P2 = {
     },
     {
      "no": "14-4",
-     "t": "위원회 구성 ·운영 내실화 정부위원회 구성 시 전문성과 함께 지역 ·세대 ·",
-     "전문": "위원회 구성 ·운영 내실화 정부위원회 구성 시 전문성과 함께 지역 ·세대 ·",
+     "t": "위원회 구성·운영 내실화 정부위원회 구성 시 전문성과 함께 지역·세대 ·",
+     "전문": "위원회 구성·운영 내실화 정부위원회 구성 시 전문성과 함께 지역·세대 ·",
      "사업": null,
      "연도": [],
      "예산": {
@@ -1558,8 +1559,8 @@ const P2 = {
     },
     {
      "no": "52-2",
-     "t": "자 치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
-     "전문": "자 치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
+     "t": "자치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
+     "전문": "자치입법권 강화 조례로 위임한 내용을 행정규칙으로 제한하지 않도록",
      "사업": null,
      "연도": [],
      "예산": {
@@ -1571,8 +1572,8 @@ const P2 = {
     },
     {
      "no": "52-3",
-     "t": "지 방의회법 제정 지방의회 조직 ·운영 등을 규정하는 법률을 제정하고,",
-     "전문": "지 방의회법 제정 지방의회 조직 ·운영 등을 규정하는 법률을 제정하고,",
+     "t": "지방의회법 제정 지방의회 조직·운영 등을 규정하는 법률을 제정하고,",
+     "전문": "지방의회법 제정 지방의회 조직·운영 등을 규정하는 법률을 제정하고,",
      "사업": null,
      "연도": [],
      "예산": {
@@ -1628,8 +1629,8 @@ const P2 = {
     },
     {
      "no": "52-5",
-     "t": "권 한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
-     "전문": "권 한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
+     "t": "권한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
+     "전문": "권한이양 확대 지방자치단체의 권한과 책임을 확대하는 (가칭)「제3차",
      "사업": null,
      "연도": [],
      "예산": {
@@ -1712,8 +1713,8 @@ const P2 = {
     },
     {
      "no": "53-2",
-     "t": "지 역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
-     "전문": "지 역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
+     "t": "지역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
+     "전문": "지역사랑상품권 활성화 지역사랑상품권에 대한 국가지원을 의무화하여",
      "사업": {
       "nm": "지방재정 확충으로 자치재정권 확대 및 지역경제 활성화",
       "org": "행정안전부",
@@ -1833,8 +1834,8 @@ const P2 = {
     },
     {
      "no": "53-5",
-     "t": "이 ·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 국가가",
-     "전문": "이 ·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 국가가",
+     "t": "이·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 국가가",
+     "전문": "이·통장 재난특별활동비 지원 재난 현장에서 헌신하는 이·통장의 노고에 국가가",
      "사업": {
       "nm": "지방재정 확충으로 자치재정권 확대 및 지역경제 활성화",
       "org": "행정안전부",
@@ -2048,8 +2049,8 @@ const P2 = {
     },
     {
      "no": "72-2",
-     "t": "재 난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
-     "전문": "재 난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
+     "t": "재난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
+     "전문": "재난안전관리 역량강화 재난안전산업 펀드조성, 전문육성기관 설치 등",
      "사업": null,
      "연도": [],
      "예산": {
@@ -2095,8 +2096,8 @@ const P2 = {
     },
     {
      "no": "72-4",
-     "t": "건설안전 대책강화 지반탐사 ·노후 상하수도관 정비 확대 등 싱크홀 방지,",
-     "전문": "건설안전 대책강화 지반탐사 ·노후 상하수도관 정비 확대 등 싱크홀 방지,",
+     "t": "건설안전 대책강화 지반탐사·노후 상하수도관 정비 확대 등 싱크홀 방지,",
+     "전문": "건설안전 대책강화 지반탐사·노후 상하수도관 정비 확대 등 싱크홀 방지,",
      "사업": null,
      "연도": [],
      "예산": {
@@ -2280,8 +2281,8 @@ const P2 = {
     },
     {
      "no": "73-4",
-     "t": "재난피해 지원확대 재난 피해 지원 항목확대 ·요건완화 ·기준상향, 접경지역",
-     "전문": "재난피해 지원확대 재난 피해 지원 항목확대 ·요건완화 ·기준상향, 접경지역",
+     "t": "재난피해 지원확대 재난 피해 지원 항목확대·요건완화·기준상향, 접경지역",
+     "전문": "재난피해 지원확대 재난 피해 지원 항목확대·요건완화·기준상향, 접경지역",
      "사업": null,
      "연도": [],
      "예산": {
@@ -2440,42 +2441,48 @@ const P2 = {
   put('tkN',P2.과제수);
   window.p2Hash=window.p2Hash||{ get:function(k){ var m=location.hash.match(new RegExp('[#&]'+k+'=([^&]+)')); return m?decodeURIComponent(m[1]):null; }, set:function(k,v){ var parts=location.hash.replace(/^#/,'').split('&').filter(function(p){ return p&&p.split('=')[0]!==k; }); parts.push(k+'='+v); if(history.replaceState) history.replaceState(null,'','#'+parts.join('&')); } };
   var cur=(function(){ var m=p2Hash.get('t'); return m&&P2.과제.some(function(t){return t.n===+m;})?+m:52; })();
-  var chip=function(j){ return '<span class="chip '+(j==='확실'?'sure':j==='애매'?'amb':'none')+'">'+esc(j)+'</span>'; };
+  var chip=function(j,pre){ return '<span class="chip '+(j==='확실'?'sure':j==='애매'?'amb':'none')+'">'+esc((pre||'')+j)+'</span>'; };
+  var GOAL={1:'국민이 하나되는 정치',2:'세계를 이끄는 혁신경제',3:'모두가 잘사는 균형성장',4:'기본이 튼튼한 사회',5:'국익 중심의 외교안보'};
+  var SHORT={4:'경찰 민주적 통제',10:'과거사 문제 해결',14:'소통·혁신 정부',24:'AI 민주정부',49:'5극3특 균형성장',52:'자치분권 역량',53:'지방재정 확충',54:'소멸위기지역 지원',72:'재난안전관리 체계',73:'재난 예방·대응',81:'사회연대경제'};
+  var amt=function(eok){ eok=Math.round(eok); if(eok>=10000){ var jo=Math.floor(eok/10000), r=eok%10000; return jo+'조'+(r?' '+fmt(r)+'억':''); } return fmt(eok)+'억'; };
+  var lead=function(t){ var w=t.split(/\s+/), END=/(강화|확대|구축|추진|제정|도입|개편|지원|마련|정비|실현|조성|전환|확립|고도화|활성화|제고|정립|확충|개선|육성|창출|개방|시행|폐지|실질화|규명|회복|내실화|처리|제공|기반|대응|정착|완성|관리|운영|촉진|혁신|보장|수호|지정|해소|공급|절감|유치|연계|재도약|출범)$/; for(var i=0;i<Math.min(w.length,7);i++){ if(END.test(w[i].replace(/[,.*]+$/,''))) return {lead:w.slice(0,i+1).join(' '), rest:w.slice(i+1).join(' ')}; } return {lead:w.slice(0,4).join(' '), rest:w.slice(4).join(' ')}; };
+  var cut=function(s,n){ if(!s||s.length<=n) return s||''; var k=s.lastIndexOf(' ',n); return s.slice(0,k>20?k:n)+'…'; };
   var render=function(){
     var T=P2.과제.find(function(t){return t.n===cur;});
     // 탭 — 번호·제목·세부과제 연결 비율(작은 칸)
-    var tabs='<div class="tabs" role="tablist">'+P2.과제.map(function(t){ var cells=t.세부.map(function(s){ return '<i class="'+(s.사업?'on':'')+'"></i>'; }).join(''); return '<button type="button" role="tab" data-n="'+t.n+'" class="'+(t.n===cur?'on':'')+'" aria-selected="'+(t.n===cur)+'"><span class="tt"><b>'+t.n+'</b>'+esc(t.nm.length>16?t.nm.slice(0,16)+'…':t.nm)+'</span><span class="mini">'+cells+'<small>'+t.연결수+'/'+t.세부수+'</small></span></button>'; }).join('')+'</div>';
+    var tabs='<div class="tabs" role="tablist">'+P2.과제.map(function(t){ return '<button type="button" role="tab" data-n="'+t.n+'" class="'+(t.n===cur?'on':'')+'" aria-selected="'+(t.n===cur)+'" title="'+esc(t.nm)+'"><span class="tt"><b>'+t.n+'</b>'+esc(SHORT[t.n]||t.nm)+'</span><span class="mini"><i><b style="width:'+(t.세부수?Math.round(t.연결수/t.세부수*100):0)+'%"></b></i><small>사업 연결 '+t.연결수+'/'+t.세부수+'</small></span></button>'; }).join('')+'</div>';
     var yrsTxt=T.연도범위?(T.연도범위[0]===T.연도범위[1]?String(T.연도범위[0]):T.연도범위[0]+'~'+T.연도범위[1]):'—';
-    var hd='<div class="hd"><div><div><span class="chip sure">국정과제 '+T.n+'</span> <span class="chip none">목표 '+T.goal+'</span></div><h3>'+esc(T.nm)+'</h3><div class="m"><span>주관 <b>'+esc(T.org)+'</b></span><span>세부과제 <b>'+T.세부수+'</b></span><span>연결된 정책실명제 사업 <b>'+T.연결수+'</b></span></div></div>'
-      +'<div class="stats"><div class="st'+(T.연결수?'':' w')+'"><div class="n">'+T.연결수+' <small>/ '+T.세부수+'</small></div><div class="l">세부과제에 사업 연결</div></div>'
-      +'<div class="st'+(T.시계열년수>1?'':' w')+'"><div class="n">'+(T.시계열년수?T.시계열년수+'년':'0')+'</div><div class="l">포털에 있는 연도 '+yrsTxt+'</div></div>'
-      +'<div class="st'+(T.예산확실?'':' w')+'"><div class="n">'+T.예산확실+' <small>/ '+T.세부수+'</small></div><div class="l">2026 예산 줄 확실</div></div>'
-      +'<div class="st"><div class="n">'+(T.예산억?fmt(T.예산억)+'<small>억</small>':'—')+'</div><div class="l">확실 줄 예산 합계</div></div></div></div>';
+    var sum=(T.연결수?'세부과제 '+T.세부수+'개 중 <b>'+T.연결수+'개</b>에 정책실명제 사업이 이어져 있고, 그 카드는 '+(T.시계열년수>1?'<b>'+yrsTxt+'</b> '+T.시계열년수+'개 해에':'<b>'+yrsTxt+'년</b> 한 해에만')+' 있습니다.':'세부과제 '+T.세부수+'개 가운데 정책실명제 사업이 이어지는 것이 <b>없습니다</b>.')
+      +' 2026년 예산 줄이 확실한 세부과제는 <b>'+T.예산확실+'개</b>'+(T.예산억?'(합계 '+amt(T.예산억)+')':'')+'입니다.';
+    var hd='<div class="hd"><div><div><span class="chip sure">국정과제 '+T.n+'</span> <span class="chip none">국정목표 '+T.goal+' · '+esc(GOAL[T.goal]||'')+'</span></div><h3>'+esc(T.nm)+'</h3><div class="m"><span>주관 <b>'+esc(T.org)+'</b></span><span>세부과제 <b>'+T.세부수+'</b></span></div></div><p class="sum">'+sum+'</p></div>';
     // 시계열 패널 — 연결된 사업마다 레인
     var linked=T.세부.filter(function(s){ return s.사업; });
     var groups=[]; linked.forEach(function(s){ var g=groups.find(function(x){ return x.nm===s.사업.nm; }); if(g){ g.subs.push(s); } else groups.push({nm:s.사업.nm, j:s.사업.j, via:s.사업.via, 연도:s.연도, subs:[s]}); });
-    var axis='<div class="axl"></div>'+YEARS.map(function(y){ return '<div class="ax'+(y===2026?' now':'')+'">\''+String(y).slice(2)+'</div>'; }).join('');
+    var axis='<div class="axl"></div>'+YEARS.map(function(y){ return '<div class="ax">\''+String(y).slice(2)+'</div>'; }).join('');
     var lanes=groups.map(function(s){ var byY={}; s.연도.forEach(function(c){ byY[c.y]=c; }); var ys=s.연도.map(function(c){return c.y;});
       var cells=YEARS.map(function(y){ var c=byY[y]; if(c){ var tip=y+'년 카드 · '+esc(c.부서)+' · '+esc(c.담당)+' · 조회 '+c.조회+(c.추진실적!=null?' · 추진실적 '+c.추진실적+'건':'')+(c.원문검색!=null?' · 원문 검색 '+c.원문검색+'건':'')+(c.사전정보!=null?' · 사전정보 '+c.사전정보+'건':'')+' — 대조기로'; var cls='c'+(y===Math.min.apply(null,ys)?' first':'')+(y===Math.max.apply(null,ys)?' last':''); return '<a class="'+cls+'" href="explorer/#p='+esc(c.id)+'|'+y+'" title="'+tip+'" aria-label="'+tip+'"><span>'+(c.조회?c.조회:'')+'</span></a>'; } return '<div class="c'+(y===2026?' miss':'')+'" title="'+y+' 포털에 없음"'+(y===2026?' aria-label="2026 미등록"':'')+'></div>'; }).join('');
-      var nos=s.subs.map(function(x){ return x.no; }).join(' · '); var grouped=s.subs.length>1; var sub=grouped?'세부과제 '+s.subs.length+'개 — '+nos:esc(s.subs[0].t);
+      var nos=s.subs.map(function(x){ return x.no; }).join(' · '); var grouped=s.subs.length>1; var sub=grouped?'세부과제 '+s.subs.length+'개: '+nos:esc(lead(s.subs[0].t).lead);
       return '<div class="lab"><span class="no">'+esc(grouped?s.subs[0].no.split('-')[0]:s.subs[0].no)+'</span>'+esc(s.nm)+'<small'+(grouped?' class="wrap"':'')+'>'+sub+' · '+esc(s.j)+' ('+esc(s.via)+' 대조)</small></div>'+cells; }).join('');
     var tl='<div class="sec"><h4>시계열<small>연결된 정책실명제 사업의 카드가 포털에 있는 해 · 칸 안 숫자는 조회수 · 누르면 대조기</small></h4>'
-      +'<div class="tl">'+axis+(groups.length?lanes:'<div class="empty">이 과제의 세부과제 '+T.세부수+'개 중 정책실명제 사업이 이름이나 본문으로 이어지는 것이 없습니다. 주관부처가 사업을 올렸어도 어느 과제인지 적는 칸이 없어 잇지 못한 것일 수 있습니다.</div>')+'</div>'
-      +'<div class="tllg"><span><i style="background:var(--k-primary-50)"></i>카드 있음</span><span><i style="background:var(--k-gray-10)"></i>없음</span><span><i style="background:repeating-linear-gradient(45deg,var(--warnB) 0 3px,var(--panel) 3px 7px)"></i>2026 미등록</span></div></div>';
+      +(groups.length?'<div class="tl">'+axis+lanes+'</div><div class="tllg"><span><i style="background:var(--k-primary-50)"></i>카드 있음</span><span><i style="background:var(--k-gray-10);height:4px;vertical-align:2px"></i>없음</span><span><i style="background:repeating-linear-gradient(45deg,var(--k-danger-20,#f2b8bf) 0 3px,var(--k-gray-10) 3px 7px);border-color:var(--k-danger-60)"></i>2026 미등록</span></div>'
+        :'<p class="sub" style="margin:0">이 과제의 세부과제 '+T.세부수+'개 가운데 정책실명제 사업이 이름이나 본문으로 이어지는 것이 없습니다. 주관부처가 사업을 올렸어도 어느 과제인지 적는 칸이 없어 잇지 못한 것일 수 있습니다.</p>')+'</div>';
     // 예산·집행 모듈 — 세부사업 카드
     var bcs=[]; T.세부.forEach(function(s){ if(s.예산.j==='확실'||s.예산.j==='애매') s.예산.lines.forEach(function(l){ bcs.push({s:s,l:l}); }); });
     var none=T.세부.filter(function(s){ return s.예산.j==='없음'; }); var reasons={}; none.forEach(function(s){ var k=s.예산.사유||'사유 없음'; reasons[k]=(reasons[k]||0)+1; });
-    var bm='<div class="sec"><h4>예산·집행 모듈<small>열린재정 2026 세출 세부사업(확정+수정) · 집행률은 월별 지출집행상황 '+(P2.집행월||'—')+'월 누계, 단위사업 층</small></h4>'
-      +(bcs.length?'<div class="bm">'+bcs.map(function(x){ var l=x.l; var ex=l.집행률!=null?'<div class="bar"><i style="width:'+Math.min(100,l.집행률)+'%"></i></div><div class="ex">'+(P2.집행월||'')+'월 누계 <b>'+l.집행률+'%</b> · 단위사업 '+fmt(l.집행단위.예산현액억)+'억 → '+fmt(l.집행단위.누계집행억)+'억</div>':'<div class="ex">집행률 — 단위사업 이름이 집행 자료에 없음</div>';
-          return '<div class="bc'+(x.s.예산.j==='애매'?' amb':'')+'"><div class="k"><span class="no">'+esc(x.s.no)+'</span>'+chip(x.s.예산.j)+'</div><div class="nm">'+esc(l.nm)+'<small>'+esc(l.단위)+'</small></div><div class="amt">'+fmt(l.억)+'<small>억 · 2026</small></div>'+ex+(x.s.예산.j==='애매'?'<div class="why">'+esc(x.s.예산.why)+'</div>':'')+'</div>'; }).join('')+'</div>':'')
-      +(none.length?'<div class="bnone" style="'+(bcs.length?'margin-top:10px':'')+'"><b>줄이 없는 세부과제 '+none.length+'개</b> — '+Object.keys(reasons).map(function(k){ return k+' '+reasons[k]; }).join(' · ')+'. 사유는 아래 목록에 있습니다.'+(T.n===52?' 주민자치회(52-4)는 국비 세부사업이 없고 특별교부금·지방비 경로입니다.':'')+'</div>':'')
+    var bm='<div class="sec"><h4>예산과 집행<small>열린재정 2026 세출 세부사업(확정+수정 예산) · 집행률은 월별 지출집행상황 '+(P2.집행월||'—')+'월 누계, 단위사업 기준</small></h4>'
+      +(bcs.length?'<div class="bm">'+bcs.map(function(x){ var l=x.l; var ex=l.집행률!=null?'<div class="ex">단위사업 기준 '+(P2.집행월||'')+'월 누계 집행 <b>'+l.집행률+'%</b> ('+amt(l.집행단위.예산현액억)+' 중 '+amt(l.집행단위.누계집행억)+')</div>':'<div class="ex">집행률: 단위사업 이름이 집행 자료에 없음</div>';
+          return '<div class="bc'+(x.s.예산.j==='애매'?' amb':'')+'"><div class="k"><span class="no">'+esc(x.s.no)+'</span>'+chip(x.s.예산.j,'예산 줄 ')+'</div><div class="nm">'+esc(l.nm)+(l.단위&&l.단위!==l.nm?'<small>단위사업 '+esc(l.단위)+'</small>':'')+'</div><div class="amt">'+amt(l.억)+'<small>2026 예산</small></div>'+ex+(x.s.예산.j==='애매'?'<div class="why">'+esc(x.s.예산.why)+'</div>':'')+'</div>'; }).join('')+'</div>':'')
+      +(none.length?'<div class="bnone" style="'+(bcs.length?'margin-top:10px':'')+'"><b>예산 줄이 없는 세부과제 '+none.length+'개</b>: '+Object.keys(reasons).map(function(k){ return k+' '+reasons[k]; }).join(', ')+'. 사유는 아래 목록에 있습니다.'+(T.n===52?' 주민자치회(52-4)는 국비 세부사업이 없고 특별교부금·지방비로 갑니다.':'')+'</div>':'')
       +'</div>';
     // 세부과제 목록
-    var sl='<div class="sec"><h4>세부과제 '+T.세부수+'개<small>연결과 예산 사유를 한 줄로</small></h4><div class="sl"><div>세부과제</div><div>연결된 정책실명제 사업</div><div>2026 예산 줄</div>'+T.세부.map(function(s){
-      var biz=s.사업?chip(s.사업.j)+' '+esc(s.사업.nm)+' <span class="dim">('+esc(s.사업.via)+')</span>':'<span class="dim">연결 없음</span>';
-      var b=s.예산; var bud=(b.j==='확실'||b.j==='애매')?chip(b.j)+' '+b.lines.map(function(l){ return esc(l.nm)+' <span class="dim">'+fmt(l.억)+'억</span>'; }).join(', '):chip('없음')+' <span class="dim">'+esc(b.사유)+(b.why?' — '+esc(b.why.replace(/^[^—]*— /,'')):'')+'</span>';
-      return '<div><span class="no">'+esc(s.no)+'</span><span class="t">'+esc(s.t)+'</span></div><div>'+biz+'</div><div>'+bud+'</div>'; }).join('')+'</div></div>';
-    var lg='<p class="lg">연결·판정은 <a href="notes.html#note6">노트 ⑥</a>(이름·본문 대조 후 사람이 읽어 판정), 예산 줄과 사유는 <a href="notes.html#note7">노트 ⑦</a>. 집행률은 세부사업이 속한 단위사업 전체의 값이라 세부과제 하나의 집행률은 아닙니다. 담당은 이름 대신 직위 수만 적었습니다.'+(cur===52?' 주민자치회(52-4)의 문서·결재선까지 펼친 화면은 <a href="#screen">아래</a>에 있습니다.':'')+'</p>';
+    var prev=null;
+    var sl='<div class="sec"><h4>세부과제 '+T.세부수+'개<small>연결과 예산 사유를 한 줄로</small></h4><div class="sl"><div>세부과제</div><div>연결된 정책실명제 사업 (대조 판정)</div><div>2026 예산 줄 (판정)</div>'+T.세부.map(function(s){
+      var L=lead(s.전문||s.t);
+      var biz; if(!s.사업) biz='<span class="dim">연결 없음</span>'; else if(prev===s.사업.nm) biz='<span class="dim">〃 같은 카드</span>'; else biz=chip(s.사업.j,'대조 ')+' '+esc(s.사업.nm)+' <span class="dim">('+esc(s.사업.via)+' 대조)</span>'; prev=s.사업?s.사업.nm:null;
+      var b=s.예산; var why=(b.why||'').replace(/^[^—]*— /,'').replace(/\((제도|법제|계획|상위 과제|제도·세입)\)/g,'').replace(/\.\s*예산 줄이 없는 게 정상$/,'').trim();
+      var bud=(b.j==='확실'||b.j==='애매')?chip(b.j,'예산 줄 ')+' '+b.lines.map(function(l){ return esc(l.nm)+' <span class="dim">'+amt(l.억)+'</span>'; }).join(', '):chip('없음','예산 줄 ')+' <span class="dim">'+esc(b.사유)+(why?': '+esc(why):'')+'</span>';
+      return '<div><span class="no">'+esc(s.no)+'</span><span class="t">'+esc(L.lead)+'</span>'+(L.rest?'<span class="rest">'+esc(cut(L.rest,70))+'</span>':'')+'</div><div>'+biz+'</div><div>'+bud+'</div>'; }).join('')+'</div></div>';
+    var lg='<p class="lg">연결과 판정은 <a href="notes.html#note6">노트 ⑥ 국정과제·정책실명제 대조</a>(이름·본문 대조 후 사람이 읽어 판정), 예산 줄과 사유는 <a href="notes.html#note7">노트 ⑦ 국정과제·예산 줄 대조</a>에 있습니다. 집행률은 세부사업이 속한 단위사업 전체의 값이라 세부과제 하나의 집행률은 아닙니다. 담당은 이름 대신 직위 수만 적었습니다.'+(cur===52?' <a href="#screen">주민자치회(52-4) 문서·결재선 상세 화면 보기</a>':'')+'</p>';
     root.innerHTML=tabs+'<div class="card">'+hd+tl+bm+sl+'</div>'+lg;
     root.querySelector('.tabs').addEventListener('click',function(e){ var b=e.target.closest('button[data-n]'); if(!b) return; cur=+b.dataset.n; p2Hash.set('t',cur); render(); });
   };
