@@ -1,0 +1,277 @@
+{
+  "주관부처": [
+    {
+      "ab": "행안부",
+      "full": "행정안전부",
+      "n": 11,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "복지부",
+      "full": "보건복지부",
+      "n": 11,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "국토부",
+      "full": "국토교통부",
+      "n": 8,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "과기정통부",
+      "full": "과학기술정보통신부",
+      "n": 7,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "기후부",
+      "full": "기후에너지환경부",
+      "n": 7,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "금융위",
+      "full": "금융위원회",
+      "n": 7,
+      "inPortal": true,
+      "has26": true,
+      "c26": 1
+    },
+    {
+      "ab": "국조실",
+      "full": "국무조정실",
+      "n": 6,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "노동부",
+      "full": "고용노동부",
+      "n": 6,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "국방부",
+      "full": "국방부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "산업부",
+      "full": "산업통상부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "교육부",
+      "full": "교육부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "문체부",
+      "full": "문화체육관광부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "통일부",
+      "full": "통일부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "외교부",
+      "full": "외교부",
+      "n": 5,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "중기부",
+      "full": "중소벤처기업부",
+      "n": 4,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "농식품부",
+      "full": "농림축산식품부",
+      "n": 4,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "법무부",
+      "full": "법무부",
+      "n": 3,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "재경부",
+      "full": "재정경제부",
+      "n": 3,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "해수부",
+      "full": "해양수산부",
+      "n": 3,
+      "inPortal": true,
+      "has26": true,
+      "c26": 28
+    },
+    {
+      "ab": "성평등부",
+      "full": "성평등가족부",
+      "n": 3,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "경찰청",
+      "full": "경찰청",
+      "n": 2,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "방미통위",
+      "full": "방송미디어통신위원회",
+      "n": 2,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "보훈부",
+      "full": "국가보훈부",
+      "n": 2,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "기획처",
+      "full": "기획예산처",
+      "n": 2,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "공정위",
+      "full": "공정거래위원회",
+      "n": 2,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "감사원",
+      "full": "감사원",
+      "n": 1,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "인권위",
+      "full": "국가인권위원회",
+      "n": 1,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "인사처",
+      "full": "인사혁신처",
+      "n": 1,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "권익위",
+      "full": "국민권익위원회",
+      "n": 1,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "개인정보위",
+      "full": "개인정보보호위원회",
+      "n": 1,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "행복청",
+      "full": "행정중심복합도시건설청",
+      "n": 1,
+      "inPortal": true,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "방사청",
+      "full": "방위사업청",
+      "n": 1,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    },
+    {
+      "ab": "동포청",
+      "full": "재외동포청",
+      "n": 1,
+      "inPortal": false,
+      "has26": false,
+      "c26": 0
+    }
+  ],
+  "국정과제수": 123,
+  "덮인과제": 10,
+  "번호기재": 166,
+  "체계": {
+    "100대(문재인, N-M 꼴)": 118,
+    "120대(윤석열)": 44,
+    "123대(이재명)": 4
+  },
+  "세부번호꼴": 83
+}

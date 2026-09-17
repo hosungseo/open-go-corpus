@@ -306,6 +306,7 @@ if (!WITH_NAMES) {
   const AX_PATH = R("notes/compare-axes.json");
   const VN_PATH = R("notes/venue.json");
   const TF_PATH = R("notes/three-faces.json");
+  const GJ_PATH = R("notes/gukjeong.json");
   for (const name of ["index", "compare", "history", "policy2", "notes"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
@@ -333,6 +334,11 @@ if (!WITH_NAMES) {
         console.error(`  고치려면: node tools/normalize-type.mjs`);
         process.exit(1);
       }
+    }
+    if (page.includes("/*__GJDATA__*/")) {
+      if (!fs.existsSync(GJ_PATH)) { console.error("ERROR notes/gukjeong.json missing"); process.exit(1); }
+      const gd = fs.readFileSync(GJ_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__GJDATA__*/null", () => gd).replace("/*__GJDATA__*/", () => gd);
     }
     if (page.includes("/*__TFDATA__*/")) {
       if (!fs.existsSync(TF_PATH)) { console.error("ERROR notes/three-faces.json missing"); process.exit(1); }
