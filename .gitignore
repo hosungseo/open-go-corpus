@@ -16,3 +16,6 @@ lawhist/articles.json
 
 # 설명자료는 공개하지 않는다 (저장소는 public, docs/는 Pages로 게시됨)
 brief/
+
+# 원본 PDF는 크다(최대 55MB). 추출 텍스트(.txt)만 둔다. 원본은 정부업무평가포털에서 다시 받는다.
+lawhist/*.pdf
