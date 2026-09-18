@@ -19,3 +19,19 @@ brief/
 
 # 원본 PDF는 크다(최대 55MB). 추출 텍스트(.txt)만 둔다. 원본은 정부업무평가포털에서 다시 받는다.
 lawhist/*.pdf
+
+# 영상 프로젝트(videos/*): 원본(대본·컴포지션·도구·나레이션 배치)만 두고, 렌더·녹화·합성 음성·캐시는 뺀다
+videos/*/renders/
+videos/*/node_modules
+videos/*/.venv-tts
+videos/*/capture/frames/
+videos/*/audio/voice/
+videos/*/audio/*.wav
+videos/*/assets/*.mp4
+videos/*/assets/bgm/
+videos/*/assets/*.woff2
+videos/*/.thumbnails
+videos/*/.index.master.html
+videos/*/assets/*.log
+videos/*/audio/*.log
+videos/*/capture/07-screen.png
