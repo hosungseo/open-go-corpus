@@ -186,5 +186,13 @@ if (want("og")) {
 }
 
 await browser.close();
-fs.writeFileSync(path.join(ROOT, "notes", "screens.json"), JSON.stringify({ 찍은날: new Date().toISOString().slice(0, 10), 배율: 2, 원본폭: 1440, 목록: shots }, null, 1) + "\n");
+// 일부만 다시 찍어도 나머지 기록이 사라지지 않게 병합한다(여기서 통째로 덮어써 배포본의 목록이 3장으로 줄어든 적이 있다)
+const MAN = path.join(ROOT, "notes", "screens.json");
+const prev = fs.existsSync(MAN) ? JSON.parse(fs.readFileSync(MAN, "utf8")) : { 목록: [] };
+const merged = [...(prev.목록 || [])];
+for (const s of shots) { const i = merged.findIndex((x) => x.id === s.id); if (i >= 0) merged[i] = s; else merged.push(s); }
+const ORDER = ["ent-rn", "ent-pv", "ent-og", "rn-1", "rn-2", "rn-3", "rn-4", "pv-1", "pv-2", "pv-3", "og-1", "og-2"];
+merged.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
+fs.writeFileSync(MAN, JSON.stringify({ 찍은날: new Date().toISOString().slice(0, 10), 배율: 2, 원본폭: 1440, 목록: merged }, null, 1) + "\n");
+console.log("목록", merged.length, "장");
 console.log("\n→ docs/assets/screens/ · notes/screens.json");
