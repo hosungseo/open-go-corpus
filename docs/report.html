@@ -389,7 +389,41 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
 .rn2 .cnt .sw{margin-right:3px}
 .rn2 .bh{font-size:14px;color:var(--ink-3);padding:6px 0 2px 6px}.rn2 .bh b{color:var(--ink-2)}
 .rn2 .dl .dh .sw{margin-right:4px}
-.rn2 .node.ghost .plus:before{content:"?"}
+.rn2 .node.ghost:not(.open) .plus:before{content:"?"}
+.rn2 .node.ghost .nh{cursor:pointer}
+/* 원문 창 — policy2의 뷰어. 제목 띠를 어둡게 해 목록과 가른다 */
+.rn2 .vw{position:sticky;top:12px;background:var(--paper);align-self:start}
+.rn2 .vw .ph{background:var(--k-gray-80);border-bottom:0;border-radius:var(--r-m) var(--r-m) 0 0;color:var(--k-gray-0)}
+.rn2 .vw .ph h4{color:inherit}
+.rn2 .vw .ph .btn{background:transparent;border-color:var(--k-gray-60);color:var(--k-gray-10);text-decoration:none}
+.rn2 .vw .ph .btn:hover{border-color:var(--k-gray-30);color:var(--k-gray-0)}
+.rn2 .vb{padding:14px 16px;max-height:calc(100vh - 80px);overflow:auto}
+.rn2 .vb .kind{font-size:14px;color:var(--ink-3);margin-bottom:5px}
+.rn2 .vb h4{font-size:17px;margin:0 0 9px;line-height:1.4}
+.rn2 .vb .lbl{font-size:14px;color:var(--ink-3);margin-bottom:3px}
+.rn2 .dmeta{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:5px 10px;font-size:14px;margin:9px 0 11px}
+.rn2 .dmeta dt{color:var(--ink-3);white-space:nowrap}.rn2 .dmeta dd{margin:0;color:var(--ink-2)}
+.rn2 .line{display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:14px;margin:6px 0 10px}
+.rn2 .line .s{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--rule);border-radius:var(--r-s);padding:3px 8px;background:var(--panel)}
+.rn2 .line .ar{color:var(--ink-3)}
+.rn2 .state{padding:11px 13px;font-size:14px;margin:11px 0;display:flex;gap:10px;align-items:flex-start;border-radius:var(--r-s);line-height:1.5}
+.rn2 .state.ok{background:var(--okL);color:var(--ok);box-shadow:inset 3px 0 0 var(--ok)}
+.rn2 .state.no{background:var(--warnL);color:var(--warn);box-shadow:inset 3px 0 0 var(--warn)}
+.rn2 .state.lim{background:var(--amberL);color:var(--amber);box-shadow:inset 3px 0 0 var(--amber)}
+.rn2 .state b{display:block;margin-bottom:3px}.rn2 .state .ic{font-size:17px;line-height:1.3}
+.rn2 .pdf{border-radius:var(--r-s);background:var(--panel-2);padding:10px;margin-top:11px}
+.rn2 .pdf .bar2{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink-3);margin-bottom:8px;flex-wrap:wrap}.rn2 .pdf .bar2 b{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60%}
+.rn2 .pdf .pg{background:var(--panel-2);border-radius:var(--r-s);max-height:640px;overflow:auto}
+.rn2 .pdf .pg img{display:block;width:100%;box-shadow:0 2px 10px rgba(0,0,0,.15);background:#fff}
+.rn2 .steps{display:flex;gap:5px;align-items:center;font-size:13px;color:var(--ink-3);margin-top:8px;flex-wrap:wrap}
+.rn2 .steps span{border-radius:var(--r-s);padding:2px 7px;background:var(--panel)}.rn2 .steps i{font-style:normal}
+.rn2 .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.rn2 .acts .btn{text-decoration:none}.rn2 .acts .btn.demo{opacity:.55;cursor:not-allowed}
+.rn2 .why{margin-top:12px;padding:11px 13px;border-radius:var(--r-s);background:var(--paper);font-size:14px;color:var(--ink-3);line-height:1.55}.rn2 .why b{color:var(--ink-2)}
+.rn2 .related{margin-top:12px;font-size:14px}
+.rn2 .related .rr{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px dashed var(--rule-2);cursor:pointer}.rn2 .related .rr:hover{color:var(--em)}
+.lnb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.lnb .box{margin:0}
 /* (구) 계보 */
 .lnh{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:10px 18px;margin:4px 0 10px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:center}
 .lnh .no{font-size:17px;color:var(--ink-3);margin:0 0 2px}.lnh .nm{font-size:22px;font-weight:700;line-height:1.3;margin:0;color:var(--ink)}.lnh .sub{font-size:17px;color:var(--ink-2);margin:4px 0 0}
@@ -556,9 +590,10 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
       <div class="lnh" id="lnh"></div>
       <div class="rn2"><div class="split">
         <div class="panel"><div class="ph"><h4>정책 계보</h4><span class="lg"><span><i class="sw rn"></i>정책실명제 카드 = 뼈대</span><span><i class="sw og"></i>원문공개 문서</span><span><i class="sw pv"></i>사전정보공표</span></span><button class="btn" type="button" id="rnAllOpen">모두 펼치기</button><button class="btn" type="button" id="rnAllClose">접기</button></div><div class="tl" id="rnTl"></div></div>
-        <div class="panel lnr" id="lnr"></div>
+        <div class="panel vw" id="rnVw"><div class="ph"><h4 id="rnVt">원문</h4><a class="btn" id="rnOpen" href="#" target="_blank" rel="noopener" hidden>포털에서 열기</a></div><div class="vb" id="rnVb" role="region" aria-live="polite" aria-label="선택한 문서"></div></div>
       </div></div>
-      <div class="src">정책실명제 카드(2022~2025)·추진실적·연결 문서는 정보공개포털 실측, 예산 줄은 열린재정. 담당과 결재선은 이름 대신 직위만. 문서 원문까지 여는 시안은 <a href="policy2.html">정책실명제 2.0</a>.</div>
+      <div class="lnr lnb" id="lnr"></div>
+      <div class="src">정책실명제 카드(2022~2025)·추진실적은 정보공개포털 실측, 예산 줄은 열린재정. 원문 3건은 포털에서 2026-09-18 실제로 받은 파일(본문 PDF, 첨부 hwpx→PDF)을 페이지 이미지로 옮겼고 결재란 성명·이메일은 가렸습니다. 정보목록 21건은 2025 카드의 "관련 정보목록"이며 전부 2026년 문서라 2026년에 세웠습니다. 타기관 문서 수는 원문공개 검색(전 기관, "지방소멸대응기금"). "담기·청구" 단추는 시안. 원 부품은 <a href="policy2.html">정책실명제 2.0</a>.</div>
     </section>
 
     <div class="pager"><span id="pgTxt">1 / 5</span><button type="button" id="pgPrev" aria-label="이전 화면">‹</button><button type="button" id="pgNext" aria-label="다음 화면">›</button></div>
@@ -12957,7 +12992,9 @@ var LN = {
    "원문항목": null,
    "원문연결": null,
    "원문검색": null,
-   "사전정보": null
+   "사전정보": null,
+   "원문": [],
+   "타기관": 246
   },
   {
    "y": 2023,
@@ -12976,7 +13013,151 @@ var LN = {
    "원문항목": null,
    "원문연결": null,
    "원문검색": null,
-   "사전정보": null
+   "사전정보": null,
+   "원문": [
+    {
+     "id": "DCTE6295CD9734966C5BBD07F2BBEAD7B9D",
+     "제목": "「지방소멸대응기금 배분 등에 관한 기준」개정 계획 보고",
+     "부서": "균형발전제도과",
+     "문서번호": "1741640-1729",
+     "일자": "2023-05-25",
+     "생산일시": "20230525102531",
+     "기관구분": "C",
+     "단위업무": "인구감소지역발전추진업무",
+     "공개": "공개",
+     "파일": [
+      "[본문] 「지방소멸대응기금 배분 등에 관한 기준」개정 계획 보고.pdf",
+      "[첨부] 지방소멸대응기금 배분 등에 관한 기준 개정 계획.hwpx"
+     ],
+     "결재선": [
+      [
+       "기안",
+       "지방행정사무관"
+      ],
+      [
+       "검토",
+       "기술서기관"
+      ],
+      [
+       "검토",
+       "균형발전제도과장"
+      ],
+      [
+       "검토",
+       "균형발전지원관"
+      ],
+      [
+       "전결",
+       "지방자치균형발전실장",
+       "2023.5.25."
+      ]
+     ],
+     "협조": [],
+     "보존": "30년",
+     "쪽": [
+      {
+       "n": 1,
+       "what": "본문(시행문 표지)"
+      },
+      {
+       "n": 2,
+       "what": "첨부 · 배분 기준 개정 계획 1/6"
+      },
+      {
+       "n": 3,
+       "what": "첨부 · 2/6"
+      },
+      {
+       "n": 4,
+       "what": "첨부 · 3/6"
+      },
+      {
+       "n": 5,
+       "what": "첨부 · 4/6"
+      },
+      {
+       "n": 6,
+       "what": "첨부 · 5/6"
+      },
+      {
+       "n": 7,
+       "what": "첨부 · 6/6"
+      }
+     ],
+     "첨부표시": "첨부 1건을 모두 실었다",
+     "종류": "원문공개"
+    },
+    {
+     "id": "DCT804F1B498D9BF3187B11D9CE98EB9EA9",
+     "제목": "「지방소멸대응기금 배분 등에 관한 기준」 개정(안) 보고",
+     "부서": "균형발전제도과",
+     "문서번호": "1741640-2066",
+     "일자": "2023-06-26",
+     "생산일시": "20230626112037",
+     "기관구분": "C",
+     "단위업무": "인구감소지역발전추진업무",
+     "공개": "공개",
+     "파일": [
+      "[본문] 「지방소멸대응기금 배분 등에 관한 기준」 개정(안) 보고.pdf",
+      "[첨부] [붙임4] 규제 비대상 확인증.hwpx",
+      "[첨부] [붙임2] 지방소멸대응기금 배분 등에 관한 기준 개정안.hwpx",
+      "[첨부] [붙임3] 지방소멸대응기금 배분 기준 개정안 의견조회 결과.hwpx",
+      "[첨부] [붙임1] 지방소멸대응기금 배분 등에 관한 기준 개정 계획.hwpx"
+     ],
+     "결재선": [
+      [
+       "기안",
+       "지방행정사무관"
+      ],
+      [
+       "검토",
+       "기술서기관"
+      ],
+      [
+       "검토",
+       "균형발전제도과장"
+      ],
+      [
+       "검토",
+       "균형발전지원관"
+      ],
+      [
+       "전결",
+       "지방자치균형발전실장",
+       "2023.6.26."
+      ]
+     ],
+     "협조": [
+      "법무담당관"
+     ],
+     "보존": "30년",
+     "쪽": [
+      {
+       "n": 1,
+       "what": "본문(시행문 표지)"
+      },
+      {
+       "n": 2,
+       "what": "붙임2 · 배분 기준 개정안 전문 1/4"
+      },
+      {
+       "n": 3,
+       "what": "붙임2 · 2/4"
+      },
+      {
+       "n": 4,
+       "what": "붙임2 · 3/4"
+      },
+      {
+       "n": 5,
+       "what": "붙임2 · 4/4"
+      }
+     ],
+     "첨부표시": "첨부 4건 중 개정안 전문만 실었다(개정 계획은 5.25. 문서와 같음, 의견조회 결과·확인증은 싣지 않음)",
+     "종류": "원문공개"
+    }
+   ],
+   "타기관": 242
   },
   {
    "y": 2024,
@@ -12995,7 +13176,9 @@ var LN = {
    "원문항목": null,
    "원문연결": null,
    "원문검색": null,
-   "사전정보": null
+   "사전정보": null,
+   "원문": [],
+   "타기관": 212
   },
   {
    "y": 2025,
@@ -13030,113 +13213,7 @@ var LN = {
      "내용": "○ 인구감소 대응 업무 담당자 워크숍 개최계획 안내 및 참석요청"
     }
    ],
-   "문서": [
-    {
-     "제목": "2026 국가발전 리더십 대상 후원명칭 사용승인 알림",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026 국가발전 리더십 대상 후원명칭 사용승인 통보",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(1차)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "비영리법인 정관 변경 허가(지역균형발전연구원)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "비영리법인 정관 변경 검토(지역균형발전연구원)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "행정안전부 후원명칭사용승인 통보(서울신문 인천 청년포럼)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "행정안전부 후원명칭사용승인 알림(서울신문 인천 청년포럼)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(2차)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "대통령 지시사항 이행실적 등록(2월 4주)",
-     "결재선": "기안 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "법률 자문료 지급(지방소멸대응기금 관련)",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "국민제안(1AB-2602-0004581) 심사 결과 통보",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(3차)",
-     "결재선": "기안 주무관 › 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "지방소멸대응기금의 효과성 제고방안 연구 용역 대급지급 요청",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "행정안전부 후원명칭사용승인 알림(2026 국민팜 엑스포)",
-     "결재선": "기안 주무관 › 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "대통령 지시사항 종료 요청서 등록",
-     "결재선": "기안 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "정부혁신제안 부처 심사 요청 회신",
-     "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "'27년도 지방소멸대응기금 투자계획 평가 관련 협조 요청",
-     "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026년 「인구감소 위기대응 유공」 포상계획 알림 및 후보자 추천 요청",
-     "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "지방소멸대응기금 광역지원계정 추가 배분계획 수립 요청",
-     "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "행정안전부고시제2026-53호(·지방소멸대응기금 배분 등에 관한 기준· 일부 개정) 관보게재",
-     "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    },
-    {
-     "제목": "2026년 사회보장시행계획 성과지표 수정·보완 요청 회신",
-     "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
-     "원문": false
-    }
-   ],
+   "문서": [],
    "사전정보항목": {
     "제목": "지방소멸대응기금",
     "부서": "균형발전제도과",
@@ -13150,10 +13227,294 @@ var LN = {
    },
    "원문연결": 21,
    "원문검색": 1,
-   "사전정보": 1
+   "사전정보": 1,
+   "원문": [],
+   "타기관": 176
   }
  ],
  "미등록": true,
+ "미등록문서": {
+  "y": 2026,
+  "문서": [
+   {
+    "id": "DCT22D54A650E5D6F298F703F83928633D6",
+    "제목": "2026 국가발전 리더십 대상 후원명칭 사용승인 알림",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-01-26",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT9159E360A8B43FA31E33A879E7C400D8",
+    "제목": "2026 국가발전 리더십 대상 후원명칭 사용승인 통보",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-01-26",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT61E47222E792A708444B949DFBD4477E",
+    "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(1차)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-01-27",
+    "사유": "법인 등 계좌번호 포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT311DC41FDDEC738F5AA762B6AF25A17A",
+    "제목": "비영리법인 정관 변경 허가(지역균형발전연구원)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-09",
+    "사유": null,
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT535603F7886182E69B98C51BF8E40FEA",
+    "제목": "비영리법인 정관 변경 검토(지역균형발전연구원)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-09",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT93CAFE5F0B4E90271A8958AB823710C9",
+    "제목": "행정안전부 후원명칭사용승인 통보(서울신문 인천 청년포럼)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-13",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT9AEC746884E00189316CE0E95185197A",
+    "제목": "행정안전부 후원명칭사용승인 알림(서울신문 인천 청년포럼)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-13",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCTFAEEA12D100D2043FA48AE1458D339C0",
+    "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(2차)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-24",
+    "사유": "법인 등 계좌번호 포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT1E6BF24EE39C50EED39A6BE6E33405A7",
+    "제목": "대통령 지시사항 이행실적 등록(2월 4주)",
+    "결재선": "기안 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-02-27",
+    "사유": "개인정보 포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT38EC1B77E64B7C20DC5E0F936B066CB0",
+    "제목": "법률 자문료 지급(지방소멸대응기금 관련)",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-03-04",
+    "사유": "내부검토",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT3CE6332C75B0709C227EEDA5C8BDE337",
+    "제목": "국민제안(1AB-2602-0004581) 심사 결과 통보",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-03-13",
+    "사유": "개인정보포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT350CE0E6626E80CA30D03BFC019DC314",
+    "제목": "2026년 지방소멸대응기금 정부출연금 지출 요청(3차)",
+    "결재선": "기안 주무관 › 전대결 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-03-23",
+    "사유": "법인 등 계좌번호 포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCTC612AC1F890FC8BF64975397DEC65858",
+    "제목": "지방소멸대응기금의 효과성 제고방안 연구 용역 대급지급 요청",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-03-27",
+    "사유": "내부검토 사항",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT6063ACACD5D7433308FCF5D541A5E7AF",
+    "제목": "행정안전부 후원명칭사용승인 알림(2026 국민팜 엑스포)",
+    "결재선": "기안 주무관 › 전대결 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-04-02",
+    "사유": "내부검토",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT977EFA51C5BBEC08D5E95AAF40BCDBA5",
+    "제목": "대통령 지시사항 종료 요청서 등록",
+    "결재선": "기안 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-04-15",
+    "사유": "개인정보 포함",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCTC546387520C807AE031EA5B45CDA5CDB",
+    "제목": "정부혁신제안 부처 심사 요청 회신",
+    "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-05-13",
+    "사유": null,
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT1E21DCE52DB543CD927AA89A6861E97C",
+    "제목": "'27년도 지방소멸대응기금 투자계획 평가 관련 협조 요청",
+    "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-07-21",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT3956A4334A60DD8CB3ABD3DBF8697B41",
+    "제목": "2026년 「인구감소 위기대응 유공」 포상계획 알림 및 후보자 추천 요청",
+    "결재선": "기안 주무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-08-03",
+    "사유": null,
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCT20D4F9DD6124409D3E791867E471AA17",
+    "제목": "지방소멸대응기금 광역지원계정 추가 배분계획 수립 요청",
+    "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-08-14",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCTC639AEBBEEAA2B3A2A2E442EA1CBD882",
+    "제목": "행정안전부고시제2026-53호(·지방소멸대응기금 배분 등에 관한 기준· 일부 개정) 관보게재",
+    "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-09-04",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   },
+   {
+    "id": "DCTF620A636A84BB16CEC0CE57F39A2CA44",
+    "제목": "2026년 사회보장시행계획 성과지표 수정·보완 요청 회신",
+    "결재선": "기안 행정사무관 › 검토 행정사무관 › 전결 과장",
+    "원문": false,
+    "일자": "2026-09-11",
+    "사유": "내부검토 과정",
+    "종류": "정보목록"
+   }
+  ],
+  "원문": [
+   {
+    "id": "DCT39FBC7247A6620555EC8313A5E7335A5",
+    "제목": "2027년 지방소멸대응기금 투자계획 수정·보완 안내 검토",
+    "부서": "균형발전제도과",
+    "문서번호": "균형발전제도과-1644",
+    "일자": "2026-05-29",
+    "생산일시": "20260529174114",
+    "기관구분": "C",
+    "단위업무": "인구감소지역발전추진업무",
+    "공개": "공개",
+    "파일": [
+     "[본문] 2027년 지방소멸대응기금 투자계획 수정·보완 안내 검토.pdf",
+     "[첨부] 27년 지방소멸대응기금 투자계획 수정·보완 안내 검토(내부결재).hwpx"
+    ],
+    "결재선": [
+     [
+      "기안",
+      "행정사무관"
+     ],
+     [
+      "검토",
+      "행정사무관"
+     ],
+     [
+      "검토",
+      "균형발전제도과장"
+     ],
+     [
+      "전결",
+      "균형발전국장",
+      "2026.5.29."
+     ]
+    ],
+    "협조": [],
+    "보존": "30년",
+    "쪽": [
+     {
+      "n": 1,
+      "what": "본문(시행문 표지)"
+     },
+     {
+      "n": 2,
+      "what": "첨부 · 투자계획 수정·보완 안내 검토(내부결재) 1쪽"
+     }
+    ],
+    "첨부표시": "첨부 1건을 모두 실었다",
+    "종류": "원문공개"
+   }
+  ],
+  "타기관": 148
+ },
+ "타기관": {
+  "총": 1024,
+  "연도별": {
+   "2022": 246,
+   "2023": 242,
+   "2024": 212,
+   "2025": 176,
+   "2026": 148
+  },
+  "상위": [
+   [
+    "대구광역시",
+    177
+   ],
+   [
+    "강원특별자치도",
+    89
+   ],
+   [
+    "충청남도",
+    27
+   ],
+   [
+    "부산광역시 금정구",
+    22
+   ],
+   [
+    "경상북도",
+    20
+   ],
+   [
+    "충청남도 보령시",
+    19
+   ]
+  ]
+ },
+ "원문받은날": "2026-09-18",
  "질문": [
   {
    "q": "이 기금, 누가 맡았나요?",
@@ -13320,28 +13681,88 @@ var LN = {
 
 
   /* 5 2.0 — 계보: 기존 부품 구조(.tl > .yr / .node.main > .nh + .br > .bl > .bi / .dl > .dr) */
-  if(LN){ var C=LN.연도, last=C[C.length-1];
-    document.getElementById('lnh').innerHTML='<div><div class="no">국정과제 '+LN.국정과제.n+' · '+esc(LN.국정과제.nm)+' · 주관 '+esc(LN.국정과제.org)+'</div><div class="nm">'+esc(LN.핵심어)+'</div><div class="sub">세부과제 '+esc(LN.세부과제.no)+' '+esc((LN.세부과제.전문||LN.세부과제.t).split(/\s+/).slice(0,2).join(' '))+' · 정책실명제 카드 '+C.length+'장('+C[0].y+'~'+last.y+') · 담당 '+esc(last.부서)+'</div></div>'
-      +'<div class="sum">뼈대는 <b>정책실명제 카드 '+C.length+'장</b>(빨간 테). 책임 부서·직위, 사업기간, 선정기준, 날짜 있는 추진실적이 카드에서 나옵니다. 원문공개 문서와 사전정보공표 안내는 그 위에 붙습니다. 연도 표시의 <b>+</b>를 누르면 가지로 펼쳐집니다. 2026년은 아직 비어 있습니다.</div>';
+  if(LN){ var C=LN.연도, last=C[C.length-1], MD=LN.미등록문서||{y:2026,문서:[],원문:[],타기관:0}, DOCS={};
+    var nOrig=C.reduce(function(n,c){return n+(c.원문||[]).length;},0)+(MD.원문||[]).length, nList=C.reduce(function(n,c){return n+(c.문서||[]).length;},0)+(MD.문서||[]).length;
+    document.getElementById('lnh').innerHTML='<div><div class="no">국정과제 '+LN.국정과제.n+' · '+esc(LN.국정과제.nm)+' · 주관 '+esc(LN.국정과제.org)+'</div><div class="nm">'+esc(LN.핵심어)+'</div><div class="sub">세부과제 '+esc(LN.세부과제.no)+' '+esc((LN.세부과제.전문||LN.세부과제.t).split(/\s+/).slice(0,2).join(' '))+' · 정책실명제 카드 '+C.length+'장('+C[0].y+'~'+last.y+') · 원문공개 문서 '+nOrig+'건(원문 열람) · 정보목록 '+nList+'건 · 타기관 문서 '+fmt(LN.타기관?LN.타기관.총:0)+'건</div></div>'
+      +'<div class="sum">뼈대는 <b>정책실명제 카드 '+C.length+'장</b>(빨간 테). 책임 부서·직위, 사업기간, 선정기준, 날짜 있는 추진실적이 카드에서 나옵니다. 문서는 생산 연도에 붙습니다. 조치나 문서를 누르면 <b>오른쪽에 원문</b>이 뜹니다. 원문이 있으면 원문이, 없으면 없는 이유가 뜹니다.</div>';
+    /* 제목 닮음 — 조치와 문서를 사람이 이름으로 맞추는 것. 카드와 문서는 서로를 가리키지 않는다 */
+    var norm=function(s){ return String(s||'').replace(/^○\s*/,'').replace(/[\s「」『』()（）\[\]'‘’"“”·.,:;]/g,''); };
+    var grams=function(s){ var g={}; s=norm(s); for(var i=0;i<s.length-1;i++) g[s.substr(i,2)]=1; return g; };
+    var sim=function(a,b){ var A=grams(a),B=grams(b),n=0,t=0; for(var k in A){ t++; if(B[k]) n++; } var tb=Object.keys(B).length; return t&&tb?n/Math.min(t,tb):0; };
+    var roleCls={기안:'r-exe',검토:'r-rev',전결:'r-dec',전대결:'r-dec',대결:'r-dec',협조:'r-co',결재:'r-dec'};
+    var lineOf=function(pairs){ return pairs.map(function(p){ return '<span class="s"><span class="role '+(roleCls[p[0]]||'r-co')+'">'+esc(p[0])+'</span>'+esc(p[1])+(p[2]?' <small style="color:var(--ink-3)">'+esc(p[2])+'</small>':'')+'</span>'; }).join('<span class="ar">›</span>'); };
+    var lineStr=function(s){ return lineOf(String(s||'').split(' › ').map(function(x){ var m=x.match(/^(기안|검토|전대결|대결|전결|협조|결재)\s+(.+)$/); return m?[m[1],m[2]]:['담당',x]; })); };
+    var portal=function(d){ return 'https://www.open.go.kr/othicInfo/infoList/infoListDetl.do?prdnNstRgstNo='+encodeURIComponent(d.id)+'&prdnDt='+encodeURIComponent(d.생산일시)+'&nstSeCd='+encodeURIComponent(d.기관구분||'C')+'&title=%EC%9B%90%EB%AC%B8%EC%A0%95%EB%B3%B4'; };
+    var finalOf=function(d){ return (d.결재선||[]).filter(function(p){return /전결/.test(p[0]);}).map(function(p){return p[1];}).join('')||'—'; };
+    var reg=function(id,o){ DOCS[id]=o; return id; };
+    var docLists=function(c,y){ var orig=c.원문||[], lst=c.문서||[]; var h='';
+      if(orig.length) h+='<div class="dl"><div class="dh"><i class="sw og"></i>원문공개 문서 <b>'+orig.length+'</b> · §8의2 · 원문 열람 가능 · 누르면 오른쪽에</div>'+orig.map(function(d){ reg(d.id,{k:'orig',d:d,y:y}); return '<div class="dr" data-doc="'+d.id+'" role="button" tabindex="0"><span class="n">'+esc(d.제목)+'<small>'+esc(d.일자)+' · '+esc(d.문서번호)+' · 전결 '+esc(finalOf(d))+'</small></span><span class="chip c-live">원문 '+(d.쪽||[]).length+'쪽</span></div>'; }).join('')+'</div>';
+      if(lst.length) h+='<div class="dl"><div class="dh"><i class="sw og"></i>정보목록 문서 <b>'+lst.length+'</b> · §8 · 제목·결재선(직위)만 · 원문 없음</div>'+lst.map(function(d){ reg(d.id,{k:'list',d:d,y:y}); return '<div class="dr" data-doc="'+d.id+'" role="button" tabindex="0"><span class="n">'+esc(d.제목)+'<small>'+esc(d.일자)+' · '+esc(d.결재선)+'</small></span><span class="chip c-grey">'+(d.사유?'비공개':'공개 · 원문 대상 아님')+'</span></div>'; }).join('')+'</div>';
+      return h; };
     var tl='', prevDept=null;
-    C.forEach(function(c,i){ var acts=c.추진실적||[], docs=c.문서||[]; var open=c.y===last.y;
+    C.forEach(function(c){ var acts=c.추진실적||[], orig=c.원문||[], lst=c.문서||[]; var open=(c.y===last.y);
       tl+='<div class="yr"><span class="y">\''+String(c.y).slice(2)+'</span><span class="chip c-id">정책실명제 등록</span><span>'+c.y+'년 카드</span></div>';
       if(prevDept&&prevDept!==c.부서) tl+='<div class="chg"><b>소관 이관</b> '+esc(prevDept)+' → '+esc(c.부서)+'</div>'; prevDept=c.부서;
-      var items=acts.length?'<div class="bh"><i class="sw rn"></i>정책실명제 추진실적 <b>'+acts.length+'</b> · 카드에 적힌 날짜 있는 조치</div>'+acts.map(function(a){ return '<div class="bi"><span class="d">'+esc(a.기간)+'</span>'+esc(a.내용.replace(/^○\s*/,''))+'</div>'; }).join(''):'<div class="bh"><i class="sw rn"></i>정책실명제 카드 개요 · 그해 추진실적 상세 없음</div><div class="bi"><span class="d">'+esc(c.기간||'')+'</span>'+esc((c.배경||c.개요||'').replace(/^○\s*/,'').slice(0,90))+'</div>';
-      var dl=docs.length?'<div class="dl"><div class="dh"><i class="sw og"></i>원문공개 연계 문서 <b>'+docs.length+'</b> · 정보목록 · 결재선은 직위만</div>'+docs.slice(0,7).map(function(d){ return '<div class="dr"><span class="n">'+esc(d.제목)+'<small>'+esc(d.결재선)+'</small></span><span class="chip '+(d.원문?'c-live':'c-grey')+'">'+(d.원문?'원문 있음':'목록만')+'</span></div>'; }).join('')+(docs.length>7?'<div class="dr"><span class="n">(외 '+(docs.length-7)+'건)</span><span></span></div>':'')+'</div>':'';
-      tl+='<div class="node main'+(open?' open':'')+'"><div class="nh" role="button" tabindex="0" aria-expanded="'+open+'"><span class="plus" aria-hidden="true"></span><div class="t"><span class="tag">정책실명제</span><b>'+esc(c.nm)+'</b><div class="who"><b>책임</b>'+esc(c.부서)+' · '+esc(c.담당)+'</div><small class="meta">선정기준 '+esc(c.선정)+' · 사업기간 '+esc(c.기간)+' · 조회 '+c.조회+'</small><div class="cnts"><span class="cnt'+(acts.length?'':' d0')+'"><i class="sw rn"></i>추진실적 <b>'+acts.length+'</b></span>'+(c.원문연결!=null?'<span class="cnt'+(docs.length?' dN':' d0')+'"><i class="sw og"></i>원문공개 문서 <b>'+docs.length+'</b></span>':'')+(c.사전정보!=null?'<span class="cnt"><i class="sw pv"></i>사전정보공표 <b>'+c.사전정보+'</b></span>':'')+'</div></div></div><div class="br"><div><div class="bl">'+items+'</div>'+dl+'</div></div></div>'; });
-    if(LN.미등록){ tl+='<div class="yr none"><span class="y">\'26</span><span class="chip c-none">미등록</span><span>사업기간 '+esc(last.기간||'계속')+'인데 등록 없음</span></div><div class="node ghost"><div class="nh"><span class="plus" style="border-color:var(--warnB);color:var(--warn)" aria-hidden="true">?</span><div class="t"><b style="color:var(--warn)">2026년 카드가 없습니다</b><small>2.0에서는 이 빈칸이 그대로 보이고, 그 자리에서 청구합니다.</small></div></div></div>'; }
+      var items=acts.length?'<div class="bh"><i class="sw rn"></i>정책실명제 추진실적 <b>'+acts.length+'</b> · 카드에 적힌 날짜 있는 조치 · 누르면 근거문서를 찾습니다</div>'+acts.map(function(a,j){ var id=reg('a'+c.y+'-'+j,{k:'act',a:a,c:c}); return '<div class="bi" data-doc="'+id+'" role="button" tabindex="0"><span class="d">'+esc(a.기간)+'</span>'+esc(a.내용.replace(/^○\s*/,''))+'</div>'; }).join(''):'<div class="bh"><i class="sw rn"></i>정책실명제 카드 개요 · 그해 추진실적 상세 없음</div><div class="bi"><span class="d">'+esc(c.기간||'')+'</span>'+esc((c.배경||c.개요||'').replace(/^○\s*/,'').slice(0,90))+'</div>';
+      var chips='<span class="cnt'+(acts.length?'':' d0')+'"><i class="sw rn"></i>추진실적 <b>'+acts.length+'</b></span>'+(orig.length?'<span class="cnt dN"><i class="sw og"></i>원문공개 <b>'+orig.length+'</b></span>':'')+(lst.length?'<span class="cnt"><i class="sw og"></i>정보목록 <b>'+lst.length+'</b></span>':'')+(c.사전정보!=null?'<span class="cnt"><i class="sw pv"></i>사전정보공표 <b>'+c.사전정보+'</b></span>':'')+(c.타기관?'<span class="cnt"><i class="sw bg"></i>타기관 문서 <b>'+c.타기관+'</b></span>':'');
+      tl+='<div class="node main'+(open?' open':'')+'"><div class="nh" role="button" tabindex="0" aria-expanded="'+open+'"><span class="plus" aria-hidden="true"></span><div class="t"><span class="tag">정책실명제</span><b>'+esc(c.nm)+'</b><div class="who"><b>책임</b>'+esc(c.부서)+' · '+esc(c.담당)+'</div><small class="meta">선정기준 '+esc(c.선정)+' · 사업기간 '+esc(c.기간)+' · 조회 '+c.조회+'</small><div class="cnts">'+chips+'</div></div></div><div class="br"><div><div class="bl">'+items+'</div>'+docLists(c,c.y)+'</div></div></div>'; });
+    if(LN.미등록){ var mo=MD.원문||[], ml=MD.문서||[], my=MD.y||2026;
+      tl+='<div class="yr none"><span class="y">\''+String(my).slice(2)+'</span><span class="chip c-none">미등록</span><span>사업기간 '+esc(last.기간||'계속')+'인데 카드 없음</span></div>'
+        +'<div class="node ghost open"><div class="nh" role="button" tabindex="0" aria-expanded="true"><span class="plus" aria-hidden="true"></span><div class="t"><b style="color:var(--warn)">'+my+'년 카드가 없습니다</b><small>그런데 이 부서의 이 사업 문서는 <b>'+(mo.length+ml.length)+'건</b>이 있습니다(원문공개 '+mo.length+' · 정보목록 '+ml.length+'). 2.0에서는 결재할 때 고른 번호로 이 문서들이 저절로 붙어 빈칸을 채우고, 카드가 없다는 사실도 그대로 보입니다.</small><div class="cnts">'+(mo.length?'<span class="cnt dN"><i class="sw og"></i>원문공개 <b>'+mo.length+'</b></span>':'')+(ml.length?'<span class="cnt"><i class="sw og"></i>정보목록 <b>'+ml.length+'</b></span>':'')+(MD.타기관?'<span class="cnt"><i class="sw bg"></i>타기관 문서 <b>'+MD.타기관+'</b></span>':'')+'</div></div></div><div class="br"><div>'+docLists(MD,my)+'</div></div></div>'; }
     var rt=document.getElementById('rnTl'); rt.innerHTML=tl;
-    rt.querySelectorAll('.node.main .nh').forEach(function(hd){ var tg=function(){ var o=hd.parentElement.classList.toggle('open'); hd.setAttribute('aria-expanded',o); }; hd.addEventListener('click',tg); hd.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tg(); } }); });
-    document.getElementById('rnAllOpen').onclick=function(){ rt.querySelectorAll('.node.main').forEach(function(n){ n.classList.add('open'); }); };
-    document.getElementById('rnAllClose').onclick=function(){ rt.querySelectorAll('.node.main').forEach(function(n){ n.classList.remove('open'); }); };
-    var b=LN.예산&&LN.예산.lines&&LN.예산.lines[0];
+    rt.querySelectorAll('.node .nh[role="button"]').forEach(function(hd){ var tg=function(){ var o=hd.parentElement.classList.toggle('open'); hd.setAttribute('aria-expanded',o); }; hd.addEventListener('click',tg); hd.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tg(); } }); });
+    document.getElementById('rnAllOpen').onclick=function(){ rt.querySelectorAll('.node').forEach(function(n){ n.classList.add('open'); }); };
+    document.getElementById('rnAllClose').onclick=function(){ rt.querySelectorAll('.node').forEach(function(n){ n.classList.remove('open'); }); };
+
+    /* 원문 창 — 조치·문서를 누르면 오른쪽에. 원문이 있으면 페이지 이미지, 없으면 없는 이유 */
+    var allDocs=function(){ return Object.keys(DOCS).filter(function(k){return DOCS[k].k!=='act';}); };
+    var related=function(title,selfId,limit){ return allDocs().filter(function(k){return k!==selfId;}).map(function(k){ return {k:k,s:sim(title,DOCS[k].d.제목)}; }).filter(function(x){return x.s>=0.45;}).sort(function(a,b){return b.s-a.s;}).slice(0,limit||3); };
+    var relHtml=function(rel,label){ return rel.length?'<div class="related"><div style="font-size:14px;color:var(--ink-3);margin-bottom:2px">'+label+'</div>'+rel.map(function(r){ var o=DOCS[r.k]; return '<div class="rr" data-doc="'+r.k+'"><span>'+esc(o.d.제목)+' <small style="color:var(--ink-3)">'+esc(o.d.일자)+' · '+(o.k==='orig'?'원문 있음':'정보목록')+'</small></span><span>›</span></div>'; }).join('')+'</div>':''; };
+    var demo=function(t){ return '<button class="btn demo" type="button" disabled aria-disabled="true" title="시안 — 동작하지 않습니다">'+t+'</button>'; };
+    var curPg=0, curId=null;
+    var pageSrc=function(d,p){ return 'assets/fund/'+d.id+'-p'+p.n+'.png'; };
+    var pdfBlock=function(d){ var pages=d.쪽||[]; if(!pages.length) return ''; var p=pages[curPg];
+      return '<div class="pdf"><div class="bar2"><b>'+esc(d.파일&&d.파일[0]?d.파일[0].replace(/^\[본문\]\s*/,''):d.제목)+'</b><span>'+pages.length+'쪽</span><span style="margin-left:auto;display:flex;gap:6px;align-items:center"><button class="btn" type="button" id="rnPrev" aria-label="이전 쪽">‹</button><span id="rnPgno">'+(curPg+1)+' / '+pages.length+'</span><button class="btn" type="button" id="rnNext" aria-label="다음 쪽">›</button></span></div><div class="pg"><img id="rnImg" src="'+pageSrc(d,p)+'" alt="원문 '+(curPg+1)+'쪽 · '+esc(p.what)+'" loading="lazy"></div><div class="steps"><span id="rnPw">'+esc(p.what)+'</span></div><div class="steps"><span>파일전송</span><i>›</i><span>파일수신</span><i>›</i><span>개인정보필터링</span><i>›</i><span>PDF변환</span><i>· 포털에서 실제로 거친 처리 단계('+esc(LN.원문받은날||'')+' 수신) · 결재란 성명·이메일은 가림</i></div></div>'; };
+    var pgNav=function(d,delta){ var pages=d.쪽||[]; curPg=Math.max(0,Math.min(pages.length-1,curPg+delta)); var im=document.getElementById('rnImg'); if(!im) return; var p=pages[curPg]; im.src=pageSrc(d,p); im.alt='원문 '+(curPg+1)+'쪽 · '+p.what; put('rnPgno',(curPg+1)+' / '+pages.length); put('rnPw',p.what); };
+    var showDoc=function(id,scroll){ var e=DOCS[id]; if(!e) return; if(id!==curId){ curPg=0; curId=id; }
+      var vt=document.getElementById('rnVt'), vb=document.getElementById('rnVb'), op=document.getElementById('rnOpen'); var html='', d, rel;
+      if(e.k==='orig'){ d=e.d; vt.textContent='원문'; op.href=portal(d); op.hidden=false; rel=related(d.제목,id,3);
+        var meta=[['기관','행정안전부 '+d.부서],['생산일자',d.일자],['문서번호',d.문서번호],['보존기간',d.보존||'—'],['단위업무',d.단위업무],['공개여부',d.공개],['파일',d.파일.length+'건 · 본문 PDF'+(d.파일.length>1?' + 첨부 '+(d.파일.length-1):'')]];
+        html='<div class="kind"><i class="sw og"></i>결재문서 · 원문공개(§8의2)</div><h4>'+esc(d.제목)+'</h4><dl class="dmeta">'+meta.map(function(m){return '<dt>'+esc(m[0])+'</dt><dd>'+esc(m[1])+'</dd>';}).join('')+'</dl>'
+          +(d.결재선?'<div class="lbl">결재선 · 역할 — 표지 결재란에서, 직위만</div><div class="line">'+lineOf(d.결재선)+(d.협조&&d.협조.length?'<span class="ar">·</span><span class="s"><span class="role r-co">협조</span>'+esc(d.협조.join(', '))+'</span>':'')+'</div>':'')
+          +'<div class="state ok"><span class="ic">✓</span><div><b>원문 열람 가능</b>'+esc(finalOf(d))+' 전결이라 원문공개 대상(국장급 이상)입니다. '+esc(d.첨부표시||'')+'</div></div>'
+          +pdfBlock(d)
+          +'<div class="acts"><a class="btn" href="'+portal(d)+'" target="_blank" rel="noopener">정보공개포털에서 열기</a>'+demo('담기')+'</div>'
+          +'<div class="why"><b>정책실명제와 잇기</b> · 카드는 이 문서를 모릅니다. 2.0에서는 결재할 때 국정과제 번호를 고르면 이 문서와 결재선이 카드에 저절로 붙습니다.</div>'
+          +relHtml(rel,'이름이 비슷한 항목'); }
+      else if(e.k==='list'){ d=e.d; vt.textContent='문서 정보'; op.hidden=true; rel=related(d.제목,id,3); var closed=!!d.사유;
+        html='<div class="kind"><i class="sw og"></i>결재문서 · 정보목록(§8)</div><h4>'+esc(d.제목)+'</h4><dl class="dmeta"><dt>기관</dt><dd>행정안전부 균형발전제도과</dd><dt>생산일자</dt><dd>'+esc(d.일자)+'</dd><dt>공개여부</dt><dd>'+(closed?'비공개 — '+esc(d.사유):'공개')+'</dd><dt>원문</dt><dd>없음</dd></dl>'
+          +'<div class="lbl">결재선 · 역할 — 정보목록에 적힌 대로, 직위만</div><div class="line">'+lineStr(d.결재선)+'</div>'
+          +(closed?'<div class="state no"><span class="ic">✕</span><div><b>원문 없음 — 비공개</b>사유 "'+esc(d.사유)+'". 정보목록에는 제목과 결재선까지만 있습니다.</div></div>':'<div class="state lim"><span class="ic">◐</span><div><b>공개 문서인데 원문이 없음</b>과장 전결이라 원문공개 대상(국장급 이상)이 아닙니다. 포털 안내는 "필요 시 정보공개 청구".</div></div>')
+          +'<div class="acts">'+demo('정보공개 청구')+demo('담기')+'</div>'
+          +'<div class="why"><b>세 제도의 틈</b> · 정보목록(§8)에 있고 정책실명제 카드에 "관련 정보목록"으로 붙었지만, 원문공개(§8의2) 운영 기준(국장급 이상 전결)에 걸려 국민은 못 봅니다.</div>'
+          +relHtml(rel,'이름이 비슷한 항목'); }
+      else { var a=e.a, c=e.c; vt.textContent='후속 조치'; op.hidden=true; rel=related(a.내용,id,4); var hit=rel.filter(function(r){return DOCS[r.k].k==='orig';});
+        html='<div class="kind"><i class="sw rn"></i>후속 조치 · 정책실명제 추진실적 ('+c.y+'년 카드)</div><h4>'+esc(a.내용.replace(/^○\s*/,''))+'</h4><dl class="dmeta"><dt>기간</dt><dd>'+esc(a.기간)+'</dd><dt>부서</dt><dd>'+esc(c.부서)+'</dd><dt>출처</dt><dd>'+c.y+'년 사업내역서 추진실적</dd><dt>근거문서</dt><dd>'+(hit.length?'원문 '+hit.length+'건 — 이름으로 찾음':rel.length?'정보목록 '+rel.length+'건 — 원문 없음':'연결 없음')+'</dd></dl>'
+          +(hit.length?'<div class="state ok"><span class="ic">✓</span><div><b>이름이 같은 결재문서가 원문공개에 있습니다</b>다만 카드와 문서는 서로를 가리키지 않습니다. 사람이 제목으로 맞춘 것입니다.</div></div>':rel.length?'<div class="state lim"><span class="ic">◐</span><div><b>제목이 비슷한 문서는 있으나 원문이 없습니다</b>정보목록에 제목과 결재선만 있습니다.</div></div>':'<div class="state no"><span class="ic">✕</span><div><b>근거문서가 연결되어 있지 않음</b>카드의 글줄로만 존재합니다. 결재문서는 있을 것이나 번호가 없어 이어지지 않습니다.</div></div>')
+          +'<div class="acts">'+demo('이 조치의 문서 청구')+'</div>'
+          +'<div class="why"><b>2.0에서는</b> · 결재할 때 국정과제 번호를 고르면 이 조치의 결재문서가 여기 저절로 붙습니다. 새로 적을 실명은 없습니다.</div>'
+          +relHtml(rel,'이름이 비슷한 문서'); }
+      vb.innerHTML=html;
+      document.querySelectorAll('#rnTl [data-doc]').forEach(function(x){ x.classList.toggle('sel',x.dataset.doc===id); if(x.dataset.doc===id) x.setAttribute('aria-current','true'); else x.removeAttribute('aria-current'); });
+      vb.querySelectorAll('[data-doc]').forEach(function(x){ x.setAttribute('role','button'); x.setAttribute('tabindex','0'); x.onclick=function(){ showDoc(x.dataset.doc,true); }; x.onkeydown=function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); showDoc(x.dataset.doc,true); } }; });
+      var pv=document.getElementById('rnPrev'), nx=document.getElementById('rnNext'); if(pv){ pv.onclick=function(){ pgNav(e.d,-1); }; nx.onclick=function(){ pgNav(e.d,1); }; }
+      if(scroll&&window.innerWidth<1000) document.getElementById('rnVw').scrollIntoView({behavior:'smooth',block:'start'}); };
+    rt.querySelectorAll('[data-doc]').forEach(function(x){ x.addEventListener('click',function(ev){ ev.stopPropagation(); showDoc(x.dataset.doc,true); }); x.addEventListener('keydown',function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); ev.stopPropagation(); showDoc(x.dataset.doc,true); } }); });
+    var firstDoc=(MD.원문&&MD.원문[0])||C.slice().reverse().map(function(c){return (c.원문||[])[0];}).filter(Boolean)[0]; if(firstDoc) showDoc(firstDoc.id,false);
+
+    /* 아래 상자 셋 */
     var chg=[]; for(var k=1;k<C.length;k++){ if(C[k].부서!==C[k-1].부서) chg.push(C[k-1].부서+' → '+C[k].부서); }
     var sel=C.map(function(c){return /^대규모/.test(c.선정)?'대규모 예산':c.선정;}).filter(function(v,i,a){return a.indexOf(v)===i;});
-    document.getElementById('lnr').innerHTML='<div class="box"><h3><i class="sw rn"></i>정책실명제 명부에서 나오는 것</h3><ul><li><b>책임</b> — 부서와 직위(과장·사무관·주무관)가 카드 <b>'+C.length+'장</b>마다. 보고 화면은 직위만, 포털에는 실명</li><li><b>사업기간</b> '+esc(last.기간)+' — 기간이 적혀 있어 <b>2026년 빈칸</b>이 드러남</li><li><b>선정기준</b> '+esc(sel.join(' → '))+' — 카드가 스스로 국정과제임을 밝힘</li><li><b>추진실적</b> '+(last.추진실적?last.추진실적.length:0)+'건 — 날짜가 있는 조치, 카드 본문</li>'+(chg.length?'<li><b>소관 이관</b> '+esc(chg.join(', '))+' — 해마다 명부가 있어 이관이 보임</li>':'')+'</ul></div>'
-      +'<div class="box"><h3>번호로 붙는 것</h3><ul><li><i class="sw og"></i>원문공개 결재문서 <b>'+(last.원문연결==null?'—':last.원문연결)+'건</b>, 결재선까지</li><li><i class="sw pv"></i>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li><i class="sw bg"></i>열린재정 2026 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%':'')+'</li>':'')+'</ul></div>'
+    var b=LN.예산&&LN.예산.lines&&LN.예산.lines[0]; var TK=LN.타기관||{총:0,상위:[]};
+    document.getElementById('lnr').innerHTML='<div class="box"><h3><i class="sw rn"></i>정책실명제 명부에서 나오는 것</h3><ul><li><b>책임</b> — 부서와 직위(과장·사무관·주무관)가 카드 <b>'+C.length+'장</b>마다. 보고 화면은 직위만, 포털에는 실명</li><li><b>사업기간</b> '+esc(last.기간)+' — 기간이 적혀 있어 <b>'+(MD.y||2026)+'년 빈칸</b>이 드러남</li><li><b>선정기준</b> '+esc(sel.join(' → '))+' — 카드가 스스로 국정과제임을 밝힘</li><li><b>추진실적</b> '+(last.추진실적?last.추진실적.length:0)+'건 — 날짜가 있는 조치, 카드 본문</li>'+(chg.length?'<li><b>소관 이관</b> '+esc(chg.join(', '))+' — 해마다 명부가 있어 이관이 보임</li>':'')+'</ul></div>'
+      +'<div class="box"><h3>번호로 붙는 것 — 원문까지</h3><ul><li><i class="sw og"></i>원문공개 결재문서 <b>'+nOrig+'건</b> — 원문을 이 화면에 실었습니다(2023년 2 · '+(MD.y||2026)+'년 1)</li><li><i class="sw og"></i>정보목록 문서 <b>'+nList+'건</b> — 제목·결재선만, 원문 없음('+(MD.y||2026)+'년)</li><li><i class="sw bg"></i>타기관 원문공개 문서 <b>'+fmt(TK.총)+'건</b> — '+esc(TK.상위.slice(0,3).map(function(x){return x[0]+' '+x[1];}).join(' · '))+' …</li><li><i class="sw pv"></i>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li><i class="sw bg"></i>열린재정 '+(MD.y||2026)+' 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%':'')+'</li>':'')+'</ul></div>'
       +'<div class="box"><h3>지금은 네 곳 · 2.0의 장치 셋</h3><p>카드는 정책실명제 포털, 결재문서는 원문공개, 안내는 사전정보공표, 예산은 열린재정에 있고 서로 묶이지 않습니다.</p><ul><li>국정과제 번호로 관리 — 새 번호를 만들지 않음</li><li>결재할 때 번호를 고름 — 문서와 결재선이 자동으로 붙음</li><li>없는 것도 없다고 보임 — 빈칸이 곧 청구 자리</li></ul></div>'; }
-
   fromHash();
 })();
 </script>

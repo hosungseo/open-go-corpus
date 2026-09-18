@@ -23,15 +23,33 @@ const 연도 = cards.map((r) => { const k = r.gclfCd + "|" + r.year, d = det[k],
   // 연결 문서: 제목과 결재선 직위만. 이름은 버린다.
   let docs = [];
   if (d && d.wonmun) { let arr = d.wonmun; if (typeof arr === "string") { try { arr = JSON.parse(arr.replace(/'/g, '"')); } catch (e) { arr = []; } }
-    const roleOf = (seg) => { const m = seg.match(/(주무관|행정사무관|사무관|서기관|담당관|과장|국장|실장|팀장)/); const k = seg.match(/\((기안|검토|전결|협조|결재)\)/); return (k ? k[1] + " " : "") + (m ? m[1] : "담당"); };
-    docs = (arr || []).map((x) => ({ 제목: mask(x.infoSj).slice(0, 60), 결재선: dec(x.aprvInfo).split(">").map((s) => roleOf(s.trim())).join(" › "), 원문: x.urtxtYn === "Y" })); }
+    const roleOf = (seg) => { const m = seg.match(/(주무관|행정사무관|사무관|서기관|담당관|과장|국장|실장|팀장)/); const k = seg.match(/\((기안|검토|전대결|대결|전결|협조|결재)\)/); return (k ? k[1] + " " : "") + (m ? m[1] : "담당"); };
+    docs = (arr || []).map((x) => ({ id: x.prdnNstRgstNo, 제목: mask(x.infoSj).slice(0, 60), 결재선: dec(x.aprvInfo).split(">").map((s) => roleOf(s.trim())).join(" › "), 원문: x.urtxtYn === "Y", 일자: String(x.prdnDt || "").replace(/^(\d{4})(\d{2})(\d{2}).*$/, "$1-$2-$3"), 사유: dec(x.listClsdrResnDtls) || null })); }
   const pv = p && p.prev && p.prev.items && p.prev.items[0] ? { 제목: dec(p.prev.items[0].title), 부서: dec(p.prev.items[0].dept), 내용: dec(p.prev.items[0].detail), 조회: +p.prev.items[0].inq || 0 } : null;
   const og = p && p.orginl && p.orginl.items && p.orginl.items[0] ? { 제목: mask(p.orginl.items[0].title), 부서: dec(p.orginl.items[0].dept), 일자: String(p.orginl.items[0].date || "").replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3") } : null;
   return { y: +r.year, id: r.gclfCd, nm: dec(r.plcNm), 부서: dec(r.chgrDeptNm).replace(/^행정안전부\s*/, ""), 담당: roles(r.chgrNm), 기간: dec(r.prjtPerd), 선정: dec(r.slctnStdr), 조회: +r.inqCnt || 0, 개요: mask(r.prjtSmry).slice(0, 140), 배경: mask(r.prtnCtt).slice(0, 120), 추진실적: prtn, 문서: docs, 사전정보항목: pv, 원문항목: og, 원문연결: d ? +d.wonmunCnt : null, 원문검색: p ? tot(p.orginl) : null, 사전정보: p ? tot(p.prev) : null }; });
+// 문서는 카드에 매달린 채로 두지 않고 생산 연도로 다시 세운다. 정보목록(§8) 21건은 2025 카드에 "관련 정보목록"으로 붙어 있지만 전부 2026년 문서다.
+const pool = 연도.flatMap((c) => (c.문서 || []).map((d) => ({ ...d, 종류: "정보목록" })));
+const FO = JSON.parse(fs.readFileSync(R("notes/fund-originals.json"), "utf8")).문서;
+const OQ = "curated/orginl-query/" + kw + ".jsonl";
+const oq = fs.existsSync(R(OQ)) ? L(OQ) : [];
+const mine = oq.filter((r) => r.PROC_INSTT_NM === org);
+const 원문 = mine.map((r) => { const f = FO[r.PRDCTN_INSTT_REGIST_NO] || null; return {
+  id: r.PRDCTN_INSTT_REGIST_NO, 제목: mask(r.INFO_SJ).slice(0, 70), 부서: dec(r.CHRG_DEPT_NM), 문서번호: dec(r.DOC_NO), 일자: String(r.PRDCTN_DT).replace(/^(\d{4})(\d{2})(\d{2}).*$/, "$1-$2-$3"), 생산일시: String(r.PRDCTN_DT), 기관구분: r.INSTT_SE_CD,
+  단위업무: dec(r.UNIT_JOB_NM), 공개: r.OTHBC_SE_CD === "1" ? "공개" : r.OTHBC_SE_CD === "2" ? "부분공개" : "공개", 파일: String(r.FILE_NM || "").split("|").map((s) => s.trim()).filter(Boolean),
+  결재선: f ? f.결재선 : null, 협조: f ? f.협조 : [], 보존: f ? f.보존 : null, 쪽: f ? f.쪽 : [], 첨부표시: f ? f.첨부표시 : null, 종류: "원문공개" }; }).sort((a, b) => a.일자.localeCompare(b.일자));
+const others = oq.filter((r) => r.PROC_INSTT_NM !== org);
+const byYear = {}; for (const r of others) { const y = String(r.PRDCTN_DT).slice(0, 4); byYear[y] = (byYear[y] || 0) + 1; }
+const byInst = {}; for (const r of others) byInst[r.PROC_INSTT_NM] = (byInst[r.PROC_INSTT_NM] || 0) + 1;
+const 타기관 = { 총: others.length, 연도별: byYear, 상위: Object.entries(byInst).sort((a, b) => b[1] - a[1]).slice(0, 6) };
+const yearOf = (d) => +String(d.일자 || "").slice(0, 4);
+for (const c of 연도) { c.문서 = pool.filter((d) => yearOf(d) === c.y); c.원문 = 원문.filter((d) => yearOf(d) === c.y); c.타기관 = byYear[String(c.y)] || 0; }
+const lastY = 연도.length ? 연도[연도.length - 1].y : 0;
+const 미등록문서 = { y: lastY + 1, 문서: pool.filter((d) => yearOf(d) > lastY), 원문: 원문.filter((d) => yearOf(d) > lastY), 타기관: byYear[String(lastY + 1)] || 0 };
 const task = P2.과제.find((t) => t.세부.some((s) => s.no === no)); const sub = task ? task.세부.find((s) => s.no === no) : null; const fl = FL.목록.find((x) => x.no === no);
 const out = { 작성일: new Date().toISOString().slice(0, 10), 핵심어: kw, 기관: org, 국정과제: task ? { n: task.n, nm: task.nm, org: task.org } : null, 세부과제: sub ? { no: sub.no, t: sub.t, 전문: sub.전문 } : null,
   예산: fl ? { j: fl.j, lines: fl.lines.map((l) => ({ nm: l.nm, 단위: l.단위, 억: l.억, 집행률: (sub && sub.예산.lines.find((x) => x.nm === l.nm) || {}).집행률 ?? null })), 집행월: P2.집행월 } : null,
-  연도, 미등록: 연도.length ? 연도[연도.length - 1].y < 2026 : true };
+  연도, 미등록: 연도.length ? 연도[연도.length - 1].y < 2026 : true, 미등록문서, 타기관, 원문받은날: JSON.parse(fs.readFileSync(R("notes/fund-originals.json"), "utf8")).받은날 };
 // 같은 사업의 세 얼굴 — 질문 셋. 판정과 문장은 위 자료에서 그대로 옮긴 사실이다.
 const L25 = 연도.find((c) => c.y === 2025) || {}; const nDoc = L25.원문연결 || 0; const acts = L25.추진실적 || []; const pvi = L25.사전정보항목; const ogi = L25.원문항목;
 const kdate = (s) => s.replace(/^[‘']?(\d{2})\.(\d{2})\.(\d{2})$/, (m, y, mo, d) => +mo + "월 " + +d + "일");
