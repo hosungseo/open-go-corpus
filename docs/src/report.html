@@ -178,6 +178,19 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
 .rn2 .dr{font-size:15px}.rn2 .dr .n small{font-size:14px}.rn2 .dl .dh{font-size:14px}
 .rn2 .tl:after{display:none}
 .rn2 .lnr .box{border:0;border-bottom:1px solid var(--rule);border-radius:0;margin:0}
+/* 정책실명제 요소 부각: 카드는 빨간 테, 책임 줄, 출처 색 견본 */
+.rn2 .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.rn2 .sw.rn{background:var(--rn)}.rn2 .sw.og{background:var(--og)}.rn2 .sw.pv{background:var(--pv)}.rn2 .sw.bg{background:var(--ink-3)}
+.rn2 .lg{display:flex;gap:12px;font-size:14px;color:var(--ink-2);margin-right:8px;flex-wrap:wrap}
+.rn2 .node.main{box-shadow:inset 4px 0 0 var(--rn)}
+.rn2 .tag{display:inline-block;font-size:12px;font-weight:700;color:var(--rn-t);background:var(--rn-soft);border:1px solid var(--k-point-10);border-radius:var(--r-s);padding:1px 6px;line-height:16px;margin-right:6px;vertical-align:2px}
+.rn2 .nh .t .who{margin-top:6px;font-size:15px;color:var(--ink);padding-left:8px;border-left:3px solid var(--rn);line-height:1.5}
+.rn2 .nh .t .who b{font-size:15px;color:var(--rn-t);margin-right:5px}
+.rn2 .nh .t small.meta{color:var(--ink-3);margin-top:4px}
+.rn2 .cnt .sw{margin-right:3px}
+.rn2 .bh{font-size:14px;color:var(--ink-3);padding:6px 0 2px 6px}.rn2 .bh b{color:var(--ink-2)}
+.rn2 .dl .dh .sw{margin-right:4px}
+.rn2 .node.ghost .plus:before{content:"?"}
 /* (구) 계보 */
 .lnh{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:10px 18px;margin:4px 0 10px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:center}
 .lnh .no{font-size:17px;color:var(--ink-3);margin:0 0 2px}.lnh .nm{font-size:22px;font-weight:700;line-height:1.3;margin:0;color:var(--ink)}.lnh .sub{font-size:17px;color:var(--ink-2);margin:4px 0 0}
@@ -340,10 +353,10 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
 
     <!-- 5 2.0 -->
     <section class="scr" id="s5" aria-labelledby="h1s5">
-      <h1 id="h1s5">정책 하나를 시간 순으로 모아 보면 — 2.0 시안</h1>
+      <h1 id="h1s5">정책실명제 명부를 뼈대로, 사업 하나를 시간 순으로 — 2.0 시안</h1>
       <div class="lnh" id="lnh"></div>
       <div class="rn2"><div class="split">
-        <div class="panel"><div class="ph"><h4>정책 계보</h4><button class="btn" type="button" id="rnAllOpen">모두 펼치기</button><button class="btn" type="button" id="rnAllClose">접기</button></div><div class="tl" id="rnTl"></div></div>
+        <div class="panel"><div class="ph"><h4>정책 계보</h4><span class="lg"><span><i class="sw rn"></i>정책실명제 카드 = 뼈대</span><span><i class="sw og"></i>원문공개 문서</span><span><i class="sw pv"></i>사전정보공표</span></span><button class="btn" type="button" id="rnAllOpen">모두 펼치기</button><button class="btn" type="button" id="rnAllClose">접기</button></div><div class="tl" id="rnTl"></div></div>
         <div class="panel lnr" id="lnr"></div>
       </div></div>
       <div class="src">정책실명제 카드(2022~2025)·추진실적·연결 문서는 정보공개포털 실측, 예산 줄은 열린재정. 담당과 결재선은 이름 대신 직위만. 문서 원문까지 여는 시안은 <a href="policy2.html">정책실명제 2.0</a>.</div>
@@ -476,21 +489,24 @@ var LN = /*__LNDATA__*/null;
   /* 5 2.0 — 계보: 기존 부품 구조(.tl > .yr / .node.main > .nh + .br > .bl > .bi / .dl > .dr) */
   if(LN){ var C=LN.연도, last=C[C.length-1];
     document.getElementById('lnh').innerHTML='<div><div class="no">국정과제 '+LN.국정과제.n+' · '+esc(LN.국정과제.nm)+' · 주관 '+esc(LN.국정과제.org)+'</div><div class="nm">'+esc(LN.핵심어)+'</div><div class="sub">세부과제 '+esc(LN.세부과제.no)+' '+esc((LN.세부과제.전문||LN.세부과제.t).split(/\s+/).slice(0,2).join(' '))+' · 정책실명제 카드 '+C.length+'장('+C[0].y+'~'+last.y+') · 담당 '+esc(last.부서)+'</div></div>'
-      +'<div class="sum">연도 표시의 <b>+</b>를 누르면 그 해의 후속 조치와 연결 문서가 가지로 펼쳐집니다. 2026년은 아직 비어 있습니다.</div>';
+      +'<div class="sum">뼈대는 <b>정책실명제 카드 '+C.length+'장</b>(빨간 테). 책임 부서·직위, 사업기간, 선정기준, 날짜 있는 추진실적이 카드에서 나옵니다. 원문공개 문서와 사전정보공표 안내는 그 위에 붙습니다. 연도 표시의 <b>+</b>를 누르면 가지로 펼쳐집니다. 2026년은 아직 비어 있습니다.</div>';
     var tl='', prevDept=null;
     C.forEach(function(c,i){ var acts=c.추진실적||[], docs=c.문서||[]; var open=c.y===last.y;
-      tl+='<div class="yr"><span class="y">\''+String(c.y).slice(2)+'</span><span class="chip c-id">등록: '+esc(c.nm)+'</span><span>조회 '+c.조회+'</span></div>';
+      tl+='<div class="yr"><span class="y">\''+String(c.y).slice(2)+'</span><span class="chip c-id">정책실명제 등록</span><span>'+c.y+'년 카드</span></div>';
       if(prevDept&&prevDept!==c.부서) tl+='<div class="chg"><b>소관 이관</b> '+esc(prevDept)+' → '+esc(c.부서)+'</div>'; prevDept=c.부서;
-      var items=acts.length?acts.map(function(a){ return '<div class="bi"><span class="d">'+esc(a.기간)+'</span>'+esc(a.내용.replace(/^○\s*/,''))+'</div>'; }).join(''):'<div class="bi"><span class="d">'+esc(c.기간||'')+'</span>'+esc((c.배경||c.개요||'').replace(/^○\s*/,'').slice(0,90))+(c.y<2025?' <span style="color:var(--ink-3)">· 포털에 그해 추진실적 상세 없음(등록 연도만)</span>':'')+'</div>';
-      var dl=docs.length?'<div class="dl"><div class="dh">연계 문서 <b>'+docs.length+'</b> · 원문공개 정보목록 · 결재선은 직위만</div>'+docs.slice(0,7).map(function(d){ return '<div class="dr"><span class="n">'+esc(d.제목)+'<small>'+esc(d.결재선)+'</small></span><span class="chip '+(d.원문?'c-live':'c-grey')+'">'+(d.원문?'원문 있음':'목록만')+'</span></div>'; }).join('')+(docs.length>7?'<div class="dr"><span class="n">(외 '+(docs.length-7)+'건)</span><span></span></div>':'')+'</div>':'';
-      tl+='<div class="node main'+(open?' open':'')+'"><div class="nh" role="button" tabindex="0" aria-expanded="'+open+'"><span class="plus" aria-hidden="true"></span><div class="t"><b>'+esc(c.nm)+'</b><small>'+esc(c.부서)+' · '+esc(c.담당)+' · 선정기준 '+esc(c.선정)+'</small><div class="cnts"><span class="cnt'+(acts.length?'':' d0')+'">후속 조치 <b>'+acts.length+'</b></span><span class="cnt'+(docs.length?' dN':' d0')+'">문서 <b>'+docs.length+'</b></span>'+(c.사전정보!=null?'<span class="cnt">사전정보공표 <b>'+c.사전정보+'</b></span>':'')+'</div></div></div><div class="br"><div><div class="bl">'+items+'</div>'+dl+'</div></div></div>'; });
+      var items=acts.length?'<div class="bh"><i class="sw rn"></i>정책실명제 추진실적 <b>'+acts.length+'</b> · 카드에 적힌 날짜 있는 조치</div>'+acts.map(function(a){ return '<div class="bi"><span class="d">'+esc(a.기간)+'</span>'+esc(a.내용.replace(/^○\s*/,''))+'</div>'; }).join(''):'<div class="bh"><i class="sw rn"></i>정책실명제 카드 개요 · 그해 추진실적 상세 없음</div><div class="bi"><span class="d">'+esc(c.기간||'')+'</span>'+esc((c.배경||c.개요||'').replace(/^○\s*/,'').slice(0,90))+'</div>';
+      var dl=docs.length?'<div class="dl"><div class="dh"><i class="sw og"></i>원문공개 연계 문서 <b>'+docs.length+'</b> · 정보목록 · 결재선은 직위만</div>'+docs.slice(0,7).map(function(d){ return '<div class="dr"><span class="n">'+esc(d.제목)+'<small>'+esc(d.결재선)+'</small></span><span class="chip '+(d.원문?'c-live':'c-grey')+'">'+(d.원문?'원문 있음':'목록만')+'</span></div>'; }).join('')+(docs.length>7?'<div class="dr"><span class="n">(외 '+(docs.length-7)+'건)</span><span></span></div>':'')+'</div>':'';
+      tl+='<div class="node main'+(open?' open':'')+'"><div class="nh" role="button" tabindex="0" aria-expanded="'+open+'"><span class="plus" aria-hidden="true"></span><div class="t"><span class="tag">정책실명제</span><b>'+esc(c.nm)+'</b><div class="who"><b>책임</b>'+esc(c.부서)+' · '+esc(c.담당)+'</div><small class="meta">선정기준 '+esc(c.선정)+' · 사업기간 '+esc(c.기간)+' · 조회 '+c.조회+'</small><div class="cnts"><span class="cnt'+(acts.length?'':' d0')+'"><i class="sw rn"></i>추진실적 <b>'+acts.length+'</b></span>'+(c.원문연결!=null?'<span class="cnt'+(docs.length?' dN':' d0')+'"><i class="sw og"></i>원문공개 문서 <b>'+docs.length+'</b></span>':'')+(c.사전정보!=null?'<span class="cnt"><i class="sw pv"></i>사전정보공표 <b>'+c.사전정보+'</b></span>':'')+'</div></div></div><div class="br"><div><div class="bl">'+items+'</div>'+dl+'</div></div></div>'; });
     if(LN.미등록){ tl+='<div class="yr none"><span class="y">\'26</span><span class="chip c-none">미등록</span><span>사업기간 '+esc(last.기간||'계속')+'인데 등록 없음</span></div><div class="node ghost"><div class="nh"><span class="plus" style="border-color:var(--warnB);color:var(--warn)" aria-hidden="true">?</span><div class="t"><b style="color:var(--warn)">2026년 카드가 없습니다</b><small>2.0에서는 이 빈칸이 그대로 보이고, 그 자리에서 청구합니다.</small></div></div></div>'; }
     var rt=document.getElementById('rnTl'); rt.innerHTML=tl;
     rt.querySelectorAll('.node.main .nh').forEach(function(hd){ var tg=function(){ var o=hd.parentElement.classList.toggle('open'); hd.setAttribute('aria-expanded',o); }; hd.addEventListener('click',tg); hd.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tg(); } }); });
     document.getElementById('rnAllOpen').onclick=function(){ rt.querySelectorAll('.node.main').forEach(function(n){ n.classList.add('open'); }); };
     document.getElementById('rnAllClose').onclick=function(){ rt.querySelectorAll('.node.main').forEach(function(n){ n.classList.remove('open'); }); };
     var b=LN.예산&&LN.예산.lines&&LN.예산.lines[0];
-    document.getElementById('lnr').innerHTML='<div class="box"><h3>한 화면에 모이는 것</h3><ul><li>정책실명제 카드 <b>'+C.length+'장</b> — 담당 부서·직위·선정기준·조회수, 해마다</li><li>2025년 추진실적 <b>'+(last.추진실적?last.추진실적.length:0)+'건</b> — 날짜가 있는 조치</li><li>결재문서 <b>'+(last.원문연결==null?'—':last.원문연결)+'건</b> 연결(원문공개), 결재선까지</li><li>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li>2026 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%':'')+'</li>':'')+'</ul></div>'
+    var chg=[]; for(var k=1;k<C.length;k++){ if(C[k].부서!==C[k-1].부서) chg.push(C[k-1].부서+' → '+C[k].부서); }
+    var sel=C.map(function(c){return /^대규모/.test(c.선정)?'대규모 예산':c.선정;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+    document.getElementById('lnr').innerHTML='<div class="box"><h3><i class="sw rn"></i>정책실명제 명부에서 나오는 것</h3><ul><li><b>책임</b> — 부서와 직위(과장·사무관·주무관)가 카드 <b>'+C.length+'장</b>마다. 보고 화면은 직위만, 포털에는 실명</li><li><b>사업기간</b> '+esc(last.기간)+' — 기간이 적혀 있어 <b>2026년 빈칸</b>이 드러남</li><li><b>선정기준</b> '+esc(sel.join(' → '))+' — 카드가 스스로 국정과제임을 밝힘</li><li><b>추진실적</b> '+(last.추진실적?last.추진실적.length:0)+'건 — 날짜가 있는 조치, 카드 본문</li>'+(chg.length?'<li><b>소관 이관</b> '+esc(chg.join(', '))+' — 해마다 명부가 있어 이관이 보임</li>':'')+'</ul></div>'
+      +'<div class="box"><h3>번호로 붙는 것</h3><ul><li><i class="sw og"></i>원문공개 결재문서 <b>'+(last.원문연결==null?'—':last.원문연결)+'건</b>, 결재선까지</li><li><i class="sw pv"></i>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li><i class="sw bg"></i>열린재정 2026 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%':'')+'</li>':'')+'</ul></div>'
       +'<div class="box"><h3>지금은 네 곳 · 2.0의 장치 셋</h3><p>카드는 정책실명제 포털, 결재문서는 원문공개, 안내는 사전정보공표, 예산은 열린재정에 있고 서로 묶이지 않습니다.</p><ul><li>국정과제 번호로 관리 — 새 번호를 만들지 않음</li><li>결재할 때 번호를 고름 — 문서와 결재선이 자동으로 붙음</li><li>없는 것도 없다고 보임 — 빈칸이 곧 청구 자리</li></ul></div>'; }
 
   fromHash();
