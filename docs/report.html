@@ -2,7 +2,13 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>정보공개 3제도 실측 · 보고</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="지방소멸대응기금으로 본 정보공개 3제도">
+<meta property="og:description" content="정책실명제 · 사전정보공표 · 원문공개 — 같은 사업 하나를 세 제도에서 꺼내 실제 화면으로 비교했습니다. 행정안전부 혁신기획과 서호성.">
+<meta property="og:image" content="https://hosungseo.github.io/open-go-corpus/assets/og.png">
+<meta property="og:url" content="https://hosungseo.github.io/open-go-corpus/report.html">
+<meta name="twitter:card" content="summary_large_image">
+<title>지방소멸대응기금으로 본 정보공개 3제도</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
 <style>
 /* 정보공개 3제도 페이지 공통 스타일 — 원본은 docs/src/shared.css, 빌드가 각 페이지에 인라인한다.
@@ -31,10 +37,10 @@
   --em-soft:var(--k-primary-5);       /* surface-primary-subtler */
   --sel:var(--k-secondary-5);         /* action-secondary-hover */
   /* 세 제도 색: KRDS point / warning / success */
-  --rn:var(--k-point-50); --pv:var(--k-warning-50); --og:var(--k-success-60);
+  --rn:var(--k-secondary-50); --pv:var(--k-warning-50); --og:var(--k-success-60);   /* 정책실명제는 남색 — 우리 국 제도가 경고색으로 읽히지 않게(2026-09-19). 빨강은 경고 전용 */
   /* 위 셋은 점·테두리용 식별색. 글자에 쓰면 흰 바탕에서 4.2 안팎이라 아래 변형을 쓴다 */
-  --rn-t:var(--k-point-60); --pv-t:var(--k-warning-60); --og-t:var(--k-success-60);
-  --rn-soft:var(--k-point-5); --pv-soft:var(--k-warning-5); --og-soft:var(--k-success-5);
+  --rn-t:var(--k-secondary-70); --pv-t:var(--k-warning-60); --og-t:var(--k-success-60);
+  --rn-soft:var(--k-secondary-5); --pv-soft:var(--k-warning-5); --og-soft:var(--k-success-5);
   /* 서체: KRDS 지정 Pretendard GOV. 세리프·모노 자리도 같은 서체로(굵기·숫자 정렬만 다르게) */
   --font:"Pretendard GOV","Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --serif:var(--font); --sans:var(--font);
@@ -213,8 +219,8 @@ html,body{margin:0;background:var(--paper)}
 .nav .brand{font-size:17px;font-weight:700;color:var(--ink);line-height:1.4;margin:0 0 18px 8px}
 .nav .brand small{display:block;font-weight:400;color:var(--ink-3);font-size:17px}
 .nav a.it{display:block;padding:9px 10px 9px 14px;margin:2px 0;border-left:4px solid transparent;font-size:19px;color:var(--ink-2);text-decoration:none;border-radius:0 var(--r-s) var(--r-s) 0}
-.nav a.it b{display:inline-block;width:20px;color:var(--ink-3);font-weight:500}
-.nav a.it.sub{font-size:17px;padding:7px 10px 7px 34px}.nav a.it.sub b{width:34px}
+.nav a.it b{display:inline-block;width:38px;color:var(--ink-3);font-weight:500;font-variant-numeric:tabular-nums}
+.nav a.it.sub{font-size:17px;padding:7px 10px 7px 34px}.nav a.it.sub b{width:38px}
 .nav a.it:hover{background:var(--panel-2)}
 .nav a.it.on{border-left-color:var(--em);color:var(--ink);font-weight:700;background:var(--panel-2)}
 .nav a.it.on b{color:var(--em)}
@@ -422,6 +428,40 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
 .rn2 .why{margin-top:12px;padding:11px 13px;border-radius:var(--r-s);background:var(--paper);font-size:14px;color:var(--ink-3);line-height:1.55}.rn2 .why b{color:var(--ink-2)}
 .rn2 .related{margin-top:12px;font-size:14px}
 .rn2 .related .rr{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px dashed var(--rule-2);cursor:pointer}.rn2 .related .rr:hover{color:var(--em)}
+/* 실제 화면 뜯어보기 — 사진 위 번호 지시선 */
+.shot{margin:0 0 26px;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
+.shot .cap{padding:13px 18px;border-bottom:1px solid var(--rule-2);font-size:19px;font-weight:700;background:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.shot .cap i{width:12px;height:12px;border-radius:3px;display:inline-block;flex:none}
+.shot .cap small{font-size:15px;font-weight:500;color:var(--ink-3)}
+.shot .im{position:relative;background:#fff;padding:10px}
+.shot .im img{display:block;width:100%;height:auto;border:1px solid var(--rule-2);border-radius:var(--r-s)}
+.shot .pin{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);box-shadow:0 0 0 3px #fff,0 3px 10px rgba(30,33,36,.35);font-variant-numeric:tabular-nums}
+.shot .pin.y{background:var(--og)}.shot .pin.n{background:var(--k-danger-60)}.shot .pin.p{background:var(--pv-t)}
+.shot .cal{list-style:none;margin:0;padding:14px 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:17px;line-height:1.55}
+.shot .cal li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start}
+.shot .cal .ct{min-width:0}
+.shot .cal .no{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.shot .cal li.y .no{background:var(--og)}.shot .cal li.n .no{background:var(--k-danger-60)}.shot .cal li.p .no{background:var(--pv-t)}
+.shot .cal b{font-weight:800}
+.shot .cal .ans{display:inline-block;margin-top:3px;font-size:15px;font-weight:700;padding:2px 9px;border-radius:var(--r-s);background:var(--panel-2);color:var(--ink-2)}
+.shot .cal li.y .ans{background:var(--og-soft);color:var(--og)}
+.shot .cal li.n .ans{background:var(--k-danger-5);color:var(--k-danger-60)}
+.shot .cal li.p .ans{background:var(--pv-soft);color:var(--pv-t)}
+@media (max-width:1100px){.shot .cal{grid-template-columns:1fr}}
+/* 세 입구 */
+.ents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:10px 0 0}
+.ents figure{margin:0;border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden}
+.ents figcaption{padding:10px 14px;font-size:17px;font-weight:700;border-bottom:1px solid var(--rule-2);display:flex;align-items:center;gap:8px}
+.ents figcaption i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.ents img{display:block;width:100%;height:auto;padding:8px;background:#fff}
+.ents p{margin:0;padding:0 14px 12px;font-size:15px;color:var(--ink-2);line-height:1.5}
+/* 첫 화면 영상 */
+.vid{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden;margin:0 0 18px}
+.vid video{display:block;width:100%;height:auto;background:#111418}
+.vid .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--rule-2);flex-wrap:wrap;font-size:15px;color:var(--ink-3)}
+.vid .bar b{color:var(--ink-2);font-weight:700;margin-right:4px}
+.vid .bar button{appearance:none;border:1px solid var(--rule);background:var(--panel);border-radius:var(--r-s);padding:5px 12px;font:inherit;font-size:15px;color:var(--ink-2);cursor:pointer}
+.vid .bar button:hover{border-color:var(--ink-3);color:var(--ink)}
 .lnb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
 .lnb .box{margin:0}
 /* (구) 계보 */
@@ -477,21 +517,34 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
   <nav class="nav" aria-label="차례">
     <div class="brand">정보공개 3제도 실측<small>정책실명제 · 사전정보공표 · 원문공개</small></div>
     <a class="it" href="#결론" data-s="s1"><b>1</b>결론</a>
-    <a class="it" href="#같은사업" data-s="s2"><b>2</b>같은 사업</a>
-    <a class="it" href="#비교" data-s="s3"><b>3</b>비교</a>
-    <a class="it" href="#분석" data-s="s4"><b>4</b>분석</a>
-    <a class="it sub" href="#분석-1" data-s="s4a"><b>4.1</b>추이</a>
-    <a class="it sub" href="#분석-2" data-s="s4b"><b>4.2</b>위치도</a>
-    <a class="it sub" href="#분석-3" data-s="s4c"><b>4.3</b>공개 장소</a>
-    <a class="it sub" href="#분석-4" data-s="s4e"><b>4.4</b>세부과제 554</a>
-    <a class="it" href="#2.0" data-s="s5"><b>5</b>2.0</a>
-    <div class="foot">기준 2026-09-15~18<br>정보공개포털 실측<br><br><a href="index.html">근거 자료 전체 →</a></div>
+    <a class="it" href="#비교" data-s="s3"><b>2</b>비교</a>
+    <a class="it" href="#화면-정책실명제" data-s="sc1"><b>3.1</b>정책실명제 화면</a>
+    <a class="it" href="#화면-사전정보공표" data-s="sc2"><b>3.2</b>사전정보공표 화면</a>
+    <a class="it" href="#화면-원문공개" data-s="sc3"><b>3.3</b>원문공개 화면</a>
+    <a class="it" href="#같은사업" data-s="s2"><b>4</b>같은 사업</a>
+    <a class="it" href="#분석" data-s="s4"><b>5</b>분석</a>
+    <a class="it sub" href="#분석-1" data-s="s4a"><b>5.1</b>추이</a>
+    <a class="it sub" href="#분석-2" data-s="s4c"><b>5.2</b>공개 장소</a>
+    <a class="it" href="#2.0" data-s="s5"><b>6</b>2.0 구상</a>
+    <div class="foot">기준 2026-09-15~18 · 정보공개포털 실측<br>화면 사진은 2026-09-19 직접 촬영,<br>담당자·결재선 <b>성명은 ○○○</b> 처리<br><br>행정안전부 혁신기획과 서호성<br><small style="color:var(--ink-3)">부처 공식 견해가 아닌 실무 검토 자료</small></div>
   </nav>
 
   <main class="main">
 
     <!-- 1 결론 -->
     <section class="scr" id="s1" aria-labelledby="h1s1">
+      <div class="vid">
+        <video id="mv" controls preload="metadata" poster="assets/screens/poster.png" playsinline>
+          <source src="assets/video/three-faces.mp4" type="video/mp4">
+          <track kind="subtitles" src="assets/video/three-faces.ko.vtt" srclang="ko" label="한국어" default>
+        </video>
+        <div class="bar"><b>3분 53초</b> 소리를 켜지 않아도 자막으로 다 읽힙니다. 보고 싶은 제도부터 →
+          <button type="button" data-t="17">정책실명제</button>
+          <button type="button" data-t="58">사전정보공표</button>
+          <button type="button" data-t="80.6">원문공개</button>
+          <button type="button" data-t="0">처음부터</button>
+        </div>
+      </div>
       <h1 id="h1s1">세 제도는 서로 다르고, 서로를 보완합니다.</h1>
       <div class="three">
         <div class="c pv"><div class="nm pv">사전정보공표</div><div class="what">안내 목록</div><div class="m">항목 1줄이 단위 · 분기·수시 갱신<br>포털 전체 <b id="c1pv">—</b>항목</div></div>
@@ -519,7 +572,7 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
         <thead><tr><th class="k">기준</th><th><i style="background:var(--rn)"></i>정책실명제</th><th><i style="background:var(--pv)"></i>사전정보공표</th><th><i style="background:var(--og)"></i>원문공개</th></tr></thead>
         <tbody>
           <tr><td class="k">단위</td><td><b>사업 1건</b></td><td>정보 항목 1줄</td><td>결재문서 1건</td></tr>
-          <tr><td class="k">근거 법령</td><td>대통령령 (행정업무규정 §63)</td><td>정보공개법 §7</td><td>정보공개법 §8의2</td></tr>
+          <tr><td class="k">근거 조문</td><td><b>행정업무규정 §63</b><br><small style="color:var(--ink-3)">대통령령 · 행정안전부 소관</small></td><td><b>정보공개법 §7</b><br><small style="color:var(--ink-3)">행정정보의 사전적 공표</small></td><td><b>정보공개법 §8의2</b><br><small style="color:var(--ink-3)">공개대상 정보의 원문공개</small></td></tr>
           <tr><td class="k">적용 기관</td><td>행정기관 (공공기관 제외)</td><td>공공기관 포함</td><td>공공기관 포함</td></tr>
           <tr><td class="k">공개 주기</td><td>연 1회 등록</td><td>분기·수시 (매년·수시 81%)</td><td>결재 즉시</td></tr>
           <tr><td class="k">담는 것</td><td>담당자·결재선·사업개요 한 문단·추진실적</td><td>제목·한 줄·링크</td><td>원본 전문과 첨부</td></tr>
@@ -533,7 +586,140 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
         </tbody>
       </table>
       <p>책임자를 사업 단위로 적는 곳은 정책실명제뿐입니다. 그 명부에 다른 두 제도를 잇는 열쇠(국정과제 번호)가 아직 없습니다.</p>
-      <div class="src">아홉 기준의 실측 근거는 <a href="compare.html">세 제도 비교</a> 페이지에서 항목마다 열립니다.</div>
+      <h2 style="font-size:22px;margin:22px 0 6px">국민이 들어가는 문은 셋으로 갈립니다</h2>
+      <p>같은 사업을 찾아도 출발점이 다릅니다. 정책실명제는 <b>기관을 먼저 고르고</b>, 나머지 둘은 <b>검색으로</b> 찾습니다.</p>
+      <div class="ents">
+        <figure><figcaption><i style="background:var(--rn)"></i>정책실명제</figcaption><img src="assets/screens/ent-rn.png" alt="정책실명제 입구 — 중앙행정기관·시도·교육청을 고르는 화면"><p>기관을 고르면 그 기관이 등록한 사업 목록으로 갑니다. 검색어로 사업을 바로 찾는 길이 없습니다.</p></figure>
+        <figure><figcaption><i style="background:var(--pv)"></i>사전정보공표</figcaption><img src="assets/screens/ent-pv.png" alt="사전정보공표 입구 — 검색어·기관·기간 조건 화면"><p>검색어와 기관·기간으로 항목을 찾습니다. 항목은 제목 한 줄과 링크입니다.</p></figure>
+        <figure><figcaption><i style="background:var(--og)"></i>원문공개</figcaption><img src="assets/screens/ent-og.png" alt="원문공개 입구 — 검색어·기관·기간·공개구분 조건 화면"><p>같은 검색이되 <b>공개구분</b>(공개·부분공개)이 하나 더 붙습니다. 결과는 문서 한 건씩입니다.</p></figure>
+      </div>
+      <div class="src">아홉 기준의 실측 근거는 <a href="compare.html">세 제도 비교</a> 페이지에서 항목마다 열립니다. 위 세 장은 2026-09-19 포털에서 직접 찍은 화면입니다.</div>
+    </section>
+
+    <!-- 3.1 정책실명제 화면 -->
+    <section class="scr" id="sc1" aria-labelledby="h1sc1">
+      <h1 id="h1sc1"><span style="color:var(--rn-t)">정책실명제</span> 화면 — 사업 하나가 명부 한 장</h1>
+      <p>행정안전부 <b>지방소멸대응기금</b>을 정책실명제에서 열면 이렇게 보입니다. 번호를 따라가며 어느 칸이 국민의 질문에 답하는지 보십시오.</p>
+
+      <figure class="shot" data-shot="rn-1">
+        <div class="cap"><i style="background:var(--rn)"></i>① 사업 목록<small>정보공개포털 › 공개정보 › 정책실명제 › 중점관리대상사업 (행정안전부, 2025년 등록분)</small></div>
+        <div class="im"><img alt="행정안전부 중점관리대상사업 목록 화면"></div>
+        <ol class="cal">
+          <li data-pin="총건수" data-xy="92,4" class="p"><b>총 27건</b> 행정안전부가 2025년에 등록한 사업 전부입니다. 부처 하나가 한 해 스물일곱 건입니다.<span class="ans">사업이 몇 건인가 — 답함</span></li>
+          <li data-pin="사업명" class="y"><b>정책사업명</b> 사업 이름이 곧 목록의 줄입니다. 예산 사업명이 아니라 등록할 때 적은 이름입니다.<span class="ans">무슨 사업인가 — 답함</span></li>
+          <li data-pin="조회수" data-xy="68.5,8.3" class="p"><b>조회수</b> 국민이 몇 번 열어봤는지가 목록에 그대로 나옵니다. 대부분 한 자리입니다.<span class="ans">읽히고 있나 — 답함</span></li>
+          <li data-pin="선정기준" data-xy="84.5,8.3" class="p"><b>선정기준</b> 왜 중점관리 대상이 됐는지(국정과제·대규모 예산 등). 국정과제라고만 적히고 <b>번호는 없습니다</b>.<span class="ans">어느 국정과제인가 — 못 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="rn-2">
+        <div class="cap"><i style="background:var(--rn)"></i>② 사업내역서<small>사업 하나를 열면 나오는 본문 — 이 한 장이 정책실명제의 알맹이</small></div>
+        <div class="im"><img alt="지방소멸대응기금 사업내역서 화면"></div>
+        <ol class="cal">
+          <li data-pin="사업명" class="y"><b>정책사업명·추진배경</b> 무슨 사업이고 왜 하는지. 한 문단입니다.<span class="ans">무슨 사업인가 — 답함</span></li>
+          <li data-pin="개요" class="p"><b>사업개요</b> 목적·근거 법령·규모(연 1조원, 광역 25%·기초 75%)·기간(’22~’31)·배분방법. 제도의 뼈대가 여기 다 있습니다. 다만 <b>우리 지역 배분액은 없습니다</b>.<span class="ans">어떻게 배분되나 — 일부만</span></li>
+          <li data-pin="부서" class="y"><b>사업부서</b> 균형발전제도과. 어느 과가 맡는지 사업 단위로 적힙니다.<span class="ans">누가 맡았나 — 답함</span></li>
+          <li data-pin="담당자" class="y"><b>담당자</b> 과장·사무관·주무관 <b>세 사람의 이름</b>이 실명으로 적힙니다. 세 제도 가운데 여기만 있습니다. (이 화면에서는 ○○○으로 가렸습니다)<span class="ans">누가 맡았나 — 답함</span></li>
+          <li data-pin="선정기준" class="p"><b>선정기준</b> 「국정과제」. 어느 과제인지는 번호도 이름도 없습니다.<span class="ans">어느 국정과제인가 — 못 답함</span></li>
+          <li data-pin="기간" class="y"><b>사업기간</b> ’22년~’31년. 기간이 적혀 있어 <b>올해 등록이 없다는 사실</b>도 드러납니다.<span class="ans">언제까지 하는 일인가 — 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="rn-3">
+        <div class="cap"><i style="background:var(--rn)"></i>③ 그간 주요 추진내용<small>같은 화면 아래쪽 — 날짜가 붙은 조치와 조치마다의 결재선</small></div>
+        <div class="im"><img alt="그간 주요 추진내용 표 — 조치·날짜·결재선"></div>
+        <ol class="cal">
+          <li data-pin="조치" class="y"><b>조치 내용</b> 「지방소멸대응기금 배분 등에 관한 기준」 개정(안) 보고처럼, 그 해에 무엇을 했는지 한 줄씩. 2025년은 다섯 건입니다.<span class="ans">무엇을 했나 — 답함</span></li>
+          <li data-pin="날짜" class="y"><b>날짜</b> ’25.10.28처럼 날짜가 붙습니다. 세 제도 중 사업 단위로 <b>시점</b>을 알 수 있는 유일한 자리입니다.<span class="ans">언제 했나 — 답함</span></li>
+          <li data-pin="결재선" class="y"><b>결재선</b> 조치마다 차관보직무대리·국장·과장·사무관까지 누가 결재했는지 적힙니다.<span class="ans">누가 결정했나 — 답함</span></li>
+          <li class="n" data-xy="50,97"><b>없는 것 — 문서</b> 이 조치들이 어느 결재문서로 이뤄졌는지 링크가 없습니다. 제목으로 사람이 짐작할 뿐입니다.<span class="ans">근거 문서는 — 못 답함</span></li>
+        </ol>
+      </figure>
+
+      <div class="src">화면 셋 모두 2026-09-19 정보공개포털에서 직접 찍었습니다(행정안전부 지방소멸대응기금, 2025년 등록분). 담당자·결재선의 성명은 ○○○으로 가렸고 직위는 그대로 뒀습니다. 여기 나온 수치(27건·5건)는 <b>이 사업 하나의 실제 화면</b>이고, 전체 통계는 <a href="#분석">분석</a>에 있습니다.</div>
+    </section>
+
+    <!-- 3.2 사전정보공표 화면 -->
+    <section class="scr" id="sc2" aria-labelledby="h1sc2">
+      <h1 id="h1sc2"><span style="color:var(--pv-t)">사전정보공표</span> 화면 — 포털에는 한 줄, 내용은 링크 너머</h1>
+      <p>같은 사업을 사전정보공표에서 찾으면 <b>항목 한 줄</b>이 나옵니다. 내용은 포털이 아니라 부처 누리집에 있습니다.</p>
+
+      <figure class="shot" data-shot="pv-1">
+        <div class="cap"><i style="background:var(--pv)"></i>① 포털의 항목<small>정보공개포털 › 공개정보 › 사전정보 — 「지방소멸대응기금」 검색 결과</small></div>
+        <div class="im"><img alt="사전정보공표 검색 결과 — 지방소멸대응기금 항목 한 줄"></div>
+        <ol class="cal">
+          <li data-xy="20,12" class="p"><b>1건</b> 이 기금에 관한 사전정보공표 항목은 전국에서 한 건입니다.<span class="ans">안내가 있나 — 답함</span></li>
+          <li data-pin="제목" class="y"><b>제목</b> 「지방소멸대응기금」. 제목이 곧 항목이고, 여기를 누르면 부처 누리집으로 넘어갑니다.<span class="ans">무엇을 안내하나 — 답함</span></li>
+          <li data-pin="부서" class="p"><b>담당 부서</b> 행정안전부 › 자치혁신실 › 균형발전국 › 균형발전제도과. <b>부서까지만</b>이고 담당자는 없습니다.<span class="ans">누가 맡았나 — 부서까지</span></li>
+          <li data-pin="분류" class="p"><b>분류</b> 재정·세제·금융 › 재정운용. 주제별로 묶여 있어 다른 부처 항목과 나란히 볼 수 있습니다.<span class="ans">어디에 속하나 — 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="pv-2">
+        <div class="cap"><i style="background:var(--pv)"></i>② 링크를 넘어가면 부처 누리집<small>mois.go.kr › 업무안내 › 자치혁신실 › 지방소멸대응 › 지방소멸대응기금</small></div>
+        <div class="im"><img alt="행정안전부 누리집의 지방소멸대응기금 안내 페이지 상단"></div>
+        <ol class="cal">
+          <li data-pin="경로" class="p"><b>여기는 포털이 아닙니다</b> 주소가 mois.go.kr로 바뀝니다. 사전정보공표의 실제 내용은 부처 누리집이 가지고 있고, 포털은 문패만 답니다.<span class="ans">내용은 어디에 — 누리집</span></li>
+          <li data-pin="계획" class="y"><b>’26년 추진계획</b> 올해 무엇을 언제 하는지 세 줄로. 투자계획 작성·제출(~6·7월), 평가(7~10월), 배분액 확정(12월).<span class="ans">올해 일정은 — 답함</span></li>
+          <li data-pin="일정" class="y"><b>기한이 명시됩니다</b> 기초는 6월, 광역은 7월처럼 국민·지자체가 지켜야 할 날짜가 적혀 있습니다.<span class="ans">언제까지 내야 하나 — 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="pv-3">
+        <div class="cap"><i style="background:var(--pv)"></i>③ 안내의 알맹이 — 운영 절차<small>같은 누리집 페이지 본문. 절차 전체가 한 표로 정리돼 있다</small></div>
+        <div class="im"><img alt="’26년도 운영 절차 표 — 작성·제출부터 기금 배분까지"></div>
+        <ol class="cal">
+          <li data-pin="작성" class="y"><b>투자계획(안) 작성·제출</b> 지방정부가 6~7월까지. 절차의 출발점이 국민에게 공개돼 있습니다.<span class="ans">어떻게 진행되나 — 답함</span></li>
+          <li data-pin="평가" class="y"><b>평가</b> 평가단이 7~10월. 누가 평가하는지(평가단·심의위원회)까지 적힙니다.<span class="ans">누가 심사하나 — 답함</span></li>
+          <li data-pin="심의" class="y"><b>협의·자문</b> 심의위원회 10~11월. 단계마다 주체와 기간이 짝지어 있습니다.<span class="ans">언제 결정되나 — 절차로는 답함</span></li>
+          <li data-pin="배분" class="n"><b>없는 것 — 결정과 사람</b> 절차는 있지만 <b>실제로 무엇이 결정됐는지, 누가 결재했는지</b>는 없습니다. 예정표이지 기록이 아닙니다.<span class="ans">무엇을 결정했나 — 못 답함</span></li>
+        </ol>
+      </figure>
+
+      <div class="src">①은 2026-09-19 정보공개포털, ②③은 같은 날 행정안전부 누리집에서 찍었습니다. 사전정보공표는 포털에 <b>246,604항목</b>이 있고(전수), 이 사업의 항목은 그 가운데 한 줄입니다.</div>
+    </section>
+
+    <!-- 3.3 원문공개 화면 -->
+    <section class="scr" id="sc3" aria-labelledby="h1sc3">
+      <h1 id="h1sc3"><span style="color:var(--og)">원문공개</span> 화면 — 결재문서 그 자체</h1>
+      <p>원문공개는 사업이 아니라 <b>문서</b>를 다룹니다. 검색하면 문서가 한 줄씩 나오고, 열면 결재문서 원본이 그대로 열립니다.</p>
+
+      <figure class="shot" data-shot="og-1">
+        <div class="cap"><i style="background:var(--og)"></i>① 검색 결과<small>정보공개포털 › 공개정보 › 원문정보 — 「지방소멸대응기금」 검색 결과 13건</small></div>
+        <div class="im"><img alt="원문정보 검색 결과 목록"></div>
+        <ol class="cal">
+          <li data-xy="20,10" class="y"><b>문서 제목</b> 한 줄이 문서 한 건입니다. 사업으로 묶이지 않아 <b>누가 만든 문서든 섞여</b> 나옵니다.<span class="ans">어떤 문서가 있나 — 답함</span></li>
+          <li data-xy="20,20" class="p"><b>생산 기관</b> 대구광역시·강원특별자치도처럼 지방정부 문서가 앞에 옵니다. 같은 낱말을 쓴 문서가 다 걸립니다.<span class="ans">어느 기관 문서인가 — 답함</span></li>
+          <li data-xy="82,10" class="p"><b>단위업무</b> 인구동태업무·민원업무처리 등 기록관리 분류입니다. 사업 이름이 아닙니다.<span class="ans">무슨 사업의 문서인가 — 못 답함</span></li>
+          <li data-xy="82,20" class="y"><b>생산일자</b> 날짜순으로 쌓입니다. 결재가 끝나면 바로 올라오므로 가장 최신입니다.<span class="ans">언제 문서인가 — 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="og-2">
+        <div class="cap"><i style="background:var(--og)"></i>② 원문정보 상세<small>행정안전부 「2027년 지방소멸대응기금 투자계획 수정·보완 안내 검토」(2026-05-29)</small></div>
+        <div class="im"><img alt="원문정보 상세 화면 — 문서번호·보존기간·공개여부·본문파일"></div>
+        <ol class="cal">
+          <li data-pin="문서번호" class="y"><b>문서번호</b> 균형발전제도과-1644. 문서를 특정할 수 있는 번호입니다.<span class="ans">어떤 문서인가 — 답함</span></li>
+          <li data-pin="부서" class="p"><b>담당 부서</b> 균형발전제도과. 담당자명 칸은 있으나 이 화면에서는 가렸습니다.<span class="ans">누가 맡았나 — 부서까지</span></li>
+          <li data-pin="공개" class="y"><b>공개여부</b> 공개. 비공개면 제목만 남고 파일은 없습니다.<span class="ans">볼 수 있나 — 답함</span></li>
+          <li data-pin="본문" class="y"><b>본문파일</b> PDF를 내려받거나 뷰어로 바로 볼 수 있습니다. 여기가 다른 두 제도에 없는 깊이입니다.<span class="ans">원문을 볼 수 있나 — 답함</span></li>
+          <li data-pin="붙임" class="y"><b>붙임파일</b> 내부결재 검토서(hwpx)까지 붙어 나옵니다.<span class="ans">근거 자료는 — 답함</span></li>
+          <li data-pin="보존" class="p"><b>보존기간</b> 30년. 기록물 관리 정보가 함께 보입니다.<span class="ans">얼마나 남나 — 답함</span></li>
+        </ol>
+      </figure>
+
+      <figure class="shot" data-shot="doc">
+        <div class="cap"><i style="background:var(--og)"></i>③ 실제로 열리는 문서<small>위 화면에서 내려받은 본문 PDF 1쪽 — 표지와 결재란</small></div>
+        <div class="im"><img src="assets/fund/DCT39FBC7247A6620555EC8313A5E7335A5-p1.png" alt="행정안전부 시행문 표지 — 수신 내부결재, 제목, 결재란"></div>
+        <ol class="cal">
+          <li class="y" data-xy="30,21"><b>제목과 수신</b> 「2027년 지방소멸대응기금 투자계획 수정·보완 안내 검토」, 수신 내부결재. 무엇을 검토한 문서인지 첫 줄에 있습니다.<span class="ans">무엇을 했나 — 답함</span></li>
+          <li class="y" data-xy="26,35"><b>본문</b> 지방선거에 따른 여건 변화로 투자계획 제출 이후 보완 기간을 주는 방안을 조합과 협의하겠다는 내용. 결정의 이유가 문장으로 있습니다.<span class="ans">왜 그렇게 했나 — 답함</span></li>
+          <li class="y" data-xy="46,86"><b>결재란</b> 기안 행정사무관 → 검토 → 균형발전제도과장 → <b>전결 균형발전국장</b>(2026.5.29.). 문서마다 결재선이 남습니다.<span class="ans">누가 결정했나 — 답함</span></li>
+          <li class="n" data-xy="50,99"><b>없는 것 — 사업</b> 이 문서가 <b>어느 사업의 것인지</b> 문서 어디에도 적히지 않습니다. 정책실명제 카드와 이어질 번호가 없습니다.<span class="ans">어느 사업인가 — 못 답함</span></li>
+        </ol>
+      </figure>
+
+      <div class="src">①②는 2026-09-19 포털에서 찍었고, ③은 그 화면에서 실제로 내려받은 본문 PDF입니다(결재란 성명·이메일은 지웠습니다). 원문공개는 하루 4,000건 안팎이 올라옵니다. 이 사업과 이름이 같은 문서는 검색으로 13건, 이 부서의 문서는 <a href="#2.0">2.0 화면</a>에서 연도별로 모아 두었습니다.</div>
     </section>
 
     <!-- 4 분석 -->
@@ -586,7 +772,8 @@ main.main{padding:28px 56px 24px;max-width:1240px;box-sizing:border-box;margin:0
 
     <!-- 5 2.0 -->
     <section class="scr" id="s5" aria-labelledby="h1s5">
-      <h1 id="h1s5">정책실명제 명부를 뼈대로, 사업 하나를 시간 순으로 — 2.0 시안</h1>
+      <div style="display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:800;letter-spacing:.04em;color:var(--k-danger-60);background:var(--k-danger-5);border:2px solid var(--k-danger-10);border-radius:var(--r-s);padding:7px 14px;margin:0 0 10px">구상 · 아직 하지 않는 일<span style="font-weight:500;color:var(--ink-2);letter-spacing:0">아래는 현재 제도가 아니라, 세 제도를 이으면 어떻게 되는지 그려 본 화면입니다</span></div>
+      <h1 id="h1s5">정책실명제 명부를 뼈대로, 사업 하나를 시간 순으로 — 2.0 구상</h1>
       <div class="lnh" id="lnh"></div>
       <div class="rn2"><div class="split">
         <div class="panel"><div class="ph"><h4>정책 계보</h4><span class="lg"><span><i class="sw rn"></i>정책실명제 카드 = 뼈대</span><span><i class="sw og"></i>원문공개 문서</span><span><i class="sw pv"></i>사전정보공표</span></span><button class="btn" type="button" id="rnAllOpen">모두 펼치기</button><button class="btn" type="button" id="rnAllClose">접기</button></div><div class="tl" id="rnTl"></div></div>
@@ -13570,6 +13757,96 @@ var LN = {
  ]
 }
 ;
+var SC = {
+ "찍은날": "2026-09-18",
+ "배율": 2,
+ "원본폭": 1440,
+ "목록": [
+  {
+   "id": "pv-1",
+   "note": "① 포털의 항목 — 한 줄로 '무엇을 안내하는지'만 적혀 있다",
+   "w": 1020,
+   "h": 253,
+   "bytes": 36029,
+   "pins": [
+    {
+     "key": "건수",
+     "x": 10,
+     "y": 12.65
+    },
+    {
+     "key": "제목",
+     "x": 40.79,
+     "y": 31.62
+    },
+    {
+     "key": "부서",
+     "x": 41.57,
+     "y": 40.71
+    },
+    {
+     "key": "분류",
+     "x": 89.41,
+     "y": 39.92
+    }
+   ]
+  },
+  {
+   "id": "pv-2",
+   "note": "② 링크를 넘어간 원 사이트 — 내용은 포털이 아니라 부처 누리집에 있다",
+   "w": 932,
+   "h": 520,
+   "bytes": 139922,
+   "pins": [
+    {
+     "key": "계획",
+     "x": 50,
+     "y": 28.77
+    },
+    {
+     "key": "경로",
+     "x": 69.76,
+     "y": 7.31
+    },
+    {
+     "key": "일정",
+     "x": 50.8,
+     "y": 34.63
+    }
+   ]
+  },
+  {
+   "id": "pv-3",
+   "note": "③ 안내 페이지 본문 — 절차와 배분 규모까지 넓게, 그러나 결정 과정은 없다",
+   "w": 882,
+   "h": 190,
+   "bytes": 61953,
+   "pins": [
+    {
+     "key": "작성",
+     "x": 8.24,
+     "y": 22.73
+    },
+    {
+     "key": "평가",
+     "x": 24.88,
+     "y": 49.84
+    },
+    {
+     "key": "심의",
+     "x": 41.59,
+     "y": 49.84
+    },
+    {
+     "key": "배분",
+     "x": 91.76,
+     "y": 77.37
+    }
+   ]
+  }
+ ]
+}
+;
 (function(){
   var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
   var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
@@ -13577,7 +13854,9 @@ var LN = {
   var amt=function(eok){ eok=Math.round(eok); if(eok>=10000){ var jo=Math.floor(eok/10000), r=eok%10000; return jo+'조'+(r?' '+fmt(r)+'억':''); } return fmt(eok)+'억'; };
 
   /* 화면 전환 — 주소 해시로 */
-  var ORDER=['s1','s2','s3','s4','s4a','s4b','s4c','s4e','s5'], NAMES={'결론':'s1','같은사업':'s2','비교':'s3','분석':'s4','분석-1':'s4a','분석-2':'s4b','분석-3':'s4c','분석-4':'s4e','2.0':'s5'}, LABEL={s1:'1',s2:'2',s3:'3',s4:'4',s4a:'4.1',s4b:'4.2',s4c:'4.3',s4e:'4.4',s5:'5'};
+  var ORDER=['s1','s3','sc1','sc2','sc3','s2','s4','s4a','s4c','s5'],
+      NAMES={'결론':'s1','비교':'s3','화면-정책실명제':'sc1','화면-사전정보공표':'sc2','화면-원문공개':'sc3','같은사업':'s2','분석':'s4','분석-1':'s4a','분석-2':'s4c','2.0':'s5'},
+      LABEL={s1:'1',s3:'2',sc1:'3.1',sc2:'3.2',sc3:'3.3',s2:'4',s4:'5',s4a:'5.1',s4c:'5.2',s5:'6'};
   var cur='s1';
   var show=function(s){ cur=ORDER.indexOf(s)>=0?s:'s1';
     ORDER.forEach(function(id){ document.getElementById(id).classList.toggle('on',id===cur); });
@@ -13763,6 +14042,43 @@ var LN = {
     document.getElementById('lnr').innerHTML='<div class="box"><h3><i class="sw rn"></i>정책실명제 명부에서 나오는 것</h3><ul><li><b>책임</b> — 부서와 직위(과장·사무관·주무관)가 카드 <b>'+C.length+'장</b>마다. 보고 화면은 직위만, 포털에는 실명</li><li><b>사업기간</b> '+esc(last.기간)+' — 기간이 적혀 있어 <b>'+(MD.y||2026)+'년 빈칸</b>이 드러남</li><li><b>선정기준</b> '+esc(sel.join(' → '))+' — 카드가 스스로 국정과제임을 밝힘</li><li><b>추진실적</b> '+(last.추진실적?last.추진실적.length:0)+'건 — 날짜가 있는 조치, 카드 본문</li>'+(chg.length?'<li><b>소관 이관</b> '+esc(chg.join(', '))+' — 해마다 명부가 있어 이관이 보임</li>':'')+'</ul></div>'
       +'<div class="box"><h3>번호로 붙는 것 — 원문까지</h3><ul><li><i class="sw og"></i>원문공개 결재문서 <b>'+nOrig+'건</b> — 원문을 이 화면에 실었습니다(2023년 2 · '+(MD.y||2026)+'년 1)</li><li><i class="sw og"></i>정보목록 문서 <b>'+nList+'건</b> — 제목·결재선만, 원문 없음('+(MD.y||2026)+'년)</li><li><i class="sw bg"></i>타기관 원문공개 문서 <b>'+fmt(TK.총)+'건</b> — '+esc(TK.상위.slice(0,3).map(function(x){return x[0]+' '+x[1];}).join(' · '))+' …</li><li><i class="sw pv"></i>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li><i class="sw bg"></i>열린재정 '+(MD.y||2026)+' 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%':'')+'</li>':'')+'</ul></div>'
       +'<div class="box"><h3>지금은 네 곳 · 2.0의 장치 셋</h3><p>카드는 정책실명제 포털, 결재문서는 원문공개, 안내는 사전정보공표, 예산은 열린재정에 있고 서로 묶이지 않습니다.</p><ul><li>국정과제 번호로 관리 — 새 번호를 만들지 않음</li><li>결재할 때 번호를 고름 — 문서와 결재선이 자동으로 붙음</li><li>없는 것도 없다고 보임 — 빈칸이 곧 청구 자리</li></ul></div>'; }
+  /* 실제 화면 뜯어보기 — 사진에 번호 지시선을 얹는다.
+     좌표는 찍을 때 기록한 것(notes/screens.json)을 쓰고, 기록이 없는 자리는 data-xy 로 직접 준다 */
+  (function(){
+    var byId={}; if(SC&&SC.목록) SC.목록.forEach(function(s){ byId[s.id]=s; });
+    document.querySelectorAll('.shot').forEach(function(fig){
+      var id=fig.dataset.shot, rec=byId[id], im=fig.querySelector('.im'), img=im&&im.querySelector('img');
+      if(img&&!img.getAttribute('src')&&rec) img.src='assets/screens/'+id+'.png';
+      if(img&&rec&&!img.getAttribute('alt')) img.alt=rec.note||'';
+      var pins={}; if(rec&&rec.pins) rec.pins.forEach(function(p){ pins[p.key]=p; });
+      var n=0;
+      fig.querySelectorAll('.cal > li').forEach(function(li){
+        n++;
+        var ct=document.createElement('div'); ct.className='ct';
+        while(li.firstChild) ct.appendChild(li.firstChild);
+        var no=document.createElement('span'); no.className='no'; no.textContent=n;
+        li.appendChild(no); li.appendChild(ct);
+        var pos=null, xy=li.dataset.xy;
+        if(xy){ var a=xy.split(','); pos={x:+a[0],y:+a[1]}; }
+        else if(li.dataset.pin&&pins[li.dataset.pin]) pos=pins[li.dataset.pin];
+        if(!pos||!im) return;
+        var pin=document.createElement('span');
+        pin.className='pin'+(li.classList.contains('y')?' y':li.classList.contains('n')?' n':li.classList.contains('p')?' p':'');
+        pin.textContent=n; pin.setAttribute('aria-hidden','true');
+        pin.style.left=Math.max(3,Math.min(97,pos.x))+'%'; pin.style.top=Math.max(4,Math.min(96,pos.y))+'%';
+        im.appendChild(pin);
+      });
+    });
+  })();
+
+  /* 첫 화면 영상 — 제도별로 건너뛰기 */
+  (function(){
+    var v=document.getElementById('mv'); if(!v) return;
+    document.querySelectorAll('.vid .bar button').forEach(function(b){
+      b.onclick=function(){ v.currentTime=+b.dataset.t; v.play().catch(function(){}); };
+    });
+  })();
+
   fromHash();
 })();
 </script>
