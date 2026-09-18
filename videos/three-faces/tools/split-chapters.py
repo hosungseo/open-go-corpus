@@ -18,20 +18,23 @@ OUTDIR = os.environ.get('HF_CHAPTER_DIR', '/private/tmp/three-faces-chapters')
 
 # (챕터키, 길이, 이 챕터에 속한 클립 id들, 자막 번호)  — 순서가 곧 이어붙일 순서
 CHAPTERS = [
-    # (key, dur, 남길 클립 id, 자막 번호) — STORYBOARD 챕터 표와 같다
-    ('open',    10.5, ['stage-open'], []),
-    ('faces0',   6.5, ['stage-faces0'], []),
-    ('rn',      41.0, ['stage-rn', 'rnvid'], [1]),
-    ('pv',      22.6, ['stage-pv', 'pvvid'], [2]),
-    ('og1',     14.7, ['stage-og1', 'ogvid'], []),
-    ('og2',     25.2, ['stage-og2'], [3]),
-    ('ask',     30.7, ['stage-ask'], [4]),
-    ('gap',     23.7, ['stage-gap', 'gapvid'], [5]),
-    ('compose', 16.3, ['stage-compose'], [6]),
-    ('demo',     9.0, ['stage-demo', 'openvid'], []),
-    ('key',      9.4, ['stage-key'], [7]),
-    ('close',   16.3, ['stage-close'], [8]),
-    ('thanks',   7.0, ['stage-thanks'], []),
+    ('open', 11.2, ['stage-open'], []),
+    ('concl', 15.4, ['stage-concl'], [1]),
+    ('cmp', 32.0, ['stage-cmp'], [2]),
+    ('ents', 10.1, ['stage-ents'], []),
+    ('rnA', 21.9, ['stage-rnA'], []),
+    ('rnB', 27.9, ['stage-rnB'], [3]),
+    ('rnC', 18.4, ['stage-rnC'], [4]),
+    ('pvA', 17.2, ['stage-pvA'], []),
+    ('pvB', 11.0, ['stage-pvB'], [5]),
+    ('pvC', 19.4, ['stage-pvC'], [6]),
+    ('ogA', 21.2, ['stage-ogA'], []),
+    ('ogB', 16.0, ['stage-ogB'], [7]),
+    ('ogC', 19.0, ['stage-ogC'], [8]),
+    ('same', 29.0, ['stage-same', 'gapvid'], [9]),
+    ('comp', 35.5, ['stage-comp', 'openvid'], [10]),
+    ('close', 17.0, ['stage-close'], [11]),
+    ('thanks', 7.0, ['stage-thanks'], []),
 ]
 
 def read_starts(html):
@@ -70,6 +73,15 @@ def main():
         newT = {k: (0 if k == key else 900) for k in tbase}
         s = re.sub(r'const T = \{.*?\};',
                    'const T = ' + json.dumps(newT).replace('"', '') + ';', s, flags=re.S)
+        # 2판: 나레이션 시각표 N 도 챕터 기준으로 옮긴다(트윈이 N[id].at 을 쓴다)
+        mN = re.search(r'const N = (\{.*?\});', s, flags=re.S)
+        if mN:
+            Nd = json.loads(mN.group(1))
+            for k in Nd:
+                v = Nd[k]['at'] - base
+                # 음수 위치에 트윈을 넣으면 GSAP 이 타임라인 전체를 뒤로 민다 — 지나간 문장은 900초 뒤로 주차
+                Nd[k]['at'] = round(v if v > -3 else 900 + v, 3)
+            s = s.replace(mN.group(0), 'const N = ' + json.dumps(Nd) + ';')
         # 2) 클립 : 대상은 base 만큼 앞으로, 나머지는 900 으로
         for elid, st in starts.items():
             if elid == 'root':

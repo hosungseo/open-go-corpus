@@ -16,7 +16,7 @@ python3 tools/split-chapters.py
 read -r -a ORDER <<< "$(python3 - <<'PY'
 import re
 body = re.search(r'CHAPTERS = \[(.*?)\n\]', open('tools/split-chapters.py').read(), re.S).group(1)
-print(' '.join(re.findall(r"^\s*\('([a-z0-9]+)'", body, re.M)))
+print(' '.join(re.findall(r"^\s*\('([A-Za-z0-9]+)'", body, re.M)))
 PY
 )"
 [ ${#ORDER[@]} -gt 0 ] || { echo "챕터 순서를 읽지 못했습니다"; exit 1; }
