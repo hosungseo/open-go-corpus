@@ -310,6 +310,7 @@ if (!WITH_NAMES) {
   const FL_PATH = R("notes/fiscal-link.json");
   const P2_PATH = R("notes/policy2-mois.json");
   const CZ_PATH = R("notes/citizen.json");
+  const LN_PATH = R("notes/report-lineage.json");
   const GJ_PATH = R("notes/gukjeong.json");
   const VS_PATH = R("notes/vision.json");
   for (const name of ["index", "compare", "history", "policy2", "notes", "report"]) {
@@ -349,6 +350,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(GJ_PATH)) { console.error("ERROR notes/gukjeong.json missing"); process.exit(1); }
       const gd = fs.readFileSync(GJ_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__GJDATA__*/null", () => gd).replace("/*__GJDATA__*/", () => gd);
+    }
+    if (page.includes("/*__LNDATA__*/")) {
+      if (!fs.existsSync(LN_PATH)) { console.error("ERROR notes/report-lineage.json missing — run node tools/build-lineage.mjs"); process.exit(1); }
+      const ln = fs.readFileSync(LN_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__LNDATA__*/null", () => ln).replace("/*__LNDATA__*/", () => ln);
     }
     if (page.includes("/*__CZDATA__*/")) {
       if (!fs.existsSync(CZ_PATH)) { console.error("ERROR notes/citizen.json missing"); process.exit(1); }

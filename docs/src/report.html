@@ -22,9 +22,9 @@ html,body{margin:0;background:var(--paper)}
 .nav .foot{margin-top:auto;font-size:17px;color:var(--ink-3);line-height:1.6;padding-left:8px}
 .nav .foot a{color:var(--ink-2)}
 .nav .foot button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);padding:8px 14px;font:inherit;font-size:17px;color:var(--ink);cursor:pointer;margin:10px 0 12px}
-.main{padding:36px 56px 28px;max-width:1140px;box-sizing:border-box}
+.main{padding:28px 56px 24px;max-width:1140px;box-sizing:border-box}
 .scr{display:none}.scr.on{display:block}
-.scr h1{font-size:32px;line-height:1.35;letter-spacing:-.01em;margin:0 0 18px;color:var(--ink)}
+.scr h1{font-size:32px;line-height:1.35;letter-spacing:-.01em;margin:0 0 16px;color:var(--ink)}
 .scr h2{font-size:22px;margin:30px 0 10px;color:var(--ink)}
 .scr p{font-size:19px;line-height:1.75;color:var(--ink-2);margin:0 0 12px;max-width:900px}
 .scr p b{color:var(--ink)}
@@ -98,6 +98,26 @@ html,body{margin:0;background:var(--paper)}
 .lg i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:7px;vertical-align:-2px;border:1px solid var(--rule)}
 .band{display:flex;height:34px;border-radius:5px;overflow:hidden;border:1px solid var(--rule);margin:6px 0 10px}
 .band span{display:block;height:100%;border-right:1px solid var(--panel)}
+/* 5 2.0 — 계보(시간 순) */
+.lnh{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:10px 18px;margin:4px 0 10px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:center}
+.lnh .no{font-size:17px;color:var(--ink-3);margin:0 0 2px}.lnh .nm{font-size:22px;font-weight:700;line-height:1.3;margin:0;color:var(--ink)}.lnh .sub{font-size:17px;color:var(--ink-2);margin:4px 0 0}
+.lnh .sum{font-size:15px;color:var(--ink-2);line-height:1.5;flex:1 1 100%;margin-top:-4px}.lnh .sum b{color:var(--ink)}
+.lnw{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px}
+.lnt{position:relative;padding-left:56px}
+.lnt:before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:3px;background:var(--rule)}
+.lnt .yr{position:relative;margin:0 0 6px}
+.lnt .yr .dot{position:absolute;left:-56px;top:2px;width:40px;height:40px;border-radius:50%;background:var(--em);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--paper)}
+.lnt .yr.none .dot{background:var(--paper);color:var(--k-danger-60);border:2px dashed var(--k-danger-60)}
+.lnt .card{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:9px 14px}
+.lnt .card .nm{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 1px}.lnt .card .m{font-size:15px;color:var(--ink-3);line-height:1.5}
+.lnt .card .m b{color:var(--ink-2);font-weight:600}
+.lnt .card .acts{margin:8px 0 0;padding:0;list-style:none;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.lnt .card .acts li{display:grid;grid-template-columns:78px 1fr;gap:8px;padding:2px 0;border-top:1px solid var(--rule-2)}.lnt .card .acts li span{color:var(--ink-3);white-space:nowrap}
+.lnt .card.none{border:1px dashed var(--k-danger-60);background:var(--paper)}.lnt .card.none .nm{color:var(--k-danger-60)}
+.lnr .box{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:12px 14px;margin:0 0 10px}
+.lnr .box h3{font-size:17px;margin:0 0 8px;color:var(--ink-2)}.lnr .box .big{font-size:27px;font-weight:700;color:var(--ink);line-height:1.2}.lnr .box .big small{font-size:17px;font-weight:400;color:var(--ink-3);margin-left:6px}
+.lnr .box p{font-size:15px;line-height:1.6;margin:6px 0 0;color:var(--ink-2)}
+.lnr .box ul{margin:6px 0 0;padding-left:18px;font-size:15px;line-height:1.6;color:var(--ink-2)}
 /* 5 2.0 — 과제 하나 */
 .p2h{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:14px 20px;margin:4px 0 12px}
 .p2h .no{font-size:17px;color:var(--ink-3);margin:0 0 4px}
@@ -121,7 +141,7 @@ html,body{margin:0;background:var(--paper)}
   .scr{display:block !important;break-after:page;page-break-after:always;padding-top:2mm;zoom:.78} .scr:last-child{break-after:auto;page-break-after:auto}
   .scr h1{margin-bottom:12px} table,.qa3,.p2h{break-inside:avoid;page-break-inside:avoid}
   .three,.f3,.dev{grid-template-columns:repeat(3,1fr) !important} .f3 .f,.three .c,.dev div{break-inside:avoid;page-break-inside:avoid}
-  #s4b,#s4c{zoom:.62} #s4b .fig{break-inside:avoid;page-break-inside:avoid} #s4c .fig{break-inside:auto} #s4c .fig svg{max-height:112mm;width:auto;margin:0 auto}
+  #s4b,#s4c,#s5{zoom:.62} #s4b .fig{break-inside:avoid;page-break-inside:avoid} #s4c .fig{break-inside:auto} #s4c .fig svg{max-height:112mm;width:auto;margin:0 auto}
   a{color:inherit;text-decoration:none}
 }
 </style>
@@ -137,9 +157,7 @@ html,body{margin:0;background:var(--paper)}
     <a class="it sub" href="#분석-1" data-s="s4a"><b>4.1</b>추이</a>
     <a class="it sub" href="#분석-2" data-s="s4b"><b>4.2</b>위치도</a>
     <a class="it sub" href="#분석-3" data-s="s4c"><b>4.3</b>공개 장소</a>
-    <a class="it sub" href="#분석-4" data-s="s4d"><b>4.4</b>국정과제 123</a>
-    <a class="it sub" href="#분석-5" data-s="s4e"><b>4.5</b>세부과제 554</a>
-    <a class="it sub" href="#분석-6" data-s="s4f"><b>4.6</b>예산 줄 54</a>
+    <a class="it sub" href="#분석-4" data-s="s4e"><b>4.4</b>세부과제 554</a>
     <a class="it" href="#2.0" data-s="s5"><b>5</b>2.0</a>
     <div class="foot">기준 2026-09-15~18<br>정보공개포털 실측<br><button type="button" id="printBtn">인쇄</button><br><a href="index.html">근거 자료 전체 →</a></div>
   </nav>
@@ -182,7 +200,7 @@ html,body{margin:0;background:var(--paper)}
           <tr><td class="k">책임자</td><td><b>사업별 실명</b></td><td>부서까지</td><td>문서별 결재선(기안→검토→전결)</td></tr>
           <tr><td class="k">규모(실측)</td><td><span id="c3rn">—</span>건 (2018~2026, 45곳)</td><td>246,604항목</td><td>하루 4,000건 안팎</td></tr>
           <tr><td class="k">읽힘</td><td>조회 중앙값 0회 (2026)</td><td>집계 없음</td><td>집계 없음</td></tr>
-          <tr><td class="k">국정과제 연결</td><td>번호 칸 없음 (123개 중 번호로 닿는 과제 <span id="c3named">—</span>개)</td><td>없음</td><td>없음</td></tr>
+          <tr><td class="k">국정과제 연결</td><td>번호 칸 없음 (세부과제 554개 중 사업이 확실한 것 <span id="c3named">—</span>개)</td><td>없음</td><td>없음</td></tr>
           <tr><td class="k">국민이 요청하는 길</td><td>국민신청 (2025년 <span id="c3nat">—</span>건)</td><td>없음</td><td>정보공개 청구</td></tr>
           <tr><td class="k">없는 것</td><td>예산 · 근거문서 링크 · 세부과제</td><td>담당자 · 결정 과정</td><td>사업 단위 묶음</td></tr>
           <tr class="sum"><td class="k">한 줄</td><td>사업 단위 책임 명부. 얇고 안 읽힘</td><td>넓은 안내판. 내용은 링크 너머</td><td>깊은 원본. 문서 단위라 흩어짐</td></tr>
@@ -198,9 +216,9 @@ html,body{margin:0;background:var(--paper)}
       <div class="f3">
         <div class="f"><h3>정책실명제는 줄고 있습니다</h3><ul id="f1ul"></ul><div id="f1svg"></div><div class="go">국민신청 조문이 생긴 2018년이 정점이었습니다. <a href="notes.html#note1">노트 ① 보기</a></div></div>
         <div class="f"><h3>포털의 0은 미등록입니다</h3><ul id="f2ul"></ul><div id="f2svg"></div><div class="go">기관 누리집엔 있는데 포털에는 없는 사업이 <b id="f2n">—</b>건. <a href="notes.html#note3">노트 ③ 보기</a></div></div>
-        <div class="f"><h3>국정과제와 못 잇습니다</h3><ul id="f3ul"></ul><div id="f3grid"></div><div class="go">세부과제 554칸. 진한 칸이 정책실명제 사업이 확실히 있는 것. <a href="notes.html#note6">노트 ⑥ 보기</a></div></div>
+        <div class="f"><h3>세부과제와 못 잇습니다</h3><ul id="f3ul"></ul><div id="f3grid"></div><div class="go">세부과제 554칸. 진한 칸이 정책실명제 사업이 확실히 있는 것. <a href="notes.html#note6">노트 ⑥ 보기</a></div></div>
       </div>
-      <div class="src">분석 노트 일곱 편 가운데 세 제도의 차이를 직접 보여 주는 셋입니다. 그림 하나씩 크게 보려면 왼쪽 4.1~4.6. 전부는 <a href="notes.html">분석 노트</a>.</div>
+      <div class="src">분석 노트 가운데 세 제도의 차이를 직접 보여 주는 셋입니다. 그림 하나씩 크게 보려면 왼쪽 4.1~4.4. 전부는 <a href="notes.html">분석 노트</a>.</div>
     </section>
 
     <!-- 4.1 추이 -->
@@ -230,15 +248,8 @@ html,body{margin:0;background:var(--paper)}
       <div class="src">누리집 <span id="v3o">—</span>곳 실측, 포털에 빠진 사업 <span id="v3n">—</span>건. <a href="notes.html#note3">노트 ③ 공개 장소</a>.</div>
     </section>
 
-    <!-- 4.4 국정과제 123 -->
-    <section class="scr" id="s4d" aria-labelledby="h1s4d">
-      <h1 id="h1s4d">국정과제 123개 가운데 정책실명제 번호로 닿는 과제는 <span id="g4n">—</span>개입니다.</h1>
-      <p>정책실명제 카드에는 국정과제 번호를 적는 칸이 없습니다. 주관부처를 다리로 삼아 올해 사업을 올린 부처가 있는 과제를 세고, 담당자가 개요에 번호를 손으로 적은 카드로 닿는 과제를 따로 표시했습니다.</p>
-      <div class="fig"><div class="lanes" id="g4lanes"></div><div class="lg"><span><i style="background:var(--k-primary-50)"></i>주관부처가 올해 국정과제 사업을 올림</span><span><i style="background:var(--k-gray-10)"></i>올해 등록 없음</span><span><i style="background:repeating-linear-gradient(45deg,var(--k-danger-20,#f2b8bf) 0 3px,var(--k-gray-10) 3px 7px);border-color:var(--k-danger-60)"></i>주관부처가 포털에 없음</span><span><i style="outline:3px solid var(--k-primary-90,#0b3b8a);outline-offset:-1px;background:var(--k-primary-50)"></i>카드에 번호가 적혀 닿음</span></div></div>
-      <div class="src">2026년 등록 <span id="g4cur">—</span>건 기준(9월, 진행 중). <a href="notes.html#note5">노트 ⑤ 국정과제에서 정책실명제로</a>.</div>
-    </section>
 
-    <!-- 4.5 세부과제 554 -->
+    <!-- 4.4 세부과제 554 -->
     <section class="scr" id="s4e" aria-labelledby="h1s4e">
       <h1 id="h1s4e">세부과제 554개로 내려가면 <span id="g5n">—</span>개(<span id="g5p">—</span>)에 정책실명제 사업이 확실히 있습니다.</h1>
       <p>국정과제의 「주요내용」 항목 554개를 세부과제로 보고, 같은 주관부처의 정책실명제 사업과 이름과 본문으로 대조한 뒤 사람이 하나하나 읽어 판정했습니다. 없는 것이 아니라 있는데 번호가 없어 못 잇는 것입니다.</p>
@@ -246,25 +257,16 @@ html,body{margin:0;background:var(--paper)}
       <div class="src">이름 대조 101쌍은 다른 모델의 눈가림 교차 검수(일치 81%)를 거쳤습니다. <a href="notes.html#note6">노트 ⑥ 국정과제로 본 비전</a>.</div>
     </section>
 
-    <!-- 4.6 예산 줄 54 -->
-    <section class="scr" id="s4f" aria-labelledby="h1s4f">
-      <h1 id="h1s4f">행안부 세부과제 54개 중 <span id="g6s">—</span>개는 2026년 예산 줄이 확실히 있고, 31개는 없습니다.</h1>
-      <p>2.0이 국정과제 번호로 예산까지 잇는다고 했으니 되는지 재 봤습니다. 열린재정의 행정안전부 2026년 세출 세부사업 <span id="g6l">—</span>개에 세부과제를 대조했습니다.</p>
-      <div class="fig"><div class="band" id="g6band"></div><div class="lg" id="g6lg"></div><p style="margin:14px 0 0">줄이 없는 세부과제는 셋으로 갈립니다. <b>타부처 예산</b>(주관은 행안부인데 돈은 국토부·경찰청·소방청·환경부에), <b>제도·법제</b>(줄이 없는 게 정상), <b>이름으로 못 찾음</b>(주민자치회처럼 국비 세부사업 이름에 없고 특별교부금·지방비로 가는 것). 예산은 주관부처 예산서에만 있지 않으니, 부처를 넘어 잇는 열쇠가 국정과제 번호입니다.</p></div>
-      <div class="src">열린재정 세출예산 API 2026 · 판정은 사람이 읽음. <a href="notes.html#note7">노트 ⑦ 국정과제에서 예산 줄로</a>.</div>
-    </section>
 
     <!-- 5 2.0 -->
     <section class="scr" id="s5" aria-labelledby="h1s5">
-      <h1 id="h1s5">국정과제 번호 하나로 셋을 잇습니다 — 2.0 시안</h1>
-      <div class="p2h" id="p2h"></div>
-      <table class="p2t"><thead><tr><th>세부과제</th><th>정책실명제 카드</th><th>2026 예산 줄</th><th style="text-align:right">예산</th><th style="text-align:right">집행 (<span id="p2m">—</span>월 누계)</th></tr></thead><tbody id="p2b"></tbody></table>
-      <div class="dev">
-        <div><b>국정과제 번호로 관리</b>새 번호를 만들지 않고 국정과제 번호를 사업의 열쇠로 씁니다.</div>
-        <div><b>결재할 때 번호를 고름</b>그 문서는 근거문서로, 결재선은 참여자와 역할로 자동으로 붙습니다.</div>
-        <div><b>없는 것도 없다고 보임</b>등록이 없거나 예산 줄이 없으면 빈칸으로 보이고, 그 자리에서 청구합니다.</div>
+      <h1 id="h1s5">정책 하나를 시간 순으로 모아 보면 — 2.0 시안</h1>
+      <div class="lnh" id="lnh"></div>
+      <div class="lnw">
+        <div class="lnt" id="lnt"></div>
+        <div class="lnr" id="lnr"></div>
       </div>
-      <div class="src">숫자는 정책실명제 포털·열린재정 실측(2026-09-18). 행정안전부 국정과제 11개 전부와 문서·결재선까지 펼친 시안은 <a href="policy2.html">정책실명제 2.0</a>.</div>
+      <div class="src">정책실명제 카드(2022~2025)·추진실적·원문 연결 건수는 정보공개포털 실측, 예산 줄은 열린재정. 담당은 이름 대신 직위 수. 문서·결재선까지 펼친 시안은 <a href="policy2.html">정책실명제 2.0</a>.</div>
     </section>
 
     <div class="pager"><span id="pgTxt">1 / 5</span><button type="button" id="pgPrev" aria-label="이전 화면">‹</button><button type="button" id="pgNext" aria-label="다음 화면">›</button></div>
@@ -280,7 +282,7 @@ var VN = /*__VNDATA__*/null;
 var CZ = /*__CZDATA__*/null;
 var AX = /*__AXDATA__*/null;
 var GJ = /*__GJDATA__*/null;
-var FL = /*__FLDATA__*/null;
+var LN = /*__LNDATA__*/null;
 (function(){
   var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
   var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
@@ -288,7 +290,7 @@ var FL = /*__FLDATA__*/null;
   var amt=function(eok){ eok=Math.round(eok); if(eok>=10000){ var jo=Math.floor(eok/10000), r=eok%10000; return jo+'조'+(r?' '+fmt(r)+'억':''); } return fmt(eok)+'억'; };
 
   /* 화면 전환 — 주소 해시로 */
-  var ORDER=['s1','s2','s3','s4','s4a','s4b','s4c','s4d','s4e','s4f','s5'], NAMES={'결론':'s1','같은사업':'s2','비교':'s3','분석':'s4','분석-1':'s4a','분석-2':'s4b','분석-3':'s4c','분석-4':'s4d','분석-5':'s4e','분석-6':'s4f','2.0':'s5'}, LABEL={s1:'1',s2:'2',s3:'3',s4:'4',s4a:'4.1',s4b:'4.2',s4c:'4.3',s4d:'4.4',s4e:'4.5',s4f:'4.6',s5:'5'};
+  var ORDER=['s1','s2','s3','s4','s4a','s4b','s4c','s4e','s5'], NAMES={'결론':'s1','같은사업':'s2','비교':'s3','분석':'s4','분석-1':'s4a','분석-2':'s4b','분석-3':'s4c','분석-4':'s4e','2.0':'s5'}, LABEL={s1:'1',s2:'2',s3:'3',s4:'4',s4a:'4.1',s4b:'4.2',s4c:'4.3',s4e:'4.4',s5:'5'};
   var cur='s1';
   var show=function(s){ cur=ORDER.indexOf(s)>=0?s:'s1';
     ORDER.forEach(function(id){ document.getElementById(id).classList.toggle('on',id===cur); });
@@ -305,7 +307,7 @@ var FL = /*__FLDATA__*/null;
   /* 1 결론 */
   var total=CZ?CZ.전체:null; if(total){ put('c1rn',fmt(total)); put('c1n',fmt(total)); put('c3rn',fmt(total)); }
   put('c1pv','246,604');
-  if(VS){ put('c3named',VS.현정부.가리킨과제수); }
+  if(VS){ put('c3named',VS.세부.확실합계); }
   if(CZ){ var y25=CZ.연도별.find(function(y){return +y.year===2025;}); if(y25) put('c3nat',y25.nat); }
 
   /* 2 같은 사업 */
@@ -328,7 +330,7 @@ var FL = /*__FLDATA__*/null;
     document.getElementById('f2ul').innerHTML='<li>누리집 <b>'+VN.대조.요약.조사기관+'곳</b>을 직접 열어 셌습니다</li><li>포털에 빠진 사업 <b>'+fmt(VN.대조.요약.실측누락.사업단위)+'건</b></li><li>검사가 짚은 '+VN.결락.칸수+'칸 중 '+VN.대조.요약.검사채점.확증+'칸 확인(적중률 '+VN.대조.요약.검사채점.적중률+'%)</li>';
     var W2=360,rowH=22,H2=bo.length*rowH+8,lw=92,mx2=Math.max.apply(null,bo.map(function(b){return b.최소실제;})),bw=W2-lw-66;
     document.getElementById('f2svg').innerHTML='<svg viewBox="0 0 '+W2+' '+H2+'" role="img" aria-label="기관별 포털 등록과 누리집 실측">'+bo.map(function(b,i){ var y=4+i*rowH; var w1=bw*b.포털/mx2, w2=bw*b.최소실제/mx2; return '<text x="'+(lw-6)+'" y="'+(y+14)+'" font-size="12.5" text-anchor="end" fill="#1e2124">'+esc(b.nm.length>6?b.nm.slice(0,6):b.nm)+'</text><rect x="'+lw+'" y="'+(y+3)+'" width="'+w2+'" height="14" fill="#e4e7ea"/><rect x="'+lw+'" y="'+(y+3)+'" width="'+w1+'" height="14" fill="#c0392b"/><text x="'+(lw+w2+4)+'" y="'+(y+14)+'" font-size="12.5" fill="#58616a">'+b.포털+'/'+b.최소실제+'</text>'; }).join('')+'</svg><div style="font-size:17px;color:var(--ink-3);margin:-4px 0 8px">빨강 = 포털에 있는 건수, 회색 = 누리집 실측. (포털/실측)</div>'; }
-  if(VS){ var S=VS.세부; document.getElementById('f3ul').innerHTML='<li>국정과제 123개 중 번호로 닿는 과제 <b>'+VS.현정부.가리킨과제수+'개</b></li><li>세부과제 '+S.총수+'개 중 정책실명제 사업이 확실한 것 <b>'+S.확실합계+'개('+Math.round(S.확실합계/S.총수*100)+'%)</b></li><li>카드에 국정과제 번호 칸이 없어 <b>있어도 못 잇습니다</b></li>';
+  if(VS){ var S=VS.세부; document.getElementById('f3ul').innerHTML='<li>국정과제의 세부과제 '+S.총수+'개를 정책실명제 사업과 대조</li><li>같은 일을 하는 사업이 확실한 것 <b>'+S.확실합계+'개('+Math.round(S.확실합계/S.총수*100)+'%)</b></li><li>카드에 국정과제 번호 칸이 없어 <b>있어도 못 잇습니다</b></li>';
     var goalOf=function(n){ return n<=19?1:n<=48?2:n<=71?3:n<=108?4:5; }, NM5={1:'정치',2:'경제',3:'균형',4:'사회',5:'외교'}; var by={};
     S.목록.forEach(function(d){ var g=goalOf(+d.no.split('-')[0]); (by[g]=by[g]||[]).push(d); });
     document.getElementById('f3grid').innerHTML='<div class="grid5">'+[1,2,3,4,5].map(function(g){ return '<div class="g"><span class="lab">'+NM5[g]+'</span><span class="cells">'+(by[g]||[]).map(function(d){ var sure=d.r==='확실'||d.b==='확실', am=!sure&&(d.r==='애매'||d.b==='애매'); return '<i class="'+(sure?'on':am?'am':'')+'"></i>'; }).join('')+'</span></div>'; }).join('')+'</div>'; }
@@ -382,35 +384,27 @@ var FL = /*__FLDATA__*/null;
     put('v3c',VN.대조.요약.검사채점.확증); put('v3w',VN.대조.요약.검사채점.오탐); put('v3o',VN.대조.요약.조사기관); put('v3n',fmt(VN.대조.요약.실측누락.사업단위));
   })(); }
 
-  /* 4.4 국정과제 123칸 */
-  if(GJ&&VS){ var named={}; (VS.현정부.가리킨과제||[]).forEach(function(n){ named[n]=1; }); put('g4n',VS.현정부.가리킨과제수); put('g4cur',fmt(VS.현정부.등록건수));
-    var goals={}; GJ.과제.forEach(function(t){ (goals[t.goal]=goals[t.goal]||{nm:t.goalNm,list:[]}).list.push(t); });
-    document.getElementById('g4lanes').innerHTML=Object.keys(goals).sort().map(function(g){ var G=goals[g]; var on=G.list.filter(function(t){return t.상태==='2026 등록';}).length, none=G.list.filter(function(t){return t.상태==='포털에 없음';}).length;
-      return '<div class="ln"><div class="h"><b>국정목표 '+g+' · '+esc(G.nm)+'</b>'+G.list.length+'개 · 등록 '+on+(none?' · 포털에 없음 '+none:'')+'</div><div class="cells">'+G.list.map(function(t){ var cls=t.상태==='2026 등록'?'on':t.상태==='포털에 없음'?'none':''; if(named[t.n]) cls+=' hit'; return '<i class="'+cls+'" title="'+t.n+'. '+esc(t.nm)+' ('+esc(t.org)+') — '+esc(t.상태)+(named[t.n]?' · 번호로 닿음':'')+'"></i>'; }).join('')+'</div></div>'; }).join(''); }
 
-  /* 4.5 세부과제 554칸 */
+  /* 4.4 세부과제 554칸 */
   if(VS&&GJ){ var S5=VS.세부; put('g5n',S5.확실합계); put('g5p',Math.round(S5.확실합계/S5.총수*100)+'%'); put('g5s',S5.확실합계); put('g5a',S5.애매합계); put('g5z',S5.총수-S5.확실합계-S5.애매합계);
     var byTask={}; S5.목록.forEach(function(d){ var n=+d.no.split('-')[0]; (byTask[n]=byTask[n]||[]).push(d); }); var goals5={}; GJ.과제.forEach(function(t){ (goals5[t.goal]=goals5[t.goal]||{nm:t.goalNm,list:[]}).list.push(t); });
     document.getElementById('g5lanes').innerHTML=Object.keys(goals5).sort().map(function(g){ var G=goals5[g], tot=0, hit=0, amb=0, cells='';
       G.list.forEach(function(t,ti){ var subs=byTask[t.n]||[]; subs.forEach(function(d){ tot++; var sure=d.r==='확실'||d.b==='확실', am=!sure&&(d.r==='애매'||d.b==='애매'); if(sure) hit++; if(am) amb++; cells+='<i class="'+(sure?'on':am?'am':'')+'" title="'+esc(d.no)+' '+esc(d.t)+' ['+t.n+'. '+esc(t.nm)+']"></i>'; }); if(ti<G.list.length-1&&subs.length) cells+='<span class="gap"></span>'; });
       return '<div class="ln"><div class="h"><b>국정목표 '+g+' · '+esc(G.nm)+'</b>'+tot+'개 중 확실 '+hit+' · '+(tot?Math.round(hit/tot*100):0)+'%'+(amb?' · 애매 '+amb:'')+'</div><div class="cells">'+cells+'</div></div>'; }).join(''); }
 
-  /* 4.6 예산 줄 54칸 */
-  if(FL){ var P=FL.판정, NS=FL.없음사유||{}, N=FL.세부과제수; put('g6s',P.확실); put('g6l',FL.세부사업수);
-    var groups=[['var(--k-primary-50)','예산 줄 확실',P.확실],['var(--k-primary-20)','애매',P.애매],['var(--k-gray-50,#6d7580)','없음 · 타부처 예산',NS['타부처 예산']||0],['var(--k-gray-20,#e4e7ea)','없음 · 제도·법제',NS['제도·법제']||0],['repeating-linear-gradient(45deg,var(--k-gray-40,#9aa2ab) 0 3px,var(--panel) 3px 7px)','없음 · 이름으로 못 찾음',NS['이름으로 못 찾음']||0]];
-    document.getElementById('g6band').innerHTML=groups.map(function(g){ return '<span style="width:'+(g[2]/N*100)+'%;background:'+g[0]+'" title="'+g[1]+' '+g[2]+'"></span>'; }).join('');
-    document.getElementById('g6lg').innerHTML=groups.map(function(g){ return '<span><i style="background:'+g[0]+'"></i>'+g[1]+' '+g[2]+'</span>'; }).join(''); }
 
-  /* 5 2.0 — 과제 53 고정 */
-  if(P2){ var T=P2.과제.find(function(t){return t.n===53;})||P2.과제[0]; put('p2m',P2.집행월||'—');
-    var lead=function(t){ var w=t.split(/\s+/), END=/(강화|확대|구축|추진|제정|도입|개편|지원|마련|정비|실현|조성|전환|확립|고도화|활성화|제고|정립|확충|개선|육성|창출|개방|시행|폐지|실질화|규명|회복|내실화|처리|제공|기반|대응|정착|완성|관리|운영|촉진|혁신|보장|수호|지정|해소|공급|절감|유치|연계|재도약|출범)$/; for(var i=0;i<Math.min(w.length,7);i++){ if(END.test(w[i].replace(/[,.*]+$/,''))) return w.slice(0,i+1).join(' '); } return w.slice(0,4).join(' '); };
-    var yrs=T.연도범위?(T.연도범위[0]===T.연도범위[1]?T.연도범위[0]+'년':T.연도범위[0]+'~'+T.연도범위[1]+'년'):'';
-    document.getElementById('p2h').innerHTML='<div class="no">국정과제 '+T.n+' · 주관 '+esc(T.org)+'</div><div class="nm">'+esc(T.nm)+'</div><p>세부과제 '+T.세부수+'개 중 <b>'+T.연결수+'개</b>에 정책실명제 사업이 이어져 있고'+(yrs?'(카드는 '+yrs+'에 있음)':'')+', 2026년 예산 줄이 확실한 세부과제는 <b>'+T.예산확실+'개</b>'+(T.예산억?'(합계 '+amt(T.예산억)+')':'')+'입니다.</p>';
-    var prev=null; document.getElementById('p2b').innerHTML=T.세부.map(function(s){ var card=s.사업?(prev===s.사업.nm?'〃 같은 카드':esc(s.사업.nm)+' <span class="none">('+s.연도.map(function(c){return c.y;}).join('·')+')</span>'):'<span class="none">연결 없음</span>'; prev=s.사업?s.사업.nm:null;
-      var b=s.예산; var lines=(b.j==='확실'||b.j==='애매')?b.lines:[]; var name=lines.length?lines.map(function(l){ return esc(l.nm)+(b.j==='애매'?' <span class="none">(추정)</span>':''); }).join('<br>'):'<span class="none">'+esc(b.사유||'없음')+'</span>';
-      var a=lines.length?lines.map(function(l){ return amt(l.억); }).join('<br>'):''; var ex=lines.length?lines.map(function(l){ return l.집행률!=null?l.집행률+'%':'<span class="none">—</span>'; }).join('<br>'):'';
-      return '<tr><td class="no">'+esc(s.no)+'</td><td>'+esc(lead(s.전문||s.t))+'</td><td>'+card+'</td><td>'+name+'</td><td class="a">'+a+'</td><td class="a">'+ex+'</td></tr>'; }).join('');
-    var th=document.querySelector('.p2t thead tr'); th.innerHTML='<th>번호</th><th>세부과제</th><th>정책실명제 카드</th><th>2026 예산 줄</th><th style="text-align:right">예산</th><th style="text-align:right">집행 ('+(P2.집행월||'—')+'월 누계, 단위사업 기준)</th>'; }
+  /* 5 2.0 — 계보: 한 사업을 해마다 모아 시간 순으로 */
+  if(LN){ var C=LN.연도, last=C[C.length-1];
+    document.getElementById('lnh').innerHTML='<div><div class="no">국정과제 '+LN.국정과제.n+' · '+esc(LN.국정과제.nm)+' · 주관 '+esc(LN.국정과제.org)+'</div><div class="nm">'+esc(LN.핵심어)+'</div><div class="sub">세부과제 '+esc(LN.세부과제.no)+' '+esc((LN.세부과제.전문||LN.세부과제.t).split(/\s+/).slice(0,2).join(' '))+' · 정책실명제 카드 '+C.length+'장('+C[0].y+'~'+last.y+') · 담당 '+esc(last.부서)+'</div></div>'
+      +'<div class="sum">지금은 네 곳에 흩어진 것을 국정과제 번호 하나로 묶으면 이렇게 <b>한 줄로 내려옵니다</b>. 2026년은 아직 비어 있습니다.</div>';
+    var tl=C.map(function(c){ var acts=c.추진실적&&c.추진실적.length?'<ul class="acts">'+c.추진실적.map(function(a){ return '<li><span>'+esc(a.기간)+'</span><div>'+esc(a.내용.replace(/^○\s*/,''))+'</div></li>'; }).join('')+'</ul>':'';
+      var docs=(c.원문연결!=null||c.사전정보!=null)?'<div class="m" style="margin-top:8px">연계 문서: 원문 연결 <b>'+(c.원문연결==null?'—':c.원문연결)+'건</b>'+(c.사전정보!=null?' · 사전정보공표 <b>'+c.사전정보+'건</b>':'')+(c.원문검색!=null?' · 원문공개 검색 <b>'+c.원문검색+'건</b>':'')+'</div>':'';
+      return '<div class="yr"><div class="dot">\''+String(c.y).slice(2)+'</div><div class="card"><div class="nm">'+esc(c.nm)+'</div><div class="m"><b>'+esc(c.부서)+'</b> · '+esc(c.담당)+' · 선정기준 '+esc(c.선정)+' · 조회 '+c.조회+'회'+(c.기간&&c.y===C[0].y?' · 기간 '+esc(c.기간):'')+'</div>'+acts+docs+'</div></div>'; }).join('');
+    if(LN.미등록) tl+='<div class="yr none"><div class="dot">\'26</div><div class="card none"><div class="nm">2026년 등록 없음 <span style="font-weight:400;font-size:15px;color:var(--ink-3)">— 사업기간은 '+esc(last.기간||'계속')+'. 2.0에서는 이 빈칸이 그대로 보이고 그 자리에서 청구합니다.</span></div></div></div>';
+    document.getElementById('lnt').innerHTML=tl;
+    var b=LN.예산&&LN.예산.lines&&LN.예산.lines[0];
+    document.getElementById('lnr').innerHTML='<div class="box"><h3>한 화면에 모이는 것</h3><ul><li>정책실명제 카드 <b>'+C.length+'장</b> — 담당 부서·직위·선정기준·조회수, 해마다</li><li>2025년 추진실적 <b>'+(last.추진실적?last.추진실적.length:0)+'건</b> — 날짜가 있는 조치</li><li>결재문서 <b>'+(last.원문연결==null?'—':last.원문연결)+'건</b> 연결(원문공개)</li><li>사전정보공표 안내 <b>'+(last.사전정보==null?'—':last.사전정보)+'건</b></li>'+(b?'<li>2026 예산 줄 <b>'+esc(b.nm)+'</b> '+(b.억>=10000?Math.floor(b.억/10000)+'조'+(b.억%10000?' '+fmt(b.억%10000)+'억':''):fmt(b.억)+'억')+(b.집행률!=null?' · '+LN.예산.집행월+'월 누계 집행 '+b.집행률+'%(단위사업 기준)':'')+'</li>':'')+'</ul></div>'
+      +'<div class="box"><h3>지금은 네 곳 · 2.0의 장치 셋</h3><p>카드는 정책실명제 포털, 결재문서는 원문공개, 안내는 사전정보공표, 예산은 열린재정에 있고 서로 묶이지 않습니다.</p><ul><li>국정과제 번호로 관리 — 새 번호를 만들지 않음</li><li>결재할 때 번호를 고름 — 문서와 결재선이 자동으로 붙음</li><li>없는 것도 없다고 보임 — 빈칸이 곧 청구 자리</li></ul></div>'; }
 
   fromHash();
 })();
