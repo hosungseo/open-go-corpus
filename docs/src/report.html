@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정보공개 3제도 실측 · 보고</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* 보고 화면 — 왼쪽 차례, 한 번에 한 화면. PC(1440×900) 기준, 본문 19px.
+   색은 세 제도 식별색과 검정·회색만. 칩·아이콘·큰 숫자 타일 없음. */
+html,body{margin:0;background:var(--paper)}
+.rp{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+.nav{position:sticky;top:0;height:100vh;box-sizing:border-box;padding:28px 18px 22px;border-right:1px solid var(--rule);background:var(--panel);display:flex;flex-direction:column}
+.nav .brand{font-size:17px;font-weight:700;color:var(--ink);line-height:1.4;margin:0 0 26px 8px}
+.nav .brand small{display:block;font-weight:400;color:var(--ink-3);font-size:17px}
+.nav a.it{display:block;padding:11px 10px 11px 14px;margin:2px 0;border-left:4px solid transparent;font-size:19px;color:var(--ink-2);text-decoration:none;border-radius:0 var(--r-s) var(--r-s) 0}
+.nav a.it b{display:inline-block;width:20px;color:var(--ink-3);font-weight:500}
+.nav a.it:hover{background:var(--panel-2)}
+.nav a.it.on{border-left-color:var(--em);color:var(--ink);font-weight:700;background:var(--panel-2)}
+.nav a.it.on b{color:var(--em)}
+.nav .foot{margin-top:auto;font-size:17px;color:var(--ink-3);line-height:1.6;padding-left:8px}
+.nav .foot a{color:var(--ink-2)}
+.nav .foot button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);padding:8px 14px;font:inherit;font-size:17px;color:var(--ink);cursor:pointer;margin:10px 0 12px}
+.main{padding:36px 56px 28px;max-width:1140px;box-sizing:border-box}
+.scr{display:none}.scr.on{display:block}
+.scr h1{font-size:32px;line-height:1.35;letter-spacing:-.01em;margin:0 0 18px;color:var(--ink)}
+.scr h2{font-size:22px;margin:30px 0 10px;color:var(--ink)}
+.scr p{font-size:19px;line-height:1.75;color:var(--ink-2);margin:0 0 12px;max-width:900px}
+.scr p b{color:var(--ink)}
+.src{font-size:17px;color:var(--ink-3);margin-top:18px;line-height:1.6}
+.src a{color:var(--ink-2)}
+.pager{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:20px;font-size:17px;color:var(--ink-3)}
+.pager button{appearance:none;border:1px solid var(--rule);border-radius:var(--r-s);background:var(--panel);width:40px;height:36px;font:inherit;font-size:19px;color:var(--ink);cursor:pointer}
+.pager button:disabled{opacity:.35;cursor:default}
+/* 1 결론 — 제도 카드 셋 */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 26px}
+.three .c{border:1px solid var(--rule);border-top:4px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:18px 20px}
+.three .c.pv{border-top-color:var(--pv)} .three .c.og{border-top-color:var(--og)} .three .c.rn{border-top-color:var(--rn)}
+.three .c .nm{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 6px}
+.three .c .nm.pv{color:var(--pv-t)} .three .c .nm.og{color:var(--og-t)} .three .c .nm.rn{color:var(--rn-t)}
+.three .c .what{font-size:27px;font-weight:700;letter-spacing:-.01em;line-height:1.3;color:var(--ink);margin:0 0 8px}
+.three .c .m{font-size:17px;color:var(--ink-2);line-height:1.6}
+/* 2 같은 사업 — 질문 셋 */
+.qa3{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);overflow:hidden;margin:6px 0 16px}
+.qa3 .row{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
+.qa3 .row:first-child{border-top:0;background:var(--panel-2)}
+.qa3 .row:first-child>div{font-size:17px;font-weight:700;color:var(--ink-2);padding:10px 16px}
+.qa3 .row:first-child>div i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:-1px}
+.qa3 .q{padding:14px 16px;font-size:19px;font-weight:700;color:var(--ink);line-height:1.5;border-right:1px solid var(--rule)}
+.qa3 .a{padding:12px 14px;font-size:19px;line-height:1.5;color:var(--ink-2);border-right:1px solid var(--rule-2)}
+.qa3 .a:last-child{border-right:0}
+.qa3 .a .v{display:block;font-weight:700;color:var(--ink-3);margin-bottom:4px}
+.qa3 .a.hit{background:var(--k-success-5,#eef7f0);color:var(--ink)}.qa3 .a.hit .v{color:var(--k-success-60)}
+.qa3 .a.part{background:var(--k-warning-5,#fff8e6)}.qa3 .a.part .v{color:var(--k-warning-60,#8a5c00)}
+/* 3 비교표 */
+.cmp{width:100%;border-collapse:collapse;font-size:19px;line-height:1.45;margin:4px 0 12px}
+.cmp th{text-align:left;padding:9px 12px;border-bottom:2px solid var(--ink);font-size:19px;color:var(--ink)}
+.cmp th.k{width:18%}
+.cmp th i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:8px;vertical-align:-1px}
+.cmp td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+.cmp td.k{font-weight:700;color:var(--ink);white-space:nowrap}
+.cmp td b{color:var(--ink)}
+.cmp tr.sum td{background:var(--panel-2);font-weight:700;color:var(--ink)}
+/* 4 분석 — 발견 셋 */
+.f3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:6px 0 10px}
+.f3 .f{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:18px 20px 16px;display:flex;flex-direction:column}
+.f3 .f h3{font-size:22px;margin:0 0 10px;line-height:1.4;color:var(--ink)}
+.f3 .f ul{margin:0 0 12px;padding-left:18px;font-size:19px;line-height:1.7;color:var(--ink-2)}
+.f3 .f ul b{color:var(--ink)}
+.f3 .f svg{width:100%;height:auto;display:block;margin:4px 0 10px}
+.f3 .f .go{margin-top:auto;font-size:17px;color:var(--ink-2)}
+.grid5{display:flex;flex-direction:column;gap:4px;margin:4px 0 10px}
+.grid5 .g{display:flex;align-items:center;gap:8px}
+.grid5 .g .lab{width:52px;font-size:17px;color:var(--ink-3);flex:none}
+.grid5 .g .cells{display:flex;flex-wrap:wrap;gap:2px}
+.grid5 .g .cells i{display:block;width:7px;height:7px;border-radius:1px;background:var(--k-gray-10)}
+.grid5 .g .cells i.on{background:var(--k-primary-50)}.grid5 .g .cells i.am{background:var(--k-primary-20)}
+/* 5 2.0 — 과제 하나 */
+.p2h{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:14px 20px;margin:4px 0 12px}
+.p2h .no{font-size:17px;color:var(--ink-3);margin:0 0 4px}
+.p2h .nm{font-size:27px;font-weight:700;line-height:1.35;margin:0 0 8px;color:var(--ink)}
+.p2h p{margin:0}
+.p2t{width:100%;border-collapse:collapse;font-size:19px;line-height:1.55}
+.p2t th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--ink);font-size:17px;color:var(--ink-2)}
+.p2t td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+.p2t td.no{white-space:nowrap;font-weight:700;color:var(--ink)}
+.p2t th:nth-child(1){width:6%}.p2t th:nth-child(2){width:27%}.p2t th:nth-child(3){width:23%}.p2t th:nth-child(4){width:22%}.p2t th:nth-child(5){width:10%}.p2t th:nth-child(6){width:12%}
+.p2t{table-layout:fixed}
+.p2t td.a{text-align:right;white-space:nowrap}
+.p2t td .none{color:var(--ink-3)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+.dev div{border:1px solid var(--rule);border-radius:var(--r-m);background:var(--panel);padding:12px 14px;font-size:17px;line-height:1.5;color:var(--ink-2)}
+.dev div b{display:block;color:var(--ink);margin-bottom:4px}
+@media (max-width:1100px){ .rp{grid-template-columns:180px 1fr} .main{padding:32px 28px} .three,.f3,.dev{grid-template-columns:1fr} }
+@media print{
+  @page{size:A4 landscape;margin:12mm}
+  .nav,.pager{display:none} .rp{display:block} .main{max-width:none;padding:0}
+  .scr{display:block !important;page-break-after:always;padding-top:6mm} .scr:last-child{page-break-after:auto}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="rp">
+  <nav class="nav" aria-label="차례">
+    <div class="brand">정보공개 3제도 실측<small>정책실명제 · 사전정보공표 · 원문공개</small></div>
+    <a class="it" href="#결론" data-s="s1"><b>1</b>결론</a>
+    <a class="it" href="#같은사업" data-s="s2"><b>2</b>같은 사업</a>
+    <a class="it" href="#비교" data-s="s3"><b>3</b>비교</a>
+    <a class="it" href="#분석" data-s="s4"><b>4</b>분석</a>
+    <a class="it" href="#2.0" data-s="s5"><b>5</b>2.0</a>
+    <div class="foot">기준 2026-09-15~18<br>정보공개포털 실측<br><button type="button" id="printBtn">인쇄</button><br><a href="index.html">근거 자료 전체 →</a></div>
+  </nav>
+
+  <main class="main">
+
+    <!-- 1 결론 -->
+    <section class="scr" id="s1" aria-labelledby="h1s1">
+      <h1 id="h1s1">세 제도는 서로 대체하지 못합니다. 단위가 다릅니다.</h1>
+      <div class="three">
+        <div class="c pv"><div class="nm pv">사전정보공표</div><div class="what">안내 목록</div><div class="m">항목 1줄이 단위 · 분기·수시 갱신<br>포털 전체 <b id="c1pv">—</b>항목</div></div>
+        <div class="c og"><div class="nm og">원문공개</div><div class="what">결재문서</div><div class="m">문서 1건이 단위 · 결재 즉시 공개<br>하루 신규 <b>4,000</b>건 안팎</div></div>
+        <div class="c rn"><div class="nm rn">정책실명제</div><div class="what">사업 하나의 명부</div><div class="m">사업 1건이 단위 · 연 1회 등록<br>중앙행정기관 <b id="c1rn">—</b>건(2018~2026)</div></div>
+      </div>
+      <p>"누가 결정했나"를 <b>사업 단위</b>로 답하는 제도는 정책실명제뿐입니다.</p>
+      <p>그런데 셋 중 <b>내용이 가장 얇고</b>(사업개요 한 문단), 등록하는 부처가 줄고 있으며, <b>국정과제와 이어지지 않습니다</b>. 무엇을 없애거나 합칠 문제가 아니라, 하나뿐인 사업 단위 명부를 어디에 붙일지의 문제입니다.</p>
+      <div class="src">근거: 중앙행정기관 정책실명제 <span id="c1n">—</span>건 전수 · 세 제도 대조 724건 · 기관 누리집 15곳 실측 · 2026-09-15~18. 상세는 <a href="compare.html">세 제도 비교</a>, <a href="notes.html">분석 노트</a>.</div>
+    </section>
+
+    <!-- 2 같은 사업 -->
+    <section class="scr" id="s2" aria-labelledby="h1s2">
+      <h1 id="h1s2">같은 사업에 질문 셋을 던지면, 답하는 제도가 하나씩 다릅니다.</h1>
+      <p>행정안전부 <b>풍수해보험사업</b> 하나를 세 제도에서 꺼내 같은 질문 셋을 던졌습니다. 답은 실제 자료 그대로입니다.</p>
+      <div class="qa3" id="qa3"></div>
+      <p>세 제도가 같은 사업을 두고 서로 다른 질문에 답합니다. 셋을 한 자리에 세울 열쇠가 필요합니다.</p>
+      <div class="src">출처: 정책실명제 사업내역서(2025) · 사전정보공표 목록과 첨부 · 원문공개 결재문서. 세 얼굴 전부는 <a href="notes.html#note4">노트 ④</a>.</div>
+    </section>
+
+    <!-- 3 비교 -->
+    <section class="scr" id="s3" aria-labelledby="h1s3">
+      <h1 id="h1s3">세 제도 비교표</h1>
+      <table class="cmp">
+        <thead><tr><th class="k">기준</th><th><i style="background:var(--rn)"></i>정책실명제</th><th><i style="background:var(--pv)"></i>사전정보공표</th><th><i style="background:var(--og)"></i>원문공개</th></tr></thead>
+        <tbody>
+          <tr><td class="k">단위</td><td><b>사업 1건</b></td><td>정보 항목 1줄</td><td>결재문서 1건</td></tr>
+          <tr><td class="k">근거 법령</td><td>대통령령 (행정업무규정 §63)</td><td>정보공개법 §7</td><td>정보공개법 §8의2</td></tr>
+          <tr><td class="k">적용 기관</td><td>행정기관 (공공기관 제외)</td><td>공공기관 포함</td><td>공공기관 포함</td></tr>
+          <tr><td class="k">공개 주기</td><td>연 1회 등록</td><td>분기·수시 (매년·수시 81%)</td><td>결재 즉시</td></tr>
+          <tr><td class="k">담는 것</td><td>담당자·결재선·사업개요 한 문단·추진실적</td><td>제목·한 줄·링크</td><td>원본 전문과 첨부</td></tr>
+          <tr><td class="k">책임자</td><td><b>사업별 실명</b></td><td>부서까지</td><td>문서별 결재선(기안→검토→전결)</td></tr>
+          <tr><td class="k">규모(실측)</td><td><span id="c3rn">—</span>건 (2018~2026, 45곳)</td><td>246,604항목</td><td>하루 4,000건 안팎</td></tr>
+          <tr><td class="k">읽힘</td><td>조회 중앙값 0회 (2026)</td><td>집계 없음</td><td>집계 없음</td></tr>
+          <tr><td class="k">국정과제 연결</td><td>번호 칸 없음 (123개 중 번호로 닿는 과제 <span id="c3named">—</span>개)</td><td>없음</td><td>없음</td></tr>
+          <tr><td class="k">국민이 요청하는 길</td><td>국민신청 (2025년 <span id="c3nat">—</span>건)</td><td>없음</td><td>정보공개 청구</td></tr>
+          <tr><td class="k">없는 것</td><td>예산 · 근거문서 링크 · 세부과제</td><td>담당자 · 결정 과정</td><td>사업 단위 묶음</td></tr>
+          <tr class="sum"><td class="k">한 줄</td><td>사업 단위 책임 명부. 얇고 안 읽힘</td><td>넓은 안내판. 내용은 링크 너머</td><td>깊은 원본. 문서 단위라 흩어짐</td></tr>
+        </tbody>
+      </table>
+      <p>책임자를 사업 단위로 적는 곳은 정책실명제뿐입니다. 그 명부에 예산과 근거문서와 국정과제 번호가 없습니다.</p>
+      <div class="src">아홉 기준의 실측 근거는 <a href="compare.html">세 제도 비교</a> 페이지에서 항목마다 열립니다.</div>
+    </section>
+
+    <!-- 4 분석 -->
+    <section class="scr" id="s4" aria-labelledby="h1s4">
+      <h1 id="h1s4">실측으로 본 차이 셋</h1>
+      <div class="f3">
+        <div class="f"><h3>정책실명제는 줄고 있습니다</h3><ul id="f1ul"></ul><div id="f1svg"></div><div class="go">국민신청 조문이 생긴 2018년이 정점이었습니다. <a href="notes.html#note1">노트 ① 보기</a></div></div>
+        <div class="f"><h3>포털의 0은 미등록입니다</h3><ul id="f2ul"></ul><div id="f2svg"></div><div class="go">기관 누리집엔 있는데 포털에는 없는 사업이 <b id="f2n">—</b>건. <a href="notes.html#note3">노트 ③ 보기</a></div></div>
+        <div class="f"><h3>국정과제와 못 잇습니다</h3><ul id="f3ul"></ul><div id="f3grid"></div><div class="go">세부과제 554칸. 진한 칸이 정책실명제 사업이 확실히 있는 것. <a href="notes.html#note6">노트 ⑥ 보기</a></div></div>
+      </div>
+      <div class="src">분석 노트 일곱 편 가운데 세 제도의 차이를 직접 보여 주는 셋입니다. 전부는 <a href="notes.html">분석 노트</a>.</div>
+    </section>
+
+    <!-- 5 2.0 -->
+    <section class="scr" id="s5" aria-labelledby="h1s5">
+      <h1 id="h1s5">국정과제 번호 하나로 셋을 잇습니다 — 2.0 시안</h1>
+      <div class="p2h" id="p2h"></div>
+      <table class="p2t"><thead><tr><th>세부과제</th><th>정책실명제 카드</th><th>2026 예산 줄</th><th style="text-align:right">예산</th><th style="text-align:right">집행 (<span id="p2m">—</span>월 누계)</th></tr></thead><tbody id="p2b"></tbody></table>
+      <div class="dev">
+        <div><b>국정과제 번호로 관리</b>새 번호를 만들지 않고 국정과제 번호를 사업의 열쇠로 씁니다.</div>
+        <div><b>결재할 때 번호를 고름</b>그 문서는 근거문서로, 결재선은 참여자와 역할로 자동으로 붙습니다.</div>
+        <div><b>없는 것도 없다고 보임</b>등록이 없거나 예산 줄이 없으면 빈칸으로 보이고, 그 자리에서 청구합니다.</div>
+      </div>
+      <div class="src">숫자는 정책실명제 포털·열린재정 실측(2026-09-18). 행정안전부 국정과제 11개 전부와 문서·결재선까지 펼친 시안은 <a href="policy2.html">정책실명제 2.0</a>.</div>
+    </section>
+
+    <div class="pager"><span id="pgTxt">1 / 5</span><button type="button" id="pgPrev" aria-label="이전 화면">‹</button><button type="button" id="pgNext" aria-label="다음 화면">›</button></div>
+  </main>
+</div>
+
+<script>
+var DG = /*__DGDATA__*/null;
+var TF = /*__TFDATA__*/null;
+var VS = /*__VSDATA__*/null;
+var P2 = /*__P2DATA__*/null;
+var VN = /*__VNDATA__*/null;
+var CZ = /*__CZDATA__*/null;
+(function(){
+  var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var fmt=function(n){ return Number(n).toLocaleString('ko-KR'); };
+  var put=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+  var amt=function(eok){ eok=Math.round(eok); if(eok>=10000){ var jo=Math.floor(eok/10000), r=eok%10000; return jo+'조'+(r?' '+fmt(r)+'억':''); } return fmt(eok)+'억'; };
+
+  /* 화면 전환 — 주소 해시로 */
+  var ORDER=['s1','s2','s3','s4','s5'], NAMES={'결론':'s1','같은사업':'s2','비교':'s3','분석':'s4','2.0':'s5'};
+  var cur='s1';
+  var show=function(s){ cur=ORDER.indexOf(s)>=0?s:'s1';
+    ORDER.forEach(function(id){ document.getElementById(id).classList.toggle('on',id===cur); });
+    document.querySelectorAll('.nav a.it').forEach(function(a){ a.classList.toggle('on',a.dataset.s===cur); a.setAttribute('aria-current',a.dataset.s===cur?'page':'false'); });
+    var i=ORDER.indexOf(cur); put('pgTxt',(i+1)+' / '+ORDER.length); document.getElementById('pgPrev').disabled=i===0; document.getElementById('pgNext').disabled=i===ORDER.length-1;
+    window.scrollTo(0,0); };
+  var fromHash=function(){ var h=decodeURIComponent(location.hash.replace(/^#/,'')); show(NAMES[h]||'s1'); };
+  var go=function(d){ var i=Math.max(0,Math.min(ORDER.length-1,ORDER.indexOf(cur)+d)); var name=Object.keys(NAMES).find(function(k){return NAMES[k]===ORDER[i];}); location.hash='#'+name; };
+  addEventListener('hashchange',fromHash);
+  document.getElementById('pgPrev').onclick=function(){ go(-1); }; document.getElementById('pgNext').onclick=function(){ go(1); };
+  addEventListener('keydown',function(e){ if(e.target&&/input|textarea|select/i.test(e.target.tagName)) return; if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); go(1); } if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(-1); } });
+  document.getElementById('printBtn').onclick=function(){ window.print(); };
+
+  /* 1 결론 */
+  var total=CZ?CZ.전체:null; if(total){ put('c1rn',fmt(total)); put('c1n',fmt(total)); put('c3rn',fmt(total)); }
+  put('c1pv','246,604');
+  if(VS){ put('c3named',VS.현정부.가리킨과제수); }
+  if(CZ){ var y25=CZ.연도별.find(function(y){return +y.year===2025;}); if(y25) put('c3nat',y25.nat); }
+
+  /* 2 같은 사업 */
+  if(TF){ var NM={rn:'정책실명제',pv:'사전정보공표',og:'원문공개'}, COL={rn:'var(--rn)',pv:'var(--pv)',og:'var(--og)'};
+    document.getElementById('qa3').innerHTML='<div class="row"><div>국민의 질문</div>'+['rn','pv','og'].map(function(k){ return '<div><i style="background:'+COL[k]+'"></i>'+NM[k]+'</div>'; }).join('')+'</div>'
+      +TF.질문.map(function(q){ return '<div class="row"><div class="q">'+esc(q.q)+'</div>'+['rn','pv','og'].map(function(k){ var a=q.답[k]; var hit=/^답함/.test(a.판정), part=!hit&&/부서까지|간접|연 단위|일부|첨부/.test(a.판정); var v=hit?'답함':part?'일부':'못 답함'; return '<div class="a'+(hit?' hit':part?' part':'')+'"><span class="v">'+v+(a.판정!==v&&!hit?' · '+esc(a.판정):'')+'</span>'+esc(a.말)+'</div>'; }).join('')+'</div>'; }).join(''); }
+
+  /* 4 분석 */
+  if(CZ){ var ys=CZ.연도별.filter(function(y){return +y.year>=2018;}); var first=ys[0], last=ys.find(function(y){return +y.year===2025;})||ys[ys.length-1], y26=ys.find(function(y){return +y.year===2026;});
+    document.getElementById('f1ul').innerHTML='<li>등록 부처 <b>'+first.orgs+'곳 → '+(y26?y26.orgs:last.orgs)+'곳</b> (2018 → 2026.9)</li><li>국민이 신청한 사업 <b>'+Math.max.apply(null,ys.map(function(y){return y.nat;}))+'건 → '+last.nat+'건</b> (정점 → 2025)</li><li>국민신청 사업 조회 중앙값 <b>'+first.natMedInq+'회 → '+(last.natMedInq==null?0:last.natMedInq)+'회</b></li>';
+    var W=360,H=170,L=34,R=14,T=22,B=28; var xs=ys.map(function(y,i){ return L+i*(W-L-R)/(ys.length-1); });
+    var mx=Math.max.apply(null,ys.map(function(y){return Math.max(y.orgs,y.nat);})); var yv=function(v){ return T+(H-T-B)*(1-v/mx); };
+    var line=function(key,color){ return '<polyline fill="none" stroke="'+color+'" stroke-width="2.5" points="'+ys.map(function(y,i){ return xs[i]+','+yv(y[key]); }).join(' ')+'"/>'+ys.map(function(y,i){ return '<circle cx="'+xs[i]+'" cy="'+yv(y[key])+'" r="3" fill="'+color+'"/>'; }).join(''); };
+    document.getElementById('f1svg').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="연도별 등록 부처 수와 국민신청 건수"><line x1="'+L+'" y1="'+yv(0)+'" x2="'+(W-R)+'" y2="'+yv(0)+'" stroke="#cdd1d5"/>'
+      +line('orgs','#1e2124')+line('nat','#8a5c00')
+      +ys.map(function(y,i){ return (i%2===0||i===ys.length-1)?'<text x="'+xs[i]+'" y="'+(H-8)+'" font-size="12.5" text-anchor="middle" fill="#58616a">'+String(y.year).slice(2)+'</text>':''; }).join('')
+      +'<text x="'+(xs[0]-4)+'" y="'+(yv(first.orgs)+4)+'" font-size="12.5" text-anchor="end" fill="#1e2124">'+first.orgs+'</text><text x="'+(xs[xs.length-1]+4)+'" y="'+(yv((y26||last).orgs)+4)+'" font-size="12.5" fill="#1e2124">'+(y26||last).orgs+'</text>'
+      +'<text x="'+(xs[0]-4)+'" y="'+(yv(first.nat)+4)+'" font-size="12.5" text-anchor="end" fill="#8a5c00">'+first.nat+'</text><text x="'+(xs[xs.length-2]+4)+'" y="'+(yv(last.nat)-6)+'" font-size="12.5" fill="#8a5c00">'+last.nat+'</text></svg><div style="font-size:17px;color:var(--ink-3);margin:-4px 0 8px"><span style="color:#1e2124;font-weight:700">검정</span> 등록 부처(곳) · <span style="color:#8a5c00;font-weight:700">갈색</span> 국민신청(건), 2018~2026</div>'; }
+  if(VN){ var bo=VN.대조.요약.보정.slice().sort(function(a,b){return b.누락-a.누락;}); put('f2n',fmt(VN.대조.요약.실측누락.사업단위));
+    document.getElementById('f2ul').innerHTML='<li>누리집 <b>'+VN.대조.요약.조사기관+'곳</b>을 직접 열어 셌습니다</li><li>포털에 빠진 사업 <b>'+fmt(VN.대조.요약.실측누락.사업단위)+'건</b></li><li>검사가 짚은 '+VN.결락.칸수+'칸 중 '+VN.대조.요약.검사채점.확증+'칸 확인(적중률 '+VN.대조.요약.검사채점.적중률+'%)</li>';
+    var W2=360,rowH=22,H2=bo.length*rowH+8,lw=92,mx2=Math.max.apply(null,bo.map(function(b){return b.최소실제;})),bw=W2-lw-66;
+    document.getElementById('f2svg').innerHTML='<svg viewBox="0 0 '+W2+' '+H2+'" role="img" aria-label="기관별 포털 등록과 누리집 실측">'+bo.map(function(b,i){ var y=4+i*rowH; var w1=bw*b.포털/mx2, w2=bw*b.최소실제/mx2; return '<text x="'+(lw-6)+'" y="'+(y+14)+'" font-size="12.5" text-anchor="end" fill="#1e2124">'+esc(b.nm.length>6?b.nm.slice(0,6):b.nm)+'</text><rect x="'+lw+'" y="'+(y+3)+'" width="'+w2+'" height="14" fill="#e4e7ea"/><rect x="'+lw+'" y="'+(y+3)+'" width="'+w1+'" height="14" fill="#c0392b"/><text x="'+(lw+w2+4)+'" y="'+(y+14)+'" font-size="12.5" fill="#58616a">'+b.포털+'/'+b.최소실제+'</text>'; }).join('')+'</svg><div style="font-size:17px;color:var(--ink-3);margin:-4px 0 8px">빨강 = 포털에 있는 건수, 회색 = 누리집 실측. (포털/실측)</div>'; }
+  if(VS){ var S=VS.세부; document.getElementById('f3ul').innerHTML='<li>국정과제 123개 중 번호로 닿는 과제 <b>'+VS.현정부.가리킨과제수+'개</b></li><li>세부과제 '+S.총수+'개 중 정책실명제 사업이 확실한 것 <b>'+S.확실합계+'개('+Math.round(S.확실합계/S.총수*100)+'%)</b></li><li>카드에 국정과제 번호 칸이 없어 <b>있어도 못 잇습니다</b></li>';
+    var goalOf=function(n){ return n<=19?1:n<=48?2:n<=71?3:n<=108?4:5; }, NM5={1:'정치',2:'경제',3:'균형',4:'사회',5:'외교'}; var by={};
+    S.목록.forEach(function(d){ var g=goalOf(+d.no.split('-')[0]); (by[g]=by[g]||[]).push(d); });
+    document.getElementById('f3grid').innerHTML='<div class="grid5">'+[1,2,3,4,5].map(function(g){ return '<div class="g"><span class="lab">'+NM5[g]+'</span><span class="cells">'+(by[g]||[]).map(function(d){ var sure=d.r==='확실'||d.b==='확실', am=!sure&&(d.r==='애매'||d.b==='애매'); return '<i class="'+(sure?'on':am?'am':'')+'"></i>'; }).join('')+'</span></div>'; }).join('')+'</div>'; }
+
+  /* 5 2.0 — 과제 53 고정 */
+  if(P2){ var T=P2.과제.find(function(t){return t.n===53;})||P2.과제[0]; put('p2m',P2.집행월||'—');
+    var lead=function(t){ var w=t.split(/\s+/), END=/(강화|확대|구축|추진|제정|도입|개편|지원|마련|정비|실현|조성|전환|확립|고도화|활성화|제고|정립|확충|개선|육성|창출|개방|시행|폐지|실질화|규명|회복|내실화|처리|제공|기반|대응|정착|완성|관리|운영|촉진|혁신|보장|수호|지정|해소|공급|절감|유치|연계|재도약|출범)$/; for(var i=0;i<Math.min(w.length,7);i++){ if(END.test(w[i].replace(/[,.*]+$/,''))) return w.slice(0,i+1).join(' '); } return w.slice(0,4).join(' '); };
+    var yrs=T.연도범위?(T.연도범위[0]===T.연도범위[1]?T.연도범위[0]+'년':T.연도범위[0]+'~'+T.연도범위[1]+'년'):'';
+    document.getElementById('p2h').innerHTML='<div class="no">국정과제 '+T.n+' · 주관 '+esc(T.org)+'</div><div class="nm">'+esc(T.nm)+'</div><p>세부과제 '+T.세부수+'개 중 <b>'+T.연결수+'개</b>에 정책실명제 사업이 이어져 있고'+(yrs?'(카드는 '+yrs+'에 있음)':'')+', 2026년 예산 줄이 확실한 세부과제는 <b>'+T.예산확실+'개</b>'+(T.예산억?'(합계 '+amt(T.예산억)+')':'')+'입니다.</p>';
+    var prev=null; document.getElementById('p2b').innerHTML=T.세부.map(function(s){ var card=s.사업?(prev===s.사업.nm?'〃 같은 카드':esc(s.사업.nm)+' <span class="none">('+s.연도.map(function(c){return c.y;}).join('·')+')</span>'):'<span class="none">연결 없음</span>'; prev=s.사업?s.사업.nm:null;
+      var b=s.예산; var lines=(b.j==='확실'||b.j==='애매')?b.lines:[]; var name=lines.length?lines.map(function(l){ return esc(l.nm)+(b.j==='애매'?' <span class="none">(추정)</span>':''); }).join('<br>'):'<span class="none">'+esc(b.사유||'없음')+'</span>';
+      var a=lines.length?lines.map(function(l){ return amt(l.억); }).join('<br>'):''; var ex=lines.length?lines.map(function(l){ return l.집행률!=null?l.집행률+'%':'<span class="none">—</span>'; }).join('<br>'):'';
+      return '<tr><td class="no">'+esc(s.no)+'</td><td>'+esc(lead(s.전문||s.t))+'</td><td>'+card+'</td><td>'+name+'</td><td class="a">'+a+'</td><td class="a">'+ex+'</td></tr>'; }).join('');
+    var th=document.querySelector('.p2t thead tr'); th.innerHTML='<th>번호</th><th>세부과제</th><th>정책실명제 카드</th><th>2026 예산 줄</th><th style="text-align:right">예산</th><th style="text-align:right">집행 ('+(P2.집행월||'—')+'월 누계, 단위사업 기준)</th>'; }
+
+  fromHash();
+})();
+</script>
+</body>
+</html>

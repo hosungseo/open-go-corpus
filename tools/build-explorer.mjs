@@ -309,9 +309,10 @@ if (!WITH_NAMES) {
   const DG_PATH = R("notes/digest.json");
   const FL_PATH = R("notes/fiscal-link.json");
   const P2_PATH = R("notes/policy2-mois.json");
+  const CZ_PATH = R("notes/citizen.json");
   const GJ_PATH = R("notes/gukjeong.json");
   const VS_PATH = R("notes/vision.json");
-  for (const name of ["index", "compare", "history", "policy2", "notes"]) {
+  for (const name of ["index", "compare", "history", "policy2", "notes", "report"]) {
     const src = R(`docs/src/${name}.html`);
     if (!fs.existsSync(src)) { console.error(`ERROR static source missing: docs/src/${name}.html`); process.exit(1); }
     let page = fs.readFileSync(src, "utf8");
@@ -348,6 +349,11 @@ if (!WITH_NAMES) {
       if (!fs.existsSync(GJ_PATH)) { console.error("ERROR notes/gukjeong.json missing"); process.exit(1); }
       const gd = fs.readFileSync(GJ_PATH, "utf8").replace(/<\//g, "<\\/");
       page = page.replace("/*__GJDATA__*/null", () => gd).replace("/*__GJDATA__*/", () => gd);
+    }
+    if (page.includes("/*__CZDATA__*/")) {
+      if (!fs.existsSync(CZ_PATH)) { console.error("ERROR notes/citizen.json missing"); process.exit(1); }
+      const cz = fs.readFileSync(CZ_PATH, "utf8").replace(/<\//g, "<\\/");
+      page = page.replace("/*__CZDATA__*/null", () => cz).replace("/*__CZDATA__*/", () => cz);
     }
     if (page.includes("/*__P2DATA__*/")) {
       if (!fs.existsSync(P2_PATH)) { console.error("ERROR notes/policy2-mois.json missing — run node tools/build-policy2-mois.mjs"); process.exit(1); }
