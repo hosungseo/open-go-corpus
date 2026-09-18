@@ -292,9 +292,11 @@ html,body{margin:0;background:var(--paper)}
 .dev div b{display:block;color:var(--ink);margin-bottom:4px}
 @media (max-width:1100px){ .rp{grid-template-columns:180px 1fr} .main{padding:32px 28px} .three,.f3,.dev{grid-template-columns:1fr} }
 @media print{
-  @page{size:A4 landscape;margin:12mm}
+  @page{size:A4 landscape;margin:9mm}
   .nav,.pager{display:none} .rp{display:block} .main{max-width:none;padding:0}
-  .scr{display:block !important;page-break-after:always;padding-top:6mm} .scr:last-child{page-break-after:auto}
+  .scr{display:block !important;break-after:page;page-break-after:always;padding-top:2mm;zoom:.78} .scr:last-child{break-after:auto;page-break-after:auto}
+  .scr h1{margin-bottom:12px} table,.qa3,.p2h{break-inside:avoid;page-break-inside:avoid}
+  .three,.f3,.dev{grid-template-columns:repeat(3,1fr) !important} .f3 .f,.three .c,.dev div{break-inside:avoid;page-break-inside:avoid}
   a{color:inherit;text-decoration:none}
 }
 </style>
